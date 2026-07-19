@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_0owmy"]
 script = ExtResource("2_p47bc")
-sprite_overworld = 5
+sprite_overworld = 15
 shadow_size = 2
 shadow_offset_y = 11.0
 metadata/_custom_type_script = "uid://bkdp0r2akj5km"
