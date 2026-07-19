@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bor3tslxv2ohy"]
+
+[ext_resource type="Script" uid="uid://yr7pc4u5ar3x" path="res://data_core/scripts/map/map_attributes.gd" id="1_mqxu1"]
+
+[node name="pallet_town" type="Node2D" unique_id=586786579]
+script = ExtResource("1_mqxu1")
+map_name = "Pueblo Paleta"
+map_id_section = 1
+map_region = 2
+map_size = Vector2i(30, 20)
+music_path = "uid://bkto6ugkitnr1"
+silence_end = 6.6

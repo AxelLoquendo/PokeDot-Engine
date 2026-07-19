@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bq3vvw2e3pu8g"]
+
+[ext_resource type="Script" uid="uid://dcvfbg4yj5r0k" path="res://data_core/scripts/character/npc.gd" id="1_dpyoa"]
+[ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="2_r4bp4"]
+[ext_resource type="SpriteFrames" uid="uid://cjwpjef2umoqf" path="res://data_core/scripts/character/character_frames.tres" id="3_r4bp4"]
+[ext_resource type="Script" uid="uid://dfuixmgirshkj" path="res://data_core/scripts/shadow_ow/shadow.gd" id="3_woxlu"]
+
+[sub_resource type="Resource" id="Resource_r4bp4"]
+script = ExtResource("2_r4bp4")
+sprite_overworld = 1
+shadow_size = 2
+shadow_offset_y = 11.0
+metadata/_custom_type_script = "uid://d1j7qa7rbivcw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14cdr"]
+size = Vector2(16, 16)
+
+[node name="Npc" type="Node2D" unique_id=1270542304 node_paths=PackedStringArray("anim_player", "cuerpo_colision", "forma_colision")]
+z_as_relative = false
+script = ExtResource("1_dpyoa")
+character_data = SubResource("Resource_r4bp4")
+anim_player = NodePath("AnimatedSprite2D")
+cuerpo_colision = NodePath("StaticBody2D")
+forma_colision = NodePath("StaticBody2D/CollisionShape2D")
+
+[node name="CharacterShadow" type="Sprite2D" parent="." unique_id=745508035]
+script = ExtResource("3_woxlu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1430229856]
+sprite_frames = ExtResource("3_r4bp4")
+animation = &"idle_down"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=225778391]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1584476886]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_14cdr")

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cf6lucno72svl"]
+
+[ext_resource type="PackedScene" uid="uid://bq3vvw2e3pu8g" path="res://scenes/npc/npc.tscn" id="1_ht2uw"]
+[ext_resource type="PackedScene" uid="uid://b7dk1ky8s2mg5" path="res://scenes/player/player.tscn" id="2_ps4jv"]
+[ext_resource type="Script" uid="uid://bkdp0r2akj5km" path="res://data_core/scripts/character/character_player_generic.gd" id="4_rmalr"]
+
+[sub_resource type="Resource" id="Resource_lvxji"]
+script = ExtResource("4_rmalr")
+sprite_overworld = 3
+shadow_size = 2
+shadow_offset_y = 11.0
+metadata/_custom_type_script = "uid://bkdp0r2akj5km"
+
+[node name="Node2D" type="Node2D" unique_id=1252837465]
+
+[node name="Player" parent="." unique_id=1693781442 instance=ExtResource("2_ps4jv")]
+character_data = SubResource("Resource_lvxji")
+
+[node name="Npc" parent="." unique_id=1270542304 instance=ExtResource("1_ht2uw")]
+z_as_relative = true
+position = Vector2(16, 0)
+distancia_patrulla = 3
+tiempo_espera = 0.1
+character_data = null

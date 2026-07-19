@@ -1,0 +1,22 @@
+# Godot 4+
+.godot/
+/android/
+/ios/
+/macos/
+/windows/
+/linux/
+/export/
+/build/
+
+# Archivos temporales y generados automáticamente
+*.uid
+*.import
+*.remap
+*.translation
+*.cache
+*.autosave
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
