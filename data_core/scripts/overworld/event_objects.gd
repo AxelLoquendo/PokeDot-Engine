@@ -10,10 +10,27 @@ enum NpcID {
 # Identificadores para Protagonistas
 enum PlayerID {
 	NONE,
-	OBJ_EVENT_GFX_LUCAS_DP,
-	OBJ_EVENT_GFX_LUCIA_DP,
-	OBJ_EVENT_GFX_NATE_NB,
-	OBJ_EVENT_GFX_RISA_NB,
+	# Valtherion
+	OBJ_EVENT_GFX_KAEL_EB,
+	OBJ_EVENT_GFX_KAIDA_EB,
+	# Kanto
+	OBJ_EVENT_GFX_RED_FRLG,
+	OBJ_EVENT_GFX_LEAF_FRLG,
+	# Jotho
+	OBJ_EVENT_GFX_ECO_HGSS,
+	OBJ_EVENT_GFX_CRISTI_HGSS,
+	# Hoenn
+	OBJ_EVENT_GFX_BRUNO_RSB,
+	OBJ_EVENT_GFX_AURA_RSB,
+	# Sinnoh
+	OBJ_EVENT_GFX_LEON_DP,
+	OBJ_EVENT_GFX_MAYA_DP,
+	# Teselia/Unova
+	OBJ_EVENT_GFX_LUCHO_BW,
+	OBJ_EVENT_GFX_LIZA_BW,
+	OBJ_EVENT_GFX_RISSO_B2W2,
+	OBJ_EVENT_GFX_NANCI_B2W2,
+	
 }
 
 # Biblioteca de sprites de NPCs
@@ -25,10 +42,18 @@ const npc_sprites: Array[String] = [
 # Biblioteca de sprites de Jugadores
 const player_sprites: Array[String] = [
 	".",
+	"res://game/graphics_eb/overworld/player/male/kael/normal.png",
+	"res://game/graphics_eb/overworld/player/female/kaida/normal.png",
+	".",
+	"res://graphics/overworld/player/female/leaf/normal.png",
+	"res://graphics/overworld/player/male/eco/normal.png",
+	".",
+	"res://graphics/overworld/player/male/bruno/normal.png",
+	"res://graphics/overworld/player/female/aura/normal.png",
 	".",
 	".",
-	"res://graphics/overworld/player/male/nate/normal.png",
-	"res://game/graphics_eb/overworld/player/male/kael/normal.png"
+	"res://graphics/overworld/player/male/lucho/normal.png",
+	"res://graphics/overworld/player/female/liza/normal.png",
 ]
 
 static var casillas_ocupadas: Dictionary = {}

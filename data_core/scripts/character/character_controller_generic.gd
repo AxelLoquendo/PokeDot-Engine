@@ -21,8 +21,11 @@ var casilla_actual: Vector2i = Vector2i.ZERO
 
 
 func _ready() -> void:
-	if character_data != null:
-		character_data = character_data.duplicate(true)
+	var copia: CharacterGame = null
+	if character_data:
+		copia = character_data.duplicate(true)
+		if copia:
+			character_data = copia
 	
 	position = snap_to_grid(position)
 	initial_position = position
@@ -135,6 +138,9 @@ func process_input() -> void:
 
 
 func move(_delta: float) -> void:
+	if not character_data:
+		return
+	
 	var velocidad: float = character_data.walk_speed
 
 	percent_moved_to_next_tile += velocidad * _delta
