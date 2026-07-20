@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="Pokedot-engine"
+run/main_scene="uid://dcbvayi6tovk8"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 MusicManager="*uid://dy64y8tqnu262"
+DnsManager="*uid://b1qn0holfpgak"
 
 [debug]
 
@@ -28,6 +30,10 @@ gdscript/warnings/inferred_declaration=2
 window/size/viewport_width=480
 window/size/viewport_height=320
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/map_creator/plugin.cfg")
 
 [input]
 

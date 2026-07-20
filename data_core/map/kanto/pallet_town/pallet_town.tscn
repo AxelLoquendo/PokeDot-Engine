@@ -2,11 +2,33 @@
 
 [ext_resource type="Script" uid="uid://yr7pc4u5ar3x" path="res://data_core/scripts/map/map_attributes.gd" id="1_mqxu1"]
 
+[sub_resource type="TileSet" id="TileSet_htemk"]
+
+[sub_resource type="TileSet" id="TileSet_14cdr"]
+
+[sub_resource type="TileSet" id="TileSet_q4lci"]
+
+[sub_resource type="TileSet" id="TileSet_pj0hq"]
+
 [node name="pallet_town" type="Node2D" unique_id=586786579]
 script = ExtResource("1_mqxu1")
 map_name = "Pueblo Paleta"
-map_id_section = 1
+map_id_section = 3
 map_region = 2
 map_size = Vector2i(30, 20)
 music_path = "uid://bkto6ugkitnr1"
 silence_end = 6.6
+
+[node name="tilesets" type="Node2D" parent="." unique_id=1921168787]
+
+[node name="tile0" type="TileMapLayer" parent="tilesets" unique_id=671373442]
+tile_set = SubResource("TileSet_htemk")
+
+[node name="tile1" type="TileMapLayer" parent="tilesets" unique_id=767735669]
+tile_set = SubResource("TileSet_14cdr")
+
+[node name="tile2" type="TileMapLayer" parent="tilesets" unique_id=459210250]
+tile_set = SubResource("TileSet_q4lci")
+
+[node name="tile3" type="TileMapLayer" parent="tilesets" unique_id=992059097]
+tile_set = SubResource("TileSet_pj0hq")

@@ -4,8 +4,12 @@ class_name MapSection
 
 enum SectionId {
 	MAPSEC_NONE,
+	# Valtherion
+	MAPSEC_PRADO_NATAL,
+	MAPSEC_PUEBLO_ALBA,
 	# Kanto
 	MAPSEC_PALLET_TOWN,
+	
 }
 
 enum RegionId {

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dcbvayi6tovk8"]
+
+[ext_resource type="Script" uid="uid://bx4wkqpdhx7n4" path="res://data_core/map/position_game/gestor_inicio.gd" id="1_bbqlg"]
+[ext_resource type="PackedScene" uid="uid://b7dk1ky8s2mg5" path="res://scenes/player/player.tscn" id="2_p63qy"]
+[ext_resource type="PackedScene" uid="uid://cjarcpaafosic" path="res://game/data_core_eb/map_eb/prado_natal/prado_natal.tscn" id="2_qnp6w"]
+[ext_resource type="Script" uid="uid://b1qn0holfpgak" path="res://data_core/scripts/overworld/dns_manager.gd" id="4_qnp6w"]
+
+[node name="Gestor_Inicio" type="Node2D" unique_id=562693032]
+script = ExtResource("1_bbqlg")
+mapa_inicial = ExtResource("2_qnp6w")
+casilla_inicio = Vector2i(11, 5)
+
+[node name="Player" parent="." unique_id=1693781442 instance=ExtResource("2_p63qy")]
+
+[node name="TimeManager" type="Node" parent="." unique_id=1258571685]
+script = ExtResource("4_qnp6w")

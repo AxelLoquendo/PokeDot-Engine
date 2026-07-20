@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cvw2c7sr63w5"]
+
+[ext_resource type="Script" uid="uid://yr7pc4u5ar3x" path="res://data_core/scripts/map/map_attributes.gd" id="1_0ju3r"]
+
+[node name="MapData" type="Node2D" unique_id=156845757]
+script = ExtResource("1_0ju3r")
+
+[node name="Tilesets" type="Node2D" parent="." unique_id=717031857]
+
+[node name="Tile0" type="TileMapLayer" parent="Tilesets" unique_id=891757610]
+
+[node name="Tile1" type="TileMapLayer" parent="Tilesets" unique_id=879493041]
+
+[node name="Tile2" type="TileMapLayer" parent="Tilesets" unique_id=1120296338]
+
+[node name="Tile3" type="TileMapLayer" parent="Tilesets" unique_id=144382310]
+
+[node name="Behaviours" type="Node2D" parent="." unique_id=983901861]
+
+[node name="Collisions" type="TileMapLayer" parent="Behaviours" unique_id=421265265]
+
+[node name="Borde" type="TileMapLayer" parent="Behaviours" unique_id=856113267]
