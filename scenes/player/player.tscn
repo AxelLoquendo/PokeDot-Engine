@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://csfu8o85pfdaw" path="res://data_core/scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://bkdp0r2akj5km" path="res://data_core/scripts/character/character_player_generic.gd" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://dfuixmgirshkj" path="res://data_core/scripts/shadow_ow/shadow.gd" id="3_gmlin"]
+[ext_resource type="AudioStream" uid="uid://pqi5ri8v04di" path="res://sfx/se/Player bump.ogg" id="3_p47bc"]
 [ext_resource type="SpriteFrames" uid="uid://cjwpjef2umoqf" path="res://data_core/scripts/character/character_frames.tres" id="5_75vfm"]
 
 [sub_resource type="Resource" id="Resource_0owmy"]
 script = ExtResource("2_p47bc")
-sprite_overworld = 15
+sprite_overworld = 4
 shadow_size = 2
 shadow_offset_y = 11.0
 metadata/_custom_type_script = "uid://bkdp0r2akj5km"
@@ -22,6 +23,8 @@ character_data = SubResource("Resource_0owmy")
 anim_player = NodePath("AnimatedSprite2D")
 cuerpo_colision = NodePath("StaticBody2D")
 forma_colision = NodePath("StaticBody2D/CollisionShape2D")
+sonido_colision = ExtResource("3_p47bc")
+tiempo_entre_sonidos = 0.68
 
 [node name="CharacterShadow" type="Sprite2D" parent="." unique_id=2025637459]
 modulate = Color(1, 1, 1, 0.5058824)

@@ -1,16 +1,63 @@
 [gd_scene format=3 uid="uid://bor3tslxv2ohy"]
 
 [ext_resource type="Script" uid="uid://yr7pc4u5ar3x" path="res://data_core/scripts/map/map_attributes.gd" id="1_mqxu1"]
+[ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="2_abs4o"]
 
-[sub_resource type="TileSet" id="TileSet_htemk"]
+[sub_resource type="TileSet" id="TileSet_ybvss"]
 
-[sub_resource type="TileSet" id="TileSet_14cdr"]
+[sub_resource type="TileSet" id="TileSet_q4vpe"]
 
-[sub_resource type="TileSet" id="TileSet_q4lci"]
+[sub_resource type="TileSet" id="TileSet_11cst"]
 
-[sub_resource type="TileSet" id="TileSet_pj0hq"]
+[sub_resource type="TileSet" id="TileSet_fdm51"]
 
-[node name="pallet_town" type="Node2D" unique_id=586786579]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ca71"]
+texture = ExtResource("2_abs4o")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:0/0/custom_data_1 = true
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+3:1/0/custom_data_0 = true
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nmktg"]
+custom_data_layer_0/name = "blocked"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "pass_lvl_1"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_4ca71")
+
+[sub_resource type="TileSet" id="TileSet_d1sk7"]
+
+[node name="MapData" type="Node2D" unique_id=156845757]
 script = ExtResource("1_mqxu1")
 map_name = "Pueblo Paleta"
 map_id_section = 3
@@ -19,16 +66,26 @@ map_size = Vector2i(30, 20)
 music_path = "uid://bkto6ugkitnr1"
 silence_end = 6.6
 
-[node name="tilesets" type="Node2D" parent="." unique_id=1921168787]
+[node name="Tilesets" type="Node2D" parent="." unique_id=717031857]
 
-[node name="tile0" type="TileMapLayer" parent="tilesets" unique_id=671373442]
-tile_set = SubResource("TileSet_htemk")
+[node name="Tile0" type="TileMapLayer" parent="Tilesets" unique_id=891757610]
+tile_set = SubResource("TileSet_ybvss")
 
-[node name="tile1" type="TileMapLayer" parent="tilesets" unique_id=767735669]
-tile_set = SubResource("TileSet_14cdr")
+[node name="Tile1" type="TileMapLayer" parent="Tilesets" unique_id=879493041]
+tile_set = SubResource("TileSet_q4vpe")
 
-[node name="tile2" type="TileMapLayer" parent="tilesets" unique_id=459210250]
-tile_set = SubResource("TileSet_q4lci")
+[node name="Tile2" type="TileMapLayer" parent="Tilesets" unique_id=1120296338]
+tile_set = SubResource("TileSet_11cst")
 
-[node name="tile3" type="TileMapLayer" parent="tilesets" unique_id=992059097]
-tile_set = SubResource("TileSet_pj0hq")
+[node name="Tile3" type="TileMapLayer" parent="Tilesets" unique_id=144382310]
+tile_set = SubResource("TileSet_fdm51")
+
+[node name="Behaviours" type="Node2D" parent="." unique_id=983901861]
+
+[node name="Collisions" type="TileMapLayer" parent="Behaviours" unique_id=421265265]
+tile_set = SubResource("TileSet_nmktg")
+
+[node name="Borde" type="TileMapLayer" parent="Behaviours" unique_id=856113267]
+tile_set = SubResource("TileSet_d1sk7")
+
+[node name="EventObject" type="Node" parent="." unique_id=1934673071]

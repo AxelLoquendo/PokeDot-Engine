@@ -12,6 +12,11 @@ func _ready() -> void:
 	casilla_inicial = casilla_actual
 
 func process_input() -> void:
+	var direccion: Vector2 = Vector2.RIGHT if yendo_a_derecha else Vector2.LEFT
+	var casilla_destino: Vector2i = casilla_actual + Vector2i(direccion)
+	var posicion_destino_global: Vector2 = global_position + direccion * TILE_SIZE
+	var limite_max: int = casilla_inicial.x + distancia_patrulla
+	
 	if tiempo_espera_restante > 0:
 		tiempo_espera_restante -= get_process_delta_time()
 		is_moving = false
@@ -23,20 +28,18 @@ func process_input() -> void:
 		
 	if is_moving: return
 
+	var permitida: bool = casilla_permitida(posicion_destino_global)
+
 	if yendo_a_derecha:
-		if casilla_actual.x >= casilla_inicial.x + distancia_patrulla:
+		if casilla_destino.x > limite_max or not permitida:
 			yendo_a_derecha = false
 			tiempo_espera_restante = tiempo_espera
 			return
 	else:
-		if casilla_actual.x <= casilla_inicial.x:
+		if casilla_destino.x < casilla_inicial.x or not permitida:
 			yendo_a_derecha = true
 			tiempo_espera_restante = tiempo_espera
 			return
 
-	var direccion: Vector2 = Vector2.RIGHT if yendo_a_derecha else Vector2.LEFT
-
-	if not intentar_mover(direccion):
-		return
-
-	is_first_step = not is_first_step
+	if intentar_mover(direccion):
+		is_first_step = not is_first_step
