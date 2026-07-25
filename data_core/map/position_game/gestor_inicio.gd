@@ -28,6 +28,10 @@ func _ready() -> void:
 		var controlador: CharacterController = personaje as CharacterController
 		if controlador:
 			controlador.mapa_raiz = mapa_nodo
+			var atributos_mapa: MapAttributes = mapa_nodo as MapAttributes
+			var camara_jugador: Camera2D = jugador.get_node_or_null("Camera2D") as Camera2D
+			if atributos_mapa and camara_jugador:
+				atributos_mapa.aplicar_limites_camara(camara_jugador)
 			controlador.buscar_capa_colisiones()
 
 	jugador.casilla_actual = jugador.posicion_a_casilla(jugador.global_position)

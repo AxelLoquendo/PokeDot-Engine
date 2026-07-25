@@ -53,3 +53,23 @@ func _draw() -> void:
 
 func esta_dentro_limites(casilla: Vector2i) -> bool:
 	return casilla.x >= 0 and casilla.x < map_size.x and casilla.y >= 0 and casilla.y < map_size.y
+
+func aplicar_limites_camara(camara: Camera2D) -> void:
+	if not camara:
+		return
+
+	var esquina_superior_izquierda: Vector2 = to_global(Vector2.ZERO)
+	var esquina_inferior_derecha: Vector2 = to_global(
+		Vector2(
+			map_size.x * tile_size,
+			map_size.y * tile_size
+		)
+	)
+
+	camara.limit_left = floori(esquina_superior_izquierda.x)
+	camara.limit_top = floori(esquina_superior_izquierda.y)
+	camara.limit_right = ceili(esquina_inferior_derecha.x)
+	camara.limit_bottom = ceili(esquina_inferior_derecha.y)
+
+	# Evita que el suavizado permita ver fuera del mapa.
+	camara.limit_smoothed = false

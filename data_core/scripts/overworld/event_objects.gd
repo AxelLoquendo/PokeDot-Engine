@@ -1,11 +1,13 @@
 extends Node
 class_name EventObjects
 
+var NPC_Deseado: int = 0
 # Identificadores para NPCs
 enum NpcID {
 	NONE,
 	OBJ_EVENT_GFX_PROF_OAK,
-}
+	OBJ_EVENT_GFX_KAEL,
+} 
 
 # Identificadores para Protagonistas
 enum PlayerID {
@@ -37,7 +39,8 @@ enum PlayerID {
 # Biblioteca de sprites de NPCs
 const npc_sprites: Array[String] = [
 	".",
-	"res://game/graphics_eb/overworld/player/male/kael/normal.png"
+	"res://graphics/overworld/npc/profesor_oak.png",
+	"res://game/graphics_eb/overworld/player/male/kael/normal.png",
 ]
 
 # Biblioteca de sprites de Jugadores
@@ -60,14 +63,27 @@ const player_sprites: Array[String] = [
 	"res://graphics/overworld/player/female/nanci/normal.png",
 ]
 
-static var casillas_ocupadas: Dictionary = {}
+static var casillas_ocupadas: Dictionary = {}   # posición REAL
+static var casillas_reservadas: Dictionary = {} # destino al que va
 
 static func registrar_casilla(casilla: Vector2i, quien: Node) -> void:
 	casillas_ocupadas[casilla] = quien
 
 static func liberar_casilla(casilla: Vector2i) -> void:
-	if casillas_ocupadas.has(casilla):
-		casillas_ocupadas.erase(casilla)
+	casillas_ocupadas.erase(casilla)
 
 static func hay_otro_en_casilla(casilla: Vector2i, yo: Node) -> bool:
-	return casillas_ocupadas.has(casilla) and casillas_ocupadas[casilla] != yo
+	return casillas_reservadas.has(casilla) and casillas_reservadas[casilla] != yo
+
+static func reservar_casilla(casilla: Vector2i, quien: Node) -> void:
+	casillas_reservadas[casilla] = quien
+
+static func liberar_reserva(casilla: Vector2i) -> void:
+	casillas_reservadas.erase(casilla)
+
+static func obtener_personaje_en_casilla(casilla: Vector2i) -> CharacterController:
+	if casillas_ocupadas.has(casilla):
+		var personaje: CharacterController = casillas_ocupadas[casilla]
+		if personaje is CharacterController:
+			return personaje
+	return null

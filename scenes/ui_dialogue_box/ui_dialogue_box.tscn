@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://cptui2la174oj"]
+
+[ext_resource type="Script" uid="uid://c8uxuwo8u3jsw" path="res://data_core/scripts/overworld/dialogue_box.gd" id="1_78i0o"]
+[ext_resource type="Texture2D" uid="uid://bigpsm7f0cmvf" path="res://graphics/ui_dialogue_box/box_normal.png" id="2_78i0o"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_fk8eb"]
+[ext_resource type="AudioStream" uid="uid://1iuty86rgpif" path="res://sfx/se/Tile Game cursor.ogg" id="4_yweyw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fk8eb"]
+font = ExtResource("2_fk8eb")
+font_size = 32
+font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+shadow_size = 0
+shadow_color = Color(0.8392157, 0.8392157, 0.80784315, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yweyw"]
+font = ExtResource("2_fk8eb")
+font_size = 32
+font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+shadow_size = 0
+shadow_color = Color(0.8392157, 0.8392157, 0.80784315, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_fk8eb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CajaDialogo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 232)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CajaDialogo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kfurw"]
+resource_name = "fin"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CajaDialogo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, 176), Vector2(0, 321)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("CajaDialogo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_yweyw"]
+resource_name = "inicio"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CajaDialogo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, 321), Vector2(0, 176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CajaDialogo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfurw"]
+_data = {
+&"RESET": SubResource("Animation_fk8eb"),
+&"fin": SubResource("Animation_kfurw"),
+&"inicio": SubResource("Animation_yweyw")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1957761113 groups=["dialogue_box"]]
+script = ExtResource("1_78i0o")
+
+[node name="Control" type="Control" parent="." unique_id=2017807056]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CajaDialogo" type="TextureRect" parent="Control" unique_id=30195811]
+layout_mode = 0
+offset_top = 232.0
+offset_right = 480.0
+offset_bottom = 376.0001
+texture = ExtResource("2_78i0o")
+
+[node name="NameLabel" type="Label" parent="Control/CajaDialogo" unique_id=1798073203]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 9.0
+offset_right = 181.0
+offset_bottom = 39.0
+label_settings = SubResource("LabelSettings_fk8eb")
+
+[node name="TextLabel" type="Label" parent="Control/CajaDialogo" unique_id=5012601]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 62.0
+offset_right = 437.0
+offset_bottom = 131.0
+label_settings = SubResource("LabelSettings_yweyw")
+autowrap_mode = 2
+
+[node name="Flecha" type="Sprite2D" parent="Control/CajaDialogo" unique_id=494623214]
+
+[node name="Animacion" type="AnimationPlayer" parent="Control" unique_id=1782715843]
+libraries/ = SubResource("AnimationLibrary_kfurw")
+
+[node name="SonidoTexto" type="AudioStreamPlayer" parent="." unique_id=224588506]
+stream = ExtResource("4_yweyw")

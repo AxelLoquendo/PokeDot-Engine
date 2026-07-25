@@ -19,6 +19,7 @@ config/icon="uid://gpasbafgmsxe"
 
 MusicManager="*uid://dy64y8tqnu262"
 DnsManager="*uid://b1qn0holfpgak"
+DialogueManager="*uid://b104pohobtcxy"
 
 [debug]
 
@@ -45,6 +46,11 @@ folder_colors={
 "res://scenes/": "orange",
 "res://sfx/": "pink"
 }
+
+[global_group]
+
+NPC=""
+dialogue_box=""
 
 [input]
 

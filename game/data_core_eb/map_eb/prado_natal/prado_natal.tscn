@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://yr7pc4u5ar3x" path="res://data_core/scripts/map/map_attributes.gd" id="1_5wml8"]
 [ext_resource type="Texture2D" uid="uid://de0q25ka7n1kq" path="res://game/graphics_eb/tileset/primary/nature.png" id="2_dqi8l"]
 [ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="3_vq3b1"]
+[ext_resource type="PackedScene" uid="uid://bq3vvw2e3pu8g" path="res://scenes/npc/npc.tscn" id="4_d8013"]
+[ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="5_j06q6"]
+[ext_resource type="Script" uid="uid://bifljdkwbk7r4" path="res://data_core/scripts/overworld/dialogue_page.gd" id="5_y0fca"]
+[ext_resource type="Script" uid="uid://ctavlpyny00ah" path="res://data_core/scripts/overworld/dialogue.gd" id="6_yd4tm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vq3b1"]
 texture = ExtResource("2_dqi8l")
@@ -1622,6 +1626,36 @@ sources/0 = SubResource("TileSetAtlasSource_4ca71")
 
 [sub_resource type="TileSet" id="TileSet_hprgv"]
 
+[sub_resource type="Resource" id="Resource_4nnk5"]
+script = ExtResource("5_y0fca")
+speaker = "Profesor Oak"
+text = "Hola, gusto en verte, no creí que llegaría a Godot."
+metadata/_custom_type_script = "uid://bifljdkwbk7r4"
+
+[sub_resource type="Resource" id="Resource_fk8eb"]
+script = ExtResource("5_y0fca")
+speaker = "Profesor Oak"
+text = "Solo esperemos que no abandonen el proyecto."
+metadata/_custom_type_script = "uid://bifljdkwbk7r4"
+
+[sub_resource type="Resource" id="Resource_j06q6"]
+script = ExtResource("6_yd4tm")
+pages = Array[ExtResource("5_y0fca")]([SubResource("Resource_4nnk5"), SubResource("Resource_fk8eb")])
+metadata/_custom_type_script = "uid://ctavlpyny00ah"
+
+[sub_resource type="Resource" id="Resource_ueygd"]
+script = ExtResource("5_j06q6")
+nombre = "Profesor Oak"
+npc_id = &"0"
+sprite_overworld = 1
+comportamiento = 1
+distancia_patrulla = 3
+tiempo_espera = 0.1
+dialogue = SubResource("Resource_j06q6")
+shadow_size = 2
+shadow_offset_y = 11.0
+metadata/_custom_type_script = "uid://d1j7qa7rbivcw"
+
 [node name="MapData" type="Node2D" unique_id=156845757]
 script = ExtResource("1_5wml8")
 map_name = "Prado Natal"
@@ -1662,3 +1696,8 @@ tile_set = SubResource("TileSet_nmktg")
 tile_set = SubResource("TileSet_hprgv")
 
 [node name="EventObject" type="Node" parent="." unique_id=1934673071]
+
+[node name="Npc" parent="EventObject" unique_id=1270542304 instance=ExtResource("4_d8013")]
+z_index = 124
+position = Vector2(167, 124)
+character_data = SubResource("Resource_ueygd")
