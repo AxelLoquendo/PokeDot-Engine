@@ -51,6 +51,12 @@ var casilla_reservada: Vector2i = Vector2i.ZERO
 var capa_datos_mapa: TileMapLayer
 var mapa_raiz: Node
 
+var capas_comportamiento: Array[TileBehaviourLayer] = []
+var ultima_casilla_comportamiento: Vector2i = Vector2i(-999, -999)
+var ultima_escalera: Vector2i = Vector2i(-999, -999)
+var nivel_altura: int = 0
+var ejecutando_evento: bool = false
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		position = snap_to_grid(position)
@@ -104,7 +110,10 @@ func _ready() -> void:
 	reproductor_audio = AudioStreamPlayer.new()
 	reproductor_audio.stream = sonido_colision
 	add_child(reproductor_audio)
-
+	for nodo: Node in get_tree().get_nodes_in_group("tile_behaviour"):
+		if nodo is TileBehaviourLayer:
+			capas_comportamiento.append(nodo)
+	
 func _on_character_data_changed() -> void:
 	print("CAMBIO DETECTADO")
 	_actualizar_sprite()
@@ -241,46 +250,83 @@ func hay_personaje_en(destino_global: Vector2) -> bool:
 	var resultado: Array = espacio.intersect_shape(consulta)
 	return resultado.size() > 0
 
+const _BEHAVIOURS_ACTIVOS: Dictionary = {
+"stairs": true,
+"stairs_end": true
+}
+
 func intentar_mover(direccion: Vector2) -> bool:
 	input_direction = direccion
+	var casilla_destino: Vector2i = casilla_actual + Vector2i(input_direction)
 
-	var casilla_destino: Vector2i = casilla_actual + Vector2i(direccion)
-	var posicion_destino_global: Vector2 = global_position + (direccion * TILE_SIZE)
-	
-	var permitida: bool = casilla_permitida(posicion_destino_global)
-	if not permitida:
+	# Si tenemos una escalera registrada, comprobamos si el jugador
+	# intenta volver exactamente a esa casilla.
+	if ultima_escalera != Vector2i(-999, -999):
+		var desplazamiento: Vector2i = ultima_escalera - casilla_actual
+
+		# Solo aceptamos un desplazamiento diagonal de una casilla.
+		if abs(desplazamiento.x) == 1 and abs(desplazamiento.y) == 1:
+			# Si el jugador pulsa la dirección horizontal correcta,
+			# convertimos el movimiento en diagonal.
+			if direccion.x == desplazamiento.x:
+				input_direction = Vector2(desplazamiento)
+				casilla_destino = ultima_escalera
+
+	# Revisar comportamiento de la casilla destino
+	for capa: TileBehaviourLayer in capas_comportamiento:
+
+		if capa.comprobar_casilla(casilla_destino, self, input_direction):
+			return true
+
+
+	var posicion_destino_global: Vector2 = (global_position + input_direction * TILE_SIZE)
+
+
+	# Colisión de mapa
+	if not casilla_permitida(posicion_destino_global):
+
 		if reproductor_audio and sonido_colision:
 			if Time.get_ticks_msec() - tiempo_ultimo_sonido > tiempo_entre_sonidos * 1000:
 				reproductor_audio.play()
 				tiempo_ultimo_sonido = Time.get_ticks_msec()
-		return false
-	
-	var ocupada: bool = EventObjects.hay_otro_en_casilla(casilla_destino, self)
 
-	if ocupada:
-		if reproductor_audio and sonido_colision:
-			if Time.get_ticks_msec() - tiempo_ultimo_sonido > tiempo_entre_sonidos * 1000:
-				reproductor_audio.play()
-				tiempo_ultimo_sonido = Time.get_ticks_msec()
-		return false
-	
-	var hay_colision: bool = hay_personaje_en(posicion_destino_global)
-	if hay_colision:
 		return false
 
+
+	# Personajes
+	if EventObjects.hay_otro_en_casilla(casilla_destino, self):
+		return false
+
+
+	if hay_personaje_en(posicion_destino_global):
+		return false
+
+
+	# Reservar movimiento
 	casilla_reservada = casilla_destino
-	EventObjects.reservar_casilla(casilla_destino, self)
+
+	EventObjects.reservar_casilla(
+		casilla_destino,
+		self
+	)
+
+
 	initial_position = position
 	is_moving = true
+
 	return true
 
 func _process(_delta: float) -> void:
-	z_index = int(global_position.y)
 	if Engine.is_editor_hint():
 		return
 
+	z_as_relative = false
+	z_index = int(global_position.y)
+
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
+		return
+	if ejecutando_evento:
 		return
 	if !is_moving:
 		process_input()
@@ -310,21 +356,57 @@ func reproducir_paso() -> void:
 	if not anim_player:
 		return
 
-	var prefijo: String = "first_step_" if is_first_step else "second_step_"
+	var prefijo: String = (
+		"first_step_"
+		if is_first_step
+		else "second_step_"
+	)
+
 
 	match input_direction:
+
 		Vector2.UP:
 			current_direction = Direction.NORTH
 			anim_player.play(prefijo + "up")
+
+
 		Vector2.DOWN:
 			current_direction = Direction.SOUTH
 			anim_player.play(prefijo + "down")
+
+
 		Vector2.RIGHT:
 			current_direction = Direction.EAST
 			anim_player.play(prefijo + "right")
+
+
 		Vector2.LEFT:
 			current_direction = Direction.WEST
 			anim_player.play(prefijo + "left")
+
+
+		# Escalera lateral derecha subiendo
+		Vector2(1, -1):
+			current_direction = Direction.EAST
+			anim_player.play("first_step_right")
+
+
+		# Escalera lateral izquierda subiendo
+		Vector2(-1, -1):
+			current_direction = Direction.WEST
+			anim_player.play("first_step_left")
+
+
+		# Escalera lateral derecha bajando
+		Vector2(1, 1):
+			current_direction = Direction.EAST
+			anim_player.play("first_step_right")
+
+
+		# Escalera lateral izquierda bajando
+		Vector2(-1, 1):
+			current_direction = Direction.WEST
+			anim_player.play("first_step_left")
 
 func complete_move() -> void:
 	if input_direction == Vector2.ZERO:
@@ -333,11 +415,15 @@ func complete_move() -> void:
 
 	var casilla_vieja: Vector2i = casilla_actual
 	casilla_actual = casilla_reservada
+	if casilla_actual == ultima_escalera:
+		ultima_escalera = Vector2i(-999, -999)
 	position = snap_to_grid(initial_position + input_direction * TILE_SIZE)
 
 	EventObjects.liberar_casilla(casilla_vieja)
 	EventObjects.liberar_reserva(casilla_actual)
 	EventObjects.registrar_casilla(casilla_actual, self)
+	for capa: TileBehaviourLayer in capas_comportamiento:
+		capa.comprobar_casilla(casilla_actual, self, input_direction)
 
 	percent_moved_to_next_tile = 0.0
 	is_moving = false

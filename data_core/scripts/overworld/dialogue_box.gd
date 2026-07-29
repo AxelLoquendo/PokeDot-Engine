@@ -3,8 +3,10 @@ extends CanvasLayer
 class_name DialogueBox
 
 @onready var animaciones: AnimationPlayer = $Control/Animacion
+@onready var animaciones_cn: AnimationPlayer = $Control/Animacion_CN
 @onready var caja: TextureRect = $Control/CajaDialogo
-@onready var nombre: Label = $Control/CajaDialogo/NameLabel
+@onready var caja_nombre: TextureRect = $Control/CajaNombre
+@onready var nombre: Label = $Control/CajaNombre/NameLabel
 @onready var texto: Label = $Control/CajaDialogo/TextLabel
 @onready var flecha_dialogo: Sprite2D = $Control/CajaDialogo/Flecha
 @onready var sonido_dialogo: AudioStreamPlayer = $SonidoTexto
@@ -22,6 +24,8 @@ var animando: bool = false
 var cerrando: bool = false
 var bloqueado: bool = false
 
+var mostrar_caja_nombre: bool = false
+
 func _ready() -> void:
 	print("DialogueBox cargado")
 
@@ -31,7 +35,7 @@ func _ready() -> void:
 	flecha_dialogo.visible = false
 
 
-func iniciar(_dialogo: Dialogue, _nombre_personaje: String, _npc: CharacterController) -> void:
+func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: CharacterController = null) -> void:
 	npc_actual = _npc
 
 	bloqueado = true
@@ -41,17 +45,16 @@ func iniciar(_dialogo: Dialogue, _nombre_personaje: String, _npc: CharacterContr
 	dialogo_actual = _dialogo
 	pagina_actual = 0
 
-	nombre.text = _nombre_personaje
+	mostrar_nombre(_nombre_personaje)
 
 	texto.text = ""
 	texto_completo = ""
 	flecha_dialogo.visible = false
-
 	visible = true
-
 	sonido_dialogo.play()
-
 	animaciones.play("inicio")
+	if mostrar_caja_nombre:
+		animaciones_cn.play("inicio")
 	await animaciones.animation_finished
 
 	bloqueado = false
@@ -117,6 +120,16 @@ func terminar_escritura() -> void:
 	escribiendo = false
 	texto.text = texto_completo
 
+func mostrar_nombre(nombre_personaje: String) -> void:
+	mostrar_caja_nombre = not nombre_personaje.is_empty()
+
+	caja_nombre.visible = mostrar_caja_nombre
+
+	if mostrar_caja_nombre:
+		nombre.text = nombre_personaje
+	else:
+		nombre.text = ""
+
 func cerrar() -> void:
 	if cerrando:
 		return
@@ -131,9 +144,12 @@ func cerrar() -> void:
 	texto.text = ""
 	nombre.text = ""
 
+	if mostrar_caja_nombre:
+		animaciones_cn.play("fin")
 	animaciones.play("fin")
 	await animaciones.animation_finished
-
+	caja_nombre.visible = false
+	mostrar_caja_nombre = false
 	visible = false
 
 	activo = false

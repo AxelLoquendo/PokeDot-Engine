@@ -94,6 +94,8 @@ func reproducir_idle() -> void:
 		Direction.WEST:
 			anim_player.play("idle_left")
 
+
+
 func obtener_direccion_deseada() -> Vector2:
 	# La última tecla pulsada siempre tiene prioridad.
 	if Input.is_action_just_pressed("Up"):
@@ -195,3 +197,6 @@ func _unhandled_input(event: InputEvent) -> void:
 						caja_dialogo.iniciar(datos.dialogue, datos.nombre, personaje)
 
 						get_viewport().set_input_as_handled()
+	if Input.is_action_just_pressed("buttonStart"):
+		DialogueManager.show_text("No Hay menu start")
+		return

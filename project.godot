@@ -20,6 +20,7 @@ config/icon="uid://gpasbafgmsxe"
 MusicManager="*uid://dy64y8tqnu262"
 DnsManager="*uid://b1qn0holfpgak"
 DialogueManager="*uid://b104pohobtcxy"
+TileBehavioursManager="*uid://cbexmjsqsorqt"
 
 [debug]
 
@@ -51,6 +52,7 @@ folder_colors={
 
 NPC=""
 dialogue_box=""
+Player=""
 
 [input]
 

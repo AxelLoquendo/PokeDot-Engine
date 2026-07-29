@@ -1,23 +1,22 @@
 extends Node
 
-var current_dialogue: Dialogue
-var current_page: int = 0
+func start(dialogue: Dialogue, speaker_name: String = "", speaker: CharacterController = null) -> void:
+	var caja: DialogueBox = get_tree().get_first_node_in_group("dialogue_box") as DialogueBox
 
-func start(dialogue: Dialogue) -> void:
-	if dialogue == null:
+	if caja == null:
 		return
 
-	current_dialogue = dialogue
-	current_page = 0
+	if speaker:
+		speaker.preparar_dialogo(CharacterController.global_position)
 
-	mostrar_pagina()
+	caja.iniciar(dialogue, speaker_name, speaker)
 
-func mostrar_pagina() -> void:
-	if current_dialogue == null:
-		return
+func show_text(texto: String, speaker: String = "") -> void:
+	var d: Dialogue = Dialogue.new()
 
-	var page: DialoguePage = current_dialogue.pages[current_page]
+	var p: DialoguePage = DialoguePage.new()
+	p.text = texto
 
-	print("=== DIALOGO ===")
-	print(page.speaker)
-	print(page.text)
+	d.pages.append(p)
+
+	start(d, speaker)

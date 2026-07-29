@@ -6,7 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cjwpjef2umoqf" path="res://data_core/scripts/character/character_frames.tres" id="3_r4bp4"]
 [ext_resource type="Script" uid="uid://dfuixmgirshkj" path="res://data_core/scripts/shadow_ow/shadow.gd" id="3_woxlu"]
 
-[sub_resource type="Resource" id="Resource_r4bp4"]
+[sub_resource type="Resource" id="Resource_yd4tm"]
 script = ExtResource("2_r4bp4")
 sprite_overworld = 1
 shadow_size = 2
@@ -19,7 +19,7 @@ size = Vector2(16, 16)
 process_priority = -100
 z_as_relative = false
 script = ExtResource("1_dpyoa")
-character_data = SubResource("Resource_r4bp4")
+character_data = SubResource("Resource_yd4tm")
 anim_player = NodePath("AnimatedSprite2D")
 cuerpo_colision = NodePath("StaticBody2D")
 forma_colision = NodePath("StaticBody2D/CollisionShape2D")
@@ -33,7 +33,7 @@ script = ExtResource("3_woxlu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1430229856]
 sprite_frames = ExtResource("3_r4bp4")
 animation = &"idle_down"
-frame_progress = 0.32077926
+frame_progress = 0.8549439
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=225778391]
 collision_mask = 2

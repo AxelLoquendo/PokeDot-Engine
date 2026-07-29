@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvw2c7sr63w5"]
 
 [ext_resource type="Script" uid="uid://yr7pc4u5ar3x" path="res://data_core/scripts/map/map_attributes.gd" id="1_0ju3r"]
+[ext_resource type="Script" uid="uid://dsu2neoeaf0e2" path="res://data_core/scripts/overworld/tile_behaviours_layer.gd" id="2_4ca71"]
 [ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="2_27fvw"]
 
 [sub_resource type="TileSet" id="TileSet_ybvss"]
@@ -61,18 +62,29 @@ sources/0 = SubResource("TileSetAtlasSource_4ca71")
 script = ExtResource("1_0ju3r")
 
 [node name="Tilesets" type="Node2D" parent="." unique_id=717031857]
+z_as_relative = false
 
 [node name="Tile0" type="TileMapLayer" parent="Tilesets" unique_id=891757610]
+z_as_relative = false
 tile_set = SubResource("TileSet_ybvss")
+script = ExtResource("2_4ca71")
 
 [node name="Tile1" type="TileMapLayer" parent="Tilesets" unique_id=879493041]
+z_as_relative = false
 tile_set = SubResource("TileSet_q4vpe")
+script = ExtResource("2_4ca71")
 
 [node name="Tile2" type="TileMapLayer" parent="Tilesets" unique_id=1120296338]
+z_index = 1000
+z_as_relative = false
 tile_set = SubResource("TileSet_11cst")
+script = ExtResource("2_4ca71")
 
 [node name="Tile3" type="TileMapLayer" parent="Tilesets" unique_id=144382310]
+z_index = 2000
+z_as_relative = false
 tile_set = SubResource("TileSet_fdm51")
+script = ExtResource("2_4ca71")
 
 [node name="Behaviours" type="Node2D" parent="." unique_id=983901861]
 

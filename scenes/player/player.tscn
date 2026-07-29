@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://b7dk1ky8s2mg5"]
 
-[ext_resource type="Script" uid="uid://csfu8o85pfdaw" path="res://data_core/scripts/player/player.gd" id="1_dovo2"]
-[ext_resource type="Script" uid="uid://bkdp0r2akj5km" path="res://data_core/scripts/character/character_player_generic.gd" id="2_p47bc"]
+[ext_resource type="Script" uid="uid://csfu8o85pfdaw" path="res://data_core/scripts/player/player.gd" id="1_75vfm"]
+[ext_resource type="Script" uid="uid://bkdp0r2akj5km" path="res://data_core/scripts/character/character_player_generic.gd" id="2_0owmy"]
 [ext_resource type="Script" uid="uid://dfuixmgirshkj" path="res://data_core/scripts/shadow_ow/shadow.gd" id="3_gmlin"]
-[ext_resource type="AudioStream" uid="uid://pqi5ri8v04di" path="res://sfx/se/Player bump.ogg" id="3_p47bc"]
+[ext_resource type="AudioStream" uid="uid://pqi5ri8v04di" path="res://sfx/se/Player bump.ogg" id="3_qek5x"]
 [ext_resource type="Texture2D" uid="uid://cg0fvuuc136f7" path="res://graphics/overworld/shadow/shadow_medium.png" id="4_75vfm"]
 [ext_resource type="SpriteFrames" uid="uid://eu4qw0kds24p" path="res://data_core/scripts/character/player_frames.tres" id="5_p47bc"]
 
-[sub_resource type="Resource" id="Resource_0owmy"]
-script = ExtResource("2_p47bc")
-sprite_overworld = 14
+[sub_resource type="Resource" id="Resource_obk2l"]
+script = ExtResource("2_0owmy")
+name = "Kael"
+sprite_overworld = 11
 shadow_size = 2
 shadow_offset_y = 11.0
 metadata/_custom_type_script = "uid://bkdp0r2akj5km"
@@ -20,13 +21,13 @@ size = Vector2(16, 16)
 [node name="Player" type="Node2D" unique_id=1693781442 node_paths=PackedStringArray("anim_player", "cuerpo_colision", "forma_colision")]
 process_priority = 100
 z_as_relative = false
-script = ExtResource("1_dovo2")
-character_data = SubResource("Resource_0owmy")
+script = ExtResource("1_75vfm")
+character_data = SubResource("Resource_obk2l")
 anim_player = NodePath("AnimatedSprite2D")
 cuerpo_colision = NodePath("StaticBody2D")
 forma_colision = NodePath("StaticBody2D/CollisionShape2D")
-sonido_colision = ExtResource("3_p47bc")
-tiempo_entre_sonidos = 0.68
+sonido_colision = ExtResource("3_qek5x")
+tiempo_entre_sonidos = 0.9
 
 [node name="CharacterShadow" type="Sprite2D" parent="." unique_id=2025637459]
 modulate = Color(1, 1, 1, 0.5058824)
@@ -39,7 +40,7 @@ script = ExtResource("3_gmlin")
 sprite_frames = ExtResource("5_p47bc")
 animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.740078
+frame_progress = 0.27493957
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=246521600]
 zoom = Vector2(2, 2)

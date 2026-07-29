@@ -5,7 +5,7 @@ class_name CharacterPlayer
 
 @export_group("Identidad")
 @export var money: int = 0
-
+@export var name: String = ""
 
 var _sprite_overworld: EventObjects.PlayerID = EventObjects.PlayerID.NONE
 

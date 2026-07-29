@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c8uxuwo8u3jsw" path="res://data_core/scripts/overworld/dialogue_box.gd" id="1_78i0o"]
 [ext_resource type="Texture2D" uid="uid://bigpsm7f0cmvf" path="res://graphics/ui_dialogue_box/box_normal.png" id="2_78i0o"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_fk8eb"]
+[ext_resource type="Texture2D" uid="uid://u2p8othfnyvr" path="res://graphics/ui_dialogue_box/box_normal_name.png" id="2_kfurw"]
 [ext_resource type="AudioStream" uid="uid://1iuty86rgpif" path="res://sfx/se/Tile Game cursor.ogg" id="4_yweyw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fk8eb"]
@@ -14,6 +15,7 @@ shadow_color = Color(0.8392157, 0.8392157, 0.80784315, 1)
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yweyw"]
+line_spacing = 6.0
 font = ExtResource("2_fk8eb")
 font_size = 32
 font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
@@ -33,7 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 232)]
+"values": [Vector2(0, 233.125)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -61,7 +63,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 0.5),
 "update": 0,
-"values": [Vector2(0, 176), Vector2(0, 321)]
+"values": [Vector2(0, 224), Vector2(0, 320)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -89,7 +91,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 0.5),
 "update": 0,
-"values": [Vector2(0, 321), Vector2(0, 176)]
+"values": [Vector2(0, 320), Vector2(0, 224)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -111,6 +113,96 @@ _data = {
 &"inicio": SubResource("Animation_yweyw")
 }
 
+[sub_resource type="Animation" id="Animation_xp4rw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CajaNombre:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CajaNombre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_f67xj"]
+resource_name = "fin"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CajaNombre:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, 176), Vector2(-208, 176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CajaNombre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ec8tx"]
+resource_name = "inicio"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CajaNombre:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(-208, 176), Vector2(0, 176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CajaNombre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f67xj"]
+_data = {
+&"RESET": SubResource("Animation_xp4rw"),
+&"fin": SubResource("Animation_f67xj"),
+&"inicio": SubResource("Animation_ec8tx")
+}
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1957761113 groups=["dialogue_box"]]
 script = ExtResource("1_78i0o")
 
@@ -120,27 +212,39 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CajaDialogo" type="TextureRect" parent="Control" unique_id=30195811]
+[node name="CajaNombre" type="TextureRect" parent="Control" unique_id=627674183]
 layout_mode = 0
-offset_top = 232.0
-offset_right = 480.0
-offset_bottom = 376.0001
-texture = ExtResource("2_78i0o")
+offset_top = 176.0
+offset_right = 208.0
+offset_bottom = 224.0
+texture = ExtResource("2_kfurw")
 
-[node name="NameLabel" type="Label" parent="Control/CajaDialogo" unique_id=1798073203]
+[node name="NameLabel" type="Label" parent="Control/CajaNombre" unique_id=1798073203]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 9.0
 offset_right = 181.0
 offset_bottom = 39.0
+text = "AAAAAAAAAAAAA"
 label_settings = SubResource("LabelSettings_fk8eb")
+autowrap_mode = 2
+
+[node name="CajaDialogo" type="TextureRect" parent="Control" unique_id=30195811]
+layout_mode = 0
+offset_top = 233.125
+offset_right = 480.0
+offset_bottom = 329.12723
+texture = ExtResource("2_78i0o")
+stretch_mode = 2
 
 [node name="TextLabel" type="Label" parent="Control/CajaDialogo" unique_id=5012601]
 layout_mode = 0
 offset_left = 23.0
-offset_top = 62.0
+offset_top = 13.0
 offset_right = 437.0
-offset_bottom = 131.0
+offset_bottom = 82.0
+text = "Adoquin
+ADOQUIN"
 label_settings = SubResource("LabelSettings_yweyw")
 autowrap_mode = 2
 
@@ -148,6 +252,9 @@ autowrap_mode = 2
 
 [node name="Animacion" type="AnimationPlayer" parent="Control" unique_id=1782715843]
 libraries/ = SubResource("AnimationLibrary_kfurw")
+
+[node name="Animacion_CN" type="AnimationPlayer" parent="Control" unique_id=1032494760]
+libraries/ = SubResource("AnimationLibrary_f67xj")
 
 [node name="SonidoTexto" type="AudioStreamPlayer" parent="." unique_id=224588506]
 stream = ExtResource("4_yweyw")
