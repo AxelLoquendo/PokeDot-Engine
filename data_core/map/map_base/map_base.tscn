@@ -5,12 +5,28 @@
 [ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="2_27fvw"]
 
 [sub_resource type="TileSet" id="TileSet_ybvss"]
+custom_data_layer_0/name = "behaviour"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "ramp_direction"
+custom_data_layer_1/type = 4
 
 [sub_resource type="TileSet" id="TileSet_q4vpe"]
+custom_data_layer_0/name = "behaviour"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "ramp_direction"
+custom_data_layer_1/type = 4
 
 [sub_resource type="TileSet" id="TileSet_11cst"]
+custom_data_layer_0/name = "behaviour"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "ramp_direction"
+custom_data_layer_1/type = 4
 
 [sub_resource type="TileSet" id="TileSet_fdm51"]
+custom_data_layer_0/name = "behaviour"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "ramp_direction"
+custom_data_layer_1/type = 4
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ca71"]
 texture = ExtResource("2_27fvw")

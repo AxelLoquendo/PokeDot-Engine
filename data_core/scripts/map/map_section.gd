@@ -30,4 +30,6 @@ enum RegionId {
 
 const SECTION_TO_SCENE: Dictionary = {
 	SectionId.MAPSEC_NONE: "",
+	SectionId.MAPSEC_PRADO_NATAL: "res://game/data_core_eb/map_eb/prado_natal/prado_natal.tscn",
+	SectionId.MAPSEC_PUEBLO_ALBA: "res://game/data_core_eb/map_eb/pueblo_alba/pueblo_alba.tscn",
 }

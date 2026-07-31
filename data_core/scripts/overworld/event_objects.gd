@@ -37,31 +37,31 @@ enum PlayerID {
 }
 
 # Biblioteca de sprites de NPCs
-const npc_sprites: Array[String] = [
-	".",
-	"res://graphics/overworld/npc/profesor_oak.png",
-	"res://game/graphics_eb/overworld/player/male/kael/normal.png",
-]
+const npc_sprites: Dictionary = {
+	NpcID.NONE: ".",
+	NpcID.OBJ_EVENT_GFX_PROF_OAK: "res://graphics/overworld/npc/profesor_oak.png",
+	NpcID.OBJ_EVENT_GFX_KAEL: "res://game/graphics_eb/overworld/player/male/kael/normal.png",
+}
 
 # Biblioteca de sprites de Jugadores
-const player_sprites: Array[String] = [
-	".",
-	"res://game/graphics_eb/overworld/player/male/kael/normal.png",
-	"res://game/graphics_eb/overworld/player/female/kaida/normal.png",
-	"res://graphics/overworld/player/male/red/normal.png",
-	"res://graphics/overworld/player/female/leaf/normal.png",
-	"res://graphics/overworld/player/male/eco/normal.png",
-	"res://graphics/overworld/player/female/cristi/normal.png",
-	"res://graphics/overworld/player/female/lyra/normal.png",
-	"res://graphics/overworld/player/male/bruno/normal.png",
-	"res://graphics/overworld/player/female/aura/normal.png",
-	"res://graphics/overworld/player/male/leon/normal.png",
-	"res://graphics/overworld/player/female/maya/normal.png",
-	"res://graphics/overworld/player/male/lucho/normal.png",
-	"res://graphics/overworld/player/female/liza/normal.png",
-	"res://graphics/overworld/player/male/risso/normal.png",
-	"res://graphics/overworld/player/female/nanci/normal.png",
-]
+const player_sprites: Dictionary = {
+	PlayerID.NONE: ".",
+	PlayerID.OBJ_EVENT_GFX_KAEL_EB: "res://game/graphics_eb/overworld/player/male/kael/normal.png",
+	PlayerID.OBJ_EVENT_GFX_KAIDA_EB: "res://game/graphics_eb/overworld/player/female/kaida/normal.png",
+	PlayerID.OBJ_EVENT_GFX_RED_FRLG: "res://graphics/overworld/player/male/red/normal.png",
+	PlayerID.OBJ_EVENT_GFX_LEAF_FRLG: "res://graphics/overworld/player/female/leaf/normal.png",
+	PlayerID.OBJ_EVENT_GFX_ECO_HGSS: "res://graphics/overworld/player/male/eco/normal.png",
+	PlayerID.OBJ_EVENT_GFX_CRISTI_GPC: "res://graphics/overworld/player/female/cristi/normal.png",
+	PlayerID.OBJ_EVENT_GFX_LYRA_HGSS: "res://graphics/overworld/player/female/lyra/normal.png",
+	PlayerID.OBJ_EVENT_GFX_BRUNO_RSB: "res://graphics/overworld/player/male/bruno/normal.png",
+	PlayerID.OBJ_EVENT_GFX_AURA_RSB: "res://graphics/overworld/player/female/aura/normal.png",
+	PlayerID.OBJ_EVENT_GFX_LEON_DP: "res://graphics/overworld/player/male/leon/normal.png",
+	PlayerID.OBJ_EVENT_GFX_MAYA_DP: "res://graphics/overworld/player/female/maya/normal.png",
+	PlayerID.OBJ_EVENT_GFX_LUCHO_BW: "res://graphics/overworld/player/male/lucho/normal.png",
+	PlayerID.OBJ_EVENT_GFX_LIZA_BW: "res://graphics/overworld/player/female/liza/normal.png",
+	PlayerID.OBJ_EVENT_GFX_RISSO_B2W2: "res://graphics/overworld/player/male/risso/normal.png",
+	PlayerID.OBJ_EVENT_GFX_NANCI_B2W2: "res://graphics/overworld/player/female/nanci/normal.png",
+}
 
 static var casillas_ocupadas: Dictionary = {}   # posición REAL
 static var casillas_reservadas: Dictionary = {} # destino al que va

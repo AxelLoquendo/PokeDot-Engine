@@ -74,14 +74,7 @@ func _ready() -> void:
 	casilla_actual = posicion_a_casilla(global_position)
 	casilla_reservada = casilla_actual
 	EventObjects.registrar_casilla(casilla_actual, self)
-	print(
-	"NPC registrado: ",
-	name,
-	" posición: ",
-	global_position,
-	" casilla: ",
-	casilla_actual
-	)
+	print("NPC registrado: ", name, " posición: ", global_position, " casilla: ", casilla_actual)
 	process_priority = 100 if character_data is CharacterPlayer else -100
 
 	if not cuerpo_colision:
@@ -110,9 +103,7 @@ func _ready() -> void:
 	reproductor_audio = AudioStreamPlayer.new()
 	reproductor_audio.stream = sonido_colision
 	add_child(reproductor_audio)
-	for nodo: Node in get_tree().get_nodes_in_group("tile_behaviour"):
-		if nodo is TileBehaviourLayer:
-			capas_comportamiento.append(nodo)
+	cargar_capas_comportamiento()
 	
 func _on_character_data_changed() -> void:
 	print("CAMBIO DETECTADO")
@@ -128,7 +119,7 @@ func _actualizar_sprite() -> void:
 		var datos: CharacterPlayer = character_data as CharacterPlayer
 		var id: int = datos.sprite_overworld
 
-		if id >= 0 and id < EventObjects.player_sprites.size():
+		if EventObjects.player_sprites.has(id):
 			ruta_sprite = EventObjects.player_sprites[id]
 
 	elif character_data is CharacterNpc:
@@ -138,7 +129,7 @@ func _actualizar_sprite() -> void:
 			print("NPC sin sprite asignado")
 			return
 	
-		if id >= 0 and id < EventObjects.npc_sprites.size():
+		if EventObjects.npc_sprites.has(id):  
 			ruta_sprite = EventObjects.npc_sprites[id]
 
 
@@ -275,9 +266,11 @@ func intentar_mover(direccion: Vector2) -> bool:
 	# Revisar comportamiento de la casilla destino
 	for capa: TileBehaviourLayer in capas_comportamiento:
 
+		if not is_instance_valid(capa):
+			continue
+
 		if capa.comprobar_casilla(casilla_destino, self, input_direction):
 			return true
-
 
 	var posicion_destino_global: Vector2 = (global_position + input_direction * TILE_SIZE)
 
@@ -423,7 +416,9 @@ func complete_move() -> void:
 	EventObjects.liberar_reserva(casilla_actual)
 	EventObjects.registrar_casilla(casilla_actual, self)
 	for capa: TileBehaviourLayer in capas_comportamiento:
-		capa.comprobar_casilla(casilla_actual, self, input_direction)
+
+		if is_instance_valid(capa):
+			capa.comprobar_casilla(casilla_actual, self, input_direction)
 
 	percent_moved_to_next_tile = 0.0
 	is_moving = false
@@ -450,6 +445,16 @@ func casilla_permitida(posicion_global: Vector2) -> bool:
 	# Impide salir de los límites definidos por map_size.
 	var atributos_mapa: MapAttributes = mapa_raiz as MapAttributes
 	if atributos_mapa and not atributos_mapa.esta_dentro_limites(casilla_real):
+
+		var salida: bool = (
+			casilla_real.x < 0
+			or casilla_real.y < 0
+			or casilla_real.x >= atributos_mapa.map_size.x
+			or casilla_real.y >= atributos_mapa.map_size.y)
+
+		if salida:
+			return true
+
 		return false
 
 	var datos_baldosa: TileData = capa_datos_mapa.get_cell_tile_data(casilla_real)
@@ -505,3 +510,26 @@ func cancelar_movimiento() -> void:
 	input_direction = Vector2.ZERO
 	is_moving = false
 	casilla_reservada = casilla_actual
+
+func cargar_capas_comportamiento() -> void:
+
+	capas_comportamiento.clear()
+
+	if not mapa_raiz:
+		return
+
+	var nodos: Array[Node] = mapa_raiz.find_children(
+		"*",
+		"TileBehaviourLayer",
+		true,
+		false
+	)
+
+	for nodo: Node in nodos:
+
+		if nodo is TileBehaviourLayer:
+
+			var capa: TileBehaviourLayer = nodo as TileBehaviourLayer
+
+			if is_instance_valid(capa):
+				capas_comportamiento.append(capa)
