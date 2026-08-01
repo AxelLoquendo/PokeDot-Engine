@@ -8,15 +8,28 @@ var tiempo_espera_restante: float = 0.0
 var datos_npc: CharacterNpc
 var en_dialogo: bool = false
 
+var mapa_dueño: MapAttributes
+
 func _ready() -> void:
 	super._ready()
 
-	datos_npc = character_data as CharacterNpc
-	if not datos_npc:
-		push_error("El NPC necesita un recurso CharacterNpc en character_data")
+	mapa_dueño = get_parent().get_parent() as MapAttributes
+
+	if mapa_dueño == null:
+		push_warning("NPC sin mapa dueño")
 		return
 
-	add_to_group(&"NPC")
+	if not mapa_dueño.activo:
+		return
+
+	datos_npc = character_data as CharacterNpc
+	if not datos_npc:
+		push_error("El NPC necesita un recurso CharacterNpc")
+		return
+
+	if not Engine.is_editor_hint():
+		add_to_group(&"NPC")
+
 	casilla_inicial = casilla_actual
 	yendo_a_derecha = datos_npc.direccion_inicial != CharacterNpc.DireccionInicial.IZQUIERDA
 	aplicar_direccion_inicial()

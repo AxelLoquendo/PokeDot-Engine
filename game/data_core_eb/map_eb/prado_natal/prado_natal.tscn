@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="3_vq3b1"]
 [ext_resource type="Script" uid="uid://dsu2neoeaf0e2" path="res://data_core/scripts/overworld/tile_behaviours_layer.gd" id="3_yd4tm"]
 [ext_resource type="PackedScene" uid="uid://bq3vvw2e3pu8g" path="res://scenes/npc/npc.tscn" id="4_d8013"]
-[ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="5_j06q6"]
-[ext_resource type="Script" uid="uid://bifljdkwbk7r4" path="res://data_core/scripts/overworld/dialogue_page.gd" id="5_y0fca"]
-[ext_resource type="Script" uid="uid://ctavlpyny00ah" path="res://data_core/scripts/overworld/dialogue.gd" id="6_yd4tm"]
+[ext_resource type="Script" uid="uid://bifljdkwbk7r4" path="res://data_core/scripts/overworld/dialogue_page.gd" id="7_ueygd"]
+[ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="7_y0fca"]
+[ext_resource type="Script" uid="uid://ctavlpyny00ah" path="res://data_core/scripts/overworld/dialogue.gd" id="8_cxnhx"]
 
 [sub_resource type="Resource" id="Resource_8wtdx"]
 script = ExtResource("2_ueygd")
@@ -1666,22 +1666,21 @@ sources/0 = SubResource("TileSetAtlasSource_4ca71")
 [sub_resource type="TileSet" id="TileSet_hprgv"]
 
 [sub_resource type="Resource" id="Resource_cxnhx"]
-script = ExtResource("5_y0fca")
-speaker = "Profesor Oak"
-text = "Vale, la salud mental del creador se va de sabatico."
+script = ExtResource("7_ueygd")
+speaker = "Prof. Oak"
+text = "Sigo sin saber cuando empezaremos a rodar la pelicula."
 metadata/_custom_type_script = "uid://bifljdkwbk7r4"
 
 [sub_resource type="Resource" id="Resource_ueygd"]
-script = ExtResource("6_yd4tm")
-pages = Array[ExtResource("5_y0fca")]([SubResource("Resource_cxnhx")])
+script = ExtResource("8_cxnhx")
+pages = Array[ExtResource("7_ueygd")]([SubResource("Resource_cxnhx")])
 metadata/_custom_type_script = "uid://ctavlpyny00ah"
 
 [sub_resource type="Resource" id="Resource_yd4tm"]
-script = ExtResource("5_j06q6")
-nombre = "Profesor Oak"
-npc_id = &"0"
+script = ExtResource("7_y0fca")
+nombre = "Prof. Oak"
 sprite_overworld = 1
-comportamiento = 3
+comportamiento = 4
 dialogue = SubResource("Resource_ueygd")
 shadow_size = 2
 shadow_offset_y = 11.0

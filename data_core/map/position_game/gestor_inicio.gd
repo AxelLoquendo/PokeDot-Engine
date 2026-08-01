@@ -5,34 +5,53 @@ extends Node
 
 @onready var jugador: CharacterController = $Player
 
-var mapa_nodo: MapAttributes
+var map_manager: MapManager
 
 
 func _ready() -> void:
+
 	if mapa_inicial == null:
 		push_error("Selecciona un mapa inicial.")
 		return
 
-	mapa_nodo = mapa_inicial.instantiate() as MapAttributes
+	var mapa: MapAttributes = mapa_inicial.instantiate() as MapAttributes
 
-	if mapa_nodo == null:
+	if mapa == null:
 		push_error("La escena inicial no tiene MapAttributes.")
 		return
 
-	add_child(mapa_nodo)
+	# Crear gestor de mapas
+	map_manager = MapManager.new()
+	add_child(map_manager)
 
-	mapa_nodo.activar_musica()
+	map_manager.jugador = jugador
 
-	jugador.reparent(mapa_nodo)
+# Cargar mapa inicial
+	map_manager.load_map(mapa)
 
-	jugador.position = jugador.snap_to_grid(
+
+	var camara: Camera2D = jugador.get_node_or_null("Camera2D")
+
+	if camara:
+		map_manager.camara = camara
+		map_manager.actualizar_limites_camara()
+
+
+# El jugador pertenece al gestor de mapas
+	var posicion_global: Vector2 = jugador.global_position
+	jugador.reparent(map_manager)
+	jugador.global_position = posicion_global
+
+
+# Colocar jugador inicial
+	jugador.global_position = jugador.snap_to_grid(
 		Vector2(
-			casilla_inicio.x * jugador.TILE_SIZE + 8,
-			casilla_inicio.y * jugador.TILE_SIZE
-		)
+		casilla_inicio.x * jugador.TILE_SIZE + 8,
+		casilla_inicio.y * jugador.TILE_SIZE
 	)
+)
 
-	var personajes: Array[Node] = mapa_nodo.find_children(
+	var personajes: Array[Node] = map_manager.current_map.find_children(
 		"*",
 		"CharacterController",
 		true,
@@ -42,18 +61,15 @@ func _ready() -> void:
 	personajes.append(jugador)
 
 	for personaje: Node in personajes:
+
 		var controlador: CharacterController = personaje as CharacterController
 
 		if controlador == null:
 			continue
 
-		controlador.mapa_raiz = mapa_nodo
+		controlador.mapa_raiz = map_manager.current_map
+		controlador.map_manager = map_manager
 		controlador.buscar_capa_colisiones()
-
-	var camara: Camera2D = jugador.get_node_or_null("Camera2D") as Camera2D
-
-	if camara:
-		mapa_nodo.aplicar_limites_camara(camara)
 
 	jugador.casilla_actual = jugador.posicion_a_casilla(
 		jugador.global_position
@@ -63,6 +79,8 @@ func _ready() -> void:
 		jugador.casilla_actual,
 		jugador
 	)
+
+	map_manager.current_map.activar_musica()
 
 	if DnsManager and DnsManager.has_method("activar"):
 		DnsManager.activar()

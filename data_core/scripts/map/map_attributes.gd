@@ -2,6 +2,21 @@
 extends Node2D
 class_name MapAttributes
 
+enum Border {
+	NONE,
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+}
+
+enum ConnectionDirection {
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}
+
 @export var map_name: String = "Sin nombre"
 @export var map_id_section: MapSection.SectionId = MapSection.SectionId.MAPSEC_NONE
 @export var map_region: MapSection.RegionId = MapSection.RegionId.REGION_NONE
@@ -30,9 +45,14 @@ class_name MapAttributes
 @export_file("*.ogg", "*.wav", "*.mp3") var music_path: String = ""
 @export var silence_end: float = 0.0
 
+var activo: bool = true
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		conectar_actualizaciones()
+
+	if not activo:
+		return
 
 func activar_musica() -> void:
 	if music_path.is_empty():
@@ -79,25 +99,39 @@ func _draw() -> void:
 func esta_dentro_limites(casilla: Vector2i) -> bool:
 	return casilla.x >= 0 and casilla.x < map_size.x and casilla.y >= 0 and casilla.y < map_size.y
 
-func aplicar_limites_camara(camara: Camera2D) -> void:
-	if not camara:
-		return
+func obtener_borde(casilla: Vector2i) -> Border:
 
-	var esquina_superior_izquierda: Vector2 = to_global(Vector2.ZERO)
-	var esquina_inferior_derecha: Vector2 = to_global(
-		Vector2(
-			map_size.x * tile_size,
-			map_size.y * tile_size
-		)
-	)
+	if casilla.y < 0:
+		return Border.NORTH
 
-	camara.limit_left = floori(esquina_superior_izquierda.x)
-	camara.limit_top = floori(esquina_superior_izquierda.y)
-	camara.limit_right = ceili(esquina_inferior_derecha.x)
-	camara.limit_bottom = ceili(esquina_inferior_derecha.y)
+	if casilla.y >= map_size.y:
+		return Border.SOUTH
 
-	# Evita que el suavizado permita ver fuera del mapa.
-	camara.limit_smoothed = false
+	if casilla.x < 0:
+		return Border.WEST
+
+	if casilla.x >= map_size.x:
+		return Border.EAST
+
+	return Border.NONE
+
+func obtener_conexion(borde: Border) -> MapConnection:
+
+	match borde:
+
+		Border.NORTH:
+			return north_map
+
+		Border.SOUTH:
+			return south_map
+
+		Border.EAST:
+			return east_map
+
+		Border.WEST:
+			return west_map
+
+	return null
 
 func obtener_map_attributes(conexion: MapConnection) -> MapAttributes:
 	var escena: PackedScene = conexion.get_scene()
@@ -120,71 +154,58 @@ func dibujar_conexiones() -> void:
 		dibujar_conexion_oeste()
 
 func dibujar_conexion_norte() -> void:
-	#print("NORTE")
 
-	var mapa: MapAttributes = obtener_map_attributes(north_map)
-
-	if mapa == null:
-		#print("mapa null")
+	if north_map == null:
 		return
 
-	#print("mapa:", mapa.map_name)
-
-	var posicion: Vector2 = Vector2(
-		float(north_map.offset.x * tile_size),
-		float(-mapa.map_size.y * tile_size)
+	dibujar_conexion(
+		ConnectionDirection.NORTH,
+		north_map,
+		Color.RED
 	)
-
-	dibujar_conexion(north_map, posicion, Color.RED)
 
 func dibujar_conexion_sur() -> void:
-	var mapa: MapAttributes = obtener_map_attributes(south_map)
 
-	if mapa == null:
+	if south_map == null:
 		return
 
-	var posicion: Vector2 = Vector2(
-		float(south_map.offset.x * tile_size),
-		float(map_size.y * tile_size)
+	dibujar_conexion(
+		ConnectionDirection.SOUTH,
+		south_map,
+		Color.GREEN
 	)
-
-	dibujar_conexion(south_map, posicion, Color.GREEN)
 
 func dibujar_conexion_este() -> void:
-	var mapa: MapAttributes = obtener_map_attributes(east_map)
 
-	if mapa == null:
+	if east_map == null:
 		return
 
-	var posicion: Vector2 = Vector2(
-		float(map_size.x * tile_size),
-		float(east_map.offset.y * tile_size)
+	dibujar_conexion(
+		ConnectionDirection.EAST,
+		east_map,
+		Color.YELLOW
 	)
-
-	dibujar_conexion(east_map, posicion, Color.YELLOW)
 
 func dibujar_conexion_oeste() -> void:
-	var mapa: MapAttributes = obtener_map_attributes(west_map)
 
-	if mapa == null:
+	if west_map == null:
 		return
 
-	var posicion: Vector2 = Vector2(
-		float(-mapa.map_size.x * tile_size),
-		float(west_map.offset.y * tile_size)
+	dibujar_conexion(
+		ConnectionDirection.WEST,
+		west_map,
+		Color.ORANGE
 	)
 
-	dibujar_conexion(west_map, posicion, Color.ORANGE)
-
-func dibujar_conexion(conexion: MapConnection, posicion: Vector2, color: Color) -> void:
-
+func dibujar_conexion(_direccion: ConnectionDirection, conexion: MapConnection, color: Color) -> void:
 	var mapa: MapAttributes = obtener_map_attributes(conexion)
 
 	if mapa == null:
 		return
 
-	dibujar_preview_mapa(mapa, posicion)
+	var posicion: Vector2 = obtener_posicion_conexion(_direccion, conexion)
 
+	dibujar_preview_mapa(mapa, posicion)
 	var tamaño: Vector2 = Vector2(
 		float(mapa.map_size.x * tile_size),
 		float(mapa.map_size.y * tile_size)
@@ -271,3 +292,44 @@ func get_chunk_count() -> Vector2i:
 		ceili(float(map_size.x) / MapChunk.SIZE),
 		ceili(float(map_size.y) / MapChunk.SIZE)
 	)
+
+func obtener_posicion_conexion(
+	direccion: ConnectionDirection,
+	conexion: MapConnection
+) -> Vector2:
+
+	if conexion == null:
+		return Vector2.ZERO
+
+	var mapa: MapAttributes = obtener_map_attributes(conexion)
+
+	if mapa == null:
+		return Vector2.ZERO
+
+	match direccion:
+
+		ConnectionDirection.NORTH:
+			return Vector2(
+				float(conexion.offset.x * tile_size),
+				float(-mapa.map_size.y * tile_size)
+			)
+
+		ConnectionDirection.SOUTH:
+			return Vector2(
+				float(conexion.offset.x * tile_size),
+				float(map_size.y * tile_size)
+			)
+
+		ConnectionDirection.EAST:
+			return Vector2(
+				float(map_size.x * tile_size),
+				float(conexion.offset.y * tile_size)
+			)
+
+		ConnectionDirection.WEST:
+			return Vector2(
+				float(-mapa.map_size.x * tile_size),
+				float(conexion.offset.y * tile_size)
+			)
+
+	return Vector2.ZERO

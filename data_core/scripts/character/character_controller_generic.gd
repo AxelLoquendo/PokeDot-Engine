@@ -50,6 +50,7 @@ var casilla_reservada: Vector2i = Vector2i.ZERO
 
 var capa_datos_mapa: TileMapLayer
 var mapa_raiz: Node
+var map_manager: MapManager
 
 var capas_comportamiento: Array[TileBehaviourLayer] = []
 var ultima_casilla_comportamiento: Vector2i = Vector2i(-999, -999)
@@ -74,7 +75,14 @@ func _ready() -> void:
 	casilla_actual = posicion_a_casilla(global_position)
 	casilla_reservada = casilla_actual
 	EventObjects.registrar_casilla(casilla_actual, self)
-	print("NPC registrado: ", name, " posición: ", global_position, " casilla: ", casilla_actual)
+
+	var mapa: Node = self
+
+	while mapa and not (mapa is MapAttributes):
+		mapa = mapa.get_parent()
+
+	print("NPC registrado: ", name, " | mapa: ", (mapa as MapAttributes).map_name if mapa else "???", " | posición: ", global_position)
+
 	process_priority = 100 if character_data is CharacterPlayer else -100
 
 	if not cuerpo_colision:
@@ -415,6 +423,8 @@ func complete_move() -> void:
 	EventObjects.liberar_casilla(casilla_vieja)
 	EventObjects.liberar_reserva(casilla_actual)
 	EventObjects.registrar_casilla(casilla_actual, self)
+	if character_data is CharacterPlayer:
+		revisar_conexion_mapa()
 	for capa: TileBehaviourLayer in capas_comportamiento:
 
 		if is_instance_valid(capa):
@@ -422,6 +432,12 @@ func complete_move() -> void:
 
 	percent_moved_to_next_tile = 0.0
 	is_moving = false
+	#var gestor: MapManager = mapa_raiz.get_parent() as MapManager
+	#if gestor:
+	#	gestor.comprobar_transicion()
+	if map_manager:
+		map_manager.comprobar_transicion()
+	
 	#print("📍 Posición final: ", global_position, " → Casilla: ", casilla_actual)
 
 func snap_to_grid(pos: Vector2) -> Vector2:
@@ -444,18 +460,16 @@ func casilla_permitida(posicion_global: Vector2) -> bool:
 
 	# Impide salir de los límites definidos por map_size.
 	var atributos_mapa: MapAttributes = mapa_raiz as MapAttributes
-	if atributos_mapa and not atributos_mapa.esta_dentro_limites(casilla_real):
 
-		var salida: bool = (
-			casilla_real.x < 0
-			or casilla_real.y < 0
-			or casilla_real.x >= atributos_mapa.map_size.x
-			or casilla_real.y >= atributos_mapa.map_size.y)
+	if atributos_mapa:
 
-		if salida:
-			return true
+		var borde: MapAttributes.Border = atributos_mapa.obtener_borde(casilla_real)
 
-		return false
+		if borde != MapAttributes.Border.NONE:
+
+			var conexion: MapConnection = atributos_mapa.obtener_conexion(borde)
+
+			return conexion != null
 
 	var datos_baldosa: TileData = capa_datos_mapa.get_cell_tile_data(casilla_real)
 
@@ -533,3 +547,19 @@ func cargar_capas_comportamiento() -> void:
 
 			if is_instance_valid(capa):
 				capas_comportamiento.append(capa)
+
+func revisar_conexion_mapa() -> void:
+	if not mapa_raiz:
+		return
+
+	var borde: MapAttributes.Border = mapa_raiz.obtener_borde(casilla_actual)
+
+	if borde == MapAttributes.Border.NONE:
+		return
+
+	var conexion: MapConnection = mapa_raiz.obtener_conexion(borde)
+
+	if conexion == null:
+		return
+
+	print("Cambiar al mapa:", conexion.target_section)
