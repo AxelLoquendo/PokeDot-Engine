@@ -30,11 +30,11 @@ func _ready() -> void:
 	map_manager.load_map(mapa)
 
 
-	var camara: Camera2D = jugador.get_node_or_null("Camera2D")
+#	var camara: Camera2D = jugador.get_node_or_null("Camera2D")
 
-	if camara:
-		map_manager.camara = camara
-		map_manager.actualizar_limites_camara()
+#	if camara:
+#		map_manager.camara = camara
+#		map_manager.actualizar_limites_camara()
 
 
 # El jugador pertenece al gestor de mapas

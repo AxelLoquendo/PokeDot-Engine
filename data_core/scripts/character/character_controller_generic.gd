@@ -471,7 +471,7 @@ func casilla_permitida(posicion_global: Vector2) -> bool:
 
 			return conexion != null
 
-	var datos_baldosa: TileData = capa_datos_mapa.get_cell_tile_data(casilla_real)
+	var datos_baldosa: TileData = map_manager.obtener_tile_data(posicion_global)
 
 	# No hay tile de comportamiento: se puede caminar.
 	if datos_baldosa == null:

@@ -57,7 +57,7 @@ func cargar_conexiones() -> void:
 			current_map.west_map
 		)
 
-	actualizar_limites_camara()
+	#actualizar_limites_camara()
 
 func cargar_conexion(conexion: MapConnection) -> MapAttributes:
 
@@ -209,7 +209,7 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 
 	cargar_conexiones()
 
-	actualizar_limites_camara()
+#	actualizar_limites_camara()
 
 	current_map.activar_musica()
 
@@ -282,3 +282,138 @@ func desactivar_contenido_mapa(mapa: MapAttributes) -> void:
 				visible_hijo.visible = false
 
 			hijo.process_mode = Node.PROCESS_MODE_DISABLED
+
+func obtener_mapa_en_global(posicion: Vector2) -> MapAttributes:
+
+	for mapa: MapAttributes in mapas_cargados.values():
+
+		var local: Vector2 = mapa.to_local(posicion)
+
+		var margen: float = mapa.border_size * mapa.tile_size
+
+		var ancho: float = mapa.map_size.x * mapa.tile_size
+		var alto: float = mapa.map_size.y * mapa.tile_size
+
+
+		if (
+			local.x >= -margen
+			and local.y >= -margen
+			and local.x < ancho + margen
+			and local.y < alto + margen
+		):
+			return mapa
+
+	return null
+
+func obtener_metatile_global(posicion: Vector2) -> int:
+
+	var mapa: MapAttributes = obtener_mapa_en_global(posicion)
+
+	if mapa:
+
+		var local: Vector2 = mapa.to_local(posicion)
+
+		var tile: Vector2i = Vector2i(
+			floor(local.x / mapa.tile_size),
+			floor(local.y / mapa.tile_size)
+		)
+
+		return mapa.obtener_metatile(tile)
+
+	# Ningún mapa contiene esa posición
+
+	var local_actual: Vector2 = current_map.to_local(posicion)
+
+	var tile_actual: Vector2i = Vector2i(
+		floor(local_actual.x / current_map.tile_size),
+		floor(local_actual.y / current_map.tile_size)
+	)
+
+	return current_map.obtener_border_metatile(tile_actual)
+
+func obtener_tile_data(posicion_global: Vector2) -> TileData:
+
+	var mapa: MapAttributes = obtener_mapa_en_global(posicion_global)
+
+	if mapa == null:
+		return null
+
+
+	var local: Vector2 = mapa.to_local(posicion_global)
+
+
+	var casilla: Vector2i = Vector2i(
+		floori(local.x / mapa.tile_size),
+		floori(local.y / mapa.tile_size)
+	)
+
+
+	# Dentro del mapa real
+	if (
+		casilla.x >= 0
+		and casilla.x < mapa.map_size.x
+		and casilla.y >= 0
+		and casilla.y < mapa.map_size.y
+	):
+
+		var collisions: TileMapLayer = mapa.get_node_or_null(
+			"Behaviours/Collisions"
+		) as TileMapLayer
+
+
+		if collisions == null:
+			return null
+
+
+		return collisions.get_cell_tile_data(casilla)
+
+
+
+	# Fuera del mapa real:
+	# buscar vecino
+
+
+	var borde: MapAttributes.Border = mapa.obtener_borde(casilla)
+
+	var conexion: MapConnection = mapa.obtener_conexion(borde)
+
+	var direccion: MapAttributes.ConnectionDirection
+
+
+	match borde:
+
+		MapAttributes.Border.NORTH:
+			direccion = MapAttributes.ConnectionDirection.NORTH
+
+		MapAttributes.Border.SOUTH:
+			direccion = MapAttributes.ConnectionDirection.SOUTH
+
+		MapAttributes.Border.EAST:
+			direccion = MapAttributes.ConnectionDirection.EAST
+
+		MapAttributes.Border.WEST:
+			direccion = MapAttributes.ConnectionDirection.WEST
+
+		_:
+			return mapa.obtener_border_tile_data(casilla)
+
+
+	if conexion:
+
+		if conexion.contiene_conexion(casilla, direccion, mapa.map_size):
+
+			var vecino: MapAttributes = cargar_conexion(conexion)
+
+			if vecino:
+
+				var posicion_vecino: Vector2 = vecino.to_local(posicion_global)
+
+				var tile_vecino: Vector2i = Vector2i(floori(posicion_vecino.x / vecino.tile_size), floori(posicion_vecino.y / vecino.tile_size))
+
+				var collisions_vecino: TileMapLayer = vecino.get_node_or_null("Behaviours/Collisions") as TileMapLayer
+
+				if collisions_vecino:
+					return collisions_vecino.get_cell_tile_data(tile_vecino)
+
+	# Si no existe conexión:
+	return mapa.obtener_border_tile_data(casilla)

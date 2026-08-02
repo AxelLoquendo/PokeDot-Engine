@@ -25,6 +25,18 @@ enum ConnectionDirection {
 		map_size = new_val
 		queue_redraw()
 
+@export var border_source_id: int = 0
+@export var border_origin: Vector2i = Vector2i.ZERO
+
+@export var border_size: int = 2
+
+@export var actualizar_borde: bool = false:
+	set(value):
+		actualizar_borde = value
+		if value:
+			actualizar_borde_visual()
+			actualizar_borde = false
+
 @export var color_borde: Color = Color(0, 1, 1, 1.0)
 @export var tile_size: int = 16
 
@@ -50,6 +62,9 @@ var activo: bool = true
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		conectar_actualizaciones()
+
+	if Engine.is_editor_hint():
+		actualizar_borde_visual()
 
 	if not activo:
 		return
@@ -333,3 +348,123 @@ func obtener_posicion_conexion(
 			)
 
 	return Vector2.ZERO
+
+func obtener_border_atlas(tile: Vector2i) -> Vector2i:
+
+	var x: int = abs(tile.x) & 1
+	var y: int = abs(tile.y) & 1
+
+	return border_origin + Vector2i(x, y)
+
+func obtener_border_tile_data(tile: Vector2i) -> TileData:
+
+	var tileset: TileSet = obtener_tileset()
+
+	if tileset == null:
+		return null
+
+
+	var source: TileSetSource = tileset.get_source(border_source_id)
+
+	if source == null:
+		return null
+
+
+	if source is TileSetAtlasSource:
+
+		var atlas: TileSetAtlasSource = source as TileSetAtlasSource
+
+		var coords: Vector2i = obtener_border_atlas(tile)
+
+
+		if not atlas.has_tile(coords):
+			return null
+
+
+		return atlas.get_tile_data(
+			coords,
+			0
+		)
+
+	return null
+
+func obtener_tileset() -> TileSet:
+
+	var tilesets: Node = get_node_or_null("Tilesets")
+
+	if tilesets == null:
+		return null
+
+	for child: Node in tilesets.get_children():
+
+		if child is TileMapLayer:
+
+			var layer: TileMapLayer = child as TileMapLayer
+
+			if layer.tile_set != null:
+				return layer.tile_set
+
+	return null
+
+func actualizar_borde_visual() -> void:
+
+	var borde: TileMapLayer = get_node_or_null(
+		"Behaviours/Borde"
+	) as TileMapLayer
+
+	if borde == null:
+		return
+
+	borde.clear()
+
+
+	var grosor: int = border_size
+
+
+	# Superior e inferior
+	for x: int in range(-grosor, map_size.x + grosor):
+
+		for y: int in range(-grosor, 0):
+			crear_tile_borde(
+				borde,
+				Vector2i(x,y)
+			)
+
+		for y: int in range(map_size.y, map_size.y + grosor):
+			crear_tile_borde(
+				borde,
+				Vector2i(x,y)
+			)
+
+
+	# Laterales
+	for y: int in range(0, map_size.y):
+
+		for x: int in range(-grosor, 0):
+			crear_tile_borde(
+				borde,
+				Vector2i(x,y)
+			)
+
+		for x: int in range(map_size.x, map_size.x + grosor):
+			crear_tile_borde(
+				borde,
+				Vector2i(x,y)
+			)
+
+func crear_tile_borde(layer: TileMapLayer, pos: Vector2i) -> void:
+
+	var atlas: Vector2i = obtener_border_atlas(pos)
+
+	print(
+		"Borde:",
+		pos,
+		" atlas:",
+		atlas
+	)
+
+	layer.set_cell(
+		pos,
+		border_source_id,
+		atlas
+	)
