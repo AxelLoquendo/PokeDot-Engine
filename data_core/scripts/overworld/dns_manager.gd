@@ -38,25 +38,33 @@ func _process(delta: float) -> void:
 
 
 func _leer_configuracion_mapa() -> bool:
-	var gestor: Node = get_tree().root.get_node_or_null("Gestor_Inicio")
-	if not gestor:
-		print("No se encontró el Gestor_Inicio")
-		return false
-	
-	var mapa: MapAttributes = null
-	for hijo: Node in gestor.get_children():
-		if hijo is MapAttributes:
-			mapa = hijo as MapAttributes
-			break
-	
-	var _es_interior: String = "ninguno"
-	if mapa != null:
-		_es_interior = str(mapa.is_indoor)
-	
-	var resultado: bool = mapa != null and not mapa.is_indoor
-	#print("Mapa detectado: ", mapa != null, " | Es interior: ", _es_interior, " → Aplica filtro: ", resultado)
-	return resultado
 
+	var gestor: Node = get_tree().root.get_node_or_null("Gestor_Inicio")
+
+	if gestor == null:
+		print("No se encontró Gestor_Inicio")
+		return false
+
+	var manager: MapManager = null
+
+	for hijo: Node in gestor.get_children():
+		if hijo is MapManager:
+			manager = hijo as MapManager
+			break
+
+	if manager == null:
+		print("No se encontró MapManager")
+		return false
+
+	var mapa: MapAttributes = manager.current_map
+
+	if mapa == null:
+		print("MapManager no tiene mapa actual")
+		return false
+
+	#print("Mapa: ", mapa.map_name, " | Interior: ", mapa.is_indoor)
+
+	return !mapa.is_indoor
 
 func _read_system_time() -> void:
 	var now: Dictionary = Time.get_datetime_dict_from_system()

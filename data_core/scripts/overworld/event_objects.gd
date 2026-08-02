@@ -7,6 +7,7 @@ enum NpcID {
 	NONE,
 	OBJ_EVENT_GFX_PROF_OAK,
 	OBJ_EVENT_GFX_KAEL,
+	OBJ_EVENT_GFX_KAIDA,
 } 
 
 # Identificadores para Protagonistas
@@ -41,6 +42,7 @@ const npc_sprites: Dictionary = {
 	NpcID.NONE: ".",
 	NpcID.OBJ_EVENT_GFX_PROF_OAK: "res://graphics/overworld/npc/profesor_oak.png",
 	NpcID.OBJ_EVENT_GFX_KAEL: "res://game/graphics_eb/overworld/player/male/kael/normal.png",
+	NpcID.OBJ_EVENT_GFX_KAIDA: "res://game/graphics_eb/overworld/player/female/kaida/normal.png",
 }
 
 # Biblioteca de sprites de Jugadores

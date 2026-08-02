@@ -8,8 +8,6 @@
 [sub_resource type="Resource" id="Resource_ougem"]
 script = ExtResource("2_orvve")
 target_section = 1
-connection_size = null
-entrada = null
 metadata/_custom_type_script = "uid://c6dam5extdtsx"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imjvi"]

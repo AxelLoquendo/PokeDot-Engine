@@ -456,12 +456,7 @@ func crear_tile_borde(layer: TileMapLayer, pos: Vector2i) -> void:
 
 	var atlas: Vector2i = obtener_border_atlas(pos)
 
-	print(
-		"Borde:",
-		pos,
-		" atlas:",
-		atlas
-	)
+	#print("Borde:", pos, " atlas:", atlas)
 
 	layer.set_cell(
 		pos,
