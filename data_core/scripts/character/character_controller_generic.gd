@@ -1,20 +1,16 @@
-@tool
 extends Node2D
-
 class_name CharacterController
 
 const TILE_SIZE: int = 16
 const CAPA_PERSONAJES: int = 0
 
 var _character_data: CharacterGame
-
 @export var character_data: CharacterGame:
 	set(value):
 		if _character_data == value:
 			if Engine.is_editor_hint():
 				call_deferred("_actualizar_sprite")
 			return
-
 		if _character_data:
 			if _character_data.changed.is_connected(_on_character_data_changed):
 				_character_data.changed.disconnect(_on_character_data_changed)
@@ -32,31 +28,31 @@ var _character_data: CharacterGame
 @export var anim_player: AnimatedSprite2D
 @export var cuerpo_colision: StaticBody2D
 @export var forma_colision: CollisionShape2D
-
 @export var sonido_colision: AudioStream
 var reproductor_audio: AudioStreamPlayer
 @export var tiempo_entre_sonidos: float = 0.3
 var tiempo_ultimo_sonido: float = 0.0
-
 var is_moving: bool = false
 var is_first_step: bool = true
+
 enum Direction { NORTH, SOUTH, EAST, WEST }
+
 var input_direction: Vector2 = Vector2.ZERO
 var percent_moved_to_next_tile: float = 0.0
 var initial_position: Vector2 = Vector2.ZERO
 var current_direction: Direction = Direction.SOUTH
 var casilla_actual: Vector2i = Vector2i.ZERO
 var casilla_reservada: Vector2i = Vector2i.ZERO
-
 var capa_datos_mapa: TileMapLayer
 var mapa_raiz: Node
 var map_manager: MapManager
-
 var capas_comportamiento: Array[TileBehaviourLayer] = []
 var ultima_casilla_comportamiento: Vector2i = Vector2i(-999, -999)
 var ultima_escalera: Vector2i = Vector2i(-999, -999)
-var nivel_altura: int = 0
+var nivel_suelo: int = 1
+var nivel_render: int = 1
 var ejecutando_evento: bool = false
+
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -67,21 +63,20 @@ func _ready() -> void:
 			var copia: CharacterGame = character_data.duplicate(true)
 			if copia:
 				character_data = copia
-
-		if not character_data.changed.is_connected(_on_character_data_changed):
-			character_data.changed.connect(_on_character_data_changed)
+	if not character_data.changed.is_connected(_on_character_data_changed):
+		character_data.changed.connect(_on_character_data_changed)
 
 	initial_position = position
 	casilla_actual = posicion_a_casilla(global_position)
 	casilla_reservada = casilla_actual
+	actualizar_nivel_suelo(global_position)
 	EventObjects.registrar_casilla(casilla_actual, self)
 
 	var mapa: Node = self
-
 	while mapa and not (mapa is MapAttributes):
 		mapa = mapa.get_parent()
 
-	print("NPC registrado: ", name, " | mapa: ", (mapa as MapAttributes).map_name if mapa else "???", " | posición: ", global_position)
+	#print("NPC registrado: ", name, " | mapa: ", (mapa as MapAttributes).map_name if mapa else "???", " | posición: ", global_position)
 
 	process_priority = 100 if character_data is CharacterPlayer else -100
 
@@ -112,15 +107,16 @@ func _ready() -> void:
 	reproductor_audio.stream = sonido_colision
 	add_child(reproductor_audio)
 	cargar_capas_comportamiento()
-	
+
+
 func _on_character_data_changed() -> void:
 	print("CAMBIO DETECTADO")
 	_actualizar_sprite()
 
+
 func _actualizar_sprite() -> void:
 	if not anim_player or not character_data:
 		return
-
 	var ruta_sprite: String = ""
 
 	if character_data is CharacterPlayer:
@@ -132,14 +128,13 @@ func _actualizar_sprite() -> void:
 
 	elif character_data is CharacterNpc:
 		var id: int = character_data.sprite_overworld
-	
+
 		if id == EventObjects.NpcID.NONE:
 			print("NPC sin sprite asignado")
 			return
-	
+
 		if EventObjects.npc_sprites.has(id):  
 			ruta_sprite = EventObjects.npc_sprites[id]
-
 
 	if ruta_sprite.is_empty():
 		return
@@ -149,50 +144,32 @@ func _actualizar_sprite() -> void:
 		return
 
 	var textura: Texture2D = load(ruta_sprite) as Texture2D
-
 	if not textura:
 		push_error("No se pudo cargar: " + ruta_sprite)
 		return
 
-
 	var frames: SpriteFrames = anim_player.sprite_frames
-
 	if not frames:
 		return
 
-
 	for anim_nombre: String in frames.get_animation_names():
 		for i: int in range(frames.get_frame_count(anim_nombre)):
-
 			var original: Texture2D = frames.get_frame_texture(anim_nombre, i)
 
 			if original is AtlasTexture:
 				var atlas: AtlasTexture = original.duplicate()
 				atlas.atlas = textura
-
-				frames.set_frame(
-					anim_nombre,
-					i,
-					atlas,
-					frames.get_frame_duration(anim_nombre, i)
-				)
-
+				frames.set_frame(anim_nombre, i, atlas, frames.get_frame_duration(anim_nombre, i))
 			else:
-				frames.set_frame(
-					anim_nombre,
-					i,
-					textura,
-					frames.get_frame_duration(anim_nombre, i)
-				)
-
+				frames.set_frame(anim_nombre, i, textura, frames.get_frame_duration(anim_nombre, i))
 
 	anim_player.sprite_frames = frames
 	anim_player.play("idle_down")
 	anim_player.queue_redraw()
 
+
 func buscar_capa_colisiones() -> void:
 	capa_datos_mapa = null
-
 	var raiz_busqueda: Node = mapa_raiz
 	if not raiz_busqueda:
 		raiz_busqueda = self
@@ -204,14 +181,14 @@ func buscar_capa_colisiones() -> void:
 		var ruta: String = str(map_data.get_path())
 		if ruta.begins_with("/root/MapData/"):
 			map_data = null
-	
+
 	if map_data:
 		var behaviours: Node = map_data.get_node_or_null("Behaviours")
 		if behaviours:
 			var collisions: Node = behaviours.get_node_or_null("Collisions")
 			if collisions and collisions is TileMapLayer:
 				capa_datos_mapa = collisions as TileMapLayer
-	
+
 	if not capa_datos_mapa:
 		var cola: Array[Node] = [raiz_busqueda]
 		while cola.size() > 0:
@@ -225,11 +202,11 @@ func buscar_capa_colisiones() -> void:
 			for hijo: Node in hijos:
 				cola.append(hijo)
 
+
 func hay_personaje_en(destino_global: Vector2) -> bool:
 	var espacio: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
 	if not espacio:
 		return false
-
 	var forma_casilla: RectangleShape2D = RectangleShape2D.new()
 	forma_casilla.size = Vector2(TILE_SIZE - 4, TILE_SIZE - 4)
 
@@ -249,10 +226,12 @@ func hay_personaje_en(destino_global: Vector2) -> bool:
 	var resultado: Array = espacio.intersect_shape(consulta)
 	return resultado.size() > 0
 
+
 const _BEHAVIOURS_ACTIVOS: Dictionary = {
-"stairs": true,
-"stairs_end": true
+	"stairs": true,
+	"stairs_end": true
 }
+
 
 func intentar_mover(direccion: Vector2) -> bool:
 	input_direction = direccion
@@ -271,51 +250,50 @@ func intentar_mover(direccion: Vector2) -> bool:
 				input_direction = Vector2(desplazamiento)
 				casilla_destino = ultima_escalera
 
-	# Revisar comportamiento de la casilla destino
-	for capa: TileBehaviourLayer in capas_comportamiento:
-
-		if not is_instance_valid(capa):
-			continue
-
-		if capa.comprobar_casilla(casilla_destino, self, input_direction):
-			return true
-
+	# Primero comprobar transición de piso
 	var posicion_destino_global: Vector2 = (global_position + input_direction * TILE_SIZE)
+	var datos_destino: TileData = map_manager.obtener_tile_data(posicion_destino_global)
+	var es_transicion: bool = false
 
+	if datos_destino:
+		if datos_destino.has_custom_data("floor_transition"):
+			es_transicion = bool(datos_destino.get_custom_data("floor_transition"))
 
-	# Colisión de mapa
-	if not casilla_permitida(posicion_destino_global):
+	# Si es transición, dejamos pasar el movimiento normal
+	# para que complete_move() actualice el piso
+	if not es_transicion:
+		for capa: TileBehaviourLayer in capas_comportamiento:
+			if not is_instance_valid(capa):
+				continue
+			if capa.comprobar_casilla(casilla_destino, self, input_direction):
+				return true
 
-		if reproductor_audio and sonido_colision:
-			if Time.get_ticks_msec() - tiempo_ultimo_sonido > tiempo_entre_sonidos * 1000:
-				reproductor_audio.play()
-				tiempo_ultimo_sonido = Time.get_ticks_msec()
-
-		return false
-
+		# Colisión de mapa
+		if not casilla_permitida(posicion_destino_global):
+			if reproductor_audio and sonido_colision:
+				if Time.get_ticks_msec() - tiempo_ultimo_sonido > tiempo_entre_sonidos * 1000:
+					reproductor_audio.play()
+					tiempo_ultimo_sonido = Time.get_ticks_msec()
+			return false
 
 	# Personajes
 	if EventObjects.hay_otro_en_casilla(casilla_destino, self):
 		return false
 
-
 	if hay_personaje_en(posicion_destino_global):
 		return false
 
-
 	# Reservar movimiento
 	casilla_reservada = casilla_destino
-
 	EventObjects.reservar_casilla(
 		casilla_destino,
 		self
 	)
 
-
 	initial_position = position
 	is_moving = true
-
 	return true
+
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -323,6 +301,10 @@ func _process(_delta: float) -> void:
 
 	z_as_relative = false
 	z_index = int(global_position.y)
+
+	if nivel_render > 1:
+		z_index = nivel_render
+
 
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -334,13 +316,14 @@ func _physics_process(_delta: float) -> void:
 	else:
 		move(_delta)
 
+
 func process_input() -> void:
 	pass
+
 
 func move(_delta: float) -> void:
 	if not character_data:
 		return
-
 	var velocidad: float = obtener_velocidad_movimiento()
 	percent_moved_to_next_tile += velocidad * _delta
 
@@ -350,100 +333,92 @@ func move(_delta: float) -> void:
 		reproducir_paso()
 		position = initial_position + input_direction * TILE_SIZE * percent_moved_to_next_tile
 
+
 func obtener_velocidad_movimiento() -> float:
 	return character_data.walk_speed
+
 
 func reproducir_paso() -> void:
 	if not anim_player:
 		return
-
 	var prefijo: String = (
 		"first_step_"
 		if is_first_step
 		else "second_step_"
 	)
 
-
 	match input_direction:
-
 		Vector2.UP:
 			current_direction = Direction.NORTH
 			anim_player.play(prefijo + "up")
-
-
 		Vector2.DOWN:
 			current_direction = Direction.SOUTH
 			anim_player.play(prefijo + "down")
-
-
 		Vector2.RIGHT:
 			current_direction = Direction.EAST
 			anim_player.play(prefijo + "right")
-
-
 		Vector2.LEFT:
 			current_direction = Direction.WEST
 			anim_player.play(prefijo + "left")
-
-
 		# Escalera lateral derecha subiendo
 		Vector2(1, -1):
 			current_direction = Direction.EAST
 			anim_player.play("first_step_right")
-
-
 		# Escalera lateral izquierda subiendo
 		Vector2(-1, -1):
 			current_direction = Direction.WEST
 			anim_player.play("first_step_left")
-
-
 		# Escalera lateral derecha bajando
 		Vector2(1, 1):
 			current_direction = Direction.EAST
 			anim_player.play("first_step_right")
-
-
 		# Escalera lateral izquierda bajando
 		Vector2(-1, 1):
 			current_direction = Direction.WEST
 			anim_player.play("first_step_left")
 
+
 func complete_move() -> void:
 	if input_direction == Vector2.ZERO:
 		is_moving = false
 		return
-
 	var casilla_vieja: Vector2i = casilla_actual
 	casilla_actual = casilla_reservada
+
 	if casilla_actual == ultima_escalera:
 		ultima_escalera = Vector2i(-999, -999)
+
 	position = snap_to_grid(initial_position + input_direction * TILE_SIZE)
 
 	EventObjects.liberar_casilla(casilla_vieja)
 	EventObjects.liberar_reserva(casilla_actual)
 	EventObjects.registrar_casilla(casilla_actual, self)
+	actualizar_nivel_suelo(global_position)
+
 	if character_data is CharacterPlayer:
 		revisar_conexion_mapa()
-	for capa: TileBehaviourLayer in capas_comportamiento:
 
+	for capa: TileBehaviourLayer in capas_comportamiento:
 		if is_instance_valid(capa):
 			capa.comprobar_casilla(casilla_actual, self, input_direction)
 
 	percent_moved_to_next_tile = 0.0
 	is_moving = false
+
 	#var gestor: MapManager = mapa_raiz.get_parent() as MapManager
 	#if gestor:
 	#	gestor.comprobar_transicion()
 	if map_manager:
 		map_manager.comprobar_transicion()
-	
+
 	#print("📍 Posición final: ", global_position, " → Casilla: ", casilla_actual)
+
 
 func snap_to_grid(pos: Vector2) -> Vector2:
 	pos.x = floor(pos.x / TILE_SIZE) * TILE_SIZE + TILE_SIZE / 2.0
 	pos.y = floor(pos.y / TILE_SIZE) * TILE_SIZE
 	return pos
+
 
 func posicion_a_casilla(pos: Vector2) -> Vector2i:
 	return Vector2i(
@@ -451,55 +426,45 @@ func posicion_a_casilla(pos: Vector2) -> Vector2i:
 		floori(pos.y / TILE_SIZE)
 	)
 
+
 func casilla_permitida(posicion_global: Vector2) -> bool:
 	if not capa_datos_mapa:
 		return false
 
-	var local: Vector2 = capa_datos_mapa.to_local(posicion_global)
-	var casilla_real: Vector2i = capa_datos_mapa.local_to_map(local)
-
-	# Impide salir de los límites definidos por map_size.
-	var atributos_mapa: MapAttributes = mapa_raiz as MapAttributes
-
-	if atributos_mapa:
-
-		var borde: MapAttributes.Border = atributos_mapa.obtener_borde(casilla_real)
-
-		if borde != MapAttributes.Border.NONE:
-
-			var conexion: MapConnection = atributos_mapa.obtener_conexion(borde)
-
-			return conexion != null
-
-	var datos_baldosa: TileData = map_manager.obtener_tile_data(posicion_global)
-
-	# No hay tile de comportamiento: se puede caminar.
-	if datos_baldosa == null:
+	var datos_destino: TileData = map_manager.obtener_tile_data(posicion_global)
+	if datos_destino == null:
 		return true
 
-	var bloqueada: bool = false
-	if datos_baldosa.has_custom_data("blocked"):
-		bloqueada = bool(datos_baldosa.get_custom_data("blocked"))
+	# Este tile conserva el nivel anterior del piso.
+	var mantener_piso : bool = false
+	if datos_destino.has_custom_data("keep_floor"):
+		mantener_piso  = bool(datos_destino.get_custom_data("keep_floor"))
 
-	var requiere_nivel_1: bool = false
-	if datos_baldosa.has_custom_data("pass_lvl_1"):
-		requiere_nivel_1 = bool(datos_baldosa.get_custom_data("pass_lvl_1"))
+	# Bloqueo normal
+	if datos_destino.has_custom_data("blocked"):
+		if bool(datos_destino.get_custom_data("blocked")) and not mantener_piso :
+			return false
 
-	if bloqueada:
-		return false
+	# Si es transición de piso, siempre permitir
+	if datos_destino.has_custom_data("floor_transition"):
+		if bool(datos_destino.get_custom_data("floor_transition")):
+			return true
 
-	if requiere_nivel_1:
-		var puede_pasar: bool = (
-			character_data is CharacterPlayer
-			or character_data is CharacterNpc
-		)
-		return puede_pasar
+	# Revisar nivel del piso destino
+	if datos_destino.has_custom_data("floor_lvl"):
+		var piso_destino: int = int(datos_destino.get_custom_data("floor_lvl"))
+		if mantener_piso :
+			piso_destino = nivel_suelo
+#		print("Actual:", nivel_suelo, " Destino:", piso_destino, " Tile:", posicion_global)
+		# Comparación normal de niveles
+		if nivel_suelo != -1 and piso_destino != nivel_suelo:
+			return false
 
 	return true
 
+
 func mirar_hacia_posicion(posicion: Vector2) -> void:
 	var diferencia: Vector2 = posicion - global_position
-
 	if abs(diferencia.x) > abs(diferencia.y):
 		if diferencia.x > 0:
 			current_direction = Direction.EAST
@@ -511,10 +476,10 @@ func mirar_hacia_posicion(posicion: Vector2) -> void:
 		else:
 			current_direction = Direction.NORTH
 
+
 func cancelar_movimiento() -> void:
 	if not is_moving:
 		return
-
 	EventObjects.liberar_reserva(casilla_reservada)
 	casilla_reservada = casilla_actual
 
@@ -525,10 +490,9 @@ func cancelar_movimiento() -> void:
 	is_moving = false
 	casilla_reservada = casilla_actual
 
+
 func cargar_capas_comportamiento() -> void:
-
 	capas_comportamiento.clear()
-
 	if not mapa_raiz:
 		return
 
@@ -540,26 +504,50 @@ func cargar_capas_comportamiento() -> void:
 	)
 
 	for nodo: Node in nodos:
-
 		if nodo is TileBehaviourLayer:
-
 			var capa: TileBehaviourLayer = nodo as TileBehaviourLayer
-
 			if is_instance_valid(capa):
 				capas_comportamiento.append(capa)
+
 
 func revisar_conexion_mapa() -> void:
 	if not mapa_raiz:
 		return
-
 	var borde: MapAttributes.Border = mapa_raiz.obtener_borde(casilla_actual)
-
 	if borde == MapAttributes.Border.NONE:
 		return
 
 	var conexion: MapConnection = mapa_raiz.obtener_conexion(borde)
-
 	if conexion == null:
 		return
 
-	print("Cambiar al mapa:", conexion.target_section)
+#	print("Cambiar al mapa:", conexion.target_section)
+
+
+func actualizar_nivel_suelo(posicion_global: Vector2) -> void:
+	if not map_manager:
+		return
+
+	var datos_baldosa: TileData = map_manager.obtener_tile_data(posicion_global)
+	if not datos_baldosa:
+		return
+
+	# Entramos al puente
+	if datos_baldosa.has_custom_data("keep_floor"):
+		if bool(datos_baldosa.get_custom_data("keep_floor")):
+			# Conservamos el último nivel.
+			# No modificamos nivel_suelo.
+			nivel_render = nivel_suelo
+			return
+
+	if datos_baldosa.has_custom_data("floor_transition"):
+		if bool(datos_baldosa.get_custom_data("floor_transition")):
+			nivel_suelo = -1
+			nivel_render = -1
+			return
+
+	if datos_baldosa.has_custom_data("floor_lvl"):
+		nivel_suelo = int(datos_baldosa.get_custom_data("floor_lvl"))
+		nivel_render = nivel_suelo
+
+#		print(name, " ahora está en piso ", nivel_suelo)

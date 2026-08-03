@@ -41,7 +41,7 @@ script = ExtResource("3_gmlin")
 sprite_frames = ExtResource("5_p47bc")
 animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.26080996
+frame_progress = 0.6840013
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=246521600]
 zoom = Vector2(2, 2)
