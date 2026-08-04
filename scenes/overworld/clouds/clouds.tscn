@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dpoilfueo782i"]
+
+[ext_resource type="Script" uid="uid://bwy1r47y26sy8" path="res://scenes/overworld/clouds/clouds_manager.gd" id="1_kprol"]
+
+[node name="CieloNubes" type="Parallax2D" unique_id=1134277971]
+modulate = Color(1, 1, 1, 0.26666668)
+z_index = 3001
+z_as_relative = false
+repeat_size = Vector2(1024, 0)
+
+[node name="ContenedorNubes" type="Node2D" parent="." unique_id=807311640]
+script = ExtResource("1_kprol")
+margen_fuera = 0.0

@@ -44,6 +44,11 @@ enum ConnectionDirection {
 	set(new_val):
 		mostrar_limite = new_val
 		queue_redraw()
+signal usar_nubes_cambiado(estado: bool)
+@export var usar_nubes: bool = true:
+	set(nuevo_valor):
+		usar_nubes = nuevo_valor
+		usar_nubes_cambiado.emit(nuevo_valor)
 
 @export var is_indoor: bool = false
 @export var allow_escape_rope: bool = false

@@ -82,5 +82,8 @@ func _ready() -> void:
 
 	map_manager.current_map.activar_musica()
 
-	if DnsManager and DnsManager.has_method("activar"):
+	if DnsManager:
 		DnsManager.activar()
+
+	if CloudsManager:
+		CloudsManager.activar()

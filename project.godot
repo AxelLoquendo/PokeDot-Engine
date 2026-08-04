@@ -21,6 +21,7 @@ MusicManager="*uid://dy64y8tqnu262"
 DnsManager="*uid://b1qn0holfpgak"
 DialogueManager="*uid://b104pohobtcxy"
 TileBehavioursManager="*uid://cbexmjsqsorqt"
+CloudsManager="*uid://bwy1r47y26sy8"
 
 [debug]
 

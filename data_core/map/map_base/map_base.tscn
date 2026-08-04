@@ -74,6 +74,8 @@ custom_data_layer_2/name = "floor_lvl"
 custom_data_layer_2/type = 2
 custom_data_layer_3/name = "floor_transition"
 custom_data_layer_3/type = 1
+custom_data_layer_4/name = "keep_floor"
+custom_data_layer_4/type = 0
 sources/0 = SubResource("TileSetAtlasSource_4ca71")
 
 [sub_resource type="TileSet" id="TileSet_d1sk7"]
