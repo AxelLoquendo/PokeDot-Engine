@@ -16,13 +16,23 @@ enum ConnectionDirection {
 	EAST,
 	WEST
 }
-
+@export_group("Map Attributes")
 @export var map_name: String = "Sin nombre"
 @export var map_id_section: MapSection.SectionId = MapSection.SectionId.MAPSEC_NONE
 @export var map_region: MapSection.RegionId = MapSection.RegionId.REGION_NONE
+@export var map_type: Array #Proximamente tipo de mapa (ruta, pueblo, ciudad, cueva, etc)
 @export var map_size: Vector2i = Vector2i(40, 40):
 	set(new_val):
 		map_size = new_val
+		queue_redraw()
+@export var battle_scene: Array #Proximamente tipo de escena de batalla
+@export_group("Editor")
+@export var color_borde: Color = Color(0, 1, 1, 1.0)
+@export var tile_size: int = 16
+
+@export var mostrar_limite: bool = true:
+	set(new_val):
+		mostrar_limite = new_val
 		queue_redraw()
 
 @export var border_source_id: int = 0
@@ -37,31 +47,30 @@ enum ConnectionDirection {
 			actualizar_borde_visual()
 			actualizar_borde = false
 
-@export var color_borde: Color = Color(0, 1, 1, 1.0)
-@export var tile_size: int = 16
-
-@export var mostrar_limite: bool = true:
-	set(new_val):
-		mostrar_limite = new_val
-		queue_redraw()
+@export_group("Flags Map")
+@export var show_location_name: bool = false #Proximamente para mostrar letrero de entrada al mapa
 signal usar_nubes_cambiado(estado: bool)
 @export var usar_nubes: bool = true:
 	set(nuevo_valor):
 		usar_nubes = nuevo_valor
 		usar_nubes_cambiado.emit(nuevo_valor)
-
 @export var is_indoor: bool = false
-@export var allow_escape_rope: bool = false
-@export var allow_fly: bool = false
-
+@export var allow_dig_escape_rope: bool = false #Proximamente permiso para usar excavar o cuerda huida
+@export var allow_fly: bool = false #Proximamente para dar permiso de volar a este mapa
+@export var requires_flash: bool = false #Proximamente verificar si el mapa necesita de Flash
+@export_group("Coneccted Map")
 @export var north_map: MapConnection
 @export var east_map: MapConnection
 @export var south_map: MapConnection
 @export var west_map: MapConnection
-
+@export_group("Music")
 @export_file("*.ogg", "*.wav", "*.mp3") var music_path: String = ""
 @export var silence_end: float = 0.0
+@export_group("Weather")
+@export var weather: WeatherEffect.WeatherID = WeatherEffect.WeatherID.WEATHER_NONE
 
+
+# Lógica
 var activo: bool = true
 
 func _ready() -> void:

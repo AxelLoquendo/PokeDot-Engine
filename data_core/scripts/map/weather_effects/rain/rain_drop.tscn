@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b5l125hbeva4c"]
+
+[ext_resource type="Script" uid="uid://bxpkqw0x6u5v5" path="res://data_core/scripts/map/weather_effects/rain/rain_drop.gd" id="1_ung2k"]
+[ext_resource type="Texture2D" uid="uid://di2ppnx7fk672" path="res://graphics/weather/rain.png" id="2_y4wr3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi26n"]
+atlas = ExtResource("2_y4wr3")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvmk3"]
+atlas = ExtResource("2_y4wr3")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuvx3"]
+atlas = ExtResource("2_y4wr3")
+region = Rect2(0, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4wr3"]
+atlas = ExtResource("2_y4wr3")
+region = Rect2(0, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6ocr"]
+atlas = ExtResource("2_y4wr3")
+region = Rect2(0, 128, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o5l1"]
+atlas = ExtResource("2_y4wr3")
+region = Rect2(0, 160, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htemk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi26n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvmk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuvx3")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4wr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6ocr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o5l1")
+}],
+"loop": 0,
+"name": &"splash",
+"speed": 5.0
+}]
+
+[node name="RainDrop" type="Node2D" unique_id=214392777]
+script = ExtResource("1_ung2k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1811690463]
+sprite_frames = SubResource("SpriteFrames_htemk")
+animation = &"splash"

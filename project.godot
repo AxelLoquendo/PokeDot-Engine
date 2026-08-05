@@ -22,6 +22,7 @@ DnsManager="*uid://b1qn0holfpgak"
 DialogueManager="*uid://b104pohobtcxy"
 TileBehavioursManager="*uid://cbexmjsqsorqt"
 CloudsManager="*uid://bwy1r47y26sy8"
+WeatherManager="*uid://dq8hei6cs1q6p"
 
 [debug]
 

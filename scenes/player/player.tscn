@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://bkdp0r2akj5km"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4lci"]
 size = Vector2(16, 16)
 
-[node name="Player" type="Node2D" unique_id=1693781442 node_paths=PackedStringArray("anim_player", "cuerpo_colision", "forma_colision")]
+[node name="Player" type="Node2D" unique_id=1693781442 node_paths=PackedStringArray("anim_player", "cuerpo_colision", "forma_colision") groups=["Player"]]
 process_priority = 100
 z_as_relative = false
 script = ExtResource("1_75vfm")
@@ -41,7 +41,7 @@ script = ExtResource("3_gmlin")
 sprite_frames = ExtResource("5_p47bc")
 animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.6840013
+frame_progress = 0.327239
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=246521600]
 zoom = Vector2(2, 2)

@@ -23,6 +23,8 @@ func load_map(map: MapAttributes) -> void:
 
 	cargar_conexiones()
 
+	WeatherManager.set_weather(current_map.weather)
+
 func cargar_conexiones() -> void:
 
 	north_map = cargar_conexion(current_map.north_map)
@@ -212,6 +214,7 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 #	actualizar_limites_camara()
 
 	current_map.activar_musica()
+	WeatherManager.set_weather(current_map.weather)
 
 func colocar_vecino(
 	mapa: MapAttributes,

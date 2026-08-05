@@ -9,8 +9,8 @@ var lista_nubes: Array[Texture2D] = [
 @export var tiempo_creacion: float = 1.8
 @export var alto_min: float = 40.0
 @export var alto_max: float = 280.0
-@export var color_base_nubes: Color = Color("ffffff44")
-@export var maximo_nubes_activas: int = 10
+@export var color_base_nubes: Color = Color("ffffff57")
+@export var maximo_nubes_activas: int = 20
 @export var separacion_minima_x: float = 60.0
 @export var separacion_minima_y: float = 25.0
 @export var margen_fuera: float = 50.0
@@ -22,7 +22,7 @@ var camara_actual: Camera2D
 
 func _ready() -> void:
 	randomize()
-	z_index = 3001
+	z_index = 3002
 	camara_actual = get_viewport().get_camera_2d()
 
 	temporizador_nubes = Timer.new()
