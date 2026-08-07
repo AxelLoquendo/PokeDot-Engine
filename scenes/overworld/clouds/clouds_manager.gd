@@ -9,7 +9,7 @@ var lista_nubes: Array[Texture2D] = [
 @export var tiempo_creacion: float = 1.8
 @export var alto_min: float = 40.0
 @export var alto_max: float = 280.0
-@export var color_base_nubes: Color = Color("ffffff57")
+@export var color_base_nubes: Color = Color("ffffff44")
 @export var maximo_nubes_activas: int = 20
 @export var separacion_minima_x: float = 60.0
 @export var separacion_minima_y: float = 25.0
@@ -96,25 +96,52 @@ func crear_nube_entrante() -> void:
 
 
 func _process(delta: float) -> void:
-	if not _activo:
-		return
 
 	var debe_haber_nubes: bool = _leer_configuracion_mapa()
 
-	if not debe_haber_nubes:
-		if temporizador_nubes:
-			temporizador_nubes.paused = true
-		visible = false
-		for hijo: Node in get_children():
-			if hijo is Sprite2D:
-				hijo.queue_free()
+	# Cambiar estado solo cuando sea necesario
+	if debe_haber_nubes:
+		if not _activo:
+			activar()
+	else:
+		if _activo:
+			desactivar()
+
+	if not _activo:
 		return
+
+	if camara_actual == null:
+		camara_actual = get_viewport().get_camera_2d()
+
+	if camara_actual == null:
+		return
+
+	var rect_camara: Rect2 = camara_actual.get_viewport_rect()
+
+	for hijo: Node in get_children():
+		if hijo is Sprite2D:
+			var nube: Sprite2D = hijo
+			var velocidad: float = nube.get_meta("velocidad", -2.5)
+
+			nube.position.x += velocidad * delta
+
+			if nube.texture:
+				var ancho: float = nube.texture.get_width() * nube.scale.x
+
+				if nube.position.x + ancho * 0.5 < rect_camara.position.x - margen_fuera:
+					nube.queue_free()
+
+func activar() -> void:
+
+	_activo = true
+	visible = true
 
 	if temporizador_nubes:
 		temporizador_nubes.paused = false
-	visible = true
 
-	var cantidad: int = 0
+	# Solo crear si realmente no existen
+	var cantidad : int = 0
+
 	for hijo: Node in get_children():
 		if hijo is Sprite2D:
 			cantidad += 1
@@ -122,47 +149,20 @@ func _process(delta: float) -> void:
 	if cantidad == 0:
 		crear_nubes_iniciales()
 
-	if camara_actual == null:
-		camara_actual = get_viewport().get_camera_2d()
-	if camara_actual == null:
-		return
-
-	var rect_camara: Rect2 = camara_actual.get_viewport_rect()
-	for hijo: Node in get_children():
-		if hijo is Sprite2D:
-			var nube: Sprite2D = hijo as Sprite2D
-			var velocidad: float = nube.get_meta("velocidad", -2.5)
-			nube.position.x += velocidad * delta
-			if nube.texture:
-				var ancho: float = nube.texture.get_width() * nube.scale.x
-				if nube.position.x + ancho * 0.5 < rect_camara.position.x - margen_fuera:
-					nube.queue_free()
-
-
-func activar() -> void:
-	_activo = true
-	visible = true
-	if temporizador_nubes:
-		temporizador_nubes.paused = false
-	print("NUBES ACTIVADAS")
-	if get_child_count() == 0:
-		crear_nubes_iniciales()
-
-
 func crear_nubes_iniciales() -> void:
 	for _i: int in range(5):
 		crear_nube(randf_range(0.0, 500.0), randf_range(alto_min, alto_max))
 
 
 func desactivar() -> void:
+
 	_activo = false
 	visible = false
+
 	if temporizador_nubes:
 		temporizador_nubes.paused = true
-	for hijo: Node in get_children():
-		if hijo is Sprite2D:
-			hijo.queue_free()
-	print("NUBES DESACTIVADAS")
+
+	# NO eliminar las nubes
 
 
 func _leer_configuracion_mapa() -> bool:

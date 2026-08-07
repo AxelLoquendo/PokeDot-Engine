@@ -6,18 +6,22 @@ const RainDropScene: PackedScene = preload("res://data_core/scripts/map/weather_
 
 
 var cantidad_gotas: int = 50
+var intensidad: float = 1.0
 
+var deteniendo: bool = false
 
 var gotas: Array[RainDrop] = []
 
 
 func start() -> void:
 
+	deteniendo = false
+
+	intensidad = 0.0
+
 	print("Comienza lluvia")
 
-
 	for i: int in range(cantidad_gotas):
-
 		crear_gota()
 
 
@@ -44,12 +48,38 @@ func stop() -> void:
 	print("Finaliza lluvia")
 
 	for gota: RainDrop in gotas:
-
-		gota.queue_free()
+		if is_instance_valid(gota):
+			gota.begin_fade_out()
 
 	gotas.clear()
 
+func fade_in() -> void:
 
+	var tween: Tween = create_tween()
+
+	tween.tween_property(
+		self,
+		"intensidad",
+		1.0,
+		0.8
+	)
+
+	await tween.finished
+
+func fade_out() -> void:
+
+	deteniendo = true
+
+	var tween: Tween = create_tween()
+
+	tween.tween_property(
+		self,
+		"intensidad",
+		0.0,
+		0.8
+	)
+
+	await tween.finished
 
 func update(_delta: float) -> void:
 

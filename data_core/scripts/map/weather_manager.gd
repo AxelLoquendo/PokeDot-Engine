@@ -51,34 +51,48 @@ func _process(delta: float) -> void:
 
 func cambiar_clima() -> void:
 
+	state = WeatherState.IDLE
+
+	await _cambiar_clima()
+
+func _cambiar_clima() -> void:
+
 	previous_weather = current_weather
 
-	finalizar_clima(current_weather)
+	await finalizar_clima(current_weather)
 
 	current_weather = next_weather
 
-	iniciar_clima(current_weather)
+	await iniciar_clima(current_weather)
 
 	weather_changed.emit(
 		previous_weather,
 		current_weather
 	)
 
-	state = WeatherState.IDLE
-
 func iniciar_clima(weather: WeatherEffect.WeatherID) -> void:
 
 	var clima: WeatherBase = weather_nodes.get(weather)
 
-	if clima != null:
-		clima.start()
+	if clima == null:
+		return
+
+	clima.start()
+
+	@warning_ignore("redundant_await")
+	await clima.fade_in()
 
 func finalizar_clima(weather: WeatherEffect.WeatherID) -> void:
 
 	var clima: WeatherBase = weather_nodes.get(weather)
 
-	if clima != null:
-		clima.stop()
+	if clima == null:
+		return
+
+	@warning_ignore("redundant_await")
+	await clima.fade_out()
+
+	clima.stop()
 
 func actualizar_clima(delta: float) -> void:
 

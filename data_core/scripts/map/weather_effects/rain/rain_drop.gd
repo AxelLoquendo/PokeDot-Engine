@@ -1,7 +1,7 @@
 extends Node2D
 class_name RainDrop
 
-
+var weather: RainWeather
 enum RainState {
 	FALLING,
 	SPLASH
@@ -14,6 +14,8 @@ var ultima_posicion_camara: Vector2
 
 
 var state: RainState = RainState.FALLING
+
+var fading_out: bool = false
 
 var velocidad: float = 600.0
 var direccion: Vector2 = Vector2(-0.32, 1.0)
@@ -33,6 +35,9 @@ func _ready() -> void:
 		ultima_posicion_camara = camara.global_position
 
 	iniciar()
+
+func begin_fade_out() -> void:
+	fading_out = true
 
 func obtener_area_camara() -> Rect2:
 
@@ -93,56 +98,41 @@ func mostrar_splash() -> void:
 
 	state = RainState.SPLASH
 
-
 	var area: Rect2 = obtener_area_camara()
 
-
 	position = Vector2(
-		randf_range(
-			area.position.x,
-			area.end.x
-		),
-		randf_range(
-			area.position.y,
-			area.end.y
-		)
+		randf_range(area.position.x, area.end.x),
+		randf_range(area.position.y, area.end.y)
 	)
-
 
 	sprite.play("splash")
 
-
 	await sprite.animation_finished
 
-
-	reiniciar()
+	if fading_out:
+		queue_free()
+	else:
+		reiniciar()
 
 func reiniciar() -> void:
 
-	state = RainState.FALLING
+	if fading_out:
+		queue_free()
+		return
 
+	state = RainState.FALLING
 
 	if camara:
 		ultima_posicion_camara = camara.global_position
 
-
 	var area: Rect2 = obtener_area_camara()
 
-
 	position = Vector2(
-		randf_range(
-			area.position.x,
-			area.end.x
-		),
-		randf_range(
-			area.position.y - 300,
-			area.position.y - 50
-		)
+		randf_range(area.position.x, area.end.x),
+		randf_range(area.position.y - 300, area.position.y - 50)
 	)
 
-
 	sprite.play("fall")
-
 
 	sprite.frame = randi_range(
 		0,
