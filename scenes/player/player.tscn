@@ -10,7 +10,7 @@
 [sub_resource type="Resource" id="Resource_obk2l"]
 script = ExtResource("2_0owmy")
 name = "Kael"
-sprite_overworld = 1
+sprite_overworld = 14
 running_speed = 12.0
 shadow_size = 2
 shadow_offset_y = 11.0
@@ -41,7 +41,7 @@ script = ExtResource("3_gmlin")
 sprite_frames = ExtResource("5_p47bc")
 animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.327239
+frame_progress = 0.58262736
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=246521600]
 zoom = Vector2(2, 2)

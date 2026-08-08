@@ -188,7 +188,6 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 
 	current_map = nuevo
 
-
 	# El mapa activo siempre está en el origen
 	current_map.position = Vector2.ZERO
 	current_map.activo = true

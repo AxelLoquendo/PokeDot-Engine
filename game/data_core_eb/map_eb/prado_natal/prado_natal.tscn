@@ -2102,7 +2102,6 @@ metadata/_custom_type_script = "uid://ctavlpyny00ah"
 script = ExtResource("7_y0fca")
 nombre = "Kaida (Hermana)"
 sprite_overworld = 3
-comportamiento = 4
 dialogue = SubResource("Resource_s65af")
 shadow_size = 2
 shadow_offset_y = 11.0
@@ -2119,7 +2118,7 @@ border_size = 8
 east_map = SubResource("Resource_8wtdx")
 music_path = "uid://2x343j6mo2o0"
 silence_end = 37.68
-weather = 3
+weather = 9
 
 [node name="Tilesets" type="Node2D" parent="." unique_id=717031857]
 z_as_relative = false

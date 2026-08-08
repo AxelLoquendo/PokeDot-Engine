@@ -1,86 +1,73 @@
 extends WeatherBase
 class_name RainWeather
 
+const RainDropScene: PackedScene = preload(
+	"res://data_core/scripts/map/weather_effects/rain/rain_drop.tscn"
+)
+const CANTIDAD_GOTAS: int = 40
+const DURACION_TRANSICION: float = 0.8
 
-const RainDropScene: PackedScene = preload("res://data_core/scripts/map/weather_effects/rain/rain_drop.tscn")
-
-
-var cantidad_gotas: int = 50
 var intensidad: float = 1.0
-
 var deteniendo: bool = false
-
 var gotas: Array[RainDrop] = []
 
+var _fade_tween: Tween
 
 func start() -> void:
-
 	deteniendo = false
-
 	intensidad = 0.0
-
-	print("Comienza lluvia")
-
-	for i: int in range(cantidad_gotas):
+	for _i: int in range(CANTIDAD_GOTAS):
 		crear_gota()
 
-
-
 func crear_gota() -> void:
-
+	if deteniendo:
+		return
 	var gota: RainDrop = RainDropScene.instantiate()
-
-	get_tree().current_scene.add_child(gota)
-
-	gota.position = Vector2(
-		randf_range(0, 1152),
-		randf_range(-300, 700)
-	)
-
-	gota.iniciar()
-
+	gota.weather = self
+	WeatherManager.get_weather_container().add_child(gota)
 	gotas.append(gota)
 
-
-
 func stop() -> void:
+	deteniendo = true
 
-	print("Finaliza lluvia")
+func fade_in() -> Signal:
+	if _fade_tween:
+		_fade_tween.kill()
 
-	for gota: RainDrop in gotas:
-		if is_instance_valid(gota):
-			gota.begin_fade_out()
-
-	gotas.clear()
-
-func fade_in() -> void:
-
-	var tween: Tween = create_tween()
-
-	tween.tween_property(
+	_fade_tween = create_tween()
+	_fade_tween.tween_property(
 		self,
 		"intensidad",
 		1.0,
-		0.8
+		DURACION_TRANSICION
 	)
+	return _fade_tween.finished
 
-	await tween.finished
-
-func fade_out() -> void:
-
+func fade_out() -> Signal:
 	deteniendo = true
 
-	var tween: Tween = create_tween()
+	if _fade_tween:
+		_fade_tween.kill()
 
-	tween.tween_property(
+	_fade_tween = create_tween()
+	_fade_tween.tween_property(
 		self,
 		"intensidad",
 		0.0,
-		0.8
+		DURACION_TRANSICION
 	)
+	_fade_tween.finished.connect(_al_terminar_fade_out)
+	return _fade_tween.finished
 
-	await tween.finished
+func _al_terminar_fade_out() -> void:
+	for gota: RainDrop in gotas:
+		if is_instance_valid(gota):
+			gota.queue_free()
+	gotas.clear()
 
-func update(_delta: float) -> void:
-
-	pass
+func update_weather(_delta: float) -> void:
+	var vivas: Array[RainDrop] = []
+	for gota: RainDrop in gotas:
+		if is_instance_valid(gota):
+			vivas.append(gota)
+	gotas = vivas

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://opyrnh2d0xn6"]
+
+[ext_resource type="Script" uid="uid://dbp6hc7uj6tfa" path="res://data_core/scripts/map/weather_effects/snow/snow_flake.gd" id="1_mw7oh"]
+
+[node name="SnowFlake" type="Node2D" unique_id=1219404603]
+script = ExtResource("1_mw7oh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=110995427]
