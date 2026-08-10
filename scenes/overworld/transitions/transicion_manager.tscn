@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cpb3rvd73k4p2"]
+
+[ext_resource type="Script" uid="uid://cb6ycadh45je7" path="res://data_core/scripts/overworld/transicion_manager.gd" id="1_56kfr"]
+
+[node name="TransicionManager" type="CanvasLayer" unique_id=514113280]
+script = ExtResource("1_56kfr")
+
+[node name="Pantalla" type="ColorRect" parent="." unique_id=1921746014]
+offset_right = 480.0
+offset_bottom = 320.0
+color = Color(1, 1, 1, 0)

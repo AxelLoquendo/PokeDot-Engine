@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pokedot-engine"
-run/main_scene="uid://dcbvayi6tovk8"
+run/main_scene="uid://vahnkvjwhoyr"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://gpasbafgmsxe"
 
@@ -23,6 +23,7 @@ DialogueManager="*uid://b104pohobtcxy"
 TileBehavioursManager="*uid://cbexmjsqsorqt"
 CloudsManager="*uid://bwy1r47y26sy8"
 WeatherManager="*uid://dq8hei6cs1q6p"
+TransicionManager="*uid://cb6ycadh45je7"
 
 [debug]
 

@@ -68,7 +68,8 @@ signal usar_nubes_cambiado(estado: bool)
 @export var silence_end: float = 0.0
 @export_group("Weather")
 @export var weather: WeatherEffect.WeatherID = WeatherEffect.WeatherID.WEATHER_NONE
-
+@export_group("Map Script")
+@export_file("*.gd", "*.txt") var map_script: String = ""
 
 # Lógica
 var activo: bool = true

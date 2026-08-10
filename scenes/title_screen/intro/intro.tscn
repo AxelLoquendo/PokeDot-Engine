@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://vahnkvjwhoyr"]
+
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="1_40ppk"]
+[ext_resource type="Script" uid="uid://cjgputwsuhk05" path="res://scenes/title_screen/intro/intro.gd" id="1_xuxe7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("1_40ppk")
+font_size = 32
+
+[node name="Intro" type="Node2D" unique_id=2024398510]
+script = ExtResource("1_xuxe7")
+
+[node name="FondoNegro" type="ColorRect" parent="." unique_id=1815989979]
+offset_right = 480.0
+offset_bottom = 320.0
+color = Color(0, 0, 0, 1)
+
+[node name="Creditos" type="Label" parent="." unique_id=213368527]
+offset_left = 17.0
+offset_top = 40.0
+offset_right = 232.0
+offset_bottom = 136.0
+text = " Pokedot - expansion
+
+   Axel_CodeInfinity"
+label_settings = SubResource("LabelSettings_htemk")

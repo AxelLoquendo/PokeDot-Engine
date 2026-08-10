@@ -45,7 +45,11 @@ func _ready() -> void:
 		WeatherEffect.WeatherID.WEATHER_FOG_HORIZONTAL:
 			FogWeather.new(),
 		WeatherEffect.WeatherID.WEATHER_FOG_DIAGONAL:
-			FogWeather.new()
+			FogWeather.new(),
+		WeatherEffect.WeatherID.WEATHER_SANDSTORM:
+			SandstormWeather.new(),
+		WeatherEffect.WeatherID.WEATHER_DROUGHT:
+			DroughtWeather.new(),
 	}
 
 	for weather: WeatherBase in weather_nodes.values():

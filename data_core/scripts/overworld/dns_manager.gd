@@ -79,7 +79,7 @@ func _read_system_time() -> void:
 func _get_state(h: int) -> TimeOfDay:
 	if h >= 5  and h < 10: return TimeOfDay.MORNING
 	if h >= 10 and h < 18: return TimeOfDay.DAY
-	if h >= 18 and h < 20: return TimeOfDay.DUSK
+	if h >= 18 and h < 20: return TimeOfDay.DAY
 	return TimeOfDay.NIGHT
 
 

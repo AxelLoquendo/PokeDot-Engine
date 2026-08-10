@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://di0bmof7rn7eo"]
+
+[ext_resource type="Script" uid="uid://vs1hyfdyoehg" path="res://scenes/title_screen/title_screen.gd" id="1_ri6bm"]
+[ext_resource type="Texture2D" uid="uid://cpp2s4tiomg4c" path="res://game/graphics_eb/title_screen/Title_screen.png" id="2_d6x3v"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_ri6bm"]
+[ext_resource type="AudioStream" uid="uid://cjvvcylrq43tu" path="res://sfx/bgm/Title.ogg" id="3_ri6bm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("2_ri6bm")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.5568628)
+shadow_offset = Vector2(0, 1)
+
+[node name="PantallaTitulo" type="Node2D" unique_id=1227791980]
+script = ExtResource("1_ri6bm")
+
+[node name="Fondo" type="Sprite2D" parent="." unique_id=1678555973]
+position = Vector2(240, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("2_d6x3v")
+
+[node name="TextoInicio" type="Label" parent="." unique_id=599924843]
+offset_left = 192.0
+offset_top = 252.0
+offset_right = 308.0
+offset_bottom = 280.0
+text = "Pulsa Start"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="MusicaTitulo" type="AudioStreamPlayer" parent="." unique_id=1844965772]
+stream = ExtResource("3_ri6bm")

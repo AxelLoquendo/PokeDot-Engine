@@ -2118,7 +2118,7 @@ border_size = 8
 east_map = SubResource("Resource_8wtdx")
 music_path = "uid://2x343j6mo2o0"
 silence_end = 37.68
-weather = 9
+weather = 4
 
 [node name="Tilesets" type="Node2D" parent="." unique_id=717031857]
 z_as_relative = false

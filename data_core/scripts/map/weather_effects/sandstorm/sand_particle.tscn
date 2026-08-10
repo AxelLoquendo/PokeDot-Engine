@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cs16hcdwney2c"]
+
+[ext_resource type="Script" uid="uid://b7rmcc2nmyn6x" path="res://data_core/scripts/map/weather_effects/sandstorm/sand_particle.gd" id="1_vpjkf"]
+
+[node name="SandParticle" type="Node2D" unique_id=898733871]
+script = ExtResource("1_vpjkf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1819217302]

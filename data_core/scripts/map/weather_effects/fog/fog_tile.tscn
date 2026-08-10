@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ds8rh8mnxln7d" path="res://data_core/scripts/map/weather_effects/fog/fog_tile.gd" id="1_yg8oy"]
 
 [node name="FogTile" type="Node2D" unique_id=1085448457]
-modulate = Color(1, 1, 1, 0.25490198)
+modulate = Color(1, 1, 1, 0.78039217)
 script = ExtResource("1_yg8oy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=569858083]
