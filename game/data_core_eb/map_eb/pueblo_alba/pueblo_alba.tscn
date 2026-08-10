@@ -869,6 +869,7 @@ map_region = 1
 map_size = Vector2i(40, 41)
 border_origin = Vector2i(0, 4)
 border_size = 10
+show_location_name = true
 west_map = SubResource("Resource_ougem")
 music_path = "uid://bkto6ugkitnr1"
 silence_end = 5.78

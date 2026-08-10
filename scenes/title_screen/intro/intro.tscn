@@ -20,7 +20,7 @@ offset_left = 17.0
 offset_top = 40.0
 offset_right = 232.0
 offset_bottom = 136.0
-text = " Pokedot - expansion
+text = " Pokedot - engine --
 
-   Axel_CodeInfinity"
+ -- Axel_CodeInfinity"
 label_settings = SubResource("LabelSettings_htemk")

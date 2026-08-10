@@ -1,6 +1,4 @@
 extends CanvasLayer
-class_name TransitionManager
-
 
 @export var duracion: float = 0.5
 
@@ -11,10 +9,13 @@ var _transicionando: bool = false
 
 func _ready() -> void:
 
-	layer = 4000
-
+	layer = 4001
 	visible = true
 
+	crear_pantalla()
+
+
+func crear_pantalla() -> void:
 
 	if has_node("Pantalla"):
 
@@ -23,23 +24,18 @@ func _ready() -> void:
 	else:
 
 		_pantalla = ColorRect.new()
-
 		_pantalla.name = "Pantalla"
-
 		add_child(_pantalla)
 
+	_pantalla.color = Color.BLACK
+	_pantalla.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_pantalla.z_index = 4096
 
-	_pantalla.set_anchors_preset(
+	_pantalla.set_anchors_and_offsets_preset(
 		Control.PRESET_FULL_RECT
 	)
 
-	_pantalla.color = Color.BLACK
-
 	_pantalla.modulate.a = 0.0
-
-	_pantalla.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	_pantalla.z_index = 4096
 
 
 func fade_out(
@@ -47,26 +43,17 @@ func fade_out(
 ) -> Signal:
 
 	if _transicionando:
-
 		return get_tree().process_frame
 
-
 	_transicionando = true
-
 	visible = true
 
 	_pantalla.modulate.a = 0.0
 
-
 	var tween: Tween = create_tween()
 
-	tween.set_ease(
-		Tween.EASE_IN_OUT
-	)
-
-	tween.set_trans(
-		Tween.TRANS_SINE
-	)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
 
 	tween.tween_property(
 		_pantalla,
@@ -86,13 +73,8 @@ func fade_in(
 
 	var tween: Tween = create_tween()
 
-	tween.set_ease(
-		Tween.EASE_IN_OUT
-	)
-
-	tween.set_trans(
-		Tween.TRANS_SINE
-	)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
 
 	tween.tween_property(
 		_pantalla,
@@ -115,30 +97,21 @@ func cambiar_escena(
 ) -> void:
 
 	if _transicionando:
-
 		return
 
-
 	_transicionando = true
-
 	visible = true
 
 	_pantalla.modulate.a = 0.0
 
-
-	# -----------------------------------------
-	# FADE OUT
-	# -----------------------------------------
-
 	var tween: Tween = create_tween()
 
-	tween.set_ease(
-		Tween.EASE_IN_OUT
-	)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
 
-	tween.set_trans(
-		Tween.TRANS_SINE
-	)
+	# -------------------------------------------------------
+	# FADE OUT
+	# -------------------------------------------------------
 
 	tween.tween_property(
 		_pantalla,
@@ -147,10 +120,9 @@ func cambiar_escena(
 		tiempo
 	)
 
-
-	# -----------------------------------------
-	# CAMBIAR ESCENA
-	# -----------------------------------------
+	# -------------------------------------------------------
+	# CAMBIO DE ESCENA
+	# -------------------------------------------------------
 
 	tween.tween_callback(
 		func() -> void:
@@ -169,22 +141,21 @@ func cambiar_escena(
 					+ ruta_escena
 				)
 
-				_transicionando = false
+				_finalizar_transicion()
 	)
 
-
-	# -----------------------------------------
-	# ESPERAR A QUE LA NUEVA ESCENA EXISTA
-	# -----------------------------------------
-
-	tween.tween_interval(
-		0.05
+	# Esperamos un frame para asegurarnos de que
+	# la nueva escena ya fue colocada.
+	tween.tween_callback(
+		func() -> void:
+			pass
 	)
 
+	tween.tween_interval(0.05)
 
-	# -----------------------------------------
+	# -------------------------------------------------------
 	# FADE IN
-	# -----------------------------------------
+	# -------------------------------------------------------
 
 	tween.tween_property(
 		_pantalla,
@@ -192,11 +163,6 @@ func cambiar_escena(
 		0.0,
 		tiempo
 	)
-
-
-	# -----------------------------------------
-	# FINALIZAR
-	# -----------------------------------------
 
 	tween.tween_callback(
 		_finalizar_transicion
@@ -206,7 +172,6 @@ func cambiar_escena(
 func _finalizar_transicion() -> void:
 
 	_transicionando = false
-
 	visible = false
 
 

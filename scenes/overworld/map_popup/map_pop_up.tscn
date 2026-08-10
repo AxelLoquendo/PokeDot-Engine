@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://caqmcwnraia5s"]
+
+[ext_resource type="Texture2D" uid="uid://7eee0st3cc85" path="res://scenes/overworld/map_popup/bw/bw_primary.png" id="1_f8k6s"]
+[ext_resource type="Script" uid="uid://di14hy0edqxcb" path="res://scenes/overworld/map_popup/map_pop_up.gd" id="1_tgn0i"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_tgn0i"]
+[ext_resource type="Texture2D" uid="uid://ckq8uxy5yt13s" path="res://scenes/overworld/map_popup/bw/bw_secondary.png" id="3_v0d0u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("2_tgn0i")
+
+[sub_resource type="Animation" id="Animation_k7pw8"]
+resource_name = "Entrar"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Primary:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(240, -24), Vector2(240, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Primary:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cxxy4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Primary:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Primary:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_opmtf"]
+resource_name = "Salir"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Primary:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(240, 24), Vector2(240, -24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Primary:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lbbk"]
+_data = {
+&"Entrar": SubResource("Animation_k7pw8"),
+&"RESET": SubResource("Animation_cxxy4"),
+&"Salir": SubResource("Animation_opmtf")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_14cdr"]
+font = ExtResource("2_tgn0i")
+
+[sub_resource type="Animation" id="Animation_i6bab"]
+resource_name = "Entrar"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Secondary:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(240, 344), Vector2(240, 296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Secondary:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bscld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Secondary:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Secondary:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s1f8h"]
+resource_name = "Salir"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Secondary:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(240, 296), Vector2(240, 344)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Secondary:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wiv3u"]
+_data = {
+&"Entrar": SubResource("Animation_i6bab"),
+&"RESET": SubResource("Animation_bscld"),
+&"Salir": SubResource("Animation_s1f8h")
+}
+
+[node name="MapPopUp" type="CanvasLayer" unique_id=1016954872]
+layer = 4000
+script = ExtResource("1_tgn0i")
+
+[node name="Primary" type="Sprite2D" parent="." unique_id=1224589210]
+self_modulate = Color(1, 1, 1, 0.78431374)
+position = Vector2(240, 24)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f8k6s")
+
+[node name="MapName" type="Label" parent="Primary" unique_id=1095519365]
+offset_left = -117.5
+offset_top = -12.0
+offset_right = -59.5
+offset_bottom = 11.0
+text = "Prado Natal"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Primary_anim" type="AnimationPlayer" parent="." unique_id=495557255]
+libraries/ = SubResource("AnimationLibrary_5lbbk")
+
+[node name="Secondary" type="Sprite2D" parent="." unique_id=1156096347]
+self_modulate = Color(1, 1, 1, 0.78431374)
+position = Vector2(240, 296)
+scale = Vector2(2, 2)
+texture = ExtResource("3_v0d0u")
+
+[node name="Time" type="Label" parent="Secondary" unique_id=1735665974]
+offset_left = 74.0
+offset_top = -6.0
+offset_right = 116.0
+offset_bottom = 8.0
+text = "00:00 AM"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Second_anim" type="AnimationPlayer" parent="." unique_id=1890972837]
+root_node = NodePath("../Primary_anim")
+libraries/ = SubResource("AnimationLibrary_wiv3u")

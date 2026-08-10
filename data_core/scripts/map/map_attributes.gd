@@ -48,7 +48,16 @@ enum ConnectionDirection {
 			actualizar_borde = false
 
 @export_group("Flags Map")
-@export var show_location_name: bool = false #Proximamente para mostrar letrero de entrada al mapa
+signal show_location_name_changed(estado: bool)
+@export var show_location_name: bool = false:
+	set(nuevo_valor):
+
+		show_location_name = nuevo_valor
+
+		if not Engine.is_editor_hint():
+			show_location_name_changed.emit(
+				nuevo_valor
+			)
 signal usar_nubes_cambiado(estado: bool)
 @export var usar_nubes: bool = true:
 	set(nuevo_valor):
