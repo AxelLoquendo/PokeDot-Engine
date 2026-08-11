@@ -237,6 +237,18 @@ offset_bottom = 329.12723
 texture = ExtResource("2_78i0o")
 stretch_mode = 2
 
+[node name="ContainerOpciones" type="VBoxContainer" parent="Control/CajaDialogo" unique_id=930902686]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = -81.0
+offset_right = -8.0
+offset_bottom = -41.0
+grow_horizontal = 0
+alignment = 1
+
 [node name="TextLabel" type="Label" parent="Control/CajaDialogo" unique_id=5012601]
 layout_mode = 0
 offset_left = 23.0

@@ -6,7 +6,8 @@ extends Node2D
 const TIEMPO_PARPADEO: float = 1.6
 var _tween_parpadeo: Tween
 var _activo: bool = true
-
+# NUEVO: Bandera para evitar doble entrada durante la transición
+var _transicionando: bool = false 
 
 func _ready() -> void:
 	CloudsManager.desactivar()
@@ -16,7 +17,6 @@ func _ready() -> void:
 	$TextoInicio.modulate.a = 1.0
 
 	_iniciar_parpadeo()
-
 	$MusicaTitulo.play()
 
 func _iniciar_parpadeo() -> void:
@@ -33,16 +33,23 @@ func _iniciar_parpadeo() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not _activo: return
+	# Si ya estamos en transición o no activo, ignoramos TODO input
+	if not _activo or _transicionando:
+		return
 
 	if event.is_action_pressed("buttonStart"):
 		_empezar_juego()
 
 func _empezar_juego() -> void:
-	if not _activo: return
+	# Doble seguridad por si acaso
+	if _transicionando:
+		return
+		
+	_transicionando = true # BLOQUEAMOS entradas futuras inmediatamente
 	_activo = false
 
 	_tween_parpadeo.kill()
 	$MusicaTitulo.stop()
 
+	# Llamada segura a la transición
 	TransicionManager.cambiar_escena("res://data_core/map/position_game/gestor_inicio.tscn", 0.5)
