@@ -9,27 +9,37 @@ var datos_npc: CharacterNpc
 var en_dialogo: bool = false
 
 var mapa_dueño: MapAttributes
+var script_runner: ScriptRunner = null  ## Instancia del ejecutor de scripts
 
 func _ready() -> void:
 	super._ready()
-
+	
 	mapa_dueño = get_parent().get_parent() as MapAttributes
-
+	
 	if mapa_dueño == null:
 		push_warning("NPC sin mapa dueño")
 		return
-
+	
 	if not mapa_dueño.activo:
 		return
-
+	
 	datos_npc = character_data as CharacterNpc
 	if not datos_npc:
 		push_error("El NPC necesita un recurso CharacterNpc")
 		return
-
+	
 	if not Engine.is_editor_hint():
 		add_to_group(&"NPC")
-
+		
+		# Inicializar el script runner si hay scripts definidos
+		if datos_npc.script_container:
+			script_runner = ScriptRunner.new()
+			add_child(script_runner)
+			# Conectar la señal de finalización de diálogo para continuar scripts
+			var dialogue_box: Node = get_tree().get_first_node_in_group("dialogue_box")
+			if dialogue_box:
+				dialogue_box.dialogue_ended.connect(_on_dialogue_ended.bind(self))
+	
 	casilla_inicial = casilla_actual
 	yendo_a_derecha = datos_npc.direccion_inicial != CharacterNpc.DireccionInicial.IZQUIERDA
 	aplicar_direccion_inicial()
@@ -216,11 +226,15 @@ func reproducir_idle() -> void:
 			anim_player.play("idle_left")
 
 func interact() -> void:
-	DialogueManager.start_dialogue(character_data)
+	# Priorizar scripts sobre diálogo tradicional
+	if datos_npc.script_container and script_runner:
+		var player: Node = get_tree().get_first_node_in_group("player")
+		script_runner.start_script(datos_npc.script_container.on_interact, self, player, mapa_dueño)
+	else:
+		DialogueManager.start_dialogue(character_data)
 
 func preparar_dialogo(posicion_jugador: Vector2) -> void:
 	en_dialogo = true
-
 	cancelar_movimiento()
 	position = snap_to_grid(position)
 	mirar_hacia_posicion(posicion_jugador)
@@ -230,4 +244,12 @@ func terminar_dialogo() -> void:
 	en_dialogo = false
 	tiempo_espera_restante = 0.5
 	
+	# Notificar al script runner que el diálogo terminó
+	if script_runner:
+		script_runner.on_async_complete()
+	
 	reproducir_idle()
+
+func _on_dialogue_ended(npc_node: Node2D) -> void:
+	if npc_node == self and script_runner:
+		script_runner.on_async_complete()

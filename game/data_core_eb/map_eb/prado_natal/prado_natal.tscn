@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="3_vq3b1"]
 [ext_resource type="Script" uid="uid://dsu2neoeaf0e2" path="res://data_core/scripts/overworld/tile_behaviours_layer.gd" id="3_yd4tm"]
 [ext_resource type="PackedScene" uid="uid://bq3vvw2e3pu8g" path="res://scenes/npc/npc.tscn" id="4_d8013"]
-[ext_resource type="Script" uid="uid://bifljdkwbk7r4" path="res://data_core/scripts/overworld/dialogue_page.gd" id="7_ueygd"]
-[ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="7_y0fca"]
-[ext_resource type="Script" uid="uid://tggdtu6nro21" path="res://data_core/scripts/overworld/dialogue_choice.gd" id="8_8wtdx"]
-[ext_resource type="Script" uid="uid://ctavlpyny00ah" path="res://data_core/scripts/overworld/dialogue.gd" id="8_cxnhx"]
 
 [sub_resource type="Resource" id="Resource_8wtdx"]
 script = ExtResource("2_ueygd")
@@ -2378,74 +2374,6 @@ texture = ExtResource("2_dqi8l")
 [sub_resource type="TileSet" id="TileSet_hprgv"]
 sources/0 = SubResource("TileSetAtlasSource_ueygd")
 
-[sub_resource type="Resource" id="Resource_cxnhx"]
-script = ExtResource("7_ueygd")
-speaker = "Kaida (Hermana)"
-text = "Sigo sin saber cuando empezaremos a rodar la pelicula."
-page_id = "0"
-next_page_id = "1"
-metadata/_custom_type_script = "uid://bifljdkwbk7r4"
-
-[sub_resource type="Resource" id="Resource_ueygd"]
-script = ExtResource("7_ueygd")
-speaker = "Kaida (Hermana)"
-text = "Jeje, estoy nerviosa, hermano."
-page_id = "1"
-next_page_id = "2"
-metadata/_custom_type_script = "uid://bifljdkwbk7r4"
-
-[sub_resource type="Resource" id="Resource_xp4rw"]
-script = ExtResource("8_8wtdx")
-text = "Si"
-choice_id = "0"
-next_page_id = "3"
-metadata/_custom_type_script = "uid://tggdtu6nro21"
-
-[sub_resource type="Resource" id="Resource_s65af"]
-script = ExtResource("8_8wtdx")
-text = "No"
-choice_id = "1"
-next_page_id = "4"
-metadata/_custom_type_script = "uid://tggdtu6nro21"
-
-[sub_resource type="Resource" id="Resource_kfurw"]
-script = ExtResource("7_ueygd")
-speaker = "Kaida (Hermana)"
-text = "¿Qué hay de ti?, Estas nervioso?."
-page_id = "2"
-next_page_id = "3"
-choices = Array[ExtResource("8_8wtdx")]([SubResource("Resource_xp4rw"), SubResource("Resource_s65af")])
-metadata/_custom_type_script = "uid://bifljdkwbk7r4"
-
-[sub_resource type="Resource" id="Resource_l1ftc"]
-script = ExtResource("7_ueygd")
-speaker = "Kaida (Hermana)"
-text = "Es bueno saber que no soy la única."
-page_id = "3"
-next_page_id = "-1"
-metadata/_custom_type_script = "uid://bifljdkwbk7r4"
-
-[sub_resource type="Resource" id="Resource_7johi"]
-script = ExtResource("7_ueygd")
-speaker = "Kaida (Hermana)"
-text = "Wao, supongo que estas más preparado."
-page_id = "4"
-metadata/_custom_type_script = "uid://bifljdkwbk7r4"
-
-[sub_resource type="Resource" id="Resource_58jqm"]
-script = ExtResource("8_cxnhx")
-pages = Array[ExtResource("7_ueygd")]([SubResource("Resource_cxnhx"), SubResource("Resource_ueygd"), SubResource("Resource_kfurw"), SubResource("Resource_l1ftc"), SubResource("Resource_7johi")])
-metadata/_custom_type_script = "uid://ctavlpyny00ah"
-
-[sub_resource type="Resource" id="Resource_yd4tm"]
-script = ExtResource("7_y0fca")
-nombre = "Kaida (Hermana)"
-sprite_overworld = 3
-dialogue = SubResource("Resource_58jqm")
-shadow_size = 2
-shadow_offset_y = 11.0
-metadata/_custom_type_script = "uid://d1j7qa7rbivcw"
-
 [node name="MapData" type="Node2D" unique_id=156845757]
 script = ExtResource("1_5wml8")
 map_name = "Prado Natal"
@@ -2507,4 +2435,4 @@ tile_set = SubResource("TileSet_hprgv")
 [node name="Npc" parent="EventObject" unique_id=1270542304 instance=ExtResource("4_d8013")]
 z_index = 128
 position = Vector2(152, 176)
-character_data = SubResource("Resource_yd4tm")
+character_data = null

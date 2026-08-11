@@ -27,11 +27,8 @@ var _sprite_overworld: EventObjects.NpcID = EventObjects.NpcID.NONE
 	set(value):
 		if _sprite_overworld == value:
 			return
-
 		_sprite_overworld = value
-		print("emit_changed()")
 		emit_changed()
-
 	get:
 		return _sprite_overworld
 
@@ -47,3 +44,4 @@ var _sprite_overworld: EventObjects.NpcID = EventObjects.NpcID.NONE
 
 @export_group("Interacción")
 @export var dialogue: Dialogue
+@export var script_container: ScriptContainer  ## ← AQUÍ SE ASIGNA EL SCRIPT
