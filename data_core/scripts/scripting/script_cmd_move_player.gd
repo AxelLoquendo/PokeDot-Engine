@@ -8,7 +8,7 @@ class_name ScriptCmdMovePlayer
 enum MoveType {
 	INSTANT,
 	ANIMATED,
-	WALK_TO_TILE
+	WALK_TO_TILE  ## NO IMPLEMENTADO AUN
 }
 
 @export var move_type: MoveType = MoveType.ANIMATED
@@ -17,35 +17,37 @@ enum MoveType {
 @export var target_tile: Vector2i = Vector2i.ZERO
 @export_range(0.1, 2.0, 0.1) var speed: float = 0.5
 
+
 func execute(context: ScriptExecutionContext) -> bool:
 	if not context.player:
 		return true
 	
-	var player_controller = context.get_player_controller()
+	var player_controller: Node2D = context.get_player_controller()
 	if not player_controller:
 		return true
 	
 	match move_type:
 		MoveType.INSTANT:
-			var new_pos = player_controller.position + (direction * 16 * steps)
+			var new_pos: Vector2 = player_controller.position + (Vector2(direction) * 16.0 * float(steps))
 			player_controller.position = new_pos
 			return true
 			
 		MoveType.ANIMATED:
-			for i in range(steps):
-				if player_controller.has_method("mover_un_paso"):
-					player_controller.mover_un_paso(direction)
+			# Usar intentar_mover() del controller del jugador
+			var dir_vector: Vector2 = Vector2(direction)
+			for i: int in range(steps):
+				if player_controller.has_method("intentar_mover"):
+					player_controller.call("intentar_mover", dir_vector)
 				await player_controller.get_tree().create_timer(speed).timeout
 			return true
 			
 		MoveType.WALK_TO_TILE:
-			if player_controller.has_method("mover_a_casilla"):
-				player_controller.mover_a_casilla(target_tile)
-				context.is_waiting = true
-				return false
+			# NO IMPLEMENTADO AUN
+			push_warning("ScriptCmdMovePlayer: WALK_TO_TILE aun no implementado")
 			return true
 	
 	return true
+
 
 func get_display_text() -> String:
 	return "🎮 Mover Jugador: %d pasos" % steps

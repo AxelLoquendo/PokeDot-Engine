@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="3_vq3b1"]
 [ext_resource type="Script" uid="uid://dsu2neoeaf0e2" path="res://data_core/scripts/overworld/tile_behaviours_layer.gd" id="3_yd4tm"]
 [ext_resource type="PackedScene" uid="uid://bq3vvw2e3pu8g" path="res://scenes/npc/npc.tscn" id="4_d8013"]
+[ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="7_y0fca"]
+[ext_resource type="Script" uid="uid://c1ljwphty2qo2" path="res://data_core/scripts/scripting/script_command.gd" id="8_cxnhx"]
+[ext_resource type="Script" uid="uid://clebqm6c0kky3" path="res://script_cmd_move_npc.gd" id="9_cxnhx"]
+[ext_resource type="Script" uid="uid://dqvrq3hpfgjba" path="res://data_core/scripts/scripting/script_container.gd" id="10_s65af"]
 
 [sub_resource type="Resource" id="Resource_8wtdx"]
 script = ExtResource("2_ueygd")
@@ -2374,6 +2378,25 @@ texture = ExtResource("2_dqi8l")
 [sub_resource type="TileSet" id="TileSet_hprgv"]
 sources/0 = SubResource("TileSetAtlasSource_ueygd")
 
+[sub_resource type="Resource" id="Resource_cxnhx"]
+script = ExtResource("9_cxnhx")
+move_type = 2
+steps = 2
+metadata/_custom_type_script = "uid://clebqm6c0kky3"
+
+[sub_resource type="Resource" id="Resource_58jqm"]
+script = ExtResource("10_s65af")
+on_approach = Array[ExtResource("8_cxnhx")]([SubResource("Resource_cxnhx")])
+metadata/_custom_type_script = "uid://dqvrq3hpfgjba"
+
+[sub_resource type="Resource" id="Resource_s65af"]
+script = ExtResource("7_y0fca")
+sprite_overworld = 3
+script_container = SubResource("Resource_58jqm")
+shadow_size = 2
+shadow_offset_y = 11.0
+metadata/_custom_type_script = "uid://d1j7qa7rbivcw"
+
 [node name="MapData" type="Node2D" unique_id=156845757]
 script = ExtResource("1_5wml8")
 map_name = "Prado Natal"
@@ -2435,4 +2458,4 @@ tile_set = SubResource("TileSet_hprgv")
 [node name="Npc" parent="EventObject" unique_id=1270542304 instance=ExtResource("4_d8013")]
 z_index = 128
 position = Vector2(152, 176)
-character_data = null
+character_data = SubResource("Resource_s65af")

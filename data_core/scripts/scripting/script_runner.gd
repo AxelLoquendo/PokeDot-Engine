@@ -13,8 +13,10 @@ signal script_started()
 signal script_finished()
 signal command_executed(command: ScriptCommand)
 
-func _ready():
+
+func _ready() -> void:
 	set_process(false)
+
 
 ## Inicia la ejecución de un script con los parámetros dados
 func start_script(script_commands: Array[ScriptCommand], npc_node: Node2D = null, player_node: Node2D = null, map_node: Node = null) -> void:
@@ -33,12 +35,14 @@ func start_script(script_commands: Array[ScriptCommand], npc_node: Node2D = null
 	# Ejecutar primer comando
 	_execute_current_command()
 
+
 ## Detiene la ejecución del script actual
 func stop_script() -> void:
 	is_running = false
 	set_process(false)
 	commands.clear()
 	context = null
+
 
 func _process(_delta: float) -> void:
 	if not is_running or context == null:
@@ -49,6 +53,7 @@ func _process(_delta: float) -> void:
 		return
 	
 	_execute_current_command()
+
 
 func _execute_current_command() -> void:
 	if current_index >= commands.size():
@@ -74,12 +79,14 @@ func _execute_current_command() -> void:
 		# Comando asíncrono - esperar a que se complete
 		pass
 
+
 ## Llama cuando un diálogo o evento asíncrono ha terminado
 func on_async_complete() -> void:
 	if context:
 		context.is_waiting = false
 		current_index += 1
 		_execute_current_command()
+
 
 func _finish_script() -> void:
 	is_running = false

@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_aeyi7"]
 script = ExtResource("2_woxlu")
-sprite_overworld = 2
+sprite_overworld = 3
 shadow_size = 2
 shadow_offset_y = 11.0
 metadata/_custom_type_script = "uid://d1j7qa7rbivcw"
@@ -27,13 +27,14 @@ forma_colision = NodePath("StaticBody2D/CollisionShape2D")
 
 [node name="CharacterShadow" type="Sprite2D" parent="." unique_id=745508035]
 modulate = Color(1, 1, 1, 0.5058824)
+position = Vector2(-0.5, 11)
 texture = ExtResource("3_ay68w")
 script = ExtResource("3_woxlu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1430229856]
 sprite_frames = ExtResource("3_r4bp4")
 animation = &"idle_down"
-frame_progress = 0.93469757
+frame_progress = 0.40444875
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=225778391]
 collision_mask = 2

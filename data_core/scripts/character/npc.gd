@@ -38,7 +38,7 @@ func _ready() -> void:
 			# Conectar la señal de finalización de diálogo para continuar scripts
 			var dialogue_box: Node = get_tree().get_first_node_in_group("dialogue_box")
 			if dialogue_box:
-				dialogue_box.dialogue_ended.connect(_on_dialogue_ended.bind(self))
+				dialogue_box.connect("dialogue_ended", _on_dialogue_ended.bind(self))
 	
 	casilla_inicial = casilla_actual
 	yendo_a_derecha = datos_npc.direccion_inicial != CharacterNpc.DireccionInicial.IZQUIERDA

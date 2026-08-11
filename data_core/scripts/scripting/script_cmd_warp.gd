@@ -16,8 +16,9 @@ enum WarpTarget {
 @export var spawn_direction: Vector2i = Vector2i(0, -1)  ## Dirección al aparecer
 @export var fade_duration: float = 0.5  ## Duración del efecto de desvanecimiento
 
+
 func execute(context: ScriptExecutionContext) -> bool:
-	var targets_to_warp = []
+	var targets_to_warp: Array[Node2D] = []
 	
 	if target == WarpTarget.PLAYER or target == WarpTarget.BOTH:
 		if context.player:
@@ -30,38 +31,27 @@ func execute(context: ScriptExecutionContext) -> bool:
 	if targets_to_warp.is_empty():
 		return true
 	
-	# Aplicar efecto de fade si está configurado
-	if fade_duration > 0:
-		_apply_fade_effect(fade_duration / 2.0)
-		await context.npc.get_tree().create_timer(fade_duration / 2.0).timeout
-	
 	# Ejecutar teletransporte
-	for entity in targets_to_warp:
+	for entity: Node2D in targets_to_warp:
 		_warp_entity(entity, target_map, target_tile, spawn_direction)
-	
-	if fade_duration > 0:
-		await context.npc.get_tree().create_timer(fade_duration / 2.0).timeout
-		_apply_fade_effect(-fade_duration / 2.0)  ## Fade in
 	
 	return true
 
+
 func _warp_entity(entity: Node2D, map_name: String, tile: Vector2i, direction: Vector2i) -> void:
 	if map_name != "":
-		# Cambiar de mapa
-		if MapManager.has_method("change_map"):
-			MapManager.change_map(map_name, tile, direction)
+		# Cambiar de mapa - NO IMPLEMENTADO AUN
+		push_warning("ScriptCmdWarp: cambio de mapa aun no implementado")
 	else:
 		# Mover en el mismo mapa
-		entity.position = Vector2(tile.x * 16, tile.y * 16)  ## Asumiendo tiles de 16px
+		entity.position = Vector2(float(tile.x) * 16.0, float(tile.y) * 16.0)  ## Asumiendo tiles de 16px
 		
-		if entity.has_method("mirar_hacia_direccion"):
-			entity.mirar_hacia_direccion(direction)
+		# Mirar hacia la dirección si el método existe
+		if entity.has_method("mirar_hacia_posicion"):
+			entity.call("mirar_hacia_posicion", Vector2(direction) * 16.0 + entity.global_position)
 
-func _apply_fade_effect(duration: float) -> void:
-	# Implementar efecto de fade usando CanvasLayer
-	pass
 
 func get_display_text() -> String:
-	var target_names = ["Jugador", "NPC", "Ambos"]
-	var map_info = "mismo mapa" if target_map == "" else "mapa: %s" % target_map
+	var target_names: Array[String] = ["Jugador", "NPC", "Ambos"]
+	var map_info: String = "mismo mapa" if target_map == "" else ("mapa: %s" % target_map)
 	return "🌀 Teletransportar %s a %s (%d, %d)" % [target_names[target], map_info, target_tile.x, target_tile.y]

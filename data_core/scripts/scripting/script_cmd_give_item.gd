@@ -13,33 +13,20 @@ func execute(context: ScriptExecutionContext) -> bool:
 	if not context.player:
 		return true
 	
-	#var success: bool = false
+	# NO IMPLEMENTADO AUN - requiere sistema de items/mochila
+	push_warning("ScriptCmdGiveItem: sistema de items aun no implementado")
 	
-	#if check_bag_space:
-	#	if BagManager.has_method("has_space"):
-	#		if not BagManager.has_space(item_id, amount):
-	#			if show_notification:
-	#				_show_message("¡No hay espacio en la mochila!")
-	#			return true
-	
-	#if BagManager.has_method("add_item"):
-	#	success = BagManager.add_item(item_id, amount)
-	
-	#if success and show_notification:
-	#	_show_message("¡Has recibido %dx %s!" % [amount, _get_item_name(item_id)])
+	if show_notification:
+		_show_message("¡Has recibido %dx %s!" % [amount, item_id])
 	
 	return true
 
-#func _get_item_name(item_id: String) -> String:
-#	if ItemDatabase.has_method("get_item_name"):
-#		return ItemDatabase.get_item_name(item_id)
-#	return item_id.capitalize()
-
-
 func _show_message(text: String) -> void:
-	# Usar el sistema de notificaciones o diálogo
-	if DialogueManager.has_method("show_brief_message"):
+	# Usar el sistema de notificaciones o diálogo si existe
+	if DialogueManager and DialogueManager.has_method("show_brief_message"):
 		DialogueManager.show_brief_message(text)
+	else:
+		push_warning(text)
 
 func get_display_text() -> String:
 	return "🎁 Dar Item: %s x%d" % [item_id, amount]

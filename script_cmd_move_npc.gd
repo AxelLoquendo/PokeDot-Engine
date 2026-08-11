@@ -8,7 +8,7 @@ class_name ScriptCmdMoveNpc
 enum MoveType {
 	INSTANT,      ## Movimiento instantáneo
 	ANIMATED,     ## Movimiento animado paso a paso
-	WALK_TO_TILE  ## Caminar hasta una casilla específica
+	WALK_TO_TILE  ## Caminar hasta una casilla específica (NO IMPLEMENTADO AUN)
 }
 
 @export var move_type: MoveType = MoveType.ANIMATED
@@ -17,42 +17,49 @@ enum MoveType {
 @export var target_tile: Vector2i = Vector2i.ZERO  ## Solo para WALK_TO_TILE
 @export_range(0.1, 2.0, 0.1) var speed: float = 0.5
 
+
 func execute(context: ScriptExecutionContext) -> bool:
 	if not context.npc:
 		return true
 	
-	var controller = context.get_npc_controller()
+	var controller: CharacterController = context.get_npc_controller()
 	if not controller:
 		return true
 	
 	match move_type:
 		MoveType.INSTANT:
-			var new_pos = controller.position + (direction * 16 * steps)  ## Asumiendo tiles de 16px
+			# Movimiento instantáneo sin animación
+			var new_pos: Vector2 = controller.position + (Vector2(direction) * controller.TILE_SIZE * float(steps))
 			controller.position = new_pos
+			controller.casilla_actual = controller.posicion_a_casilla(controller.global_position)
 			return true
 			
 		MoveType.ANIMATED:
-			controller.mirar_hacia_direccion(direction)
-			for i in range(steps):
-				controller.mover_un_paso(direction)
-				await controller.get_tree().create_timer(speed).timeout
+			# Movimiento animado usando intentar_mover()
+			var dir_vector: Vector2 = Vector2(direction)
+			# Mirar hacia la dirección
+			controller.mirar_hacia_posicion(controller.global_position + dir_vector * controller.TILE_SIZE)
+			
+			for i: int in range(steps):
+				if controller.intentar_mover(dir_vector):
+					# Esperar a que complete el movimiento
+					await controller.get_tree().create_timer(speed).timeout
 			return true
 			
 		MoveType.WALK_TO_TILE:
-			if controller.has_method("mover_a_casilla"):
-				controller.mover_a_casilla(target_tile)
-				context.is_waiting = true
-				return false
+			# NO IMPLEMENTADO AUN - requiere pathfinding
+			push_warning("ScriptCmdMoveNpc: WALK_TO_TILE aun no implementado")
 			return true
 	
 	return true
 
+
 func get_display_text() -> String:
-	var dir_names = {
+	var dir_names: Dictionary = {
 		Vector2i(0, -1): "Arriba",
 		Vector2i(0, 1): "Abajo",
 		Vector2i(-1, 0): "Izquierda",
 		Vector2i(1, 0): "Derecha"
 	}
-	var dir_name = dir_names.get(direction, "Desconocida")
+	var dir_name: String = dir_names.get(direction, "Desconocida") as String
 	return "🚶 Mover NPC: %s (%d pasos)" % [dir_name, steps]

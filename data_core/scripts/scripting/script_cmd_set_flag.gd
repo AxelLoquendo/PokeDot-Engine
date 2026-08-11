@@ -16,31 +16,31 @@ enum FlagType {
 @export var flag_name: String = "evento_completado"
 @export var value: Variant = true
 
+
 func execute(context: ScriptExecutionContext) -> bool:
 	match flag_type:
 		FlagType.GLOBAL:
-			# Usar tu sistema de guardado global
-			if SaveManager.has_method("set_global_var"):
-				SaveManager.set_global_var(flag_name, value)
-			else:
-				# Fallback a Autoload global
-				if Engine.has_singleton("SaveManager"):
-					Engine.get_singleton("SaveManager").set_global_var(flag_name, value)
+			# NO IMPLEMENTADO AUN - requiere SaveManager
+			push_warning("ScriptCmdSetFlag: GLOBAL flags aun no implementadas")
 					
 		FlagType.LOCAL:
 			context.set_variable(flag_name, value)
-			
+					
 		FlagType.MAP_FLAG:
-			if context.map and context.map.has_method("set_flag"):
-				context.map.set_flag(flag_name, value)
-				
+			# NO IMPLEMENTADO AUN
+			push_warning("ScriptCmdSetFlag: MAP_FLAG aun no implementado")
+					
 		FlagType.NPC_FLAG:
-			var npc_data = context.get_npc_data()
+			var npc_data: CharacterNpc = context.get_npc_data()
 			if npc_data and npc_data.has_property("flags"):
-				npc_data.flags[flag_name] = value
+				var flags: Dictionary = npc_data.flags as Dictionary
+				flags[flag_name] = value
+			else:
+				push_warning("ScriptCmdSetFlag: NPC no tiene propiedad flags")
 	
 	return true
 
+
 func get_display_text() -> String:
-	var type_names = ["Global", "Local", "Mapa", "NPC"]
+	var type_names: Array[String] = ["Global", "Local", "Mapa", "NPC"]
 	return "🏳️ Bandera [%s]: %s = %s" % [type_names[flag_type], flag_name, str(value)]
