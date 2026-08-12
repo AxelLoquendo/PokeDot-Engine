@@ -7,8 +7,46 @@ class_name ScriptTextParser
 ## Permite definir scripts en archivos .txt con comandos simples
 
 const COMANDOS_VALIDOS: Array[String] = [
-	"text", "waitbutton", "setflag", "clearflag", "warp", "giveitem", "sound", "end"
+	"text",
+	"multichoice",
+	"label",
+	"goto",
+	"ifchoice",
+	"ifflag",
+	"applymovement",
+	"weather",
+	"waitbutton",
+	"setflag",
+	"clearflag",
+	"moveplayer",
+	"faceplayer",
+	"lock",
+	"release",
+	"warp",
+	"giveitem",
+	"sound",
+	"end"
 ]
+
+
+enum MsgboxType {
+	NPC,        # 0: Lock + FacePlayer + Text + Release
+	DEFAULT,    # 1: Solo texto (tú manejas lock/faceplayer)
+	SIGN,       # 2: Texto estilo cartel
+	YESNO,      # 3: Texto + Selección Sí/No
+	AUTOCLOSE,  # 4: Texto que se cierra solo
+	GETINPUT    # 5: Texto esperando input externo
+}
+
+# Diccionario para convertir strings del txt a Enums
+const MSGBOX_MAP: Dictionary[String, MsgboxType] = {
+	"MSGBOX_NPC": MsgboxType.NPC,
+	"MSGBOX_DEFAULT": MsgboxType.DEFAULT,
+	"MSGBOX_SIGN": MsgboxType.SIGN,
+	"MSGBOX_YESNO": MsgboxType.YESNO,
+	"MSGBOX_AUTOCLOSE": MsgboxType.AUTOCLOSE,
+	"MSGBOX_GETINPUT": MsgboxType.GETINPUT,
+}
 
 var parsed_commands: Array = []
 var error_message: String = ""
@@ -45,15 +83,45 @@ func parse_script(script_text: String) -> Array:
 
 
 ## Parsea una línea individual del script
-func _parse_line(line: String, line_number: int) -> Dictionary[String, Variant]:
+func _parse_line_legacy(line: String, line_number: int) -> Dictionary[String, Variant]:
 	var parts: PackedStringArray = line.split(" ", false)
 	if parts.is_empty():
 		return {} as Dictionary[String, Variant]
-	
+		
 	var command_name: String = parts[0].to_lower()
+	
+	# Reconstruir el resto de la línea
+	var args_text: String = ""
+	if parts.size() > 1:
+		args_text = line.substr(command_name.length()).strip_edges()
+	
 	var args: Array[String] = []
-	for i: int in range(1, parts.size()):
-		args.append(parts[i])
+	
+	# Lógica para argumentos (Manejo de comillas y tipo de msgbox)
+	if args_text.begins_with("\""):
+		# Buscamos el cierre de comillas
+		var closing_quote_index: int = args_text.find("\"", 1)
+		if closing_quote_index != -1:
+			# Extraemos el texto entre comillas
+			var text_content: String = args_text.substr(1, closing_quote_index - 1)
+			args.append(text_content)
+			
+			# Verificamos si hay un segundo argumento (el tipo MSGBOX) después de las comillas
+			var remainder: String = args_text.substr(closing_quote_index + 1).strip_edges()
+			if not remainder.is_empty():
+				# Si hay algo después (ej: MSGBOX_YESNO), lo agregamos como segundo argumento
+				args.append(remainder)
+		else:
+			# Error de sintaxis: comilla abierta sin cerrar
+			has_error = true
+			error_message = "Línea %d: Comillas sin cerrar en '%s'" % [line_number, line]
+			push_error(error_message)
+			return {} as Dictionary[String, Variant]
+	else:
+		# Sin comillas: separar por espacios (texto simple o comandos sin argumentos complejos)
+		var split_args: PackedStringArray = args_text.split(" ", false)
+		for arg: String in split_args:
+			args.append(arg)
 	
 	# Validar comando
 	if command_name not in COMANDOS_VALIDOS:
@@ -66,9 +134,51 @@ func _parse_line(line: String, line_number: int) -> Dictionary[String, Variant]:
 		"command": command_name,
 		"args": args,
 		"line": line_number
-	}
+	} as Dictionary[String, Variant]
 	
 	return command_dict
+
+func _parse_line(line: String, line_number: int) -> Dictionary[String, Variant]:
+	var separator: int = line.find(" ")
+	var command_name: String = line if separator == -1 else line.left(separator)
+	command_name = command_name.to_lower()
+	var args_source: String = "" if separator == -1 else line.substr(separator + 1)
+	var args: Array[String] = _tokenize_arguments(args_source, line_number)
+	if has_error:
+		return {} as Dictionary[String, Variant]
+	if command_name not in COMANDOS_VALIDOS:
+		has_error = true
+		error_message = "Línea %d: comando desconocido '%s'" % [line_number, command_name]
+		push_error(error_message)
+		return {} as Dictionary[String, Variant]
+	return {
+		"command": command_name,
+		"args": args,
+		"line": line_number
+	} as Dictionary[String, Variant]
+
+
+func _tokenize_arguments(source: String, line_number: int) -> Array[String]:
+	var args: Array[String] = []
+	var current: String = ""
+	var inside_quotes: bool = false
+	for character: String in source:
+		if character == "\"":
+			inside_quotes = not inside_quotes
+		elif (character == " " or character == "\t") and not inside_quotes:
+			if not current.is_empty():
+				args.append(current)
+				current = ""
+		else:
+			current += character
+	if inside_quotes:
+		has_error = true
+		error_message = "Línea %d: comillas sin cerrar" % line_number
+		push_error(error_message)
+		return []
+	if not current.is_empty():
+		args.append(current)
+	return args
 
 
 ## Carga y parsea un archivo de script desde una ruta

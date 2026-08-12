@@ -9,19 +9,34 @@ class_name ScriptCmdText
 @export var messages: Array[String] = []
 @export var speaker_name: String = ""  ## Nombre del hablante (vacío = usa nombre del NPC)
 @export var show_portrait: bool = true
+@export var choices: Array[String] = []
+@export var choice_variable: String = ""
+@export var hide_speaker: bool = false
 
 func execute(context: ScriptExecutionContext) -> bool:
 	var final_speaker: String = speaker_name
 	
 	# Intentar obtener el nombre del NPC si no se especificó uno
-	if final_speaker == "" and context.npc:
+	if not hide_speaker and final_speaker == "" and context.npc:
 		var npc_data: CharacterNpc = context.get_npc_data()
 		if npc_data:
 			final_speaker = npc_data.nombre
 
-	var text_pages: Array[String] = messages if not messages.is_empty() else [message]
+	var text_pages: Array[String] = messages.duplicate()
+	if text_pages.is_empty():
+		text_pages.append(message)
+	var dialogue_box: DialogueBox = null
+	if context.npc:
+		dialogue_box = context.npc.get_tree().get_first_node_in_group("dialogue_box") as DialogueBox
+	elif context.player:
+		dialogue_box = context.player.get_tree().get_first_node_in_group("dialogue_box") as DialogueBox
+	if dialogue_box and not context.npc:
+		dialogue_box.dialogue_closed.connect(context.complete_async, CONNECT_ONE_SHOT)
+	if not choices.is_empty() and not choice_variable.is_empty():
+		if dialogue_box:
+			dialogue_box.choice_selected.connect(_on_choice_selected.bind(context), CONNECT_ONE_SHOT)
 	if DialogueManager and DialogueManager.has_method("show_texts"):
-		DialogueManager.show_texts(text_pages, final_speaker, context.npc as CharacterController)
+		DialogueManager.show_texts(text_pages, final_speaker, context.npc as CharacterController, choices)
 		context.is_waiting = true
 		return false
 	
@@ -58,6 +73,10 @@ func execute(context: ScriptExecutionContext) -> bool:
 	# NOTA: Asegúrate de que tu DialogueManager emita una señal o llame a un callback cuando termine
 	context.is_waiting = true
 	return false
+
+func _on_choice_selected(choice_id: String, context: ScriptExecutionContext) -> void:
+	context.set_variable(choice_variable, choice_id)
+
 
 func get_display_text() -> String:
 	var max_len: int = mini(30, message.length())

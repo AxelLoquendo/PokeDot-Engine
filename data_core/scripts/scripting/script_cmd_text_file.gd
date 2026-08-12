@@ -75,7 +75,16 @@ func _convert_parsed_commands(parsed: Array, context: ScriptExecutionContext) ->
 		var command_name: String = cmd_dict.get("command", "") as String
 		if command_name == "text":
 			var args: Array[String] = cmd_dict.get("args", []) as Array[String]
-			pending_texts.append(" ".join(args))
+			if args.size() > 1 and ScriptTextParser.MSGBOX_MAP.has(args[1]):
+				var typed_text: ScriptCmdText = ScriptCmdText.new()
+				typed_text.messages = pending_texts.duplicate()
+				typed_text.messages.append(args[0])
+				typed_text.message = args[0]
+				_configure_msgbox(typed_text, args[1])
+				commands.append(typed_text)
+				pending_texts.clear()
+			else:
+				pending_texts.append(args[0] if not args.is_empty() else "")
 			continue
 
 		_append_text_command(commands, pending_texts)
@@ -101,6 +110,17 @@ func _append_text_command(commands: Array[ScriptCommand], texts: Array[String]) 
 	commands.append(command)
 
 
+func _configure_msgbox(command: ScriptCmdText, msgbox_name: String) -> void:
+	match msgbox_name:
+		"MSGBOX_SIGN":
+			command.hide_speaker = true
+		"MSGBOX_YESNO":
+			command.choices = ["Sí", "No"]
+			command.choice_variable = "last_choice"
+		"MSGBOX_AUTOCLOSE", "MSGBOX_GETINPUT":
+			push_warning("ScriptCmdTextFile: %s todavía usa el cierre normal del diálogo" % msgbox_name)
+
+
 func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: ScriptExecutionContext) -> ScriptCommand:
 	var command_name: String = cmd_dict.get("command", "") as String
 	var args: Array[String] = cmd_dict.get("args", []) as Array[String]
@@ -116,6 +136,74 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 			var cmd: ScriptCmdWait = ScriptCmdWait.new()
 			cmd.wait_for_input = true
 			cmd.input_action = "buttonA"
+			return cmd
+
+		"label":
+			var cmd: ScriptCmdLabel = ScriptCmdLabel.new()
+			if not args.is_empty():
+				cmd.label_name = args[0]
+			return cmd
+
+		"goto":
+			var cmd: ScriptCmdGoto = ScriptCmdGoto.new()
+			if not args.is_empty():
+				cmd.target_label = args[0]
+			return cmd
+
+		"ifchoice":
+			var cmd: ScriptCmdIfChoice = ScriptCmdIfChoice.new()
+			if not args.is_empty():
+				cmd.expected_choice = args[0]
+			if args.size() > 1:
+				cmd.target_label = args[1]
+			return cmd
+
+		"ifflag":
+			var cmd: ScriptCmdIfFlag = ScriptCmdIfFlag.new()
+			if not args.is_empty():
+				cmd.flag_name = args[0]
+			if args.size() > 1:
+				cmd.target_label = args[1]
+			return cmd
+
+		"applymovement":
+			var cmd: ScriptCmdApplyMovement = ScriptCmdApplyMovement.new()
+			if not args.is_empty():
+				cmd.target_id = StringName(args[0])
+			if args.size() > 1:
+				cmd.movement_script = args[1]
+			return cmd
+
+		"weather":
+			var cmd: ScriptCmdWeather = ScriptCmdWeather.new()
+			if not args.is_empty():
+				cmd.weather = _weather_from_text(args[0])
+			return cmd
+
+		"multichoice":
+			var cmd: ScriptCmdText = ScriptCmdText.new()
+			if not args.is_empty():
+				cmd.message = args[0]
+			if args.size() > 1:
+				cmd.choices = _parse_quoted_values(args[1])
+			cmd.choice_variable = "last_choice"
+			return cmd
+
+		"faceplayer":
+			var cmd: ScriptCmdFacePlayer = ScriptCmdFacePlayer.new()
+			return cmd
+
+		"lock", "release":
+			var cmd: ScriptCmdLock = ScriptCmdLock.new()
+			cmd.lock_player = command_name == "lock"
+			return cmd
+
+		"moveplayer":
+			var cmd: ScriptCmdMovePlayer = ScriptCmdMovePlayer.new()
+			if not args.is_empty():
+				cmd.direction = _direction_from_text(args[0])
+			if args.size() > 1 and args[1].is_valid_int():
+				cmd.steps = int(args[1])
 			return cmd
 		
 		"setflag":
@@ -164,6 +252,34 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 		_:
 			push_warning("ScriptCmdTextFile: Comando no implementado '%s'" % command_name)
 			return null
+
+
+func _direction_from_text(value: String) -> Vector2i:
+	match value.to_lower():
+		"up", "arriba": return Vector2i.UP
+		"down", "abajo": return Vector2i.DOWN
+		"left", "izquierda": return Vector2i.LEFT
+		"right", "derecha": return Vector2i.RIGHT
+	return Vector2i.ZERO
+
+
+func _parse_quoted_values(value: String) -> Array[String]:
+	var result: Array[String] = []
+	for item: String in value.split("\""):
+		if not item.strip_edges().is_empty():
+			result.append(item.strip_edges())
+	return result
+
+
+func _weather_from_text(value: String) -> WeatherEffect.WeatherID:
+	match value.to_lower():
+		"rain", "lluvia": return WeatherEffect.WeatherID.WEATHER_RAIN
+		"snow", "nieve": return WeatherEffect.WeatherID.WEATHER_SNOW
+		"fog", "niebla": return WeatherEffect.WeatherID.WEATHER_FOG_HORIZONTAL
+		"fog_diagonal", "niebla_diagonal": return WeatherEffect.WeatherID.WEATHER_FOG_DIAGONAL
+		"sandstorm", "tormenta_arena": return WeatherEffect.WeatherID.WEATHER_SANDSTORM
+		"drought", "sequia": return WeatherEffect.WeatherID.WEATHER_DROUGHT
+	return WeatherEffect.WeatherID.WEATHER_NONE
 
 
 func get_display_text() -> String:

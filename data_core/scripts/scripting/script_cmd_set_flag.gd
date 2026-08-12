@@ -20,15 +20,13 @@ enum FlagType {
 func execute(context: ScriptExecutionContext) -> bool:
 	match flag_type:
 		FlagType.GLOBAL:
-			# NO IMPLEMENTADO AUN - requiere SaveManager
-			push_warning("ScriptCmdSetFlag: GLOBAL flags aun no implementadas")
+			context.set_global_flag(flag_name, value)
 					
 		FlagType.LOCAL:
 			context.set_variable(flag_name, value)
 					
 		FlagType.MAP_FLAG:
-			# NO IMPLEMENTADO AUN
-			push_warning("ScriptCmdSetFlag: MAP_FLAG aun no implementado")
+			context.set_variable("map_" + flag_name, value)
 					
 		FlagType.NPC_FLAG:
 			var npc_data: CharacterNpc = context.get_npc_data()

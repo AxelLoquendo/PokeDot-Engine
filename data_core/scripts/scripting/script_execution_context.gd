@@ -10,6 +10,7 @@ var map: Node = null            ## El mapa actual
 var is_waiting: bool = false    ## True si el script está esperando un evento asíncrono
 var variables: Dictionary[String, Variant] = {}  ## Variables temporales del script
 var runner: ScriptRunner = null
+static var global_flags: Dictionary[String, Variant] = {}
 
 
 func _init(npc_node: Node2D = null, player_node: Node2D = null, map_node: Node = null) -> void:
@@ -88,6 +89,31 @@ func set_variable(name: String, value: Variant) -> void:
 ## Obtiene una variable temporal
 func get_variable(name: String, default_value: Variant = null) -> Variant:
 	return variables.get(name, default_value)
+
+
+func set_global_flag(name: String, value: Variant) -> void:
+	global_flags[name] = value
+
+
+func get_global_flag(name: String, default_value: Variant = false) -> Variant:
+	return global_flags.get(name, default_value)
+
+
+func find_npc_by_id(npc_id: StringName) -> CharacterController:
+	if npc and get_npc_data() and get_npc_data().npc_id == npc_id:
+		return npc as CharacterController
+	var tree: SceneTree = null
+	if npc:
+		tree = npc.get_tree()
+	elif player:
+		tree = player.get_tree()
+	if tree:
+		for candidate: Node in tree.get_nodes_in_group("NPC"):
+			var controller: CharacterController = candidate as CharacterController
+			if controller and controller.character_data is CharacterNpc:
+				if (controller.character_data as CharacterNpc).npc_id == npc_id:
+					return controller
+	return null
 
 
 func complete_async() -> void:

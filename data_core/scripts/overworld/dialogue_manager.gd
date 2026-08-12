@@ -17,11 +17,17 @@ func show_text(texto: String, speaker: String = "", speaker_node: CharacterContr
 	show_texts([texto], speaker, speaker_node)
 
 
-func show_texts(textos: Array[String], speaker: String = "", speaker_node: CharacterController = null) -> void:
+func show_texts(textos: Array[String], speaker: String = "", speaker_node: CharacterController = null, choices: Array[String] = []) -> void:
 	var d: Dialogue = Dialogue.new()
 	for texto: String in textos:
 		var page: DialoguePage = DialoguePage.new()
 		page.text = texto
 		d.pages.append(page)
+	if not choices.is_empty() and not d.pages.is_empty():
+		for index: int in range(choices.size()):
+			var choice: DialogueChoice = DialogueChoice.new()
+			choice.text = choices[index]
+			choice.choice_id = str(index)
+			d.pages[d.pages.size() - 1].choices.append(choice)
 
 	start(d, speaker, speaker_node)

@@ -82,9 +82,8 @@ func _evaluate_condition(context: ScriptExecutionContext) -> bool:
 	return false
 
 
-func _get_flag_value(_context: ScriptExecutionContext, _name: String) -> Variant:
-	# NO IMPLEMENTADO AUN - requiere SaveManager
-	return null
+func _get_flag_value(context: ScriptExecutionContext, name: String) -> Variant:
+	return context.get_global_flag(name, false)
 
 
 func _evaluate_custom_expression(_context: ScriptExecutionContext, _expression: String) -> bool:
@@ -93,4 +92,4 @@ func _evaluate_custom_expression(_context: ScriptExecutionContext, _expression: 
 
 
 func get_display_text() -> String:
-	return "❓ SI: %s" % ConditionType.keys()[condition_type]
+	return "SI: %s" % ConditionType.keys()[condition_type]

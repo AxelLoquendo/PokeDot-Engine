@@ -8,6 +8,7 @@ var commands: Array[ScriptCommand] = []
 var context: ScriptExecutionContext = null
 var is_running: bool = false
 var current_index: int = 0
+var labels: Dictionary[String, int] = {}
 
 signal script_started()
 signal script_finished()
@@ -25,6 +26,7 @@ func start_script(script_commands: Array[ScriptCommand], npc_node: Node2D = null
 		return
 	
 	commands = script_commands.duplicate()
+	_rebuild_labels()
 	context = ScriptExecutionContext.new(npc_node, player_node, map_node)
 	context.runner = self
 	current_index = 0
@@ -73,6 +75,7 @@ func _execute_current_command() -> void:
 		commands.remove_at(current_index)
 		for index: int in range(inline_commands.size() - 1, -1, -1):
 			commands.insert(current_index, inline_commands[index])
+		_rebuild_labels()
 		_execute_current_command()
 		return
 
@@ -95,6 +98,22 @@ func on_async_complete() -> void:
 		context.is_waiting = false
 		current_index += 1
 		_execute_current_command()
+
+
+func jump_to_label(label_name: String) -> bool:
+	if not labels.has(label_name):
+		push_error("ScriptRunner: etiqueta no encontrada '%s'" % label_name)
+		return false
+	current_index = labels[label_name]
+	return true
+
+
+func _rebuild_labels() -> void:
+	labels.clear()
+	for index: int in range(commands.size()):
+		var command: ScriptCommand = commands[index]
+		if command is ScriptCmdLabel:
+			labels[(command as ScriptCmdLabel).label_name] = index
 
 
 func _finish_script() -> void:

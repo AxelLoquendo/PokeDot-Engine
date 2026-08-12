@@ -2384,6 +2384,7 @@ metadata/_custom_type_script = "uid://bwbh47vc5fymn"
 [sub_resource type="Resource" id="Resource_s65af"]
 script = ExtResource("7_y0fca")
 nombre = "Kaida"
+npc_id = &"KAIDA"
 sprite_overworld = 3
 scripts = SubResource("Resource_cxnhx")
 shadow_size = 2

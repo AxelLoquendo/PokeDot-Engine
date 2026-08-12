@@ -82,6 +82,7 @@ signal usar_nubes_cambiado(estado: bool)
 
 # Lógica
 var activo: bool = true
+var map_script_runner: ScriptRunner = null
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -92,6 +93,24 @@ func _ready() -> void:
 
 	if not activo:
 		return
+
+	if not Engine.is_editor_hint() and not map_script.is_empty():
+		call_deferred("run_map_script")
+
+
+func run_map_script() -> void:
+	if map_script.is_empty() or map_script_runner:
+		return
+	if not FileAccess.file_exists(map_script):
+		push_error("MapAttributes: no existe el script de mapa %s" % map_script)
+		return
+	await get_tree().process_frame
+	var script_file: ScriptCmdTextFile = ScriptCmdTextFile.new()
+	script_file.script_file_path = map_script
+	map_script_runner = ScriptRunner.new()
+	add_child(map_script_runner)
+	var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
+	map_script_runner.start_script([script_file], null, player, self)
 
 func activar_musica() -> void:
 	if music_path.is_empty():

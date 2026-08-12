@@ -1,4 +1,21 @@
-text Hola, este es un test del sistema de scripts.
-text si puedes leer esto es porque milagrosamente funciona.
-text eso me preocupa jajaja.
+lock
+faceplayer
+text "¿Quieres que llueva?" MSGBOX_YESNO
+
+ifchoice 0 activar_lluvia
+goto rechazar
+
+label activar_lluvia
+weather rain
+sound "res://sfx/se/GUI save choice.ogg"
+text "¡Listo! Empezó a llover."
+applymovement KAIDA "face down; walk down 2; walk up 1"
+goto final
+
+label rechazar
+weather none
+text "De acuerdo, dejamos el clima como está."
+
+label final
+release
 end

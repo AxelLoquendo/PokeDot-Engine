@@ -62,4 +62,4 @@ func get_display_text() -> String:
 		Vector2i(1, 0): "Derecha"
 	}
 	var dir_name: String = dir_names.get(direction, "Desconocida") as String
-	return "🚶 Mover NPC: %s (%d pasos)" % [dir_name, steps]
+	return "Mover NPC: %s (%d pasos)" % [dir_name, steps]

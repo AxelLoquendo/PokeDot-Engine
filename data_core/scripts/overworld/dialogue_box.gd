@@ -4,6 +4,7 @@ class_name DialogueBox
 
 # Señal para notificar elecciones al sistema de guardado/quest
 signal choice_selected(choice_id: String)
+signal dialogue_closed()
 
 # --- Referencias a nodos ---
 @onready var animaciones: AnimationPlayer = $Control/Animacion
@@ -96,7 +97,6 @@ func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: Character
 	_ocultar_opciones()
 	
 	visible = true
-	sonido_dialogo.play()
 	animaciones.play("inicio")
 	if mostrar_caja_nombre:
 		animaciones_cn.play("inicio")
@@ -290,6 +290,7 @@ func cerrar() -> void:
 	# limpieza debe terminar antes de notificar al NPC.
 	if npc_a_notificar != null:
 		npc_a_notificar.terminar_dialogo()
+	dialogue_closed.emit()
 
 
 func _on_opcion_presionada(indice: int) -> void:
