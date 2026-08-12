@@ -31,14 +31,9 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		add_to_group(&"NPC")
 		
-		# Inicializar el script runner si hay scripts definidos
-		if datos_npc.script_container:
+		if datos_npc.scripts:
 			script_runner = ScriptRunner.new()
 			add_child(script_runner)
-			# Conectar la señal de finalización de diálogo para continuar scripts
-			var dialogue_box: Node = get_tree().get_first_node_in_group("dialogue_box")
-			if dialogue_box:
-				dialogue_box.connect("dialogue_ended", _on_dialogue_ended.bind(self))
 	
 	casilla_inicial = casilla_actual
 	yendo_a_derecha = datos_npc.direccion_inicial != CharacterNpc.DireccionInicial.IZQUIERDA
@@ -226,12 +221,10 @@ func reproducir_idle() -> void:
 			anim_player.play("idle_left")
 
 func interact() -> void:
-	# Priorizar scripts sobre diálogo tradicional
-	if datos_npc.script_container and script_runner:
-		var player: Node = get_tree().get_first_node_in_group("player")
-		script_runner.start_script(datos_npc.script_container.on_interact, self, player, mapa_dueño)
-	else:
-		DialogueManager.start_dialogue(character_data)
+	if datos_npc.scripts and script_runner:
+		var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
+		var commands: Array[ScriptCommand] = [datos_npc.scripts]
+		script_runner.start_script(commands, self, player, mapa_dueño)
 
 func preparar_dialogo(posicion_jugador: Vector2) -> void:
 	en_dialogo = true
@@ -245,11 +238,7 @@ func terminar_dialogo() -> void:
 	tiempo_espera_restante = 0.5
 	
 	# Notificar al script runner que el diálogo terminó
-	if script_runner:
+	if script_runner and script_runner.is_running:
 		script_runner.on_async_complete()
 	
 	reproducir_idle()
-
-func _on_dialogue_ended(npc_node: Node2D) -> void:
-	if npc_node == self and script_runner:
-		script_runner.on_async_complete()

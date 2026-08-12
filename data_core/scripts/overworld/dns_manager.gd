@@ -4,7 +4,7 @@ class_name TiempoManager
 enum TimeOfDay { MORNING, DAY, DUSK, NIGHT }
 
 var current_hour: int = 0
-var current_time_state: TimeOfDay = TimeOfDay.DAY
+var current_time_state: int = TimeOfDay.DAY
 var _activo: bool = false
 
 const COLOR_MORNING: Color = Color(1.08, 1.02, 0.90, 1.0)
@@ -24,7 +24,7 @@ func _ready() -> void:
 	canvas_modulate = CanvasModulate.new()
 	canvas_modulate.name = "FiltroDiaNoche"
 	canvas_modulate.z_index = 4096
-	raiz.add_child.call_deferred(canvas_modulate)
+	raiz.call_deferred("add_child", canvas_modulate)
 	
 	print("Filtro creado en raíz")
 	desactivar()
@@ -68,15 +68,15 @@ func _leer_configuracion_mapa() -> bool:
 
 func _read_system_time() -> void:
 	var now: Dictionary = Time.get_datetime_dict_from_system()
-	current_hour = now.hour
+	current_hour = int(now.get("hour", 0))
 
-	var new_state: TimeOfDay = _get_state(current_hour)
+	var new_state: int = _get_state(current_hour)
 	if new_state != current_time_state:
 		current_time_state = new_state
 		print("Cambio horario → ", TimeOfDay.keys()[int(current_time_state)])
 
 
-func _get_state(h: int) -> TimeOfDay:
+func _get_state(h: int) -> int:
 	if h >= 5  and h < 10: return TimeOfDay.MORNING
 	if h >= 10 and h < 18: return TimeOfDay.DAY
 	if h >= 18 and h < 20: return TimeOfDay.DUSK

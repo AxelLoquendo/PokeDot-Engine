@@ -26,6 +26,11 @@ enum ConditionType {
 @export var else_commands: Array[ScriptCommand] = []
 
 
+func get_inline_commands(context: ScriptExecutionContext) -> Array[ScriptCommand]:
+	var condition_met: bool = _evaluate_condition(context)
+	return (then_commands if condition_met else else_commands).duplicate()
+
+
 func execute(context: ScriptExecutionContext) -> bool:
 	var condition_met: bool = _evaluate_condition(context)
 	

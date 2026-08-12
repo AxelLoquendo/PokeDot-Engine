@@ -14,8 +14,7 @@ func execute(context: ScriptExecutionContext) -> bool:
 	
 	if wait_for_input:
 		context.is_waiting = true
-		# Conectar señal de input
-		tree.create_timer(0.1).timeout.connect(_check_input.bind(context))
+		tree.process_frame.connect(_check_input.bind(context), CONNECT_ONE_SHOT)
 		return false
 	else:
 		tree.create_timer(seconds).timeout.connect(_on_wait_finished.bind(context))
@@ -23,7 +22,8 @@ func execute(context: ScriptExecutionContext) -> bool:
 		return false
 
 
-func _on_wait_finished(context: ScriptExecutionContext) -> void:
+func _legacy_on_wait_finished(context: ScriptExecutionContext) -> void:
+	context.complete_async()
 	context.is_waiting = false
 	# Notificar al ScriptRunner que continúe
 	if context.npc and context.npc.has_node("ScriptRunner"):
@@ -32,13 +32,16 @@ func _on_wait_finished(context: ScriptExecutionContext) -> void:
 			runner.call("on_async_complete")
 
 
+func _on_wait_finished(context: ScriptExecutionContext) -> void:
+	context.complete_async()
+
+
 func _check_input(context: ScriptExecutionContext) -> void:
 	if Input.is_action_just_pressed(input_action):
 		_on_wait_finished(context)
 	else:
-		# Seguir verificando
 		var tree: SceneTree = context.npc.get_tree() if context.npc else Engine.get_main_loop() as SceneTree
-		tree.create_timer(0.1).timeout.connect(_check_input.bind(context))
+		tree.process_frame.connect(_check_input.bind(context), CONNECT_ONE_SHOT)
 
 
 func get_display_text() -> String:

@@ -26,6 +26,7 @@ func start_script(script_commands: Array[ScriptCommand], npc_node: Node2D = null
 	
 	commands = script_commands.duplicate()
 	context = ScriptExecutionContext.new(npc_node, player_node, map_node)
+	context.runner = self
 	current_index = 0
 	is_running = true
 	
@@ -67,6 +68,14 @@ func _execute_current_command() -> void:
 		_execute_current_command()
 		return
 	
+	var inline_commands: Array[ScriptCommand] = command.get_inline_commands(context)
+	if not inline_commands.is_empty():
+		commands.remove_at(current_index)
+		for index: int in range(inline_commands.size() - 1, -1, -1):
+			commands.insert(current_index, inline_commands[index])
+		_execute_current_command()
+		return
+
 	var completed: bool = command.execute(context)
 	command_executed.emit(command)
 	
@@ -82,7 +91,7 @@ func _execute_current_command() -> void:
 
 ## Llama cuando un diálogo o evento asíncrono ha terminado
 func on_async_complete() -> void:
-	if context:
+	if is_running and context and context.is_waiting:
 		context.is_waiting = false
 		current_index += 1
 		_execute_current_command()

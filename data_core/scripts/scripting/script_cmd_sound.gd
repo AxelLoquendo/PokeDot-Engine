@@ -39,11 +39,12 @@ func execute(context: ScriptExecutionContext) -> bool:
 				audio_player.play()
 				
 				if wait_until_finish:
+					audio_player.finished.connect(audio_player.queue_free)
 					audio_player.finished.connect(_on_sound_finished.bind(context))
 					context.is_waiting = true
 					return false
 				else:
-					audio_player.queue_free()
+					audio_player.finished.connect(audio_player.queue_free)
 					return true
 				
 		SoundType.MUSIC:
@@ -64,22 +65,19 @@ func execute(context: ScriptExecutionContext) -> bool:
 				audio_player.play()
 				
 				if wait_until_finish:
+					audio_player.finished.connect(audio_player.queue_free)
 					audio_player.finished.connect(_on_sound_finished.bind(context))
 					context.is_waiting = true
 					return false
 				else:
-					audio_player.queue_free()
+					audio_player.finished.connect(audio_player.queue_free)
 					return true
 	
 	return true
 
 
 func _on_sound_finished(context: ScriptExecutionContext) -> void:
-	context.is_waiting = false
-	if context.npc and context.npc.has_node("ScriptRunner"):
-		var runner: Node = context.npc.get_node("ScriptRunner")
-		if runner.has_method("on_async_complete"):
-			runner.call("on_async_complete")
+	context.complete_async()
 
 
 func get_display_text() -> String:

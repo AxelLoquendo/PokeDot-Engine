@@ -38,8 +38,9 @@ func execute(context: ScriptExecutionContext) -> bool:
 			for i: int in range(steps):
 				if player_controller.has_method("intentar_mover"):
 					player_controller.call("intentar_mover", dir_vector)
-				await player_controller.get_tree().create_timer(speed).timeout
-			return true
+			context.is_waiting = true
+			player_controller.get_tree().create_timer(speed * float(steps)).timeout.connect(context.complete_async)
+			return false
 			
 		MoveType.WALK_TO_TILE:
 			# NO IMPLEMENTADO AUN

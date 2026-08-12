@@ -7,16 +7,21 @@ func start(dialogue: Dialogue, speaker_name: String = "", speaker: CharacterCont
 		return
 
 	if speaker:
-		speaker.preparar_dialogo(CharacterController.global_position)
+		var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
+		var look_target: Vector2 = player.global_position if player else speaker.global_position
+		speaker.preparar_dialogo(look_target)
 
 	caja.iniciar(dialogue, speaker_name, speaker)
 
-func show_text(texto: String, speaker: String = "") -> void:
+func show_text(texto: String, speaker: String = "", speaker_node: CharacterController = null) -> void:
+	show_texts([texto], speaker, speaker_node)
+
+
+func show_texts(textos: Array[String], speaker: String = "", speaker_node: CharacterController = null) -> void:
 	var d: Dialogue = Dialogue.new()
+	for texto: String in textos:
+		var page: DialoguePage = DialoguePage.new()
+		page.text = texto
+		d.pages.append(page)
 
-	var p: DialoguePage = DialoguePage.new()
-	p.text = texto
-
-	d.pages.append(p)
-
-	start(d, speaker)
+	start(d, speaker, speaker_node)

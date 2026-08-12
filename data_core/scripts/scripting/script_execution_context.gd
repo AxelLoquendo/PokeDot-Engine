@@ -9,6 +9,7 @@ var player: Node2D = null       ## El jugador
 var map: Node = null            ## El mapa actual
 var is_waiting: bool = false    ## True si el script está esperando un evento asíncrono
 var variables: Dictionary[String, Variant] = {}  ## Variables temporales del script
+var runner: ScriptRunner = null
 
 
 func _init(npc_node: Node2D = null, player_node: Node2D = null, map_node: Node = null) -> void:
@@ -19,8 +20,9 @@ func _init(npc_node: Node2D = null, player_node: Node2D = null, map_node: Node =
 
 ## Obtiene el NPC como CharacterNpc si es posible
 func get_npc_data() -> CharacterNpc:
-	if npc and npc.has_property("character_data"):
-		return npc.character_data as CharacterNpc
+	var controller: CharacterController = npc as CharacterController
+	if controller:
+		return controller.character_data as CharacterNpc
 	return null
 
 
@@ -62,7 +64,7 @@ func move_npc_to_tile(tile_pos: Vector2i, wait: bool = true) -> void:
 func move_player_to_tile(tile_pos: Vector2i, wait: bool = true) -> void:
 	if not player:
 		return
-	var controller: Node = player.get("character_controller") if player.has_property("character_controller") else player
+	var controller: Node = player
 	if controller and controller.has_method("mover_a_casilla"):
 		controller.call("mover_a_casilla", tile_pos)
 		if wait:
@@ -86,3 +88,8 @@ func set_variable(name: String, value: Variant) -> void:
 ## Obtiene una variable temporal
 func get_variable(name: String, default_value: Variant = null) -> Variant:
 	return variables.get(name, default_value)
+
+
+func complete_async() -> void:
+	if runner:
+		runner.on_async_complete()

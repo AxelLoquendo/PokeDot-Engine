@@ -7,9 +7,7 @@
 [ext_resource type="Script" uid="uid://dsu2neoeaf0e2" path="res://data_core/scripts/overworld/tile_behaviours_layer.gd" id="3_yd4tm"]
 [ext_resource type="PackedScene" uid="uid://bq3vvw2e3pu8g" path="res://scenes/npc/npc.tscn" id="4_d8013"]
 [ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="7_y0fca"]
-[ext_resource type="Script" uid="uid://c1ljwphty2qo2" path="res://data_core/scripts/scripting/script_command.gd" id="8_cxnhx"]
-[ext_resource type="Script" uid="uid://clebqm6c0kky3" path="res://script_cmd_move_npc.gd" id="9_cxnhx"]
-[ext_resource type="Script" uid="uid://dqvrq3hpfgjba" path="res://data_core/scripts/scripting/script_container.gd" id="10_s65af"]
+[ext_resource type="Script" uid="uid://bwbh47vc5fymn" path="res://data_core/scripts/scripting/script_cmd_text_file.gd" id="9_cxnhx"]
 
 [sub_resource type="Resource" id="Resource_8wtdx"]
 script = ExtResource("2_ueygd")
@@ -2380,19 +2378,14 @@ sources/0 = SubResource("TileSetAtlasSource_ueygd")
 
 [sub_resource type="Resource" id="Resource_cxnhx"]
 script = ExtResource("9_cxnhx")
-move_type = 2
-steps = 2
-metadata/_custom_type_script = "uid://clebqm6c0kky3"
-
-[sub_resource type="Resource" id="Resource_58jqm"]
-script = ExtResource("10_s65af")
-on_approach = Array[ExtResource("8_cxnhx")]([SubResource("Resource_cxnhx")])
-metadata/_custom_type_script = "uid://dqvrq3hpfgjba"
+script_file_path = "res://game/data_core_eb/map_eb/prado_natal/npc_basico.txt"
+metadata/_custom_type_script = "uid://bwbh47vc5fymn"
 
 [sub_resource type="Resource" id="Resource_s65af"]
 script = ExtResource("7_y0fca")
+nombre = "Kaida"
 sprite_overworld = 3
-script_container = SubResource("Resource_58jqm")
+scripts = SubResource("Resource_cxnhx")
 shadow_size = 2
 shadow_offset_y = 11.0
 metadata/_custom_type_script = "uid://d1j7qa7rbivcw"

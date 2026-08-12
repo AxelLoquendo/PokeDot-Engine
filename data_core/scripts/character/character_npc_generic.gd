@@ -42,6 +42,5 @@ var _sprite_overworld: EventObjects.NpcID = EventObjects.NpcID.NONE
 @export_range(0, 20, 1) var distancia_patrulla: int = 0
 @export_range(0.0, 10.0, 0.1) var tiempo_espera: float = 0.0
 
-@export_group("Interacción")
-@export var dialogue: Dialogue
-@export var script_container: ScriptContainer  ## ← AQUÍ SE ASIGNA EL SCRIPT
+@export_group("Scripts")
+@export var scripts: ScriptCmdTextFile

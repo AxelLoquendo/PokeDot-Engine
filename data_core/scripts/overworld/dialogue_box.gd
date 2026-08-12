@@ -280,14 +280,16 @@ func cerrar() -> void:
 	visible = false
 
 	activo = false
-
-	if npc_actual != null:
-		npc_actual.terminar_dialogo()
-		npc_actual = null
-
-	cerrando = false
+	var npc_a_notificar: CharacterController = npc_actual
+	npc_actual = null
 	dialogo_actual = null
 	pagina_actual = 0
+	cerrando = false
+
+	# El runner puede abrir otro diálogo inmediatamente. Por eso toda la
+	# limpieza debe terminar antes de notificar al NPC.
+	if npc_a_notificar != null:
+		npc_a_notificar.terminar_dialogo()
 
 
 func _on_opcion_presionada(indice: int) -> void:

@@ -6,6 +6,7 @@ class_name ScriptCmdText
 ## Comando asíncrono: espera a que el jugador cierre el diálogo
 
 @export_multiline var message: String = "Hola, soy un NPC"
+@export var messages: Array[String] = []
 @export var speaker_name: String = ""  ## Nombre del hablante (vacío = usa nombre del NPC)
 @export var show_portrait: bool = true
 
@@ -15,8 +16,14 @@ func execute(context: ScriptExecutionContext) -> bool:
 	# Intentar obtener el nombre del NPC si no se especificó uno
 	if final_speaker == "" and context.npc:
 		var npc_data: CharacterNpc = context.get_npc_data()
-		if npc_data and npc_data.has_property("nombre"):
-			final_speaker = npc_data.nombre as String
+		if npc_data:
+			final_speaker = npc_data.nombre
+
+	var text_pages: Array[String] = messages if not messages.is_empty() else [message]
+	if DialogueManager and DialogueManager.has_method("show_texts"):
+		DialogueManager.show_texts(text_pages, final_speaker, context.npc as CharacterController)
+		context.is_waiting = true
+		return false
 	
 	# Verificar si existe DialogueManager
 	if not DialogueManager:

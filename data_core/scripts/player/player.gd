@@ -9,6 +9,11 @@ var direccion_pendiente: Vector2 = Vector2.ZERO
 var tiempo_direccion_pendiente: float = 0.0
 var corriendo_en_paso: bool = false
 
+
+func _ready() -> void:
+	super._ready()
+	add_to_group(&"player")
+
 func obtener_velocidad_movimiento() -> float:
 	if corriendo_en_paso:
 		return character_data.running_speed
@@ -184,19 +189,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if personaje.character_data is CharacterNpc:
 			var npc: CharacterController = personaje
 
-			var datos: CharacterNpc = npc.character_data as CharacterNpc
-
-			if npc.has_method("preparar_dialogo"):
+			if npc.has_method("interact"):
 				cancelar_movimiento()
-				npc.preparar_dialogo(global_position)
-
-				if datos.dialogue:
-					var caja_dialogo: DialogueBox = get_tree().get_first_node_in_group("dialogue_box") as DialogueBox
-
-					if caja_dialogo:
-						caja_dialogo.iniciar(datos.dialogue, datos.nombre, personaje)
-
-						get_viewport().set_input_as_handled()
+				npc.interact()
+				get_viewport().set_input_as_handled()
+				return
 	if Input.is_action_just_pressed("buttonStart"):
 		DialogueManager.show_text("No Hay menu start")
 		return

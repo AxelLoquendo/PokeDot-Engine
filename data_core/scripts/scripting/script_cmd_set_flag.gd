@@ -32,11 +32,10 @@ func execute(context: ScriptExecutionContext) -> bool:
 					
 		FlagType.NPC_FLAG:
 			var npc_data: CharacterNpc = context.get_npc_data()
-			if npc_data and npc_data.has_property("flags"):
-				var flags: Dictionary = npc_data.flags as Dictionary
-				flags[flag_name] = value
+			if npc_data:
+				push_warning("ScriptCmdSetFlag: NPC_FLAG aun no implementado")
 			else:
-				push_warning("ScriptCmdSetFlag: NPC no tiene propiedad flags")
+				push_warning("ScriptCmdSetFlag: no se encontro el recurso del NPC")
 	
 	return true
 

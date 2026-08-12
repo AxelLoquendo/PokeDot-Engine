@@ -1,0 +1,4 @@
+text Hola, este es un test del sistema de scripts.
+text si puedes leer esto es porque milagrosamente funciona.
+text eso me preocupa jajaja.
+end
