@@ -20,9 +20,6 @@ func _ready() -> void:
 		push_warning("NPC sin mapa dueño")
 		return
 	
-	if not mapa_dueño.activo:
-		return
-	
 	datos_npc = character_data as CharacterNpc
 	if not datos_npc:
 		push_error("El NPC necesita un recurso CharacterNpc")
@@ -31,7 +28,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		add_to_group(&"NPC")
 		
-		if datos_npc.scripts:
+		if datos_npc.scripts and script_runner == null:
 			script_runner = ScriptRunner.new()
 			add_child(script_runner)
 	

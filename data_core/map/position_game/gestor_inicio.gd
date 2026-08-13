@@ -86,9 +86,7 @@ func _ready() -> void:
 		if controlador == null:
 			continue
 
-		controlador.mapa_raiz = map_manager.current_map
-		controlador.map_manager = map_manager
-		controlador.buscar_capa_colisiones()
+		controlador.sincronizar_con_mapa(map_manager.current_map, map_manager)
 
 	jugador.casilla_actual = jugador.posicion_a_casilla(
 		jugador.global_position

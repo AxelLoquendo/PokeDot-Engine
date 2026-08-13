@@ -1,0 +1,70 @@
+[gd_resource type="TileSet" format=3 uid="uid://b0t3ardhy4uf1"]
+
+[ext_resource type="Texture2D" uid="uid://dgmqtyt5mhoi1" path="res://graphics/tileset/collisions/collisions.png" id="1_vy5me"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ca71"]
+texture = ExtResource("1_vy5me")
+0:0/0 = 0
+0:0/0/custom_data_1 = true
+0:0/0/custom_data_3 = true
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:0/0/custom_data_1 = true
+3:0/0/custom_data_2 = 1
+4:0/0 = 0
+4:0/0/custom_data_1 = true
+4:0/0/custom_data_2 = 2
+5:0/0 = 0
+5:0/0/custom_data_1 = true
+5:0/0/custom_data_2 = 3
+6:0/0 = 0
+6:0/0/custom_data_1 = true
+6:0/0/custom_data_2 = 4
+7:0/0 = 0
+7:0/0/custom_data_1 = true
+7:0/0/custom_data_2 = 5
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+10:0/0/custom_data_1 = true
+10:0/0/custom_data_2 = 1000
+11:0/0 = 0
+11:0/0/custom_data_1 = true
+11:0/0/custom_data_2 = 2000
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+15:0/0/custom_data_1 = true
+15:0/0/custom_data_4 = true
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+3:1/0/custom_data_0 = true
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+
+[resource]
+custom_data_layer_0/name = "blocked"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "pass"
+custom_data_layer_1/type = 1
+custom_data_layer_2/name = "floor_lvl"
+custom_data_layer_2/type = 2
+custom_data_layer_3/name = "floor_transition"
+custom_data_layer_3/type = 1
+custom_data_layer_4/name = "keep_floor"
+custom_data_layer_4/type = 1
+sources/0 = SubResource("TileSetAtlasSource_4ca71")

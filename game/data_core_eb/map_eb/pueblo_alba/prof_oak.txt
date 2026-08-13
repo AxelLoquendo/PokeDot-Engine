@@ -1,0 +1,17 @@
+lock
+faceplayer
+text "¿Deseas regresar al mapa anterior?" MSGBOX_YESNO
+
+ifchoice 0 regresar_mapa
+goto rechazar
+
+label regresar_mapa
+warp MAPSEC_PRADO_NATAL 7 11
+goto final
+
+label rechazar
+text "Vale, quedate" MSGBOX_NPC
+
+label final
+release
+end

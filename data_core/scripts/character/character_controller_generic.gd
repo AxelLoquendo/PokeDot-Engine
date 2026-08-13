@@ -52,6 +52,7 @@ var ultima_escalera: Vector2i = Vector2i(-999, -999)
 var nivel_suelo: int = 1
 var nivel_render: int = 1
 var ejecutando_evento: bool = false
+var _sprite_frames_son_propios: bool = false
 
 
 func _ready() -> void:
@@ -148,6 +149,10 @@ func _actualizar_sprite() -> void:
 		push_error("No se pudo cargar: " + ruta_sprite)
 		return
 
+	# SpriteFrames contiene AtlasTexture mutables. La escena base comparte el
+	# recurso, así que cada personaje necesita su copia antes de reemplazar el
+	# atlas; de lo contrario, cambiar un NPC cambia la apariencia de todos.
+	_asegurar_sprite_frames_propios()
 	var frames: SpriteFrames = anim_player.sprite_frames
 	if not frames:
 		return
@@ -166,6 +171,15 @@ func _actualizar_sprite() -> void:
 	anim_player.sprite_frames = frames
 	anim_player.play("idle_down")
 	anim_player.queue_redraw()
+
+
+func _asegurar_sprite_frames_propios() -> void:
+	if _sprite_frames_son_propios or not anim_player or not anim_player.sprite_frames:
+		return
+	var copia: SpriteFrames = anim_player.sprite_frames.duplicate(true) as SpriteFrames
+	if copia:
+		anim_player.sprite_frames = copia
+		_sprite_frames_son_propios = true
 
 
 func buscar_capa_colisiones() -> void:
@@ -201,6 +215,33 @@ func buscar_capa_colisiones() -> void:
 			var hijos: Array = nodo_actual.get_children(true)
 			for hijo: Node in hijos:
 				cola.append(hijo)
+	# Las capas de comportamiento pertenecen al mapa actual. Recargarlas aquí
+	# evita conservar rampas/escaleras de un mapa anterior tras un warp.
+	cargar_capas_comportamiento()
+
+
+## Restablece datos derivados del tileset antes de leer la baldosa de un mapa
+## nuevo. No se conserva ningún comportamiento ni nivel del mapa anterior.
+func resetear_estado_de_mapa() -> void:
+	cancelar_movimiento()
+	capas_comportamiento.clear()
+	ultima_casilla_comportamiento = Vector2i(-999, -999)
+	ultima_escalera = Vector2i(-999, -999)
+	nivel_suelo = 1
+	nivel_render = 1
+	if anim_player:
+		anim_player.position.y = 0.0
+
+
+## Relee los datos del mapa y tile actual para un personaje recién activado.
+func sincronizar_con_mapa(nuevo_mapa: MapAttributes, nuevo_map_manager: MapManager) -> void:
+	mapa_raiz = nuevo_mapa
+	map_manager = nuevo_map_manager
+	resetear_estado_de_mapa()
+	buscar_capa_colisiones()
+	casilla_actual = posicion_a_casilla(global_position)
+	casilla_reservada = casilla_actual
+	actualizar_nivel_suelo(global_position)
 
 
 func hay_personaje_en(destino_global: Vector2) -> bool:
@@ -300,10 +341,12 @@ func _process(_delta: float) -> void:
 		return
 
 	z_as_relative = false
-	z_index = int(global_position.y)
-
-	if nivel_render > 1:
-		z_index = nivel_render
+	# La profundidad base siempre depende de Y: quien está más abajo se dibuja
+	# delante. floor_lvl 1..5 son niveles lógicos de colisión, no z-index.
+	# Los valores 1000/2000 sí son bandas visuales de Tile2/Tile3 y se suman,
+	# nunca sustituyen a Y; así dos NPCs de la misma banda siguen ordenándose.
+	var banda_visual: int = nivel_render if nivel_render >= 1000 else 0
+	z_index = banda_visual + int(global_position.y)
 
 
 func _physics_process(_delta: float) -> void:

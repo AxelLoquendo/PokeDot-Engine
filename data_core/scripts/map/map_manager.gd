@@ -207,9 +207,14 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 	jugador.mapa_raiz = current_map
 	jugador.map_manager = self
 	jugador.buscar_capa_colisiones()
+	jugador.sincronizar_con_mapa(current_map, self)
 
 
 	cargar_conexiones()
+	EventObjects.casillas_ocupadas.clear()
+	EventObjects.casillas_reservadas.clear()
+	EventObjects.registrar_casilla(jugador.casilla_actual, jugador)
+	_registrar_personajes_del_mapa(current_map)
 
 #	actualizar_limites_camara()
 
@@ -239,6 +244,13 @@ func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
 		mapas_cargados[target.map_id_section] = target
 		add_child(target)
 
+	# El warp no es una conexión de mapas: el anterior deja de participar por
+	# completo en físicas, TileBehaviours y eventos antes de activar el destino.
+	var previous_map: MapAttributes = current_map
+	if previous_map and previous_map != target:
+		desactivar_contenido_mapa(previous_map)
+		previous_map.visible = false
+
 	current_map = target
 	current_map.position = Vector2.ZERO
 	current_map.activo = true
@@ -248,9 +260,14 @@ func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
 	jugador.map_manager = self
 	jugador.buscar_capa_colisiones()
 	jugador.casilla_actual = jugador.posicion_a_casilla(jugador.global_position)
+	# Lee los custom data layers del tile de llegada después de reiniciar el
+	# estado. Así floor_lvl/floor_transition del mapa anterior no sobreviven.
+	jugador.actualizar_nivel_suelo(jugador.global_position)
+	jugador.sincronizar_con_mapa(current_map, self)
 	EventObjects.casillas_ocupadas.clear()
 	EventObjects.casillas_reservadas.clear()
 	EventObjects.registrar_casilla(jugador.casilla_actual, jugador)
+	_registrar_personajes_del_mapa(current_map)
 	cargar_conexiones()
 	current_map.activar_musica()
 	WeatherManager.set_weather(current_map.weather)
@@ -297,6 +314,7 @@ func activar_contenido_mapa(mapa: MapAttributes) -> void:
 	if behaviours:
 		behaviours.visible = true
 		behaviours.process_mode = Node.PROCESS_MODE_INHERIT
+		_set_behaviour_layers_active(behaviours, true)
 
 
 	var eventos: Node = mapa.get_node_or_null("EventObject")
@@ -314,6 +332,12 @@ func activar_contenido_mapa(mapa: MapAttributes) -> void:
 			hijo.process_mode = Node.PROCESS_MODE_INHERIT
 
 func desactivar_contenido_mapa(mapa: MapAttributes) -> void:
+	mapa.activo = false
+	var behaviours: Node2D = mapa.get_node_or_null("Behaviours") as Node2D
+	if behaviours:
+		behaviours.visible = false
+		behaviours.process_mode = Node.PROCESS_MODE_DISABLED
+		_set_behaviour_layers_active(behaviours, false)
 
 	var eventos: Node = mapa.get_node_or_null("EventObject")
 
@@ -329,9 +353,30 @@ func desactivar_contenido_mapa(mapa: MapAttributes) -> void:
 
 			hijo.process_mode = Node.PROCESS_MODE_DISABLED
 
+
+## Las TileMapLayer mantienen sus colisiones aunque no se vean. Este helper
+## impide que un mapa dejado atrás por un warp bloquee al jugador.
+func _set_behaviour_layers_active(behaviours: Node, enabled: bool) -> void:
+	for layer: TileMapLayer in behaviours.find_children("*", "TileMapLayer", true, false):
+		layer.collision_enabled = enabled
+		layer.navigation_enabled = enabled
+
+
+func _registrar_personajes_del_mapa(mapa: MapAttributes) -> void:
+	for node: Node in mapa.find_children("*", "CharacterController", true, false):
+		var character: CharacterController = node as CharacterController
+		if character == null:
+			continue
+		character.sincronizar_con_mapa(mapa, self)
+		EventObjects.registrar_casilla(character.casilla_actual, character)
+
 func obtener_mapa_en_global(posicion: Vector2) -> MapAttributes:
 
 	for mapa: MapAttributes in mapas_cargados.values():
+		# Los mapas mantenidos en memoria tras un warp no forman parte del
+		# mundo actual y no deben aportar colisiones ni tile behaviours.
+		if not mapa.activo:
+			continue
 
 		var local: Vector2 = mapa.to_local(posicion)
 

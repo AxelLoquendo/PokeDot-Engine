@@ -103,7 +103,6 @@ text = "Badges 8"
 label_settings = SubResource("LabelSettings_ugcl7")
 
 [node name="Mugshot" type="Sprite2D" parent="Continue" unique_id=1229252595]
-visible = false
 position = Vector2(41, 49)
 texture = ExtResource("4_cm8pd")
 
