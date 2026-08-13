@@ -4,6 +4,10 @@ extends CharacterController
 const VELOCIDAD_ANIM_BLOQUEO: float = 0.4
 const TIEMPO_MINIMO_PARA_CAMINAR: float = 0.09
 
+# ----------------
+@export var start_menu: CanvasLayer
+# ----------------
+
 var tiempo_paso_bloqueo: float = 0.0
 var direccion_pendiente: Vector2 = Vector2.ZERO
 var tiempo_direccion_pendiente: float = 0.0
@@ -21,6 +25,12 @@ func obtener_velocidad_movimiento() -> float:
 	return character_data.walk_speed
 
 func process_input() -> void:
+	if start_menu and start_menu.is_open:
+		input_direction = Vector2.ZERO
+		is_moving = false
+		reproducir_idle()
+		return
+
 	if DialogueBox.activo:
 		direccion_pendiente = Vector2.ZERO
 		tiempo_direccion_pendiente = 0.0
@@ -177,6 +187,9 @@ func obtener_casilla_frontal() -> Vector2i:
 	return casilla_actual
 
 func _unhandled_input(event: InputEvent) -> void:
+	if start_menu and start_menu.is_open:
+		return
+
 	if DialogueBox.activo:
 		return
 
@@ -195,5 +208,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				get_viewport().set_input_as_handled()
 				return
 	if Input.is_action_just_pressed("buttonStart"):
-		DialogueManager.show_text("No Hay menu start")
-		return
+		if start_menu and start_menu.has_method("toggle_menu"):
+			start_menu.toggle_menu()
+			get_viewport().set_input_as_handled()

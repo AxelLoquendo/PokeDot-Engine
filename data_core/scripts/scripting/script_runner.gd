@@ -47,6 +47,12 @@ func stop_script() -> void:
 	context = null
 
 
+## Finaliza el script desde un comando de texto (return/end).
+func end_script() -> void:
+	if is_running:
+		_finish_script()
+
+
 func _process(_delta: float) -> void:
 	if not is_running or context == null:
 		set_process(false)
@@ -81,6 +87,9 @@ func _execute_current_command() -> void:
 
 	var completed: bool = command.execute(context)
 	command_executed.emit(command)
+	# Un comando como `return` puede finalizar el runner durante execute().
+	if not is_running:
+		return
 	
 	if completed:
 		current_index += 1

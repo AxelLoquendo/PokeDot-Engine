@@ -180,6 +180,16 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 				cmd.weather = _weather_from_text(args[0])
 			return cmd
 
+		"fadeout", "fadein":
+			var cmd: ScriptCmdFade = ScriptCmdFade.new()
+			cmd.fade_out = command_name == "fadeout"
+			if not args.is_empty() and args[0].is_valid_float():
+				cmd.duration = float(args[0])
+			return cmd
+
+		"savegame":
+			return ScriptCmdSaveGame.new()
+
 		"multichoice":
 			var cmd: ScriptCmdText = ScriptCmdText.new()
 			if not args.is_empty():
@@ -244,6 +254,9 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 			if not args.is_empty():
 				cmd.sound_path = args[0]
 			return cmd
+
+		"return":
+			return ScriptCmdReturn.new()
 		
 		"end":
 			# Fin del script

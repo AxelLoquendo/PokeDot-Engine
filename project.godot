@@ -25,6 +25,7 @@ CloudsManager="*uid://bwy1r47y26sy8"
 WeatherManager="*uid://dq8hei6cs1q6p"
 TransicionManager="*uid://cb6ycadh45je7"
 MapPopUp="*uid://caqmcwnraia5s"
+SaveManager="*res://data_core/scripts/save_manager.gd"
 
 [debug]
 

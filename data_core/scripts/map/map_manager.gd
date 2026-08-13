@@ -216,6 +216,48 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 	current_map.activar_musica()
 	WeatherManager.set_weather(current_map.weather)
 	MapPopUp.mostrar_mapa(current_map)
+	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_TRANSITION)
+	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_LOAD)
+
+
+## Warp de script: solo mueve al jugador a una sección de mapa concreta.
+func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
+	if jugador == null:
+		push_error("MapManager: no hay jugador para ejecutar warp")
+		return false
+	var target: MapAttributes = mapas_cargados.get(section_id, null) as MapAttributes
+	if target == null:
+		var scene_path: String = str(MapSection.SECTION_TO_SCENE.get(section_id, ""))
+		if scene_path.is_empty() or not ResourceLoader.exists(scene_path):
+			push_error("MapManager: MAPSEC inválido o sin escena: %s" % str(section_id))
+			return false
+		var packed_map: PackedScene = load(scene_path) as PackedScene
+		target = packed_map.instantiate() as MapAttributes if packed_map else null
+		if target == null:
+			push_error("MapManager: no se pudo crear el mapa de destino")
+			return false
+		mapas_cargados[target.map_id_section] = target
+		add_child(target)
+
+	current_map = target
+	current_map.position = Vector2.ZERO
+	current_map.activo = true
+	activar_contenido_mapa(current_map)
+	jugador.global_position = current_map.to_global(Vector2(target_tile.x * current_map.tile_size + 8, target_tile.y * current_map.tile_size))
+	jugador.mapa_raiz = current_map
+	jugador.map_manager = self
+	jugador.buscar_capa_colisiones()
+	jugador.casilla_actual = jugador.posicion_a_casilla(jugador.global_position)
+	EventObjects.casillas_ocupadas.clear()
+	EventObjects.casillas_reservadas.clear()
+	EventObjects.registrar_casilla(jugador.casilla_actual, jugador)
+	cargar_conexiones()
+	current_map.activar_musica()
+	WeatherManager.set_weather(current_map.weather)
+	MapPopUp.mostrar_mapa(current_map)
+	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_TRANSITION)
+	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_LOAD)
+	return true
 
 func colocar_vecino(
 	mapa: MapAttributes,

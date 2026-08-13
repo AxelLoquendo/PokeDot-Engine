@@ -6,10 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://pqi5ri8v04di" path="res://sfx/se/Player bump.ogg" id="3_qek5x"]
 [ext_resource type="Texture2D" uid="uid://cg0fvuuc136f7" path="res://graphics/overworld/shadow/shadow_medium.png" id="4_75vfm"]
 [ext_resource type="SpriteFrames" uid="uid://eu4qw0kds24p" path="res://data_core/scripts/character/player_frames.tres" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://bwnyqv7lngyco" path="res://scenes/ui_start_menu/start_menu.tscn" id="7_0owmy"]
 
 [sub_resource type="Resource" id="Resource_obk2l"]
 script = ExtResource("2_0owmy")
 name = "Kael"
+PLAYER_ID = null
 sprite_overworld = 1
 running_speed = 12.0
 shadow_size = 2
@@ -19,10 +21,11 @@ metadata/_custom_type_script = "uid://bkdp0r2akj5km"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4lci"]
 size = Vector2(16, 16)
 
-[node name="Player" type="Node2D" unique_id=1693781442 node_paths=PackedStringArray("anim_player", "cuerpo_colision", "forma_colision") groups=["Player"]]
+[node name="Player" type="Node2D" unique_id=1693781442 node_paths=PackedStringArray("start_menu", "anim_player", "cuerpo_colision", "forma_colision") groups=["Player"]]
 process_priority = 100
 z_as_relative = false
 script = ExtResource("1_75vfm")
+start_menu = NodePath("StartMenu")
 character_data = SubResource("Resource_obk2l")
 anim_player = NodePath("AnimatedSprite2D")
 cuerpo_colision = NodePath("StaticBody2D")
@@ -41,7 +44,7 @@ script = ExtResource("3_gmlin")
 sprite_frames = ExtResource("5_p47bc")
 animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.72242796
+frame_progress = 0.8423975
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=246521600]
 zoom = Vector2(2, 2)
@@ -51,3 +54,6 @@ zoom = Vector2(2, 2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=240540897]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_q4lci")
+
+[node name="StartMenu" parent="." unique_id=41044846 instance=ExtResource("7_0owmy")]
+visible = false

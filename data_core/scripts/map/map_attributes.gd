@@ -78,11 +78,14 @@ signal usar_nubes_cambiado(estado: bool)
 @export_group("Weather")
 @export var weather: WeatherEffect.WeatherID = WeatherEffect.WeatherID.WEATHER_NONE
 @export_group("Map Script")
+## Compatibilidad con mapas creados antes del sistema de tipos.
 @export_file("*.gd", "*.txt") var map_script: String = ""
+@export var map_scripts: Array[MapScriptEntry] = []
 
 # Lógica
 var activo: bool = true
 var map_script_runner: ScriptRunner = null
+var _frame_conditions_active: Dictionary[MapScriptEntry, bool] = {}
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -94,23 +97,52 @@ func _ready() -> void:
 	if not activo:
 		return
 
-	if not Engine.is_editor_hint() and not map_script.is_empty():
-		call_deferred("run_map_script")
+	if not Engine.is_editor_hint():
+		call_deferred("trigger_map_scripts", MapScriptEntry.Trigger.ON_TRANSITION)
 
 
 func run_map_script() -> void:
-	if map_script.is_empty() or map_script_runner:
+	if not map_script.is_empty():
+		_run_script_file(map_script)
+
+
+## Ejecuta las filas configuradas para un disparador de mapa.
+func trigger_map_scripts(trigger_type: MapScriptEntry.Trigger) -> void:
+	if Engine.is_editor_hint() or not activo:
 		return
-	if not FileAccess.file_exists(map_script):
-		push_error("MapAttributes: no existe el script de mapa %s" % map_script)
+	for entry: MapScriptEntry in map_scripts:
+		if entry == null or entry.trigger != trigger_type or entry.script_file.is_empty():
+			continue
+		if entry.condition_matches():
+			_run_script_file(entry.script_file)
+	if trigger_type == MapScriptEntry.Trigger.ON_LOAD:
+		run_map_script()
+
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint() or not activo:
 		return
-	await get_tree().process_frame
+	for entry: MapScriptEntry in map_scripts:
+		if entry == null or entry.trigger != MapScriptEntry.Trigger.ON_FRAME_TABLE:
+			continue
+		var matches: bool = entry.condition_matches()
+		var was_active: bool = _frame_conditions_active.get(entry, false)
+		if matches and not was_active:
+			_run_script_file(entry.script_file)
+		_frame_conditions_active[entry] = matches
+
+
+func _run_script_file(path: String) -> void:
+	if path.is_empty() or not FileAccess.file_exists(path):
+		push_error("MapAttributes: no existe el script de mapa %s" % path)
+		return
 	var script_file: ScriptCmdTextFile = ScriptCmdTextFile.new()
-	script_file.script_file_path = map_script
-	map_script_runner = ScriptRunner.new()
-	add_child(map_script_runner)
+	script_file.script_file_path = path
+	var runner: ScriptRunner = ScriptRunner.new()
+	add_child(runner)
 	var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
-	map_script_runner.start_script([script_file], null, player, self)
+	runner.script_finished.connect(runner.queue_free, CONNECT_ONE_SHOT)
+	runner.start_script([script_file], null, player, self)
 
 func activar_musica() -> void:
 	if music_path.is_empty():

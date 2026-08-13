@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bwnyqv7lngyco"]
+
+[ext_resource type="Script" uid="uid://dvpbks5maecxd" path="res://scenes/ui_start_menu/start_menu.gd" id="1_mwgk4"]
+[ext_resource type="Texture2D" uid="uid://cb12f0cqyvb3v" path="res://graphics/ui_start_menu/pokedex.png" id="1_uqxlo"]
+[ext_resource type="Texture2D" uid="uid://cb7at1graa2yh" path="res://graphics/ui_start_menu/pokemon.png" id="2_mwgk4"]
+[ext_resource type="Texture2D" uid="uid://b6oskvfiw1ato" path="res://graphics/ui_start_menu/bag.png" id="3_7poev"]
+[ext_resource type="Texture2D" uid="uid://8mlw6b40u5cr" path="res://graphics/ui_start_menu/perfil.png" id="4_7p3yr"]
+[ext_resource type="Texture2D" uid="uid://dp3ldb20dygvf" path="res://graphics/ui_start_menu/save.png" id="5_jjpy7"]
+[ext_resource type="Texture2D" uid="uid://d6gnpver3ed2" path="res://graphics/ui_start_menu/options.png" id="6_sb35o"]
+[ext_resource type="AudioStream" uid="uid://1iuty86rgpif" path="res://sfx/se/Tile Game cursor.ogg" id="7_jb1yl"]
+[ext_resource type="AudioStream" uid="uid://bp56twspjtuh4" path="res://sfx/se/GUI menu open.ogg" id="8_rt5bd"]
+[ext_resource type="AudioStream" uid="uid://bl4fm3rljyoaj" path="res://sfx/se/GUI menu close.ogg" id="9_jfq6p"]
+
+[node name="StartMenu" type="CanvasLayer" unique_id=41044846]
+script = ExtResource("1_mwgk4")
+
+[node name="Control" type="Control" parent="." unique_id=2108348183]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="Control" unique_id=574677961]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 48.0
+offset_right = 228.0
+offset_bottom = 152.0
+scale = Vector2(2, 2)
+columns = 2
+
+[node name="Pokedex" type="TextureButton" parent="Control/GridContainer" unique_id=271848097]
+layout_mode = 2
+texture_normal = ExtResource("1_uqxlo")
+
+[node name="Pokemon" type="TextureButton" parent="Control/GridContainer" unique_id=1358199047]
+layout_mode = 2
+texture_normal = ExtResource("2_mwgk4")
+
+[node name="Bag" type="TextureButton" parent="Control/GridContainer" unique_id=473536673]
+layout_mode = 2
+texture_normal = ExtResource("3_7poev")
+
+[node name="TrainerCard" type="TextureButton" parent="Control/GridContainer" unique_id=619213851]
+layout_mode = 2
+texture_normal = ExtResource("4_7p3yr")
+
+[node name="Save" type="TextureButton" parent="Control/GridContainer" unique_id=1564388347]
+layout_mode = 2
+texture_normal = ExtResource("5_jjpy7")
+
+[node name="Options" type="TextureButton" parent="Control/GridContainer" unique_id=1684968557]
+layout_mode = 2
+texture_normal = ExtResource("6_sb35o")
+
+[node name="TileGameCursor" type="AudioStreamPlayer" parent="." unique_id=314523134]
+stream = ExtResource("7_jb1yl")
+
+[node name="UImenuOpen" type="AudioStreamPlayer" parent="." unique_id=311771927]
+stream = ExtResource("8_rt5bd")
+
+[node name="UImenuClose" type="AudioStreamPlayer" parent="." unique_id=1863098031]
+stream = ExtResource("9_jfq6p")

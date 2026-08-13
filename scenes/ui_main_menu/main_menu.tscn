@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://kk4loim474qb"]
+
+[ext_resource type="Script" uid="uid://bdp8w74uw56oo" path="res://scenes/ui_main_menu/main_menu.gd" id="1_qotxw"]
+[ext_resource type="Texture2D" uid="uid://c0d3frwj4c7ae" path="res://graphics/ui_main_menu/scroll_bg.png" id="1_w72a1"]
+[ext_resource type="Texture2D" uid="uid://cxl6eny7k8sdw" path="res://graphics/ui_main_menu/continue.png" id="2_qotxw"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="3_g6qub"]
+[ext_resource type="Texture2D" uid="uid://cqnfnh7h2tewu" path="res://game/graphics_eb/ui_main_menu/brendan_mugshot.png" id="4_cm8pd"]
+[ext_resource type="Texture2D" uid="uid://bs1scwtk5una4" path="res://graphics/ui_main_menu/new_game.png" id="5_7c1u0"]
+[ext_resource type="Texture2D" uid="uid://ymj51gvfqya4" path="res://graphics/ui_main_menu/option.png" id="6_apxmc"]
+[ext_resource type="AudioStream" uid="uid://cl2mblxin8ng" path="res://sfx/se/GUI sel decision.ogg" id="7_gg075"]
+[ext_resource type="AudioStream" uid="uid://1iuty86rgpif" path="res://sfx/se/Tile Game cursor.ogg" id="8_jpw1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("3_g6qub")
+shadow_size = 0
+shadow_color = Color(0.13333334, 0.19215687, 0.2784314, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_14cdr"]
+font = ExtResource("3_g6qub")
+shadow_size = 0
+shadow_color = Color(0.13333334, 0.19215687, 0.2784314, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q4lci"]
+font = ExtResource("3_g6qub")
+shadow_size = 0
+shadow_color = Color(0.13333334, 0.19215687, 0.2784314, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj0hq"]
+font = ExtResource("3_g6qub")
+shadow_size = 0
+shadow_color = Color(0.13333334, 0.19215687, 0.2784314, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ugcl7"]
+font = ExtResource("3_g6qub")
+shadow_size = 0
+shadow_color = Color(0.13333334, 0.19215687, 0.2784314, 1)
+shadow_offset = Vector2(0, 1)
+
+[node name="MainMenu" type="Node2D" unique_id=1193251706]
+script = ExtResource("1_qotxw")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=1857891667]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_w72a1")
+
+[node name="Continue" type="TextureButton" parent="." unique_id=1570740726]
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 98.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_qotxw")
+
+[node name="Time" type="Label" parent="Continue" unique_id=1429638724]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 2.0
+offset_right = 213.0
+offset_bottom = 16.0
+text = "000:00"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Map" type="Label" parent="Continue" unique_id=573731505]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 1.5
+offset_right = 126.000015
+offset_bottom = 16.5
+text = "Map Name"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name" type="Label" parent="Continue" unique_id=110405392]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 24.0
+offset_right = 122.0
+offset_bottom = 38.0
+text = "Jugador"
+label_settings = SubResource("LabelSettings_q4lci")
+
+[node name="Pokedex" type="Label" parent="Continue" unique_id=1514935039]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 40.0
+offset_right = 126.00003
+offset_bottom = 54.0
+text = "Dex 1025"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Badges" type="Label" parent="Continue" unique_id=1290258403]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 56.0
+offset_right = 126.0
+offset_bottom = 72.0
+text = "Badges 8"
+label_settings = SubResource("LabelSettings_ugcl7")
+
+[node name="Mugshot" type="Sprite2D" parent="Continue" unique_id=1229252595]
+visible = false
+position = Vector2(41, 49)
+texture = ExtResource("4_cm8pd")
+
+[node name="NewGame" type="TextureButton" parent="." unique_id=1886676168]
+offset_left = 14.0
+offset_top = 206.0
+offset_right = 120.0
+offset_bottom = 246.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("5_7c1u0")
+
+[node name="Options" type="TextureButton" parent="." unique_id=1002691409]
+offset_left = 254.0
+offset_top = 206.0
+offset_right = 360.0
+offset_bottom = 246.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("6_apxmc")
+
+[node name="SFX_Action" type="AudioStreamPlayer" parent="." unique_id=886182045]
+stream = ExtResource("7_gg075")
+
+[node name="SFX_Move" type="AudioStreamPlayer" parent="." unique_id=52197539]
+stream = ExtResource("8_jpw1k")

@@ -116,6 +116,13 @@ func find_npc_by_id(npc_id: StringName) -> CharacterController:
 	return null
 
 
+func find_character_by_id(character_id: StringName) -> CharacterController:
+	if player and player.character_data is CharacterPlayer:
+		if (player.character_data as CharacterPlayer).PLAYER_ID == character_id:
+			return player as CharacterController
+	return find_npc_by_id(character_id)
+
+
 func complete_async() -> void:
 	if runner:
 		runner.on_async_complete()

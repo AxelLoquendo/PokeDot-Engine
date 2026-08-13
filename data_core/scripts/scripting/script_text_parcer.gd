@@ -15,6 +15,9 @@ const COMANDOS_VALIDOS: Array[String] = [
 	"ifflag",
 	"applymovement",
 	"weather",
+	"fadeout",
+	"fadein",
+	"savegame",
 	"waitbutton",
 	"setflag",
 	"clearflag",
@@ -25,6 +28,7 @@ const COMANDOS_VALIDOS: Array[String] = [
 	"warp",
 	"giveitem",
 	"sound",
+	"return",
 	"end"
 ]
 

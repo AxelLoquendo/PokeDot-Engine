@@ -7,7 +7,7 @@ class_name ScriptCmdApplyMovement
 @export_multiline var movement_script: String = ""
 
 func execute(context: ScriptExecutionContext) -> bool:
-	var target: CharacterController = context.find_npc_by_id(target_id)
+	var target: CharacterController = context.find_character_by_id(target_id)
 	if not target:
 		push_warning("ScriptCmdApplyMovement: no se encontró el NPC '%s'" % target_id)
 		return true
