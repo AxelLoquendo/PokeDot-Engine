@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AbilityData" format=3 uid="uid://ckohbyj47s2xm"]
+
+[ext_resource type="Script" uid="uid://cjdta3h7c5olk" path="res://data_core/ability/effects/stench_effect.gd" id="1_3keg3"]
+[ext_resource type="Script" uid="uid://hmxn83s5lyoc" path="res://data_core/ability/ability_data.gd" id="1_diiam"]
+
+[sub_resource type="Resource" id="Resource_xsax3"]
+script = ExtResource("1_3keg3")
+metadata/_custom_type_script = "uid://cjdta3h7c5olk"
+
+[resource]
+script = ExtResource("1_diiam")
+id = 1
+name_key = "Hedor"
+description_key = "Aleja a Pokémon salvajes."
+generation = 3
+ai_rating = 1
+triggers_on_hit = true
+behavior = SubResource("Resource_xsax3")
+metadata/_custom_type_script = "uid://hmxn83s5lyoc"

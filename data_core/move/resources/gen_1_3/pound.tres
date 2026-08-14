@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MoveData" format=3 uid="uid://3e8jxruc3ylc"]
+
+[ext_resource type="Script" uid="uid://d0bpqvjiuydih" path="res://data_core/move/move_data.gd" id="1_qj3wk"]
+
+[resource]
+script = ExtResource("1_qj3wk")
+move_id = 1
+move_name = "Destructor"
+description = "Golpea con las patas\\n
+o la cola."
+type = 1
+target = 1
+power = 40
+accuracy = 100
+pp = 35
+effect = 2
+makes_contact = true
+ignores_kings_rock = true
+metadata/_custom_type_script = "uid://d0bpqvjiuydih"

@@ -27,6 +27,8 @@ offset_top = 48.0
 offset_right = 228.0
 offset_bottom = 152.0
 scale = Vector2(2, 2)
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
 columns = 2
 
 [node name="Pokedex" type="TextureButton" parent="Control/GridContainer" unique_id=271848097]

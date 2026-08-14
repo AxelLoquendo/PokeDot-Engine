@@ -17,7 +17,7 @@ func show_text(texto: String, speaker: String = "", speaker_node: CharacterContr
 	show_texts([texto], speaker, speaker_node)
 
 
-func show_texts(textos: Array[String], speaker: String = "", speaker_node: CharacterController = null, choices: Array[String] = []) -> void:
+func show_texts(textos: Array[String], speaker: String = "", speaker_node: CharacterController = null, choices: Array[String] = [], choice_position: Vector2 = Vector2(-1, -1)) -> void:
 	var d: Dialogue = Dialogue.new()
 	for texto: String in textos:
 		var page: DialoguePage = DialoguePage.new()
@@ -30,4 +30,7 @@ func show_texts(textos: Array[String], speaker: String = "", speaker_node: Chara
 			choice.choice_id = str(index)
 			d.pages[d.pages.size() - 1].choices.append(choice)
 
+	var caja: DialogueBox = get_tree().get_first_node_in_group("dialogue_box") as DialogueBox
+	if caja:
+		caja.choice_position = choice_position
 	start(d, speaker, speaker_node)

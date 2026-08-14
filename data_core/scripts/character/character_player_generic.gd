@@ -9,6 +9,17 @@ class_name CharacterPlayer
 
 @export var PLAYER_ID: StringName = &"LOCALID_PLAYER"
 
+@export_group("Datos de partida")
+@export var bag: Bag = Bag.new()
+@export var party: Array[PokemonInstance] = []
+
+
+func add_pokemon(pokemon: PokemonInstance) -> bool:
+	if pokemon == null or party.size() >= 6:
+		return false
+	party.append(pokemon)
+	return true
+
 var _sprite_overworld: EventObjects.PlayerID = EventObjects.PlayerID.NONE
 
 @export_group("Apariencia")

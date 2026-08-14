@@ -74,6 +74,40 @@ end
 
 Las banderas se guardan en la ranura de partida y se restauran al cargarla.
 
+### Comparaciones
+
+`compare` salta a una etiqueta si una comparación es verdadera. Sintaxis:
+
+```text
+compare <flag|variable|choice> <clave> <==|!=|>|>=|<|<=> <valor> <etiqueta>
+```
+
+Ejemplos:
+
+```text
+compare flag FLAG_PUERTA == true puerta_abierta
+compare variable contador >= 3 recompensa
+compare choice last_choice == 0 aceptado
+```
+
+`flag` lee una bandera global; `variable` lee una variable temporal del script; `choice` es una variable temporal, normalmente `last_choice`.
+
+### Multichoice con posición
+
+La forma actual admite una pregunta, tantas opciones como necesites (el diálogo muestra hasta cuatro) y dos coordenadas opcionales para dibujar el panel:
+
+```text
+multichoice "¿Qué eliges?" "Sí" "No" 260 42
+```
+
+Sin las coordenadas, el panel usa su posición habitual:
+
+```text
+multichoice "¿Qué eliges?" "Sí" "No"
+```
+
+La respuesta se guarda como texto numérico en `last_choice`: `0` para la primera opción, `1` para la segunda, etc.
+
 ## Movimiento, clima y pantallas
 
 ```text

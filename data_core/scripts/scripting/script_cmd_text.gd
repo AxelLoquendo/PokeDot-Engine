@@ -12,6 +12,7 @@ class_name ScriptCmdText
 @export var choices: Array[String] = []
 @export var choice_variable: String = ""
 @export var hide_speaker: bool = false
+@export var choice_position: Vector2 = Vector2(-1, -1)
 
 func execute(context: ScriptExecutionContext) -> bool:
 	var final_speaker: String = speaker_name
@@ -36,7 +37,7 @@ func execute(context: ScriptExecutionContext) -> bool:
 		if dialogue_box:
 			dialogue_box.choice_selected.connect(_on_choice_selected.bind(context), CONNECT_ONE_SHOT)
 	if DialogueManager and DialogueManager.has_method("show_texts"):
-		DialogueManager.show_texts(text_pages, final_speaker, context.npc as CharacterController, choices)
+		DialogueManager.show_texts(text_pages, final_speaker, context.npc as CharacterController, choices, choice_position)
 		context.is_waiting = true
 		return false
 	

@@ -166,6 +166,16 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 				cmd.target_label = args[1]
 			return cmd
 
+		"compare":
+			var cmd: ScriptCmdCompare = ScriptCmdCompare.new()
+			if args.size() >= 5:
+				cmd.source = args[0]
+				cmd.key = args[1]
+				cmd.operator = args[2]
+				cmd.expected = args[3]
+				cmd.target_label = args[4]
+			return cmd
+
 		"applymovement":
 			var cmd: ScriptCmdApplyMovement = ScriptCmdApplyMovement.new()
 			if not args.is_empty():
@@ -194,8 +204,12 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 			var cmd: ScriptCmdText = ScriptCmdText.new()
 			if not args.is_empty():
 				cmd.message = args[0]
-			if args.size() > 1:
-				cmd.choices = _parse_quoted_values(args[1])
+			var option_end: int = args.size()
+			if args.size() >= 4 and args[args.size() - 1].is_valid_float() and args[args.size() - 2].is_valid_float():
+				cmd.choice_position = Vector2(float(args[args.size() - 2]), float(args[args.size() - 1]))
+				option_end -= 2
+			for index: int in range(1, option_end):
+				cmd.choices.append(args[index])
 			cmd.choice_variable = "last_choice"
 			return cmd
 

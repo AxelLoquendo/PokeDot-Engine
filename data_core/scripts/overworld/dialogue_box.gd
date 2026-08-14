@@ -35,6 +35,8 @@ var mostrar_caja_nombre: bool = false
 
 # --- Variables para multichoice ---
 var esperando_eleccion: bool = false
+var choice_position: Vector2 = Vector2(-1, -1)
+var default_choice_position: Vector2 = Vector2.ZERO
 var botones_pool: Array[Button] = []
 const MAX_OPCIONES: int = 4
 
@@ -47,6 +49,7 @@ func _ready() -> void:
 	flecha_dialogo.visible = false
 	
 	if container_opciones != null:
+		default_choice_position = container_opciones.position
 		container_opciones.visible = false
 		_preparar_botones()
 
@@ -154,6 +157,10 @@ func _mostrar_opciones(choices: Array[DialogueChoice]) -> void:
 		return
 		
 	container_opciones.visible = true
+	if choice_position.x >= 0.0 and choice_position.y >= 0.0:
+		container_opciones.position = choice_position
+	else:
+		container_opciones.position = default_choice_position
 	var indice_valido: int = 0
 	
 	for btn: Button in botones_pool:

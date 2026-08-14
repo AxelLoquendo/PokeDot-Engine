@@ -69,6 +69,7 @@ func _ready() -> void:
 		var nombre_guardado: String = str(datos_guardados.get("player_name", ""))
 		if not nombre_guardado.is_empty():
 			datos_jugador.name = nombre_guardado
+		SaveManager.restore_player_collection(datos_jugador, datos_guardados)
 
 	var personajes: Array[Node] = map_manager.current_map.find_children(
 		"*",

@@ -82,7 +82,7 @@ func actualizar_info_ranura() -> void:
 		return
 	var segundos: int = int(float(datos.get("play_seconds", 0.0)))
 	lbl_mapa.text = str(datos.get("map_name", "Sin mapa"))
-	lbl_tiempo.text = "%02d:%02d:%02d" % [segundos / 3600, (segundos % 3600) / 60, segundos % 60]
+	lbl_tiempo.text = "%02d:%02d:%02d" % [segundos / 3600.0, (segundos % 3600) / 60.0, segundos % 60]
 	lbl_nombre.text = str(datos.get("player_name", "Sin nombre"))
 	lbl_dex.text = "Dex ---"
 	lbl_medallas.text = "Badges ---"
