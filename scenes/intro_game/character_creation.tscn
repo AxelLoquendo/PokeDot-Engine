@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://hc21tnkwrs84"]
+
+[ext_resource type="Script" uid="uid://dmde3xkts2w6a" path="res://scenes/intro_game/character_creation.gd" id="1_8sxrt"]
+[ext_resource type="Texture2D" uid="uid://byy4rxkui2q41" path="res://game/graphics_eb/intro_game/gender/tiles_male.png" id="1_mlwt0"]
+[ext_resource type="Texture2D" uid="uid://csf56ei17cqrg" path="res://game/graphics_eb/trainers/Kael.png" id="2_8sxrt"]
+[ext_resource type="Script" uid="uid://to3q6mhpmlbk" path="res://data_core/scripts/player/gender_option.gd" id="2_bnt68"]
+[ext_resource type="Texture2D" uid="uid://c0d3frwj4c7ae" path="res://graphics/ui_main_menu/scroll_bg.png" id="3_3gwh4"]
+[ext_resource type="SpriteFrames" uid="uid://eu4qw0kds24p" path="res://data_core/scripts/character/player_frames.tres" id="3_bnt68"]
+[ext_resource type="Texture2D" uid="uid://ds76vbmf5d7vk" path="res://game/graphics_eb/intro_game/gender/tiles_female.png" id="4_qxhbe"]
+[ext_resource type="Script" uid="uid://dabjm68rsk5d0" path="res://scenes/intro_game/fondo.gd" id="4_xri3y"]
+[ext_resource type="Texture2D" uid="uid://d3ounjlmajik8" path="res://game/graphics_eb/trainers/Kaida.png" id="5_3gwh4"]
+[ext_resource type="AudioStream" uid="uid://fh0shgwcsri4" path="res://sfx/se/anim/Select.WAV" id="8_qxhbe"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="11_uwib1"]
+[ext_resource type="PackedScene" uid="uid://cptui2la174oj" path="res://scenes/ui_dialogue_box/ui_dialogue_box.tscn" id="12_yk62n"]
+
+[sub_resource type="Resource" id="Resource_8sxrt"]
+script = ExtResource("2_bnt68")
+boy_id = 1
+girl_id = 2
+metadata/_custom_type_script = "uid://to3q6mhpmlbk"
+
+[sub_resource type="Animation" id="Animation_xri3y"]
+resource_name = "No_Seleccionado"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Female:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(112, 144), Vector2(80, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_uwib1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Female:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(112, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_yk62n"]
+resource_name = "Seleccionado"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Female:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(80, 144), Vector2(112, 144)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qb7ht"]
+_data = {
+&"No_Seleccionado": SubResource("Animation_xri3y"),
+&"RESET": SubResource("Animation_uwib1"),
+&"Seleccionado": SubResource("Animation_yk62n")
+}
+
+[sub_resource type="Animation" id="Animation_v3qhd"]
+resource_name = "No_Seleccionado"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Male:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(368, 144), Vector2(398, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_s4w0v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Male:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(368, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_tevqh"]
+resource_name = "Seleccionado"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Male:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(398, 144), Vector2(368, 144)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7872y"]
+_data = {
+&"No_Seleccionado": SubResource("Animation_v3qhd"),
+&"RESET": SubResource("Animation_s4w0v"),
+&"Seleccionado": SubResource("Animation_tevqh")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("11_uwib1")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.4509804, 0.4509804, 0.4509804, 1)
+shadow_offset = Vector2(0, 1)
+
+[node name="Character_Creation" type="Node2D" unique_id=815181420]
+script = ExtResource("1_8sxrt")
+gender_option = SubResource("Resource_8sxrt")
+
+[node name="Fondo" type="Sprite2D" parent="." unique_id=1037261636]
+position = Vector2(256, 256)
+scale = Vector2(2, 2)
+texture = ExtResource("3_3gwh4")
+script = ExtResource("4_xri3y")
+
+[node name="Fondo2" type="Sprite2D" parent="." unique_id=1490373691]
+position = Vector2(256, -256)
+scale = Vector2(2, 2)
+texture = ExtResource("3_3gwh4")
+
+[node name="Male" type="Sprite2D" parent="." unique_id=720569382]
+position = Vector2(368, 144)
+scale = Vector2(2, 2)
+texture = ExtResource("1_mlwt0")
+
+[node name="Boy" type="Sprite2D" parent="Male" unique_id=639986637]
+position = Vector2(8, 0)
+texture = ExtResource("2_8sxrt")
+
+[node name="Boy_OW" type="AnimatedSprite2D" parent="Male" unique_id=1075226664]
+position = Vector2(-23, 22)
+sprite_frames = ExtResource("3_bnt68")
+animation = &"idle_down"
+
+[node name="Female" type="Sprite2D" parent="." unique_id=1876969411]
+position = Vector2(112, 144)
+scale = Vector2(2, 2)
+texture = ExtResource("4_qxhbe")
+
+[node name="Girl" type="Sprite2D" parent="Female" unique_id=173721341]
+position = Vector2(-9, 0)
+texture = ExtResource("5_3gwh4")
+
+[node name="Girl_OW" type="AnimatedSprite2D" parent="Female" unique_id=1780066160]
+position = Vector2(23, 22)
+sprite_frames = ExtResource("3_bnt68")
+animation = &"idle_walk_down"
+frame = 1
+frame_progress = 0.049139407
+
+[node name="Female_anim" type="AnimationPlayer" parent="." unique_id=147618674]
+libraries/ = SubResource("AnimationLibrary_qb7ht")
+
+[node name="Male_anim" type="AnimationPlayer" parent="." unique_id=408816255]
+libraries/ = SubResource("AnimationLibrary_7872y")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=43673178]
+stream = ExtResource("8_qxhbe")
+
+[node name="Label" type="Label" parent="." unique_id=1430469209]
+offset_left = 144.0
+offset_top = 267.0
+offset_right = 348.0
+offset_bottom = 295.0
+text = "¿Eres Chico o Chica?"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="NombreInput" type="LineEdit" parent="." unique_id=1675570952]
+offset_left = 205.0
+offset_top = 128.0
+offset_right = 274.0
+offset_bottom = 160.0
+
+[node name="CanvasLayer" parent="." unique_id=1957761113 instance=ExtResource("12_yk62n")]
+visible = false

@@ -6,13 +6,15 @@ class_name CharacterPlayer
 @export_group("Identidad")
 @export var money: int = 0
 @export var name: String = ""
-
+@export var gender: int = 0  # 0 boy, 1 neutral, 2 girl
+@export var gender_option: GenderOption
 @export var PLAYER_ID: StringName = &"LOCALID_PLAYER"
 
 @export_group("Datos de partida")
 @export var bag: Bag = Bag.new()
 @export var party: Array[PokemonInstance] = []
-
+@export var created_at: String = ""
+@export var trainer_id: int = 0
 
 func add_pokemon(pokemon: PokemonInstance) -> bool:
 	if pokemon == null or party.size() >= 6:

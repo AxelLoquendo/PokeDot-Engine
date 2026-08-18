@@ -3,10 +3,15 @@
 [ext_resource type="Script" uid="uid://bdp8w74uw56oo" path="res://scenes/ui_main_menu/main_menu.gd" id="1_qotxw"]
 [ext_resource type="Texture2D" uid="uid://c0d3frwj4c7ae" path="res://graphics/ui_main_menu/scroll_bg.png" id="1_w72a1"]
 [ext_resource type="Texture2D" uid="uid://cxl6eny7k8sdw" path="res://graphics/ui_main_menu/continue.png" id="2_qotxw"]
+[ext_resource type="Script" uid="uid://dabjm68rsk5d0" path="res://scenes/intro_game/fondo.gd" id="3_cm8pd"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="3_g6qub"]
+[ext_resource type="Texture2D" uid="uid://1pd75lgsm4y2" path="res://graphics/ui_main_menu/continue_female.png" id="3_gg075"]
 [ext_resource type="Texture2D" uid="uid://cqnfnh7h2tewu" path="res://game/graphics_eb/ui_main_menu/brendan_mugshot.png" id="4_cm8pd"]
 [ext_resource type="Texture2D" uid="uid://bs1scwtk5una4" path="res://graphics/ui_main_menu/new_game.png" id="5_7c1u0"]
+[ext_resource type="Texture2D" uid="uid://bk6xd6ieec1x8" path="res://graphics/ui_main_menu/new_game_female.png" id="5_jpw1k"]
 [ext_resource type="Texture2D" uid="uid://ymj51gvfqya4" path="res://graphics/ui_main_menu/option.png" id="6_apxmc"]
+[ext_resource type="Texture2D" uid="uid://bgsl2dfkcn1un" path="res://graphics/ui_main_menu/option_female.png" id="7_30w5t"]
+[ext_resource type="Texture2D" uid="uid://btct4fvx6ps33" path="res://game/graphics_eb/ui_main_menu/may_mugshot.png" id="7_cm8pd"]
 [ext_resource type="AudioStream" uid="uid://cl2mblxin8ng" path="res://sfx/se/GUI sel decision.ogg" id="7_gg075"]
 [ext_resource type="AudioStream" uid="uid://1iuty86rgpif" path="res://sfx/se/Tile Game cursor.ogg" id="8_jpw1k"]
 
@@ -42,10 +47,21 @@ shadow_offset = Vector2(0, 1)
 
 [node name="MainMenu" type="Node2D" unique_id=1193251706]
 script = ExtResource("1_qotxw")
+continue_boy = ExtResource("2_qotxw")
+continue_girl = ExtResource("3_gg075")
+new_game_boy = ExtResource("5_7c1u0")
+new_game_girl = ExtResource("5_jpw1k")
+options_boy = ExtResource("6_apxmc")
+options_girl = ExtResource("7_30w5t")
 
-[node name="Fondo" type="TextureRect" parent="." unique_id=1857891667]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Fondo" type="Sprite2D" parent="." unique_id=761801237]
+position = Vector2(256, 256)
+scale = Vector2(2, 2)
+texture = ExtResource("1_w72a1")
+script = ExtResource("3_cm8pd")
+
+[node name="Fondo2" type="Sprite2D" parent="." unique_id=21572494]
+position = Vector2(256, -256)
 scale = Vector2(2, 2)
 texture = ExtResource("1_w72a1")
 
@@ -102,9 +118,15 @@ offset_bottom = 72.0
 text = "Badges 8"
 label_settings = SubResource("LabelSettings_ugcl7")
 
-[node name="Mugshot" type="Sprite2D" parent="Continue" unique_id=1229252595]
+[node name="MugshotBoy" type="Sprite2D" parent="Continue" unique_id=1229252595]
+visible = false
 position = Vector2(41, 49)
 texture = ExtResource("4_cm8pd")
+
+[node name="MugshotGirl" type="Sprite2D" parent="Continue" unique_id=912222504]
+visible = false
+position = Vector2(41, 49)
+texture = ExtResource("7_cm8pd")
 
 [node name="NewGame" type="TextureButton" parent="." unique_id=1886676168]
 offset_left = 14.0

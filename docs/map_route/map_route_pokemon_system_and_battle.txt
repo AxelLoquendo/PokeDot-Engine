@@ -1,0 +1,910 @@
+mapa de ruta:
+                            POKÉDOT ENGINE
+                                   │
+              ┌───────────────┴───────────────┐
+              │                                        │
+        SISTEMA POKÉMON                        SISTEMA DE BATALLA
+              │                                        │
+       Datos / criatura                         Battle Core
+       Progresión                       	Turnos
+       Crianza                          	Acciones
+       Evolución                        	Daño
+       etc.                             	Estados
+
+
+## Roadmap — Sistema Pokémon
+
+# Fase 1 — Datos de especies ✅
+
+text
+Species
+PokemonData
+PokemonDataStruct
+SpeciesDatabase
+
+Incluye:
+
+- IDs de especies
+- estadísticas base
+- tipos
+- habilidades
+- grupos huevo
+- crecimiento
+- género
+- sprites
+- cry
+- movimientos
+- evoluciones
+- datos de Pokédex
+- objetos encontrados
+- etc.
+
+# validación de PokemonDataStruct ✅
+
+
+## Fase 2 — Instancia de Pokémon 🟡
+
+Actualmente tienes la base:
+
+```text
+PokemonInstance
+PokemonMoveSlot
+```
+
+Aquí tenemos que terminar de definir la criatura individual.
+
+### Identidad
+
+- Species
+- Nickname
+- OT
+- ID/Trainer ID
+- Personality/PID
+- Poké Ball
+- fecha/origen, si posteriormente la necesitas
+
+### Progresión
+
+- Nivel
+- EXP
+- Growth Rate
+- amistad
+
+### Combate
+
+- HP actual
+- PP actuales
+- estados temporales
+- boosts/debuffs temporales — aunque estos deberían probablemente vivir fuera de la instancia permanente durante una batalla.
+
+### Características
+
+- IVs
+- EVs
+- Naturaleza
+- género
+- shiny
+
+### Otros
+
+- habilidad concreta
+- objeto equipado
+- movimientos
+- PP Ups
+
+No necesariamente implementaremos todo de una vez; primero definiremos el modelo.
+
+---
+
+# Fase 3 — Experiencia y niveles
+
+Aquí entra:
+
+```text
+ExperienceSystem
+```
+
+Responsabilidades:
+
+```text
+EXP → nivel
+nivel → EXP requerida
+```
+
+Las seis curvas:
+
+- Erratic
+- Fast
+- Medium Fast
+- Medium Slow
+- Slow
+- Fluctuating
+
+Después:
+
+```text
+add_experience()
+```
+
+y:
+
+```text
+level_up()
+```
+
+Y finalmente conectar:
+
+```text
+nivel nuevo
+   ├── aprender movimientos
+   └── comprobar evolución
+```
+
+---
+
+# Fase 4 — Estadísticas
+
+Aquí empezamos a convertir los datos de especie en estadísticas reales.
+
+```text
+Base Stats
+    +
+IV
+    +
+EV
+    +
+Level
+    +
+Nature
+    ↓
+Final Stats
+```
+
+Separaría:
+
+```text
+StatCalculator
+```
+
+para cosas como:
+
+- HP
+- Attack
+- Defense
+- Sp. Attack
+- Sp. Defense
+- Speed
+
+Y después:
+
+```text
+get_stat()
+```
+
+desde `PokemonInstance` o mediante un sistema especializado.
+
+---
+
+# Fase 5 — Naturalezas
+
+Ya tienes el enum:
+
+```gdscript
+PokemonData.Nature
+```
+
+Falta:
+
+- naturaleza individual
+- modificación de estadísticas
+- tabla de naturalezas
+- posiblemente sabores/contest stats si algún día los necesitas.
+
+---
+
+# Fase 6 — IV / EV
+
+Separaría claramente ambos.
+
+```text
+IV
+└── potencial individual
+
+EV
+└── entrenamiento
+```
+
+Y un:
+
+```text
+StatCalculator
+```
+
+que los consuma.
+
+También habrá límites y reglas de distribución.
+
+---
+
+# Fase 7 — Género / personalidad / shiny
+
+Aquí entrarían:
+
+- Gender Ratio
+- Personality Value/PID
+- Shiny calculation
+- género individual
+- características derivadas del PID si decidimos emularlas.
+
+Tu `GenderRatio` ya está preparada.
+
+---
+
+# Fase 8 — Movimientos
+
+Ya tienes:
+
+```text
+MoveData
+PokemonMoveSlot
+LevelUpMove
+```
+
+Faltaría construir alrededor:
+
+```text
+MoveSystem
+```
+
+para:
+
+- aprender
+- olvidar
+- reemplazar
+- recordar
+- enseñar TM/HM
+- Egg Moves
+- PP
+- PP Ups
+- movimientos disponibles
+- restricciones.
+
+---
+
+# Fase 9 — Habilidades
+
+Ya tienes:
+
+```text
+ability_1
+ability_2
+hidden_ability
+```
+
+y `AbilityId`.
+
+Faltaría distinguir:
+
+```text
+AbilityData
+     ↓
+efecto
+     ↓
+evento que la activa
+```
+
+Esto será especialmente importante para batalla.
+
+---
+
+# Fase 10 — Objetos del Pokémon
+
+Actualmente:
+
+```gdscript
+held_item
+```
+
+Ya existe.
+
+Aquí construiremos:
+
+- equipar
+- quitar
+- consumir
+- objetos con efectos
+- objetos que modifican batalla
+- objetos que interactúan con evolución.
+
+---
+
+# Fase 11 — Evolución ✅/🟡
+
+La primera versión ya funciona.
+
+Tenemos:
+
+```text
+EvolutionData
+EvolutionResult
+EvolutionSystem
+```
+
+Y ya comprobamos:
+
+```text
+Bulbasaur Lv15
+      ↓
+Lv16
+      ↓
+EvolutionSystem
+      ↓
+Ivysaur
+```
+
+Después podremos ampliar condiciones cuando existan los datos necesarios.
+
+**Por ahora: cerrado.**
+
+---
+
+# Fase 12 — Crianza
+
+Más adelante:
+
+```text
+BreedingSystem
+```
+
+con:
+
+- compatibilidad
+- Egg Groups
+- Ditto
+- género
+- especie huevo
+- Egg Moves
+- habilidad
+- naturaleza
+- IV inheritance
+- generación del huevo
+- ciclos de eclosión.
+
+Tu `PokemonDataStruct` ya tiene bastante de la información necesaria.
+
+---
+
+# Fase 13 — Huevo / eclosión
+
+Separaría la crianza de:
+
+```text
+EggSystem
+```
+
+para:
+
+- generar huevo
+- pasos
+- ciclos
+- eclosión
+- especie resultante
+- herencia.
+
+---
+
+# Fase 14 — Pokémon Party
+
+Esto será fundamental antes de batalla:
+
+```text
+PokemonParty
+```
+
+con:
+
+```text
+máximo 6 Pokémon
+```
+
+y operaciones:
+
+- añadir
+- retirar
+- intercambiar posiciones
+- obtener primer Pokémon
+- Pokémon debilitados
+- Pokémon disponibles
+- seleccionar Pokémon.
+
+---
+
+# Fase 15 — Caja / almacenamiento
+
+Después:
+
+```text
+PokemonStorage
+```
+
+con:
+
+```text
+PC
+├── Boxes
+├── Pokémon
+└── organización
+```
+
+---
+
+# ⚔️ Roadmap — Sistema de Batalla
+
+Aquí recomiendo ser todavía más cuidadoso.
+
+## Fase B1 — Battle Core
+
+Primero necesitamos el corazón:
+
+```text
+Battle
+├── Battler
+├── BattleSide
+├── BattleState
+└── BattleTurn
+```
+
+Y definir:
+
+- quién participa
+- quién está activo
+- equipos
+- posiciones
+- turno
+- fase.
+
+---
+
+# B2 — Battle State Machine
+
+Probablemente será una de las piezas más importantes.
+
+Algo parecido a:
+
+```text
+BATTLE_START
+     ↓
+INTRO
+     ↓
+CHOOSE_ACTION
+     ↓
+RESOLVE_ACTION
+     ↓
+APPLY_DAMAGE
+     ↓
+CHECK_FAINT
+     ↓
+CHECK_END
+     ↓
+NEXT_TURN
+```
+
+Y habrá bifurcaciones para:
+
+```text
+switch
+item
+run
+faint
+multi-battle
+etc.
+```
+
+No quiero que la batalla termine siendo una función gigante llena de `if`.
+
+---
+
+# B3 — Acciones
+
+Crearíamos algo como:
+
+```text
+BattleAction
+```
+
+con tipos:
+
+```text
+MOVE
+SWITCH
+ITEM
+RUN
+```
+
+Cada participante selecciona una acción.
+
+Después el Battle System determina el orden.
+
+---
+
+# B4 — Orden de acciones
+
+Aquí entran:
+
+- prioridad
+- Speed
+- Trick Room
+- Quick Claw
+- abilities
+- items
+- efectos que modifican prioridad.
+
+---
+
+# B5 — Selección de movimientos
+
+El sistema debe comprobar:
+
+- PP
+- objetivo
+- tipo de movimiento
+- estado
+- restricciones
+- elección válida.
+
+---
+
+# B6 — Damage System
+
+Este merece su propio sistema:
+
+```text
+DamageCalculator
+```
+
+que reciba algo como:
+
+```text
+Attacker
+Defender
+Move
+BattleContext
+```
+
+y calcule:
+
+```text
+base damage
+STAB
+type effectiveness
+critical
+random
+abilities
+items
+weather
+screens
+boosts
+etc.
+```
+
+Sin modificar directamente Pokémon.
+
+---
+
+# B7 — Accuracy / Evasion
+
+Separado del daño:
+
+```text
+AccuracySystem
+```
+
+para:
+
+- precisión
+- evasión
+- movimientos infalibles
+- abilities
+- condiciones.
+
+---
+
+# B8 — Tipos
+
+Aunque `PokemonData.Type` ya existe, batalla necesita:
+
+```text
+TypeChart
+```
+
+para:
+
+```text
+Fire → Grass = ×2
+Fire → Water = ×0.5
+Normal → Ghost = ×0
+...
+```
+
+Y después:
+
+```text
+get_effectiveness()
+```
+
+---
+
+# B9 — Estados
+
+Separaría:
+
+### Estados principales
+
+- Burn
+- Poison
+- Toxic
+- Paralysis
+- Sleep
+- Freeze
+- Faint
+
+### Estados secundarios
+
+- Confusion
+- Flinch
+- etc.
+
+Y un:
+
+```text
+BattleStatus
+```
+
+que sea **temporal de batalla**, no parte permanente de `PokemonInstance`.
+
+---
+
+# B10 — Stat stages
+
+Por ejemplo:
+
+```text
+Attack +2
+Defense -1
+Speed +6
+```
+
+Estos pertenecen al estado de batalla.
+
+No al Pokémon permanente.
+
+---
+
+# B11 — Efectos de campo
+
+Aquí entran:
+
+- Weather
+- Terrain
+- Trick Room
+- Screens
+- hazards
+- etc.
+
+---
+
+# B12 — Abilities en batalla
+
+Aquí finalmente conectamos:
+
+```text
+AbilityData
+       ↓
+Battle Events
+       ↓
+Ability effects
+```
+
+Necesitaremos un sistema de eventos para que cosas como:
+
+```text
+Intimidate
+Levitate
+Sturdy
+Swift Swim
+Flash Fire
+```
+
+no estén codificadas directamente dentro del `Battle`.
+
+---
+
+# B13 — Items en batalla
+
+Igual:
+
+```text
+HeldItem
+    ↓
+BattleItemEffect
+```
+
+---
+
+# B14 — Switch
+
+Sistema de:
+
+- cambio voluntario
+- cambio forzado
+- Pokémon debilitado
+- entrada/salida
+- efectos de switch.
+
+---
+
+# B15 — Experiencia post-batalla
+
+Aquí finalmente conectamos ambos grandes sistemas:
+
+```text
+             BATTLE
+                │
+                ▼
+          BattleResult
+                │
+                ▼
+        ExperienceSystem
+                │
+        ┌───────┴───────┐
+        ▼               ▼
+      Level Up       Evolution
+```
+
+Esta conexión es importante porque **batalla no debería calcular directamente EXP ni evolucionar Pokémon**.
+
+---
+
+# B16 — Captura
+
+Después:
+
+```text
+CaptureSystem
+```
+
+para:
+
+- fórmula de captura
+- Poké Balls
+- catch rate
+- estados
+- HP
+- shake
+- captura exitosa
+- incorporación a party/PC.
+
+---
+
+# B17 — IA de entrenadores
+
+Finalmente:
+
+```text
+BattleAI
+```
+
+para:
+
+- selección de movimientos
+- cambio
+- objetos
+- prioridades
+- evaluación de tipos
+- dificultad.
+
+---
+
+# B18 — Battle Presentation
+
+Y **recién después**:
+
+```text
+BattleController
+BattleUI
+BattleAnimation
+BattleEffects
+BattleCamera
+```
+
+Es importante separar el motor de batalla de su presentación.
+
+---
+
+# 🔗 La arquitectura completa
+
+Al final quiero que PokeDot pueda tener algo conceptualmente así:
+
+```text
+                         POKÉDOT
+                            │
+          ┌─────────────────┴─────────────────┐
+          │                                   │
+       POKÉMON                             BATALLA
+          │                                   │
+          ├─ Species                          ├─ Battle
+          ├─ Instance                         ├─ Battler
+          ├─ Stats                            ├─ Actions
+          ├─ EXP                              ├─ Turn Order
+          ├─ Moves                            ├─ Damage
+          ├─ Abilities                        ├─ Accuracy
+          ├─ Items                            ├─ Types
+          ├─ Evolution                        ├─ Status
+          ├─ Breeding                         ├─ Weather
+          ├─ Party                            ├─ Abilities
+          └─ Storage                          └─ AI
+                  │                              │
+                  └───────────┬──────────────────┘
+                              │
+                         BattleResult
+                              │
+                    ┌─────────┴─────────┐
+                    ▼                   ▼
+                   EXP              Captura
+                    │
+                    ▼
+                Level Up
+                    │
+             ┌──────┴──────┐
+             ▼             ▼
+        Learn Move     Evolution
+```
+
+## 🧭 Orden de trabajo que propondría
+
+No necesariamente vamos a implementar todo siguiendo la lista numérica. Para evitar dependencias rotas, mi orden sería:
+
+**Ahora:**
+
+1. Datos de especie ✅
+2. `PokemonInstance` 🟡
+3. EXP / niveles
+4. Stats
+5. Naturaleza / IV / EV
+6. Género / shiny / personalidad
+7. Movimientos
+8. Habilidades
+9. Objetos
+10. Evolución — **ya validada, ampliar después**
+11. Party
+12. Storage
+13. Crianza / huevos
+
+**Después batalla:**
+
+14. Battle Core
+15. Battle State Machine
+16. Battlers
+17. Actions
+18. Turn Order
+19. Type Chart
+20. Damage
+21. Accuracy
+22. Status
+23. Stat Stages
+24. Weather/Terrain
+25. Abilities
+26. Items
+27. Switching
+28. Capture
+29. EXP post-battle
+30. AI
+31. Presentation/UI
+
+Y algo que quiero mantener como regla durante todo el desarrollo:
+
+> **Los sistemas deben depender de datos y resultados, no de escenas ni de la UI.**
+
+Eso nos permitirá que el mismo `PokemonInstance`, `DamageCalculator`, `EvolutionSystem`, etc. funcione desde una batalla real, un test de `EditorScript` o eventualmente desde una herramienta del editor.
+
+Ese sería nuestro **mapa maestro**. A partir de aquí podemos ir marcando cada componente como **pendiente → en desarrollo → probado → terminado**, en lugar de saltar de sistema en sistema sin saber qué dependencias nos faltan.

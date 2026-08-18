@@ -10,11 +10,25 @@ class_name PokemonInstance
 @export var ability_id: AbilityId.Id = AbilityId.Id.NONE
 @export var held_item: Items.ItemId = Items.ItemId.ITEM_NONE
 @export var moves: Array[PokemonMoveSlot] = []
+@export_range(0, 255) var friendship: int = 70
+@export var nature: PokemonData.Nature
+@export var gender: PokemonData.GenderRatio
+@export var personality_value: int
 
 
 func get_species() -> PokemonDataStruct:
 	return SpeciesDatabase.get_species(species_id)
 
+func set_species(new_species: Species.SpeciesID) -> bool:
+
+	if new_species == Species.SpeciesID.SPECIES_NONE:
+		return false
+
+	if not SpeciesDatabase.has_species(new_species):
+		return false
+
+	species_id = new_species
+	return true
 
 func get_display_name() -> String:
 	if not nickname.strip_edges().is_empty():

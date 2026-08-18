@@ -65,6 +65,12 @@ const player_sprites: Dictionary = {
 	PlayerID.OBJ_EVENT_GFX_NANCI_B2W2: "res://graphics/overworld/player/female/nanci/normal.png",
 }
 
+const trainer_sprites: Dictionary = {  
+	PlayerID.NONE: ".",  
+	PlayerID.OBJ_EVENT_GFX_KAEL_EB: "res://game/graphics_eb/trainers/Kael.png",  
+	PlayerID.OBJ_EVENT_GFX_KAIDA_EB: "res://game/graphics_eb/trainers/Kaida.png",  
+	}
+
 static var casillas_ocupadas: Dictionary = {}   # posición REAL
 static var casillas_reservadas: Dictionary = {} # destino al que va
 

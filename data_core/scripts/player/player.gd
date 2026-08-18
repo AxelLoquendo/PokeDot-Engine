@@ -6,6 +6,7 @@ const TIEMPO_MINIMO_PARA_CAMINAR: float = 0.09
 
 # ----------------
 @export var start_menu: CanvasLayer
+@export var trainer_card: CanvasLayer
 # ----------------
 
 var tiempo_paso_bloqueo: float = 0.0
@@ -24,11 +25,11 @@ func obtener_velocidad_movimiento() -> float:
 
 	return character_data.walk_speed
 
-func process_input() -> void:
-	if start_menu and start_menu.is_open:
-		input_direction = Vector2.ZERO
-		is_moving = false
-		reproducir_idle()
+func process_input() -> void:  
+	if start_menu and start_menu.is_open or trainer_card and trainer_card.is_open:
+		input_direction = Vector2.ZERO  
+		is_moving = false 
+		reproducir_idle() 
 		return
 
 	if DialogueBox.activo:

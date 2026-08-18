@@ -63,13 +63,22 @@ func _ready() -> void:
 			jugador.global_position = Vector2(float(posicion[0]), float(posicion[1]))
 	else:
 		jugador.global_position = jugador.snap_to_grid(Vector2(casilla_inicio.x * jugador.TILE_SIZE + 8, casilla_inicio.y * jugador.TILE_SIZE))
-	var datos_jugador: CharacterPlayer = jugador.character_data as CharacterPlayer
-	if datos_jugador and not datos_guardados.is_empty():
-		datos_jugador.money = int(datos_guardados.get("player_money", datos_jugador.money))
-		var nombre_guardado: String = str(datos_guardados.get("player_name", ""))
-		if not nombre_guardado.is_empty():
-			datos_jugador.name = nombre_guardado
+	var datos_jugador: CharacterPlayer = jugador.character_data as CharacterPlayer 
+	print(SaveManager.pending_new_character)
+	if datos_jugador and not datos_guardados.is_empty():  
+		datos_jugador.money = int(datos_guardados.get("player_money", datos_jugador.money))  
+		var nombre_guardado: String = str(datos_guardados.get("player_name", ""))  
+		if not nombre_guardado.is_empty():  
+			datos_jugador.name = nombre_guardado  
 		SaveManager.restore_player_collection(datos_jugador, datos_guardados)
+	elif datos_jugador and not SaveManager.pending_new_character.is_empty():  
+		var pendiente: Dictionary = SaveManager.pending_new_character  
+		datos_jugador.name = str(pendiente.get("name", datos_jugador.name))  
+		datos_jugador.gender = int(pendiente.get("gender", datos_jugador.gender))  
+		datos_jugador.sprite_overworld = int(pendiente.get("sprite_overworld", datos_jugador.sprite_overworld)) as EventObjects.PlayerID  
+		datos_jugador.created_at = str(pendiente.get("created_at", datos_jugador.created_at))  
+		datos_jugador.trainer_id = int(pendiente.get("trainer_id", 0))  # <- corregido: pendiente, no datos_guardados  
+		SaveManager.pending_new_character.clear()
 
 	var personajes: Array[Node] = map_manager.current_map.find_children(
 		"*",

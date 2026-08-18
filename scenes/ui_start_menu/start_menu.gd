@@ -86,7 +86,15 @@ func _on_option_selected(option: String) -> void:
 	match option:
 		"Save":
 			SaveManager.request_save(get_tree(), self)
-		"Pokemon":
-			print("Abriendo menú de equipo (próximamente)")
-		"Pokedex", "Bag", "TrainerCard", "Options":
+		"Pokemon":  
+			print("Abriendo menú de equipo (próximamente)")  
+		"TrainerCard":  
+			toggle_menu()  
+			var card: CanvasLayer = preload("res://scenes/ui_trainer_card/trainer_card.tscn").instantiate()  
+			get_tree().current_scene.add_child(card)  
+			var jugador: CharacterController = get_tree().get_first_node_in_group("player") as CharacterController  
+			if jugador:  
+				jugador.trainer_card = card  
+				card.tree_exited.connect(func() -> void: jugador.trainer_card = null)
+		"Pokedex", "Bag", "Options":  
 			print("%s: próximamente" % option)

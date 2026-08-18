@@ -13,6 +13,8 @@ var _stored_play_seconds: float = 0.0
 var _awaiting_confirmation: bool = false
 var _save_confirmed: bool = false
 
+var pending_new_character: Dictionary = {}
+
 func _process(_delta: float) -> void:
 	pass
 
@@ -137,8 +139,12 @@ func _finish_save(success: bool) -> void:
 	save_finished.emit(success)
 
 
-func restore_player_collection(player_data: CharacterPlayer, saved: Dictionary) -> void:
-	if player_data.bag == null:
+func restore_player_collection(player_data: CharacterPlayer, saved: Dictionary) -> void:  
+	player_data.gender = int(saved.get("player_gender", player_data.gender))  
+	player_data.sprite_overworld = int(saved.get("player_sprite_overworld", player_data.sprite_overworld)) as EventObjects.PlayerID
+	player_data.created_at = str(saved.get("created_at", player_data.created_at))  
+	player_data.trainer_id = int(saved.get("player_trainer_id", player_data.trainer_id))  
+	if player_data.bag == null:  
 		player_data.bag = Bag.new()
 	player_data.bag.quantities.clear()
 	var bag_value: Variant = saved.get("bag", {})
@@ -194,10 +200,14 @@ func save_game(tree: SceneTree) -> bool:
 	var data: Dictionary = {
 		"version": 2,
 		"saved_at": Time.get_datetime_string_from_system(),
+		"created_at": player_data.created_at if player_data else "",
 		"play_seconds": get_play_seconds(),
 		"player_position": [player.global_position.x, player.global_position.y],
-		"player_money": player_data.money if player_data else 0,
+		"player_money": player_data.money if player_data else 0,  
 		"player_name": player_data.name if player_data else "",
+		"player_trainer_id": player_data.trainer_id if player_data else 0,
+		"player_gender": player_data.gender if player_data else 0,  
+		"player_sprite_overworld": int(player_data.sprite_overworld) if player_data else 0,
 		"map_name": map.map_name if map else "",
 		"map_section": int(map.map_id_section) if map else 0,
 		"flags": ScriptExecutionContext.global_flags,
