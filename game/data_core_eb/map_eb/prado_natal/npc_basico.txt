@@ -1,5 +1,6 @@
 lock
 faceplayer
+giveitem ITEM_POKE_BALL 2
 text "¿Deseas ir a Pueblo Alba?, recuerda, aun no esta terminado." MSGBOX_YESNO
 
 ifchoice 0 ir_pueblo_alba

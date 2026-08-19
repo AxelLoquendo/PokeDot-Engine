@@ -1,0 +1,247 @@
+[gd_scene format=3 uid="uid://boyjv1ksmdu5p"]
+
+[ext_resource type="Texture2D" uid="uid://dtywbtaxmcdtv" path="res://graphics/ui_bag/bg_male.png" id="1_qqsnm"]
+[ext_resource type="Script" uid="uid://cteexolsrphe6" path="res://scenes/ui_bag/bag.gd" id="1_r82bj"]
+[ext_resource type="Texture2D" uid="uid://cbi5jvouw435y" path="res://graphics/ui_bag/bag_male_0.png" id="2_r82bj"]
+[ext_resource type="Texture2D" uid="uid://ka1gtx2ohfxw" path="res://graphics/ui_bag/bg_female.png" id="3_08em6"]
+[ext_resource type="Texture2D" uid="uid://buhm4e5w2wsbw" path="res://graphics/items/000.png" id="3_mhjxr"]
+[ext_resource type="Texture2D" uid="uid://jh458tk4xhp6" path="res://graphics/ui_bag/bag_male_1.png" id="3_rj21q"]
+[ext_resource type="Texture2D" uid="uid://c83gmnmitujc3" path="res://graphics/ui_bag/bag_male_2.png" id="4_08em6"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="4_o0xpx"]
+[ext_resource type="Texture2D" uid="uid://dqlfgiotlgjp6" path="res://graphics/ui_bag/bag_male_3.png" id="5_6kvvx"]
+[ext_resource type="Texture2D" uid="uid://sfpa1n5c8w4b" path="res://graphics/ui_bag/bag_female_0.png" id="6_le8k4"]
+[ext_resource type="Texture2D" uid="uid://dj8nv4376bunu" path="res://graphics/ui_bag/bag_female_1.png" id="7_dsxl6"]
+[ext_resource type="Texture2D" uid="uid://dnbvhk0vcyvvb" path="res://graphics/ui_bag/bag_female_2.png" id="8_6okp6"]
+[ext_resource type="Texture2D" uid="uid://fk5qiyldwuv7" path="res://graphics/ui_bag/bag_female_3.png" id="9_y6wlg"]
+[ext_resource type="Texture2D" uid="uid://b7m8ye24l8lsb" path="res://graphics/items/back.png" id="12_le8k4"]
+[ext_resource type="AudioStream" uid="uid://cb53psym1hr45" path="res://sfx/se/GUI bag cursor.ogg" id="14_6kvvx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+line_spacing = 0.0
+font = ExtResource("4_o0xpx")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.3425807, 0.34258068, 0.34258062, 0.7372549)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj0hq"]
+font = ExtResource("4_o0xpx")
+font_size = 32
+font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.46666667)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ugcl7"]
+font = ExtResource("4_o0xpx")
+font_size = 32
+font_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.46666667)
+shadow_offset = Vector2(0, 2)
+
+[node name="Bag" type="CanvasLayer" unique_id=2083208164]
+script = ExtResource("1_r82bj")
+bg_male = ExtResource("1_qqsnm")
+bg_female = ExtResource("3_08em6")
+bag_male = Array[Texture2D]([ExtResource("2_r82bj"), ExtResource("3_rj21q"), ExtResource("4_08em6"), ExtResource("5_6kvvx")])
+bag_female = Array[Texture2D]([ExtResource("6_le8k4"), ExtResource("7_dsxl6"), ExtResource("8_6okp6"), ExtResource("9_y6wlg")])
+slot_seleccionado_modulate = Color(1.0277226, 1.4276456, 1.7999877, 0.87058824)
+salir_icono = ExtResource("12_le8k4")
+
+[node name="Fondo" type="Sprite2D" parent="." unique_id=698416281]
+position = Vector2(240, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("1_qqsnm")
+
+[node name="Mochila" type="Sprite2D" parent="." unique_id=1868783452]
+position = Vector2(80, 136)
+scale = Vector2(2, 2)
+texture = ExtResource("2_r82bj")
+
+[node name="Item" type="Sprite2D" parent="." unique_id=2045474996]
+position = Vector2(41, 274)
+texture = ExtResource("3_mhjxr")
+
+[node name="Category" type="Label" parent="." unique_id=1465725680]
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 139.0
+offset_bottom = 44.0
+text = "Poke Balls"
+label_settings = SubResource("LabelSettings_htemk")
+horizontal_alignment = 1
+
+[node name="Item_Description" type="Label" parent="." unique_id=394949098]
+offset_left = 80.0
+offset_top = 232.0
+offset_right = 472.0
+offset_bottom = 316.0
+text = "No sé que poner aqui pero relleno pos nomas xd xd xd xd xd xd xd xd xd xd xd oño oño oño oño oño oño oño oño."
+label_settings = SubResource("LabelSettings_htemk")
+autowrap_mode = 2
+
+[node name="Slots" type="Control" parent="." unique_id=1266582817]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot0" type="Control" parent="Slots" unique_id=1146007419]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 22.0
+offset_right = 450.0
+offset_bottom = 44.0
+
+[node name="Name" type="Label" parent="Slots/Slot0" unique_id=493042272]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "Poke ball"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Quantity" type="Label" parent="Slots/Slot0" unique_id=918922577]
+layout_mode = 0
+offset_left = 222.0
+offset_top = -5.0
+offset_right = 276.0
+offset_bottom = 23.0
+text = "x 999"
+label_settings = SubResource("LabelSettings_ugcl7")
+
+[node name="Slot1" type="Control" parent="Slots" unique_id=1978116668]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 54.0
+offset_right = 450.0
+offset_bottom = 76.0
+
+[node name="Name" type="Label" parent="Slots/Slot1" unique_id=832300805]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "Poke Ball"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Quantity" type="Label" parent="Slots/Slot1" unique_id=1698582778]
+layout_mode = 0
+offset_left = 222.0
+offset_top = -5.0
+offset_right = 276.0
+offset_bottom = 23.0
+text = "x 999"
+label_settings = SubResource("LabelSettings_ugcl7")
+
+[node name="Slot2" type="Control" parent="Slots" unique_id=273149895]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 86.0
+offset_right = 450.0
+offset_bottom = 108.0
+
+[node name="Name" type="Label" parent="Slots/Slot2" unique_id=1129726935]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "Poke Ball"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Quantity" type="Label" parent="Slots/Slot2" unique_id=2063586272]
+layout_mode = 0
+offset_left = 222.0
+offset_top = -5.0
+offset_right = 276.0
+offset_bottom = 23.0
+text = "x 999"
+label_settings = SubResource("LabelSettings_ugcl7")
+
+[node name="Slot3" type="Control" parent="Slots" unique_id=639691598]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 118.0
+offset_right = 450.0
+offset_bottom = 140.0
+
+[node name="Name" type="Label" parent="Slots/Slot3" unique_id=849899781]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "Poke ball"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Quantity" type="Label" parent="Slots/Slot3" unique_id=1722161827]
+layout_mode = 0
+offset_left = 222.0
+offset_top = -5.0
+offset_right = 276.0
+offset_bottom = 23.0
+text = "x 999"
+label_settings = SubResource("LabelSettings_ugcl7")
+
+[node name="Slot4" type="Control" parent="Slots" unique_id=48905704]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 150.0
+offset_right = 450.0
+offset_bottom = 172.0
+
+[node name="Name" type="Label" parent="Slots/Slot4" unique_id=943839623]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "Poke ball"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Quantity" type="Label" parent="Slots/Slot4" unique_id=143433747]
+layout_mode = 0
+offset_left = 220.0
+offset_top = -5.0
+offset_right = 274.0
+offset_bottom = 23.0
+text = "x 999"
+label_settings = SubResource("LabelSettings_ugcl7")
+
+[node name="Slot5" type="Control" parent="Slots" unique_id=2063426988]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 182.0
+offset_right = 450.0
+offset_bottom = 204.0
+
+[node name="Name" type="Label" parent="Slots/Slot5" unique_id=229140836]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "Poke ball"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Quantity" type="Label" parent="Slots/Slot5" unique_id=1090571146]
+layout_mode = 0
+offset_left = 220.0
+offset_top = -5.0
+offset_right = 274.0
+offset_bottom = 23.0
+text = "x 999"
+label_settings = SubResource("LabelSettings_ugcl7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=347435130]
+stream = ExtResource("14_6kvvx")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjpjj4ckndwim"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_7nndm"]
+[ext_resource type="Texture2D" uid="uid://c6x2v0jfhl5fn" path="res://graphics/items/POKEBALL.png" id="1_rm77n"]
+
+[resource]
+script = ExtResource("1_7nndm")
+item_id = 1
+item_name = "Poke Ball"
+plural_name = "Poke Bola"
+item_description = "Sirve para capturar pokemons."
+pocket = 2
+item_type = 6
+battle_usage = 4
+icon = ExtResource("1_rm77n")
+effect = 10
+metadata/_custom_type_script = "uid://dpxh34fbc3y1v"
