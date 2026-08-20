@@ -62,12 +62,13 @@ signal bag_closed
 @onready var sprite_fondo: Sprite2D = $Fondo
 @onready var sprite_mochila: Sprite2D = $Mochila
 @onready var sprite_item: Sprite2D = $Item
+@onready var sprite_selected: Sprite2D = $Selected
 
 @onready var label_categoria: Label = $Category
 @onready var label_descripcion: Label = $Item_Description
 
-@onready var audio_cursor: AudioStreamPlayer = $AudioStreamPlayer
-
+@onready var audio_cursor: AudioStreamPlayer = $Bag_Cursor
+@onready var audio_pocket: AudioStreamPlayer = $Bag_Pocket
 
 # ============================================================
 # SLOTS
@@ -86,7 +87,11 @@ var slot_nodos: Array[CanvasItem] = []
 
 var slot_nombres: Array[Label] = []
 var slot_cantidades: Array[Label] = []
-
+# Desplazamiento del gráfico Selected respecto al primer slot.
+#
+# Esto permite colocar Selected manualmente en el editor
+# y conservar esa posición relativa al slot.
+var selected_offset: Vector2 = Vector2.ZERO
 
 # ============================================================
 # ESTADO DEL JUGADOR
@@ -330,6 +335,22 @@ func _inicializar_slots() -> void:
 	_limpiar_slots()
 
 
+	# --------------------------------------------------------
+	# Guardar la posición inicial de Selected
+	#
+	# La posición que tú colocaste manualmente en el editor
+	# se toma como referencia para el primer slot.
+	# --------------------------------------------------------
+
+	if sprite_selected != null and not slot_nodos.is_empty():
+
+		var posicion_slot: Vector2 = (slot_nodos[0].get_global_transform_with_canvas().origin)
+
+		var posicion_selected: Vector2 = (sprite_selected.get_global_transform_with_canvas().origin)
+
+		selected_offset = (posicion_selected - posicion_slot)
+
+
 # ============================================================
 # LIMPIAR SLOTS
 # ============================================================
@@ -433,6 +454,95 @@ func _actualizar_seleccion_visual() -> void:
 			slot_seleccionado_modulate
 		)
 
+	# --------------------------------------------------------
+	# Mover el gráfico Selected.
+	#
+	# Selected está fuera de Slots, por lo que se mueve
+	# independientemente del nodo Slot.
+	# --------------------------------------------------------
+
+	_actualizar_selected()
+
+# ============================================================
+# ACTUALIZAR GRÁFICO DE SELECCIÓN
+# ============================================================
+
+func _actualizar_selected() -> void:
+
+	if sprite_selected == null:
+		return
+
+
+	# --------------------------------------------------------
+	# No mostrar si no existe una selección válida.
+	# --------------------------------------------------------
+
+	if indice_seleccion < 0:
+		
+		sprite_selected.visible = false
+		
+		return
+
+
+	# --------------------------------------------------------
+	# Convertir el índice global de selección al slot visible.
+	# --------------------------------------------------------
+
+	var slot_seleccionado: int = (
+		indice_seleccion
+		- scroll_offset
+	)
+
+
+	if slot_seleccionado < 0:
+		
+		sprite_selected.visible = false
+		
+		return
+
+
+	if slot_seleccionado >= slot_nodos.size():
+		
+		sprite_selected.visible = false
+		
+		return
+
+
+	# --------------------------------------------------------
+	# Obtener el slot seleccionado.
+	# --------------------------------------------------------
+
+	var slot: CanvasItem = (
+		slot_nodos[slot_seleccionado]
+	)
+
+
+	if not is_instance_valid(slot):
+		
+		sprite_selected.visible = false
+		
+		return
+
+
+	# --------------------------------------------------------
+	# Mover Selected manteniendo el desplazamiento que
+	# definimos manualmente en el editor.
+	# --------------------------------------------------------
+
+	var posicion_slot: Vector2 = (
+		slot
+		.get_global_transform_with_canvas()
+		.origin
+	)
+
+
+	sprite_selected.global_position = (
+		posicion_slot
+		+ selected_offset
+	)
+
+
+	sprite_selected.visible = true
 
 # ============================================================
 # SETUP
@@ -762,7 +872,8 @@ func _select_pocket(
 	_update_bag_pocket_graphic()
 
 
-	_reproducir_sonido()
+	_reproducir_sonido_pocket()
+
 	_update_ui()
 
 
@@ -790,12 +901,20 @@ func _cambiar_pocket(direccion: int) -> void:
 	)
 
 
+	# --------------------------------------------------------
+	# Navegación circular
+	#
+	# Desde el último bolsillo → primero.
+	# Desde el primero → último.
+	# --------------------------------------------------------
+
 	if nuevo_indice < 0:
-		return
 
+		nuevo_indice = pockets.size() - 1
 
-	if nuevo_indice >= pockets.size():
-		return
+	elif nuevo_indice >= pockets.size():
+
+		nuevo_indice = 0
 
 
 	_select_pocket(
@@ -1410,7 +1529,7 @@ func _mover_seleccion(direccion: int) -> void:
 	indice_seleccion = nuevo_indice
 
 
-	_reproducir_sonido()
+	_reproducir_sonido_cursor()
 	_update_ui()
 
 
@@ -1480,14 +1599,22 @@ func _desbloquear_jugador() -> void:
 # SONIDO
 # ============================================================
 
-func _reproducir_sonido() -> void:
+func _reproducir_sonido_cursor() -> void:
 
 	if audio_cursor == null:
 		return
 
-
 	if audio_cursor.stream == null:
 		return
 
-
 	audio_cursor.play()
+
+func _reproducir_sonido_pocket() -> void:
+
+	if audio_pocket == null:
+		return
+
+	if audio_pocket.stream == null:
+		return
+
+	audio_pocket.play()

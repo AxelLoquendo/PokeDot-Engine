@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dh8vudk4gpj6w"]
+
+[ext_resource type="Texture2D" uid="uid://dmmmahsl82117" path="res://graphics/items/HEALBALL.png" id="1_um537"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_ylux8"]
+
+[resource]
+script = ExtResource("1_ylux8")
+item_id = 6
+item_name = "Sana Ball"
+plural_name = "Sana Balls"
+item_description = "Una Poké Ball que cura al Pokémon atrapado."
+price = 300
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_um537")
+metadata/_custom_type_script = "uid://dpxh34fbc3y1v"

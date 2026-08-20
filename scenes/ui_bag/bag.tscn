@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dnbvhk0vcyvvb" path="res://graphics/ui_bag/bag_female_2.png" id="8_6okp6"]
 [ext_resource type="Texture2D" uid="uid://fk5qiyldwuv7" path="res://graphics/ui_bag/bag_female_3.png" id="9_y6wlg"]
 [ext_resource type="Texture2D" uid="uid://b7m8ye24l8lsb" path="res://graphics/items/back.png" id="12_le8k4"]
+[ext_resource type="Texture2D" uid="uid://c3t8lacksogk4" path="res://graphics/ui_bag/selected.png" id="13_dsxl6"]
 [ext_resource type="AudioStream" uid="uid://cb53psym1hr45" path="res://sfx/se/GUI bag cursor.ogg" id="14_6kvvx"]
+[ext_resource type="AudioStream" uid="uid://hil7pi6i0pec" path="res://sfx/se/GUI bag pocket.ogg" id="17_6okp6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htemk"]
 line_spacing = 0.0
@@ -58,6 +60,11 @@ texture = ExtResource("1_qqsnm")
 position = Vector2(80, 136)
 scale = Vector2(2, 2)
 texture = ExtResource("2_r82bj")
+
+[node name="Selected" type="Sprite2D" parent="." unique_id=543148988]
+position = Vector2(313, 33)
+scale = Vector2(2, 2)
+texture = ExtResource("13_dsxl6")
 
 [node name="Item" type="Sprite2D" parent="." unique_id=2045474996]
 position = Vector2(41, 274)
@@ -243,5 +250,8 @@ offset_bottom = 23.0
 text = "x 999"
 label_settings = SubResource("LabelSettings_ugcl7")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=347435130]
+[node name="Bag_Cursor" type="AudioStreamPlayer" parent="." unique_id=347435130]
 stream = ExtResource("14_6kvvx")
+
+[node name="Bag_Pocket" type="AudioStreamPlayer" parent="." unique_id=1574084604]
+stream = ExtResource("17_6okp6")

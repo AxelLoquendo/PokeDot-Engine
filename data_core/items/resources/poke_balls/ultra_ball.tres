@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bhuqab0lhj6gx"]
+
+[ext_resource type="Texture2D" uid="uid://ccnf7g41x071b" path="res://graphics/items/ULTRABALL.png" id="1_dilbm"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_tvgn0"]
+
+[resource]
+script = ExtResource("1_tvgn0")
+item_id = 3
+item_name = "Ultra Ball"
+plural_name = "Ultra Balls"
+item_description = "Mejor para atrapar Pokémon con mayor índice de captura."
+price = 1200
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_dilbm")
+effect = 12
+metadata/_custom_type_script = "uid://dpxh34fbc3y1v"

@@ -7,10 +7,11 @@
 script = ExtResource("1_7nndm")
 item_id = 1
 item_name = "Poke Ball"
-plural_name = "Poke Bola"
-item_description = "Sirve para capturar pokemons."
+plural_name = "Poke Balls"
+item_description = "Herramienta para capturar Pokémon salvajes."
+price = 200
 pocket = 2
-item_type = 6
+item_type = 4
 battle_usage = 4
 icon = ExtResource("1_rm77n")
 effect = 10

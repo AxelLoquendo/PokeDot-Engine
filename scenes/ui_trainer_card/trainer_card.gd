@@ -52,7 +52,7 @@ func _cargar_trainer_sprite(sprite: Sprite2D, id: EventObjects.PlayerID) -> void
 func _rellenar_datos_desde_jugador(datos_jugador: CharacterPlayer, segundos: float) -> void:  
 	var seg: int = int(segundos)  
 	$Name.text = "Nombre: %s" % (datos_jugador.name if datos_jugador else "---")  
-	$Money.text = "Dinero: %d" % (datos_jugador.money if datos_jugador else 0)  
+	$Money.text = "Dinero: ₽%d" % (datos_jugador.money if datos_jugador else 0)  
 	$Time.text = "Tiempo: %02d:%02d:%02d" % [seg / 3600.0, (seg % 3600) / 60.0, seg % 60]  
 	$Pokedex.text = "Pokedex: ---"  
 	$Start.text = "Comienzo: %s" % (datos_jugador.created_at if datos_jugador else "---")  

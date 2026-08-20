@@ -1,6 +1,13 @@
 lock
 faceplayer
 giveitem ITEM_POKE_BALL 2
+giveitem ITEM_GREAT_BALL 6
+giveitem ITEM_ULTRA_BALL 88
+giveitem ITEM_MASTER_BALL 32
+giveitem ITEM_PREMIER_BALL 123
+giveitem ITEM_HEAL_BALL 999
+giveitem ITEM_NET_BALL 1
+giveitem ITEM_POTION 1
 text "¿Deseas ir a Pueblo Alba?, recuerda, aun no esta terminado." MSGBOX_YESNO
 
 ifchoice 0 ir_pueblo_alba
