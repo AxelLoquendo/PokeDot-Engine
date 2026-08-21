@@ -212,3 +212,9 @@ enum GenderRatio {
 	GENDER_MALE_100,
 	GENDER_GENDERLESS
 }
+
+enum Gender{
+	MALE,
+	FEMALE,
+	GENDERLESS
+}

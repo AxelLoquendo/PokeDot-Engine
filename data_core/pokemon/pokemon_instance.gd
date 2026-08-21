@@ -12,7 +12,7 @@ class_name PokemonInstance
 @export var moves: Array[PokemonMoveSlot] = []
 @export_range(0, 255) var friendship: int = 70
 @export var nature: PokemonData.Nature
-@export var gender: PokemonData.GenderRatio
+@export var gender: PokemonData.Gender
 @export var personality_value: int
 
 

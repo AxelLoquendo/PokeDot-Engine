@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://c526o3sdywj46"]
+
+[ext_resource type="Script" uid="uid://dyrvqfx8yy6hq" path="res://scenes/ui_party_menu/party_menu.gd" id="1_65yxq"]
+[ext_resource type="Texture2D" uid="uid://c0d3frwj4c7ae" path="res://graphics/ui_main_menu/scroll_bg.png" id="1_e4kaj"]
+[ext_resource type="Script" uid="uid://dabjm68rsk5d0" path="res://scenes/intro_game/fondo.gd" id="2_65yxq"]
+[ext_resource type="Texture2D" uid="uid://dw7f71hmuxwc0" path="res://game/graphics_eb/ui_party_menu/text_box.png" id="3_k1e0n"]
+[ext_resource type="Texture2D" uid="uid://ckq040e86qagt" path="res://game/graphics_eb/ui_party_menu/button_cancel.png" id="5_va8ih"]
+[ext_resource type="PackedScene" uid="uid://b6xxmo1841j5r" path="res://scenes/ui_party_menu/party_slot.tscn" id="6_d21bo"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="7_q1hkr"]
+[ext_resource type="AudioStream" uid="uid://ugvcsatfat3w" path="res://sfx/se/GUI sel cursor.ogg" id="8_65yxq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj0hq"]
+font = ExtResource("7_q1hkr")
+
+[node name="Party_Menu" type="CanvasLayer" unique_id=48353372]
+script = ExtResource("1_65yxq")
+
+[node name="Fondo" type="Sprite2D" parent="." unique_id=673845976]
+position = Vector2(256, 256)
+scale = Vector2(2, 2)
+texture = ExtResource("1_e4kaj")
+script = ExtResource("2_65yxq")
+
+[node name="Fondo2" type="Sprite2D" parent="." unique_id=1439466242]
+position = Vector2(256, -256)
+scale = Vector2(2, 2)
+texture = ExtResource("1_e4kaj")
+
+[node name="Box_Text" type="Sprite2D" parent="." unique_id=324189014]
+position = Vector2(188, 288)
+scale = Vector2(2, 2)
+texture = ExtResource("3_k1e0n")
+
+[node name="Text" type="Label" parent="Box_Text" unique_id=330196705]
+offset_left = -82.0
+offset_top = -10.5
+offset_right = 82.0
+offset_bottom = 12.5
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Button_Cancel" type="Sprite2D" parent="." unique_id=1259278255]
+position = Vector2(430, 288)
+scale = Vector2(2, 2)
+texture = ExtResource("5_va8ih")
+
+[node name="Party" type="GridContainer" parent="." unique_id=1345606351]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 228
+theme_override_constants/v_separation = 80
+columns = 2
+
+[node name="PartySlot" parent="Party" unique_id=2014673511 instance=ExtResource("6_d21bo")]
+layout_mode = 2
+
+[node name="PartySlot2" parent="Party" unique_id=1186717138 instance=ExtResource("6_d21bo")]
+layout_mode = 2
+
+[node name="PartySlot3" parent="Party" unique_id=1428779458 instance=ExtResource("6_d21bo")]
+layout_mode = 2
+
+[node name="PartySlot4" parent="Party" unique_id=257462422 instance=ExtResource("6_d21bo")]
+layout_mode = 2
+
+[node name="PartySlot5" parent="Party" unique_id=1889522667 instance=ExtResource("6_d21bo")]
+layout_mode = 2
+
+[node name="PartySlot6" parent="Party" unique_id=16475602 instance=ExtResource("6_d21bo")]
+layout_mode = 2
+
+[node name="Cursor" type="AudioStreamPlayer" parent="." unique_id=1549473905]
+stream = ExtResource("8_65yxq")

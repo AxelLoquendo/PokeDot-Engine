@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_3iiar"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_3dg4d"]
+[ext_resource type="Texture2D" uid="uid://77d1uobd4oyq" path="res://graphics/pokemon/icons/BULBASAUR.png" id="2_f6nwr"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_f6nwr"]
 
 [sub_resource type="Resource" id="Resource_rt8me"]
@@ -27,6 +28,7 @@ type_2 = 4
 category_name = "Semilla"
 description = "placeholdier"
 body_color = 3
+icon_sprite = ExtResource("2_f6nwr")
 evolutions = Array[ExtResource("1_3iiar")]([SubResource("Resource_rt8me")])
 ability_1 = 65
 hidden_ability = 94

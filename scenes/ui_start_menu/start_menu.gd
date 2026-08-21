@@ -11,6 +11,7 @@ extends CanvasLayer
 var is_open: bool = false
 
 var bag_ui: BagUI = null
+var party_menu: PartyMenu = null
 
 
 # ============================================================
@@ -300,9 +301,7 @@ func _on_option_selected(option: String) -> void:
 
 		"Pokemon":
 
-			print(
-				"Abriendo menú de equipo (próximamente)"
-			)
+			_open_party_menu()
 
 
 		# ------------------------------------------------------
@@ -474,12 +473,118 @@ func _open_bag() -> void:
 	bag_ui.bag_closed.connect(_on_bag_closed)
 
 
+func _on_bag_closed() -> void:
+
+	bag_ui = null
+
+	_reactivate_menu()
+
+
 # ============================================================
 # MOCHILA CERRADA
 # ============================================================
 
-func _on_bag_closed() -> void:
+# ============================================================
+# ABRIR PARTY MENU
+# ============================================================
 
-	bag_ui = null
+func _open_party_menu() -> void:
+
+	# --------------------------------------------------------
+	# Ocultar StartMenu
+	# --------------------------------------------------------
+
+	toggle_menu()
+
+
+	# --------------------------------------------------------
+	# Evitar crear dos PartyMenu
+	# --------------------------------------------------------
+
+	if is_instance_valid(party_menu):
+		return
+
+
+	# --------------------------------------------------------
+	# Crear PartyMenu
+	# --------------------------------------------------------
+
+	var party_scene: PackedScene = preload(
+		"res://scenes/ui_party_menu/party_menu.tscn"
+	)
+
+
+	party_menu = (
+		party_scene.instantiate()
+		as PartyMenu
+	)
+
+
+	if party_menu == null:
+
+		push_error(
+			"StartMenu: no se pudo crear PartyMenu."
+		)
+
+		_reactivate_menu()
+
+		return
+
+
+	# --------------------------------------------------------
+	# Añadir PartyMenu encima de la escena actual
+	# --------------------------------------------------------
+
+	get_tree().current_scene.add_child(
+		party_menu
+	)
+
+
+	# --------------------------------------------------------
+	# Obtener jugador
+	# --------------------------------------------------------
+
+	var jugador: CharacterController = (
+		get_tree().get_first_node_in_group("player")
+		as CharacterController
+	)
+
+
+	if jugador == null:
+
+		push_error(
+			"StartMenu: no se encontró "
+			+ "CharacterController del jugador."
+		)
+
+		party_menu.queue_free()
+		party_menu = null
+
+		_reactivate_menu()
+
+		return
+
+
+	# --------------------------------------------------------
+	# Inicializar PartyMenu
+	# --------------------------------------------------------
+
+	party_menu.setup(
+		jugador.character_data
+	)
+
+
+	# --------------------------------------------------------
+	# Detectar cierre del PartyMenu
+	# --------------------------------------------------------
+
+	party_menu.party_closed.connect(
+		_on_party_closed
+	)
+
+func _on_party_closed() -> void:
+
+	party_menu.queue_free()
+	party_menu = null
 
 	_reactivate_menu()
