@@ -228,26 +228,30 @@ func _actualizar_nivel() -> void:
 # ============================================================
 
 func _actualizar_hp() -> void:
-
-	if label_hp == null:
+	if pokemon == null:
 		return
 
+	# Texto
+	if label_hp != null:
+		label_hp.text = "%d/%d" % [pokemon.current_hp, pokemon.max_hp]
 
-	# --------------------------------------------------------
-	# El sistema de HP todavía no forma parte de
-	# PokemonInstance.
-	#
-	# Dejamos el espacio preparado para conectarlo
-	# posteriormente al sistema de estadísticas.
-	# --------------------------------------------------------
+	# Barra
+	if hp_bar == null:
+		return
 
-	label_hp.text = "----/----"
+	if hp_bar_ancho_maximo <= 0.0:
+		hp_bar_ancho_maximo = hp_bar.size.x
 
+	var percent: float = pokemon.get_hp_percent()
+	hp_bar.size.x = hp_bar_ancho_maximo * percent
 
-	if hp_bar != null:
-
-		hp_bar.size.x = 0
-
+	# Color según porcentaje
+	if percent > 0.5:
+		hp_bar.color = hp_color_normal
+	elif percent > 0.2:
+		hp_bar.color = hp_color_low
+	else:
+		hp_bar.color = hp_color_critical
 
 # ============================================================
 # ICONO
@@ -274,29 +278,38 @@ func _actualizar_icono() -> void:
 # ============================================================
 
 func _actualizar_genero() -> void:
-
 	if label_genero == null:
 		return
 
+	var color: Color = Color.WHITE
+	var texto: String = ""
 
 	match pokemon.gender:
-
 		PokemonData.Gender.MALE:
-
-			label_genero.text = "♂"
-			label_genero.self_modulate = genero_macho_color
-
-
+			texto = "♂"
+			color = genero_macho_color
 		PokemonData.Gender.FEMALE:
-
-			label_genero.text = "♀"
-			label_genero.self_modulate = genero_hembra_color
-
-
+			texto = "♀"
+			color = genero_hembra_color
 		_:
+			texto = ""
+			color = Color.WHITE
 
-			label_genero.text = ""
-			label_genero.self_modulate = Color.WHITE
+	label_genero.text = texto
+
+	# 1) Si usa LabelSettings (lo más común cuando "no cambia")
+	if label_genero.label_settings != null:
+		# Duplicar para no compartir el resource entre slots
+		label_genero.label_settings = label_genero.label_settings.duplicate()
+		label_genero.label_settings.font_color = color
+	else:
+		# 2) Label normal
+		label_genero.add_theme_color_override("font_color", color)
+
+	label_genero.modulate = Color.WHITE
+	label_genero.self_modulate = Color.WHITE
+
+	print(pokemon.get_display_name(), " gender=", pokemon.gender, " color=", color)
 
 func clear() -> void:
 

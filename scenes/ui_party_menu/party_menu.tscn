@@ -11,6 +11,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_pj0hq"]
 font = ExtResource("7_q1hkr")
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.22352941)
+shadow_offset = Vector2(0, 1)
 
 [node name="Party_Menu" type="CanvasLayer" unique_id=48353372]
 script = ExtResource("1_65yxq")
@@ -32,10 +35,11 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_k1e0n")
 
 [node name="Text" type="Label" parent="Box_Text" unique_id=330196705]
-offset_left = -82.0
-offset_top = -10.5
-offset_right = 82.0
-offset_bottom = 12.5
+offset_left = -78.0
+offset_top = -7.0
+offset_right = 12.0
+offset_bottom = 7.0
+text = "Elegir un Pokémon."
 label_settings = SubResource("LabelSettings_pj0hq")
 
 [node name="Button_Cancel" type="Sprite2D" parent="." unique_id=1259278255]

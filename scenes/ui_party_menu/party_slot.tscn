@@ -14,7 +14,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_bljkr"]
 font = ExtResource("4_i1e4l")
 font_size = 24
-font_color = Color(0, 0.73333335, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kmkxw"]
 font = ExtResource("4_i1e4l")
@@ -48,6 +47,7 @@ caja_chico_normal = ExtResource("1_vp6ju")
 caja_chico_focused = ExtResource("2_d510d")
 caja_chica_normal = ExtResource("4_bljkr")
 caja_chica_focused = ExtResource("5_kmkxw")
+genero_hembra_color = Color(0.95798296, 0.5515131, 1, 1)
 icon_frame_time = 0.25
 
 [node name="Caja" type="TextureButton" parent="." unique_id=665859898]
@@ -88,6 +88,7 @@ script = ExtResource("5_bbp3n")
 ANCHO_MAXIMO = 110.0
 
 [node name="Level" type="Label" parent="." unique_id=706798250]
+texture_filter = 1
 layout_mode = 0
 offset_left = 12.0
 offset_top = 53.0
