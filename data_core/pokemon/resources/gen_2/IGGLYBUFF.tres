@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cp10312r8yq0u"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 39
+parameter = 1
+condition = 4
+condition_value = 160
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 47
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 383
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 4
+move = 111
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 186
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 574
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 50
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 204
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 174
+species_name = "Igglybuff"
+species_id = 174
+base_hp = 90
+base_attack = 30
+base_defense = 15
+base_speed = 15
+base_sp_attack = 40
+base_sp_defense = 20
+evYield_HP = 1
+type_1 = 1
+type_2 = 19
+catch_rate = 170
+exp_yield = 42
+friendship = 70
+growth_rate = 4
+category_name = "Globo"
+description = "Para caminar, en lugar de usar los pies que tiene, opta por dar botes con su cuerpo redondo y blandito."
+height = 3
+weight = 10
+body_color = 9
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7")])
+teachable_moves = Array[int]([5, 25, 29, 34, 36, 38, 53, 68, 69, 76, 86, 91, 92, 94, 102, 103, 104, 111, 113, 115, 126, 129, 138, 148, 156, 164, 171, 173, 174, 182, 189, 192, 196, 197, 203, 204, 205, 207, 213, 214, 215, 216, 218, 219, 220, 227, 237, 240, 241, 244, 247, 253, 263, 270, 272, 277, 278, 283, 290, 304, 313, 340, 343, 351, 352, 356, 363, 374, 387, 445, 447, 496, 497, 510, 526, 528, 574, 577, 581, 583, 590, 605, 779, 811, 842])
+egg_moves = Array[int]([185, 195, 205, 214, 217, 273, 313, 343, 356, 386, 387, 445, 505, 581])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 56
+ability_2 = 172
+hidden_ability = 132
+egg_group_1 = 15
+egg_cycles = 10
+hatch_species = 174
+gender_ratio = 2

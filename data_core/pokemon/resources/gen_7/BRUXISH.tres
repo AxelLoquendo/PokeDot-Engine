@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dakw5h82nln1u"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+level = 4
+move = 310
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 9
+move = 93
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 12
+move = 44
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 17
+move = 453
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 20
+move = 50
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 25
+move = 149
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 473
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 28
+move = 242
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 33
+move = 401
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 103
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 41
+move = 660
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 44
+move = 485
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 44
+move = 762
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 779
+species_name = "Bruxish"
+species_id = 779
+base_hp = 68
+base_attack = 105
+base_defense = 70
+base_speed = 92
+base_sp_attack = 70
+base_sp_defense = 70
+evYield_Attack = 2
+type_1 = 12
+type_2 = 15
+catch_rate = 80
+exp_yield = 166
+friendship = 70
+category_name = "Rechinante"
+description = "Cuando la protuberancia que tiene en la cabeza emite poderes psíquicos, se escucha como un ruido de dientes rechinando muy molesto."
+height = 9
+weight = 190
+body_color = 9
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([14, 36, 56, 57, 58, 59, 63, 92, 94, 97, 104, 113, 115, 127, 138, 156, 162, 164, 173, 182, 184, 196, 203, 207, 213, 214, 216, 218, 219, 220, 231, 237, 240, 242, 250, 253, 259, 263, 269, 277, 289, 324, 332, 339, 347, 352, 371, 373, 374, 401, 416, 423, 433, 472, 473, 474, 477, 478, 495, 496, 502, 503, 524, 590, 641, 660, 664, 725, 740, 779, 812, 845])
+egg_moves = Array[int]([99, 162, 305, 352, 423])
+ability_1 = 219
+ability_2 = 173
+hidden_ability = 147
+egg_group_1 = 12
+egg_cycles = 15
+hatch_species = 779
+gender_ratio = 3

@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bpqghypw4yjqh"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 14
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 163
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 210
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 228
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 319
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 332
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 334
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 379
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+move = 400
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+move = 425
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+move = 442
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+move = 457
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+move = 475
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+move = 514
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+move = 533
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+move = 588
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 681
+species_name = "Aegislash-Shield"
+species_id = 681
+base_hp = 60
+base_attack = 50
+base_defense = 140
+base_speed = 60
+base_sp_attack = 50
+base_sp_defense = 140
+evYield_Defense = 2
+evYield_SpDefense = 1
+type_1 = 9
+type_2 = 8
+catch_rate = 45
+exp_yield = 234
+friendship = 70
+category_name = "Espada Real"
+description = "Han permanecido junto a estirpes de reyes durante generaciones. Mediante su poder espectral pueden controlar a humanos y a Pokémon."
+height = 17
+weight = 530
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([14, 15, 63, 92, 103, 104, 115, 156, 157, 164, 173, 179, 180, 182, 203, 206, 207, 213, 214, 216, 218, 237, 240, 241, 247, 249, 263, 280, 290, 332, 334, 335, 351, 360, 370, 393, 403, 416, 421, 427, 430, 442, 495, 496, 514, 590, 632, 636, 656, 724])
+ability_1 = 176
+egg_group_1 = 10
+egg_cycles = 20
+hatch_species = 681
+gender_ratio = 3

@@ -1,0 +1,130 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b7ngghxetvina"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 16
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 43
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 10
+move = 207
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 13
+move = 279
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 44
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 314
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 97
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 30
+move = 366
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 35
+move = 403
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 40
+move = 242
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 45
+move = 326
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 50
+move = 253
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 55
+move = 359
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 60
+move = 240
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 65
+move = 542
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 67
+move = 399
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 70
+move = 37
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 77
+move = 774
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 641
+species_name = "Tornadus-Incarnate"
+species_id = 641
+base_hp = 79
+base_attack = 115
+base_defense = 70
+base_speed = 111
+base_sp_attack = 125
+base_sp_defense = 80
+evYield_Attack = 3
+type_1 = 3
+catch_rate = 3
+exp_yield = 261
+friendship = 90
+growth_rate = 5
+category_name = "Torbellino"
+description = "La parte inferior de su cuerpo, similar a una nube, está recubierta de un campo de energía. Vuela a 300 km/h."
+height = 15
+weight = 630
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
+teachable_moves = Array[int]([19, 34, 36, 63, 70, 92, 94, 97, 104, 118, 156, 164, 168, 173, 179, 182, 184, 188, 196, 201, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 249, 253, 257, 259, 263, 269, 272, 276, 279, 280, 282, 290, 311, 314, 332, 339, 366, 369, 371, 372, 373, 374, 399, 403, 411, 416, 417, 432, 447, 479, 482, 492, 496, 507, 510, 512, 542, 590, 656, 736, 779, 809, 812])
+ability_1 = 158
+hidden_ability = 128
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 641
+gender_ratio = 6

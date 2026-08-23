@@ -1,3 +1,159 @@
 [gd_scene format=3 uid="uid://btmle1f6063up"]
 
+[ext_resource type="Script" uid="uid://bstqqvc2jckdx" path="res://scenes/ui_summary_screen/summary_screen.gd" id="1_a101a"]
+[ext_resource type="Texture2D" uid="uid://dio8uefrfdb86" path="res://graphics/ui_summary_screen/page_info.png" id="1_g0n7v"]
+[ext_resource type="Texture2D" uid="uid://c5fldh8ok48x2" path="res://graphics/ui_summary_screen/page_memo.png" id="2_3txjy"]
+[ext_resource type="Texture2D" uid="uid://cfrypjym7s4ay" path="res://graphics/ui_summary_screen/bg.png" id="2_b4q7a"]
+[ext_resource type="Texture2D" uid="uid://bssjkj83jsymx" path="res://graphics/ui_summary_screen/page_baseivev.png" id="3_ifpx4"]
+[ext_resource type="PackedScene" uid="uid://snfytgevhhoa" path="res://scenes/ui_summary_screen/page_1.tscn" id="4_5i46e"]
+[ext_resource type="Texture2D" uid="uid://psmp4yq33tym" path="res://graphics/ui_summary_screen/page_skills.png" id="4_u3cqw"]
+[ext_resource type="PackedScene" uid="uid://cdwbcll4fjk7h" path="res://scenes/ui_summary_screen/page_0.tscn" id="5_plwqo"]
+[ext_resource type="Texture2D" uid="uid://bk8j2mr8sffbp" path="res://graphics/ui_summary_screen/info/info_0.png" id="7_e1dk8"]
+[ext_resource type="Texture2D" uid="uid://drvcwk31u7ym2" path="res://graphics/ui_summary_screen/icon_ball_POKEBALL.png" id="8_a101a"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="9_b4q7a"]
+[ext_resource type="Texture2D" uid="uid://dc1lkuq7s04uj" path="res://graphics/ui_summary_screen/info/info_1.png" id="10_5i46e"]
+[ext_resource type="Texture2D" uid="uid://c4cj80ab7f24x" path="res://graphics/items/VENUSAURITE.png" id="11_3iqhy"]
+[ext_resource type="Texture2D" uid="uid://dq3gfx1ce5uik" path="res://graphics/pokemon/front/BULBASAUR.png" id="12_tebq8"]
+[ext_resource type="Texture2D" uid="uid://dcvy1c0de3ujb" path="res://graphics/ui_summary_screen/page_moves.png" id="13_e1dk8"]
+[ext_resource type="AudioStream" uid="uid://doa0kju83d8hy" path="res://sfx/se/GUI summary change page.ogg" id="15_b4q7a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwg25"]
+font = ExtResource("9_b4q7a")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxmcd"]
+font = ExtResource("9_b4q7a")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m580e"]
+font = ExtResource("9_b4q7a")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j17k0"]
+font = ExtResource("9_b4q7a")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1oo5j"]
+font = ExtResource("9_b4q7a")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
 [node name="SummaryScreen" type="CanvasLayer" unique_id=120199249]
+layer = 2
+script = ExtResource("1_a101a")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=630372110]
+position = Vector2(240, 160)
+texture = ExtResource("2_b4q7a")
+
+[node name="Page0" parent="." unique_id=2146259770 instance=ExtResource("5_plwqo")]
+
+[node name="Page1" parent="." unique_id=1094160894 instance=ExtResource("4_5i46e")]
+visible = false
+
+[node name="Info_0" type="Sprite2D" parent="." unique_id=1609476859]
+position = Vector2(96, 80)
+texture = ExtResource("7_e1dk8")
+
+[node name="Ball" type="Sprite2D" parent="Info_0" unique_id=1970588931]
+position = Vector2(-78, -13)
+texture = ExtResource("8_a101a")
+
+[node name="Name" type="Label" parent="Info_0" unique_id=522663243]
+offset_left = -61.0
+offset_top = -30.0
+offset_right = 45.0
+offset_bottom = -2.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_bwg25")
+
+[node name="Gender" type="Label" parent="Info_0" unique_id=1425357151]
+offset_left = 78.0
+offset_top = -28.0
+offset_right = 90.0
+text = "♂"
+label_settings = SubResource("LabelSettings_pxmcd")
+
+[node name="Level" type="Label" parent="Info_0" unique_id=533317055]
+offset_left = -48.0
+offset_top = -4.0
+offset_right = -12.0
+offset_bottom = 24.0
+text = "100"
+label_settings = SubResource("LabelSettings_m580e")
+
+[node name="Info_1" type="Sprite2D" parent="." unique_id=2028030314]
+position = Vector2(96, 272)
+texture = ExtResource("10_5i46e")
+
+[node name="Held" type="Sprite2D" parent="Info_1" unique_id=1444259322]
+position = Vector2(-66, -4)
+texture = ExtResource("11_3iqhy")
+
+[node name="Item" type="Label" parent="Info_1" unique_id=27172801]
+offset_left = -29.0
+offset_top = -8.0
+offset_right = 19.0
+offset_bottom = 20.0
+text = "Item"
+label_settings = SubResource("LabelSettings_j17k0")
+
+[node name="Name_Item" type="Label" parent="Info_1/Item" unique_id=1534406921]
+layout_mode = 0
+offset_left = -61.0
+offset_top = 29.0
+offset_right = 61.0
+offset_bottom = 57.0
+text = "Venusaurite"
+label_settings = SubResource("LabelSettings_1oo5j")
+
+[node name="Front" type="Sprite2D" parent="." unique_id=714918628]
+position = Vector2(96, 172)
+scale = Vector2(2, 2)
+texture = ExtResource("12_tebq8")
+
+[node name="Page_Info" type="Sprite2D" parent="." unique_id=2081261325]
+position = Vector2(232, 24)
+texture = ExtResource("1_g0n7v")
+hframes = 2
+
+[node name="Page_Memo" type="Sprite2D" parent="." unique_id=1144284094]
+position = Vector2(285, 24)
+texture = ExtResource("2_3txjy")
+hframes = 2
+
+[node name="Page_BaseIvEv" type="Sprite2D" parent="." unique_id=1595774351]
+position = Vector2(337, 24)
+texture = ExtResource("3_ifpx4")
+hframes = 2
+
+[node name="Page_Skills" type="Sprite2D" parent="." unique_id=1766736403]
+position = Vector2(389, 24)
+texture = ExtResource("4_u3cqw")
+hframes = 2
+
+[node name="Page_Moves" type="Sprite2D" parent="." unique_id=1948614058]
+position = Vector2(441, 24)
+texture = ExtResource("13_e1dk8")
+hframes = 2
+
+[node name="Cursor" type="AudioStreamPlayer" parent="." unique_id=1429251533]
+stream = ExtResource("15_b4q7a")
+
+[node name="Cry" type="AudioStreamPlayer" parent="." unique_id=1362249072]

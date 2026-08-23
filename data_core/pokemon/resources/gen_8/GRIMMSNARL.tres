@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c88j3o23elfja"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 44
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 252
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 260
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 339
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 590
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 612
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 717
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 721
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 12
+move = 313
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 16
+move = 372
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 20
+move = 207
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 24
+move = 389
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 28
+move = 259
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 35
+move = 399
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 40
+move = 417
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 48
+move = 583
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 56
+move = 492
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 64
+move = 359
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 861
+species_name = "Grimmsnarl"
+species_id = 861
+base_hp = 95
+base_attack = 120
+base_defense = 65
+base_speed = 60
+base_sp_attack = 95
+base_sp_defense = 75
+evYield_Attack = 3
+type_1 = 18
+type_2 = 19
+catch_rate = 45
+exp_yield = 255
+friendship = 50
+category_name = "Voluminoso"
+description = "Cuando enrolla sus cabellos por todo el cuerpo, aumenta su potencia muscular. Posee una fuerza capaz de someter a Machamp."
+height = 15
+weight = 610
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([5, 7, 8, 9, 25, 34, 36, 63, 67, 86, 113, 115, 116, 118, 141, 156, 164, 168, 173, 182, 184, 203, 213, 214, 242, 253, 263, 264, 269, 271, 276, 279, 280, 286, 313, 339, 372, 374, 384, 399, 409, 411, 416, 417, 421, 438, 472, 490, 492, 496, 514, 577, 581, 583, 605, 626, 638, 661, 704, 735, 736, 779, 811, 812])
+ability_1 = 158
+ability_2 = 119
+hidden_ability = 124
+egg_group_1 = 6
+egg_group_2 = 8
+egg_cycles = 20
+hatch_species = 861
+gender_ratio = 6

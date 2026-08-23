@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bmkeysvgk01q6"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 666
+parameter = 12
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 106
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 182
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 665
+species_name = "Spewpa"
+species_id = 665
+base_hp = 45
+base_attack = 22
+base_defense = 60
+base_speed = 29
+base_sp_attack = 27
+base_sp_defense = 30
+evYield_Defense = 2
+type_1 = 7
+catch_rate = 120
+exp_yield = 75
+friendship = 70
+category_name = "Tiraescamas"
+description = "Habita en la sombra de la espesura. Si percibe alguna amenaza, su pelaje se eriza y se vuelve muy afilado para así intimidar al enemigo."
+height = 3
+weight = 84
+body_color = 4
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
+teachable_moves = Array[int]([182, 334, 450, 522, 527, 779, 810])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 61
+hidden_ability = 132
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 665
+gender_ratio = 3

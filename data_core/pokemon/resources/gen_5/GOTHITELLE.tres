@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bin582dtdqlmr"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 321
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 589
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 60
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 14
+move = 3
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 204
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 19
+move = 373
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 473
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 95
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 185
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 28
+move = 313
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 34
+move = 377
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 35
+move = 244
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 40
+move = 94
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 45
+move = 477
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 48
+move = 260
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 56
+move = 248
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 64
+move = 478
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 576
+species_name = "Gothitelle"
+species_id = 576
+base_hp = 70
+base_attack = 55
+base_defense = 95
+base_speed = 65
+base_sp_attack = 95
+base_sp_defense = 110
+evYield_SpDefense = 3
+type_1 = 15
+catch_rate = 50
+exp_yield = 221
+friendship = 70
+growth_rate = 3
+category_name = "Astro"
+description = "Su inmenso poder psíquico distorsiona el espacio y le permite reflejar incluso estrellas a años luz de distancia."
+height = 15
+weight = 440
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
+teachable_moves = Array[int]([34, 60, 63, 85, 86, 92, 94, 104, 113, 115, 118, 129, 138, 148, 156, 157, 164, 168, 173, 182, 203, 204, 207, 213, 214, 215, 216, 218, 219, 237, 240, 244, 247, 248, 253, 259, 263, 269, 270, 271, 272, 277, 278, 280, 285, 286, 289, 290, 313, 317, 322, 324, 343, 347, 351, 356, 371, 373, 374, 385, 399, 411, 412, 416, 417, 428, 433, 447, 451, 473, 477, 478, 490, 492, 496, 500, 502, 590, 612, 636, 641, 725, 779, 845])
+ability_1 = 119
+ability_2 = 172
+hidden_ability = 23
+egg_group_1 = 8
+egg_cycles = 20
+hatch_species = 576
+gender_ratio = 2

@@ -1,0 +1,122 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ds868jxl6n0i"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 371
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 7
+move = 228
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 13
+move = 316
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 13
+move = 526
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 117
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 19
+move = 44
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 23
+move = 189
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 27
+move = 162
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 31
+move = 36
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 35
+move = 184
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 39
+move = 242
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 43
+move = 158
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 43
+move = 281
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 47
+move = 37
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 52
+move = 156
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 735
+species_name = "Gumshoos"
+species_id = 735
+base_hp = 88
+base_attack = 110
+base_defense = 60
+base_speed = 45
+base_sp_attack = 55
+base_sp_defense = 60
+evYield_Attack = 2
+type_1 = 1
+catch_rate = 127
+exp_yield = 146
+friendship = 70
+category_name = "Vigilante"
+description = "Al detectar el rastro de una presa, la acecha con tenacidad, pero al ponerse el sol le vence el sueño."
+height = 7
+weight = 142
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([7, 8, 9, 34, 36, 38, 46, 63, 89, 91, 92, 104, 156, 162, 164, 168, 173, 174, 179, 182, 184, 189, 201, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 253, 259, 263, 264, 269, 270, 282, 283, 317, 335, 341, 351, 369, 371, 374, 387, 402, 416, 422, 423, 424, 428, 442, 490, 496, 497, 523, 526, 528, 530, 590, 660, 661, 779, 811, 812])
+ability_1 = 198
+ability_2 = 173
+hidden_ability = 91
+egg_group_1 = 5
+egg_cycles = 15
+hatch_species = 735
+gender_ratio = 3

@@ -1,0 +1,101 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cetpdp4n3amve"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 453
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 365
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 11
+move = 352
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 15
+move = 116
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 20
+move = 163
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 25
+move = 821
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 30
+move = 796
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 400
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 40
+move = 427
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 45
+move = 664
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 50
+move = 242
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 55
+move = 515
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 976
+species_name = "Veluza"
+species_id = 1365
+base_hp = 90
+base_attack = 102
+base_defense = 73
+base_speed = 70
+base_sp_attack = 78
+base_sp_defense = 65
+evYield_Attack = 2
+type_1 = 12
+type_2 = 15
+catch_rate = 100
+exp_yield = 167
+friendship = 50
+growth_rate = 4
+category_name = "Jettison"
+description = "When Veluza discards unnecessary flesh, its mind becomes honed and its psychic power increases. The spare flesh has a mild but delicious flavor."
+height = 25
+weight = 900
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([34, 36, 38, 56, 57, 58, 59, 63, 94, 97, 127, 156, 164, 182, 196, 203, 214, 220, 240, 242, 283, 352, 416, 423, 428, 500, 529, 641, 660, 664, 725, 727, 740, 779, 809, 812])
+egg_moves = Array[int]([37, 105])
+ability_1 = 104
+hidden_ability = 292
+egg_group_1 = 12
+egg_cycles = 20
+hatch_species = 1365
+gender_ratio = 3

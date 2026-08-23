@@ -1,0 +1,139 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cvv1375dcscai"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 48
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 97
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 98
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 182
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 346
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 366
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 403
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+move = 487
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 15
+move = 17
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 19
+move = 371
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 20
+move = 352
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 22
+move = 362
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 28
+move = 254
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 28
+move = 255
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 28
+move = 256
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 34
+move = 374
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 41
+move = 54
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 48
+move = 355
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 55
+move = 542
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 62
+move = 56
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 279
+species_name = "Pelipper"
+species_id = 279
+base_hp = 60
+base_attack = 50
+base_defense = 100
+base_speed = 65
+base_sp_attack = 95
+base_sp_defense = 70
+evYield_Defense = 2
+type_1 = 12
+type_2 = 3
+catch_rate = 45
+exp_yield = 154
+friendship = 70
+category_name = "Ave Agua"
+description = "Hunde su gran pico en el mar para sacar numerosas presas junto con mucha agua."
+height = 12
+weight = 280
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
+teachable_moves = Array[int]([19, 34, 36, 38, 56, 57, 58, 59, 63, 92, 97, 102, 104, 127, 129, 143, 156, 164, 168, 173, 182, 189, 196, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 250, 253, 258, 263, 270, 282, 290, 297, 311, 314, 330, 332, 351, 352, 355, 362, 363, 365, 366, 369, 371, 374, 402, 403, 413, 416, 432, 441, 445, 466, 496, 497, 503, 507, 512, 542, 590, 664, 742, 779, 809, 812])
+egg_moves = Array[int]([469])
+ability_1 = 51
+ability_2 = 2
+hidden_ability = 44
+egg_group_1 = 2
+egg_group_2 = 4
+egg_cycles = 20
+hatch_species = 279
+gender_ratio = 3

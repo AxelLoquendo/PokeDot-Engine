@@ -1,0 +1,137 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c08vdhtcbq4f2"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 329
+parameter = 35
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 117
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 185
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 4
+move = 636
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 8
+move = 44
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 12
+move = 189
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 15
+move = 157
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 16
+move = 328
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 20
+move = 523
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 91
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 28
+move = 242
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 29
+move = 364
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 32
+move = 201
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 36
+move = 414
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 40
+move = 89
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 43
+move = 63
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 44
+move = 276
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 48
+move = 90
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 328
+species_name = "Trapinch"
+species_id = 328
+base_hp = 45
+base_attack = 100
+base_defense = 45
+base_speed = 10
+base_sp_attack = 45
+base_sp_defense = 45
+evYield_Attack = 1
+type_1 = 5
+catch_rate = 255
+exp_yield = 58
+friendship = 70
+growth_rate = 3
+category_name = "Hormiga León"
+description = "Habita desiertos áridos. Cava fosas profundas, en las que espera que caiga su presa."
+height = 7
+weight = 150
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
+teachable_moves = Array[int]([29, 34, 36, 38, 63, 70, 76, 89, 91, 92, 102, 104, 116, 156, 157, 164, 173, 182, 189, 201, 202, 203, 207, 210, 213, 214, 216, 218, 237, 241, 242, 249, 263, 276, 290, 317, 324, 328, 341, 363, 414, 444, 445, 446, 450, 496, 522, 523, 590, 743, 779])
+egg_moves = Array[int]([16, 98, 116, 175, 203, 210, 324, 341, 364, 414, 450, 623])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 52
+ability_2 = 71
+hidden_ability = 125
+egg_group_1 = 3
+egg_group_2 = 14
+egg_cycles = 20
+hatch_species = 328
+gender_ratio = 3

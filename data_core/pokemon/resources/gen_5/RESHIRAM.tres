@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dfnu8sk66uo0f"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 82
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 225
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 246
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 424
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 568
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 8
+move = 163
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 242
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 24
+move = 326
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 32
+move = 406
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 40
+move = 53
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 48
+move = 558
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 56
+move = 304
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 64
+move = 126
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 72
+move = 286
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 80
+move = 200
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 88
+move = 551
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 643
+species_name = "Reshiram"
+species_id = 643
+base_hp = 100
+base_attack = 120
+base_defense = 100
+base_speed = 90
+base_sp_attack = 150
+base_sp_defense = 120
+evYield_SpAttack = 3
+type_1 = 17
+type_2 = 11
+catch_rate = 3
+exp_yield = 306
+growth_rate = 5
+category_name = "Blanco Veraz"
+description = "Pokémon legendario capaz de abrasar el mundo con sus llamas. Ayuda a quienes persiguen un mundo veraz."
+height = 32
+weight = 3300
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([15, 19, 34, 36, 38, 46, 53, 63, 70, 76, 83, 92, 94, 104, 113, 115, 126, 129, 156, 157, 164, 173, 182, 184, 200, 203, 207, 211, 214, 216, 218, 219, 237, 240, 241, 242, 247, 249, 257, 261, 263, 270, 286, 290, 304, 311, 315, 317, 337, 349, 355, 366, 371, 374, 394, 406, 411, 414, 416, 421, 424, 428, 432, 434, 444, 468, 488, 496, 497, 510, 525, 535, 590, 595, 636, 656, 704, 712, 727, 742, 743, 779, 841])
+ability_1 = 163
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 643
+gender_ratio = 7

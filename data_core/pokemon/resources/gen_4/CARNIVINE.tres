@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dewe6hadmvowl"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 20
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 74
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 44
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 11
+move = 22
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 17
+move = 230
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 21
+move = 275
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 27
+move = 185
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 31
+move = 536
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 37
+move = 254
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 37
+move = 255
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 37
+move = 256
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 41
+move = 242
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 47
+move = 378
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 50
+move = 438
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 455
+species_name = "Carnivine"
+species_id = 455
+base_hp = 74
+base_attack = 100
+base_defense = 72
+base_speed = 46
+base_sp_attack = 90
+base_sp_defense = 72
+evYield_Attack = 2
+type_1 = 13
+catch_rate = 200
+exp_yield = 159
+friendship = 70
+growth_rate = 5
+category_name = "Caza Bichos"
+description = "Atrae a sus presas con saliva de olor dulce y las mastica. Tarda todo un día en comérselas."
+height = 14
+weight = 270
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([14, 15, 20, 63, 76, 92, 104, 148, 156, 164, 168, 173, 182, 188, 189, 202, 203, 207, 210, 213, 214, 216, 218, 235, 237, 241, 263, 267, 282, 290, 331, 363, 371, 374, 380, 388, 402, 412, 416, 432, 445, 447, 450, 496, 590, 611, 638])
+egg_moves = Array[int]([21, 73, 75, 78, 79, 202, 235, 320, 345, 388, 476, 491])
+ability_1 = 26
+egg_group_1 = 7
+egg_cycles = 25
+hatch_species = 455
+gender_ratio = 3

@@ -8,6 +8,11 @@ signal party_closed
 # REFERENCIAS
 # ============================================================
 
+@export var summary_scene: PackedScene  # asigna summary.tscn en el Inspector
+
+var summary_abierto: SummaryScreen = null
+var party_actual: Array[PokemonInstance] = []
+
 @onready var contenedor_party: GridContainer = $Party
 
 @onready var cursor: AudioStreamPlayer = $Cursor
@@ -53,7 +58,8 @@ var seleccion_cancel: bool = false
 # ============================================================
 
 var pokemon_prueba: PokemonInstance
-
+var pokemon_prueba2: PokemonInstance
+var pokemon_prueba3: PokemonInstance
 
 func _ready() -> void:
 	_inicializar_slots()
@@ -65,15 +71,25 @@ func _ready() -> void:
 	# --------------------------------------------------------
 
 	pokemon_prueba = PokemonInstance.create(
-		Species.SpeciesID.SPECIES_BULBASAUR,
+		Species.SpeciesID.SPECIES_ANNIHILAPE,
 		5
+	)
+	pokemon_prueba2 = PokemonInstance.create(
+		Species.SpeciesID.SPECIES_ARCANINE_HISUI,
+		50
+	)
+
+	pokemon_prueba3 = PokemonInstance.create(
+		Species.SpeciesID.SPECIES_ABRA,
+		10
 	)
 
 	var party_prueba: Array[PokemonInstance] = [
-		pokemon_prueba,
-		pokemon_prueba,
+	pokemon_prueba,
+	pokemon_prueba2,
+	pokemon_prueba3,
 	]
-
+	party_actual = party_prueba
 	set_party(party_prueba)
 
 	# --------------------------------------------------------
@@ -230,6 +246,7 @@ func _inicializar_slots() -> void:
 # ============================================================
 
 func set_party(party: Array[PokemonInstance]) -> void:
+	party_actual = party
 	for i: int in range(slots.size()):
 
 		if i < party.size():
@@ -313,13 +330,14 @@ func _input(event: InputEvent) -> void:
 	# ========================================================
 
 	if event.is_action_pressed("buttonA"):
-
 		get_viewport().set_input_as_handled()
 
 		if seleccion_cancel:
-
 			close()
+			return
 
+		# Abrir summary del Pokémon seleccionado
+		_abrir_summary()
 		return
 
 # ============================================================
@@ -485,6 +503,42 @@ func _seleccionar_cancel() -> void:
 	boton_cancel.modulate = cancel_focus_modulate
 
 	_reproducir_cursor()
+
+func _abrir_summary() -> void:
+	if summary_scene == null:
+		push_error("PartyMenu: summary_scene no asignada.")
+		return
+
+	if indice_seleccion < 0 or indice_seleccion >= slots.size():
+		return
+
+	var slot: PartySlot = slots[indice_seleccion]
+	if slot == null or slot.pokemon == null:
+		return
+
+	set_process_input(false)
+
+	summary_abierto = summary_scene.instantiate() as SummaryScreen
+	add_child(summary_abierto)
+
+	# party + índice actual
+	summary_abierto.setup_from_party(party_actual, indice_seleccion)
+	summary_abierto.summary_closed.connect(_on_summary_closed)
+	# Si cambió de Pokémon con Up/Down, sincronizar el party al cerrar
+	summary_abierto.party_index_changed.connect(_on_summary_index_changed)
+
+
+func _on_summary_index_changed(nuevo_indice: int) -> void:
+	indice_seleccion = nuevo_indice
+
+func _on_summary_closed() -> void:
+	summary_abierto = null
+	set_process_input(true)
+
+	# Re-enfocar el slot del Pokémon que estabas viendo
+	if not seleccion_cancel and indice_seleccion >= 0 and indice_seleccion < slots.size():
+		if slots[indice_seleccion].visible:
+			_seleccionar_slot(indice_seleccion)
 
 # ============================================================
 # CERRAR

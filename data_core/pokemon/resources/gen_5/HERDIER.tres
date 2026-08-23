@@ -1,0 +1,114 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b2gsmf53oe4m3"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 508
+parameter = 32
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 44
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 316
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 526
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 514
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 19
+move = 608
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 24
+move = 583
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 30
+move = 242
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 36
+move = 36
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 42
+move = 270
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 48
+move = 179
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 54
+move = 46
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 60
+move = 387
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 66
+move = 416
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 507
+species_name = "Herdier"
+species_id = 507
+base_hp = 65
+base_attack = 80
+base_defense = 65
+base_speed = 60
+base_sp_attack = 35
+base_sp_defense = 65
+evYield_Attack = 2
+type_1 = 1
+catch_rate = 120
+exp_yield = 130
+friendship = 70
+growth_rate = 3
+category_name = "Leal"
+description = "Este Pokémon es muy leal. No solo ayuda a Entrenadores, sino que también se preocupa por otros Pokémon."
+height = 9
+weight = 147
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([46, 57, 70, 85, 86, 91, 92, 104, 156, 164, 173, 179, 182, 203, 204, 207, 213, 214, 216, 218, 237, 240, 241, 242, 247, 249, 253, 263, 270, 290, 304, 317, 332, 343, 351, 371, 387, 416, 422, 423, 424, 495, 496, 514, 526, 528, 555, 583, 590, 660])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 22
+ability_2 = 146
+hidden_ability = 113
+egg_group_1 = 5
+egg_cycles = 15
+hatch_species = 507
+gender_ratio = 3

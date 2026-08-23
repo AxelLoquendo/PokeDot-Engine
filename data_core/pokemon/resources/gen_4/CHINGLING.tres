@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://djgg5dakxcogr"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 358
+parameter = 1
+condition = 4
+condition_value = 220
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 35
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+level = 4
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 310
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 10
+move = 93
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 13
+move = 281
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 16
+move = 387
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 19
+move = 494
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 32
+move = 253
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 433
+species_name = "Chingling"
+species_id = 433
+base_hp = 45
+base_attack = 30
+base_defense = 50
+base_speed = 45
+base_sp_attack = 65
+base_sp_defense = 50
+evYield_SpAttack = 1
+type_1 = 15
+catch_rate = 120
+exp_yield = 57
+friendship = 70
+growth_rate = 4
+category_name = "Campana"
+description = "Emite un tintineo cada vez que salta. Ensordece a sus rivales con sonidos de alta frecuencia."
+height = 2
+weight = 6
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7")])
+teachable_moves = Array[int]([20, 38, 86, 92, 94, 104, 113, 115, 129, 138, 148, 156, 164, 173, 174, 182, 196, 203, 205, 207, 213, 214, 215, 216, 218, 219, 226, 237, 240, 241, 244, 247, 248, 253, 259, 263, 269, 270, 271, 277, 278, 282, 285, 289, 290, 304, 324, 347, 351, 356, 363, 387, 412, 428, 433, 445, 447, 451, 473, 477, 496, 497, 500, 502, 590, 605, 779, 845])
+egg_moves = Array[int]([50, 95, 105, 138, 174, 248, 273, 278, 285, 322, 500, 502])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 26
+egg_group_1 = 15
+egg_cycles = 25
+hatch_species = 433
+gender_ratio = 3

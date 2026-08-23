@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bvialomtxr1v"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 657
+parameter = 16
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 55
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 5
+move = 145
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 98
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 10
+move = 122
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 14
+move = 352
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 18
+move = 108
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 21
+move = 496
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 25
+move = 374
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 29
+move = 479
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 35
+move = 164
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 39
+move = 340
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 43
+move = 104
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 48
+move = 56
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 656
+species_name = "Froakie"
+species_id = 656
+base_hp = 41
+base_attack = 56
+base_defense = 40
+base_speed = 71
+base_sp_attack = 62
+base_sp_defense = 44
+evYield_Speed = 1
+type_1 = 12
+catch_rate = 45
+exp_yield = 63
+friendship = 70
+growth_rate = 3
+category_name = "Burburrana"
+description = "Secreta burbujas tanto por la espalda como por el pecho. Gracias a la elasticidad de estas, puede parar ataques y reducir el daño recibido."
+height = 3
+weight = 70
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([15, 36, 56, 57, 58, 59, 70, 91, 92, 104, 127, 129, 156, 157, 164, 168, 173, 180, 182, 189, 191, 196, 203, 206, 207, 213, 214, 216, 218, 237, 240, 249, 263, 269, 270, 272, 289, 290, 291, 317, 332, 340, 341, 352, 369, 374, 390, 447, 479, 496, 497, 503, 512, 518, 526, 590, 612, 664, 779, 809, 811, 812])
+egg_moves = Array[int]([68, 170, 191, 293, 300, 346, 390, 415, 514, 516, 612])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 67
+hidden_ability = 168
+egg_group_1 = 2
+egg_cycles = 20
+hatch_species = 656
+gender_ratio = 5

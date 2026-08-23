@@ -1,0 +1,142 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d23pjkj3qaloy"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 428
+parameter = 1
+condition = 4
+condition_value = 160
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 150
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 193
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 218
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 4
+move = 111
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 6
+move = 203
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 8
+move = 608
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 12
+move = 495
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 16
+move = 98
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 20
+move = 24
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 23
+move = 26
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 24
+move = 204
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 28
+move = 226
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 32
+move = 29
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 36
+move = 97
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 36
+move = 146
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 40
+move = 494
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 44
+move = 260
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 48
+move = 340
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 52
+move = 361
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 427
+species_name = "Buneary"
+species_id = 427
+base_hp = 55
+base_attack = 66
+base_defense = 44
+base_speed = 85
+base_sp_attack = 44
+base_sp_defense = 56
+evYield_Speed = 1
+type_1 = 1
+catch_rate = 190
+exp_yield = 70
+category_name = "Conejo"
+description = "Lleva las orejas enrolladas. Cuando las extiende, golpea con tal fuerza que incluso puede romper rocas."
+height = 4
+weight = 55
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
+teachable_moves = Array[int]([5, 7, 8, 9, 15, 25, 29, 58, 67, 76, 85, 86, 91, 92, 97, 104, 129, 156, 164, 173, 182, 189, 203, 204, 207, 213, 214, 215, 216, 218, 226, 227, 231, 237, 240, 241, 247, 249, 253, 263, 264, 270, 277, 283, 290, 304, 313, 322, 340, 343, 351, 352, 363, 371, 372, 374, 387, 409, 445, 447, 451, 490, 495, 496, 514, 526, 583, 590, 612, 741])
+egg_moves = Array[int]([7, 8, 9, 67, 175, 186, 213, 227, 252, 264, 298, 300, 313, 322, 327, 383, 415, 458, 509, 612])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 50
+ability_2 = 103
+hidden_ability = 7
+egg_group_1 = 5
+egg_group_2 = 8
+egg_cycles = 20
+hatch_species = 427
+gender_ratio = 3

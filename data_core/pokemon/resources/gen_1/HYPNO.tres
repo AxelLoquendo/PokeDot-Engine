@@ -1,0 +1,125 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://k4ap5dpwqnk8"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 50
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 95
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 171
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 415
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 13
+move = 29
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 17
+move = 139
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 21
+move = 60
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 21
+move = 96
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 25
+move = 244
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 29
+move = 358
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 32
+move = 428
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 37
+move = 207
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 37
+move = 485
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 42
+move = 94
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 47
+move = 417
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 51
+move = 473
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 56
+move = 248
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 97
+species_name = "Hypno"
+species_id = 97
+base_hp = 85
+base_attack = 73
+base_defense = 70
+base_speed = 67
+base_sp_attack = 73
+base_sp_defense = 115
+evYield_SpDefense = 2
+type_1 = 15
+catch_rate = 75
+exp_yield = 169
+friendship = 70
+category_name = "Hipnosis"
+description = "Lleva un péndulo en la mano. Una vez, hizo desaparecer a un niño al que había hipnotizado."
+height = 16
+weight = 756
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
+teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 60, 63, 66, 67, 68, 69, 86, 92, 94, 99, 100, 101, 102, 104, 109, 113, 114, 115, 117, 118, 129, 130, 138, 148, 149, 156, 161, 164, 168, 171, 173, 174, 182, 184, 192, 203, 207, 213, 214, 216, 218, 219, 223, 226, 227, 237, 240, 241, 244, 247, 248, 259, 263, 264, 269, 270, 271, 272, 277, 278, 280, 282, 283, 285, 286, 289, 290, 324, 347, 363, 374, 409, 411, 416, 417, 428, 433, 445, 447, 473, 477, 478, 490, 492, 496, 500, 502, 506, 577, 590, 605, 612, 641, 704, 725, 779, 811, 845])
+ability_1 = 15
+ability_2 = 108
+hidden_ability = 39
+egg_group_1 = 8
+egg_cycles = 20
+hatch_species = 97
+gender_ratio = 3

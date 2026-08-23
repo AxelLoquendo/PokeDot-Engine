@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dnl8fx0jp4205"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 150
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 175
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 346
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 399
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 406
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 505
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 12
+move = 145
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 15
+move = 453
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 20
+move = 61
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 20
+move = 479
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 25
+move = 468
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 30
+move = 352
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 35
+move = 14
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 42
+move = 396
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 49
+move = 340
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 56
+move = 330
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 63
+move = 152
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 693
+species_name = "Clawitzer"
+species_id = 693
+base_hp = 71
+base_attack = 73
+base_defense = 88
+base_speed = 59
+base_sp_attack = 120
+base_sp_defense = 89
+evYield_SpAttack = 2
+type_1 = 12
+catch_rate = 55
+exp_yield = 100
+friendship = 70
+growth_rate = 5
+category_name = "Lanzachorro"
+description = "Posee una enorme pinza que dispara bolas de agua que podrían atravesar incluso el casco de un petrolero."
+height = 13
+weight = 353
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([14, 15, 34, 36, 56, 57, 58, 59, 63, 92, 104, 127, 156, 157, 164, 168, 173, 182, 184, 188, 189, 196, 203, 207, 213, 214, 216, 218, 231, 237, 240, 247, 263, 270, 290, 291, 311, 330, 340, 341, 352, 369, 396, 399, 401, 406, 411, 416, 430, 474, 479, 482, 496, 503, 590, 636, 664, 733, 740, 779, 810, 812])
+ability_1 = 178
+egg_group_1 = 2
+egg_group_2 = 9
+egg_cycles = 15
+hatch_species = 693
+gender_ratio = 3

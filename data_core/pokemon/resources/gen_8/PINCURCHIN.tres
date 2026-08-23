@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ccg7xoj3hadan"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 64
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 84
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 55
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 10
+move = 268
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 15
+move = 31
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 20
+move = 209
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 25
+move = 61
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 30
+move = 105
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 174
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 40
+move = 604
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 45
+move = 398
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 50
+move = 670
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 55
+move = 367
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 60
+move = 435
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 871
+species_name = "Pincurchin"
+species_id = 871
+base_hp = 48
+base_attack = 101
+base_defense = 95
+base_speed = 15
+base_sp_attack = 91
+base_sp_defense = 85
+evYield_Attack = 2
+type_1 = 14
+catch_rate = 75
+exp_yield = 152
+friendship = 50
+category_name = "Erizo de Mar"
+description = "Libera electricidad por la punta de las púas. Con sus afilados dientes raspa las algas pegadas a las rocas para ingerirlas."
+height = 3
+weight = 10
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([34, 36, 42, 56, 57, 63, 85, 86, 87, 120, 129, 156, 164, 173, 174, 179, 182, 191, 203, 213, 214, 220, 240, 263, 268, 330, 362, 371, 372, 390, 398, 416, 451, 474, 486, 496, 503, 506, 527, 528, 599, 604, 638, 664, 732, 779, 812, 844])
+egg_moves = Array[int]([262, 389])
+ability_1 = 31
+hidden_ability = 226
+egg_group_1 = 2
+egg_group_2 = 11
+egg_cycles = 20
+hatch_species = 871
+gender_ratio = 3

@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://djpnpl5avahs0"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 106
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 408
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 446
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 189
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 479
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 334
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 29
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 157
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 350
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 42
+move = 201
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 48
+move = 444
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 54
+move = 153
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 526
+species_name = "Gigalith"
+species_id = 526
+base_hp = 85
+base_attack = 135
+base_defense = 130
+base_speed = 25
+base_sp_attack = 60
+base_sp_defense = 80
+evYield_Attack = 3
+type_1 = 6
+catch_rate = 45
+exp_yield = 232
+friendship = 70
+growth_rate = 3
+category_name = "Presurizado"
+description = "Absorbe los rayos solares, procesa esa energía en su núcleo y lanza poderosas bolas de luz a sus enemigos."
+height = 17
+weight = 2600
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([63, 70, 76, 89, 92, 104, 120, 153, 156, 157, 164, 173, 182, 201, 203, 207, 213, 214, 216, 218, 237, 249, 263, 267, 276, 290, 311, 317, 328, 334, 335, 350, 356, 397, 408, 414, 416, 430, 442, 444, 446, 479, 484, 496, 523, 590, 636, 638, 661, 704, 728])
+ability_1 = 5
+ability_2 = 45
+hidden_ability = 159
+egg_group_1 = 10
+egg_cycles = 15
+hatch_species = 526
+gender_ratio = 3

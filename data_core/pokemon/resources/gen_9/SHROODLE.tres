@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bjctkuepbcpwa"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 1333
+parameter = 28
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 491
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 44
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 154
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 11
+move = 415
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 14
+move = 305
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 18
+move = 260
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 21
+move = 163
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 25
+move = 369
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 29
+move = 398
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 33
+move = 269
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 36
+move = 164
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 40
+move = 282
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 45
+move = 441
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 944
+species_name = "Shroodle"
+species_id = 1332
+base_hp = 40
+base_attack = 65
+base_defense = 35
+base_speed = 75
+base_sp_attack = 40
+base_sp_defense = 35
+evYield_Speed = 1
+type_1 = 4
+type_2 = 1
+catch_rate = 190
+exp_yield = 58
+friendship = 50
+growth_rate = 3
+category_name = "Toxic Mouse"
+description = "Though usually a mellow Pokémon, it will sink its sharp, poison-soaked front teeth into any that anger it, causing paralysis in the object of its ire."
+height = 2
+weight = 7
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([14, 36, 38, 91, 92, 118, 156, 162, 164, 168, 182, 188, 189, 203, 214, 226, 227, 240, 241, 244, 263, 269, 270, 282, 283, 341, 369, 374, 398, 417, 441, 474, 482, 491, 492, 512, 638, 734, 779, 810, 811])
+egg_moves = Array[int]([92, 162, 207, 383, 440, 575])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 84
+ability_2 = 124
+hidden_ability = 158
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 1332
+gender_ratio = 3

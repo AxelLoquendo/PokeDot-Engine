@@ -1,0 +1,133 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d1wnk0h1ya4q8"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 74
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 579
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 4
+move = 275
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 7
+move = 71
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 7
+move = 320
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 10
+move = 72
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 13
+move = 73
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 16
+move = 75
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 19
+move = 388
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 22
+move = 202
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 25
+move = 331
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 28
+move = 80
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 31
+move = 76
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 31
+move = 363
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 34
+move = 38
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 39
+move = 241
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 43
+move = 437
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 50
+move = 572
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 192
+species_name = "Sunflora"
+species_id = 192
+base_hp = 75
+base_attack = 75
+base_defense = 55
+base_speed = 30
+base_sp_attack = 105
+base_sp_defense = 85
+evYield_SpAttack = 2
+type_1 = 13
+catch_rate = 120
+exp_yield = 149
+friendship = 70
+growth_rate = 3
+category_name = "Sol"
+description = "A medida que se acerca el verano, va adquiriendo un color más vivo e intenso en los pétalos de la cara."
+height = 8
+weight = 85
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
+teachable_moves = Array[int]([14, 15, 36, 38, 63, 76, 92, 102, 104, 113, 148, 156, 164, 173, 174, 182, 188, 202, 203, 207, 213, 214, 216, 218, 219, 227, 230, 235, 237, 240, 241, 253, 263, 267, 270, 283, 290, 311, 331, 345, 363, 388, 402, 412, 414, 416, 437, 445, 447, 495, 496, 572, 580, 590, 605, 731, 779, 811])
+ability_1 = 34
+ability_2 = 94
+hidden_ability = 48
+egg_group_1 = 7
+egg_cycles = 20
+hatch_species = 192
+gender_ratio = 3

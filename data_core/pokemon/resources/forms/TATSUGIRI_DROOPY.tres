@@ -1,0 +1,96 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://1wrvfvml00k"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 150
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 6
+move = 106
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 12
+move = 270
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 17
+move = 352
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 23
+move = 487
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 28
+move = 269
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 34
+move = 262
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 39
+move = 330
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 43
+move = 417
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 47
+move = 243
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 52
+move = 406
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 978
+species_name = "Tatsugiri Droopy"
+species_id = 1368
+base_hp = 68
+base_attack = 50
+base_defense = 60
+base_speed = 82
+base_sp_attack = 120
+base_sp_defense = 95
+evYield_SpAttack = 2
+type_1 = 17
+type_2 = 12
+catch_rate = 100
+exp_yield = 166
+friendship = 50
+growth_rate = 3
+category_name = "Mimicry"
+description = "This is a small dragon Pokémon. It lives inside the mouth of Dondozo to protect itself from enemies on the outside."
+height = 3
+weight = 80
+body_color = 9
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
+teachable_moves = Array[int]([36, 56, 57, 63, 156, 164, 182, 196, 200, 203, 214, 226, 240, 250, 263, 269, 270, 330, 349, 352, 406, 416, 417, 434, 642, 779, 812, 841])
+egg_moves = Array[int]([68, 226, 229])
+ability_1 = 279
+hidden_ability = 114
+egg_group_1 = 12
+egg_cycles = 35
+hatch_species = 978
+gender_ratio = 3

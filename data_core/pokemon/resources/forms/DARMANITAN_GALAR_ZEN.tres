@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://r0hoglf63667"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 44
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 181
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 269
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 556
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 419
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 526
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 423
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 29
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 28
+move = 8
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 32
+move = 253
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 38
+move = 187
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 44
+move = 59
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 50
+move = 37
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 56
+move = 276
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 555
+species_name = "Darmanitan Galar Zen"
+species_id = 1093
+base_hp = 105
+base_attack = 160
+base_defense = 55
+base_speed = 135
+base_sp_attack = 30
+base_sp_defense = 55
+evYield_SpAttack = 2
+type_1 = 16
+type_2 = 11
+catch_rate = 60
+exp_yield = 189
+friendship = 70
+growth_rate = 3
+category_name = "Candente"
+description = "Cuando resulta gravemente herido, se endurece como una piedra y medita para agudizar la mente."
+height = 17
+weight = 1200
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([5, 7, 8, 25, 34, 53, 58, 59, 63, 76, 83, 89, 91, 94, 116, 126, 156, 157, 164, 168, 173, 179, 182, 203, 213, 214, 227, 241, 253, 257, 261, 263, 269, 276, 280, 315, 317, 334, 339, 360, 369, 371, 374, 394, 411, 416, 419, 423, 424, 428, 442, 444, 447, 496, 523, 526, 704, 735, 736])
+ability_1 = 255
+hidden_ability = 161
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 555
+gender_ratio = 3

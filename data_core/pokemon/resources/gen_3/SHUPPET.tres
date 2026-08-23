@@ -1,0 +1,133 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://db43xigcmqeao"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 354
+parameter = 37
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 282
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 103
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 7
+move = 101
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 10
+move = 180
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 16
+move = 261
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 19
+move = 185
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 19
+move = 425
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 22
+move = 506
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 26
+move = 174
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 30
+move = 247
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 34
+move = 272
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 34
+move = 373
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 38
+move = 389
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 42
+move = 271
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 42
+move = 289
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 46
+move = 288
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 48
+move = 566
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 353
+species_name = "Shuppet"
+species_id = 353
+base_hp = 44
+base_attack = 75
+base_defense = 35
+base_speed = 45
+base_sp_attack = 63
+base_sp_defense = 33
+evYield_Attack = 1
+type_1 = 8
+catch_rate = 225
+exp_yield = 59
+friendship = 35
+growth_rate = 4
+category_name = "Títere"
+description = "Dicen que con su cuerno se alimenta de sentimientos de celos y envidia. Es muy activo a medianoche."
+height = 6
+weight = 23
+body_color = 4
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([29, 34, 38, 60, 85, 86, 87, 92, 94, 101, 102, 104, 109, 118, 138, 148, 156, 164, 168, 171, 173, 174, 180, 182, 184, 196, 203, 207, 213, 214, 216, 218, 220, 227, 237, 240, 241, 244, 247, 259, 261, 263, 269, 270, 271, 272, 277, 282, 285, 286, 289, 290, 347, 351, 363, 371, 373, 389, 399, 417, 433, 441, 445, 451, 466, 477, 478, 492, 496, 502, 506, 566, 590, 605, 734, 736, 737, 779, 810])
+egg_moves = Array[int]([50, 109, 193, 194, 228, 286, 310, 371, 425, 441, 466, 566])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 15
+ability_2 = 119
+hidden_ability = 130
+egg_group_1 = 11
+egg_cycles = 25
+hatch_species = 353
+gender_ratio = 3

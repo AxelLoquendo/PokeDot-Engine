@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c0jm212oo52ai"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 52
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 90
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 116
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 157
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 284
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 12
+move = 222
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 12
+move = 523
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 15
+move = 481
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 15
+move = 510
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 19
+move = 133
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 22
+move = 436
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 26
+move = 414
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 29
+move = 174
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 31
+move = 36
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 39
+move = 281
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 46
+move = 89
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 323
+species_name = "Camerupt"
+species_id = 323
+base_hp = 70
+base_attack = 100
+base_defense = 70
+base_speed = 40
+base_sp_attack = 105
+base_sp_defense = 75
+evYield_Attack = 1
+evYield_SpAttack = 1
+type_1 = 11
+type_2 = 5
+catch_rate = 150
+exp_yield = 161
+friendship = 70
+category_name = "Erupción"
+description = "Los volcanes de su joroba entran en erupción cada 10 años o cuando Camerupt se enfada mucho."
+height = 19
+weight = 2200
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([29, 34, 36, 38, 46, 53, 63, 70, 76, 83, 89, 91, 92, 102, 104, 111, 120, 126, 133, 153, 156, 157, 164, 173, 174, 182, 184, 189, 201, 203, 204, 205, 207, 213, 214, 216, 218, 237, 240, 241, 249, 257, 261, 263, 267, 270, 283, 290, 315, 317, 341, 363, 394, 397, 414, 416, 428, 430, 442, 444, 445, 446, 479, 484, 488, 495, 496, 497, 510, 523, 535, 590, 630, 661, 704, 736, 743, 779, 811, 843])
+ability_1 = 40
+ability_2 = 116
+hidden_ability = 83
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 323
+gender_ratio = 3

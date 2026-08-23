@@ -1,0 +1,154 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dipuishgyrbn4"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 14
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 40
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 71
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 81
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 116
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 132
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 450
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 565
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 599
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 8
+move = 611
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 12
+move = 141
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 12
+move = 184
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 15
+move = 101
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 19
+move = 425
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 23
+move = 154
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 28
+move = 389
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 31
+move = 97
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 32
+move = 169
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 35
+move = 42
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 41
+move = 94
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 46
+move = 398
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 50
+move = 440
+
+[sub_resource type="Resource" id="Resource_move22"]
+script = ExtResource("2_learn")
+level = 53
+move = 103
+
+[sub_resource type="Resource" id="Resource_move23"]
+script = ExtResource("2_learn")
+level = 54
+move = 564
+
+[sub_resource type="Resource" id="Resource_move24"]
+script = ExtResource("2_learn")
+level = 59
+move = 635
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 168
+species_name = "Ariados"
+species_id = 168
+base_hp = 70
+base_attack = 90
+base_defense = 70
+base_speed = 40
+base_sp_attack = 60
+base_sp_defense = 70
+evYield_Attack = 2
+type_1 = 7
+type_2 = 4
+catch_rate = 90
+exp_yield = 140
+friendship = 70
+growth_rate = 4
+category_name = "Pata Larga"
+description = "Teje su telaraña desde atrás y desde su boca. Es muy difícil saber dónde está cada cual."
+height = 11
+weight = 335
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24")])
+teachable_moves = Array[int]([14, 34, 38, 63, 76, 81, 91, 92, 94, 97, 101, 102, 104, 141, 148, 156, 164, 168, 173, 174, 180, 182, 184, 188, 202, 203, 207, 213, 214, 216, 218, 226, 237, 241, 263, 282, 290, 324, 340, 363, 389, 390, 398, 404, 405, 416, 445, 450, 468, 474, 482, 491, 492, 496, 506, 522, 527, 590, 611, 638, 642, 647, 661, 734, 779, 810, 811])
+egg_moves = Array[int]([50, 224, 400, 476, 642])
+ability_1 = 68
+ability_2 = 15
+hidden_ability = 97
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 168
+gender_ratio = 3

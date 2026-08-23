@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dsuafvyqo5c11"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 680
+parameter = 35
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 210
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 425
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 475
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 332
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 13
+move = 228
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 319
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 163
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 400
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 28
+move = 514
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 32
+move = 334
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 36
+move = 442
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 40
+move = 379
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 44
+move = 14
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 48
+move = 533
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 679
+species_name = "Honedge"
+species_id = 679
+base_hp = 45
+base_attack = 80
+base_defense = 100
+base_speed = 28
+base_sp_attack = 35
+base_sp_defense = 37
+evYield_Defense = 1
+type_1 = 9
+type_2 = 8
+catch_rate = 180
+exp_yield = 65
+friendship = 70
+category_name = "Tizona"
+description = "Cuentan que este Pokémon nace cuando el espíritu de un difunto toma posesión de una espada antigua. Se aferra a las personas y absorbe su energía."
+height = 8
+weight = 20
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([14, 15, 92, 103, 104, 115, 156, 157, 164, 173, 179, 180, 182, 203, 206, 207, 213, 214, 216, 218, 237, 240, 249, 263, 280, 290, 332, 334, 351, 360, 370, 393, 421, 427, 430, 442, 495, 496, 514, 590, 632, 636, 656, 724])
+egg_moves = Array[int]([194, 319, 335, 425, 469])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 99
+egg_group_1 = 10
+egg_cycles = 20
+hatch_species = 679
+gender_ratio = 3

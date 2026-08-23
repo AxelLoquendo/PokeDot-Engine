@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dg5se4akcbo6"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 40
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 106
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 44
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 565
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 16
+move = 107
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 191
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 24
+move = 362
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 28
+move = 767
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 32
+move = 42
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 390
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 254
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 40
+move = 255
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 44
+move = 92
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 48
+move = 242
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 52
+move = 367
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 56
+move = 194
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 904
+species_name = "Overqwil"
+species_id = 904
+base_hp = 85
+base_attack = 115
+base_defense = 95
+base_speed = 85
+base_sp_attack = 65
+base_sp_defense = 65
+evYield_Attack = 2
+type_1 = 18
+type_2 = 4
+catch_rate = 135
+exp_yield = 179
+friendship = 50
+category_name = "Pin Cluster"
+description = "Its lancelike spikes and savage temperament have earned it the nickname ”sea fiend.” It slurps up poison to nourish itself."
+height = 25
+weight = 605
+body_color = 4
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([14, 36, 38, 56, 57, 58, 59, 63, 92, 97, 114, 127, 156, 164, 174, 179, 180, 182, 184, 188, 191, 196, 203, 214, 220, 240, 242, 247, 263, 269, 341, 342, 360, 390, 398, 399, 416, 441, 474, 482, 638, 647, 664, 727, 736, 779, 812])
+ability_1 = 38
+ability_2 = 33
+hidden_ability = 22
+egg_group_1 = 12
+egg_cycles = 20
+hatch_species = 904
+gender_ratio = 3

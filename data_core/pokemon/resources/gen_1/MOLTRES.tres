@@ -1,0 +1,140 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cer2adi0jud8m"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 16
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 64
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 5
+move = 52
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 83
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 10
+move = 219
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 15
+move = 17
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 97
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 25
+move = 246
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 510
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 35
+move = 403
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 36
+move = 53
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 40
+move = 355
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 45
+move = 257
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 50
+move = 241
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 55
+move = 542
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 60
+move = 203
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 65
+move = 315
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 65
+move = 645
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 70
+move = 143
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 71
+move = 76
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 146
+species_name = "Moltres"
+species_id = 146
+base_hp = 90
+base_attack = 100
+base_defense = 90
+base_speed = 90
+base_sp_attack = 125
+base_sp_defense = 85
+evYield_SpAttack = 3
+type_1 = 11
+type_2 = 3
+catch_rate = 3
+exp_yield = 261
+friendship = 35
+growth_rate = 5
+category_name = "Llama"
+description = "Es más conocido como el legendario pájaro de fuego. Con cada aleteo crea brillantes llamas."
+height = 20
+weight = 600
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
+teachable_moves = Array[int]([13, 18, 19, 29, 36, 38, 46, 53, 63, 76, 83, 92, 97, 99, 102, 104, 115, 117, 126, 129, 143, 156, 164, 173, 174, 182, 189, 197, 201, 203, 207, 211, 214, 216, 218, 219, 237, 239, 240, 241, 246, 249, 257, 261, 263, 270, 290, 311, 314, 315, 332, 355, 363, 365, 366, 369, 394, 403, 413, 416, 432, 466, 488, 496, 507, 510, 512, 542, 590, 595, 636, 735, 742, 743, 779, 843])
+ability_1 = 46
+hidden_ability = 49
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 80
+hatch_species = 146
+gender_ratio = 7

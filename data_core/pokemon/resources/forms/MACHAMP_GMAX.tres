@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3]
+
+[ext_resource type="Script" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 68
+regional_dex_number = 0
+species_id = 1495
+base_hp = 90
+base_attack = 130
+base_defense = 80
+base_speed = 55
+base_sp_attack = 65
+base_sp_defense = 85
+evYield_HP = 0
+evYield_Attack = 3
+evYield_Defense = 0
+evYield_Speed = 0
+evYield_SpAttack = 0
+evYield_SpDefense = 0
+type_1 = 2
+type_2 = 0
+catch_rate = 45
+exp_yield = 227
+friendship = 70
+growth_rate = 3
+height = 250
+weight = 10000
+body_color = 7
+egg_group_1 = 8
+egg_group_2 = 0
+egg_cycles = 20
+hatch_species = 68
+gender_ratio = 4
+species_name = "Machamp Gmax"
+category_name = "Superpoder"
+description = "Tiene cuatro brazos tan bien desarrollados que puede dar una serie de 1000 puñetazos en cuestión de dos segundos."
+front_sprite_offset = Vector2(0, 0)
+back_sprite_offset = Vector2(0, 0)
+is_legendary = false
+is_mythical = false
+is_ultra_beast = false
+ability_1 = 62
+ability_2 = 99
+hidden_ability = 80
+level_up_moves = Array[ExtResource("2_learn")]([])
+teachable_moves = Array[int]([])
+egg_moves = Array[int]([])
+evolutions = Array[ExtResource("1_evo")]([])

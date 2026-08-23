@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3]
+
+[ext_resource type="Script" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 131
+regional_dex_number = 0
+species_id = 1498
+base_hp = 130
+base_attack = 85
+base_defense = 80
+base_speed = 60
+base_sp_attack = 85
+base_sp_defense = 95
+evYield_HP = 2
+evYield_Attack = 0
+evYield_Defense = 0
+evYield_Speed = 0
+evYield_SpAttack = 0
+evYield_SpDefense = 0
+type_1 = 12
+type_2 = 16
+catch_rate = 45
+exp_yield = 187
+friendship = 70
+growth_rate = 5
+height = 240
+weight = 10000
+body_color = 1
+egg_group_1 = 1
+egg_group_2 = 2
+egg_cycles = 40
+hatch_species = 131
+gender_ratio = 3
+species_name = "Lapras Gmax"
+category_name = "Transporte"
+description = "Son buenos de corazón. Muchos fueron capturados por ser tan pacíficos. Ahora hay muchos menos."
+front_sprite_offset = Vector2(0, 0)
+back_sprite_offset = Vector2(0, 0)
+is_legendary = false
+is_mythical = false
+is_ultra_beast = false
+ability_1 = 11
+ability_2 = 75
+hidden_ability = 93
+level_up_moves = Array[ExtResource("2_learn")]([])
+teachable_moves = Array[int]([])
+egg_moves = Array[int]([])
+evolutions = Array[ExtResource("1_evo")]([])

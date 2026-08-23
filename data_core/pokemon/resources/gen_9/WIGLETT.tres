@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d2bbe2tfm2nt7"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 1349
+parameter = 26
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 189
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 35
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 453
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 20
+move = 21
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 352
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 24
+move = 29
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 28
+move = 91
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 32
+move = 389
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 638
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 664
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 960
+species_name = "Wiglett"
+species_id = 1348
+base_hp = 10
+base_attack = 55
+base_defense = 25
+base_speed = 95
+base_sp_attack = 35
+base_sp_defense = 25
+evYield_Speed = 1
+type_1 = 12
+catch_rate = 255
+exp_yield = 49
+friendship = 50
+category_name = "Garden Eel"
+description = "This Pokémon can pick up the scent of a Veluza just over 65 feet away and will hide itself in the sand."
+height = 12
+weight = 18
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
+teachable_moves = Array[int]([36, 56, 57, 58, 59, 91, 97, 129, 156, 164, 182, 189, 201, 203, 214, 240, 250, 263, 270, 330, 341, 352, 414, 492, 523, 638, 661, 664, 779, 812])
+egg_moves = Array[int]([262, 515])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 183
+ability_2 = 155
+hidden_ability = 8
+egg_group_1 = 9
+egg_cycles = 20
+hatch_species = 1348
+gender_ratio = 3

@@ -1,0 +1,112 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ct7ickdnqeonp"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 122
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 766
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 154
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 13
+move = 371
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 17
+move = 106
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 22
+move = 163
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 25
+move = 589
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 35
+move = 184
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 41
+move = 156
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 41
+move = 173
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 48
+move = 414
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 56
+move = 585
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 64
+move = 359
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 70
+move = 829
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 901
+species_name = "Ursaluna Bloodmoon"
+species_id = 1424
+base_hp = 113
+base_attack = 70
+base_defense = 120
+base_speed = 52
+base_sp_attack = 135
+base_sp_defense = 65
+evYield_Attack = 3
+type_1 = 5
+type_2 = 1
+catch_rate = 75
+exp_yield = 275
+friendship = 50
+category_name = "Peat"
+description = "I believe it was Hisui's swampy terrain that gave Ursaluna its burly physique and newfound capacity to manipulate peat at will."
+height = 24
+weight = 2900
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([7, 8, 9, 14, 34, 36, 38, 46, 63, 67, 89, 91, 118, 129, 156, 157, 164, 168, 182, 184, 203, 204, 214, 232, 240, 241, 242, 253, 263, 264, 269, 270, 280, 304, 313, 317, 332, 339, 341, 347, 370, 374, 402, 409, 410, 411, 414, 416, 419, 421, 441, 444, 479, 484, 523, 555, 583, 630, 661, 704, 779, 811, 840])
+egg_moves = Array[int]([236])
+ability_1 = 300
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 901
+gender_ratio = 3

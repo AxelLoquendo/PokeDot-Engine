@@ -1,0 +1,137 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://fskebsmeqgwi"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 468
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 2
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 4
+move = 17
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 197
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 332
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 227
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 297
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 66
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 280
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 374
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 28
+move = 340
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 32
+move = 269
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 36
+move = 355
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 40
+move = 14
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 44
+move = 560
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 48
+move = 136
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 52
+move = 283
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 55
+move = 507
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 56
+move = 143
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 701
+species_name = "Hawlucha"
+species_id = 701
+base_hp = 78
+base_attack = 92
+base_defense = 75
+base_speed = 118
+base_sp_attack = 74
+base_sp_defense = 63
+evYield_Attack = 2
+type_1 = 2
+type_2 = 3
+catch_rate = 100
+exp_yield = 175
+friendship = 70
+category_name = "Lucha Libre"
+description = "A pesar de ser un Pokémon de pequeña estatura, su pericia en el combate le permite plantar cara a Pokémon como Machamp o Hariyama."
+height = 8
+weight = 215
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
+teachable_moves = Array[int]([5, 7, 9, 14, 15, 19, 25, 34, 36, 63, 67, 70, 91, 92, 97, 104, 129, 143, 156, 157, 164, 168, 173, 179, 182, 203, 206, 207, 211, 213, 214, 216, 218, 226, 227, 237, 240, 241, 249, 253, 259, 263, 264, 269, 270, 276, 279, 280, 283, 290, 297, 317, 332, 339, 340, 355, 366, 369, 370, 371, 372, 374, 387, 398, 404, 409, 411, 413, 416, 428, 432, 442, 444, 447, 468, 490, 496, 502, 507, 512, 514, 526, 530, 590, 612, 636, 638, 642, 704, 739, 742, 779, 811, 846])
+egg_moves = Array[int]([97, 212, 226, 238, 300, 364, 382, 432, 494, 501, 502])
+ability_1 = 7
+ability_2 = 84
+hidden_ability = 104
+egg_group_1 = 4
+egg_group_2 = 8
+egg_cycles = 20
+hatch_species = 701
+gender_ratio = 3

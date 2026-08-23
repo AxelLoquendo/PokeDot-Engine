@@ -48,6 +48,8 @@ const STAT_COUNT: int = 6
 ## Se recalculan con recalculate_stats().
 @export var stats: Array[int] = [0, 0, 0, 0, 0, 0]
 
+## Tipo Tera de esta criatura (por defecto el type_1 de la especie).
+@export var tera_type: PokemonData.Type = PokemonData.Type.TYPE_NONE
 
 # ============================================================
 # ESPECIE
@@ -249,7 +251,9 @@ static func create(species: Species.SpeciesID, initial_level: int = 5) -> Pokemo
 
 	# Habilidad (por ahora siempre ability_1; luego puedes usar PID)
 	pokemon.ability_id = data.ability_1
-
+	# Tera Type: por defecto el tipo primario de la especie
+	pokemon.tera_type = data.type_1
+	pokemon.tera_type = _roll_tera_type(data)
 	# IVs aleatorios 0-31
 	pokemon.ivs = []
 	for i: int in range(STAT_COUNT):
@@ -270,6 +274,11 @@ static func create(species: Species.SpeciesID, initial_level: int = 5) -> Pokemo
 	pokemon.current_hp = pokemon.max_hp
 	return pokemon
 
+static func _roll_tera_type(species: PokemonDataStruct) -> PokemonData.Type:
+	if species == null:
+		return PokemonData.Type.TYPE_NONE
+	# Default oficial: tipo primario
+	return species.type_1
 
 # ============================================================
 # INTERNOS
@@ -379,6 +388,7 @@ func to_dict() -> Dictionary:
 		"current_hp": current_hp,
 		"max_hp": max_hp,
 		"ability_id": int(ability_id),
+		"tera_type": int(tera_type),
 		"held_item": int(held_item),
 		"friendship": friendship,
 		"nature": int(nature),
@@ -400,6 +410,7 @@ static func from_dict(data: Dictionary) -> PokemonInstance:
 	pokemon.current_hp = int(data.get("current_hp", 0))
 	pokemon.max_hp = int(data.get("max_hp", 0))
 	pokemon.ability_id = int(data.get("ability_id", 0)) as AbilityId.Id
+	pokemon.tera_type = int(data.get("tera_type", 0)) as PokemonData.Type
 	pokemon.held_item = int(data.get("held_item", 0)) as Items.ItemId
 	pokemon.friendship = int(data.get("friendship", 70))
 	pokemon.nature = int(data.get("nature", 0)) as PokemonData.Nature

@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cl8lxnp3ehnm1"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 51
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 64
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 270
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 314
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 403
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 406
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 7
+move = 31
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 14
+move = 565
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 21
+move = 204
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 474
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 35
+move = 599
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 42
+move = 417
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 49
+move = 398
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 56
+move = 380
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 63
+move = 92
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 70
+move = 407
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 804
+species_name = "Naganadel"
+species_id = 804
+base_hp = 73
+base_attack = 73
+base_defense = 73
+base_speed = 121
+base_sp_attack = 127
+base_sp_defense = 73
+evYield_SpAttack = 3
+type_1 = 4
+type_2 = 17
+catch_rate = 45
+exp_yield = 243
+growth_rate = 5
+category_name = "Pin Veneno"
+description = "Una de las temibles criaturas conocidas como Ultraentes. En su cuerpo almacena cientos de litros de veneno."
+height = 36
+weight = 1500
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([19, 42, 53, 63, 85, 92, 104, 126, 129, 141, 143, 156, 164, 168, 173, 182, 188, 191, 200, 203, 204, 214, 216, 218, 231, 237, 253, 257, 263, 270, 289, 324, 332, 337, 349, 351, 366, 369, 372, 380, 390, 398, 399, 403, 404, 406, 416, 417, 421, 434, 440, 441, 474, 482, 496, 497, 502, 506, 507, 512, 525, 555, 590, 599, 636, 638, 647, 712, 727, 742])
+ability_1 = 224
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 804
+gender_ratio = 7

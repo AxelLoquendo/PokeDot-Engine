@@ -1,0 +1,100 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dy2xap0tt1edm"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 31
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 41
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 14
+move = 99
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 17
+move = 228
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 20
+move = 116
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 23
+move = 474
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 26
+move = 372
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 29
+move = 390
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 32
+move = 42
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 35
+move = 398
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 38
+move = 97
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 41
+move = 283
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 44
+move = 565
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 15
+species_name = "Beedrill"
+species_id = 15
+base_hp = 65
+base_attack = 90
+base_defense = 40
+base_speed = 75
+base_sp_attack = 45
+base_sp_defense = 80
+evYield_Attack = 2
+evYield_SpDefense = 1
+type_1 = 7
+type_2 = 4
+catch_rate = 45
+exp_yield = 178
+friendship = 70
+category_name = "Abeja Veneno"
+description = "Tiene 3 aguijones venenosos en sus patas y cola. Suelen pinchar a sus enemigos repetidas veces."
+height = 10
+weight = 295
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([14, 15, 29, 36, 38, 63, 72, 76, 81, 92, 99, 102, 104, 115, 117, 129, 130, 148, 156, 164, 168, 173, 174, 182, 188, 200, 202, 203, 206, 207, 210, 213, 214, 216, 218, 230, 237, 241, 249, 263, 280, 282, 283, 290, 314, 318, 332, 355, 363, 366, 369, 371, 398, 404, 416, 432, 445, 450, 466, 474, 496, 512, 522, 527, 529, 590, 611, 636, 638, 656])
+ability_1 = 68
+hidden_ability = 97
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 15
+gender_ratio = 3

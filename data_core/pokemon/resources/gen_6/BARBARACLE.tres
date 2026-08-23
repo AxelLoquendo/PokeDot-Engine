@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cviofghjr7o1x"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 110
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 130
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 189
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 12
+move = 210
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 154
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 128
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 20
+move = 246
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 397
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 28
+move = 163
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 32
+move = 468
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 36
+move = 534
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 42
+move = 504
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 44
+move = 400
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 48
+move = 238
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 54
+move = 444
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 689
+species_name = "Barbaracle"
+species_id = 689
+base_hp = 72
+base_attack = 105
+base_defense = 115
+base_speed = 68
+base_sp_attack = 54
+base_sp_defense = 86
+evYield_Attack = 2
+type_1 = 6
+type_2 = 12
+catch_rate = 45
+exp_yield = 175
+friendship = 70
+category_name = "Combinación"
+description = "Al evolucionar, los dos Binacle se dividen y dan lugar a siete criaturas que se aglomeran formando un Barbaracle y suman su poder al combatir."
+height = 13
+weight = 960
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([14, 15, 57, 58, 59, 63, 67, 70, 89, 91, 92, 103, 104, 156, 157, 164, 168, 173, 182, 188, 196, 201, 203, 206, 207, 213, 214, 216, 218, 219, 237, 240, 249, 250, 251, 253, 259, 263, 267, 269, 270, 276, 280, 283, 290, 291, 317, 330, 332, 334, 337, 339, 341, 350, 352, 371, 372, 373, 374, 397, 398, 404, 411, 414, 416, 421, 444, 446, 447, 468, 479, 482, 496, 503, 523, 530, 534, 590, 611, 612, 636, 656, 664, 728])
+ability_1 = 181
+ability_2 = 97
+hidden_ability = 124
+egg_group_1 = 9
+egg_cycles = 20
+hatch_species = 689
+gender_ratio = 3

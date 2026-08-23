@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cuf67bvhfny8x"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 229
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 11
+move = 269
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 14
+move = 712
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 18
+move = 98
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 23
+move = 44
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 27
+move = 369
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 31
+move = 806
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 36
+move = 337
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 40
+move = 508
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 45
+move = 406
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 51
+move = 38
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 57
+move = 407
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 967
+species_name = "Cyclizar"
+species_id = 1356
+base_hp = 70
+base_attack = 95
+base_defense = 65
+base_speed = 121
+base_sp_attack = 85
+base_sp_defense = 65
+evYield_Speed = 2
+type_1 = 17
+type_2 = 1
+catch_rate = 190
+exp_yield = 175
+friendship = 50
+growth_rate = 3
+category_name = "Mount"
+description = "Apparently Cyclizar has been allowing people to ride on its back since ancient times. Depictions of this have been found in 10,000-year-old murals."
+height = 16
+weight = 630
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([34, 36, 38, 63, 85, 97, 156, 164, 168, 182, 189, 200, 203, 214, 240, 241, 242, 253, 263, 269, 282, 283, 304, 315, 332, 337, 341, 369, 406, 416, 422, 424, 434, 442, 512, 525, 528, 712, 727, 779, 789, 811, 841, 843, 844])
+egg_moves = Array[int]([231, 282, 401, 438])
+ability_1 = 61
+hidden_ability = 144
+egg_group_1 = 5
+egg_cycles = 30
+hatch_species = 1356
+gender_ratio = 3

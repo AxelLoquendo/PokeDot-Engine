@@ -1,0 +1,141 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cu1mkq3x4atiq"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 116
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 292
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 362
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 10
+move = 252
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 13
+move = 395
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 18
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 19
+move = 282
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 22
+move = 233
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 22
+move = 339
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 26
+move = 187
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 30
+move = 197
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 30
+move = 265
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 34
+move = 69
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 38
+move = 264
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 38
+move = 358
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 42
+move = 203
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 46
+move = 370
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 50
+move = 179
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 54
+move = 484
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 60
+move = 766
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 297
+species_name = "Hariyama"
+species_id = 297
+base_hp = 144
+base_attack = 120
+base_defense = 60
+base_speed = 50
+base_sp_attack = 40
+base_sp_defense = 60
+evYield_HP = 2
+type_1 = 2
+catch_rate = 200
+exp_yield = 166
+friendship = 70
+category_name = "Empuje"
+description = "Para aumentar su fuerza, da un pisotón en el suelo. Puede lanzar un camión de 10 toneladas por los aires de un puñetazo."
+height = 23
+weight = 2538
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
+teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 57, 63, 67, 68, 69, 70, 89, 91, 92, 102, 104, 118, 129, 156, 157, 164, 168, 173, 174, 179, 182, 184, 189, 203, 207, 213, 214, 216, 218, 223, 237, 240, 241, 249, 250, 263, 264, 269, 270, 272, 276, 280, 282, 290, 317, 339, 341, 362, 363, 370, 371, 374, 398, 409, 410, 411, 416, 428, 431, 442, 444, 445, 479, 484, 490, 496, 514, 523, 526, 590, 612, 638, 661, 704, 736, 739, 779, 812, 846])
+ability_1 = 47
+ability_2 = 62
+hidden_ability = 125
+egg_group_1 = 8
+egg_cycles = 20
+hatch_species = 297
+gender_ratio = 4

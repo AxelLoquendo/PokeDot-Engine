@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cnunemk3bwrvx"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 101
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 14
+move = 109
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 21
+move = 164
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 28
+move = 319
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 35
+move = 247
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 42
+move = 105
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 49
+move = 408
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 56
+move = 802
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 63
+move = 417
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 70
+move = 262
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 1000
+species_name = "Gholdengo"
+species_id = 1393
+base_hp = 87
+base_attack = 60
+base_defense = 95
+base_speed = 84
+base_sp_attack = 133
+base_sp_defense = 91
+evYield_SpAttack = 2
+type_1 = 9
+type_2 = 8
+catch_rate = 45
+exp_yield = 275
+friendship = 50
+growth_rate = 5
+category_name = "Coin Entity"
+description = "Its body seems to be made up of 1,000 coins. This Pokémon gets along well with others and is quick to make friends with anybody."
+height = 12
+weight = 300
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
+teachable_moves = Array[int]([9, 36, 63, 67, 85, 86, 87, 94, 101, 109, 113, 115, 156, 164, 168, 182, 201, 203, 214, 247, 264, 271, 319, 374, 408, 411, 416, 417, 430, 442, 451, 473, 484, 486, 490, 506, 605, 724, 737, 779])
+ability_1 = 283
+egg_group_1 = 15
+egg_cycles = 50
+hatch_species = 1393
+gender_ratio = 7

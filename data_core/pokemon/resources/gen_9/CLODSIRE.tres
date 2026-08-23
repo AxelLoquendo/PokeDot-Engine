@@ -1,0 +1,100 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://54i2v7kq2dn0"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 39
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 40
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 133
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 4
+move = 390
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 341
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 342
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 21
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 21
+move = 281
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 398
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 482
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 224
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 92
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 48
+move = 89
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 980
+species_name = "Clodsire"
+species_id = 1371
+base_hp = 130
+base_attack = 75
+base_defense = 60
+base_speed = 20
+base_sp_attack = 45
+base_sp_defense = 100
+evYield_HP = 2
+type_1 = 4
+type_2 = 5
+catch_rate = 90
+exp_yield = 151
+friendship = 50
+category_name = "Spiny Fish"
+description = "When attacked, this Pokémon will retaliate by sticking thick spines out from its body. It’s a risky move that puts everything on the line."
+height = 18
+weight = 2230
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([34, 36, 38, 56, 57, 63, 67, 89, 91, 92, 114, 127, 133, 156, 157, 164, 174, 182, 188, 189, 191, 201, 203, 214, 240, 263, 270, 317, 330, 341, 342, 352, 390, 398, 414, 416, 428, 441, 442, 444, 446, 474, 482, 484, 491, 523, 630, 661, 664, 704, 779, 811, 812])
+ability_1 = 38
+ability_2 = 11
+hidden_ability = 109
+egg_group_1 = 2
+egg_group_2 = 5
+egg_cycles = 20
+hatch_species = 1371
+gender_ratio = 3

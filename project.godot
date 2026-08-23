@@ -31,6 +31,7 @@ MoveDatabase="*uid://dcqdyj7i1v62d"
 SpeciesDatabase="*uid://bxv2bmtajvjci"
 ItemDatabase="*res://data_core/items/items_database.gd"
 DebugMenu="*res://data_core/scripts/debug_menu.gd"
+TypeIconsDb="*uid://j0dn4latidhk"
 
 [debug]
 
@@ -52,6 +53,7 @@ enabled=PackedStringArray("res://addons/ability_validator/plugin.cfg", "res://ad
 folder_colors={
 "res://addons/": "blue",
 "res://data_core/": "red",
+"res://docs/": "purple",
 "res://game/": "green",
 "res://graphics/": "yellow",
 "res://scenes/": "orange",

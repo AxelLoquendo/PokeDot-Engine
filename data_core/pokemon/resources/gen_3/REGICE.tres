@@ -1,0 +1,110 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cgkd815mf5d5e"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 196
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 451
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 6
+move = 523
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 12
+move = 246
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 18
+move = 23
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 24
+move = 58
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 30
+move = 174
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 36
+move = 133
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 42
+move = 359
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 48
+move = 59
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 54
+move = 276
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 60
+move = 199
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 66
+move = 192
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 72
+move = 63
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 78
+move = 153
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 378
+species_name = "Regice"
+species_id = 378
+base_hp = 80
+base_attack = 50
+base_defense = 100
+base_speed = 50
+base_sp_attack = 100
+base_sp_defense = 200
+evYield_SpDefense = 3
+type_1 = 16
+catch_rate = 3
+exp_yield = 261
+friendship = 35
+growth_rate = 5
+category_name = "Iceberg"
+description = "Dicen que ha yacido durmiendo en un glaciar durante milenios. Ni el magma puede derretir su cuerpo."
+height = 18
+weight = 1750
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([5, 8, 9, 25, 29, 34, 38, 58, 59, 63, 68, 69, 70, 85, 86, 87, 89, 92, 102, 104, 111, 120, 133, 153, 156, 157, 164, 173, 174, 182, 189, 196, 203, 205, 207, 214, 216, 218, 219, 223, 237, 240, 244, 246, 249, 258, 263, 264, 276, 280, 290, 317, 324, 333, 335, 351, 356, 363, 374, 397, 411, 416, 419, 430, 431, 442, 451, 484, 496, 523, 524, 590, 612, 657, 661, 704, 779, 789, 809])
+ability_1 = 29
+hidden_ability = 115
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 80
+hatch_species = 378
+gender_ratio = 7

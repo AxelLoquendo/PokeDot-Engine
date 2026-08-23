@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c2rasvx3o2c1y"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 74
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 111
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 10
+move = 345
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 19
+move = 73
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 28
+move = 235
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 37
+move = 230
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 46
+move = 363
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 46
+move = 583
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 55
+move = 388
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 64
+move = 312
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 64
+move = 580
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 73
+move = 412
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 82
+move = 186
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 82
+move = 320
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 91
+move = 361
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 91
+move = 381
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 100
+move = 465
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 492
+species_name = "Shaymin-Land"
+species_id = 492
+base_hp = 100
+base_attack = 100
+base_defense = 100
+base_speed = 100
+base_sp_attack = 100
+base_sp_defense = 100
+evYield_HP = 3
+type_1 = 13
+catch_rate = 45
+exp_yield = 270
+friendship = 100
+growth_rate = 3
+category_name = "Gratitud"
+description = "Puede disolver las toxinas del aire para transformar tierra yerma en campos de flores."
+height = 2
+weight = 21
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([14, 29, 36, 38, 63, 76, 92, 94, 104, 129, 148, 156, 164, 173, 182, 189, 202, 203, 207, 214, 216, 218, 219, 226, 235, 237, 241, 244, 263, 267, 283, 290, 314, 331, 332, 343, 345, 363, 366, 387, 388, 402, 403, 412, 414, 416, 428, 437, 447, 466, 496, 572, 574, 580, 583, 590, 605, 608, 636, 731, 779, 811])
+ability_1 = 30
+is_mythical = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 492
+gender_ratio = 7

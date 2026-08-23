@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3]
+
+[ext_resource type="Script" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 851
+regional_dex_number = 0
+species_id = 1515
+base_hp = 100
+base_attack = 115
+base_defense = 65
+base_speed = 65
+base_sp_attack = 90
+base_sp_defense = 90
+evYield_HP = 0
+evYield_Attack = 2
+evYield_Defense = 0
+evYield_Speed = 0
+evYield_SpAttack = 0
+evYield_SpDefense = 0
+type_1 = 11
+type_2 = 7
+catch_rate = 75
+exp_yield = 184
+friendship = 50
+growth_rate = 0
+height = 750
+weight = 10000
+body_color = 0
+egg_group_1 = 3
+egg_group_2 = 0
+egg_cycles = 20
+hatch_species = 851
+gender_ratio = 3
+species_name = "Centiskorch Gmax"
+category_name = "Radiador"
+description = "Cuando genera calor, su temperatura corporal alcanza aproximadamente los 800 °C. Usa el cuerpo a modo de látigo para lanzarse al ataque."
+front_sprite_offset = Vector2(0, 0)
+back_sprite_offset = Vector2(0, 0)
+is_legendary = false
+is_mythical = false
+is_ultra_beast = false
+ability_1 = 18
+ability_2 = 73
+hidden_ability = 49
+level_up_moves = Array[ExtResource("2_learn")]([])
+teachable_moves = Array[int]([])
+egg_moves = Array[int]([])
+evolutions = Array[ExtResource("1_evo")]([])

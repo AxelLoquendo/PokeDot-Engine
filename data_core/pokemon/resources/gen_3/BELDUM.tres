@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bfkqlr41u8tqk"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 375
+parameter = 20
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 36
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 374
+species_name = "Beldum"
+species_id = 374
+base_hp = 40
+base_attack = 55
+base_defense = 80
+base_speed = 30
+base_sp_attack = 35
+base_sp_defense = 60
+evYield_Defense = 1
+type_1 = 9
+type_2 = 15
+catch_rate = 3
+exp_yield = 60
+friendship = 35
+growth_rate = 5
+category_name = "Bola Hierro"
+description = "Los pulsos magnéticos de su cuerpo repelen la gravedad, lo que le permite flotar en el aire."
+height = 6
+weight = 952
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
+teachable_moves = Array[int]([29, 36, 334, 428, 442, 724, 779])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 29
+hidden_ability = 135
+egg_group_1 = 10
+egg_cycles = 40
+hatch_species = 374
+gender_ratio = 7

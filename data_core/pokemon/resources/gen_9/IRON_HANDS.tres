@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dfo2r160fdoqc"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 116
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 292
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 7
+move = 252
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 14
+move = 18
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 21
+move = 9
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 28
+move = 21
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 395
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 42
+move = 69
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 49
+move = 268
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 56
+move = 528
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 63
+move = 370
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 70
+move = 197
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 77
+move = 484
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 84
+move = 187
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 91
+move = 264
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 992
+species_name = "Iron-Hands"
+species_id = 1384
+base_hp = 154
+base_attack = 140
+base_defense = 108
+base_speed = 50
+base_sp_attack = 50
+base_sp_defense = 68
+evYield_Attack = 3
+type_1 = 2
+type_2 = 14
+catch_rate = 50
+exp_yield = 285
+growth_rate = 5
+category_name = "Paradox"
+description = "It is very similar to a cyborg covered exclusively by a paranormal magazine. The cyborg was said to be the modified form of a certain athlete."
+height = 18
+weight = 3807
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([7, 8, 9, 14, 34, 36, 38, 63, 67, 85, 87, 89, 118, 156, 157, 164, 179, 182, 184, 203, 214, 263, 264, 268, 280, 317, 334, 370, 374, 409, 411, 416, 442, 484, 490, 521, 523, 528, 583, 604, 661, 704, 779, 840, 844])
+egg_moves = Array[int]([604])
+ability_1 = 282
+egg_group_1 = 15
+egg_cycles = 50
+hatch_species = 1384
+gender_ratio = 7

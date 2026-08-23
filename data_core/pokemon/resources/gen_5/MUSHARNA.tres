@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dvf05vowkrj2t"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 60
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 94
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 95
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 111
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 138
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 236
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 248
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 277
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 281
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+move = 286
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+move = 347
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+move = 381
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+move = 428
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+move = 472
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+move = 500
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+move = 585
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+move = 641
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 518
+species_name = "Musharna"
+species_id = 518
+base_hp = 116
+base_attack = 55
+base_defense = 85
+base_speed = 29
+base_sp_attack = 107
+base_sp_defense = 95
+evYield_HP = 2
+type_1 = 15
+catch_rate = 75
+exp_yield = 170
+friendship = 70
+growth_rate = 4
+category_name = "Duermevela"
+description = "Multitud de sueños de humanos y Pokémon se encuentran atrapados en el humo que despide por su frente."
+height = 11
+weight = 605
+body_color = 9
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([63, 86, 92, 94, 104, 113, 115, 129, 133, 138, 148, 156, 157, 164, 173, 182, 203, 207, 213, 214, 215, 216, 218, 219, 220, 237, 240, 244, 247, 248, 259, 263, 270, 271, 277, 285, 286, 290, 317, 324, 347, 351, 356, 360, 384, 385, 388, 412, 416, 428, 433, 451, 472, 473, 477, 495, 496, 500, 502, 590, 605, 641, 725, 730])
+ability_1 = 108
+ability_2 = 28
+hidden_ability = 140
+egg_group_1 = 5
+egg_cycles = 10
+hatch_species = 518
+gender_ratio = 3

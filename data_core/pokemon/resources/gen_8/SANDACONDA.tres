@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d3npfxn57x7fp"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 35
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 107
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 130
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 656
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 523
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 29
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 137
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 30
+move = 91
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 35
+move = 201
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 42
+move = 21
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 49
+move = 489
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 51
+move = 328
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 844
+species_name = "Sandaconda"
+species_id = 844
+base_hp = 72
+base_attack = 107
+base_defense = 125
+base_speed = 71
+base_sp_attack = 65
+base_sp_defense = 70
+evYield_Defense = 2
+type_1 = 5
+catch_rate = 120
+exp_yield = 179
+friendship = 50
+category_name = "Serp. Arena"
+description = "Se retuerce para expulsar por los orificios nasales hasta 100 kg de arena. La ausencia de esta mina su ánimo."
+height = 38
+weight = 655
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([34, 36, 63, 89, 91, 103, 156, 157, 164, 173, 182, 184, 189, 200, 201, 203, 213, 214, 263, 283, 317, 328, 334, 341, 342, 350, 414, 416, 422, 424, 428, 442, 444, 446, 496, 523, 529, 542, 630, 656, 704, 727, 734, 743, 779])
+ability_1 = 245
+ability_2 = 61
+hidden_ability = 8
+egg_group_1 = 5
+egg_group_2 = 14
+egg_cycles = 20
+hatch_species = 844
+gender_ratio = 3

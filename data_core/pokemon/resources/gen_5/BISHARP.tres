@@ -1,0 +1,133 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bgwydnibsf7x6"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 1375
+parameter = 1
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 210
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 232
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 368
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 259
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 17
+move = 185
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 184
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 25
+move = 372
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 319
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 35
+move = 163
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 400
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 41
+move = 373
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 45
+move = 334
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 50
+move = 514
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 50
+move = 636
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 57
+move = 442
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 64
+move = 14
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 71
+move = 12
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 625
+species_name = "Bisharp"
+species_id = 625
+base_hp = 65
+base_attack = 125
+base_defense = 100
+base_speed = 70
+base_sp_attack = 60
+base_sp_defense = 70
+evYield_Attack = 2
+type_1 = 18
+type_2 = 9
+catch_rate = 45
+exp_yield = 172
+friendship = 35
+category_name = "Filo"
+description = "Un Pokémon temible que remata a su presa una vez que su séquito de Pawniard la ha debilitado e inmovilizado."
+height = 16
+weight = 700
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
+teachable_moves = Array[int]([14, 15, 36, 63, 67, 86, 91, 92, 103, 104, 156, 164, 168, 173, 179, 180, 182, 184, 201, 203, 206, 207, 213, 214, 216, 218, 232, 237, 240, 249, 251, 259, 263, 269, 272, 279, 280, 282, 289, 290, 317, 319, 332, 334, 371, 372, 373, 374, 393, 397, 398, 399, 403, 404, 411, 416, 421, 427, 430, 442, 444, 446, 447, 468, 490, 492, 496, 514, 530, 555, 590, 612, 636, 638, 724, 736, 779])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 128
+ability_2 = 39
+hidden_ability = 46
+egg_group_1 = 8
+egg_cycles = 20
+hatch_species = 625
+gender_ratio = 3

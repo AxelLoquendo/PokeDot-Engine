@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://csrci1opln84b"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 2
+target_species = 367
+
+[sub_resource type="Resource" id="Resource_evo1"]
+script = ExtResource("1_evo")
+method = 2
+target_species = 368
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 128
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 250
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 334
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 50
+move = 504
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 366
+species_name = "Clamperl"
+species_id = 366
+base_hp = 35
+base_attack = 64
+base_defense = 85
+base_speed = 32
+base_sp_attack = 74
+base_sp_defense = 55
+evYield_Defense = 1
+type_1 = 12
+catch_rate = 255
+exp_yield = 69
+friendship = 70
+category_name = "Bivalvo"
+description = "Produce durante su vida una sola perla que aumenta los poderes psíquicos al evolucionar."
+height = 4
+weight = 525
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4")])
+teachable_moves = Array[int]([34, 38, 57, 58, 59, 92, 102, 104, 127, 156, 164, 173, 182, 196, 203, 207, 213, 214, 216, 218, 237, 240, 250, 258, 263, 290, 291, 334, 352, 362, 363, 445, 496, 503, 590])
+egg_moves = Array[int]([34, 48, 109, 112, 203, 287, 300, 330, 352, 362, 392])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0"), SubResource("Resource_evo1")])
+ability_1 = 75
+hidden_ability = 155
+egg_group_1 = 2
+egg_cycles = 20
+hatch_species = 366
+gender_ratio = 3

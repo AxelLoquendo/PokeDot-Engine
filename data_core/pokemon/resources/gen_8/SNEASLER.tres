@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bhc4nt0lar7ma"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 249
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 374
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 755
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 6
+move = 269
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 12
+move = 98
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 18
+move = 232
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 398
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 280
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 468
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 42
+move = 163
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 48
+move = 97
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 54
+move = 103
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 60
+move = 370
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 903
+species_name = "Sneasler"
+species_id = 903
+base_hp = 80
+base_attack = 130
+base_defense = 60
+base_speed = 120
+base_sp_attack = 40
+base_sp_defense = 80
+evYield_Attack = 2
+type_1 = 2
+type_2 = 4
+catch_rate = 135
+exp_yield = 102
+friendship = 50
+growth_rate = 3
+category_name = "Free Climb"
+description = "Because of Sneasler's virulent poison and daunting physical prowess, no other species could hope to best it on the frozen highlands. Preferring solitude, this species does not form packs."
+height = 13
+weight = 430
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([7, 14, 36, 63, 67, 91, 92, 97, 129, 156, 157, 164, 168, 179, 180, 182, 188, 203, 206, 214, 232, 240, 241, 247, 263, 264, 269, 280, 317, 332, 339, 342, 347, 369, 370, 374, 390, 398, 404, 410, 411, 416, 417, 421, 441, 447, 474, 482, 490, 491, 512, 638, 736, 739, 779, 811, 846])
+ability_1 = 46
+ability_2 = 84
+hidden_ability = 143
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 903
+gender_ratio = 3

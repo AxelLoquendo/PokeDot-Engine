@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d26n6i6p0q8wp"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 183
+parameter = 1
+condition = 4
+condition_value = 160
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 39
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 150
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 3
+move = 270
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 5
+move = 346
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 6
+move = 61
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 7
+move = 145
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 9
+move = 204
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 12
+move = 21
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 15
+move = 340
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 298
+species_name = "Azurill"
+species_id = 298
+base_hp = 50
+base_attack = 20
+base_defense = 40
+base_speed = 20
+base_sp_attack = 20
+base_sp_defense = 40
+evYield_HP = 1
+type_1 = 1
+type_2 = 19
+catch_rate = 150
+exp_yield = 38
+friendship = 70
+growth_rate = 4
+category_name = "A Topos"
+description = "Vive cerca del agua. En la tierra se mueve muy rápido botando sobre su gran cola."
+height = 2
+weight = 20
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9")])
+teachable_moves = Array[int]([29, 34, 36, 38, 57, 58, 59, 92, 102, 104, 111, 113, 127, 129, 156, 164, 173, 182, 189, 196, 203, 204, 205, 207, 213, 214, 216, 218, 227, 231, 237, 240, 250, 253, 258, 263, 270, 282, 290, 304, 313, 330, 340, 341, 343, 352, 363, 445, 496, 503, 526, 577, 590, 656, 779, 842])
+egg_moves = Array[int]([21, 34, 47, 48, 187, 195, 217, 227, 287, 293, 313, 321, 330, 346, 383, 453, 487])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 47
+ability_2 = 37
+hidden_ability = 157
+egg_group_1 = 15
+egg_cycles = 10
+hatch_species = 298
+gender_ratio = 2

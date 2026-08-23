@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b560nf57stpnv"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 108
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 229
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 479
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 488
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 695
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 15
+move = 397
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 246
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 27
+move = 510
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 37
+move = 446
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 45
+move = 535
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 54
+move = 350
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 63
+move = 444
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 63
+move = 645
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 839
+species_name = "Coalossal"
+species_id = 839
+base_hp = 110
+base_attack = 80
+base_defense = 120
+base_speed = 30
+base_sp_attack = 80
+base_sp_defense = 90
+evYield_Defense = 3
+type_1 = 6
+type_2 = 11
+catch_rate = 45
+exp_yield = 255
+friendship = 50
+growth_rate = 3
+category_name = "Carbón"
+description = "Aunque es de carácter sereno, monta en cólera si ve a seres humanos dañando una mina y reduce todo a cenizas con sus llamas a 1500 °C."
+height = 28
+weight = 3105
+body_color = 4
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([5, 7, 25, 34, 36, 53, 63, 76, 83, 89, 91, 115, 120, 126, 156, 157, 164, 173, 174, 182, 191, 201, 203, 213, 214, 241, 257, 261, 263, 315, 317, 328, 334, 350, 360, 394, 408, 414, 416, 442, 444, 446, 479, 484, 488, 496, 503, 523, 535, 630, 704, 728, 743, 779, 843])
+ability_1 = 243
+ability_2 = 49
+hidden_ability = 18
+egg_group_1 = 10
+egg_cycles = 15
+hatch_species = 839
+gender_ratio = 3

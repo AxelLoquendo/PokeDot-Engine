@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dbjv25unhklvi"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 207
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 252
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 13
+move = 95
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 17
+move = 185
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 154
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 204
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 29
+move = 274
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 32
+move = 445
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 37
+move = 163
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 45
+move = 34
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 52
+move = 213
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 60
+move = 468
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 432
+species_name = "Purugly"
+species_id = 432
+base_hp = 71
+base_attack = 82
+base_defense = 64
+base_speed = 112
+base_sp_attack = 64
+base_sp_defense = 59
+evYield_Speed = 2
+type_1 = 1
+catch_rate = 75
+exp_yield = 158
+friendship = 70
+growth_rate = 4
+category_name = "Tigre Gato"
+description = "Si se siente a gusto, no tiene ningún reparo en apropiarse de las moradas de otros Pokémon."
+height = 10
+weight = 438
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([15, 29, 46, 63, 85, 87, 91, 92, 104, 129, 138, 148, 156, 162, 164, 168, 173, 182, 189, 203, 205, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 244, 247, 259, 263, 269, 282, 289, 290, 304, 332, 343, 351, 352, 363, 369, 371, 387, 389, 416, 421, 445, 468, 492, 496, 497, 514, 523, 526, 590, 638, 661])
+ability_1 = 47
+ability_2 = 20
+hidden_ability = 128
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 432
+gender_ratio = 2

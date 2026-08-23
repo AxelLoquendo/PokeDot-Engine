@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://3kocaalb5utn"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 123
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 139
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 262
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 110
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 16
+move = 194
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 24
+move = 313
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 32
+move = 575
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 40
+move = 247
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 48
+move = 847
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 56
+move = 92
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 64
+move = 417
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 72
+move = 105
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 1025
+species_name = "Pecharunt"
+species_id = 1434
+base_hp = 88
+base_attack = 88
+base_defense = 160
+base_speed = 88
+base_sp_attack = 88
+base_sp_defense = 88
+evYield_Defense = 3
+type_1 = 4
+type_2 = 8
+catch_rate = 3
+exp_yield = 300
+growth_rate = 5
+category_name = "Subjugation"
+description = "It feeds others toxic mochi that draw out desires and capabilities. Those who eat the mochi fall under Pecharunt’s control, chained to its will."
+height = 3
+weight = 3
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([92, 101, 156, 164, 174, 180, 182, 188, 203, 214, 247, 286, 313, 417, 441, 474, 482, 491, 492, 506, 566, 737, 779])
+egg_moves = Array[int]([111, 205, 212])
+ability_1 = 310
+is_mythical = true
+egg_group_1 = 15
+egg_cycles = 20
+hatch_species = 1434
+gender_ratio = 7

@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cf8ycofot43pp"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 9
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 29
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 39
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 84
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 106
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 24
+move = 86
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 32
+move = 151
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 40
+move = 430
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 48
+move = 5
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 56
+move = 182
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 64
+move = 435
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 72
+move = 223
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 80
+move = 276
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 88
+move = 689
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 96
+move = 63
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 809
+species_name = "Melmetal"
+species_id = 809
+base_hp = 135
+base_attack = 143
+base_defense = 143
+base_speed = 34
+base_sp_attack = 80
+base_sp_defense = 65
+evYield_Attack = 3
+type_1 = 9
+catch_rate = 3
+exp_yield = 270
+growth_rate = 5
+category_name = "Tuerca"
+description = "En la antigüedad se le veneraba por su poder de crear hierro. Después de tres milenios, ha regresado misteriosamente."
+height = 25
+weight = 8000
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([5, 8, 9, 25, 29, 34, 58, 63, 76, 85, 86, 87, 89, 92, 120, 156, 157, 164, 173, 182, 203, 214, 263, 276, 280, 317, 334, 360, 416, 430, 442, 484, 496, 604, 626, 630, 656, 704, 724, 726])
+ability_1 = 89
+is_mythical = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 809
+gender_ratio = 7

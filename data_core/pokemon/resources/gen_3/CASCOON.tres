@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://coxlw2r8cb3m2"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 269
+parameter = 10
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 106
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 268
+species_name = "Cascoon"
+species_id = 268
+base_hp = 50
+base_attack = 35
+base_defense = 55
+base_speed = 15
+base_sp_attack = 25
+base_sp_defense = 25
+evYield_Defense = 2
+type_1 = 7
+catch_rate = 120
+exp_yield = 72
+friendship = 70
+category_name = "Capullo"
+description = "Está formado por seda que se endurece poco a poco. Si se resquebraja el capullo, está a punto de evolucionar."
+height = 7
+weight = 115
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
+teachable_moves = Array[int]([81, 334, 450, 527])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 61
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 268
+gender_ratio = 3

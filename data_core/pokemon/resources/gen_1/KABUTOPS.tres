@@ -1,0 +1,140 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bxd2xbulonudd"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 71
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 106
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 163
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 210
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 364
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 400
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 15
+move = 453
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 20
+move = 43
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 25
+move = 341
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 26
+move = 203
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 30
+move = 246
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 35
+move = 362
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 36
+move = 72
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 43
+move = 182
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 49
+move = 141
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 53
+move = 56
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 56
+move = 664
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 63
+move = 319
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 63
+move = 378
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 70
+move = 444
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 141
+species_name = "Kabutops"
+species_id = 141
+base_hp = 60
+base_attack = 115
+base_defense = 105
+base_speed = 80
+base_sp_attack = 65
+base_sp_defense = 70
+evYield_Attack = 2
+type_1 = 6
+type_2 = 12
+catch_rate = 45
+exp_yield = 173
+friendship = 70
+category_name = "Armazón"
+description = "Repliega sus extremidades en el agua para hacerse más compacto, y mueve su concha para nadar rápido."
+height = 13
+weight = 405
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
+teachable_moves = Array[int]([13, 14, 15, 25, 29, 34, 36, 38, 55, 56, 57, 58, 59, 61, 63, 66, 67, 69, 72, 91, 92, 99, 102, 103, 104, 115, 117, 127, 130, 141, 156, 157, 164, 168, 173, 174, 182, 189, 196, 201, 202, 203, 205, 207, 210, 213, 214, 216, 218, 237, 240, 246, 249, 250, 258, 263, 267, 276, 280, 282, 290, 291, 317, 332, 334, 341, 350, 352, 362, 363, 397, 401, 404, 414, 416, 427, 431, 440, 444, 445, 446, 468, 479, 496, 503, 534, 590, 664, 728, 740])
+ability_1 = 33
+ability_2 = 4
+hidden_ability = 133
+egg_group_1 = 2
+egg_group_2 = 9
+egg_cycles = 30
+hatch_species = 141
+gender_ratio = 5

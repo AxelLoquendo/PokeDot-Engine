@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://g3cfh1o0a08q"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 16
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 18
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 52
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 491
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 7
+move = 522
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 14
+move = 83
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 21
+move = 36
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 28
+move = 642
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 103
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 42
+move = 435
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 49
+move = 482
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 56
+move = 552
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 63
+move = 319
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 70
+move = 234
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 77
+move = 542
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 84
+move = 405
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 91
+move = 315
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 994
+species_name = "Iron-Moth"
+species_id = 1386
+base_hp = 80
+base_attack = 70
+base_defense = 60
+base_speed = 110
+base_sp_attack = 140
+base_sp_defense = 110
+evYield_SpAttack = 3
+type_1 = 11
+type_2 = 4
+catch_rate = 30
+exp_yield = 285
+growth_rate = 5
+category_name = "Paradox"
+description = "This Pokémon resembles an unknown object described in a paranormal magazine as a UFO sent to observe humanity."
+height = 12
+weight = 360
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([36, 53, 63, 76, 83, 92, 94, 97, 109, 113, 126, 129, 156, 164, 182, 203, 214, 241, 257, 263, 270, 315, 319, 369, 390, 394, 403, 405, 412, 416, 430, 451, 474, 482, 488, 491, 512, 522, 542, 604, 605, 642, 728, 779, 810])
+egg_moves = Array[int]([604])
+ability_1 = 282
+egg_group_1 = 15
+egg_cycles = 50
+hatch_species = 1386
+gender_ratio = 7

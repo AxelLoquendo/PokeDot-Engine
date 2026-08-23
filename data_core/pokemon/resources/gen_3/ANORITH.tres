@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bfl8uyllvskpo"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 348
+parameter = 40
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 106
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 210
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 4
+move = 55
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 4
+move = 300
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 8
+move = 479
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 12
+move = 232
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 246
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 450
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 362
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 163
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 32
+move = 306
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 36
+move = 350
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 41
+move = 182
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 44
+move = 404
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 347
+species_name = "Anorith"
+species_id = 347
+base_hp = 45
+base_attack = 95
+base_defense = 50
+base_speed = 75
+base_sp_attack = 40
+base_sp_defense = 50
+evYield_Attack = 1
+type_1 = 6
+type_2 = 7
+catch_rate = 45
+exp_yield = 71
+friendship = 70
+category_name = "Camarón"
+description = "Es una especie de Pokémon predecesor. Estira las pinzas para cazar a sus presas, que se esconden en las rocas del mar."
+height = 7
+weight = 125
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([14, 15, 29, 34, 38, 81, 91, 92, 102, 103, 104, 156, 157, 164, 173, 182, 189, 201, 203, 206, 207, 210, 213, 214, 216, 218, 237, 241, 246, 249, 263, 280, 282, 290, 317, 332, 334, 341, 350, 352, 362, 363, 397, 404, 414, 440, 445, 446, 450, 468, 479, 496, 522, 590, 728])
+egg_moves = Array[int]([14, 28, 103, 157, 174, 229, 282, 334, 352, 440, 453])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 4
+hidden_ability = 33
+egg_group_1 = 9
+egg_cycles = 30
+hatch_species = 347
+gender_ratio = 5

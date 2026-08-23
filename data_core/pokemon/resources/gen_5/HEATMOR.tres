@@ -1,0 +1,134 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d0i7lonojs81o"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 122
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 154
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 6
+move = 316
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 10
+move = 510
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 450
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 254
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 255
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 256
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 25
+move = 163
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 26
+move = 289
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 30
+move = 20
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 31
+move = 481
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 35
+move = 643
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 40
+move = 468
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 45
+move = 133
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 50
+move = 53
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 50
+move = 83
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 55
+move = 517
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 60
+move = 394
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 631
+species_name = "Heatmor"
+species_id = 631
+base_hp = 85
+base_attack = 97
+base_defense = 66
+base_speed = 65
+base_sp_attack = 105
+base_sp_defense = 66
+evYield_SpAttack = 2
+type_1 = 11
+catch_rate = 90
+exp_yield = 169
+friendship = 70
+category_name = "Hormiguero"
+description = "Usa su lengua de fuego para derretir la armadura de acero de los Durant y llegar así hasta su interior."
+height = 14
+weight = 580
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
+teachable_moves = Array[int]([7, 9, 15, 20, 34, 53, 67, 76, 83, 91, 92, 104, 126, 133, 156, 164, 168, 173, 182, 202, 203, 207, 213, 214, 216, 218, 237, 240, 241, 249, 257, 261, 263, 264, 269, 276, 278, 282, 289, 290, 315, 317, 332, 374, 380, 394, 409, 411, 416, 421, 450, 468, 496, 510, 590, 612, 638, 656, 661, 735, 743])
+egg_moves = Array[int]([34, 35, 174, 185, 214, 228, 257, 321, 389, 400, 562])
+ability_1 = 82
+ability_2 = 18
+hidden_ability = 73
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 631
+gender_ratio = 3

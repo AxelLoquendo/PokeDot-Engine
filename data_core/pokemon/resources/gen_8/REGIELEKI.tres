@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cuv47dtgxpusa"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 84
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 229
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 6
+move = 527
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 12
+move = 246
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 18
+move = 351
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 24
+move = 86
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 30
+move = 245
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 36
+move = 747
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 42
+move = 85
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 48
+move = 393
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 54
+move = 37
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 60
+move = 199
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 66
+move = 192
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 72
+move = 63
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 78
+move = 153
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 894
+species_name = "Regieleki"
+species_id = 894
+base_hp = 80
+base_attack = 100
+base_defense = 50
+base_speed = 200
+base_sp_attack = 100
+base_sp_defense = 50
+evYield_Speed = 3
+type_1 = 14
+catch_rate = 3
+exp_yield = 290
+friendship = 35
+growth_rate = 5
+category_name = "Electrón"
+description = "Su cuerpo entero es energía eléctrica. Por lo visto, quitarle los anillos que lleva libera su poder oculto."
+height = 12
+weight = 1450
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([34, 36, 63, 85, 86, 87, 97, 103, 113, 115, 120, 129, 156, 164, 173, 182, 203, 214, 240, 263, 268, 340, 372, 416, 451, 486, 496, 512, 521, 527, 528, 598, 604, 732, 779, 844])
+ability_1 = 262
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 894
+gender_ratio = 7

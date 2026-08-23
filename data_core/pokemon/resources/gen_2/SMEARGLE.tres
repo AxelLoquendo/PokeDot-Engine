@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dnw7nixs6x0ge"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 166
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 235
+species_name = "Smeargle"
+species_id = 235
+base_hp = 55
+base_attack = 20
+base_defense = 35
+base_speed = 75
+base_sp_attack = 20
+base_sp_defense = 45
+evYield_Speed = 1
+type_1 = 1
+catch_rate = 45
+exp_yield = 88
+friendship = 70
+growth_rate = 4
+category_name = "Pintor"
+description = "Marca su territorio usando su cola a modo de pincel. Ha hecho más de 5000 marcas diferentes."
+height = 12
+weight = 580
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
+ability_1 = 20
+ability_2 = 101
+hidden_ability = 141
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 235
+gender_ratio = 3

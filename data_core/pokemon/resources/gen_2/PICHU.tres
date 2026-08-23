@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c7ilqbciwr0n2"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 25
+parameter = 1
+condition = 4
+condition_value = 220
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 39
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 84
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 589
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 186
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 609
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 16
+move = 417
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 18
+move = 86
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 204
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 172
+species_name = "Pichu"
+species_id = 172
+base_hp = 20
+base_attack = 40
+base_defense = 15
+base_speed = 60
+base_sp_attack = 35
+base_sp_defense = 35
+evYield_Speed = 1
+type_1 = 14
+catch_rate = 190
+exp_yield = 41
+friendship = 70
+category_name = "Ratoncito"
+description = "Cuando juegan, se tocan las colas y emiten chispas. Al parecer, es una prueba de valor."
+height = 3
+weight = 20
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7")])
+teachable_moves = Array[int]([5, 9, 25, 29, 34, 36, 38, 57, 68, 69, 85, 86, 87, 92, 102, 104, 111, 113, 115, 129, 148, 156, 164, 173, 174, 179, 182, 189, 192, 197, 203, 204, 205, 207, 213, 214, 216, 218, 227, 231, 237, 240, 253, 263, 268, 270, 290, 324, 343, 351, 363, 374, 393, 417, 445, 447, 451, 486, 496, 497, 521, 527, 528, 574, 583, 590, 604, 779, 811])
+egg_moves = Array[int]([3, 9, 117, 175, 179, 203, 217, 227, 252, 268, 273, 321, 381, 516, 574, 604])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 9
+hidden_ability = 31
+egg_group_1 = 15
+egg_cycles = 10
+hatch_species = 172
+gender_ratio = 3

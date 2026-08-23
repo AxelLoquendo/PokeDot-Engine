@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bbv5bd7durwev"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 362
+parameter = 42
+
+[sub_resource type="Resource" id="Resource_evo1"]
+script = ExtResource("1_evo")
+method = 3
+target_species = 478
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 29
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 181
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 5
+move = 43
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 10
+move = 104
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 420
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 182
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 196
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 30
+move = 524
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 34
+move = 58
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 35
+move = 44
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 423
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 45
+move = 258
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 45
+move = 809
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 50
+move = 311
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 55
+move = 242
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 60
+move = 59
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 361
+species_name = "Snorunt"
+species_id = 361
+base_hp = 50
+base_attack = 50
+base_defense = 50
+base_speed = 50
+base_sp_attack = 50
+base_sp_defense = 50
+evYield_HP = 1
+type_1 = 16
+catch_rate = 190
+exp_yield = 60
+friendship = 70
+category_name = "Gorro Nieve"
+description = "Se dice que se reúnen en grupos bajo hojas gigantescas y viven allí en total armonía."
+height = 7
+weight = 168
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([29, 34, 36, 38, 58, 59, 92, 102, 104, 113, 148, 156, 164, 173, 180, 182, 191, 196, 203, 205, 207, 213, 214, 216, 218, 219, 237, 240, 242, 247, 258, 263, 270, 290, 311, 313, 333, 335, 352, 363, 419, 423, 445, 496, 506, 524, 590, 779, 789, 809, 811, 812])
+egg_moves = Array[int]([50, 117, 191, 205, 311, 313, 335, 415, 419, 506, 556])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0"), SubResource("Resource_evo1")])
+ability_1 = 39
+ability_2 = 115
+hidden_ability = 141
+egg_group_1 = 6
+egg_group_2 = 10
+egg_cycles = 20
+hatch_species = 361
+gender_ratio = 3

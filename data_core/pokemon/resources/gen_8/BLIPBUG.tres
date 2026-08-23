@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bsm4m1xnsut2e"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 825
+parameter = 10
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 522
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 824
+species_name = "Blipbug"
+species_id = 824
+base_hp = 25
+base_attack = 20
+base_defense = 20
+base_speed = 45
+base_sp_attack = 25
+base_sp_defense = 45
+evYield_SpDefense = 1
+type_1 = 7
+catch_rate = 255
+exp_yield = 36
+friendship = 50
+category_name = "Pupa"
+description = "Siempre está recopilando información, por lo que es muy inteligente, aunque su fuerza deja bastante que desear."
+height = 4
+weight = 80
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
+egg_moves = Array[int]([48, 105, 564, 611])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 68
+ability_2 = 14
+hidden_ability = 140
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 824
+gender_ratio = 3

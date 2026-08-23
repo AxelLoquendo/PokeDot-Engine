@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bumouvwdc8f4k"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 39
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 574
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 497
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 341
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 343
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 17
+move = 91
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 23
+move = 29
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 26
+move = 36
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 27
+move = 281
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 34
+move = 526
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 38
+move = 253
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 42
+move = 38
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 48
+move = 414
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 54
+move = 562
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 916
+species_name = "Oinkologne-Male"
+species_id = 1299
+base_hp = 110
+base_attack = 100
+base_defense = 75
+base_speed = 65
+base_sp_attack = 59
+base_sp_defense = 80
+evYield_HP = 2
+type_1 = 1
+catch_rate = 100
+exp_yield = 171
+friendship = 50
+category_name = "Hog"
+description = "Oinkologne is proud of its fine, glossy skin. It emits a concentrated scent from the tip of its tail."
+height = 10
+weight = 1200
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([34, 36, 38, 63, 91, 156, 162, 164, 168, 174, 182, 189, 203, 214, 240, 241, 253, 263, 270, 283, 304, 331, 341, 402, 412, 414, 416, 428, 442, 523, 574, 583, 0, 624, 658, 683, 707, 739, 740])
+ability_1 = 268
+ability_2 = 82
+hidden_ability = 47
+egg_group_1 = 5
+egg_cycles = 15
+hatch_species = 1299
+gender_ratio = 6

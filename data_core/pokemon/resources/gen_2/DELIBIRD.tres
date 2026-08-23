@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://0b62o707qtso"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 217
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+level = 25
+move = 65
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 225
+species_name = "Delibird"
+species_id = 225
+base_hp = 45
+base_attack = 55
+base_defense = 45
+base_speed = 75
+base_sp_attack = 65
+base_sp_defense = 45
+evYield_Speed = 1
+type_1 = 16
+type_2 = 3
+catch_rate = 45
+exp_yield = 116
+friendship = 70
+growth_rate = 4
+category_name = "Reparto"
+description = "Transporta alimentos en su cola enrollada. Le gusta compartir su comida con los montañistas perdidos."
+height = 9
+weight = 160
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
+teachable_moves = Array[int]([5, 8, 19, 25, 29, 34, 36, 38, 58, 59, 63, 68, 69, 92, 97, 102, 104, 114, 129, 143, 156, 164, 168, 173, 174, 179, 182, 189, 191, 196, 197, 203, 205, 207, 211, 213, 214, 216, 218, 226, 237, 240, 248, 258, 263, 264, 270, 278, 280, 283, 290, 297, 311, 314, 324, 332, 333, 340, 352, 363, 365, 366, 372, 374, 402, 403, 413, 416, 419, 432, 441, 445, 492, 496, 512, 524, 529, 590, 612, 656, 657, 741, 742, 779, 789, 809, 811, 812])
+egg_moves = Array[int]([8, 62, 68, 98, 150, 191, 194, 196, 229, 248, 252, 262, 301, 420, 516, 573, 657])
+ability_1 = 72
+ability_2 = 55
+hidden_ability = 15
+egg_group_1 = 2
+egg_group_2 = 5
+egg_cycles = 20
+hatch_species = 225
+gender_ratio = 3

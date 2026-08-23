@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dw31vfl0fgnnc"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 17
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 52
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 257
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 337
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 394
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 403
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 421
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 10
+move = 108
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 17
+move = 82
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 21
+move = 184
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 28
+move = 424
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 32
+move = 481
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 41
+move = 163
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 47
+move = 53
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 56
+move = 83
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 62
+move = 517
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 6
+species_name = "Charizard Mega Y"
+species_id = 908
+base_hp = 78
+base_attack = 104
+base_defense = 78
+base_speed = 100
+base_sp_attack = 159
+base_sp_defense = 115
+evYield_SpAttack = 3
+type_1 = 11
+type_2 = 3
+catch_rate = 45
+exp_yield = 285
+friendship = 70
+growth_rate = 3
+category_name = "Llama"
+description = "Cuando lanza una descarga de fuego supercaliente, la roja llama de su cola brilla más intensamente."
+height = 17
+weight = 1005
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([7, 9, 14, 15, 19, 29, 46, 53, 63, 69, 70, 76, 89, 91, 92, 104, 115, 126, 156, 157, 164, 173, 182, 200, 207, 211, 213, 214, 216, 218, 231, 237, 241, 249, 257, 261, 263, 264, 280, 290, 307, 315, 317, 332, 337, 355, 366, 374, 406, 411, 416, 421, 432, 468, 488, 496, 497, 507, 510, 519, 523, 525, 526, 590, 612, 656])
+ability_1 = 70
+egg_group_1 = 1
+egg_group_2 = 14
+egg_cycles = 20
+hatch_species = 6
+gender_ratio = 5

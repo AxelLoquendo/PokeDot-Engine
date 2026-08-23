@@ -1,0 +1,112 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cl6sb4siaj0di"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 113
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 115
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 522
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 4
+move = 109
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 8
+move = 277
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 12
+move = 97
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 60
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 95
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 502
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 405
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 32
+move = 243
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 36
+move = 94
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 40
+move = 495
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 44
+move = 347
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 48
+move = 641
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 826
+species_name = "Orbeetle"
+species_id = 826
+base_hp = 60
+base_attack = 45
+base_defense = 110
+base_speed = 90
+base_sp_attack = 80
+base_sp_defense = 120
+evYield_SpDefense = 3
+type_1 = 7
+type_2 = 15
+catch_rate = 45
+exp_yield = 253
+friendship = 50
+category_name = "Siete Puntos"
+description = "Este Pokémon es conocido por su inteligencia. El gran tamaño de su cerebro es un indicio de la magnitud de sus poderes psíquicos."
+height = 4
+weight = 408
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([63, 76, 94, 97, 113, 115, 141, 156, 164, 173, 182, 202, 203, 213, 214, 219, 226, 247, 248, 263, 270, 271, 285, 286, 334, 347, 369, 371, 384, 385, 405, 412, 416, 427, 428, 433, 472, 473, 478, 496, 500, 502, 641, 704, 725])
+ability_1 = 68
+ability_2 = 119
+hidden_ability = 140
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 826
+gender_ratio = 3

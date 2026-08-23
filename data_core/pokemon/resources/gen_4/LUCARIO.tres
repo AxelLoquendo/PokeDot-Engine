@@ -1,0 +1,184 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dyjge1cuucsw6"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 98
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 103
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 179
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 193
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 197
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 232
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 249
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 270
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 364
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+move = 383
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+move = 396
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+move = 399
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+move = 410
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+move = 417
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+move = 515
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+move = 719
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 12
+move = 68
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 16
+move = 526
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 16
+move = 636
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 20
+move = 395
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 20
+move = 612
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 24
+move = 347
+
+[sub_resource type="Resource" id="Resource_move22"]
+script = ExtResource("2_learn")
+level = 28
+move = 319
+
+[sub_resource type="Resource" id="Resource_move23"]
+script = ExtResource("2_learn")
+level = 32
+move = 501
+
+[sub_resource type="Resource" id="Resource_move24"]
+script = ExtResource("2_learn")
+level = 36
+move = 198
+
+[sub_resource type="Resource" id="Resource_move25"]
+script = ExtResource("2_learn")
+level = 37
+move = 382
+
+[sub_resource type="Resource" id="Resource_move26"]
+script = ExtResource("2_learn")
+level = 40
+move = 14
+
+[sub_resource type="Resource" id="Resource_move27"]
+script = ExtResource("2_learn")
+level = 44
+move = 505
+
+[sub_resource type="Resource" id="Resource_move28"]
+script = ExtResource("2_learn")
+level = 48
+move = 309
+
+[sub_resource type="Resource" id="Resource_move29"]
+script = ExtResource("2_learn")
+level = 52
+move = 406
+
+[sub_resource type="Resource" id="Resource_move30"]
+script = ExtResource("2_learn")
+level = 56
+move = 245
+
+[sub_resource type="Resource" id="Resource_move31"]
+script = ExtResource("2_learn")
+level = 60
+move = 370
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 448
+species_name = "Lucario"
+species_id = 448
+base_hp = 70
+base_attack = 110
+base_defense = 70
+base_speed = 90
+base_sp_attack = 115
+base_sp_defense = 70
+evYield_Attack = 1
+evYield_SpAttack = 1
+type_1 = 2
+type_2 = 9
+catch_rate = 45
+exp_yield = 184
+friendship = 70
+growth_rate = 3
+category_name = "Aura"
+description = "Puede leer los pensamientos y movimientos de su adversario a través de su aura."
+height = 12
+weight = 540
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26"), SubResource("Resource_move27"), SubResource("Resource_move28"), SubResource("Resource_move29"), SubResource("Resource_move30"), SubResource("Resource_move31")])
+teachable_moves = Array[int]([5, 8, 9, 14, 25, 29, 34, 36, 46, 63, 67, 70, 89, 91, 92, 94, 97, 103, 104, 116, 118, 129, 156, 157, 164, 173, 179, 182, 184, 189, 203, 207, 210, 213, 214, 216, 218, 231, 232, 237, 240, 241, 242, 244, 247, 249, 263, 264, 270, 272, 279, 280, 290, 299, 317, 319, 332, 334, 339, 347, 352, 363, 370, 371, 374, 393, 396, 398, 399, 406, 409, 410, 411, 416, 417, 421, 428, 430, 431, 444, 445, 468, 490, 496, 514, 523, 526, 530, 590, 612, 636, 724, 733, 739, 779, 811, 846])
+ability_1 = 80
+ability_2 = 39
+hidden_ability = 154
+egg_group_1 = 5
+egg_group_2 = 8
+egg_cycles = 25
+hatch_species = 448
+gender_ratio = 5

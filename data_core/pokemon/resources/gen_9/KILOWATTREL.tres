@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b1qlm8clvfc01"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 64
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 486
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 4
+move = 84
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 7
+move = 98
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 11
+move = 365
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 15
+move = 209
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 19
+move = 253
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 355
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 742
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 97
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 43
+move = 521
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 48
+move = 435
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 55
+move = 542
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 941
+species_name = "Kilowattrel"
+species_id = 1329
+base_hp = 70
+base_attack = 70
+base_defense = 60
+base_speed = 125
+base_sp_attack = 105
+base_sp_defense = 60
+evYield_Speed = 2
+type_1 = 14
+type_2 = 3
+catch_rate = 90
+exp_yield = 172
+friendship = 50
+growth_rate = 3
+category_name = "Frigatebird"
+description = "Kilowattrel inflates its throat sac to amplify its electricity. By riding the wind, this Pokémon can fly over 430 miles in a day."
+height = 14
+weight = 386
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([19, 36, 63, 85, 86, 87, 97, 129, 156, 164, 182, 184, 203, 214, 253, 263, 268, 283, 297, 311, 314, 332, 366, 369, 403, 413, 416, 451, 486, 512, 521, 527, 528, 542, 598, 604, 742, 779, 844])
+ability_1 = 277
+ability_2 = 10
+hidden_ability = 172
+egg_group_1 = 2
+egg_group_2 = 4
+egg_cycles = 20
+hatch_species = 1329
+gender_ratio = 3

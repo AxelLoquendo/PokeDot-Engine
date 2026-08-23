@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dfon1meft0apd"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 502
+parameter = 17
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+level = 5
+move = 39
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 55
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 11
+move = 346
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 11
+move = 487
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 13
+move = 116
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 17
+move = 534
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 19
+move = 210
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 23
+move = 352
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 25
+move = 279
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 25
+move = 332
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 29
+move = 453
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 31
+move = 227
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 35
+move = 401
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 37
+move = 514
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 41
+move = 14
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 43
+move = 56
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 501
+species_name = "Oshawott"
+species_id = 501
+base_hp = 55
+base_attack = 55
+base_defense = 45
+base_speed = 45
+base_sp_attack = 63
+base_sp_defense = 45
+evYield_SpAttack = 1
+type_1 = 12
+catch_rate = 45
+exp_yield = 62
+friendship = 70
+growth_rate = 3
+category_name = "Nutria"
+description = "La vieira de su ombligo no solo sirve como arma, sino también como instrumento para cortar las bayas que estén duras."
+height = 5
+weight = 59
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([14, 15, 36, 56, 57, 58, 59, 91, 92, 104, 127, 129, 156, 164, 168, 173, 182, 196, 203, 206, 207, 213, 214, 216, 218, 227, 231, 237, 240, 249, 250, 258, 263, 269, 270, 282, 290, 291, 332, 343, 352, 374, 401, 403, 404, 419, 447, 496, 503, 514, 518, 526, 590, 664, 740, 779, 809, 812])
+egg_moves = Array[int]([103, 197, 282, 362, 372, 376, 383, 400, 403, 533, 821])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 67
+hidden_ability = 75
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 501
+gender_ratio = 5

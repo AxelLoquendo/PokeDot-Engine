@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bitjbook64j8t"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 106
+parameter = 20
+
+[sub_resource type="Resource" id="Resource_evo1"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 107
+parameter = 20
+
+[sub_resource type="Resource" id="Resource_evo2"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 237
+parameter = 20
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 116
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 193
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 252
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 270
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 236
+species_name = "Tyrogue"
+species_id = 236
+base_hp = 35
+base_attack = 35
+base_defense = 35
+base_speed = 35
+base_sp_attack = 35
+base_sp_defense = 35
+evYield_Attack = 1
+type_1 = 2
+catch_rate = 75
+exp_yield = 42
+friendship = 70
+category_name = "Peleón"
+description = "Ataca siempre con mucha energía. Para fortalecerse a sí mismo, sigue luchando aunque pierda."
+height = 7
+weight = 210
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4")])
+teachable_moves = Array[int]([5, 25, 29, 34, 36, 38, 67, 68, 69, 70, 89, 92, 102, 104, 116, 129, 156, 157, 164, 168, 173, 174, 182, 189, 197, 203, 207, 213, 214, 216, 218, 237, 240, 241, 249, 253, 263, 270, 272, 280, 290, 339, 343, 363, 410, 445, 490, 496, 514, 523, 526, 590, 636, 779, 846])
+egg_moves = Array[int]([68, 136, 170, 183, 203, 228, 229, 270, 364, 410, 418, 502])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0"), SubResource("Resource_evo1"), SubResource("Resource_evo2")])
+ability_1 = 62
+ability_2 = 80
+hidden_ability = 72
+egg_group_1 = 15
+egg_cycles = 25
+hatch_species = 236
+gender_ratio = 6

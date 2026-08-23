@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b7vbuvh2s4ka8"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 71
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 78
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 230
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 584
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 639
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 13
+move = 318
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 18
+move = 577
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 24
+move = 522
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 32
+move = 312
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 32
+move = 343
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 40
+move = 415
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 48
+move = 605
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 56
+move = 405
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 64
+move = 483
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 743
+species_name = "Ribombee"
+species_id = 743
+base_hp = 60
+base_attack = 55
+base_defense = 60
+base_speed = 124
+base_sp_attack = 95
+base_sp_defense = 70
+evYield_Speed = 2
+type_1 = 7
+type_2 = 19
+catch_rate = 75
+exp_yield = 162
+friendship = 70
+category_name = "Mosca Abeja"
+description = "Fabrica varios tipos de bolas de polen. Algunas se usan como alimento y otras para el combate."
+height = 2
+weight = 5
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([36, 63, 76, 92, 94, 97, 104, 113, 115, 129, 138, 141, 156, 164, 168, 173, 182, 203, 204, 207, 213, 214, 216, 218, 219, 226, 237, 241, 244, 263, 267, 270, 271, 285, 286, 313, 324, 332, 343, 345, 347, 355, 366, 369, 387, 405, 412, 416, 432, 447, 450, 472, 477, 478, 495, 496, 500, 502, 512, 522, 577, 583, 590, 605, 611, 639, 642, 646, 734, 742, 779, 810, 811, 842, 845])
+egg_moves = Array[int]([564, 585, 597])
+ability_1 = 118
+ability_2 = 19
+hidden_ability = 175
+egg_group_1 = 3
+egg_group_2 = 6
+egg_cycles = 20
+hatch_species = 743
+gender_ratio = 3

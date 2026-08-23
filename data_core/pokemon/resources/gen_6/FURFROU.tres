@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bimq11thjgxam"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 28
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 9
+move = 608
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 29
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 39
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 22
+move = 44
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 27
+move = 316
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 33
+move = 514
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 35
+move = 36
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 38
+move = 204
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 42
+move = 389
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 48
+move = 538
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 676
+species_name = "Furfrou"
+species_id = 676
+base_hp = 75
+base_attack = 80
+base_defense = 60
+base_speed = 102
+base_sp_attack = 65
+base_sp_defense = 90
+evYield_Speed = 1
+type_1 = 1
+catch_rate = 160
+exp_yield = 165
+friendship = 70
+category_name = "Caniche"
+description = "Cuando le esquilan su mullido pelaje, no solo mejora su apariencia, sino que aumenta su agilidad."
+height = 12
+weight = 280
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([46, 57, 86, 91, 92, 104, 148, 156, 164, 173, 182, 207, 213, 214, 216, 218, 231, 237, 240, 241, 249, 253, 263, 270, 272, 283, 290, 304, 369, 387, 399, 416, 428, 447, 451, 496, 497, 514, 526, 528, 555, 590])
+egg_moves = Array[int]([102, 272, 287, 445, 526])
+ability_1 = 169
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 676
+gender_ratio = 3

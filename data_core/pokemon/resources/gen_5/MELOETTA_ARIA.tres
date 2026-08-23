@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bx53b0v2tbq3l"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 47
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 98
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 496
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 21
+move = 298
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 26
+move = 512
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 31
+move = 60
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 36
+move = 497
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 43
+move = 369
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 50
+move = 358
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 50
+move = 547
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 57
+move = 94
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 64
+move = 304
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 71
+move = 272
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 78
+move = 370
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 85
+move = 195
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 648
+species_name = "Meloetta-Aria"
+species_id = 648
+base_hp = 100
+base_attack = 77
+base_defense = 77
+base_speed = 90
+base_sp_attack = 128
+base_sp_defense = 128
+evYield_Speed = 1
+evYield_SpAttack = 1
+evYield_SpDefense = 1
+type_1 = 1
+type_2 = 15
+catch_rate = 3
+exp_yield = 270
+friendship = 100
+growth_rate = 5
+category_name = "Melodía"
+description = "Las melodías que canta Meloetta tienen el poder de hacer sentir felicidad a los Pokémon que hay a su alrededor."
+height = 6
+weight = 65
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([7, 8, 9, 14, 60, 63, 67, 70, 85, 86, 87, 92, 94, 104, 113, 118, 129, 138, 148, 156, 164, 173, 179, 182, 203, 204, 207, 214, 215, 216, 218, 219, 226, 237, 240, 241, 244, 247, 249, 253, 263, 264, 270, 271, 272, 277, 278, 280, 282, 285, 289, 290, 304, 313, 324, 343, 347, 351, 356, 369, 370, 371, 373, 374, 387, 409, 411, 412, 416, 421, 428, 433, 444, 447, 451, 468, 472, 473, 477, 478, 490, 496, 497, 502, 512, 514, 526, 530, 547, 574, 583, 590, 605, 612, 636, 739, 741, 779, 842])
+ability_1 = 32
+is_mythical = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 648
+gender_ratio = 7

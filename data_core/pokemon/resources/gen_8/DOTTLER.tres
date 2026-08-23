@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://qoqar1pvunsn"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 826
+parameter = 30
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 113
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 115
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 522
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 825
+species_name = "Dottler"
+species_id = 825
+base_hp = 50
+base_attack = 35
+base_defense = 80
+base_speed = 30
+base_sp_attack = 50
+base_sp_defense = 90
+evYield_SpDefense = 2
+type_1 = 7
+type_2 = 15
+catch_rate = 120
+exp_yield = 117
+friendship = 50
+category_name = "Radomo"
+description = "Apenas se mueve, pero está vivo. Se cree que adquiere poderes psíquicos mientras permanece recluido en su caparazón sin comer ni beber."
+height = 4
+weight = 195
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
+teachable_moves = Array[int]([76, 94, 113, 115, 141, 156, 164, 173, 182, 203, 213, 214, 219, 247, 248, 263, 270, 271, 285, 286, 334, 347, 371, 384, 385, 405, 412, 428, 433, 472, 473, 478, 496, 500, 502, 641, 704, 725])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 68
+ability_2 = 14
+hidden_ability = 140
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 825
+gender_ratio = 3

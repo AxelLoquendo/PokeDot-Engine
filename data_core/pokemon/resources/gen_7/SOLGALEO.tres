@@ -1,0 +1,120 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dme8wpmd88crb"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 100
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 232
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 322
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 358
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 568
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 667
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 7
+move = 442
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 14
+move = 319
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 21
+move = 428
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 28
+move = 430
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 35
+move = 234
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 42
+move = 242
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 49
+move = 368
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 56
+move = 528
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 63
+move = 76
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 70
+move = 394
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 77
+move = 469
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 84
+move = 416
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 791
+species_name = "Solgaleo"
+species_id = 791
+base_hp = 137
+base_attack = 137
+base_defense = 107
+base_speed = 97
+base_sp_attack = 113
+base_sp_defense = 89
+evYield_Attack = 3
+type_1 = 15
+type_2 = 9
+catch_rate = 45
+exp_yield = 306
+growth_rate = 5
+category_name = "Corona Solar"
+description = "Se cree que proviene de otro mundo. El brillo que emite su cuerpo es tal que puede hacer que la noche más profunda parezca pleno día."
+height = 34
+weight = 2300
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([34, 36, 38, 46, 53, 63, 76, 83, 85, 86, 87, 89, 92, 94, 97, 104, 113, 115, 126, 129, 156, 157, 164, 173, 182, 184, 200, 203, 207, 214, 216, 218, 219, 231, 232, 237, 241, 242, 244, 248, 263, 270, 276, 282, 283, 304, 317, 319, 322, 334, 347, 351, 360, 370, 387, 394, 411, 416, 428, 430, 433, 442, 444, 473, 484, 488, 496, 523, 526, 528, 535, 555, 590, 595, 660, 724, 725, 726, 728, 779])
+ability_1 = 230
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 791
+gender_ratio = 7

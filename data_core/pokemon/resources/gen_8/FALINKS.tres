@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bp2a5oh0p8cu0"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 182
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 249
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 10
+move = 116
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 15
+move = 29
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 20
+move = 339
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 25
+move = 203
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 30
+move = 179
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 623
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 40
+move = 694
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 45
+move = 334
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 50
+move = 370
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 55
+move = 224
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 60
+move = 68
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 870
+species_name = "Falinks"
+species_id = 870
+base_hp = 65
+base_attack = 100
+base_defense = 100
+base_speed = 75
+base_sp_attack = 70
+base_sp_defense = 60
+evYield_Attack = 2
+evYield_SpDefense = 1
+type_1 = 2
+catch_rate = 45
+exp_yield = 165
+friendship = 50
+category_name = "Formación"
+description = "Este Pokémon consta de cinco subalternos y un líder, cuyas órdenes obedecen sin rechistar."
+height = 30
+weight = 620
+body_color = 2
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([14, 34, 36, 63, 97, 103, 116, 156, 157, 164, 173, 179, 182, 203, 206, 214, 224, 240, 241, 244, 251, 253, 263, 270, 276, 279, 280, 282, 283, 317, 334, 339, 370, 371, 372, 398, 411, 416, 428, 442, 496, 514, 630, 638, 642, 647, 704, 739, 779, 811, 846])
+ability_1 = 4
+hidden_ability = 128
+egg_group_1 = 6
+egg_group_2 = 10
+egg_cycles = 25
+hatch_species = 870
+gender_ratio = 7

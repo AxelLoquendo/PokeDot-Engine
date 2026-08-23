@@ -1,29 +1,123 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bx54jag7wnonw"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bix66o6kiqyoq"]
 
-[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_rt8me"]
-[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_6b0dj"]
-[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_h527f"]
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 3
+parameter = 32
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 22
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 74
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 9
+move = 73
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 75
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 15
+move = 77
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 15
+move = 79
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 402
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 25
+move = 36
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 30
+move = 230
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 35
+move = 235
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 40
+move = 388
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 45
+move = 38
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 45
+move = 438
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 50
+move = 76
 
 [resource]
-script = ExtResource("3_h527f")
+script = ExtResource("3_struct")
 national_dex_number = 2
 species_name = "Ivysaur"
 species_id = 2
-base_hp = 2
-base_attack = 2
-base_defense = 2
-base_speed = 2
-base_sp_attack = 2
-base_sp_defense = 2
+base_hp = 60
+base_attack = 62
+base_defense = 63
+base_speed = 60
+base_sp_attack = 80
+base_sp_defense = 80
+evYield_SpAttack = 1
+evYield_SpDefense = 1
 type_1 = 13
 type_2 = 4
+catch_rate = 45
+exp_yield = 142
+friendship = 70
+growth_rate = 3
 category_name = "Semilla"
-description = "Placeholdier"
+description = "Este Pokémon tiene un bulbo en el lomo. Dicen que, al absorber nutrientes, el bulbo se transforma en una flor grande."
+height = 10
+weight = 130
 body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([14, 15, 20, 29, 34, 36, 38, 46, 70, 72, 76, 81, 92, 99, 102, 104, 111, 113, 115, 117, 133, 148, 156, 164, 173, 174, 182, 188, 189, 200, 202, 203, 204, 206, 207, 210, 213, 214, 216, 218, 219, 230, 235, 237, 241, 249, 263, 267, 270, 282, 290, 311, 331, 345, 363, 388, 402, 412, 437, 438, 445, 447, 474, 491, 496, 497, 520, 526, 580, 590, 731, 779, 811])
+egg_moves = Array[int]([80, 92, 174, 275])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
 ability_1 = 65
-hidden_ability = 94
+hidden_ability = 34
 egg_group_1 = 1
 egg_group_2 = 7
-hatch_species = 1
+egg_cycles = 20
+hatch_species = 2
 gender_ratio = 5
-metadata/_custom_type_script = "uid://cjnm63p0uiewj"

@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bvrl2ojk5e2s7"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 52
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 63
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 526
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 11
+move = 29
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 15
+move = 568
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 36
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 23
+move = 424
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 28
+move = 283
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 33
+move = 497
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 38
+move = 53
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 42
+move = 242
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 48
+move = 304
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 51
+move = 510
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 57
+move = 315
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 668
+species_name = "Pyroar-Male"
+species_id = 668
+base_hp = 86
+base_attack = 68
+base_defense = 72
+base_speed = 106
+base_sp_attack = 109
+base_sp_defense = 66
+evYield_SpAttack = 2
+type_1 = 11
+type_2 = 1
+catch_rate = 65
+exp_yield = 177
+friendship = 70
+growth_rate = 3
+category_name = "Regio"
+description = "El macho con la melena de fuego más grande de toda la manada es el líder de sus compañeros."
+height = 15
+weight = 815
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([34, 36, 38, 46, 53, 63, 70, 76, 83, 91, 92, 104, 126, 129, 156, 164, 168, 173, 182, 189, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 249, 257, 261, 263, 269, 270, 283, 289, 290, 304, 315, 340, 371, 394, 399, 416, 422, 424, 488, 496, 497, 510, 512, 514, 523, 526, 528, 555, 590, 660, 735, 779, 811, 843])
+ability_1 = 79
+ability_2 = 127
+hidden_ability = 153
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 668
+gender_ratio = 1

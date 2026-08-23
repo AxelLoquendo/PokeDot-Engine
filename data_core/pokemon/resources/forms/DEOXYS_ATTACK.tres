@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://eyw2jikeyys8"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 35
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 101
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 13
+move = 100
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 19
+move = 269
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 25
+move = 228
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 25
+move = 473
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 31
+move = 94
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 37
+move = 276
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 43
+move = 285
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 43
+move = 375
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 49
+move = 428
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 55
+move = 322
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 61
+move = 192
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 67
+move = 354
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 73
+move = 63
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 386
+species_name = "Deoxys Attack"
+species_id = 1054
+base_hp = 50
+base_attack = 180
+base_defense = 20
+base_speed = 150
+base_sp_attack = 180
+base_sp_defense = 20
+evYield_Attack = 2
+evYield_SpAttack = 1
+type_1 = 15
+catch_rate = 3
+exp_yield = 270
+growth_rate = 5
+category_name = "ADN"
+description = "Surgió a raíz de la mutación de ADN de un virus alienígena que cayó a la Tierra en un meteorito."
+height = 17
+weight = 608
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([5, 7, 8, 9, 15, 20, 25, 29, 34, 36, 38, 58, 60, 63, 67, 68, 69, 70, 76, 85, 86, 87, 92, 94, 97, 101, 102, 104, 113, 115, 129, 138, 148, 156, 157, 164, 173, 182, 184, 189, 196, 203, 207, 214, 216, 218, 219, 220, 237, 240, 241, 244, 247, 248, 249, 259, 263, 264, 269, 271, 272, 276, 277, 278, 280, 282, 285, 286, 289, 290, 317, 324, 332, 347, 351, 352, 356, 363, 374, 398, 399, 409, 411, 412, 416, 417, 419, 428, 430, 433, 446, 447, 451, 472, 473, 477, 490, 496, 500, 502, 590, 612, 636, 638, 641, 656, 661, 725, 728, 779, 845])
+ability_1 = 46
+is_mythical = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 386
+gender_ratio = 7

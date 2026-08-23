@@ -1,0 +1,127 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bnjw1dde6g66u"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 181
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 227
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 246
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 10
+move = 88
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 196
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 15
+move = 36
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 496
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 54
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 62
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 86
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 32
+move = 267
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 34
+move = 419
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 36
+move = 573
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 42
+move = 58
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 48
+move = 113
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 54
+move = 258
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 60
+move = 59
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 66
+move = 63
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 699
+species_name = "Aurorus"
+species_id = 699
+base_hp = 123
+base_attack = 77
+base_defense = 72
+base_speed = 58
+base_sp_attack = 99
+base_sp_defense = 92
+evYield_HP = 2
+type_1 = 6
+type_2 = 16
+catch_rate = 45
+exp_yield = 104
+friendship = 70
+category_name = "Tundra"
+description = "Expulsa un gas gélido a temperaturas inferiores a los -150 ºC a través de sus cristales romboides y congela así a su enemigo."
+height = 27
+weight = 2250
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
+teachable_moves = Array[int]([34, 46, 58, 59, 63, 85, 86, 87, 89, 92, 94, 104, 113, 115, 138, 148, 156, 157, 164, 173, 182, 196, 200, 201, 203, 207, 213, 214, 216, 218, 219, 227, 231, 237, 240, 244, 249, 258, 263, 267, 290, 304, 311, 317, 333, 334, 341, 347, 350, 352, 393, 397, 399, 401, 414, 416, 419, 428, 430, 442, 444, 446, 451, 496, 497, 523, 524, 525, 590, 728])
+ability_1 = 174
+hidden_ability = 117
+egg_group_1 = 1
+egg_cycles = 30
+hatch_species = 699
+gender_ratio = 5

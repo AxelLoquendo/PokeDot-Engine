@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://cdwbcll4fjk7h"]
+
+[ext_resource type="Texture2D" uid="uid://j2xovoxsjrny" path="res://graphics/ui_summary_screen/info/info_3.png" id="1_6lirn"]
+[ext_resource type="Texture2D" uid="uid://dnd28ltcr31rc" path="res://graphics/ui_summary_screen/info/info_2.png" id="1_800ud"]
+[ext_resource type="Script" uid="uid://datgxcq5k57pr" path="res://scenes/ui_summary_screen/page_0.gd" id="1_oy08v"]
+[ext_resource type="Texture2D" uid="uid://c6v4sg8xagsqp" path="res://graphics/types/Tera/grass.png" id="5_f5wj2"]
+[ext_resource type="Texture2D" uid="uid://b01cy3ao2dsvg" path="res://graphics/types/grass.png" id="6_4tjw4"]
+[ext_resource type="Texture2D" uid="uid://d0elre6danqqd" path="res://graphics/types/poison.png" id="7_6kva3"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="8_bfj2n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("8_bfj2n")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oy08v"]
+font = ExtResource("8_bfj2n")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6gnws"]
+font = ExtResource("8_bfj2n")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c86h6"]
+font = ExtResource("8_bfj2n")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4grle"]
+font = ExtResource("8_bfj2n")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4f467"]
+font = ExtResource("8_bfj2n")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5wj2"]
+font = ExtResource("8_bfj2n")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[node name="Page0" type="Node2D" unique_id=2146259770]
+script = ExtResource("1_oy08v")
+
+[node name="Info" type="Sprite2D" parent="." unique_id=1427062902]
+position = Vector2(240, 24)
+texture = ExtResource("1_6lirn")
+
+[node name="Title" type="Label" parent="Info" unique_id=1276839689]
+offset_left = -214.0
+offset_top = -12.0
+offset_right = -76.0
+offset_bottom = 16.0
+text = "Info"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Info_2" type="Sprite2D" parent="." unique_id=227019944]
+position = Vector2(336, 184)
+texture = ExtResource("1_800ud")
+
+[node name="Dex" type="Label" parent="Info_2" unique_id=1122043582]
+offset_left = -110.0
+offset_top = -117.0
+offset_right = -38.0
+offset_bottom = -89.0
+text = "No. Dex"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Number_Dex" type="Label" parent="Info_2/Dex" unique_id=1165732587]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 244.0
+offset_bottom = 28.0
+text = "0001"
+label_settings = SubResource("LabelSettings_oy08v")
+horizontal_alignment = 1
+
+[node name="Specie" type="Label" parent="Info_2" unique_id=843940505]
+offset_left = -110.0
+offset_top = -93.0
+offset_right = -4.0
+offset_bottom = -65.0
+text = "Especie"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Specie_Name" type="Label" parent="Info_2/Specie" unique_id=490327445]
+layout_mode = 0
+offset_left = 110.0
+offset_right = 244.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_6gnws")
+horizontal_alignment = 1
+
+[node name="Type" type="Label" parent="Info_2" unique_id=1444800253]
+offset_left = -108.0
+offset_top = -64.0
+offset_right = -68.0
+offset_bottom = -36.0
+text = "Tipo"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Tera_Type" type="Sprite2D" parent="Info_2/Type" unique_id=1658462103]
+position = Vector2(87, 16)
+texture = ExtResource("5_f5wj2")
+
+[node name="Type_Icon_1" type="Sprite2D" parent="Info_2/Type" unique_id=1227430391]
+position = Vector2(142, 16)
+texture = ExtResource("6_4tjw4")
+
+[node name="Type_Icon_2" type="Sprite2D" parent="Info_2/Type" unique_id=1838423904]
+position = Vector2(208, 16)
+texture = ExtResource("7_6kva3")
+
+[node name="OT" type="Label" parent="Info_2" unique_id=2116741037]
+offset_left = -108.0
+offset_top = -35.0
+offset_right = -84.0
+offset_bottom = -7.0
+text = "EO"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="OT_Name" type="Label" parent="Info_2/OT" unique_id=2052279008]
+layout_mode = 0
+offset_left = 108.0
+offset_right = 242.0
+offset_bottom = 28.0
+text = "Kael"
+label_settings = SubResource("LabelSettings_c86h6")
+horizontal_alignment = 1
+
+[node name="ID" type="Label" parent="Info_2" unique_id=1781848878]
+offset_left = -108.0
+offset_top = -11.0
+offset_right = -48.0
+offset_bottom = 17.0
+text = "No. ID"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="ID_Number" type="Label" parent="Info_2/ID" unique_id=1607826450]
+layout_mode = 0
+offset_left = 108.0
+offset_right = 242.0
+offset_bottom = 28.0
+text = "00000"
+label_settings = SubResource("LabelSettings_4grle")
+horizontal_alignment = 1
+
+[node name="Exp_Point" type="Label" parent="Info_2" unique_id=1714104016]
+offset_left = -108.0
+offset_top = 13.0
+offset_right = 12.0
+offset_bottom = 41.0
+text = "Puntos Exp."
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Number_Exp" type="Label" parent="Info_2/Exp_Point" unique_id=676138536]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 24.0
+offset_right = 242.0
+offset_bottom = 52.0
+text = "000,000"
+label_settings = SubResource("LabelSettings_4f467")
+horizontal_alignment = 1
+
+[node name="Next_Lvl" type="Label" parent="Info_2" unique_id=360895063]
+offset_left = -108.0
+offset_top = 61.0
+offset_right = 20.0
+offset_bottom = 89.0
+text = "Siguiente Nv."
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Number_lvl" type="Label" parent="Info_2/Next_Lvl" unique_id=1418015767]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 24.0
+offset_right = 242.0
+offset_bottom = 52.0
+text = "00000"
+label_settings = SubResource("LabelSettings_f5wj2")
+horizontal_alignment = 1

@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dtq2tohuwhiml"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 8
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 145
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 182
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 228
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 249
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 17
+move = 61
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 22
+move = 280
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 22
+move = 612
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 25
+move = 21
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 25
+move = 146
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 29
+move = 419
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 33
+move = 179
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 37
+move = 628
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 42
+move = 334
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 45
+move = 223
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 49
+move = 370
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 740
+species_name = "Crabominable"
+species_id = 740
+base_hp = 97
+base_attack = 132
+base_defense = 77
+base_speed = 43
+base_sp_attack = 62
+base_sp_defense = 67
+evYield_Attack = 2
+type_1 = 2
+type_2 = 16
+catch_rate = 60
+exp_yield = 167
+friendship = 70
+category_name = "Cangrejopelo"
+description = "Tras perderse intentando coronar una alta montaña, desarrolló una capa de pelo para protegerse del frío."
+height = 17
+weight = 1800
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([8, 9, 34, 36, 58, 59, 63, 89, 91, 92, 104, 129, 133, 156, 157, 164, 168, 173, 179, 182, 184, 189, 196, 203, 207, 213, 214, 216, 218, 237, 240, 241, 258, 263, 264, 270, 276, 280, 282, 283, 317, 334, 335, 339, 341, 370, 371, 374, 409, 411, 416, 419, 428, 441, 442, 444, 496, 503, 523, 524, 526, 530, 590, 656, 661, 664, 704, 739, 779, 789, 809, 812, 840, 846])
+ability_1 = 52
+ability_2 = 89
+hidden_ability = 83
+egg_group_1 = 9
+egg_cycles = 20
+hatch_species = 740
+gender_ratio = 3

@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bmbm3pq2g8nax"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 17
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 114
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 228
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 389
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 400
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 511
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 207
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 417
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 45
+move = 492
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 55
+move = 399
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 65
+move = 820
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 430
+species_name = "Honchkrow"
+species_id = 430
+base_hp = 100
+base_attack = 125
+base_defense = 52
+base_speed = 71
+base_sp_attack = 105
+base_sp_defense = 52
+type_1 = 18
+type_2 = 3
+catch_rate = 30
+exp_yield = 177
+friendship = 35
+growth_rate = 3
+category_name = "Pokémon Gran Jefe"
+description = "Si uno lanza un grito profundo, los demás acuden. Por eso se le llama también Invocador de la Noche."
+height = 9
+weight = 273
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
+teachable_moves = Array[int]([19, 36, 38, 63, 86, 92, 94, 101, 104, 109, 114, 129, 138, 143, 156, 164, 168, 173, 180, 182, 184, 189, 196, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 244, 247, 253, 257, 259, 263, 269, 270, 276, 283, 289, 290, 297, 314, 332, 347, 355, 363, 365, 366, 369, 371, 373, 389, 399, 403, 413, 416, 417, 432, 445, 466, 492, 496, 506, 510, 511, 512, 514, 542, 555, 590, 736, 742, 779, 812, 845])
+ability_1 = 15
+ability_2 = 105
+hidden_ability = 153
+egg_cycles = 20
+hatch_species = 430
+gender_ratio = 3

@@ -1,0 +1,113 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://deatoqwidv41i"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 84
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 225
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 604
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 7
+move = 351
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 14
+move = 268
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 21
+move = 570
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 28
+move = 435
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 35
+move = 97
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 42
+move = 406
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 56
+move = 805
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 63
+move = 319
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 70
+move = 243
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 77
+move = 200
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 84
+move = 87
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 91
+move = 315
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 98
+move = 63
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 1008
+species_name = "Miraidon"
+species_id = 1401
+base_hp = 100
+base_attack = 85
+base_defense = 100
+base_speed = 135
+base_sp_attack = 135
+base_sp_defense = 115
+evYield_SpAttack = 3
+type_1 = 14
+type_2 = 17
+catch_rate = 3
+exp_yield = 335
+growth_rate = 5
+category_name = "Paradox"
+description = "Much remains unknown about this creature. It resembles Cyclizar, but it is far more ruthless and powerful."
+height = 35
+weight = 2400
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([14, 34, 36, 63, 76, 85, 86, 87, 97, 109, 113, 115, 156, 164, 182, 184, 200, 203, 214, 242, 263, 268, 269, 270, 315, 319, 337, 347, 369, 406, 408, 416, 428, 430, 434, 451, 484, 486, 512, 521, 525, 528, 555, 598, 604, 605, 779, 841, 844])
+ability_1 = 289
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 50
+hatch_species = 1401
+gender_ratio = 7

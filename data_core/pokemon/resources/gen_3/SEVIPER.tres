@@ -1,0 +1,141 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cvu58ob5cs4bv"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 35
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 207
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 44
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 6
+move = 122
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 9
+move = 342
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 11
+move = 364
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 14
+move = 103
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 19
+move = 137
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 21
+move = 305
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 474
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 599
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 26
+move = 400
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 29
+move = 380
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 31
+move = 398
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 34
+move = 114
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 36
+move = 14
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 39
+move = 242
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 41
+move = 562
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 44
+move = 489
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 46
+move = 188
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 46
+move = 378
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 336
+species_name = "Seviper"
+species_id = 336
+base_hp = 73
+base_attack = 100
+base_defense = 60
+base_speed = 65
+base_sp_attack = 100
+base_sp_defense = 60
+evYield_Attack = 1
+evYield_SpAttack = 1
+type_1 = 4
+catch_rate = 90
+exp_yield = 160
+friendship = 70
+category_name = "Colmillos"
+description = "Hace frente a Zangoose con su agilidad y su afilada cola, que está cargada con un veneno letal."
+height = 27
+weight = 525
+body_color = 4
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
+teachable_moves = Array[int]([14, 20, 29, 34, 36, 38, 53, 63, 70, 89, 91, 92, 102, 104, 114, 129, 156, 164, 168, 173, 174, 179, 182, 184, 188, 189, 202, 203, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 242, 249, 263, 269, 270, 280, 282, 283, 289, 290, 342, 363, 371, 380, 389, 398, 399, 401, 402, 404, 416, 422, 423, 424, 428, 441, 442, 445, 474, 482, 491, 496, 514, 523, 525, 555, 590, 611, 638, 656, 660, 712, 734, 736, 779, 810, 811])
+egg_moves = Array[int]([34, 184, 231, 254, 255, 256, 372, 378, 386, 400, 415, 515])
+ability_1 = 61
+hidden_ability = 151
+egg_group_1 = 5
+egg_group_2 = 14
+egg_cycles = 20
+hatch_species = 336
+gender_ratio = 3

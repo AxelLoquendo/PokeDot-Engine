@@ -1,0 +1,153 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c5l42a1g1ieyo"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 102
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 113
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 115
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 182
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 219
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 226
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 227
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 229
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+move = 272
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+move = 278
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+move = 383
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+move = 420
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+move = 581
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+move = 605
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 12
+move = 93
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 16
+move = 502
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 20
+move = 196
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 24
+move = 24
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 28
+move = 60
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 32
+move = 95
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 36
+move = 243
+
+[sub_resource type="Resource" id="Resource_move22"]
+script = ExtResource("2_learn")
+level = 40
+move = 389
+
+[sub_resource type="Resource" id="Resource_move23"]
+script = ExtResource("2_learn")
+level = 44
+move = 573
+
+[sub_resource type="Resource" id="Resource_move24"]
+script = ExtResource("2_learn")
+level = 48
+move = 94
+
+[sub_resource type="Resource" id="Resource_move25"]
+script = ExtResource("2_learn")
+level = 52
+move = 298
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 122
+species_name = "Mr Mime Galar"
+species_id = 981
+base_hp = 50
+base_attack = 65
+base_defense = 65
+base_speed = 100
+base_sp_attack = 90
+base_sp_defense = 90
+evYield_Speed = 2
+type_1 = 16
+type_2 = 15
+catch_rate = 45
+exp_yield = 161
+friendship = 70
+category_name = "Barrera"
+description = "Para repeler ataques, solidifica el aire y crea muros invisibles con emanaciones de sus dedos."
+height = 14
+weight = 568
+body_color = 9
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25")])
+teachable_moves = Array[int]([5, 8, 25, 34, 58, 59, 63, 76, 85, 86, 87, 94, 103, 113, 115, 118, 156, 164, 168, 173, 182, 196, 203, 204, 213, 214, 219, 226, 227, 240, 241, 247, 248, 253, 258, 263, 269, 270, 271, 280, 285, 333, 334, 347, 371, 374, 384, 385, 409, 411, 412, 416, 417, 419, 428, 433, 447, 472, 473, 478, 492, 496, 500, 502, 581, 605, 641, 661, 725, 741])
+egg_moves = Array[int]([109, 252, 321, 471])
+ability_1 = 72
+ability_2 = 251
+hidden_ability = 115
+egg_group_1 = 8
+egg_cycles = 25
+hatch_species = 122
+gender_ratio = 3

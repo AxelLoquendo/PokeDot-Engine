@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cua64pxdusken"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 291
+parameter = 20
+
+[sub_resource type="Resource" id="Resource_evo1"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 292
+parameter = 1
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 5
+move = 106
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 5
+move = 141
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 10
+move = 206
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 189
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 21
+move = 71
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 232
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 29
+move = 117
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 154
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 35
+move = 170
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 91
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 290
+species_name = "Nincada"
+species_id = 290
+base_hp = 31
+base_attack = 45
+base_defense = 90
+base_speed = 40
+base_sp_attack = 30
+base_sp_defense = 30
+evYield_Defense = 1
+type_1 = 7
+type_2 = 5
+catch_rate = 255
+exp_yield = 53
+friendship = 70
+category_name = "Aprendiz"
+description = "Como se ha pasado casi toda la vida viviendo bajo tierra, no ve bien. Las antenas que tiene le ayudan a orientarse."
+height = 5
+weight = 55
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
+teachable_moves = Array[int]([15, 38, 76, 81, 91, 92, 102, 104, 141, 148, 156, 164, 173, 180, 182, 189, 201, 202, 203, 206, 207, 210, 214, 216, 218, 237, 241, 247, 263, 290, 332, 363, 404, 405, 450, 468, 496, 522, 590, 734])
+egg_moves = Array[int]([16, 175, 185, 203, 318, 400, 405, 450, 515])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0"), SubResource("Resource_evo1")])
+ability_1 = 14
+hidden_ability = 50
+egg_group_1 = 3
+egg_cycles = 15
+hatch_species = 290
+gender_ratio = 3

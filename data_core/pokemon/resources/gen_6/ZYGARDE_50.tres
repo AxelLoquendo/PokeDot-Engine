@@ -1,0 +1,134 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cfhfg8oyart7f"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 20
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 44
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 225
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 523
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 614
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 615
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 650
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 8
+move = 114
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 16
+move = 91
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 219
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 32
+move = 242
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 406
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 48
+move = 616
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 56
+move = 137
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 59
+move = 293
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 64
+move = 201
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 72
+move = 349
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 72
+move = 489
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 80
+move = 89
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 88
+move = 200
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 88
+move = 245
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 718
+species_name = "Zygarde-50"
+species_id = 718
+base_hp = 108
+base_attack = 100
+base_defense = 121
+base_speed = 95
+base_sp_attack = 81
+base_sp_defense = 95
+evYield_HP = 3
+type_1 = 17
+type_2 = 5
+catch_rate = 3
+exp_yield = 270
+growth_rate = 5
+category_name = "Equilibrio"
+description = "Cuando el ecosistema de Kalos se encuentra en peligro, aparece y revela su poder secreto."
+height = 50
+weight = 3050
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
+teachable_moves = Array[int]([20, 34, 63, 70, 89, 91, 92, 104, 129, 156, 157, 164, 173, 179, 180, 182, 200, 201, 203, 207, 214, 216, 218, 219, 220, 231, 237, 241, 242, 249, 263, 276, 280, 290, 304, 335, 349, 351, 371, 406, 411, 414, 416, 428, 434, 444, 447, 482, 496, 514, 523, 525, 590, 630, 661, 712, 727, 734, 743])
+ability_1 = 188
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 718
+gender_ratio = 7

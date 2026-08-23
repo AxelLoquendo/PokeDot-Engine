@@ -1,0 +1,131 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bx33pwaakqfcy"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 100
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 163
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 348
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 370
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 400
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 4
+move = 93
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 6
+move = 104
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 11
+move = 501
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 14
+move = 210
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 17
+move = 332
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 19
+move = 505
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 23
+move = 469
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 26
+move = 14
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 31
+move = 427
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 35
+move = 270
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 40
+move = 364
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 44
+move = 206
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 49
+move = 182
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 58
+move = 500
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 475
+species_name = "Gallade Mega"
+species_id = 950
+base_hp = 68
+base_attack = 165
+base_defense = 95
+base_speed = 110
+base_sp_attack = 65
+base_sp_defense = 115
+evYield_Attack = 3
+type_1 = 15
+type_2 = 2
+catch_rate = 45
+exp_yield = 278
+friendship = 35
+growth_rate = 5
+category_name = "Cuchilla"
+description = "Puede presentir los movimientos de sus rivales y por eso ataca siempre antes que ellos."
+height = 16
+weight = 564
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
+teachable_moves = Array[int]([7, 8, 9, 14, 15, 63, 67, 70, 85, 86, 89, 92, 94, 104, 113, 115, 138, 148, 156, 157, 164, 168, 173, 182, 206, 207, 213, 214, 216, 218, 219, 220, 237, 240, 241, 244, 247, 249, 259, 261, 263, 264, 269, 270, 271, 277, 278, 280, 282, 285, 289, 290, 304, 317, 324, 332, 339, 347, 351, 374, 398, 404, 409, 411, 416, 428, 433, 444, 447, 451, 472, 473, 477, 478, 490, 496, 497, 502, 514, 523, 526, 530, 590, 605, 612, 636, 638])
+ability_1 = 39
+egg_group_1 = 8
+egg_group_2 = 11
+egg_cycles = 20
+hatch_species = 475
+gender_ratio = 6

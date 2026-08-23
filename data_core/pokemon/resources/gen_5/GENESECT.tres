@@ -1,0 +1,136 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ctf6wkkhcy6cq"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 98
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 210
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 7
+move = 103
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 14
+move = 232
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 21
+move = 565
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 22
+move = 443
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 28
+move = 488
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 29
+move = 163
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 319
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 40
+move = 324
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 42
+move = 404
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 44
+move = 161
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 49
+move = 393
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 56
+move = 405
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 63
+move = 493
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 70
+move = 192
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 73
+move = 63
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 77
+move = 199
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 84
+move = 546
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 91
+move = 120
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 649
+species_name = "Genesect"
+species_id = 649
+base_hp = 71
+base_attack = 120
+base_defense = 95
+base_speed = 99
+base_sp_attack = 120
+base_sp_defense = 95
+evYield_Attack = 1
+evYield_Speed = 1
+evYield_SpAttack = 1
+type_1 = 7
+type_2 = 9
+catch_rate = 3
+exp_yield = 270
+growth_rate = 5
+category_name = "Paleozoico"
+description = "Pokémon de tipo Bicho de la antigüedad, modificado por el Equipo Plasma. El cañón de su lomo ha sido mejorado."
+height = 15
+weight = 825
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
+teachable_moves = Array[int]([19, 53, 58, 59, 63, 76, 85, 86, 87, 92, 94, 103, 104, 113, 115, 120, 129, 141, 148, 153, 156, 161, 164, 173, 182, 202, 203, 207, 214, 216, 218, 237, 263, 277, 278, 290, 299, 324, 332, 334, 351, 356, 369, 372, 387, 393, 397, 399, 404, 405, 412, 416, 421, 428, 430, 441, 442, 450, 451, 468, 477, 488, 496, 502, 522, 527, 590, 611, 724])
+ability_1 = 88
+is_mythical = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 649
+gender_ratio = 7

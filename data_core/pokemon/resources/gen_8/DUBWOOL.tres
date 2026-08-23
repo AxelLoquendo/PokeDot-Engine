@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b7x2x4o14h4ou"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 111
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 383
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 470
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 16
+move = 24
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 21
+move = 29
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 27
+move = 36
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 32
+move = 385
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 38
+move = 179
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 44
+move = 538
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 50
+move = 38
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 56
+move = 387
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 832
+species_name = "Dubwool"
+species_id = 832
+base_hp = 72
+base_attack = 80
+base_defense = 100
+base_speed = 88
+base_sp_attack = 60
+base_sp_defense = 90
+evYield_Defense = 2
+type_1 = 1
+catch_rate = 127
+exp_yield = 172
+friendship = 50
+category_name = "Oveja"
+description = "Su lana es muy flexible. Las alfombras tejidas con ella adoptan una textura similar a la de las camas elásticas."
+height = 13
+weight = 430
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([14, 25, 34, 63, 86, 97, 156, 164, 173, 179, 182, 203, 213, 214, 226, 263, 340, 371, 385, 416, 428, 486, 496, 514, 528, 704, 731])
+ability_1 = 218
+ability_2 = 80
+hidden_ability = 171
+egg_group_1 = 5
+egg_cycles = 15
+hatch_species = 832
+gender_ratio = 3

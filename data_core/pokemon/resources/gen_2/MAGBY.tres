@@ -1,0 +1,125 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://fmqldk5kbh6b"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 126
+parameter = 30
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 123
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 52
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 108
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 185
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 499
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 15
+move = 83
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 172
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 109
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 22
+move = 481
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 184
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 28
+move = 7
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 32
+move = 436
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 36
+move = 67
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 40
+move = 53
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 44
+move = 241
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 48
+move = 126
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 240
+species_name = "Magby"
+species_id = 240
+base_hp = 45
+base_attack = 75
+base_defense = 37
+base_speed = 83
+base_sp_attack = 70
+base_sp_defense = 55
+evYield_Speed = 1
+type_1 = 11
+catch_rate = 45
+exp_yield = 73
+friendship = 70
+category_name = "Ascuas"
+description = "Es pequeño, pero su cuerpo puede llegar a alcanzar 600 °C. Cuando inspira y espira, expulsa llamas por la nariz y por la boca."
+height = 7
+weight = 214
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([5, 7, 9, 25, 29, 34, 36, 38, 53, 67, 68, 69, 83, 92, 94, 102, 103, 104, 109, 116, 126, 156, 164, 168, 173, 174, 182, 184, 189, 197, 203, 207, 213, 214, 216, 218, 223, 231, 237, 241, 249, 253, 257, 261, 263, 264, 270, 280, 290, 315, 343, 363, 374, 384, 394, 398, 445, 488, 491, 496, 510, 530, 590, 612, 735, 779, 843])
+egg_moves = Array[int]([2, 5, 9, 103, 112, 116, 183, 187, 223, 231, 238, 264, 266, 384, 394, 562])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 49
+hidden_ability = 72
+egg_group_1 = 15
+egg_cycles = 25
+hatch_species = 240
+gender_ratio = 4

@@ -1,0 +1,114 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://xg0m0i48t3p4"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 10
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 207
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 227
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 281
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 303
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 389
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 14
+move = 185
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 17
+move = 133
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 23
+move = 343
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 27
+move = 498
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 27
+move = 638
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 33
+move = 68
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 39
+move = 175
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 45
+move = 374
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 52
+move = 25
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 53
+move = 386
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 63
+move = 359
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 289
+species_name = "Slaking"
+species_id = 289
+base_hp = 150
+base_attack = 160
+base_defense = 100
+base_speed = 100
+base_sp_attack = 95
+base_sp_defense = 65
+evYield_HP = 3
+type_1 = 1
+catch_rate = 45
+exp_yield = 252
+friendship = 70
+growth_rate = 5
+category_name = "Holgazán"
+description = "El Pokémon más perezoso del mundo. Cambia de lugar para coger la comida al alcance de su mano."
+height = 20
+weight = 1305
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([5, 7, 8, 9, 15, 25, 29, 34, 36, 38, 46, 53, 58, 59, 63, 67, 68, 69, 70, 76, 85, 86, 87, 89, 91, 92, 102, 104, 118, 126, 133, 156, 157, 164, 168, 173, 174, 179, 182, 184, 189, 196, 200, 203, 206, 207, 210, 213, 214, 216, 218, 223, 227, 232, 237, 240, 241, 247, 249, 253, 263, 264, 269, 270, 280, 282, 283, 290, 304, 317, 332, 335, 339, 341, 343, 351, 352, 363, 374, 389, 398, 402, 404, 409, 411, 416, 421, 428, 431, 441, 445, 468, 479, 484, 490, 495, 496, 510, 511, 514, 523, 526, 528, 583, 590, 612, 630, 638, 661, 704, 736, 779, 810, 811, 812, 840])
+ability_1 = 54
+egg_group_1 = 5
+egg_cycles = 15
+hatch_species = 289
+gender_ratio = 3

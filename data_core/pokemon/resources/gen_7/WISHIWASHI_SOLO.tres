@@ -1,0 +1,114 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cnpec2n1masw4"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 4
+move = 270
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 8
+move = 251
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 9
+move = 185
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 362
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 669
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 291
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 24
+move = 487
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 25
+move = 36
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 253
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 32
+move = 401
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 36
+move = 392
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 40
+move = 283
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 44
+move = 56
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 48
+move = 38
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 746
+species_name = "Wishiwashi-Solo"
+species_id = 746
+base_hp = 45
+base_attack = 20
+base_defense = 20
+base_speed = 40
+base_sp_attack = 25
+base_sp_defense = 25
+evYield_HP = 1
+type_1 = 12
+catch_rate = 60
+exp_yield = 61
+friendship = 70
+growth_rate = 4
+category_name = "Pececillo"
+description = "Al sentirse amenazado, sus ojos emiten cierto brillo, algo que atrae a otros miembros de su especie, y juntos luchan como un mismo ente."
+height = 2
+weight = 3
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([56, 57, 58, 89, 92, 104, 127, 156, 164, 173, 182, 203, 207, 213, 214, 216, 218, 231, 237, 240, 250, 251, 253, 258, 263, 270, 283, 291, 330, 341, 343, 352, 362, 369, 401, 496, 503, 523, 590, 664, 727, 740])
+egg_moves = Array[int]([36, 54, 250, 330, 346, 352])
+ability_1 = 208
+egg_group_1 = 12
+egg_cycles = 15
+hatch_species = 746
+gender_ratio = 3

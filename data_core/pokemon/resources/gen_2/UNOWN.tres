@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c6ev1nijq1yox"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 237
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 201
+species_name = "Unown"
+species_id = 201
+base_hp = 48
+base_attack = 72
+base_defense = 48
+base_speed = 48
+base_sp_attack = 72
+base_sp_defense = 48
+evYield_Attack = 1
+evYield_SpAttack = 1
+type_1 = 15
+catch_rate = 225
+exp_yield = 118
+friendship = 70
+category_name = "Símbolo"
+description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+height = 5
+weight = 50
+body_color = 4
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
+teachable_moves = Array[int]([237])
+ability_1 = 26
+egg_group_1 = 15
+egg_cycles = 40
+hatch_species = 201
+gender_ratio = 7

@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cio4v76hwmtcs"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 71
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 109
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 275
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 8
+move = 148
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 72
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 79
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 236
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 27
+move = 631
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 32
+move = 202
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 38
+move = 605
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 44
+move = 147
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 50
+move = 585
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 53
+move = 634
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 56
+move = 138
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 756
+species_name = "Shiinotic"
+species_id = 756
+base_hp = 60
+base_attack = 45
+base_defense = 80
+base_speed = 30
+base_sp_attack = 90
+base_sp_defense = 100
+evYield_SpDefense = 2
+type_1 = 13
+type_2 = 19
+catch_rate = 75
+exp_yield = 142
+friendship = 70
+category_name = "Luminiscente"
+description = "Es peligroso adentrarse por la noche en un bosque habitado por Shiinotic. Su luz confunde a los caminantes, que terminan perdiéndose."
+height = 10
+weight = 115
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([63, 76, 86, 92, 104, 113, 133, 138, 156, 164, 173, 182, 188, 202, 203, 207, 213, 214, 216, 218, 219, 235, 237, 240, 241, 263, 267, 277, 278, 311, 324, 388, 402, 409, 412, 416, 447, 451, 472, 478, 495, 496, 577, 590, 605, 639])
+ability_1 = 35
+ability_2 = 27
+hidden_ability = 44
+egg_group_1 = 7
+egg_cycles = 20
+hatch_species = 756
+gender_ratio = 3

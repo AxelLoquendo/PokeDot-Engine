@@ -1,0 +1,127 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cmnh4x1wg7r0y"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 64
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 143
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 193
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 497
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 9
+move = 93
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 12
+move = 115
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 15
+move = 375
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 16
+move = 428
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 18
+move = 403
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 23
+move = 326
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 28
+move = 36
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 33
+move = 253
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 38
+move = 355
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 43
+move = 585
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 48
+move = 95
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 51
+move = 485
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 53
+move = 138
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 164
+species_name = "Noctowl"
+species_id = 164
+base_hp = 100
+base_attack = 50
+base_defense = 50
+base_speed = 70
+base_sp_attack = 86
+base_sp_defense = 96
+evYield_HP = 2
+type_1 = 1
+type_2 = 3
+catch_rate = 90
+exp_yield = 158
+friendship = 70
+category_name = "Búho"
+description = "Sus ojos están especialmente adaptados. Concentran la luz para poder ver en la oscuridad."
+height = 16
+weight = 408
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
+teachable_moves = Array[int]([19, 34, 36, 38, 60, 63, 92, 94, 97, 101, 102, 103, 104, 109, 114, 115, 129, 133, 138, 143, 148, 156, 164, 168, 171, 173, 174, 180, 182, 184, 189, 197, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 244, 247, 248, 253, 257, 263, 277, 278, 285, 286, 290, 297, 304, 314, 318, 332, 347, 355, 363, 365, 366, 403, 413, 416, 417, 428, 432, 445, 466, 496, 497, 500, 512, 526, 542, 590, 636, 742, 779, 845])
+egg_moves = Array[int]([17, 18, 48, 101, 297])
+ability_1 = 15
+ability_2 = 51
+hidden_ability = 110
+egg_group_1 = 4
+egg_cycles = 15
+hatch_species = 164
+gender_ratio = 3

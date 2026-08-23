@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://q5xn0ravvccx"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 184
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 352
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 8
+move = 225
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 16
+move = 246
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 24
+move = 163
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 32
+move = 392
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 40
+move = 337
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 48
+move = 396
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 50
+move = 377
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 56
+move = 408
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 64
+move = 401
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 72
+move = 414
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 80
+move = 460
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 88
+move = 56
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 484
+species_name = "Palkia"
+species_id = 484
+base_hp = 90
+base_attack = 120
+base_defense = 100
+base_speed = 100
+base_sp_attack = 150
+base_sp_defense = 120
+evYield_SpAttack = 3
+type_1 = 12
+type_2 = 17
+catch_rate = 3
+exp_yield = 306
+growth_rate = 5
+category_name = "Espacial"
+description = "Se dice que vive en una dimensión espacial paralela. Aparece en la mitología."
+height = 42
+weight = 3360
+body_color = 6
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([15, 29, 34, 36, 46, 53, 56, 57, 58, 59, 63, 70, 85, 86, 87, 89, 92, 104, 126, 127, 129, 156, 157, 164, 173, 182, 184, 189, 196, 200, 201, 203, 207, 210, 214, 216, 218, 219, 237, 239, 240, 241, 244, 246, 249, 250, 258, 263, 264, 271, 280, 290, 291, 304, 317, 332, 337, 339, 351, 352, 356, 362, 363, 374, 396, 401, 406, 408, 411, 414, 416, 419, 421, 433, 434, 444, 468, 484, 496, 497, 510, 523, 525, 590, 661, 664, 704, 712, 727, 742, 779, 809, 812])
+ability_1 = 46
+hidden_ability = 140
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 484
+gender_ratio = 7

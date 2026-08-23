@@ -1,0 +1,178 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cwuywk603eym5"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 23
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 24
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 36
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 37
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 38
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 39
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 50
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+move = 72
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+move = 74
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+move = 97
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+move = 109
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+move = 114
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+move = 247
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+move = 417
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+move = 506
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+move = 753
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 8
+move = 719
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 16
+move = 202
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 24
+move = 473
+
+[sub_resource type="Resource" id="Resource_move22"]
+script = ExtResource("2_learn")
+level = 32
+move = 270
+
+[sub_resource type="Resource" id="Resource_move23"]
+script = ExtResource("2_learn")
+level = 40
+move = 312
+
+[sub_resource type="Resource" id="Resource_move24"]
+script = ExtResource("2_learn")
+level = 40
+move = 580
+
+[sub_resource type="Resource" id="Resource_move25"]
+script = ExtResource("2_learn")
+level = 40
+move = 641
+
+[sub_resource type="Resource" id="Resource_move26"]
+script = ExtResource("2_learn")
+level = 48
+move = 412
+
+[sub_resource type="Resource" id="Resource_move27"]
+script = ExtResource("2_learn")
+level = 56
+move = 94
+
+[sub_resource type="Resource" id="Resource_move28"]
+script = ExtResource("2_learn")
+level = 64
+move = 73
+
+[sub_resource type="Resource" id="Resource_move29"]
+script = ExtResource("2_learn")
+level = 72
+move = 505
+
+[sub_resource type="Resource" id="Resource_move30"]
+script = ExtResource("2_learn")
+level = 80
+move = 76
+
+[sub_resource type="Resource" id="Resource_move31"]
+script = ExtResource("2_learn")
+level = 88
+move = 248
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 898
+species_name = "Calyrex Shadow"
+species_id = 1233
+base_hp = 100
+base_attack = 85
+base_defense = 80
+base_speed = 150
+base_sp_attack = 165
+base_sp_defense = 100
+evYield_SpAttack = 3
+type_1 = 15
+type_2 = 8
+catch_rate = 3
+exp_yield = 340
+friendship = 100
+growth_rate = 5
+category_name = "Rey"
+description = "Un Pokémon muy compasivo agraciado con el poder de la curación. Reinó en Galar en tiempos remotos."
+height = 24
+weight = 536
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26"), SubResource("Resource_move27"), SubResource("Resource_move28"), SubResource("Resource_move29"), SubResource("Resource_move30"), SubResource("Resource_move31")])
+teachable_moves = Array[int]([6, 34, 36, 60, 63, 76, 94, 97, 101, 109, 113, 115, 118, 129, 156, 161, 164, 173, 182, 184, 202, 203, 214, 219, 226, 227, 241, 242, 247, 248, 253, 261, 263, 269, 270, 271, 285, 286, 331, 341, 345, 347, 371, 372, 384, 385, 399, 402, 412, 416, 417, 427, 428, 433, 437, 447, 472, 473, 478, 492, 496, 500, 502, 506, 523, 555, 566, 577, 580, 632, 639, 641, 646, 661, 725, 736, 779])
+ability_1 = 267
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 898
+gender_ratio = 7

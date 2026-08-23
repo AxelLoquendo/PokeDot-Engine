@@ -1,0 +1,124 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://tmnhp8gqqdnx"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 22
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 74
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 80
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 572
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 9
+move = 73
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 12
+move = 75
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 15
+move = 77
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 15
+move = 79
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 20
+move = 402
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 25
+move = 36
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 30
+move = 230
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 37
+move = 235
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 44
+move = 388
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 51
+move = 38
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 51
+move = 438
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 58
+move = 76
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 3
+species_name = "Venusaur"
+species_id = 3
+base_hp = 80
+base_attack = 82
+base_defense = 83
+base_speed = 80
+base_sp_attack = 100
+base_sp_defense = 100
+evYield_SpAttack = 2
+evYield_SpDefense = 1
+type_1 = 13
+type_2 = 4
+catch_rate = 45
+exp_yield = 236
+friendship = 70
+growth_rate = 3
+category_name = "Semilla"
+description = "Llena su cuerpo de energía con los rayos solares que captan los anchos pétalos de su flor."
+height = 20
+weight = 1000
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([14, 15, 20, 29, 34, 36, 38, 46, 63, 70, 72, 76, 81, 89, 92, 99, 102, 104, 111, 113, 115, 117, 133, 148, 156, 164, 173, 174, 182, 184, 188, 189, 200, 202, 203, 204, 206, 207, 210, 213, 214, 216, 218, 219, 230, 235, 237, 241, 249, 263, 267, 270, 282, 290, 311, 331, 335, 338, 345, 363, 388, 398, 402, 412, 414, 416, 431, 437, 438, 445, 447, 474, 491, 496, 497, 520, 523, 526, 572, 580, 590, 661, 731, 733, 779, 811])
+egg_moves = Array[int]([80, 92, 174, 275])
+ability_1 = 65
+hidden_ability = 34
+egg_group_1 = 1
+egg_group_2 = 7
+egg_cycles = 20
+hatch_species = 3
+gender_ratio = 5

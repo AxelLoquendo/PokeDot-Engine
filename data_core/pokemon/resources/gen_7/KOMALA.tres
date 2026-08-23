@@ -1,0 +1,99 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bk6kcydnuo0fx"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 111
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 205
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 6
+move = 254
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 6
+move = 255
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 6
+move = 256
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 11
+move = 229
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 281
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 21
+move = 21
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 26
+move = 175
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 31
+move = 389
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 36
+move = 244
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 41
+move = 452
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 46
+move = 37
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 775
+species_name = "Komala"
+species_id = 775
+base_hp = 65
+base_attack = 115
+base_defense = 65
+base_speed = 65
+base_sp_attack = 75
+base_sp_defense = 95
+evYield_Attack = 2
+type_1 = 1
+catch_rate = 45
+exp_yield = 168
+friendship = 70
+growth_rate = 5
+category_name = "Duermevela"
+description = "Pasa la vida entera sumido en un profundo sueño. Toda su actividad parece reflejar los sueños que tiene en ese momento."
+height = 4
+weight = 199
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([14, 34, 36, 38, 63, 67, 89, 92, 104, 157, 162, 164, 168, 173, 174, 179, 182, 203, 204, 207, 213, 214, 216, 218, 232, 237, 240, 241, 244, 263, 276, 280, 282, 283, 317, 339, 347, 369, 371, 374, 387, 402, 416, 421, 428, 441, 442, 490, 496, 511, 512, 523, 526, 583, 590, 661, 779, 789, 811])
+egg_moves = Array[int]([47, 204, 273, 276, 583])
+ability_1 = 213
+egg_group_1 = 5
+egg_cycles = 20
+hatch_species = 775
+gender_ratio = 3

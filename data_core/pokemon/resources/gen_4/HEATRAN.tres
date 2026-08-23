@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bq4b7foudy6kg"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 83
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 6
+move = 232
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 12
+move = 246
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 18
+move = 424
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 24
+move = 184
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 30
+move = 442
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 36
+move = 242
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 42
+move = 436
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 48
+move = 319
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 54
+move = 414
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 60
+move = 257
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 66
+move = 444
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 72
+move = 463
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 485
+species_name = "Heatran"
+species_id = 485
+base_hp = 91
+base_attack = 90
+base_defense = 106
+base_speed = 77
+base_sp_attack = 130
+base_sp_defense = 106
+evYield_SpAttack = 3
+type_1 = 11
+type_2 = 9
+catch_rate = 3
+exp_yield = 270
+friendship = 100
+growth_rate = 5
+category_name = "Domo Lava"
+description = "Habita cuevas volcánicas. Cava con sus pies en forma de cruz para trepar por techos y paredes."
+height = 17
+weight = 4300
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
+teachable_moves = Array[int]([29, 34, 36, 46, 53, 63, 70, 76, 83, 89, 91, 92, 104, 120, 126, 153, 156, 157, 164, 173, 182, 184, 189, 201, 203, 207, 213, 214, 216, 218, 232, 237, 241, 242, 246, 249, 253, 257, 259, 261, 263, 267, 269, 290, 315, 317, 319, 334, 350, 363, 371, 394, 399, 406, 408, 414, 416, 424, 430, 431, 442, 444, 445, 446, 450, 484, 488, 496, 510, 523, 535, 590, 642, 661, 704, 724, 726, 735, 743, 779, 810, 840])
+ability_1 = 18
+hidden_ability = 49
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 10
+hatch_species = 485
+gender_ratio = 3

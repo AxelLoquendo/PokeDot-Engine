@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bbnpmtyd2lu3c"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 44
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 116
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 225
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 7
+move = 510
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 14
+move = 29
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 21
+move = 184
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 28
+move = 337
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 428
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 42
+move = 53
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 49
+move = 400
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 56
+move = 349
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 63
+move = 407
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 70
+move = 19
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 77
+move = 638
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 84
+move = 355
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 91
+move = 38
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 1005
+species_name = "Roaring-Moon"
+species_id = 1398
+base_hp = 105
+base_attack = 139
+base_defense = 71
+base_speed = 119
+base_sp_attack = 55
+base_sp_defense = 101
+evYield_Attack = 3
+type_1 = 17
+type_2 = 18
+catch_rate = 10
+exp_yield = 295
+growth_rate = 5
+category_name = "Paradox"
+description = "It is possible that this is the creature listed as Roaring Moon in an expedition journal that still holds many mysteries."
+height = 20
+weight = 3800
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([19, 34, 36, 38, 46, 53, 56, 63, 83, 89, 91, 126, 156, 157, 164, 182, 184, 200, 203, 214, 232, 241, 242, 257, 263, 269, 280, 282, 304, 332, 337, 349, 366, 369, 399, 403, 404, 406, 416, 421, 422, 424, 428, 434, 442, 444, 512, 525, 542, 555, 638, 661, 704, 712, 727, 736, 779, 841])
+egg_moves = Array[int]([241, 692, 712, 727])
+ability_1 = 281
+egg_group_1 = 15
+egg_cycles = 50
+hatch_species = 1398
+gender_ratio = 7

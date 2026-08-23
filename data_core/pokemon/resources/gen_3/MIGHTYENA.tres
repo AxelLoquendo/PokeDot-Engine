@@ -1,0 +1,138 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://flemwaxk4yfx"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 44
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 168
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 242
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 422
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 423
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 424
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+move = 555
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 13
+move = 43
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 13
+move = 316
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 13
+move = 336
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 16
+move = 46
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 20
+move = 207
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 24
+move = 372
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 28
+move = 184
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 32
+move = 373
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 36
+move = 269
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 44
+move = 281
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 48
+move = 36
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 52
+move = 389
+
+[sub_resource type="Resource" id="Resource_move21"]
+script = ExtResource("2_learn")
+level = 56
+move = 583
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 262
+species_name = "Mightyena"
+species_id = 262
+base_hp = 70
+base_attack = 90
+base_defense = 70
+base_speed = 70
+base_sp_attack = 60
+base_sp_defense = 60
+evYield_Attack = 2
+type_1 = 18
+catch_rate = 127
+exp_yield = 147
+friendship = 70
+category_name = "Mordisco"
+description = "Siempre obedece a los buenos Entrenadores. Está acostumbrado a vivir en jaurías en estado salvaje."
+height = 10
+weight = 370
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
+teachable_moves = Array[int]([29, 34, 36, 38, 46, 63, 68, 70, 91, 92, 102, 104, 156, 162, 164, 168, 173, 180, 182, 184, 189, 203, 204, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 244, 247, 249, 253, 259, 263, 269, 270, 283, 289, 290, 304, 343, 363, 371, 373, 389, 399, 416, 417, 422, 423, 424, 445, 492, 496, 510, 514, 555, 583, 590, 636, 638, 660, 736, 779, 811])
+egg_moves = Array[int]([305, 310, 343])
+ability_1 = 22
+ability_2 = 95
+hidden_ability = 153
+egg_group_1 = 5
+egg_cycles = 15
+hatch_species = 262
+gender_ratio = 3

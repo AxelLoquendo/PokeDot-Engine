@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://3xab8mu3cn0b"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 420
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 525
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 712
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 790
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 809
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 6
+move = 196
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 12
+move = 225
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 18
+move = 116
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 44
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 29
+move = 423
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 35
+move = 337
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 42
+move = 36
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 48
+move = 58
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 55
+move = 242
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 62
+move = 556
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 998
+species_name = "Baxcalibur"
+species_id = 1390
+base_hp = 115
+base_attack = 145
+base_defense = 92
+base_speed = 87
+base_sp_attack = 75
+base_sp_defense = 86
+evYield_Attack = 3
+type_1 = 17
+type_2 = 16
+catch_rate = 10
+exp_yield = 300
+friendship = 50
+growth_rate = 5
+category_name = "Ice Dragon"
+description = "This Pokémon blasts cryogenic air out from its mouth. This air can instantly freeze even liquid-hot lava."
+height = 21
+weight = 2100
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([14, 34, 36, 38, 58, 59, 63, 89, 91, 156, 164, 182, 184, 196, 200, 203, 206, 214, 240, 242, 263, 270, 280, 332, 333, 337, 349, 406, 416, 419, 422, 423, 428, 434, 442, 523, 525, 630, 661, 704, 712, 727, 779, 809, 841])
+ability_1 = 270
+hidden_ability = 115
+egg_group_1 = 10
+egg_group_2 = 14
+egg_cycles = 40
+hatch_species = 1390
+gender_ratio = 3

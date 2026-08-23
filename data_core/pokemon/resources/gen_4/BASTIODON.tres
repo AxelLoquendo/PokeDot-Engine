@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://culyvixdgh2ob"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 182
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 269
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 319
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 335
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 36
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 19
+move = 334
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 24
+move = 207
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 28
+move = 246
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 36
+move = 203
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 43
+move = 368
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 51
+move = 442
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 58
+move = 484
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 411
+species_name = "Bastiodon"
+species_id = 411
+base_hp = 60
+base_attack = 52
+base_defense = 168
+base_speed = 30
+base_sp_attack = 47
+base_sp_defense = 138
+evYield_Defense = 2
+type_1 = 6
+type_2 = 9
+catch_rate = 45
+exp_yield = 173
+friendship = 70
+category_name = "Escudo"
+description = "Se alineaban y creaban una barrera que ningún enemigo podía cruzar. Así protegían a sus crías."
+height = 13
+weight = 1495
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
+teachable_moves = Array[int]([29, 34, 36, 38, 46, 53, 58, 59, 63, 70, 85, 87, 89, 91, 92, 104, 115, 126, 156, 157, 164, 173, 174, 179, 182, 184, 189, 200, 201, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 246, 249, 259, 263, 269, 277, 290, 317, 319, 328, 334, 335, 350, 351, 363, 393, 397, 408, 414, 416, 419, 430, 442, 444, 445, 446, 479, 484, 492, 496, 510, 523, 590, 661, 704, 724, 728, 743, 779, 811, 840])
+egg_moves = Array[int]([29, 68, 90, 103, 116, 469, 470])
+ability_1 = 5
+hidden_ability = 43
+egg_group_1 = 1
+egg_cycles = 30
+hatch_species = 411
+gender_ratio = 5

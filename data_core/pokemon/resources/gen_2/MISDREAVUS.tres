@@ -1,0 +1,114 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://v6r8jkbxsmmx"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 3
+target_species = 429
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 45
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 149
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 5
+move = 180
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 10
+move = 310
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 14
+move = 109
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 19
+move = 212
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 23
+move = 506
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 28
+move = 60
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 32
+move = 220
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 37
+move = 371
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 41
+move = 247
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 46
+move = 195
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 50
+move = 288
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 50
+move = 408
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 200
+species_name = "Misdreavus"
+species_id = 200
+base_hp = 60
+base_attack = 60
+base_defense = 60
+base_speed = 85
+base_sp_attack = 85
+base_sp_defense = 85
+evYield_SpDefense = 1
+type_1 = 8
+catch_rate = 45
+exp_yield = 87
+friendship = 35
+growth_rate = 4
+category_name = "Chirrido"
+description = "Se deleita con el miedo, que absorbe con sus esferas rojas. Por el día, duerme en la oscuridad."
+height = 7
+weight = 10
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
+teachable_moves = Array[int]([29, 38, 60, 63, 85, 86, 87, 92, 94, 101, 102, 104, 109, 111, 129, 138, 148, 156, 164, 168, 171, 173, 174, 180, 182, 184, 192, 196, 203, 204, 207, 213, 214, 215, 216, 218, 220, 237, 240, 241, 244, 247, 248, 253, 259, 261, 263, 269, 270, 271, 277, 285, 286, 289, 290, 304, 313, 332, 345, 347, 351, 363, 371, 373, 389, 399, 408, 412, 416, 417, 433, 445, 447, 451, 466, 472, 473, 477, 478, 492, 496, 497, 500, 502, 506, 566, 577, 590, 605, 735, 737, 779, 809, 845])
+egg_moves = Array[int]([103, 174, 180, 194, 244, 262, 285, 286, 382, 389, 417, 425, 466, 472])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 26
+egg_group_1 = 11
+egg_cycles = 25
+hatch_species = 200
+gender_ratio = 3

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dpo5sy1usk0ep"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 873
+parameter = 1
+condition = 4
+condition_value = 160
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 181
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 522
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 872
+species_name = "Snom"
+species_id = 872
+base_hp = 30
+base_attack = 25
+base_defense = 35
+base_speed = 20
+base_sp_attack = 45
+base_sp_defense = 30
+evYield_SpAttack = 1
+type_1 = 16
+type_2 = 7
+catch_rate = 190
+exp_yield = 37
+friendship = 50
+category_name = "Gusano"
+description = "Teje un hilo gélido que le permite aferrarse a las ramas y simula ser un carámbano mientras duerme."
+height = 3
+weight = 38
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
+teachable_moves = Array[int]([156, 164, 173, 182, 196, 203, 213, 214, 263, 333, 405, 450, 496, 522, 642, 734, 779, 810])
+egg_moves = Array[int]([243, 450, 584])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 19
+hidden_ability = 246
+egg_group_1 = 3
+egg_cycles = 20
+hatch_species = 872
+gender_ratio = 3

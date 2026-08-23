@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://8pdmotw74wr4"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 317
+parameter = 26
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 1
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+level = 5
+move = 281
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 8
+move = 139
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 10
+move = 124
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 12
+move = 133
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 17
+move = 491
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 227
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 25
+move = 92
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 28
+move = 254
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 28
+move = 255
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 256
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 33
+move = 188
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 36
+move = 380
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 41
+move = 562
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 44
+move = 220
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 44
+move = 378
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 49
+move = 441
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 316
+species_name = "Gulpin"
+species_id = 316
+base_hp = 70
+base_attack = 43
+base_defense = 53
+base_speed = 40
+base_sp_attack = 43
+base_sp_defense = 53
+evYield_HP = 1
+type_1 = 4
+catch_rate = 225
+exp_yield = 60
+friendship = 70
+category_name = "Estómago"
+description = "Sus sesos y corazón son diminutos; es casi todo estómago. Sus jugos gástricos disuelven lo que sea."
+height = 4
+weight = 103
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([7, 8, 9, 14, 29, 34, 36, 38, 58, 68, 70, 76, 86, 92, 102, 104, 111, 120, 133, 138, 153, 156, 164, 168, 171, 173, 174, 182, 188, 189, 202, 203, 205, 207, 213, 214, 216, 218, 220, 223, 227, 237, 240, 241, 247, 249, 263, 270, 289, 290, 331, 341, 351, 352, 363, 374, 380, 390, 398, 402, 441, 445, 474, 482, 491, 496, 590, 611, 612, 779])
+egg_moves = Array[int]([123, 138, 151, 174, 189, 194, 220, 441, 499, 599, 693])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 64
+ability_2 = 60
+hidden_ability = 82
+egg_group_1 = 11
+egg_cycles = 20
+hatch_species = 316
+gender_ratio = 3

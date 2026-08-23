@@ -1,0 +1,129 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c7e05skylf1bk"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 40
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 71
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 101
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 145
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 151
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+move = 346
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+move = 378
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 12
+move = 352
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 13
+move = 61
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 16
+move = 240
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 20
+move = 506
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 24
+move = 362
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 27
+move = 466
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 28
+move = 105
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 32
+move = 247
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 36
+move = 250
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 43
+move = 56
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 48
+move = 194
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 54
+move = 323
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 593
+species_name = "Jellicent-Male"
+species_id = 593
+base_hp = 100
+base_attack = 60
+base_defense = 70
+base_speed = 60
+base_sp_attack = 85
+base_sp_defense = 105
+evYield_SpDefense = 2
+type_1 = 12
+type_2 = 8
+catch_rate = 60
+exp_yield = 168
+friendship = 70
+category_name = "Ingrávido"
+description = "Su cuerpo se compone de agua salada. Dicen que ha construido un palacio en el fondo del mar con restos de barcos."
+height = 22
+weight = 1350
+body_color = 8
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
+teachable_moves = Array[int]([20, 56, 57, 58, 59, 63, 92, 94, 104, 127, 138, 148, 156, 164, 173, 180, 182, 188, 196, 202, 203, 207, 213, 214, 216, 218, 219, 220, 237, 240, 244, 247, 250, 258, 261, 263, 269, 271, 277, 286, 290, 291, 330, 351, 352, 362, 399, 412, 416, 433, 482, 496, 503, 506, 590, 605, 737])
+ability_1 = 11
+ability_2 = 130
+hidden_ability = 6
+egg_group_1 = 11
+egg_cycles = 20
+hatch_species = 593
+gender_ratio = 3

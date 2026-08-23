@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://snfytgevhhoa"]
+
+[ext_resource type="Script" uid="uid://dlgxqj4uwj6ht" path="res://scenes/ui_summary_screen/page_1.gd" id="1_frfk3"]
+[ext_resource type="Texture2D" uid="uid://byqndayykvbyp" path="res://graphics/ui_summary_screen/memo/memo_0.png" id="1_xm6iy"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_frfk3"]
+[ext_resource type="Texture2D" uid="uid://x358p6j6258c" path="res://graphics/ui_summary_screen/memo/memo_1.png" id="3_tmm80"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gsklx"]
+font = ExtResource("2_frfk3")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_frfk3"]
+font = ExtResource("2_frfk3")
+font_size = 32
+font_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tmm80"]
+font = ExtResource("2_frfk3")
+font_size = 32
+font_color = Color(0.972549, 0.21960784, 0.1254902, 1)
+shadow_size = 0
+shadow_color = Color(0.972549, 0.21960784, 0.1254902, 0.35686275)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8spkb"]
+font = ExtResource("2_frfk3")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[node name="Page1" type="Node2D" unique_id=1094160894]
+script = ExtResource("1_frfk3")
+
+[node name="Memo" type="Sprite2D" parent="." unique_id=68700124]
+position = Vector2(240, 24)
+texture = ExtResource("1_xm6iy")
+
+[node name="Title" type="Label" parent="Memo" unique_id=1741713979]
+offset_left = -214.0
+offset_top = -12.0
+offset_right = -76.0
+offset_bottom = 16.0
+text = "Trainer Memo"
+label_settings = SubResource("LabelSettings_gsklx")
+
+[node name="Memo_1" type="Sprite2D" parent="." unique_id=1093518232]
+position = Vector2(339, 184)
+texture = ExtResource("3_tmm80")
+
+[node name="Nature" type="Label" parent="Memo_1" unique_id=1329260902]
+offset_left = -116.0
+offset_top = -112.0
+offset_bottom = -84.0
+text = "Naturaleza:"
+label_settings = SubResource("LabelSettings_frfk3")
+
+[node name="Nature_Name" type="Label" parent="Memo_1/Nature" unique_id=735908655]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 258.0
+offset_bottom = 28.0
+text = "Activa."
+label_settings = SubResource("LabelSettings_tmm80")
+
+[node name="Fecha" type="Label" parent="Memo_1" unique_id=654728663]
+offset_left = -116.0
+offset_top = -80.0
+offset_right = 46.0
+offset_bottom = -52.0
+text = "22 Agosto, 2026"
+label_settings = SubResource("LabelSettings_8spkb")
+
+[node name="U_Cap" type="Label" parent="Memo_1" unique_id=323898338]
+offset_left = -116.0
+offset_top = -48.0
+offset_right = 22.0
+offset_bottom = -20.0
+text = "Prado Natal"
+label_settings = SubResource("LabelSettings_tmm80")
+
+[node name="Encontrado" type="Label" parent="Memo_1" unique_id=435769620]
+offset_left = -116.0
+offset_top = -16.0
+offset_right = 86.0
+offset_bottom = 12.0
+text = "Encontrado con Nv. "
+label_settings = SubResource("LabelSettings_8spkb")

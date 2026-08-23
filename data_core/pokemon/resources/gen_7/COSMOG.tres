@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cd3ncgkmp830"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 790
+parameter = 43
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 100
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 150
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 789
+species_name = "Cosmog"
+species_id = 789
+base_hp = 43
+base_attack = 29
+base_defense = 31
+base_speed = 37
+base_sp_attack = 29
+base_sp_defense = 31
+evYield_HP = 1
+type_1 = 15
+catch_rate = 45
+exp_yield = 40
+growth_rate = 5
+category_name = "Nebulosa"
+description = "Su cuerpo se compone de una materia gaseosa inestable. Crece poco a poco al acumular las motas de polvo que flotan en el aire."
+height = 2
+weight = 1
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 109
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 120
+hatch_species = 789
+gender_ratio = 7

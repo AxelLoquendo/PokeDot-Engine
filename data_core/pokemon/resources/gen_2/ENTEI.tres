@@ -1,0 +1,138 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://3w3ewse2vslk"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 23
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 52
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 108
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 221
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 245
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 6
+move = 172
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 12
+move = 44
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 18
+move = 347
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 22
+move = 83
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 46
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 30
+move = 424
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 36
+move = 53
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 36
+move = 184
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 42
+move = 242
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 48
+move = 326
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 54
+move = 436
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 60
+move = 207
+
+[sub_resource type="Resource" id="Resource_move18"]
+script = ExtResource("2_learn")
+level = 66
+move = 241
+
+[sub_resource type="Resource" id="Resource_move19"]
+script = ExtResource("2_learn")
+level = 72
+move = 126
+
+[sub_resource type="Resource" id="Resource_move20"]
+script = ExtResource("2_learn")
+level = 78
+move = 284
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 244
+species_name = "Entei"
+species_id = 244
+base_hp = 115
+base_attack = 115
+base_defense = 85
+base_speed = 100
+base_sp_attack = 90
+base_sp_defense = 75
+evYield_HP = 1
+evYield_Attack = 2
+type_1 = 11
+catch_rate = 3
+exp_yield = 261
+friendship = 35
+growth_rate = 5
+category_name = "Volcán"
+description = "Un Pokémon que corre por la tierra. Dicen que siempre nace uno cuando aparece un nuevo volcán."
+height = 21
+weight = 1980
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
+teachable_moves = Array[int]([15, 29, 34, 36, 38, 46, 53, 63, 70, 76, 83, 91, 92, 97, 102, 104, 115, 126, 129, 148, 156, 164, 173, 174, 179, 182, 184, 189, 197, 201, 203, 207, 214, 216, 218, 231, 237, 240, 241, 242, 244, 247, 249, 257, 261, 263, 270, 290, 311, 315, 347, 363, 394, 416, 424, 431, 442, 444, 488, 496, 510, 511, 523, 555, 590, 636, 661, 743, 779, 811])
+egg_moves = Array[int]([221, 245])
+ability_1 = 46
+hidden_ability = 39
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 80
+hatch_species = 244
+gender_ratio = 7

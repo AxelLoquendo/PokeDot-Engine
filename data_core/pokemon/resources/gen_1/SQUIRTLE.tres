@@ -1,0 +1,123 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c7b0onghh0mk8"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 8
+parameter = 16
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 39
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 3
+move = 55
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 6
+move = 110
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 9
+move = 229
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 44
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 13
+move = 145
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 15
+move = 352
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 18
+move = 182
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 21
+move = 240
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 24
+move = 401
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 27
+move = 504
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 30
+move = 334
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 33
+move = 56
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 36
+move = 130
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 36
+move = 762
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 7
+species_name = "Squirtle"
+species_id = 7
+base_hp = 44
+base_attack = 48
+base_defense = 65
+base_speed = 43
+base_sp_attack = 50
+base_sp_defense = 64
+evYield_Defense = 1
+type_1 = 12
+catch_rate = 45
+exp_yield = 63
+friendship = 70
+growth_rate = 3
+category_name = "Tortuguita"
+description = "Se protege con su caparazón y luego contraataca lanzando agua a presión cuando tiene oportunidad."
+height = 5
+weight = 90
+body_color = 1
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([5, 8, 25, 29, 34, 36, 38, 55, 56, 57, 58, 59, 61, 66, 68, 69, 70, 91, 92, 99, 102, 104, 111, 114, 115, 117, 127, 130, 156, 157, 164, 173, 174, 182, 189, 196, 200, 203, 205, 206, 207, 213, 214, 216, 218, 223, 231, 237, 240, 249, 250, 258, 263, 264, 270, 280, 290, 291, 311, 317, 330, 334, 341, 352, 360, 362, 363, 374, 396, 401, 406, 428, 445, 496, 503, 518, 526, 590, 612, 664, 740, 779, 789, 812])
+egg_moves = Array[int]([54, 93, 114, 175, 193, 243, 252, 281, 287, 300, 323, 330, 362, 392, 396, 406, 453, 719])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 67
+hidden_ability = 44
+egg_group_1 = 1
+egg_group_2 = 2
+egg_cycles = 20
+hatch_species = 7
+gender_ratio = 5

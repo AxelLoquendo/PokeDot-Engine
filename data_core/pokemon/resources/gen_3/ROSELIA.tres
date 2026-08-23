@@ -1,0 +1,131 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bcogvacopnhbq"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 3
+target_species = 407
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 40
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 71
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 74
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 78
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 388
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 5
+move = 72
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 10
+move = 73
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 15
+move = 345
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 390
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 22
+move = 320
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 25
+move = 230
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 30
+move = 202
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 35
+move = 235
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 40
+move = 92
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 45
+move = 572
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 50
+move = 312
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 55
+move = 275
+
+[sub_resource type="Resource" id="Resource_move17"]
+script = ExtResource("2_learn")
+level = 60
+move = 80
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 315
+species_name = "Roselia"
+species_id = 315
+base_hp = 50
+base_attack = 60
+base_defense = 45
+base_speed = 65
+base_sp_attack = 100
+base_sp_defense = 80
+evYield_SpAttack = 2
+type_1 = 13
+type_2 = 4
+catch_rate = 150
+exp_yield = 140
+friendship = 70
+growth_rate = 3
+category_name = "Espina"
+description = "Ataca con sus manos, en las que tiene un tipo de veneno diferente en cada una. Cuanto más aroma, mejor salud tiene."
+height = 3
+weight = 20
+body_color = 3
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
+teachable_moves = Array[int]([14, 15, 34, 38, 42, 76, 92, 102, 104, 129, 148, 156, 164, 171, 173, 182, 188, 189, 191, 202, 203, 207, 210, 213, 214, 216, 218, 235, 237, 240, 241, 244, 247, 253, 263, 267, 290, 311, 331, 343, 345, 363, 388, 390, 398, 402, 412, 437, 438, 445, 447, 474, 496, 590, 605, 731])
+egg_moves = Array[int]([42, 75, 79, 170, 178, 191, 202, 235, 320, 326, 331, 363, 402, 437, 438, 719])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 30
+ability_2 = 38
+hidden_ability = 102
+egg_group_1 = 6
+egg_group_2 = 7
+egg_cycles = 20
+hatch_species = 315
+gender_ratio = 3

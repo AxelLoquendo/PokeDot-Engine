@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://j87nrow62gi1"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 93
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 156
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 363
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+level = 7
+move = 129
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+level = 14
+move = 182
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 21
+move = 60
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 28
+move = 286
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 31
+move = 381
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 35
+move = 326
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 42
+move = 204
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 49
+move = 94
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 56
+move = 260
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 63
+move = 248
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 70
+move = 383
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 77
+move = 361
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 84
+move = 760
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 481
+species_name = "Mesprit"
+species_id = 481
+base_hp = 80
+base_attack = 105
+base_defense = 105
+base_speed = 80
+base_sp_attack = 105
+base_sp_defense = 105
+evYield_Attack = 1
+evYield_SpAttack = 1
+evYield_SpDefense = 1
+type_1 = 15
+catch_rate = 3
+exp_yield = 261
+friendship = 140
+growth_rate = 5
+category_name = "Sensorio"
+description = "Se le conoce como el Ser de la Emoción. Enseñó a los humanos la nobleza del dolor y la alegría."
+height = 3
+weight = 3
+body_color = 9
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
+teachable_moves = Array[int]([7, 8, 9, 29, 38, 58, 59, 60, 63, 85, 86, 87, 92, 94, 104, 109, 113, 115, 118, 129, 138, 148, 156, 161, 164, 173, 182, 189, 201, 203, 204, 207, 214, 216, 218, 219, 220, 226, 227, 231, 237, 240, 241, 244, 247, 248, 263, 270, 271, 272, 277, 278, 282, 285, 286, 290, 324, 347, 351, 352, 363, 369, 374, 409, 412, 416, 417, 427, 428, 433, 446, 447, 451, 472, 473, 477, 478, 496, 500, 502, 512, 577, 583, 590, 605, 612, 636, 725, 779, 845])
+ability_1 = 26
+is_legendary = true
+egg_group_1 = 15
+egg_cycles = 80
+hatch_species = 481
+gender_ratio = 7

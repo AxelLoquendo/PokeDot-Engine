@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bh0uggqs53sag"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 73
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 310
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 421
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 713
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 12
+move = 109
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 16
+move = 261
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 19
+move = 185
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 506
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 74
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 532
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 32
+move = 174
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 36
+move = 566
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 40
+move = 275
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 44
+move = 452
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 48
+move = 194
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 52
+move = 571
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 709
+species_name = "Trevenant"
+species_id = 709
+base_hp = 85
+base_attack = 110
+base_defense = 76
+base_speed = 56
+base_sp_attack = 65
+base_sp_defense = 82
+evYield_Attack = 2
+type_1 = 8
+type_2 = 13
+catch_rate = 60
+exp_yield = 166
+friendship = 70
+category_name = "Árbol Viejo"
+description = "Es amable con los seres que habitan los bosques, pero se cuenta que devora a quienes los mancillan."
+height = 15
+weight = 710
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([15, 36, 63, 70, 76, 89, 91, 92, 94, 101, 104, 109, 114, 115, 138, 156, 157, 164, 168, 173, 174, 180, 182, 184, 202, 203, 207, 213, 214, 216, 218, 219, 220, 237, 240, 241, 244, 247, 249, 261, 263, 267, 271, 272, 277, 282, 285, 286, 290, 335, 345, 347, 388, 398, 399, 402, 404, 409, 411, 412, 416, 421, 433, 437, 447, 468, 477, 492, 496, 502, 506, 523, 566, 580, 590, 599, 612, 656, 731, 734, 735, 736, 737, 779, 811, 845])
+egg_moves = Array[int]([50, 389, 502])
+ability_1 = 30
+ability_2 = 119
+hidden_ability = 139
+egg_group_1 = 7
+egg_group_2 = 11
+egg_cycles = 20
+hatch_species = 709
+gender_ratio = 3

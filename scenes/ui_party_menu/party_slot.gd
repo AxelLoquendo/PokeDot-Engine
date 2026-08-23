@@ -219,7 +219,7 @@ func _actualizar_nivel() -> void:
 
 
 	label_level.text = (
-		"Lv.%d" % pokemon.level
+		"Nv. %d" % pokemon.level
 	)
 
 

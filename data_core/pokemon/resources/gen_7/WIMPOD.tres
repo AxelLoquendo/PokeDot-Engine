@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cx3e32ybpwvl5"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 768
+parameter = 30
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 28
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 111
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 522
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 767
+species_name = "Wimpod"
+species_id = 767
+base_hp = 25
+base_attack = 35
+base_defense = 40
+base_speed = 80
+base_sp_attack = 20
+base_sp_defense = 30
+evYield_Speed = 1
+type_1 = 7
+type_2 = 12
+catch_rate = 90
+exp_yield = 46
+friendship = 70
+category_name = "Huidizo"
+description = "Cuando se asusta, huye despavorido moviendo rápidamente sus múltiples patas. Deja el suelo limpio y pulido allí por donde pasa."
+height = 5
+weight = 120
+body_color = 7
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2")])
+teachable_moves = Array[int]([57, 92, 103, 104, 127, 129, 141, 156, 164, 173, 182, 191, 203, 207, 213, 214, 216, 218, 237, 240, 258, 263, 269, 341, 372, 405, 496, 503, 590, 734])
+egg_moves = Array[int]([106, 191, 205, 232, 453, 469])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+ability_1 = 193
+egg_group_1 = 3
+egg_group_2 = 9
+egg_cycles = 20
+hatch_species = 767
+gender_ratio = 3

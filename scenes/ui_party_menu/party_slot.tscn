@@ -105,6 +105,7 @@ offset_right = 218.0
 offset_bottom = 74.0
 text = "0000/0000"
 label_settings = SubResource("LabelSettings_klx4e")
+horizontal_alignment = 2
 
 [node name="HpBar" type="ColorRect" parent="." unique_id=696167803]
 layout_mode = 0

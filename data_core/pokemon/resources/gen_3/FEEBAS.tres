@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cw1x54u3pfirh"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("1_evo")
+method = 1
+target_species = 350
+parameter = 1
+
+[sub_resource type="Resource" id="Resource_evo1"]
+script = ExtResource("1_evo")
+method = 2
+target_species = 350
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 150
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+level = 15
+move = 33
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+level = 25
+move = 175
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 349
+species_name = "Feebas"
+species_id = 349
+base_hp = 20
+base_attack = 15
+base_defense = 20
+base_speed = 80
+base_sp_attack = 10
+base_sp_defense = 55
+evYield_Speed = 1
+type_1 = 12
+catch_rate = 255
+exp_yield = 40
+friendship = 70
+category_name = "Pez"
+description = "Come de todo, por lo que puede vivir en aguas contaminadas. Nadie le presta atención."
+height = 6
+weight = 74
+body_color = 5
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2")])
+teachable_moves = Array[int]([38, 57, 58, 59, 92, 102, 104, 109, 113, 114, 127, 129, 156, 164, 173, 182, 196, 203, 207, 213, 214, 216, 218, 231, 237, 240, 250, 258, 263, 290, 291, 330, 341, 352, 362, 363, 406, 445, 496, 503, 590, 727, 779, 812])
+egg_moves = Array[int]([54, 95, 109, 113, 114, 225, 231, 243, 300, 321, 362, 406, 445])
+evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0"), SubResource("Resource_evo1")])
+ability_1 = 33
+ability_2 = 12
+hidden_ability = 91
+egg_group_1 = 2
+egg_group_2 = 14
+egg_cycles = 20
+hatch_species = 349
+gender_ratio = 3

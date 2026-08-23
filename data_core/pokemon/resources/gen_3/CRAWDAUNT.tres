@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b72epogivcele"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 43
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 55
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 106
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 129
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 145
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+move = 269
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 12
+move = 61
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 16
+move = 282
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 20
+move = 458
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 24
+move = 182
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 28
+move = 400
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 34
+move = 534
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 40
+move = 14
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 46
+move = 242
+
+[sub_resource type="Resource" id="Resource_move14"]
+script = ExtResource("2_learn")
+level = 52
+move = 152
+
+[sub_resource type="Resource" id="Resource_move15"]
+script = ExtResource("2_learn")
+level = 58
+move = 283
+
+[sub_resource type="Resource" id="Resource_move16"]
+script = ExtResource("2_learn")
+level = 64
+move = 12
+
+[resource]
+script = ExtResource("3_struct")
+national_dex_number = 342
+species_name = "Crawdaunt"
+species_id = 342
+base_hp = 63
+base_attack = 120
+base_defense = 85
+base_speed = 55
+base_sp_attack = 90
+base_sp_defense = 55
+evYield_Attack = 2
+type_1 = 12
+type_2 = 18
+catch_rate = 155
+exp_yield = 164
+friendship = 70
+category_name = "Granuja"
+description = "Este malandrín usa sus pinzas para atosigar y expulsar a los otros Pokémon que viven en su estanque."
+height = 11
+weight = 328
+level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
+teachable_moves = Array[int]([14, 15, 34, 36, 38, 56, 57, 58, 59, 63, 68, 70, 91, 92, 102, 104, 127, 129, 156, 157, 164, 168, 173, 180, 182, 184, 188, 189, 196, 203, 206, 207, 210, 213, 214, 216, 218, 232, 237, 240, 242, 246, 249, 250, 258, 263, 267, 269, 276, 279, 280, 282, 283, 290, 291, 317, 330, 332, 334, 341, 349, 352, 363, 370, 371, 374, 399, 404, 416, 417, 419, 445, 468, 482, 496, 503, 514, 534, 555, 590, 664, 736, 779, 812, 840])
+egg_moves = Array[int]([38, 163, 232, 246, 415, 453])
+ability_1 = 52
+ability_2 = 75
+hidden_ability = 91
+egg_group_1 = 2
+egg_group_2 = 9
+egg_cycles = 15
+hatch_species = 342
+gender_ratio = 3

@@ -6,6 +6,7 @@ class_name PokemonDataStruct
 # Species
 @export_group("Species")
 @export var national_dex_number: int
+@export var regional_dex_number: int
 @export var species_name: String
 @export var species_id: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
 
@@ -17,6 +18,13 @@ class_name PokemonDataStruct
 @export var base_speed: int
 @export var base_sp_attack: int
 @export var base_sp_defense: int
+
+@export var evYield_HP: int
+@export var evYield_Attack: int
+@export var evYield_Defense: int
+@export var evYield_Speed: int
+@export var evYield_SpAttack: int
+@export var evYield_SpDefense: int
 
 # Types
 @export_group("Types")
@@ -46,6 +54,13 @@ class_name PokemonDataStruct
 @export var back_sprite_shiny: Texture2D
 @export var icon_sprite: Texture2D
 @export var overworld_scene: Texture2D
+
+@export var front_sprite_female: Texture2D
+@export var front_sprite_shiny_female: Texture2D
+@export var back_sprite_female: Texture2D
+@export var back_sprite_shiny_female: Texture2D
+@export var icon_sprite_female: Texture2D
+@export var overworld_scene_female: Texture2D
 
 # Learnsets
 @export_group("Learnsets")
@@ -83,8 +98,8 @@ class_name PokemonDataStruct
 
 # Battle Position
 @export_group("Battle Position")
-@export var front_sprite_offset: Vector2
-@export var back_sprite_offset: Vector2
+@export var front_sprite_offset: Vector2 = Vector2.ZERO
+@export var back_sprite_offset: Vector2 = Vector2.ZERO
 
 # Gender
 @export_group("Gender")
@@ -93,6 +108,15 @@ class_name PokemonDataStruct
 # cry
 @export_group("cry")
 @export var cry: AudioStream
+
+## 16 = estilo más fino; 32 = pasos más grandes (elige según tu UI de combate)
+const BATTLE_OFFSET_SCALE: float = 32.0
+
+func get_front_sprite_offset_px() -> Vector2:
+	return front_sprite_offset * BATTLE_OFFSET_SCALE
+
+func get_back_sprite_offset_px() -> Vector2:
+	return back_sprite_offset * BATTLE_OFFSET_SCALE
 
 func _validate() -> Array[String]:
 	var errors: Array[String] = []
@@ -110,6 +134,8 @@ func _validate() -> Array[String]:
 	if national_dex_number < 1:
 		errors.append("national_dex_number debe ser mayor o igual a 1.")
 
+	if regional_dex_number < 0:
+		errors.append("regional_dex_number no puede ser negativo.")
 
 	# ─────────────────────────────
 	# Estadísticas base
