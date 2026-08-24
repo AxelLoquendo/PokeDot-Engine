@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://fo5j1w3tu6xm"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d1hb52f3j6j7s"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -75,7 +75,7 @@ move = 38
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 263
-species_name = "Zigzagoon Galar"
+species_name = "Zigzagoon"
 species_id = 987
 base_hp = 38
 base_attack = 30

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dlucjajwbxvad"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://wf4siedryljv"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -82,7 +82,7 @@ move = 90
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 323
-species_name = "Camerupt Mega"
+species_name = "Camerupt"
 species_id = 937
 base_hp = 70
 base_attack = 120

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d4ahhtkubvks2"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://db88dexklujyy"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -82,7 +82,7 @@ move = 405
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 413
-species_name = "Wormadam Sandy"
+species_name = "Wormadam"
 species_id = 1059
 base_hp = 60
 base_attack = 79

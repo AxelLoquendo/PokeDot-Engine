@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bcr858n2s2xr4"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b8oqlsvn3ybth"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -94,7 +94,7 @@ move = 219
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 719
-species_name = "Diancie Mega"
+species_name = "Diancie"
 species_id = 952
 base_hp = 50
 base_attack = 160

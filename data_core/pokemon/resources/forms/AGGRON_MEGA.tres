@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b8tjqc6jqjwsy"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bb7t7wph2ykdi"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -95,7 +95,7 @@ move = 368
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 306
-species_name = "Aggron Mega"
+species_name = "Aggron"
 species_id = 933
 base_hp = 70
 base_attack = 140

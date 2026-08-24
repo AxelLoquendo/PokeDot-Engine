@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://caiplmgmv4xip"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://kab4llsy083o"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -90,7 +90,7 @@ move = 759
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 905
-species_name = "Enamorus Therian"
+species_name = "Enamorus"
 species_id = 1103
 base_hp = 74
 base_attack = 115

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dlfnqjhxh0j1y"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cj0yq1hrjlxbj"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -80,7 +80,7 @@ move = 56
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 9
-species_name = "Blastoise Mega"
+species_name = "Blastoise"
 species_id = 909
 base_hp = 79
 base_attack = 103

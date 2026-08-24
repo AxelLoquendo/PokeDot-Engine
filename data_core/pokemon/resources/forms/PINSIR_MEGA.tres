@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://78n7xyvwad67"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bv8gcm5m5jdcg"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -81,7 +81,7 @@ move = 12
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 127
-species_name = "Pinsir Mega"
+species_name = "Pinsir"
 species_id = 916
 base_hp = 65
 base_attack = 155

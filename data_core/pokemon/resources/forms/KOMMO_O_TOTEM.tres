@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bp0aeh2n83xc1"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://brmk88itwsxku"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -94,7 +94,7 @@ move = 370
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 784
-species_name = "Kommo O Totem"
+species_name = "Kommo-o"
 species_id = 1482
 base_hp = 75
 base_attack = 110

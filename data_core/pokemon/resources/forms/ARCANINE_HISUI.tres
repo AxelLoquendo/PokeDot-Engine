@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d1ets7deftln6"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bak6ia8vnxdxe"]
 
 [ext_resource type="Texture2D" uid="uid://b6ow0lvbt1sqe" path="res://graphics/pokemon/back/ARCANINE_HISUI.png" id="1_6dide"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
@@ -91,7 +91,7 @@ move = 761
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 59
-species_name = "Arcanine Hisui"
+species_name = "Arcanine"
 species_id = 994
 base_hp = 95
 base_attack = 115

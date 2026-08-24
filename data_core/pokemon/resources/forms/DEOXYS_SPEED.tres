@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://btmsmo71168bs"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b8e2acd3joi6g"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -85,7 +85,7 @@ move = 245
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 386
-species_name = "Deoxys Speed"
+species_name = "Deoxys"
 species_id = 1056
 base_hp = 50
 base_attack = 95

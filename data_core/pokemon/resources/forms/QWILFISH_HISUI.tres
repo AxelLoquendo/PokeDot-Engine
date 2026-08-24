@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dx4vrnun0ajvv"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://blc00ske8jfnp"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -90,7 +90,7 @@ move = 194
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 211
-species_name = "Qwilfish Hisui"
+species_name = "Qwilfish"
 species_id = 998
 base_hp = 65
 base_attack = 95

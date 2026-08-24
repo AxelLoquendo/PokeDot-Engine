@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b18mdrwqn5udv"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bn88wfhk7a3pa"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -80,7 +80,7 @@ move = 394
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 58
-species_name = "Growlithe Hisui"
+species_name = "Growlithe"
 species_id = 993
 base_hp = 60
 base_attack = 75

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://qn7ppoduuhm0"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://0kqg4prrpolr"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -105,7 +105,7 @@ move = 59
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 27
-species_name = "Sandshrew Alola"
+species_name = "Sandshrew"
 species_id = 959
 base_hp = 50
 base_attack = 75

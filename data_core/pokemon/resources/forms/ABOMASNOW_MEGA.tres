@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ds5sebsw011hv"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dmlkm1mqms5q8"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -68,7 +68,7 @@ move = 329
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 460
-species_name = "Abomasnow Mega"
+species_name = "Abomasnow"
 species_id = 949
 base_hp = 90
 base_attack = 132

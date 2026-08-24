@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c5epab6yw51ki"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b4h5sl5aqed1i"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -79,7 +79,7 @@ move = 271
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 65
-species_name = "Alakazam Mega"
+species_name = "Alakazam"
 species_id = 912
 base_hp = 55
 base_attack = 50

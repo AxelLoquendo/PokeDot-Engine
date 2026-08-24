@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b5gpjps7b4koh"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://wrbo4gp16byp"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -88,7 +88,7 @@ move = 517
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 6
-species_name = "Charizard Mega X"
+species_name = "Charizard"
 species_id = 907
 base_hp = 78
 base_attack = 130

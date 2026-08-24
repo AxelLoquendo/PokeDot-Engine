@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c1unn2w23m12q"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ccoekwtbl6ll0"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -82,7 +82,7 @@ move = 220
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 778
-species_name = "Mimikyu Totem Disguised"
+species_name = "Mimikyu"
 species_id = 1481
 base_hp = 55
 base_attack = 90

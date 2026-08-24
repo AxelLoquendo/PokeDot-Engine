@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ci233qwvumkr"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cak0i6j0rexst"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -70,7 +70,7 @@ move = 243
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 222
-species_name = "Corsola Galar"
+species_name = "Corsola"
 species_id = 986
 base_hp = 60
 base_attack = 55

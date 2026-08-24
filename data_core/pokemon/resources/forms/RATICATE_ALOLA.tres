@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://np2aq1g6j2si"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bekuvswwmltk6"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -77,7 +77,7 @@ move = 283
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 20
-species_name = "Raticate Alola"
+species_name = "Raticate"
 species_id = 957
 base_hp = 75
 base_attack = 71

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://jgkovfq6h4ag"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bhwmtprbj7u3"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -104,7 +104,7 @@ move = 505
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 199
-species_name = "Slowking Galar"
+species_name = "Slowking"
 species_id = 985
 base_hp = 95
 base_attack = 65

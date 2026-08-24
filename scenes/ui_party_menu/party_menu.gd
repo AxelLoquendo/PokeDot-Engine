@@ -80,8 +80,8 @@ func _ready() -> void:
 	)
 
 	pokemon_prueba3 = PokemonInstance.create(
-		Species.SpeciesID.SPECIES_ABRA,
-		10
+		Species.SpeciesID.SPECIES_ABSOL_MEGA,
+		100
 	)
 
 	var party_prueba: Array[PokemonInstance] = [

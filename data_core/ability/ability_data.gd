@@ -13,7 +13,7 @@ class_name AbilityData
 @export var is_hidden_ability: bool = false
 
 @export_group("AI")
-@export_range(0, 10)
+@export_range(-100, 100)
 var ai_rating: int = 0
 
 ## ─── Activación ─────────────────────────────────────────
@@ -66,10 +66,8 @@ func _validate() -> Array[String]:
 	if generation < 1:
 		errors.append("generation debe ser mayor o igual a 1")
 
-	if _has_any_trigger() and behavior == null:
-		errors.append(
-			"Tiene triggers activados pero 'behavior' es null"
-		)
+	# if _has_any_trigger() and behavior == null:
+#     errors.append("Tiene triggers activados pero 'behavior' es null")
 
 	return errors
 

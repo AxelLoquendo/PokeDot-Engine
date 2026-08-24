@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://rogdh1w52f5l"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://3hqy3j2x173b"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -94,7 +94,7 @@ move = 580
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 101
-species_name = "Electrode Hisui"
+species_name = "Electrode"
 species_id = 996
 base_hp = 60
 base_attack = 50

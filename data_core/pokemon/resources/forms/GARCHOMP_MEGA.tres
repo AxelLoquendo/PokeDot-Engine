@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bhs7w7yoqvf0c"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://vnnrdobajn68"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -67,7 +67,7 @@ move = 407
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 445
-species_name = "Garchomp Mega"
+species_name = "Garchomp"
 species_id = 947
 base_hp = 108
 base_attack = 170

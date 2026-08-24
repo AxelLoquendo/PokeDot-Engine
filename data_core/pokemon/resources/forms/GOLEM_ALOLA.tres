@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cfwhgwtve1jlp"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cuvkec320vxi6"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -87,7 +87,7 @@ move = 444
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 76
-species_name = "Golem Alola"
+species_name = "Golem"
 species_id = 969
 base_hp = 80
 base_attack = 120

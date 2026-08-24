@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AbilityData" format=3]
+
+[ext_resource type="Script" path="res://data_core/ability/ability_data.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 291
+name_key = "Rumia"
+description_key = "Consume una baya ya usada."
+generation = 9
+is_hidden_ability = false
+ai_rating = 4
+triggers_on_enter = false
+triggers_on_switch_in = false
+triggers_on_hit = false
+triggers_on_hit_by = false
+triggers_on_faint = false
+triggers_on_stat_change = false
+triggers_on_status = false
+triggers_on_weather = false
+triggers_on_terrain = false
+weather_override = 0
+terrain_override = ""
+stat_modifiers = {}
+priority_modifier = 0

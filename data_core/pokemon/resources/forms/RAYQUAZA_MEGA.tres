@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cv7xcy7sn3b8k"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c3dr0pcjcrnic"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -71,7 +71,7 @@ move = 63
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 384
-species_name = "Rayquaza Mega"
+species_name = "Rayquaza"
 species_id = 953
 base_hp = 105
 base_attack = 180

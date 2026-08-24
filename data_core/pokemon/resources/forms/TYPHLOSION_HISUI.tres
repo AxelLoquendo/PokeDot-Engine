@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ef055dwnhbwk"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b7f76un4h1k4k"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -89,7 +89,7 @@ move = 315
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 157
-species_name = "Typhlosion Hisui"
+species_name = "Typhlosion"
 species_id = 997
 base_hp = 73
 base_attack = 84

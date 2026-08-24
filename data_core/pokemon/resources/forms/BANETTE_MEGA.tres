@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://yg54slo53sby"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://d3kts4ttyr83b"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -83,7 +83,7 @@ move = 271
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 354
-species_name = "Banette Mega"
+species_name = "Banette"
 species_id = 939
 base_hp = 64
 base_attack = 165

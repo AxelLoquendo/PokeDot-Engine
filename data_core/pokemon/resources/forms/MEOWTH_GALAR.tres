@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dbate882qh506"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://qds85sv0h58u"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -70,7 +70,7 @@ move = 37
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 52
-species_name = "Meowth Galar"
+species_name = "Meowth"
 species_id = 974
 base_hp = 50
 base_attack = 65

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://vks7s50bkjfa"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://hrkiy0q56ow7"]
 
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
@@ -120,7 +120,7 @@ move = 602
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 849
-species_name = "Toxtricity Low Key"
+species_name = "Toxtricity"
 species_id = 1213
 base_hp = 75
 base_attack = 98
