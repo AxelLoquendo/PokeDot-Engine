@@ -23,6 +23,7 @@ var validator: SpeciesValidator
 var selected_species: PokemonDataStruct = null
 var original_species_data: Dictionary = {}
 var all_species: Array[PokemonDataStruct] = []
+var _is_ready: bool = false
 
 func _init() -> void:
 	name = "🔬 Species Editor"
@@ -32,7 +33,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	_setup_ui()
-	_load_species()
+	_is_ready = true
+	call_deferred("_load_species")
 
 func _setup_ui() -> void:
 	# Asegurarse de que el Control se redimensiona correctamente
@@ -172,11 +174,17 @@ func _setup_ui() -> void:
 	main_split.split_offset = 200
 
 func _load_species() -> void:
+	if not _is_ready or species_list == null:
+		return
+
 	all_species = repository.load_all_species()
 	_refresh_list()
 	_show_status("Loaded %d species" % all_species.size())
 
 func _refresh_list() -> void:
+	if species_list == null:
+		return
+
 	species_list.clear()
 
 	for species in all_species:
@@ -187,6 +195,9 @@ func _refresh_list() -> void:
 		species_list.add_item(item_text)
 
 func _on_search_changed(text: String) -> void:
+	if species_list == null:
+		return
+
 	species_list.clear()
 
 	var search_lower = text.to_lower()
@@ -287,13 +298,17 @@ func _on_validate_pressed() -> void:
 		_show_status("✗ %d errors (check console)" % errors.size(), 3.0)
 
 func _show_status(message: String, duration: float = 0.0) -> void:
+	if status_label == null:
+		return
+
 	status_label.text = message
 
 	if duration > 0:
 		status_timer.start(duration)
 
 func _on_status_timer_timeout() -> void:
-	status_label.text = "Ready"
+	if status_label:
+		status_label.text = "Ready"
 
 func _serialize_species(species: PokemonDataStruct) -> Dictionary:
 	var data = {}
