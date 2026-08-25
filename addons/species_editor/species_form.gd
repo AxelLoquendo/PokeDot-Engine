@@ -7,6 +7,7 @@ const TYPE_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/type
 const ABILITY_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/ability_selector.gd")
 const LEARNSET_TABLE_SCRIPT := preload("res://addons/species_editor/controls/learnset_table.gd")
 const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/evolution_table.gd")
+const GRAPHICS_EDITOR_SCRIPT := preload("res://addons/species_editor/controls/graphics_editor.gd")
 
 signal form_changed
 
@@ -19,6 +20,7 @@ var type_selectors: Dictionary = {}
 var ability_selectors: Dictionary = {}
 var learnset_table: LearnsetTable
 var evolution_table: EvolutionTable
+var graphics_editor: SpeciesGraphicsEditor
 
 func set_catalog(catalog: SpeciesEditorCatalog, species: Array[PokemonDataStruct]) -> void:
 	editor_catalog = catalog
@@ -82,6 +84,8 @@ func apply_to_species(species: PokemonDataStruct) -> bool:
 		species.level_up_moves = learnset_table.get_moves()
 	if evolution_table:
 		species.evolutions = evolution_table.get_evolutions()
+	if graphics_editor:
+		graphics_editor.apply_to_species(species)
 
 	return true
 
@@ -121,6 +125,11 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	_add_field("height", "Altura", str(species.height), true)
 	_add_field("weight", "Peso", str(species.weight), true)
 
+	graphics_editor = GRAPHICS_EDITOR_SCRIPT.new()
+	graphics_editor.set_species(species)
+	graphics_editor.changed.connect(_on_field_changed)
+	add_child(graphics_editor)
+
 	_add_group_label("📚 Movimientos por nivel")
 	learnset_table = LEARNSET_TABLE_SCRIPT.new()
 	if editor_catalog:
@@ -146,6 +155,7 @@ func _clear_form() -> void:
 	ability_selectors.clear()
 	learnset_table = null
 	evolution_table = null
+	graphics_editor = null
 
 func _add_group_label(text: String) -> void:
 	var label := Label.new()

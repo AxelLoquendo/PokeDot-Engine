@@ -1,15 +1,15 @@
 mapa de ruta:
-                            POKÉDOT ENGINE
-                                   │
-              ┌───────────────┴───────────────┐
-              │                                        │
-        SISTEMA POKÉMON                        SISTEMA DE BATALLA
-              │                                        │
-       Datos / criatura                         Battle Core
-       Progresión                       	Turnos
-       Crianza                          	Acciones
-       Evolución                        	Daño
-       etc.                             	Estados
+							POKÉDOT ENGINE
+								   │
+			  ┌───────────────┴───────────────┐
+			  │                                        │
+		SISTEMA POKÉMON                        SISTEMA DE BATALLA
+			  │                                        │
+	   Datos / criatura                         Battle Core
+	   Progresión                       	Turnos
+	   Crianza                          	Acciones
+	   Evolución                        	Daño
+	   etc.                             	Estados
 
 
 ## Roadmap — Sistema Pokémon
@@ -148,15 +148,15 @@ Aquí empezamos a convertir los datos de especie en estadísticas reales.
 
 ```text
 Base Stats
-    +
+	+
 IV
-    +
+	+
 EV
-    +
+	+
 Level
-    +
+	+
 Nature
-    ↓
+	↓
 Final Stats
 ```
 
@@ -287,9 +287,9 @@ Faltaría distinguir:
 
 ```text
 AbilityData
-     ↓
+	 ↓
 efecto
-     ↓
+	 ↓
 evento que la activa
 ```
 
@@ -334,11 +334,11 @@ Y ya comprobamos:
 
 ```text
 Bulbasaur Lv15
-      ↓
+	  ↓
 Lv16
-      ↓
+	  ↓
 EvolutionSystem
-      ↓
+	  ↓
 Ivysaur
 ```
 
@@ -473,19 +473,19 @@ Algo parecido a:
 
 ```text
 BATTLE_START
-     ↓
+	 ↓
 INTRO
-     ↓
+	 ↓
 CHOOSE_ACTION
-     ↓
+	 ↓
 RESOLVE_ACTION
-     ↓
+	 ↓
 APPLY_DAMAGE
-     ↓
+	 ↓
 CHECK_FAINT
-     ↓
+	 ↓
 CHECK_END
-     ↓
+	 ↓
 NEXT_TURN
 ```
 
@@ -699,9 +699,9 @@ Aquí finalmente conectamos:
 
 ```text
 AbilityData
-       ↓
+	   ↓
 Battle Events
-       ↓
+	   ↓
 Ability effects
 ```
 
@@ -725,7 +725,7 @@ Igual:
 
 ```text
 HeldItem
-    ↓
+	↓
 BattleItemEffect
 ```
 
@@ -748,17 +748,17 @@ Sistema de:
 Aquí finalmente conectamos ambos grandes sistemas:
 
 ```text
-             BATTLE
-                │
-                ▼
-          BattleResult
-                │
-                ▼
-        ExperienceSystem
-                │
-        ┌───────┴───────┐
-        ▼               ▼
-      Level Up       Evolution
+			 BATTLE
+				│
+				▼
+		  BattleResult
+				│
+				▼
+		ExperienceSystem
+				│
+		┌───────┴───────┐
+		▼               ▼
+	  Level Up       Evolution
 ```
 
 Esta conexión es importante porque **batalla no debería calcular directamente EXP ni evolucionar Pokémon**.
@@ -826,38 +826,38 @@ Es importante separar el motor de batalla de su presentación.
 Al final quiero que PokeDot pueda tener algo conceptualmente así:
 
 ```text
-                         POKÉDOT
-                            │
-          ┌─────────────────┴─────────────────┐
-          │                                   │
-       POKÉMON                             BATALLA
-          │                                   │
-          ├─ Species                          ├─ Battle
-          ├─ Instance                         ├─ Battler
-          ├─ Stats                            ├─ Actions
-          ├─ EXP                              ├─ Turn Order
-          ├─ Moves                            ├─ Damage
-          ├─ Abilities                        ├─ Accuracy
-          ├─ Items                            ├─ Types
-          ├─ Evolution                        ├─ Status
-          ├─ Breeding                         ├─ Weather
-          ├─ Party                            ├─ Abilities
-          └─ Storage                          └─ AI
-                  │                              │
-                  └───────────┬──────────────────┘
-                              │
-                         BattleResult
-                              │
-                    ┌─────────┴─────────┐
-                    ▼                   ▼
-                   EXP              Captura
-                    │
-                    ▼
-                Level Up
-                    │
-             ┌──────┴──────┐
-             ▼             ▼
-        Learn Move     Evolution
+						 POKÉDOT
+							│
+		  ┌─────────────────┴─────────────────┐
+		  │                                   │
+	   POKÉMON                             BATALLA
+		  │                                   │
+		  ├─ Species                          ├─ Battle
+		  ├─ Instance                         ├─ Battler
+		  ├─ Stats                            ├─ Actions
+		  ├─ EXP                              ├─ Turn Order
+		  ├─ Moves                            ├─ Damage
+		  ├─ Abilities                        ├─ Accuracy
+		  ├─ Items                            ├─ Types
+		  ├─ Evolution                        ├─ Status
+		  ├─ Breeding                         ├─ Weather
+		  ├─ Party                            ├─ Abilities
+		  └─ Storage                          └─ AI
+				  │                              │
+				  └───────────┬──────────────────┘
+							  │
+						 BattleResult
+							  │
+					┌─────────┴─────────┐
+					▼                   ▼
+				   EXP              Captura
+					│
+					▼
+				Level Up
+					│
+			 ┌──────┴──────┐
+			 ▼             ▼
+		Learn Move     Evolution
 ```
 
 ## 🧭 Orden de trabajo que propondría

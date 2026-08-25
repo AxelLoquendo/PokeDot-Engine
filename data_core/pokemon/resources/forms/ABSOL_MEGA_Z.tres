@@ -1,23 +1,18 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://gajfsoysmkmh"]
 
-[ext_resource type="Script" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
-[ext_resource type="Script" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-
-[ext_resource type="Script" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_friendship.gd" id="ext_cond_friend"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_gender.gd" id="ext_cond_gender"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_knows_move.gd" id="ext_cond_move"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_party_species.gd" id="ext_cond_party"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_stat_relation.gd" id="ext_cond_stat"]
-[ext_resource type="Script" path="res://data_core/pokemon/conditions/condition_weather.gd" id="ext_cond_weather"]
+[ext_resource type="Texture2D" uid="uid://cu8kap8jgnbmu" path="res://graphics/pokemon/back/MEGA_ABSOL_Z.png" id="1_mu1b1"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Texture2D" uid="uid://bawjeq3nk4eln" path="res://graphics/pokemon/back_shiny/MEGA_ABSOL_Z.png" id="2_te7bs"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="AudioStream" uid="uid://nrt2gsn6d5uy" path="res://sfx/se/cries/ABSOL_1.ogg" id="3_x27hy"]
+[ext_resource type="Texture2D" uid="uid://qe0tdbfwtvd2" path="res://graphics/pokemon/front/MEGA_ABSOL_Z.png" id="5_yxiji"]
+[ext_resource type="Texture2D" uid="uid://cdvxkwdyrtjel" path="res://graphics/pokemon/front_shiny/MEGA_ABSOL_Z.png" id="6_o8krj"]
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 359
-regional_dex_number = 0
+species_name = "Absol"
 species_id = 1556
 base_hp = 65
 base_attack = 154
@@ -25,38 +20,22 @@ base_defense = 60
 base_speed = 151
 base_sp_attack = 75
 base_sp_defense = 60
-evYield_HP = 0
-evYield_Attack = 0
-evYield_Defense = 0
-evYield_Speed = 0
-evYield_SpAttack = 0
-evYield_SpDefense = 0
 type_1 = 18
 type_2 = 8
 catch_rate = 30
-exp_yield = 0
 friendship = 35
 growth_rate = 3
+category_name = "Catástrofe"
+description = "Presiente desastres inminentes y se aparece a la gente para advertir del peligro."
 height = 12
 weight = 490
 body_color = 8
+front_sprite = ExtResource("5_yxiji")
+front_sprite_shiny = ExtResource("6_o8krj")
+back_sprite = ExtResource("1_mu1b1")
+back_sprite_shiny = ExtResource("2_te7bs")
 egg_group_1 = 5
-egg_group_2 = 0
 egg_cycles = 25
 hatch_species = 359
 gender_ratio = 3
-species_name = "Absol"
-category_name = "Catástrofe"
-description = "Presiente desastres inminentes y se aparece a la gente para advertir del peligro."
-front_sprite_offset = Vector2(0, 0)
-back_sprite_offset = Vector2(0, 0)
-is_legendary = false
-is_mythical = false
-is_ultra_beast = false
-ability_1 = 0
-ability_2 = 0
-hidden_ability = 0
-level_up_moves = Array[ExtResource("2_learn")]([])
-teachable_moves = Array[int]([])
-egg_moves = Array[int]([])
-evolutions = Array[Resource]([])
+cry = ExtResource("3_x27hy")

@@ -5,8 +5,11 @@ class_name SpeciesDock
 
 const REPOSITORY_SCRIPT := preload("res://addons/species_editor/species_repository.gd")
 const CATALOG_SCRIPT := preload("res://addons/species_editor/editor_catalog.gd")
+const ENUM_MANAGER_SCRIPT := preload("res://addons/species_editor/species_enum_manager.gd")
 const VALIDATOR_SCRIPT := preload("res://addons/species_editor/species_validator.gd")
 const FORM_SCRIPT := preload("res://addons/species_editor/species_form.gd")
+const CUSTOM_SPECIES_PATH := "res://data_core/pokemon/resources/custom/"
+const SPECIES_TRASH_PATH := "res://data_core/pokemon/trash/"
 
 var search_box: LineEdit
 var species_list: ItemList
@@ -15,10 +18,19 @@ var status_label: Label
 var status_timer: Timer
 var save_button: Button
 var revert_button: Button
+var new_button: Button
+var duplicate_button: Button
+var delete_button: Button
 var discard_dialog: ConfirmationDialog
+var create_dialog: ConfirmationDialog
+var delete_dialog: ConfirmationDialog
+var create_name_input: LineEdit
+var create_id_input: SpinBox
+var create_as_duplicate := false
 
 var repository: SpeciesRepository
 var catalog: SpeciesEditorCatalog
+var enum_manager: SpeciesEnumManager
 var validator: SpeciesValidator
 var all_species: Array[PokemonDataStruct] = []
 var selected_species: PokemonDataStruct
@@ -32,6 +44,7 @@ func _init() -> void:
 	custom_minimum_size = Vector2(700, 500)
 	repository = REPOSITORY_SCRIPT.new()
 	catalog = CATALOG_SCRIPT.new()
+	enum_manager = ENUM_MANAGER_SCRIPT.new()
 	validator = VALIDATOR_SCRIPT.new()
 
 func _ready() -> void:
@@ -63,6 +76,27 @@ func _build_ui() -> void:
 	refresh_button.text = "↻ Recargar lista"
 	refresh_button.pressed.connect(_load_species)
 	left_panel.add_child(refresh_button)
+
+	var crud_buttons: HBoxContainer = HBoxContainer.new()
+	left_panel.add_child(crud_buttons)
+
+	new_button = Button.new()
+	new_button.text = "+ Nueva"
+	new_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	new_button.pressed.connect(_on_new_species_pressed)
+	crud_buttons.add_child(new_button)
+
+	duplicate_button = Button.new()
+	duplicate_button.text = "Duplicar"
+	duplicate_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	duplicate_button.pressed.connect(_on_duplicate_species_pressed)
+	crud_buttons.add_child(duplicate_button)
+
+	delete_button = Button.new()
+	delete_button.text = "Papelera"
+	delete_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	delete_button.pressed.connect(_on_delete_species_pressed)
+	crud_buttons.add_child(delete_button)
 
 	species_list = ItemList.new()
 	species_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -129,7 +163,208 @@ func _build_ui() -> void:
 	discard_dialog.confirmed.connect(_discard_and_load_pending)
 	add_child(discard_dialog)
 
+	_create_species_dialog()
+	_create_delete_dialog()
+	_update_buttons()
+
 	main_split.split_offset = 220
+
+func _create_species_dialog() -> void:
+	create_dialog = ConfirmationDialog.new()
+	create_dialog.title = "Crear especie"
+	create_dialog.ok_button_text = "Crear"
+	create_dialog.cancel_button_text = "Cancelar"
+	create_dialog.confirmed.connect(_on_create_species_confirmed)
+
+	var box: VBoxContainer = VBoxContainer.new()
+	box.add_theme_constant_override("separation", 6)
+	create_dialog.add_child(box)
+
+	var name_label: Label = Label.new()
+	name_label.text = "Nombre"
+	box.add_child(name_label)
+	create_name_input = LineEdit.new()
+	create_name_input.placeholder_text = "Ejemplo: Mi Pokemon"
+	box.add_child(create_name_input)
+
+	var id_label: Label = Label.new()
+	id_label.text = "ID"
+	box.add_child(id_label)
+	create_id_input = SpinBox.new()
+	create_id_input.min_value = 1
+	create_id_input.max_value = 999999
+	create_id_input.step = 1
+	box.add_child(create_id_input)
+	add_child(create_dialog)
+
+func _create_delete_dialog() -> void:
+	delete_dialog = ConfirmationDialog.new()
+	delete_dialog.title = "Enviar especie a la papelera"
+	delete_dialog.ok_button_text = "Mover"
+	delete_dialog.cancel_button_text = "Cancelar"
+	delete_dialog.confirmed.connect(_on_delete_species_confirmed)
+	add_child(delete_dialog)
+
+func _on_new_species_pressed() -> void:
+	_open_create_dialog(false)
+
+func _on_duplicate_species_pressed() -> void:
+	if selected_species == null:
+		_show_status("Selecciona una especie para duplicarla", 2.0)
+		return
+	_open_create_dialog(true)
+
+func _open_create_dialog(as_duplicate: bool) -> void:
+	create_as_duplicate = as_duplicate
+	create_dialog.title = "Duplicar especie" if as_duplicate else "Crear especie"
+	create_name_input.text = (selected_species.species_name + " Copy") if as_duplicate and selected_species else "Nueva especie"
+	create_id_input.value = _get_next_species_id()
+	create_dialog.popup_centered(Vector2i(360, 220))
+	create_name_input.grab_focus()
+
+func _get_next_species_id() -> int:
+	return enum_manager.get_next_custom_id(all_species)
+
+func _on_create_species_confirmed() -> void:
+	var name: String = create_name_input.text.strip_edges()
+	var new_id: int = int(create_id_input.value)
+	if name.is_empty():
+		_show_status("El nombre no puede estar vacío", 3.0)
+		return
+	if new_id <= 0 or _species_id_is_used(new_id):
+		_show_status("Ese ID ya está ocupado o no es válido", 3.0)
+		return
+
+	var data: PokemonDataStruct
+	if create_as_duplicate and selected_species != null:
+		if has_unsaved_changes and not form_panel.apply_to_species(selected_species):
+			_show_status("No se pudieron aplicar los cambios antes de duplicar", 3.0)
+			return
+		data = selected_species.duplicate(true) as PokemonDataStruct
+	else:
+		data = _make_species_template()
+	data.species_id = new_id as Species.SpeciesID
+	data.hatch_species = data.species_id
+	data.species_name = name
+
+	var folder_error: Error = DirAccess.make_dir_recursive_absolute(
+		ProjectSettings.globalize_path(CUSTOM_SPECIES_PATH)
+	)
+	if folder_error != OK and folder_error != ERR_ALREADY_EXISTS:
+		_show_status("No se pudo crear la carpeta de especies", 3.0)
+		return
+
+	var file_name: String = "custom_%d_%s.tres" % [new_id, _slugify(name)]
+	var path: String = CUSTOM_SPECIES_PATH.path_join(file_name)
+	if FileAccess.file_exists(path):
+		_show_status("Ya existe un archivo con ese nombre", 3.0)
+		return
+
+	var enum_error: Error = enum_manager.register_custom_species(name, new_id)
+	if enum_error != OK:
+		_show_status("No se pudo registrar el ID en species.gd", 3.0)
+		return
+
+	var save_error: Error = ResourceSaver.save(data, path)
+	if save_error != OK:
+		enum_manager.unregister_custom_species(name, new_id)
+		_show_status("No se pudo guardar la nueva especie", 3.0)
+		return
+
+	EditorInterface.get_resource_filesystem().scan()
+	_show_status("✓ Especie creada y registrada en species.gd", 2.0)
+	_load_species()
+	_load_species_from_path(path)
+
+func _make_species_template() -> PokemonDataStruct:
+	var data: PokemonDataStruct = PokemonDataStruct.new()
+	data.national_dex_number = 9999
+	data.regional_dex_number = 0
+	data.base_hp = 1
+	data.base_attack = 1
+	data.base_defense = 1
+	data.base_speed = 1
+	data.base_sp_attack = 1
+	data.base_sp_defense = 1
+	data.type_1 = PokemonData.Type.TYPE_NORMAL
+	data.type_2 = PokemonData.Type.TYPE_NONE
+	data.growth_rate = PokemonData.GrowthRate.GROWTH_MEDIUM_FAST
+	data.category_name = "Especie"
+	data.description = "Nueva especie personalizada."
+	data.height = 1
+	data.weight = 1
+	data.body_color = PokemonData.BodyColor.BODY_COLOR_GRAY
+	data.level_up_moves = []
+	data.teachable_moves = []
+	data.egg_moves = []
+	data.evolutions = []
+	data.ability_1 = AbilityId.Id.NONE
+	data.ability_2 = AbilityId.Id.NONE
+	data.hidden_ability = AbilityId.Id.NONE
+	data.item_common = Items.ItemId.ITEM_NONE
+	data.item_rare = Items.ItemId.ITEM_NONE
+	data.egg_group_1 = PokemonData.EggGroup.EGG_GROUP_NO_EGGS_DISCOVERED
+	data.egg_group_2 = PokemonData.EggGroup.EGG_GROUP_NO_EGGS_DISCOVERED
+	data.egg_cycles = 1
+	data.gender_ratio = PokemonData.GenderRatio.GENDER_GENDERLESS
+	return data
+
+func _species_id_is_used(value: int) -> bool:
+	for species: PokemonDataStruct in all_species:
+		if species != null and int(species.species_id) == value:
+			return true
+	return false
+
+func _slugify(value: String) -> String:
+	var result: String = value.to_lower().strip_edges()
+	result = result.replace(" ", "_").replace("-", "_")
+	var clean: String = ""
+	for character: String in result:
+		if character.is_valid_identifier() or character == "_":
+			clean += character
+	return clean if not clean.is_empty() else "species"
+
+func _on_delete_species_pressed() -> void:
+	if selected_species == null or selected_path.is_empty():
+		_show_status("Selecciona una especie para enviarla a la papelera", 2.0)
+		return
+	if not selected_path.begins_with(CUSTOM_SPECIES_PATH):
+		_show_status("Por seguridad, solo se pueden mover especies custom a la papelera", 3.0)
+		return
+	delete_dialog.dialog_text = "¿Mover '%s' a la papelera?\\n\\nNo se eliminará definitivamente." % selected_species.species_name
+	delete_dialog.popup_centered()
+
+func _on_delete_species_confirmed() -> void:
+	if selected_path.is_empty():
+		return
+	var error: Error = DirAccess.make_dir_recursive_absolute(
+		ProjectSettings.globalize_path(SPECIES_TRASH_PATH)
+	)
+	if error != OK and error != ERR_ALREADY_EXISTS:
+		_show_status("No se pudo crear la papelera", 3.0)
+		return
+
+	var source_path: String = ProjectSettings.globalize_path(selected_path)
+	var file_name: String = selected_path.get_file()
+	var destination: String = SPECIES_TRASH_PATH.path_join(
+		"%d_%s" % [Time.get_unix_time_from_system(), file_name]
+	)
+	var move_error: Error = DirAccess.rename_absolute(
+		source_path,
+		ProjectSettings.globalize_path(destination)
+	)
+	if move_error != OK:
+		_show_status("No se pudo mover la especie a la papelera", 3.0)
+		return
+
+	selected_species = null
+	selected_path = ""
+	has_unsaved_changes = false
+	species_list.deselect_all()
+	form_panel.load_species(null)
+	EditorInterface.get_resource_filesystem().scan()
+	_load_species()
+	_show_status("✓ Especie movida a la papelera", 2.0)
 
 func _load_species() -> void:
 	if not _is_ready:
@@ -276,6 +511,10 @@ func _update_buttons() -> void:
 		save_button.disabled = selected_species == null or not has_unsaved_changes
 	if revert_button:
 		revert_button.disabled = selected_species == null or not has_unsaved_changes
+	if duplicate_button:
+		duplicate_button.disabled = selected_species == null
+	if delete_button:
+		delete_button.disabled = selected_species == null or selected_path.is_empty()
 
 func _show_status(message: String, duration: float = 0.0) -> void:
 	if status_label == null:
