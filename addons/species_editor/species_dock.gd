@@ -25,8 +25,8 @@ var original_species_data: Dictionary = {}
 var all_species: Array[PokemonDataStruct] = []
 
 func _init() -> void:
-	name = "SpeciesEditor"
-	custom_minimum_size = Vector2(450, 700)
+	name = "🔬 Species Editor"
+	custom_minimum_size = Vector2(0, 400)  # Altura inicial
 	repository = SpeciesRepository.new()
 	validator = SpeciesValidator.new()
 
@@ -35,112 +35,132 @@ func _ready() -> void:
 	_load_species()
 
 func _setup_ui() -> void:
-	var main_container = VBoxContainer.new()
-	main_container.name = "MainContainer"
-	main_container.add_theme_constant_override("separation", 8)
-	add_child(main_container)
+	# ────────────────────────────────────────────────────────────
+	# Main layout: HSplitContainer para panel list y editor
+	# ────────────────────────────────────────────────────────────
 
-	# ─────────────────────────────
-	# Header
-	# ─────────────────────────────
+	var main_split = HSplitContainer.new()
+	main_split.name = "MainSplit"
+	add_child(main_split)
+	add_child(main_split)  # Asegurar que ocupe todo el espacio
 
-	var header = HBoxContainer.new()
-	main_container.add_child(header)
+	# ════════════════════════════════════════════════════════════
+	# Panel Izquierdo: Lista de especies
+	# ════════════════════════════════════════════════════════════
 
-	var title = Label.new()
-	title.text = "🔬 Pokémon Species Editor"
-	title.add_theme_font_size_override("font_size", 14)
-	header.add_child(title)
-	header.add_spacer(false)
+	var left_panel = VBoxContainer.new()
+	left_panel.name = "LeftPanel"
+	left_panel.add_theme_constant_override("separation", 6)
+	main_split.add_child(left_panel)
 
-	# ─────────────────────────────
-	# Search
-	# ─────────────────────────────
+	# Encabezado izquierdo
+	var left_header = HBoxContainer.new()
+	left_header.add_theme_constant_override("separation", 4)
+	left_panel.add_child(left_header)
 
-	var search_container = VBoxContainer.new()
-	search_container.add_theme_constant_override("separation", 3)
-	main_container.add_child(search_container)
+	var left_title = Label.new()
+	left_title.text = "📋 Species List"
+	left_title.add_theme_font_size_override("font_size", 13)
+	left_title.add_theme_color_override("font_color", Color(0.85, 0.85, 0.85))
+	left_header.add_child(left_title)
+	left_header.add_spacer(false)
 
-	var search_label = Label.new()
-	search_label.text = "🔍 Search Species"
-	search_label.add_theme_font_size_override("font_size", 11)
-	add_theme_color_override("font_color", Color.GRAY)
-	search_container.add_child(search_label)
-
+	# Búsqueda
 	search_box = LineEdit.new()
-	search_box.placeholder_text = "Type ID or name... (e.g. 1, Bulbasaur)"
+	search_box.placeholder_text = "Search ID or name..."
+	search_box.custom_minimum_size = Vector2(0, 28)
 	search_box.text_changed.connect(_on_search_changed)
-	search_container.add_child(search_box)
+	left_panel.add_child(search_box)
 
-	# ─────────────────────────────
-	# Species List
-	# ─────────────────────────────
+	# Separador visual
+	var sep1 = HSeparator.new()
+	left_panel.add_child(sep1)
 
-	var list_label = Label.new()
-	list_label.text = "Species List"
-	list_label.add_theme_font_size_override("font_size", 11)
-	main_container.add_child(list_label)
-
+	# Lista de especies
 	species_list = ItemList.new()
-	species_list.custom_minimum_size = Vector2(0, 180)
+	species_list.custom_minimum_size = Vector2(180, 0)
 	species_list.item_selected.connect(_on_species_selected)
-	main_container.add_child(species_list)
+	left_panel.add_child(species_list)
 
-	# ─────────────────────────────
-	# Form (scrollable)
-	# ─────────────────────────────
+	# ════════════════════════════════════════════════════════════
+	# Panel Derecho: Editor de propiedades
+	# ════════════════════════════════════════════════════════════
 
-	var form_label = Label.new()
-	form_label.text = "Editor"
-	form_label.add_theme_font_size_override("font_size", 11)
-	main_container.add_child(form_label)
+	var right_panel = VBoxContainer.new()
+	right_panel.name = "RightPanel"
+	right_panel.add_theme_constant_override("separation", 6)
+	main_split.add_child(right_panel)
 
+	# Encabezado derecho
+	var right_header = HBoxContainer.new()
+	right_header.add_theme_constant_override("separation", 4)
+	right_panel.add_child(right_header)
+
+	var right_title = Label.new()
+	right_title.text = "✏️  Properties"
+	right_title.add_theme_font_size_override("font_size", 13)
+	right_title.add_theme_color_override("font_color", Color(0.85, 0.85, 0.85))
+	right_header.add_child(right_title)
+	right_header.add_spacer(false)
+
+	# Separador visual
+	var sep2 = HSeparator.new()
+	right_panel.add_child(sep2)
+
+	# Form scrollable
 	var scroll = ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(0, 250)
-	main_container.add_child(scroll)
+	scroll.custom_minimum_size = Vector2(300, 0)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	right_panel.add_child(scroll)
 
 	form_panel = SpeciesForm.new()
-	form_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	form_panel.form_changed.connect(_on_form_changed)
 	scroll.add_child(form_panel)
 
-	# ─────────────────────────────
-	# Action Buttons
-	# ─────────────────────────────
+	# Separador visual antes de botones
+	var sep3 = HSeparator.new()
+	right_panel.add_child(sep3)
 
+	# Botones de acción
 	var button_container = HBoxContainer.new()
-	button_container.add_theme_constant_override("separation", 6)
-	main_container.add_child(button_container)
+	button_container.add_theme_constant_override("separation", 4)
+	right_panel.add_child(button_container)
 
 	var save_btn = Button.new()
 	save_btn.text = "💾 Save"
+	save_btn.custom_minimum_size = Vector2(0, 28)
 	save_btn.pressed.connect(_on_save_pressed)
 	button_container.add_child(save_btn)
 
 	var revert_btn = Button.new()
 	revert_btn.text = "↶ Revert"
+	revert_btn.custom_minimum_size = Vector2(0, 28)
 	revert_btn.pressed.connect(_on_revert_pressed)
 	button_container.add_child(revert_btn)
 
 	var validate_btn = Button.new()
 	validate_btn.text = "✓ Validate"
+	validate_btn.custom_minimum_size = Vector2(0, 28)
 	validate_btn.pressed.connect(_on_validate_pressed)
 	button_container.add_child(validate_btn)
 
-	# ─────────────────────────────
-	# Status Bar
-	# ─────────────────────────────
+	# ════════════════════════════════════════════════════════════
+	# Status Bar (abajo)
+	# ════════════════════════════════════════════════════════════
 
 	status_label = Label.new()
 	status_label.text = "Ready"
-	status_label.add_theme_color_override("font_color", Color.GRAY)
-	status_label.add_theme_font_size_override("font_size", 10)
-	main_container.add_child(status_label)
+	status_label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
+	status_label.add_theme_font_size_override("font_size", 9)
+	right_panel.add_child(status_label)
 
 	# Timer para limpiar mensajes de estado
 	status_timer = Timer.new()
 	status_timer.timeout.connect(_on_status_timer_timeout)
 	add_child(status_timer)
+
+	# Ajustar split inicial
+	main_split.split_offset = 200
 
 func _load_species() -> void:
 	all_species = repository.load_all_species()
@@ -204,20 +224,20 @@ func _on_form_changed() -> void:
 
 func _on_save_pressed() -> void:
 	if selected_species == null:
-		_show_status("❌ No species selected", 2.0)
+		_show_status("✗ No species selected", 2.0)
 		return
 
 	if not form_panel.apply_to_species(selected_species):
-		_show_status("❌ Invalid data", 2.0)
+		_show_status("✗ Invalid data", 2.0)
 		return
 
 	var errors = validator.validate(selected_species)
 	if not errors.is_empty():
-		_show_status("❌ Validation failed: " + errors[0], 3.0)
+		_show_status("✗ Validation failed: " + errors[0], 3.0)
 		return
 
 	if ResourceSaver.save(selected_species) != OK:
-		_show_status("❌ Failed to save", 2.0)
+		_show_status("✗ Failed to save", 2.0)
 		return
 
 	original_species_data = _serialize_species(selected_species)
@@ -225,18 +245,17 @@ func _on_save_pressed() -> void:
 
 func _on_revert_pressed() -> void:
 	if selected_species == null:
-		_show_status("❌ No species selected", 2.0)
+		_show_status("✗ No species selected", 2.0)
 		return
 
-	# Restaurar desde el archivo
 	var file_path = repository.get_species_path(selected_species.species_id)
 	if file_path.is_empty():
-		_show_status("❌ Could not find file path", 2.0)
+		_show_status("✗ Could not find file path", 2.0)
 		return
 
 	var reloaded = load(file_path) as PokemonDataStruct
 	if reloaded == null:
-		_show_status("❌ Failed to reload", 2.0)
+		_show_status("✗ Failed to reload", 2.0)
 		return
 
 	selected_species = reloaded
@@ -246,7 +265,7 @@ func _on_revert_pressed() -> void:
 
 func _on_validate_pressed() -> void:
 	if selected_species == null:
-		_show_status("❌ No species selected", 2.0)
+		_show_status("✗ No species selected", 2.0)
 		return
 
 	var errors = validator.validate(selected_species)
@@ -256,7 +275,7 @@ func _on_validate_pressed() -> void:
 	else:
 		var error_msg = "\n".join(errors)
 		push_warning("Species validation errors:\n" + error_msg)
-		_show_status("❌ %d errors (check console)" % errors.size(), 3.0)
+		_show_status("✗ %d errors (check console)" % errors.size(), 3.0)
 
 func _show_status(message: String, duration: float = 0.0) -> void:
 	status_label.text = message

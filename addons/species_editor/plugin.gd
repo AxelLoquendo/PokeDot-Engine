@@ -9,7 +9,8 @@ var undo_redo: EditorUndoRedo
 func _enter_tree() -> void:
 	undo_redo = get_undo_redo()
 	species_dock = SpeciesDock.new()
-	add_control_to_dock(DOCK_SLOT_RIGHT_BL, species_dock)
+	# Posicionar en el panel inferior (como Output, Debugger, etc)
+	add_control_to_dock(DOCK_SLOT_BOTTOM_BR, species_dock)
 	print("✓ Species Editor Plugin loaded")
 
 func _exit_tree() -> void:
