@@ -10,11 +10,22 @@ const MOVE_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/move
 var moves: Array[LevelUpMove] = []
 var available_moves: Array[MoveData] = []
 var table: GridContainer
+var refresh_queued := false
 
 func load_moves(moves_array: Array[LevelUpMove]) -> void:
 	moves = moves_array.duplicate(true)
 	if table != null:
-		_refresh_table()
+		_request_refresh()
+
+func _request_refresh() -> void:
+	if refresh_queued:
+		return
+	refresh_queued = true
+	call_deferred("_refresh_table_deferred")
+
+func _refresh_table_deferred() -> void:
+	refresh_queued = false
+	_refresh_table()
 
 func _ready() -> void:
 	var container := VBoxContainer.new()
@@ -46,7 +57,7 @@ func _clear_table() -> void:
 	if table == null:
 		return
 	for child: Node in table.get_children():
-		child.free()
+		child.queue_free()
 
 func _refresh_table() -> void:
 	if table == null:
@@ -98,14 +109,14 @@ func _on_add_move_pressed() -> void:
 	new_move.level = 1
 	new_move.move = Moves.MoveId.MOVE_TACKLE
 	moves.append(new_move)
-	_refresh_table()
+	_request_refresh()
 	changed.emit()
 
 func _on_remove_move_pressed(index: int) -> void:
 	if index < 0 or index >= moves.size():
 		return
 	moves.remove_at(index)
-	_refresh_table()
+	_request_refresh()
 	changed.emit()
 
 func get_moves() -> Array[LevelUpMove]:

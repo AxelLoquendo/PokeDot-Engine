@@ -26,11 +26,22 @@ var evolutions: Array[EvolutionData] = []
 var available_species: Array[PokemonDataStruct] = []
 var content: VBoxContainer
 var rebuilding := false
+var refresh_queued := false
 
 func load_evolutions(values: Array[EvolutionData]) -> void:
 	evolutions = values.duplicate(true)
 	if content != null:
-		_refresh_table()
+		_request_refresh()
+
+func _request_refresh() -> void:
+	if refresh_queued:
+		return
+	refresh_queued = true
+	call_deferred("_refresh_table_deferred")
+
+func _refresh_table_deferred() -> void:
+	refresh_queued = false
+	_refresh_table()
 
 func _ready() -> void:
 	var root := VBoxContainer.new()
@@ -55,7 +66,7 @@ func _ready() -> void:
 
 func _clear_content() -> void:
 	for child: Node in content.get_children():
-		child.free()
+		child.queue_free()
 
 func _refresh_table() -> void:
 	if content == null or rebuilding:
@@ -100,7 +111,7 @@ func _build_rule(index: int, evolution: EvolutionData) -> Control:
 		evolution.use_advanced_rules = value
 		if value and evolution.conditions.is_empty():
 			evolution.conditions.append(_new_condition(ConditionType.LEVEL))
-		_refresh_table()
+		_request_refresh()
 		changed.emit()
 	)
 	header.add_child(advanced)
@@ -110,7 +121,7 @@ func _build_rule(index: int, evolution: EvolutionData) -> Control:
 	remove.tooltip_text = "Eliminar regla"
 	remove.pressed.connect(func() -> void:
 		evolutions.remove_at(index)
-		_refresh_table()
+		_request_refresh()
 		changed.emit()
 	)
 	header.add_child(remove)
@@ -170,7 +181,7 @@ func _build_advanced_editor(root: VBoxContainer, _index: int, evolution: Evoluti
 	add_condition.text = "+ Añadir condición"
 	add_condition.pressed.connect(func() -> void:
 		evolution.conditions.append(_new_condition(ConditionType.LEVEL))
-		_refresh_table()
+		_request_refresh()
 		changed.emit()
 	)
 	root.add_child(add_condition)
@@ -189,7 +200,7 @@ func _build_condition_editor(evolution: EvolutionData, condition_index: int, con
 		type_option.select(types.keys().find(current_type))
 	type_option.item_selected.connect(func(_selected: int) -> void:
 		evolution.conditions[condition_index] = _new_condition(type_option.get_selected_id())
-		_refresh_table()
+		_request_refresh()
 		changed.emit()
 	)
 	top.add_child(type_option)
@@ -198,7 +209,7 @@ func _build_condition_editor(evolution: EvolutionData, condition_index: int, con
 	remove.text = "Eliminar"
 	remove.pressed.connect(func() -> void:
 		evolution.conditions.remove_at(condition_index)
-		_refresh_table()
+		_request_refresh()
 		changed.emit()
 	)
 	top.add_child(remove)
@@ -367,7 +378,7 @@ func _on_add_evolution_pressed() -> void:
 	level.minimum_level = 16
 	rule.conditions.append(level)
 	evolutions.append(rule)
-	_refresh_table()
+	_request_refresh()
 	changed.emit()
 
 func get_evolutions() -> Array[EvolutionData]:

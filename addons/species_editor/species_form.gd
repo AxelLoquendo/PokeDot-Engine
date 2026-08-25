@@ -140,7 +140,7 @@ func _populate_form(species: PokemonDataStruct) -> void:
 
 func _clear_form() -> void:
 	for child: Node in get_children():
-		child.free()
+		child.queue_free()
 	fields.clear()
 	type_selectors.clear()
 	ability_selectors.clear()
