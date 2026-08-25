@@ -1,95 +1,112 @@
+@tool
 extends PanelContainer
 
 class_name LearnsetTable
 
-## Tabla editable para Level Up Moves
+signal changed
+
+const MOVE_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/move_selector.gd")
 
 var moves: Array[LevelUpMove] = []
+var available_moves: Array[MoveData] = []
 var table: GridContainer
-var add_button: Button
-var remove_buttons: Array[Button] = []
 
 func load_moves(moves_array: Array[LevelUpMove]) -> void:
-	moves = moves_array.duplicate()
-	_refresh_table()
+	moves = moves_array.duplicate(true)
+	if table != null:
+		_refresh_table()
 
 func _ready() -> void:
-	var container = VBoxContainer.new()
+	var container := VBoxContainer.new()
 	container.add_theme_constant_override("separation", 4)
 	add_child(container)
 
-	# Header
-	var header = HBoxContainer.new()
+	var header := HBoxContainer.new()
 	container.add_child(header)
 
-	var title = Label.new()
-	title.text = "Level | Move ID | Move Name"
+	var title := Label.new()
+	title.text = "Nivel | Movimiento | Acción"
 	title.add_theme_color_override("font_color", Color.LIGHT_GRAY)
-	title.add_theme_font_size_override("font_size", 10)
 	header.add_child(title)
 	header.add_spacer(false)
 
-	var add_btn = Button.new()
-	add_btn.text = "+ Add Move"
-	add_btn.pressed.connect(_on_add_move_pressed)
-	header.add_child(add_btn)
+	var add_button := Button.new()
+	add_button.text = "+ Añadir"
+	add_button.pressed.connect(_on_add_move_pressed)
+	header.add_child(add_button)
 
-	# Table
 	table = GridContainer.new()
-	table.columns = 4
+	table.columns = 3
+	table.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	container.add_child(table)
 
 	_refresh_table()
+
+func _clear_table() -> void:
+	if table == null:
+		return
+	for child: Node in table.get_children():
+		child.free()
 
 func _refresh_table() -> void:
 	if table == null:
 		return
 
-	table.clear()
-	remove_buttons.clear()
+	_clear_table()
 
-	for i in range(moves.size()):
-		var move = moves[i]
+	for i: int in range(moves.size()):
+		var move := moves[i]
+		if move == null:
+			continue
 
-		# Level
-		var level_spin = SpinBox.new()
-		level_spin.value = move.level
-		level_spin.min_value = 0
+		var level_spin := SpinBox.new()
+		level_spin.min_value = 1
 		level_spin.max_value = 100
-		level_spin.custom_minimum_size = Vector2(50, 0)
+		level_spin.step = 1
+		level_spin.value = move.level
+		level_spin.custom_minimum_size = Vector2(70, 0)
+		level_spin.value_changed.connect(_on_level_changed.bind(i))
 		table.add_child(level_spin)
 
-		# Move ID
-		var move_id_label = Label.new()
-		move_id_label.text = str(move.move)
-		move_id_label.custom_minimum_size = Vector2(60, 0)
-		table.add_child(move_id_label)
+		var selector: MoveSelector = MOVE_SELECTOR_SCRIPT.new()
+		selector.available_moves = available_moves
+		selector.selected_move = move.move
+		selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		selector.move_changed.connect(_on_move_changed.bind(i, selector))
+		table.add_child(selector)
 
-		# Move Name (placeholder)
-		var move_name_label = Label.new()
-		move_name_label.text = "[Move %d]" % move.move
-		move_name_label.custom_minimum_size = Vector2(120, 0)
-		table.add_child(move_name_label)
+		var remove_button := Button.new()
+		remove_button.text = "✕"
+		remove_button.tooltip_text = "Eliminar movimiento"
+		remove_button.pressed.connect(_on_remove_move_pressed.bind(i))
+		table.add_child(remove_button)
 
-		# Remove button
-		var remove_btn = Button.new()
-		remove_btn.text = "✕"
-		remove_btn.custom_minimum_size = Vector2(30, 0)
-		remove_btn.pressed.connect(_on_remove_move_pressed.bind(i))
-		table.add_child(remove_btn)
-		remove_buttons.append(remove_btn)
+func _on_level_changed(value: float, index: int) -> void:
+	if index < 0 or index >= moves.size() or moves[index] == null:
+		return
+	moves[index].level = int(value)
+	changed.emit()
+
+func _on_move_changed(index: int, selector: MoveSelector) -> void:
+	if index < 0 or index >= moves.size() or moves[index] == null:
+		return
+	moves[index].move = selector.selected_move
+	changed.emit()
 
 func _on_add_move_pressed() -> void:
-	var new_move = LevelUpMove.new()
+	var new_move := LevelUpMove.new()
 	new_move.level = 1
-	new_move.move = 1  # Tackle
+	new_move.move = Moves.MoveId.MOVE_TACKLE
 	moves.append(new_move)
 	_refresh_table()
+	changed.emit()
 
 func _on_remove_move_pressed(index: int) -> void:
-	if index >= 0 and index < moves.size():
-		moves.remove_at(index)
-		_refresh_table()
+	if index < 0 or index >= moves.size():
+		return
+	moves.remove_at(index)
+	_refresh_table()
+	changed.emit()
 
 func get_moves() -> Array[LevelUpMove]:
-	return moves
+	return moves.duplicate(true)

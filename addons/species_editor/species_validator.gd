@@ -1,63 +1,66 @@
+@tool
 extends RefCounted
 
 class_name SpeciesValidator
 
-## Validates PokemonDataStruct for data integrity
-
 func validate(species: PokemonDataStruct) -> Array[String]:
-	var errors: Array[String] = []
-
 	if species == null:
-		errors.append("Species is null")
-		return errors
+		return ["La especie es null."]
 
-	# Identity
-	if species.species_id == Species.SpeciesID.SPECIES_NONE:
-		errors.append("❌ Missing species_id")
+	# Reutiliza la validación oficial del recurso para no mantener dos reglas
+	# diferentes en el editor y en runtime.
+	var errors: Array[String] = species._validate()
 
-	if species.species_name.strip_edges().is_empty():
-		errors.append("❌ Missing species_name")
+	# Validaciones cruzadas con los recursos reales.
+	if species.ability_1 != AbilityId.Id.NONE and not _ability_exists(species.ability_1):
+		errors.append("ability_1 no tiene un recurso .tres: %d" % int(species.ability_1))
+	if species.ability_2 != AbilityId.Id.NONE and not _ability_exists(species.ability_2):
+		errors.append("ability_2 no tiene un recurso .tres: %d" % int(species.ability_2))
+	if species.hidden_ability != AbilityId.Id.NONE and not _ability_exists(species.hidden_ability):
+		errors.append("hidden_ability no tiene un recurso .tres: %d" % int(species.hidden_ability))
 
-	if species.national_dex_number < 1:
-		errors.append("❌ Invalid national_dex_number (must be >= 1)")
+	for entry: LevelUpMove in species.level_up_moves:
+		if entry and not _move_exists(entry.move):
+			errors.append("Movimiento de nivel sin recurso .tres: %d" % int(entry.move))
 
-	# Base Stats - must be at least 1
-	if species.base_hp < 1:
-		errors.append("❌ base_hp must be >= 1")
-	if species.base_attack < 1:
-		errors.append("❌ base_attack must be >= 1")
-	if species.base_defense < 1:
-		errors.append("❌ base_defense must be >= 1")
-	if species.base_speed < 1:
-		errors.append("❌ base_speed must be >= 1")
-	if species.base_sp_attack < 1:
-		errors.append("❌ base_sp_attack must be >= 1")
-	if species.base_sp_defense < 1:
-		errors.append("❌ base_sp_defense must be >= 1")
+	for move_id: Moves.MoveId in species.teachable_moves:
+		if move_id != Moves.MoveId.MOVE_NONE and not _move_exists(move_id):
+			errors.append("Movimiento enseñable sin recurso .tres: %d" % int(move_id))
 
-	# Types
-	if species.type_1 == PokemonData.Type.TYPE_NONE:
-		errors.append("❌ type_1 must not be TYPE_NONE")
-
-	# Abilities
-	if species.ability_1 == AbilityId.Id.NONE:
-		errors.append("❌ ability_1 must not be NONE")
-
-	# Catch rate
-	if species.catch_rate < 0 or species.catch_rate > 255:
-		errors.append("⚠ catch_rate should be 0-255")
-
-	# EV Yield - max 3 points per stat
-	var total_evs = (
-		species.evYield_HP +
-		species.evYield_Attack +
-		species.evYield_Defense +
-		species.evYield_Speed +
-		species.evYield_SpAttack +
-		species.evYield_SpDefense
-	)
-
-	if total_evs > 6:
-		errors.append("⚠ Total EV yield should be <= 6")
+	for move_id: Moves.MoveId in species.egg_moves:
+		if move_id != Moves.MoveId.MOVE_NONE and not _move_exists(move_id):
+			errors.append("Movimiento huevo sin recurso .tres: %d" % int(move_id))
 
 	return errors
+
+func _ability_exists(id: AbilityId.Id) -> bool:
+	var path: String = "res://data_core/ability/resources/"
+	return _find_resource_with_id(path, "id", int(id))
+
+func _move_exists(id: Moves.MoveId) -> bool:
+	var path: String = "res://data_core/move/resources/"
+	return _find_resource_with_id(path, "move_id", int(id))
+
+func _find_resource_with_id(path: String, property_name: String, wanted_id: int) -> bool:
+	var directory := DirAccess.open(path)
+	if directory == null:
+		return false
+
+	directory.list_dir_begin()
+	var entry: String = directory.get_next()
+	while not entry.is_empty():
+		if not entry.begins_with("."):
+			var full_path: String = path.path_join(entry)
+			if directory.current_is_dir():
+				if _find_resource_with_id(full_path, property_name, wanted_id):
+					directory.list_dir_end()
+					return true
+			elif entry.ends_with(".tres"):
+				var resource := ResourceLoader.load(full_path)
+				if resource and int(resource.get(property_name)) == wanted_id:
+					directory.list_dir_end()
+					return true
+		entry = directory.get_next()
+
+	directory.list_dir_end()
+	return false

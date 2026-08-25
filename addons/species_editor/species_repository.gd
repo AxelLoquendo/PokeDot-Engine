@@ -1,12 +1,13 @@
+@tool
 extends RefCounted
 
 class_name SpeciesRepository
 
-const SPECIES_PATH: String = "res://data_core/pokemon/resources/"
-const FILE_EXTENSION: String = ".tres"
+const SPECIES_PATH := "res://data_core/pokemon/resources/"
+const FILE_EXTENSION := ".tres"
 
 var _cache: Array[PokemonDataStruct] = []
-var _paths: Dictionary = {}  # species_id -> file path
+var _paths: Dictionary = {}
 var _errors: Array[String] = []
 
 func load_all_species() -> Array[PokemonDataStruct]:
@@ -14,61 +15,69 @@ func load_all_species() -> Array[PokemonDataStruct]:
 	_paths.clear()
 	_errors.clear()
 
-	var dir = DirAccess.open(SPECIES_PATH)
-	if dir == null:
-		_errors.append("Could not open directory: %s" % SPECIES_PATH)
-		push_error(_errors[-1])
-		return _cache
+	_scan_directory(SPECIES_PATH)
+	_cache.sort_custom(func(a: PokemonDataStruct, b: PokemonDataStruct) -> bool:
+		return int(a.species_id) < int(b.species_id)
+	)
 
-	_scan_directory(SPECIES_PATH, dir)
-	_sort_by_id()
-
-	if not _errors.is_empty():
-		push_warning("SpeciesRepository: %d errors during load" % _errors.size())
-
-	print("SpeciesRepository: Loaded %d species" % _cache.size())
-	return _cache
+	return _cache.duplicate()
 
 func get_species_path(species_id: Species.SpeciesID) -> String:
-	if species_id in _paths:
-		return _paths[species_id]
-	return ""
+	return str(_paths.get(int(species_id), ""))
 
-func _scan_directory(path: String, dir: DirAccess) -> void:
-	dir.list_dir_begin()
-	var entry = dir.get_next()
+func get_errors() -> Array[String]:
+	return _errors.duplicate()
 
-	while entry != "":
-		if dir.current_is_dir():
-			var subdir = DirAccess.open(path.path_join(entry))
-			if subdir:
-				_scan_directory(path.path_join(entry), subdir)
-		elif entry.ends_with(FILE_EXTENSION):
-			_load_species_file(path.path_join(entry))
+func _scan_directory(path: String) -> void:
+	var directory := DirAccess.open(path)
+	if directory == null:
+		_errors.append("No se pudo abrir: %s" % path)
+		return
 
-		entry = dir.get_next()
+	directory.list_dir_begin()
+	var entry: String = directory.get_next()
+
+	while not entry.is_empty():
+		if not entry.begins_with("."):
+			var full_path: String = path.path_join(entry)
+
+			if directory.current_is_dir():
+				_scan_directory(full_path)
+			elif entry.ends_with(FILE_EXTENSION):
+				_load_species_file(full_path)
+
+		entry = directory.get_next()
+
+	directory.list_dir_end()
 
 func _load_species_file(file_path: String) -> void:
-	var resource = load(file_path)
+	var resource := ResourceLoader.load(
+		file_path,
+		"",
+		ResourceLoader.CACHE_MODE_IGNORE
+	)
 
 	if resource == null:
-		_errors.append("Failed to load: %s" % file_path)
+		_errors.append("No se pudo cargar: %s" % file_path)
 		return
 
 	if not resource is PokemonDataStruct:
-		_errors.append("Invalid resource type: %s" % file_path)
+		_errors.append("No es PokemonDataStruct: %s" % file_path)
 		return
 
-	var species = resource as PokemonDataStruct
-	if species.species_id == Species.SpeciesID.SPECIES_NONE:
-		_errors.append("Missing species_id: %s" % file_path)
+	var species := resource as PokemonDataStruct
+	var id: int = int(species.species_id)
+
+	if id == int(Species.SpeciesID.SPECIES_NONE):
+		_errors.append("SPECIES_NONE en: %s" % file_path)
+		return
+
+	if _paths.has(id):
+		_errors.append(
+			"ID duplicado %d: %s y %s"
+			% [id, str(_paths[id]), file_path]
+		)
 		return
 
 	_cache.append(species)
-	_paths[species.species_id] = file_path
-
-func _sort_by_id() -> void:
-	_cache.sort_custom(func(a, b): return int(a.species_id) < int(b.species_id))
-
-func get_errors() -> Array[String]:
-	return _errors
+	_paths[id] = file_path

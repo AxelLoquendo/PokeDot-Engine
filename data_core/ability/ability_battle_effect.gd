@@ -1,0 +1,19 @@
+extends Resource
+class_name AbilityBattleEffect
+
+enum weatherAbilityID {
+	WEATHER_NONE,
+	WEATHER_RAIN,
+	WEATHER_SNOW,
+	WEATHER_SANDSTORM,
+	WEATHER_DROUGHT,
+	WEATHER_
+}
+
+enum terrainID{
+	TERRAIN_NONE,
+	TERRAIN_ELECTRIC,
+	TERRAIN_GRASSY,
+	TERRAIN_MISTY,
+	TERRAIN_PSYCHIC
+}

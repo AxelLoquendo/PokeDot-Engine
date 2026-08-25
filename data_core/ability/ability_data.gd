@@ -35,10 +35,10 @@ var ai_rating: int = 0
 
 @export_group("Gameplay")
 
-@export var weather_override: WeatherEffect.WeatherID = \
-	WeatherEffect.WeatherID.WEATHER_NONE
+@export var weather_override: AbilityBattleEffect.weatherAbilityID = \
+	AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
 
-@export var terrain_override: String = ""
+@export var terrain_override: AbilityBattleEffect.terrainID = AbilityBattleEffect.terrainID.TERRAIN_NONE
 
 @export var stat_modifiers: Dictionary = {}
 

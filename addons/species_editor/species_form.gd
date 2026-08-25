@@ -3,320 +3,278 @@ extends VBoxContainer
 
 class_name SpeciesForm
 
-## Form to edit a PokemonDataStruct
+const TYPE_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/type_selector.gd")
+const ABILITY_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/ability_selector.gd")
+const LEARNSET_TABLE_SCRIPT := preload("res://addons/species_editor/controls/learnset_table.gd")
+const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/evolution_table.gd")
 
 signal form_changed
 
-var current_species: PokemonDataStruct = null
-var _is_loading: bool = false
-
-# Field references
+var current_species: PokemonDataStruct
+var editor_catalog: SpeciesEditorCatalog
+var available_species: Array[PokemonDataStruct] = []
+var _is_loading := false
 var fields: Dictionary = {}
-var type_selectors: Dictionary = {}  # type_1, type_2
-var ability_selectors: Dictionary = {}  # ability_1, ability_2, hidden_ability
+var type_selectors: Dictionary = {}
+var ability_selectors: Dictionary = {}
 var learnset_table: LearnsetTable
 var evolution_table: EvolutionTable
+
+func set_catalog(catalog: SpeciesEditorCatalog, species: Array[PokemonDataStruct]) -> void:
+	editor_catalog = catalog
+	available_species = species
 
 func load_species(species: PokemonDataStruct) -> void:
 	_is_loading = true
 	current_species = species
-
-	if species == null:
-		_clear_form()
-		_is_loading = false
-		return
-
-	_populate_form(species)
+	_clear_form()
+	if species != null:
+		_populate_form(species)
 	_is_loading = false
 
 func apply_to_species(species: PokemonDataStruct) -> bool:
 	if species == null:
 		return false
 
-	# Identity
-	species.species_name = fields["name"].text
-	species.national_dex_number = int(fields["dex_number"].text) if fields["dex_number"].text.is_valid_int() else 1
-	species.regional_dex_number = int(fields["regional_dex"].text) if fields["regional_dex"].text.is_valid_int() else 0
+	species.species_name = _read_text_field("name", species.species_name)
+	species.national_dex_number = _read_int_field("dex_number", species.national_dex_number)
+	species.regional_dex_number = _read_int_field("regional_dex", species.regional_dex_number)
 
-	# Types
-	if "type_1" in type_selectors:
-		species.type_1 = type_selectors["type_1"].get_selected_type()
-	if "type_2" in type_selectors:
-		species.type_2 = type_selectors["type_2"].get_selected_type()
+	for id: String in ["type_1", "type_2"]:
+		if type_selectors.has(id):
+			species.set(id, type_selectors[id].get_selected_type())
 
-	# Base Stats
-	for stat_name in ["hp", "attack", "defense", "sp_attack", "sp_defense", "speed"]:
-		if stat_name in fields:
-			var value = int(fields[stat_name].text) if fields[stat_name].text.is_valid_int() else 1
-			value = maxi(1, value)
+	var stat_map := {
+		"hp": "base_hp",
+		"attack": "base_attack",
+		"defense": "base_defense",
+		"speed": "base_speed",
+		"sp_attack": "base_sp_attack",
+		"sp_defense": "base_sp_defense",
+	}
+	for field_id: String in stat_map:
+		species.set(stat_map[field_id], maxi(1, _read_int_field(field_id, 1)))
 
-			match stat_name:
-				"hp":
-					species.base_hp = value
-				"attack":
-					species.base_attack = value
-				"defense":
-					species.base_defense = value
-				"sp_attack":
-					species.base_sp_attack = value
-				"sp_defense":
-					species.base_sp_defense = value
-				"speed":
-					species.base_speed = value
+	var ev_map := {
+		"ev_hp": "evYield_HP",
+		"ev_attack": "evYield_Attack",
+		"ev_defense": "evYield_Defense",
+		"ev_speed": "evYield_Speed",
+		"ev_sp_attack": "evYield_SpAttack",
+		"ev_sp_defense": "evYield_SpDefense",
+	}
+	for field_id: String in ev_map:
+		species.set(ev_map[field_id], maxi(0, _read_int_field(field_id, 0)))
 
-	# EV Yield
-	for stat_name in ["hp", "attack", "defense", "sp_attack", "sp_defense", "speed"]:
-		var ev_field = "ev_" + stat_name
-		if ev_field in fields:
-			var value = int(fields[ev_field].text) if fields[ev_field].text.is_valid_int() else 0
+	for id: String in ["ability_1", "ability_2", "hidden_ability"]:
+		if ability_selectors.has(id):
+			species.set(id, ability_selectors[id].get_selected_ability())
 
-			match stat_name:
-				"hp":
-					species.evYield_HP = value
-				"attack":
-					species.evYield_Attack = value
-				"defense":
-					species.evYield_Defense = value
-				"sp_attack":
-					species.evYield_SpAttack = value
-				"sp_defense":
-					species.evYield_SpDefense = value
-				"speed":
-					species.evYield_Speed = value
+	species.catch_rate = clampi(_read_int_field("catch_rate", 45), 0, 255)
+	species.exp_yield = maxi(0, _read_int_field("exp_yield", 0))
+	species.friendship = clampi(_read_int_field("friendship", 70), 0, 255)
+	species.category_name = _read_text_field("category", species.category_name)
+	species.description = _read_text_field("description", species.description)
+	species.height = maxi(0, _read_int_field("height", 1))
+	species.weight = maxi(0, _read_int_field("weight", 1))
 
-	# Abilities
-	if "ability_1" in ability_selectors:
-		species.ability_1 = ability_selectors["ability_1"].get_selected_ability()
-	if "ability_2" in ability_selectors:
-		species.ability_2 = ability_selectors["ability_2"].get_selected_ability()
-	if "hidden_ability" in ability_selectors:
-		species.hidden_ability = ability_selectors["hidden_ability"].get_selected_ability()
-
-	# General Data
-	species.catch_rate = int(fields["catch_rate"].text) if fields["catch_rate"].text.is_valid_int() else 45
-	species.exp_yield = int(fields["exp_yield"].text) if fields["exp_yield"].text.is_valid_int() else 0
-	species.friendship = int(fields["friendship"].text) if fields["friendship"].text.is_valid_int() else 70
-	species.category_name = fields["category"].text
-	species.description = fields["description"].text
-	species.height = int(fields["height"].text) if fields["height"].text.is_valid_int() else 1
-	species.weight = int(fields["weight"].text) if fields["weight"].text.is_valid_int() else 1
+	if learnset_table:
+		species.level_up_moves = learnset_table.get_moves()
+	if evolution_table:
+		species.evolutions = evolution_table.get_evolutions()
 
 	return true
 
 func _populate_form(species: PokemonDataStruct) -> void:
-	if get_child_count() > 0:
-		for child in get_children():
-			child.queue_free()
+	_add_group_label("🔠 Identidad")
+	_add_field("name", "Nombre", species.species_name)
+	_add_field("dex_number", "Dex nacional", str(species.national_dex_number), true)
+	_add_field("regional_dex", "Dex regional", str(species.regional_dex_number), true)
 
-	fields.clear()
-	type_selectors.clear()
-	ability_selectors.clear()
-	add_theme_constant_override("separation", 8)
+	_add_group_label("🎨 Tipos")
+	_add_type_selector("type_1", "Tipo 1", species.type_1)
+	_add_type_selector("type_2", "Tipo 2", species.type_2)
 
-	# ════════════════════════════════════════════════════════════════════════
-	# Identity
-	# ════════════════════════════════════════════════════════════════════════
-
-	_add_group_label("🔠 Identity")
-
-	_add_field("name", "Name", species.species_name, false)
-	_add_field("dex_number", "National Dex", str(species.national_dex_number), false)
-	_add_field("regional_dex", "Regional Dex", str(species.regional_dex_number), false)
-
-	# ════════════════════════════════════════════════════════════════════════
-	# Types
-	# ════════════════════════════════════════════════════════════════════════
-
-	_add_group_label("🎨 Types")
-
-	_add_type_selector("type_1", "Type 1", species.type_1)
-	_add_type_selector("type_2", "Type 2", species.type_2)
-
-	# ════════════════════════════════════════════════════════════════════════
-	# Base Stats
-	# ════════════════════════════════════════════════════════════════════════
-
-	_add_group_label("📊 Base Stats")
-
-	_add_stat_row("hp", "HP", species.base_hp, "attack", "Atk", species.base_attack)
+	_add_group_label("📊 Estadísticas base")
+	_add_stat_row("hp", "PS", species.base_hp, "attack", "Atk", species.base_attack)
 	_add_stat_row("defense", "Def", species.base_defense, "sp_attack", "SpA", species.base_sp_attack)
 	_add_stat_row("sp_defense", "SpD", species.base_sp_defense, "speed", "Spe", species.base_speed)
 
-	# ════════════════════════════════════════════════════════════════════════
-	# EV Yield
-	# ════════════════════════════════════════════════════════════════════════
-
-	_add_group_label("⭐ EV Yield")
-
-	_add_stat_row("ev_hp", "EV HP", species.evYield_HP, "ev_attack", "EV Atk", species.evYield_Attack)
+	_add_group_label("⭐ EVs entregados")
+	_add_stat_row("ev_hp", "EV PS", species.evYield_HP, "ev_attack", "EV Atk", species.evYield_Attack)
 	_add_stat_row("ev_defense", "EV Def", species.evYield_Defense, "ev_sp_attack", "EV SpA", species.evYield_SpAttack)
 	_add_stat_row("ev_sp_defense", "EV SpD", species.evYield_SpDefense, "ev_speed", "EV Spe", species.evYield_Speed)
 
-	# ════════════════════════════════════════════════════════════════════════
-	# Abilities
-	# ════════════════════════════════════════════════════════════════════════
+	_add_group_label("💪 Habilidades")
+	_add_ability_selector("ability_1", "Habilidad 1", species.ability_1)
+	_add_ability_selector("ability_2", "Habilidad 2", species.ability_2)
+	_add_ability_selector("hidden_ability", "Oculta", species.hidden_ability)
 
-	_add_group_label("💪 Abilities")
-
-	_add_ability_selector("ability_1", "Ability 1", species.ability_1)
-	_add_ability_selector("ability_2", "Ability 2", species.ability_2)
-	_add_ability_selector("hidden_ability", "Hidden Ability", species.hidden_ability)
-
-	# ════════════════════════════════════════════════════════════════════════
-	# General Data
-	# ════════════════════════════════════════════════════════════════════════
-
-	_add_group_label("⚙️ General Data")
-
-	_add_field("catch_rate", "Catch Rate", str(species.catch_rate), true)
-	_add_field("exp_yield", "EXP Yield", str(species.exp_yield), true)
-	_add_field("friendship", "Base Friendship", str(species.friendship), true)
-
-	# ════════════════════════════════════════════════════════════════════════
-	# Pokédex
-	# ════════════════════════════════════════════════════════════════════════
+	_add_group_label("⚙️ Datos generales")
+	_add_field("catch_rate", "Captura", str(species.catch_rate), true)
+	_add_field("exp_yield", "EXP", str(species.exp_yield), true)
+	_add_field("friendship", "Amistad", str(species.friendship), true)
 
 	_add_group_label("📖 Pokédex")
+	_add_field("category", "Categoría", species.category_name)
+	_add_field("description", "Descripción", species.description, false, true)
+	_add_field("height", "Altura", str(species.height), true)
+	_add_field("weight", "Peso", str(species.weight), true)
 
-	_add_field("category", "Category", species.category_name, false)
-	_add_field("description", "Description", species.description, false, true)
-	_add_field("height", "Height", str(species.height), true)
-	_add_field("weight", "Weight", str(species.weight), true)
-
-	# ════════════════════════════════════════════════════════════════════════
-	# Learnset
-	# ════════════════════════════════════════════════════════════════════════
-
-	_add_group_label("📚 Level Up Moves")
-
-	learnset_table = LearnsetTable.new()
+	_add_group_label("📚 Movimientos por nivel")
+	learnset_table = LEARNSET_TABLE_SCRIPT.new()
+	if editor_catalog:
+		learnset_table.available_moves = editor_catalog.moves
 	learnset_table.load_moves(species.level_up_moves)
-	learnset_table.custom_minimum_size = Vector2(0, 150)
+	learnset_table.custom_minimum_size = Vector2(0, 160)
+	learnset_table.changed.connect(_on_field_changed)
 	add_child(learnset_table)
 
-	# ════════════════════════════════════════════════════════════════════════
-	# Evolutions
-	# ════════════════════════════════════════════════════════════════════════
-
-	_add_group_label("🔄 Evolutions")
-
-	evolution_table = EvolutionTable.new()
+	_add_group_label("🔄 Evoluciones")
+	evolution_table = EVOLUTION_TABLE_SCRIPT.new()
+	evolution_table.available_species = available_species
 	evolution_table.load_evolutions(species.evolutions)
-	evolution_table.custom_minimum_size = Vector2(0, 120)
+	evolution_table.custom_minimum_size = Vector2(0, 150)
+	evolution_table.changed.connect(_on_field_changed)
 	add_child(evolution_table)
 
 func _clear_form() -> void:
-	for child in get_children():
-		child.queue_free()
+	for child: Node in get_children():
+		child.free()
 	fields.clear()
 	type_selectors.clear()
 	ability_selectors.clear()
+	learnset_table = null
+	evolution_table = null
 
-func _add_group_label(label_text: String) -> void:
-	var label = Label.new()
-	label.text = label_text
-	label.add_theme_font_size_override("font_size", 12)
-	label.add_theme_color_override("font_color", Color.LIGHT_GRAY)
+func _add_group_label(text: String) -> void:
+	var label := Label.new()
+	label.text = text
+	label.add_theme_font_size_override("font_size", 13)
+	label.add_theme_color_override("font_color", Color(0.55, 0.85, 1.0))
 	add_child(label)
 
-func _add_field(field_id: String, label_text: String, default_value: String, is_numeric: bool = false, is_multiline: bool = false) -> void:
-	var container = HBoxContainer.new()
-	container.add_theme_constant_override("separation", 8)
-	add_child(container)
-
-	var label = Label.new()
-	label.text = label_text
-	label.custom_minimum_size = Vector2(100, 0)
-	container.add_child(label)
-
-	var input: Control
-
-	if is_multiline:
-		input = TextEdit.new()
-		input.text = default_value
-		input.custom_minimum_size = Vector2(0, 60)
-		(input as TextEdit).text_changed.connect(_on_field_changed)
-	else:
-		input = LineEdit.new()
-		input.text = default_value
-		(input as LineEdit).text_changed.connect(_on_field_changed)
-
-	input.custom_minimum_size = Vector2(150, 0)
-	container.add_child(input)
-
-	fields[field_id] = input
-
-func _add_stat_row(stat1_id: String, stat1_label: String, stat1_value: int, stat2_id: String, stat2_label: String, stat2_value: int) -> void:
-	var row = HBoxContainer.new()
+func _add_field(id: String, label_text: String, value: String, _numeric := false, multiline := false) -> void:
+	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 8)
 	add_child(row)
 
-	# Stat 1
-	var label1 = Label.new()
-	label1.text = stat1_label
-	label1.custom_minimum_size = Vector2(50, 0)
-	row.add_child(label1)
-
-	var input1 = SpinBox.new()
-	input1.value = stat1_value
-	input1.min_value = 1
-	input1.max_value = 255
-	input1.custom_minimum_size = Vector2(80, 0)
-	input1.value_changed.connect(_on_field_changed.bindv([null]))
-	row.add_child(input1)
-	fields[stat1_id] = input1
-
-	row.add_spacer(false)
-
-	# Stat 2
-	var label2 = Label.new()
-	label2.text = stat2_label
-	label2.custom_minimum_size = Vector2(50, 0)
-	row.add_child(label2)
-
-	var input2 = SpinBox.new()
-	input2.value = stat2_value
-	input2.min_value = 1
-	input2.max_value = 255
-	input2.custom_minimum_size = Vector2(80, 0)
-	input2.value_changed.connect(_on_field_changed.bindv([null]))
-	row.add_child(input2)
-	fields[stat2_id] = input2
-
-func _add_type_selector(selector_id: String, label_text: String, default_type: PokemonData.Type) -> void:
-	var container = HBoxContainer.new()
-	container.add_theme_constant_override("separation", 8)
-	add_child(container)
-
-	var label = Label.new()
+	var label := Label.new()
 	label.text = label_text
-	label.custom_minimum_size = Vector2(100, 0)
-	container.add_child(label)
+	label.custom_minimum_size = Vector2(110, 0)
+	row.add_child(label)
 
-	var selector = TypeSelector.new()
-	selector.selected_type = default_type
+	var input: Control
+	if multiline:
+		var edit := TextEdit.new()
+		edit.text = value
+		edit.custom_minimum_size = Vector2(0, 70)
+		edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		edit.text_changed.connect(_on_field_changed)
+		input = edit
+	else:
+		var line := LineEdit.new()
+		line.text = value
+		line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		line.text_changed.connect(_on_field_changed)
+		input = line
+
+	row.add_child(input)
+	fields[id] = input
+
+func _add_stat_row(id_a: String, label_a: String, value_a: int, id_b: String, label_b: String, value_b: int) -> void:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	add_child(row)
+
+	var label_a_node := Label.new()
+	label_a_node.text = label_a
+	label_a_node.custom_minimum_size = Vector2(45, 0)
+	row.add_child(label_a_node)
+
+	var input_a := SpinBox.new()
+	input_a.min_value = 0
+	input_a.max_value = 255
+	input_a.step = 1
+	input_a.value = value_a
+	input_a.custom_minimum_size = Vector2(70, 0)
+	input_a.value_changed.connect(_on_field_changed)
+	row.add_child(input_a)
+	fields[id_a] = input_a
+
+	var label_b_node := Label.new()
+	label_b_node.text = label_b
+	label_b_node.custom_minimum_size = Vector2(45, 0)
+	row.add_child(label_b_node)
+
+	var input_b := SpinBox.new()
+	input_b.min_value = 0
+	input_b.max_value = 255
+	input_b.step = 1
+	input_b.value = value_b
+	input_b.custom_minimum_size = Vector2(70, 0)
+	input_b.value_changed.connect(_on_field_changed)
+	row.add_child(input_b)
+	fields[id_b] = input_b
+
+func _add_type_selector(id: String, label_text: String, value: PokemonData.Type) -> void:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	add_child(row)
+
+	var label := Label.new()
+	label.text = label_text
+	label.custom_minimum_size = Vector2(110, 0)
+	row.add_child(label)
+
+	var selector: TypeSelector = TYPE_SELECTOR_SCRIPT.new()
+	selector.selected_type = value
+	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	selector.type_changed.connect(_on_field_changed)
-	container.add_child(selector)
+	row.add_child(selector)
+	type_selectors[id] = selector
 
-	type_selectors[selector_id] = selector
+func _add_ability_selector(id: String, label_text: String, value: AbilityId.Id) -> void:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	add_child(row)
 
-func _add_ability_selector(selector_id: String, label_text: String, default_ability: AbilityId.Id) -> void:
-	var container = HBoxContainer.new()
-	container.add_theme_constant_override("separation", 8)
-	add_child(container)
-
-	var label = Label.new()
+	var label := Label.new()
 	label.text = label_text
-	label.custom_minimum_size = Vector2(100, 0)
-	container.add_child(label)
+	label.custom_minimum_size = Vector2(110, 0)
+	row.add_child(label)
 
-	var selector = AbilitySelector.new()
-	selector.selected_ability = default_ability
+	var selector: AbilitySelector = ABILITY_SELECTOR_SCRIPT.new()
+	if editor_catalog:
+		selector.available_abilities = editor_catalog.abilities
+	selector.selected_ability = value
+	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	selector.ability_changed.connect(_on_field_changed)
-	container.add_child(selector)
+	row.add_child(selector)
+	ability_selectors[id] = selector
 
-	ability_selectors[selector_id] = selector
+func _read_text_field(id: String, fallback: String) -> String:
+	if not fields.has(id):
+		return fallback
+	var control: Control = fields[id]
+	if control is LineEdit:
+		return (control as LineEdit).text
+	if control is TextEdit:
+		return (control as TextEdit).text
+	return fallback
 
-func _on_field_changed(_value = null) -> void:
+func _read_int_field(id: String, fallback: int) -> int:
+	if not fields.has(id):
+		return fallback
+	var control: Control = fields[id]
+	if control is SpinBox:
+		return int((control as SpinBox).value)
+	if control is LineEdit:
+		var text: String = (control as LineEdit).text
+		if text.is_valid_int():
+			return int(text)
+	return fallback
+
+func _on_field_changed(_value: Variant = null) -> void:
 	if not _is_loading:
 		form_changed.emit()
