@@ -102,5 +102,20 @@ func _get_condition_name(condition: PokemonData.EvolutionConditions) -> String:
 		_:
 			return "Unknown"
 
+func _on_add_evolution_pressed() -> void:
+	var new_evo = EvolutionData.new()
+	new_evo.method = PokemonData.EvolutionMethods.EVO_LEVEL
+	new_evo.target_species = Species.SpeciesID.SPECIES_NONE
+	new_evo.parameter = 16
+	new_evo.condition = PokemonData.EvolutionConditions.NONE
+	new_evo.condition_value = 0
+	evolutions.append(new_evo)
+	_refresh_table()
+
+func _on_remove_evolution_pressed(index: int) -> void:
+	if index >= 0 and index < evolutions.size():
+		evolutions.remove_at(index)
+		_refresh_table()
+
 func get_evolutions() -> Array[EvolutionData]:
 	return evolutions

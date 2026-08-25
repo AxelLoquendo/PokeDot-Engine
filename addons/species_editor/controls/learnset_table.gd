@@ -25,7 +25,7 @@ func _ready() -> void:
 	var title = Label.new()
 	title.text = "Level | Move ID | Move Name"
 	title.add_theme_color_override("font_color", Color.LIGHT_GRAY)
-	key_val title.add_theme_font_size_override("font_size", 10)
+	title.add_theme_font_size_override("font_size", 10)
 	header.add_child(title)
 	header.add_spacer(false)
 
