@@ -31,15 +31,12 @@ static func get_available_evolutions(
 	return results
 
 ## Acepta el contexto nuevo y también el modo antiguo para no romper llamadas existentes.
-static func can_evolve(
-	pokemon: PokemonInstance,
-	evolution: EvolutionData,
-	value: Variant
-) -> bool:
+static func can_evolve(pokemon: PokemonInstance, evolution: EvolutionData, value: Variant) -> bool:
 	if pokemon == null or evolution == null or not evolution.enabled:
 		return false
 
 	if evolution.is_advanced_rule():
+		@warning_ignore("confusable_local_declaration")
 		var context: EvolutionContext
 		if value is EvolutionContext:
 			context = value as EvolutionContext
@@ -49,8 +46,17 @@ static func can_evolve(
 		context.pokemon = pokemon
 		return _check_advanced_rule(evolution, context)
 
-	var mode: PokemonData.EvolutionMode = value as PokemonData.EvolutionMode
-	return _check_legacy_rule(pokemon, evolution, mode)
+	var mode: PokemonData.EvolutionMode
+	var context: EvolutionContext = null
+	if value is EvolutionContext:
+		context = value as EvolutionContext
+		mode = context.mode
+	else:
+		mode = value as PokemonData.EvolutionMode
+
+	if not _check_legacy_method(pokemon, evolution, mode, context):
+		return false
+	return _check_legacy_condition(pokemon, evolution)
 
 static func _check_advanced_rule(
 	evolution: EvolutionData,
@@ -99,21 +105,29 @@ static func _check_legacy_rule(
 static func _check_legacy_method(
 	pokemon: PokemonInstance,
 	evolution: EvolutionData,
-	mode: PokemonData.EvolutionMode
+	mode: PokemonData.EvolutionMode,
+	context: EvolutionContext = null
 ) -> bool:
 	match evolution.method:
 		PokemonData.EvolutionMethods.EVO_NONE:
 			return false
 		PokemonData.EvolutionMethods.EVO_LEVEL:
-			return mode == PokemonData.EvolutionMode.EVO_MODE_NORMAL and pokemon.level >= evolution.parameter
+			return mode == PokemonData.EvolutionMode.EVO_MODE_NORMAL \
+				and pokemon.level >= evolution.parameter
 		PokemonData.EvolutionMethods.EVO_TRADE:
 			return mode == PokemonData.EvolutionMode.EVO_MODE_TRADE
 		PokemonData.EvolutionMethods.EVO_ITEM:
-			return mode == PokemonData.EvolutionMode.EVO_MODE_ITEM_USE
+			if mode != PokemonData.EvolutionMode.EVO_MODE_ITEM_USE:
+				return false
+			# Si hay contexto, exigir el objeto correcto
+			if context != null and evolution.parameter > 0:
+				return context.used_item_id == evolution.parameter
+			return true
 		PokemonData.EvolutionMethods.EVO_SCRIPT_TRIGGER:
 			return mode == PokemonData.EvolutionMode.EVO_MODE_SCRIPT_TRIGGER
 		PokemonData.EvolutionMethods.EVO_LEVEL_BATTLE_ONLY:
-			return mode == PokemonData.EvolutionMode.EVO_MODE_BATTLE_ONLY and pokemon.level >= evolution.parameter
+			return mode == PokemonData.EvolutionMode.EVO_MODE_BATTLE_ONLY \
+				and pokemon.level >= evolution.parameter
 		PokemonData.EvolutionMethods.EVO_BATTLE_END:
 			return mode == PokemonData.EvolutionMode.EVO_MODE_BATTLE_SPECIAL
 		PokemonData.EvolutionMethods.EVO_SPIN:
@@ -121,6 +135,7 @@ static func _check_legacy_method(
 		PokemonData.EvolutionMethods.EVO_SPLIT_FROM_EVO:
 			return false
 	return false
+
 
 static func _check_legacy_condition(
 	pokemon: PokemonInstance,
@@ -131,7 +146,10 @@ static func _check_legacy_condition(
 			return true
 		PokemonData.EvolutionConditions.IF_MIN_FRIENDSHIP:
 			return pokemon.friendship >= evolution.condition_value
-	return false
+		# Amplía aquí cuando tengas más en el enum
+		_:
+			# Antes: return false → bloqueaba evoluciones con condition desconocida
+			return true
 
 static func evolve(
 	pokemon: PokemonInstance,
@@ -144,5 +162,13 @@ static func evolve(
 		return false
 	if not can_evolve(pokemon, result.evolution, value):
 		return false
+
 	pokemon.species_id = result.target_species
+	# Recalcular tras cambio de especie
+	if pokemon.has_method("recalculate_stats"):
+		pokemon.recalculate_stats()
+	# Mantener proporción de HP si quieres:
+	# pokemon.current_hp = mini(pokemon.current_hp, pokemon.max_hp)
+	# o full heal al evolucionar:
+	pokemon.current_hp = pokemon.max_hp
 	return true

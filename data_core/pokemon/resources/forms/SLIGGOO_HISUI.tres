@@ -1,8 +1,25 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cqt8tbvjd8xdv"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ci1hux35em6jc"]
 
-[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
+[ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_2vne0"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
+[ext_resource type="Script" uid="uid://lhsrh5wh537s" path="res://data_core/pokemon/conditions/condition_weather.gd" id="ext_cond_weather"]
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+
+[sub_resource type="Resource" id="Resource_cond0"]
+script = ExtResource("ext_cond_level")
+minimum_level = 50
+
+[sub_resource type="Resource" id="Resource_cond1"]
+script = ExtResource("ext_cond_weather")
+required_weather_id = 1
+
+[sub_resource type="Resource" id="Resource_evo0"]
+script = ExtResource("ext_evo")
+target_species = 1006
+use_advanced_rules = true
+conditions = Array[ExtResource("2_2vne0")]([SubResource("Resource_cond0"), SubResource("Resource_cond1")])
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -93,6 +110,7 @@ weight = 685
 body_color = 6
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([34, 36, 58, 59, 85, 87, 156, 157, 164, 174, 182, 188, 200, 201, 203, 204, 214, 231, 240, 241, 263, 317, 330, 341, 352, 360, 406, 430, 434, 442, 482, 484, 491, 724, 734, 779, 789, 812])
+evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
 ability_1 = 157
 ability_2 = 75
 hidden_ability = 183

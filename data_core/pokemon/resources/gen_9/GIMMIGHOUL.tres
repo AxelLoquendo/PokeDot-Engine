@@ -1,14 +1,8 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://c6eoaq8rj81yh"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://brlaiquqd0gsj"]
 
-[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-
-[sub_resource type="Resource" id="Resource_evo0"]
-script = ExtResource("1_evo")
-method = 1
-target_species = 1393
-parameter = 1
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -42,7 +36,6 @@ weight = 50
 body_color = 5
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
 teachable_moves = Array[int]([36, 101, 109, 113, 115, 156, 164, 168, 182, 203, 214, 247, 408, 417, 506, 779])
-evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
 ability_1 = 155
 egg_group_1 = 15
 egg_cycles = 50

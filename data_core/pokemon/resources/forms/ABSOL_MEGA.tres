@@ -1,14 +1,8 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://5u2sqh5noqee"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://fprjfbwpn2bg"]
 
-[ext_resource type="Texture2D" uid="uid://c87431f3o8nnt" path="res://graphics/pokemon/back/MEGA_ABSOL.png" id="1_0oyas"]
-[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
-[ext_resource type="Texture2D" uid="uid://d01r3rlh8e0qu" path="res://graphics/pokemon/back_shiny/MEGA_ABSOL.png" id="2_uvxk1"]
-[ext_resource type="AudioStream" uid="uid://drd3p52ajej2m" path="res://sfx/se/cries/ABSOL.ogg" id="3_es7kt"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://dtvb751mgu6qt" path="res://graphics/pokemon/front/MEGA_ABSOL.png" id="5_ujbul"]
-[ext_resource type="Texture2D" uid="uid://buh02fh267gvv" path="res://graphics/pokemon/front_shiny/MEGA_ABSOL.png" id="6_lpxj0"]
-[ext_resource type="Texture2D" uid="uid://dyk3g05d1h4o1" path="res://graphics/pokemon/icons/ABSOL_1.png" id="7_mte86"]
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -118,11 +112,6 @@ description = "Presiente desastres inminentes y se aparece a la gente para adver
 height = 12
 weight = 490
 body_color = 8
-front_sprite = ExtResource("5_ujbul")
-front_sprite_shiny = ExtResource("6_lpxj0")
-back_sprite = ExtResource("1_0oyas")
-back_sprite_shiny = ExtResource("2_uvxk1")
-icon_sprite = ExtResource("7_mte86")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([14, 15, 53, 58, 59, 63, 70, 85, 86, 87, 92, 104, 126, 138, 148, 156, 157, 164, 168, 173, 180, 182, 196, 201, 206, 207, 213, 214, 216, 218, 231, 237, 240, 241, 244, 247, 249, 258, 259, 261, 263, 269, 272, 276, 277, 282, 289, 290, 317, 332, 340, 347, 351, 352, 371, 399, 404, 416, 421, 428, 444, 451, 468, 492, 496, 497, 510, 514, 555, 590, 636, 638, 656])
 egg_moves = Array[int]([38, 174, 185, 195, 212, 224, 226, 277, 372, 382, 386, 389, 428, 506, 583])
@@ -131,4 +120,3 @@ egg_group_1 = 5
 egg_cycles = 25
 hatch_species = 359
 gender_ratio = 3
-cry = ExtResource("3_es7kt")

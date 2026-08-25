@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://b3rgymk4vdiuo"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://hiq34in3agwm"]
 
-[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -119,7 +119,7 @@ height = 12
 weight = 316
 body_color = 9
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
-teachable_moves = Array[int]([34, 36, 56, 57, 58, 59, 63, 92, 94, 104, 113, 127, 156, 164, 173, 182, 196, 203, 207, 213, 214, 216, 218, 219, 220, 226, 237, 240, 244, 247, 250, 258, 263, 270, 277, 282, 285, 290, 291, 340, 347, 352, 416, 428, 496, 503, 512, 581, 583, 590, 664, 727, 740, 779, 809, 812, 842])
+teachable_moves = Array[int]([34, 36, 56, 57, 58, 59, 63, 92, 94, 104, 113, 127, 156, 164, 173, 182, 196, 203, 207, 213, 214, 216, 218, 219, 220, 226, 237, 240, 244, 247, 250, 258, 263, 270, 277, 282, 285, 290, 291, 340, 347, 352, 416, 428, 496, 503, 512, 581, 583, 590, 710, 799, 812, 851, 883, 886, 914])
 egg_moves = Array[int]([54, 203, 220, 243, 287, 321, 340])
 ability_1 = 131
 ability_2 = 93

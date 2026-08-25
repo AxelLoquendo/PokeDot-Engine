@@ -1,20 +1,19 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bhk2tr4yvpjsr"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://vl24ay6b6ajh"]
 
-[ext_resource type="Texture2D" uid="uid://7keagnihm861" path="res://graphics/pokemon/back/ABRA.png" id="1_6c482"]
-[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
-[ext_resource type="Texture2D" uid="uid://dsi2ln78l4jru" path="res://graphics/pokemon/back_shiny/ABRA.png" id="2_4xyvy"]
+[ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_eor5n"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="AudioStream" uid="uid://vpkur18psrli" path="res://sfx/se/cries/ABRA.ogg" id="3_sy2qv"]
-[ext_resource type="Texture2D" uid="uid://b53v8wxr8bmgc" path="res://graphics/pokemon/front/ABRA.png" id="5_5mrq8"]
-[ext_resource type="Texture2D" uid="uid://caiois4h8lkgx" path="res://graphics/pokemon/front_shiny/ABRA.png" id="6_eyphe"]
-[ext_resource type="Texture2D" uid="uid://dojplt4p7j02v" path="res://graphics/pokemon/icons/ABRA.png" id="7_drrl7"]
+[ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+
+[sub_resource type="Resource" id="Resource_cond0"]
+script = ExtResource("ext_cond_level")
 
 [sub_resource type="Resource" id="Resource_evo0"]
-script = ExtResource("1_evo")
-method = 1
+script = ExtResource("ext_evo")
 target_species = 64
-parameter = 16
+use_advanced_rules = true
+conditions = Array[ExtResource("2_eor5n")]([SubResource("Resource_cond0")])
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -42,15 +41,10 @@ description = "Duerme 18 horas al día y mientras lo hace es capaz de usar una s
 height = 9
 weight = 195
 body_color = 5
-front_sprite = ExtResource("5_5mrq8")
-front_sprite_shiny = ExtResource("6_eyphe")
-back_sprite = ExtResource("1_6c482")
-back_sprite_shiny = ExtResource("2_4xyvy")
-icon_sprite = ExtResource("7_drrl7")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 66, 68, 69, 86, 92, 94, 99, 100, 102, 104, 113, 115, 117, 118, 129, 130, 138, 148, 149, 156, 161, 164, 168, 171, 173, 174, 182, 192, 203, 207, 213, 214, 216, 218, 219, 223, 227, 231, 237, 240, 241, 244, 247, 259, 263, 264, 269, 271, 272, 277, 278, 282, 285, 289, 290, 324, 347, 351, 356, 363, 373, 374, 384, 385, 409, 412, 428, 433, 445, 447, 451, 472, 473, 477, 478, 492, 496, 502, 590, 605, 641, 646])
 egg_moves = Array[int]([7, 8, 9, 93, 112, 113, 227, 277, 282, 285, 375, 379, 385, 470, 502, 641])
-evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
 ability_1 = 28
 ability_2 = 39
 hidden_ability = 98
@@ -58,4 +52,3 @@ egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 63
 gender_ratio = 4
-cry = ExtResource("3_sy2qv")

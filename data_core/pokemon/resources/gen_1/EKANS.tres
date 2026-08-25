@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bbyy3a3g3xf28"]
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bpyqwe31og70k"]
 
-[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_evo"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_paxly"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+
+[sub_resource type="Resource" id="Resource_cond0"]
+script = ExtResource("ext_cond_level")
+minimum_level = 22
 
 [sub_resource type="Resource" id="Resource_evo0"]
-script = ExtResource("1_evo")
-method = 1
+script = ExtResource("ext_evo")
 target_species = 24
-parameter = 22
+use_advanced_rules = true
+conditions = Array[ExtResource("2_paxly")]([SubResource("Resource_cond0")])
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -122,7 +128,7 @@ body_color = 6
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([20, 29, 34, 36, 38, 70, 72, 89, 90, 91, 92, 99, 102, 104, 114, 117, 130, 141, 156, 157, 164, 168, 173, 174, 180, 182, 184, 188, 189, 202, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 259, 263, 282, 289, 290, 317, 341, 342, 363, 371, 380, 390, 398, 399, 401, 402, 424, 441, 445, 474, 482, 491, 496, 523, 555, 590, 611, 656, 660, 727, 734, 736, 779, 811])
 egg_moves = Array[int]([21, 50, 180, 184, 228, 231, 242, 251, 289, 305, 342, 389, 415])
-evolutions = Array[ExtResource("1_evo")]([SubResource("Resource_evo0")])
+evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
 ability_1 = 22
 ability_2 = 61
 hidden_ability = 127
