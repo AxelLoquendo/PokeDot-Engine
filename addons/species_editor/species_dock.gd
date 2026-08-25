@@ -21,6 +21,8 @@ var revert_button: Button
 var new_button: Button
 var duplicate_button: Button
 var delete_button: Button
+var restore_button: Button
+var trash_popup: PopupMenu
 var discard_dialog: ConfirmationDialog
 var create_dialog: ConfirmationDialog
 var delete_dialog: ConfirmationDialog
@@ -97,6 +99,16 @@ func _build_ui() -> void:
 	delete_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	delete_button.pressed.connect(_on_delete_species_pressed)
 	crud_buttons.add_child(delete_button)
+
+	restore_button = Button.new()
+	restore_button.text = "Restaurar"
+	restore_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	restore_button.pressed.connect(_on_restore_species_pressed)
+	left_panel.add_child(restore_button)
+
+	trash_popup = PopupMenu.new()
+	trash_popup.id_pressed.connect(_on_restore_option_selected)
+	add_child(trash_popup)
 
 	species_list = ItemList.new()
 	species_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -365,6 +377,55 @@ func _on_delete_species_confirmed() -> void:
 	EditorInterface.get_resource_filesystem().scan()
 	_load_species()
 	_show_status("✓ Especie movida a la papelera", 2.0)
+
+func _on_restore_species_pressed() -> void:
+	trash_popup.clear()
+	var directory: DirAccess = DirAccess.open(SPECIES_TRASH_PATH)
+	if directory == null:
+		_show_status("La papelera está vacía", 2.0)
+		return
+
+	var option_id: int = 0
+	directory.list_dir_begin()
+	var entry: String = directory.get_next()
+	while not entry.is_empty():
+		if not entry.begins_with(".") and not directory.current_is_dir() and entry.ends_with(".tres"):
+			trash_popup.add_item(entry, option_id)
+			trash_popup.set_item_metadata(option_id, SPECIES_TRASH_PATH.path_join(entry))
+			option_id += 1
+		entry = directory.get_next()
+	directory.list_dir_end()
+
+	if option_id == 0:
+		_show_status("La papelera está vacía", 2.0)
+		return
+	trash_popup.popup()
+
+func _on_restore_option_selected(option_id: int) -> void:
+	var trash_path: String = str(trash_popup.get_item_metadata(option_id))
+	if trash_path.is_empty():
+		return
+	var file_name: String = trash_path.get_file()
+	var separator: int = file_name.find("_")
+	if separator >= 0:
+		file_name = file_name.substr(separator + 1)
+	var destination: String = CUSTOM_SPECIES_PATH.path_join(file_name)
+	if FileAccess.file_exists(destination):
+		_show_status("Ya existe una especie con ese nombre", 3.0)
+		return
+
+	var move_error: Error = DirAccess.rename_absolute(
+		ProjectSettings.globalize_path(trash_path),
+		ProjectSettings.globalize_path(destination)
+	)
+	if move_error != OK:
+		_show_status("No se pudo restaurar la especie", 3.0)
+		return
+
+	EditorInterface.get_resource_filesystem().scan()
+	_load_species()
+	_load_species_from_path(destination)
+	_show_status("✓ Especie restaurada", 2.0)
 
 func _load_species() -> void:
 	if not _is_ready:

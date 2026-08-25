@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://ufnsmv4sgh8c"]
+
+[ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="1_ft2xk"]
+[ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_eatnj"]
+[ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_o3646"]
+
+[resource]
+script = ExtResource("3_o3646")
+national_dex_number = 9999
+species_name = "Orphegasus"
+species_id = 1573
+base_hp = 1
+base_attack = 1
+base_defense = 1
+base_speed = 1
+base_sp_attack = 1
+base_sp_defense = 1
+type_1 = 1
+category_name = "Especie"
+description = "Nueva especie personalizada."
+height = 1
+weight = 1
+body_color = 7
+egg_group_1 = 15
+egg_group_2 = 15
+egg_cycles = 1
+hatch_species = 1573
+gender_ratio = 7

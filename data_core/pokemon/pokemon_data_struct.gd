@@ -62,6 +62,10 @@ class_name PokemonDataStruct
 @export var icon_sprite_female: Texture2D
 @export var overworld_scene_female: Texture2D
 
+# Formas y variantes
+@export_group("Forms")
+@export var forms: Array[PokemonFormData] = []
+
 # Learnsets
 @export_group("Learnsets")
 @export var level_up_moves: Array[LevelUpMove]
