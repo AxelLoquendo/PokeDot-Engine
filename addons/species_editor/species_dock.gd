@@ -35,18 +35,27 @@ func _ready() -> void:
 	_load_species()
 
 func _setup_ui() -> void:
-	# ────────────────────────────────────────────────────────────
+	# Asegurarse de que el Control se redimensiona correctamente
+	anchor_left = 0.0
+	anchor_top = 0.0
+	anchor_right = 1.0
+	anchor_bottom = 1.0
+
+	# ─────────────────────────────────────────────────────────────────────────────────────────────────
 	# Main layout: HSplitContainer para panel list y editor
-	# ────────────────────────────────────────────────────────────
+	# ─────────────────────────────────────────────────────────────────────────────────────────────────
 
 	var main_split = HSplitContainer.new()
 	main_split.name = "MainSplit"
+	main_split.anchor_left = 0.0
+	main_split.anchor_top = 0.0
+	main_split.anchor_right = 1.0
+	main_split.anchor_bottom = 1.0
 	add_child(main_split)
-	add_child(main_split)  # Asegurar que ocupe todo el espacio
 
-	# ════════════════════════════════════════════════════════════
+	# ══════════════════════════════════════════════════════════════════════════════════════════════════
 	# Panel Izquierdo: Lista de especies
-	# ════════════════════════════════════════════════════════════
+	# ══════════════════════════════════════════════════════════════════════════════════════════════════
 
 	var left_panel = VBoxContainer.new()
 	left_panel.name = "LeftPanel"
@@ -82,9 +91,9 @@ func _setup_ui() -> void:
 	species_list.item_selected.connect(_on_species_selected)
 	left_panel.add_child(species_list)
 
-	# ════════════════════════════════════════════════════════════
+	# ══════════════════════════════════════════════════════════════════════════════════════════════════
 	# Panel Derecho: Editor de propiedades
-	# ════════════════════════════════════════════════════════════
+	# ══════════════════════════════════════════════════════════════════════════════════════════════════
 
 	var right_panel = VBoxContainer.new()
 	right_panel.name = "RightPanel"
@@ -133,7 +142,7 @@ func _setup_ui() -> void:
 	button_container.add_child(save_btn)
 
 	var revert_btn = Button.new()
-	revert_btn.text = "↶ Revert"
+	revert_btn.text = "⇶ Revert"
 	revert_btn.custom_minimum_size = Vector2(0, 28)
 	revert_btn.pressed.connect(_on_revert_pressed)
 	button_container.add_child(revert_btn)
@@ -144,9 +153,9 @@ func _setup_ui() -> void:
 	validate_btn.pressed.connect(_on_validate_pressed)
 	button_container.add_child(validate_btn)
 
-	# ════════════════════════════════════════════════════════════
+	# ══════════════════════════════════════════════════════════════════════════════════════════════════
 	# Status Bar (abajo)
-	# ════════════════════════════════════════════════════════════
+	# ══════════════════════════════════════════════════════════════════════════════════════════════════
 
 	status_label = Label.new()
 	status_label.text = "Ready"
