@@ -19,6 +19,8 @@ const STAT_COUNT: int = 6
 # Identidad / progreso
 # ------------------------------------------------------------
 @export var species_id: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
+## Identificador de variante. "base" usa los datos normales de la especie.
+@export var form_id: StringName = &"base"
 @export_range(1, 100) var level: int = 1
 @export var experience: int = 0
 @export var nickname: String = ""
@@ -59,12 +61,50 @@ func get_species() -> PokemonDataStruct:
 	return SpeciesDatabase.get_species(species_id)
 
 
+func set_form(new_form_id: StringName) -> bool:
+	if new_form_id.is_empty() or new_form_id == &"base":
+		form_id = &"base"
+		return true
+	var species: PokemonDataStruct = get_species()
+	if species == null:
+		return false
+	for form: PokemonFormData in species.forms:
+		if form != null and form.form_id == new_form_id:
+			form_id = new_form_id
+			return true
+	return false
+
+func reset_form() -> void:
+	form_id = &"base"
+
+func get_active_form() -> PokemonFormData:
+	return PokemonFormResolver.get_form(self)
+
+func get_front_sprite(shiny: bool = false) -> Texture2D:
+	return PokemonFormResolver.get_front_sprite(self, shiny)
+
+func get_back_sprite(shiny: bool = false) -> Texture2D:
+	return PokemonFormResolver.get_back_sprite(self, shiny)
+
+func get_icon_sprite() -> Texture2D:
+	return PokemonFormResolver.get_icon_sprite(self)
+
+func get_cry() -> AudioStream:
+	return PokemonFormResolver.get_cry(self)
+
+func get_type_1() -> PokemonData.Type:
+	return PokemonFormResolver.get_type_1(self)
+
+func get_type_2() -> PokemonData.Type:
+	return PokemonFormResolver.get_type_2(self)
+
 func set_species(new_species: Species.SpeciesID) -> bool:
 	if new_species == Species.SpeciesID.SPECIES_NONE:
 		return false
 	if not SpeciesDatabase.has_species(new_species):
 		return false
 	species_id = new_species
+	form_id = &"base"
 	return true
 
 
@@ -382,6 +422,7 @@ func to_dict() -> Dictionary:
 
 	return {
 		"species_id": int(species_id),
+		"form_id": str(form_id),
 		"level": level,
 		"experience": experience,
 		"nickname": nickname,
@@ -404,6 +445,7 @@ func to_dict() -> Dictionary:
 static func from_dict(data: Dictionary) -> PokemonInstance:
 	var pokemon: PokemonInstance = PokemonInstance.new()
 	pokemon.species_id = int(data.get("species_id", 0)) as Species.SpeciesID
+	pokemon.form_id = StringName(str(data.get("form_id", "base")))
 	pokemon.level = int(data.get("level", 1))
 	pokemon.experience = int(data.get("experience", 0))
 	pokemon.nickname = str(data.get("nickname", ""))
