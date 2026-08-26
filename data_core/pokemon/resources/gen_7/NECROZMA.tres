@@ -5,6 +5,54 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_3mhkb")
+form_id = &"dusk_mane"
+display_name = "Melena Crepuscular"
+override_types = true
+type_1 = 15
+type_2 = 9
+override_stats = true
+base_hp = 97
+base_attack = 157
+base_defense = 127
+base_speed = 77
+base_sp_attack = 113
+base_sp_defense = 109
+tags = PackedStringArray("fusion")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_3mhkb")
+form_id = &"dawn_wings"
+display_name = "Alas del Alba"
+override_types = true
+type_1 = 15
+type_2 = 8
+override_stats = true
+base_hp = 97
+base_attack = 113
+base_defense = 109
+base_speed = 77
+base_sp_attack = 157
+base_sp_defense = 127
+tags = PackedStringArray("fusion")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_3mhkb")
+form_id = &"ultra"
+display_name = "Ultra"
+override_types = true
+type_1 = 15
+type_2 = 17
+override_stats = true
+base_hp = 97
+base_attack = 167
+base_defense = 97
+base_speed = 129
+base_sp_attack = 167
+base_sp_defense = 97
+tags = PackedStringArray("ultra")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 93
@@ -94,57 +142,8 @@ script = ExtResource("2_learn")
 level = 88
 move = 665
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_3mhkb")
-form_id = &"dusk_mane"
-display_name = "Melena Crepuscular"
-override_types = true
-type_1 = 15
-type_2 = 9
-override_stats = true
-base_hp = 97
-base_attack = 157
-base_defense = 127
-base_speed = 77
-base_sp_attack = 113
-base_sp_defense = 109
-tags = PackedStringArray("fusion")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_3mhkb")
-form_id = &"dawn_wings"
-display_name = "Alas del Alba"
-override_types = true
-type_1 = 15
-type_2 = 8
-override_stats = true
-base_hp = 97
-base_attack = 113
-base_defense = 109
-base_speed = 77
-base_sp_attack = 157
-base_sp_defense = 127
-tags = PackedStringArray("fusion")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_3mhkb")
-form_id = &"ultra"
-display_name = "Ultra"
-override_types = true
-type_1 = 15
-type_2 = 17
-override_stats = true
-base_hp = 97
-base_attack = 167
-base_defense = 97
-base_speed = 129
-base_sp_attack = 167
-base_sp_defense = 97
-tags = PackedStringArray("ultra")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_3mhkb")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 800
 species_name = "Necrozma"
 species_id = 800
@@ -165,6 +164,7 @@ description = "Se dice que yacía en el interior de la tierra. Se cree que esta 
 height = 24
 weight = 2300
 body_color = 4
+forms = Array[ExtResource("2_3mhkb")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 34, 63, 76, 86, 89, 92, 94, 104, 113, 115, 129, 156, 157, 164, 168, 173, 182, 184, 200, 201, 203, 207, 214, 216, 218, 232, 237, 241, 248, 257, 263, 278, 280, 282, 286, 304, 317, 322, 324, 332, 334, 347, 349, 350, 351, 356, 360, 373, 374, 393, 397, 399, 404, 406, 408, 414, 416, 421, 427, 430, 433, 442, 444, 446, 451, 473, 477, 496, 500, 502, 523, 590, 647, 656, 660, 712, 725, 728, 779])
 ability_1 = 232

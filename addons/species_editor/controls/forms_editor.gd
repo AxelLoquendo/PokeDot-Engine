@@ -8,11 +8,17 @@ signal changed
 const FORM_EDITOR_SCRIPT := preload("res://addons/species_editor/controls/form_editor.gd")
 
 var current_species: PokemonDataStruct
+var available_species: Array[PokemonDataStruct] = []
 var forms: Array[PokemonFormData] = []
 var form_selector: OptionButton
 var form_editor: PokemonFormEditor
 var selected_index: int = -1
 var rebuilding: bool = false
+
+func set_available_species(values: Array[PokemonDataStruct]) -> void:
+	available_species = values
+	if form_editor != null:
+		form_editor.set_available_species(values)
 
 func set_species(species: PokemonDataStruct) -> void:
 	current_species = species
@@ -76,6 +82,7 @@ func _rebuild() -> void:
 	add_child(action_row)
 
 	form_editor = FORM_EDITOR_SCRIPT.new()
+	form_editor.set_available_species(available_species)
 	form_editor.changed.connect(_on_form_changed)
 	add_child(form_editor)
 	selected_index = 0

@@ -5,6 +5,24 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_0ywi5")
+form_id = &"small"
+display_name = "Pequeño"
+tags = PackedStringArray("size")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_0ywi5")
+form_id = &"large"
+display_name = "Grande"
+tags = PackedStringArray("size")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_0ywi5")
+form_id = &"super"
+display_name = "Extragrande"
+tags = PackedStringArray("size")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 109
@@ -80,27 +98,8 @@ script = ExtResource("2_learn")
 level = 48
 move = 566
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_0ywi5")
-form_id = &"small"
-display_name = "Pequeño"
-tags = PackedStringArray("size")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_0ywi5")
-form_id = &"large"
-display_name = "Grande"
-tags = PackedStringArray("size")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_0ywi5")
-form_id = &"super"
-display_name = "Extragrande"
-tags = PackedStringArray("size")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_0ywi5")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 711
 species_name = "Gourgeist-Average"
 species_id = 711
@@ -121,6 +120,7 @@ description = "En las noches de luna nueva deambula por las calles de las ciudad
 height = 9
 weight = 125
 body_color = 5
+forms = Array[ExtResource("2_0ywi5")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([53, 63, 76, 92, 94, 104, 113, 126, 138, 148, 153, 156, 157, 164, 168, 173, 180, 182, 184, 188, 202, 203, 207, 213, 214, 216, 218, 219, 220, 235, 237, 241, 247, 249, 261, 263, 267, 271, 272, 277, 285, 286, 290, 331, 360, 388, 399, 402, 411, 412, 416, 417, 433, 438, 447, 451, 477, 488, 492, 496, 502, 506, 510, 566, 590, 595, 656, 731, 734, 737])
 ability_1 = 53

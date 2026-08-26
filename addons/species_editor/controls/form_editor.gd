@@ -5,7 +5,10 @@ class_name PokemonFormEditor
 
 signal changed
 
+const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/evolution_table.gd")
+
 var current_form: PokemonFormData
+var available_species: Array[PokemonDataStruct] = []
 var form_id_input: LineEdit
 var name_input: LineEdit
 var type_1: TypeSelector
@@ -23,6 +26,11 @@ var front_y: SpinBox
 var back_x: SpinBox
 var back_y: SpinBox
 var notes_input: TextEdit
+var evolution_table: EvolutionTable
+var inherit_evolutions: CheckBox
+
+func set_available_species(values: Array[PokemonDataStruct]) -> void:
+	available_species = values
 
 func load_form(form: PokemonFormData) -> void:
 	current_form = form
@@ -53,6 +61,17 @@ func _rebuild() -> void:
 	type_2 = _make_type_selector(current_form.type_2)
 	_add_labeled_control("Tipo 1 (NONE = heredar)", type_1)
 	_add_labeled_control("Tipo 2 (NONE = heredar)", type_2)
+
+	inherit_evolutions = CheckBox.new()
+	inherit_evolutions.text = "Heredar evoluciones de la especie base"
+	inherit_evolutions.button_pressed = current_form.inherit_base_evolutions
+	inherit_evolutions.toggled.connect(_on_changed)
+	add_child(inherit_evolutions)
+	evolution_table = EVOLUTION_TABLE_SCRIPT.new()
+	evolution_table.available_species = available_species
+	evolution_table.load_evolutions(current_form.evolutions)
+	evolution_table.changed.connect(_on_changed)
+	add_child(evolution_table)
 
 	override_graphics = CheckBox.new()
 	override_graphics.text = "Sobrescribir gráficos de la especie base"
@@ -88,6 +107,8 @@ func apply_to_form(form: PokemonFormData) -> void:
 	form.override_types = override_types.button_pressed
 	form.type_1 = type_1.selected_type
 	form.type_2 = type_2.selected_type
+	form.inherit_base_evolutions = inherit_evolutions.button_pressed
+	form.evolutions = evolution_table.get_evolutions()
 	form.override_graphics = override_graphics.button_pressed
 	form.front_sprite = front_picker.edited_resource as Texture2D
 	form.front_sprite_shiny = shiny_picker.edited_resource as Texture2D

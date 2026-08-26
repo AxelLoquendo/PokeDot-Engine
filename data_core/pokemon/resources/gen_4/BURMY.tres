@@ -5,6 +5,24 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ysb11")
+form_id = &"plant"
+display_name = "Planta"
+tags = PackedStringArray("cloak")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_ysb11")
+form_id = &"sandy"
+display_name = "Arena"
+tags = PackedStringArray("cloak")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_ysb11")
+form_id = &"trash"
+display_name = "Basura"
+tags = PackedStringArray("cloak")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 182
@@ -24,27 +42,8 @@ script = ExtResource("2_learn")
 level = 20
 move = 237
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_ysb11")
-form_id = &"plant"
-display_name = "Planta"
-tags = PackedStringArray("cloak")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_ysb11")
-form_id = &"sandy"
-display_name = "Arena"
-tags = PackedStringArray("cloak")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_ysb11")
-form_id = &"trash"
-display_name = "Basura"
-tags = PackedStringArray("cloak")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_ysb11")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 412
 species_name = "Burmy"
 species_id = 412
@@ -64,6 +63,7 @@ description = "Para protegerse de los vientos fríos invernales, se cubre con un
 height = 2
 weight = 34
 body_color = 3
+forms = Array[ExtResource("2_ysb11")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([81, 173, 182, 237, 450, 527])
 ability_1 = 61

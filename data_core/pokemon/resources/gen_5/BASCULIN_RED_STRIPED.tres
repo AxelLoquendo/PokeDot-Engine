@@ -5,6 +5,18 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ri33c")
+form_id = &"blue_striped"
+display_name = "Líneas Azules"
+tags = PackedStringArray("basculin")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_ri33c")
+form_id = &"white_striped"
+display_name = "Líneas Blancas"
+tags = PackedStringArray("basculin")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 39
@@ -98,21 +110,8 @@ script = ExtResource("2_learn")
 level = 56
 move = 457
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_ri33c")
-form_id = &"blue_striped"
-display_name = "Líneas Azules"
-tags = PackedStringArray("basculin")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_ri33c")
-form_id = &"white_striped"
-display_name = "Líneas Blancas"
-tags = PackedStringArray("basculin")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_ri33c")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 550
 species_name = "Basculin-Red-Striped"
 species_id = 550
@@ -132,6 +131,7 @@ description = "Los de color azul y los de color rojo siempre se pelean. Son muy 
 height = 10
 weight = 180
 body_color = 3
+forms = Array[ExtResource("2_ri33c")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([15, 36, 38, 56, 57, 58, 59, 63, 92, 97, 104, 127, 129, 156, 164, 173, 179, 182, 184, 196, 203, 207, 213, 214, 216, 218, 237, 240, 242, 250, 253, 258, 263, 269, 276, 279, 283, 290, 291, 330, 340, 341, 352, 362, 372, 401, 416, 423, 428, 496, 503, 590, 660, 664, 727, 740, 779, 809, 812])
 egg_moves = Array[int]([61, 97, 99, 129, 250, 279, 283, 330, 341, 362, 457])

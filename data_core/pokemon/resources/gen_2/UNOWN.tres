@@ -5,10 +5,6 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
-[sub_resource type="Resource" id="Resource_move0"]
-script = ExtResource("2_learn")
-move = 237
-
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_rmot4")
 form_id = &"a"
@@ -177,9 +173,12 @@ form_id = &"question"
 display_name = "Question"
 tags = PackedStringArray("unown", "cosmetic")
 
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 237
+
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_rmot4")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26"), SubResource("Resource_form_27")])
 national_dex_number = 201
 species_name = "Unown"
 species_id = 201
@@ -200,6 +199,7 @@ description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma par
 height = 5
 weight = 50
 body_color = 4
+forms = Array[ExtResource("2_rmot4")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26"), SubResource("Resource_form_27")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
 teachable_moves = Array[int]([237])
 ability_1 = 26

@@ -5,6 +5,33 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_b37sd")
+form_id = &"pom_pom"
+display_name = "Pom-Pom"
+override_types = true
+type_1 = 14
+type_2 = 3
+tags = PackedStringArray("style")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_b37sd")
+form_id = &"pau"
+display_name = "Pa'u"
+override_types = true
+type_1 = 15
+type_2 = 3
+tags = PackedStringArray("style")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_b37sd")
+form_id = &"sensu"
+display_name = "Sensu"
+override_types = true
+type_1 = 8
+type_2 = 3
+tags = PackedStringArray("style")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 1
@@ -94,36 +121,8 @@ script = ExtResource("2_learn")
 level = 47
 move = 542
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_b37sd")
-form_id = &"pom_pom"
-display_name = "Pom-Pom"
-override_types = true
-type_1 = 14
-type_2 = 3
-tags = PackedStringArray("style")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_b37sd")
-form_id = &"pau"
-display_name = "Pa'u"
-override_types = true
-type_1 = 15
-type_2 = 3
-tags = PackedStringArray("style")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_b37sd")
-form_id = &"sensu"
-display_name = "Sensu"
-override_types = true
-type_1 = 8
-type_2 = 3
-tags = PackedStringArray("style")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_b37sd")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 741
 species_name = "Oricorio-Baile"
 species_id = 741
@@ -143,6 +142,7 @@ category_name = "Danza"
 description = "Junta las alas y lanza voraces llamas al rival. Su ataque se asemeja a una elaborada coreografía de fuego."
 height = 6
 weight = 34
+forms = Array[ExtResource("2_b37sd")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([14, 19, 36, 92, 97, 104, 129, 143, 156, 164, 173, 179, 182, 196, 201, 203, 204, 207, 211, 213, 214, 216, 218, 219, 226, 237, 240, 241, 244, 263, 269, 270, 272, 297, 314, 332, 343, 347, 355, 366, 369, 373, 403, 432, 496, 511, 512, 526, 542, 590, 742, 779, 811, 842])
 egg_moves = Array[int]([213, 219, 365, 366, 432, 445, 483])

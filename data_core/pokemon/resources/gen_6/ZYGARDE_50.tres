@@ -5,6 +5,51 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_a2vvr")
+form_id = &"ten_percent"
+display_name = "10%"
+override_stats = true
+base_hp = 54
+base_attack = 100
+base_defense = 71
+base_speed = 115
+base_sp_attack = 61
+base_sp_defense = 85
+tags = PackedStringArray("zygarde")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_a2vvr")
+form_id = &"complete"
+display_name = "Completo"
+override_stats = true
+base_hp = 216
+base_attack = 100
+base_defense = 121
+base_speed = 85
+base_sp_attack = 91
+base_sp_defense = 95
+tags = PackedStringArray("zygarde")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_a2vvr")
+form_id = &"ten_power_construct"
+display_name = "10% (Poder)"
+override_stats = true
+base_hp = 54
+base_attack = 100
+base_defense = 71
+base_speed = 115
+base_sp_attack = 61
+base_sp_defense = 85
+tags = PackedStringArray("zygarde", "power_construct")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_a2vvr")
+form_id = &"fifty_power_construct"
+display_name = "50% (Poder)"
+tags = PackedStringArray("zygarde", "power_construct")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 20
@@ -103,54 +148,8 @@ script = ExtResource("2_learn")
 level = 88
 move = 245
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_a2vvr")
-form_id = &"ten_percent"
-display_name = "10%"
-override_stats = true
-base_hp = 54
-base_attack = 100
-base_defense = 71
-base_speed = 115
-base_sp_attack = 61
-base_sp_defense = 85
-tags = PackedStringArray("zygarde")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_a2vvr")
-form_id = &"complete"
-display_name = "Completo"
-override_stats = true
-base_hp = 216
-base_attack = 100
-base_defense = 121
-base_speed = 85
-base_sp_attack = 91
-base_sp_defense = 95
-tags = PackedStringArray("zygarde")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_a2vvr")
-form_id = &"ten_power_construct"
-display_name = "10% (Poder)"
-override_stats = true
-base_hp = 54
-base_attack = 100
-base_defense = 71
-base_speed = 115
-base_sp_attack = 61
-base_sp_defense = 85
-tags = PackedStringArray("zygarde", "power_construct")
-
-[sub_resource type="Resource" id="Resource_form_3"]
-script = ExtResource("2_a2vvr")
-form_id = &"fifty_power_construct"
-display_name = "50% (Poder)"
-tags = PackedStringArray("zygarde", "power_construct")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_a2vvr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 national_dex_number = 718
 species_name = "Zygarde-50"
 species_id = 718
@@ -171,6 +170,7 @@ description = "Cuando el ecosistema de Kalos se encuentra en peligro, aparece y 
 height = 50
 weight = 3050
 body_color = 3
+forms = Array[ExtResource("2_a2vvr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([20, 34, 63, 70, 89, 91, 92, 104, 129, 156, 157, 164, 173, 179, 180, 182, 200, 201, 203, 207, 214, 216, 218, 219, 220, 231, 237, 241, 242, 249, 263, 276, 280, 290, 304, 335, 349, 351, 371, 406, 411, 414, 416, 428, 434, 444, 447, 482, 496, 514, 523, 525, 590, 630, 661, 712, 727, 734, 743])
 ability_1 = 188

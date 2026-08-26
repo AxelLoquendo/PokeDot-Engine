@@ -5,71 +5,6 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
-[sub_resource type="Resource" id="Resource_move0"]
-script = ExtResource("2_learn")
-move = 33
-
-[sub_resource type="Resource" id="Resource_move1"]
-script = ExtResource("2_learn")
-move = 186
-
-[sub_resource type="Resource" id="Resource_move2"]
-script = ExtResource("2_learn")
-move = 230
-
-[sub_resource type="Resource" id="Resource_move3"]
-script = ExtResource("2_learn")
-move = 597
-
-[sub_resource type="Resource" id="Resource_move4"]
-script = ExtResource("2_learn")
-move = 705
-
-[sub_resource type="Resource" id="Resource_move5"]
-script = ExtResource("2_learn")
-level = 15
-move = 577
-
-[sub_resource type="Resource" id="Resource_move6"]
-script = ExtResource("2_learn")
-level = 20
-move = 204
-
-[sub_resource type="Resource" id="Resource_move7"]
-script = ExtResource("2_learn")
-level = 20
-move = 312
-
-[sub_resource type="Resource" id="Resource_move8"]
-script = ExtResource("2_learn")
-level = 25
-move = 213
-
-[sub_resource type="Resource" id="Resource_move9"]
-script = ExtResource("2_learn")
-level = 30
-move = 151
-
-[sub_resource type="Resource" id="Resource_move10"]
-script = ExtResource("2_learn")
-level = 35
-move = 605
-
-[sub_resource type="Resource" id="Resource_move11"]
-script = ExtResource("2_learn")
-level = 40
-move = 105
-
-[sub_resource type="Resource" id="Resource_move12"]
-script = ExtResource("2_learn")
-level = 45
-move = 581
-
-[sub_resource type="Resource" id="Resource_move13"]
-script = ExtResource("2_learn")
-level = 50
-move = 494
-
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_i7fqg")
 form_id = &"strawberry_vanilla_cream"
@@ -448,9 +383,73 @@ form_id = &"ribbon_rainbow_swirl"
 display_name = "Ribbon · Remolino Arcoíris"
 tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "rainbow_swirl")
 
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 33
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 186
+
+[sub_resource type="Resource" id="Resource_move2"]
+script = ExtResource("2_learn")
+move = 230
+
+[sub_resource type="Resource" id="Resource_move3"]
+script = ExtResource("2_learn")
+move = 597
+
+[sub_resource type="Resource" id="Resource_move4"]
+script = ExtResource("2_learn")
+move = 705
+
+[sub_resource type="Resource" id="Resource_move5"]
+script = ExtResource("2_learn")
+level = 15
+move = 577
+
+[sub_resource type="Resource" id="Resource_move6"]
+script = ExtResource("2_learn")
+level = 20
+move = 204
+
+[sub_resource type="Resource" id="Resource_move7"]
+script = ExtResource("2_learn")
+level = 20
+move = 312
+
+[sub_resource type="Resource" id="Resource_move8"]
+script = ExtResource("2_learn")
+level = 25
+move = 213
+
+[sub_resource type="Resource" id="Resource_move9"]
+script = ExtResource("2_learn")
+level = 30
+move = 151
+
+[sub_resource type="Resource" id="Resource_move10"]
+script = ExtResource("2_learn")
+level = 35
+move = 605
+
+[sub_resource type="Resource" id="Resource_move11"]
+script = ExtResource("2_learn")
+level = 40
+move = 105
+
+[sub_resource type="Resource" id="Resource_move12"]
+script = ExtResource("2_learn")
+level = 45
+move = 581
+
+[sub_resource type="Resource" id="Resource_move13"]
+script = ExtResource("2_learn")
+level = 50
+move = 494
+
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_i7fqg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26"), SubResource("Resource_form_27"), SubResource("Resource_form_28"), SubResource("Resource_form_29"), SubResource("Resource_form_30"), SubResource("Resource_form_31"), SubResource("Resource_form_32"), SubResource("Resource_form_33"), SubResource("Resource_form_34"), SubResource("Resource_form_35"), SubResource("Resource_form_36"), SubResource("Resource_form_37"), SubResource("Resource_form_38"), SubResource("Resource_form_39"), SubResource("Resource_form_40"), SubResource("Resource_form_41"), SubResource("Resource_form_42"), SubResource("Resource_form_43"), SubResource("Resource_form_44"), SubResource("Resource_form_45"), SubResource("Resource_form_46"), SubResource("Resource_form_47"), SubResource("Resource_form_48"), SubResource("Resource_form_49"), SubResource("Resource_form_50"), SubResource("Resource_form_51"), SubResource("Resource_form_52"), SubResource("Resource_form_53"), SubResource("Resource_form_54"), SubResource("Resource_form_55"), SubResource("Resource_form_56"), SubResource("Resource_form_57"), SubResource("Resource_form_58"), SubResource("Resource_form_59"), SubResource("Resource_form_60"), SubResource("Resource_form_61"), SubResource("Resource_form_62")])
 national_dex_number = 869
 species_name = "Alcremie"
 species_id = 869
@@ -470,6 +469,7 @@ description = "Obsequia bayas decoradas con nata a aquellos Entrenadores en los 
 height = 3
 weight = 5
 body_color = 8
+forms = Array[ExtResource("2_i7fqg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26"), SubResource("Resource_form_27"), SubResource("Resource_form_28"), SubResource("Resource_form_29"), SubResource("Resource_form_30"), SubResource("Resource_form_31"), SubResource("Resource_form_32"), SubResource("Resource_form_33"), SubResource("Resource_form_34"), SubResource("Resource_form_35"), SubResource("Resource_form_36"), SubResource("Resource_form_37"), SubResource("Resource_form_38"), SubResource("Resource_form_39"), SubResource("Resource_form_40"), SubResource("Resource_form_41"), SubResource("Resource_form_42"), SubResource("Resource_form_43"), SubResource("Resource_form_44"), SubResource("Resource_form_45"), SubResource("Resource_form_46"), SubResource("Resource_form_47"), SubResource("Resource_form_48"), SubResource("Resource_form_49"), SubResource("Resource_form_50"), SubResource("Resource_form_51"), SubResource("Resource_form_52"), SubResource("Resource_form_53"), SubResource("Resource_form_54"), SubResource("Resource_form_55"), SubResource("Resource_form_56"), SubResource("Resource_form_57"), SubResource("Resource_form_58"), SubResource("Resource_form_59"), SubResource("Resource_form_60"), SubResource("Resource_form_61"), SubResource("Resource_form_62")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([63, 76, 94, 113, 118, 156, 161, 164, 173, 182, 202, 203, 204, 213, 214, 219, 220, 227, 244, 263, 270, 283, 286, 313, 345, 347, 374, 409, 412, 416, 472, 473, 478, 496, 500, 574, 577, 581, 583, 595, 605, 730, 779, 842])
 egg_moves = Array[int]([387, 608])

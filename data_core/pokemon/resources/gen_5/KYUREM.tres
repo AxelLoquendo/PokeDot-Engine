@@ -5,6 +5,32 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_8xgih")
+form_id = &"white"
+display_name = "Blanco"
+override_stats = true
+base_hp = 125
+base_attack = 120
+base_defense = 90
+base_speed = 95
+base_sp_attack = 170
+base_sp_defense = 100
+tags = PackedStringArray("fusion")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_8xgih")
+form_id = &"black"
+display_name = "Negro"
+override_stats = true
+base_hp = 125
+base_attack = 170
+base_defense = 100
+base_speed = 95
+base_sp_attack = 120
+base_sp_defense = 90
+tags = PackedStringArray("fusion")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 82
@@ -84,35 +110,8 @@ script = ExtResource("2_learn")
 level = 88
 move = 329
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_8xgih")
-form_id = &"white"
-display_name = "Blanco"
-override_stats = true
-base_hp = 125
-base_attack = 120
-base_defense = 90
-base_speed = 95
-base_sp_attack = 170
-base_sp_defense = 100
-tags = PackedStringArray("fusion")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_8xgih")
-form_id = &"black"
-display_name = "Negro"
-override_stats = true
-base_hp = 125
-base_attack = 170
-base_defense = 100
-base_speed = 95
-base_sp_attack = 120
-base_sp_defense = 90
-tags = PackedStringArray("fusion")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_8xgih")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 646
 species_name = "Kyurem"
 species_id = 646
@@ -135,6 +134,7 @@ description = "Pokémon legendario que aguarda al héroe que compense el vacío 
 height = 30
 weight = 3250
 body_color = 7
+forms = Array[ExtResource("2_8xgih")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([15, 19, 34, 36, 46, 58, 59, 63, 70, 92, 94, 104, 113, 115, 129, 156, 157, 164, 173, 182, 184, 196, 200, 203, 207, 211, 214, 216, 218, 219, 237, 240, 241, 247, 249, 258, 263, 270, 283, 286, 290, 304, 311, 317, 324, 332, 333, 337, 349, 355, 371, 374, 406, 411, 414, 416, 419, 421, 423, 428, 430, 434, 442, 444, 468, 496, 497, 525, 590, 636, 656, 704, 712, 727, 742, 779, 809, 841])
 ability_1 = 46

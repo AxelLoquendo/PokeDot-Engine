@@ -5,6 +5,18 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_3tx01")
+form_id = &"droopy"
+display_name = "Lánguido"
+tags = PackedStringArray("form")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_3tx01")
+form_id = &"stretchy"
+display_name = "Estirado"
+tags = PackedStringArray("form")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 55
@@ -63,21 +75,8 @@ script = ExtResource("2_learn")
 level = 52
 move = 406
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_3tx01")
-form_id = &"droopy"
-display_name = "Lánguido"
-tags = PackedStringArray("form")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_3tx01")
-form_id = &"stretchy"
-display_name = "Estirado"
-tags = PackedStringArray("form")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_3tx01")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 978
 species_name = "Tatsugiri-Curly"
 species_id = 1367
@@ -99,6 +98,7 @@ description = "This is a small dragon Pokémon. It lives inside the mouth of Don
 height = 3
 weight = 80
 body_color = 9
+forms = Array[ExtResource("2_3tx01")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([36, 56, 57, 63, 156, 164, 182, 196, 200, 203, 214, 226, 240, 250, 263, 269, 270, 330, 349, 352, 406, 416, 417, 434, 642, 779, 812, 841])
 egg_moves = Array[int]([68, 226, 229])

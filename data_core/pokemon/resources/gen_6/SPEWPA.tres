@@ -5,14 +5,6 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
-[sub_resource type="Resource" id="Resource_move0"]
-script = ExtResource("2_learn")
-move = 106
-
-[sub_resource type="Resource" id="Resource_move1"]
-script = ExtResource("2_learn")
-move = 182
-
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_jnx86")
 form_id = &"icy_snow"
@@ -133,9 +125,16 @@ form_id = &"pokeball"
 display_name = "Pokeball"
 tags = PackedStringArray("vivillon", "pattern")
 
+[sub_resource type="Resource" id="Resource_move0"]
+script = ExtResource("2_learn")
+move = 106
+
+[sub_resource type="Resource" id="Resource_move1"]
+script = ExtResource("2_learn")
+move = 182
+
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_jnx86")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19")])
 national_dex_number = 665
 species_name = "Spewpa"
 species_id = 665
@@ -155,6 +154,7 @@ description = "Habita en la sombra de la espesura. Si percibe alguna amenaza, su
 height = 3
 weight = 84
 body_color = 4
+forms = Array[ExtResource("2_jnx86")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
 teachable_moves = Array[int]([182, 334, 450, 522, 527, 779, 810])
 ability_1 = 61

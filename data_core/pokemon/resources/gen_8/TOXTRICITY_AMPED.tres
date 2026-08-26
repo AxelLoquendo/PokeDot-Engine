@@ -5,6 +5,12 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_miewt")
+form_id = &"low_key"
+display_name = "Bajo"
+tags = PackedStringArray("nature_form")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 43
@@ -118,15 +124,8 @@ script = ExtResource("2_learn")
 level = 52
 move = 508
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_miewt")
-form_id = &"low_key"
-display_name = "Bajo"
-tags = PackedStringArray("nature_form")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_miewt")]([SubResource("Resource_form_0")])
 national_dex_number = 849
 species_name = "Toxtricity-Amped"
 species_id = 849
@@ -148,6 +147,7 @@ description = "Cuando rasga las protuberancias del pecho para generar energía e
 height = 16
 weight = 400
 body_color = 6
+forms = Array[ExtResource("2_miewt")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24")])
 teachable_moves = Array[int]([5, 7, 9, 25, 36, 63, 85, 86, 87, 92, 103, 118, 129, 156, 164, 168, 173, 182, 184, 188, 203, 204, 213, 214, 227, 240, 241, 253, 263, 268, 269, 270, 280, 283, 304, 319, 342, 371, 374, 390, 398, 409, 416, 422, 441, 451, 474, 482, 486, 491, 496, 500, 506, 521, 527, 528, 555, 598, 604, 638, 732, 779, 811, 845])
 ability_1 = 244

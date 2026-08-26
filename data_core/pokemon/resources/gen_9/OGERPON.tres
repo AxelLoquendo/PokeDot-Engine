@@ -5,6 +5,38 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_75p64")
+form_id = &"wellspring"
+display_name = "Fuente"
+override_types = true
+type_1 = 12
+tags = PackedStringArray("mask")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_75p64")
+form_id = &"hearthflame"
+display_name = "Horno"
+override_types = true
+type_1 = 11
+tags = PackedStringArray("mask")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_75p64")
+form_id = &"cornerstone"
+display_name = "Cimiento"
+override_types = true
+type_1 = 6
+tags = PackedStringArray("mask")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_75p64")
+form_id = &"teal"
+display_name = "Turquesa"
+override_types = true
+type_1 = 13
+tags = PackedStringArray("mask")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 22
@@ -76,45 +108,8 @@ script = ExtResource("2_learn")
 level = 66
 move = 452
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_75p64")
-form_id = &"wellspring"
-display_name = "Fuente"
-override_types = true
-type_1 = 12
-type_2 = 0
-tags = PackedStringArray("mask")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_75p64")
-form_id = &"hearthflame"
-display_name = "Horno"
-override_types = true
-type_1 = 11
-type_2 = 0
-tags = PackedStringArray("mask")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_75p64")
-form_id = &"cornerstone"
-display_name = "Cimiento"
-override_types = true
-type_1 = 6
-type_2 = 0
-tags = PackedStringArray("mask")
-
-[sub_resource type="Resource" id="Resource_form_3"]
-script = ExtResource("2_75p64")
-form_id = &"teal"
-display_name = "Turquesa"
-override_types = true
-type_1 = 13
-type_2 = 0
-tags = PackedStringArray("mask")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_75p64")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 national_dex_number = 1017
 species_name = "Ogerpon"
 species_id = 1416
@@ -135,6 +130,7 @@ description = "This Pokémon's type changes based on which mask it's wearing. It
 height = 12
 weight = 398
 body_color = 3
+forms = Array[ExtResource("2_75p64")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 36, 67, 76, 156, 164, 179, 182, 184, 191, 201, 202, 203, 204, 206, 214, 227, 240, 241, 263, 269, 270, 280, 282, 317, 331, 345, 369, 374, 402, 412, 416, 428, 437, 447, 490, 580, 583, 632, 638, 661, 731, 736, 779, 811])
 egg_moves = Array[int]([24, 68, 514, 532])

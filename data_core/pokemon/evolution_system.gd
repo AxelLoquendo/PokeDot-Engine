@@ -21,7 +21,7 @@ static func get_available_evolutions(
 	evaluation_context.pokemon = pokemon
 	evaluation_context.mode = mode
 
-	for evolution: EvolutionData in species_data.evolutions:
+	for evolution: EvolutionData in _get_evolution_rules(pokemon, species_data):
 		if evolution != null and can_evolve(pokemon, evolution, evaluation_context):
 			results.append(EvolutionResult.new(evolution))
 
@@ -29,6 +29,21 @@ static func get_available_evolutions(
 		return a.evolution.priority < b.evolution.priority
 	)
 	return results
+
+static func _get_evolution_rules(
+	pokemon: PokemonInstance,
+	species_data: PokemonDataStruct
+) -> Array[EvolutionData]:
+	var rules: Array[EvolutionData] = species_data.evolutions.duplicate(true)
+	var form: PokemonFormData = PokemonFormResolver.get_form(pokemon)
+	if form == null:
+		return rules
+	if not form.inherit_base_evolutions:
+		return form.evolutions.duplicate(true)
+	for rule: EvolutionData in form.evolutions:
+		if rule != null:
+			rules.append(rule)
+	return rules
 
 ## Acepta el contexto nuevo y también el modo antiguo para no romper llamadas existentes.
 static func can_evolve(
@@ -145,4 +160,5 @@ static func evolve(
 	if not can_evolve(pokemon, result.evolution, value):
 		return false
 	pokemon.species_id = result.target_species
+	pokemon.form_id = result.target_form_id
 	return true

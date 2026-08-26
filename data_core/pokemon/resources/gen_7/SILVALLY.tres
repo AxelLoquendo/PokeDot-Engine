@@ -5,6 +5,150 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_76e10")
+form_id = &"normal"
+display_name = "Normal"
+override_types = true
+type_1 = 1
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_76e10")
+form_id = &"fighting"
+display_name = "Fighting"
+override_types = true
+type_1 = 2
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_76e10")
+form_id = &"flying"
+display_name = "Flying"
+override_types = true
+type_1 = 3
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_76e10")
+form_id = &"poison"
+display_name = "Poison"
+override_types = true
+type_1 = 4
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_76e10")
+form_id = &"ground"
+display_name = "Ground"
+override_types = true
+type_1 = 5
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_5"]
+script = ExtResource("2_76e10")
+form_id = &"rock"
+display_name = "Rock"
+override_types = true
+type_1 = 6
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_6"]
+script = ExtResource("2_76e10")
+form_id = &"bug"
+display_name = "Bug"
+override_types = true
+type_1 = 7
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_7"]
+script = ExtResource("2_76e10")
+form_id = &"ghost"
+display_name = "Ghost"
+override_types = true
+type_1 = 8
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_8"]
+script = ExtResource("2_76e10")
+form_id = &"steel"
+display_name = "Steel"
+override_types = true
+type_1 = 9
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_9"]
+script = ExtResource("2_76e10")
+form_id = &"fire"
+display_name = "Fire"
+override_types = true
+type_1 = 11
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_10"]
+script = ExtResource("2_76e10")
+form_id = &"water"
+display_name = "Water"
+override_types = true
+type_1 = 12
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_11"]
+script = ExtResource("2_76e10")
+form_id = &"grass"
+display_name = "Grass"
+override_types = true
+type_1 = 13
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_12"]
+script = ExtResource("2_76e10")
+form_id = &"electric"
+display_name = "Electric"
+override_types = true
+type_1 = 14
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_13"]
+script = ExtResource("2_76e10")
+form_id = &"psychic"
+display_name = "Psychic"
+override_types = true
+type_1 = 15
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_14"]
+script = ExtResource("2_76e10")
+form_id = &"ice"
+display_name = "Ice"
+override_types = true
+type_1 = 16
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_15"]
+script = ExtResource("2_76e10")
+form_id = &"dragon"
+display_name = "Dragon"
+override_types = true
+type_1 = 17
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_16"]
+script = ExtResource("2_76e10")
+form_id = &"dark"
+display_name = "Dark"
+override_types = true
+type_1 = 18
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_17"]
+script = ExtResource("2_76e10")
+form_id = &"fairy"
+display_name = "Fairy"
+override_types = true
+type_1 = 19
+tags = PackedStringArray("memory")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -127,171 +271,8 @@ script = ExtResource("2_learn")
 level = 70
 move = 13
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_76e10")
-form_id = &"normal"
-display_name = "Normal"
-override_types = true
-type_1 = 1
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_76e10")
-form_id = &"fighting"
-display_name = "Fighting"
-override_types = true
-type_1 = 2
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_76e10")
-form_id = &"flying"
-display_name = "Flying"
-override_types = true
-type_1 = 3
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_3"]
-script = ExtResource("2_76e10")
-form_id = &"poison"
-display_name = "Poison"
-override_types = true
-type_1 = 4
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_4"]
-script = ExtResource("2_76e10")
-form_id = &"ground"
-display_name = "Ground"
-override_types = true
-type_1 = 5
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_5"]
-script = ExtResource("2_76e10")
-form_id = &"rock"
-display_name = "Rock"
-override_types = true
-type_1 = 6
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_6"]
-script = ExtResource("2_76e10")
-form_id = &"bug"
-display_name = "Bug"
-override_types = true
-type_1 = 7
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_7"]
-script = ExtResource("2_76e10")
-form_id = &"ghost"
-display_name = "Ghost"
-override_types = true
-type_1 = 8
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_8"]
-script = ExtResource("2_76e10")
-form_id = &"steel"
-display_name = "Steel"
-override_types = true
-type_1 = 9
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_9"]
-script = ExtResource("2_76e10")
-form_id = &"fire"
-display_name = "Fire"
-override_types = true
-type_1 = 11
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_10"]
-script = ExtResource("2_76e10")
-form_id = &"water"
-display_name = "Water"
-override_types = true
-type_1 = 12
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_11"]
-script = ExtResource("2_76e10")
-form_id = &"grass"
-display_name = "Grass"
-override_types = true
-type_1 = 13
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_12"]
-script = ExtResource("2_76e10")
-form_id = &"electric"
-display_name = "Electric"
-override_types = true
-type_1 = 14
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_13"]
-script = ExtResource("2_76e10")
-form_id = &"psychic"
-display_name = "Psychic"
-override_types = true
-type_1 = 15
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_14"]
-script = ExtResource("2_76e10")
-form_id = &"ice"
-display_name = "Ice"
-override_types = true
-type_1 = 16
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_15"]
-script = ExtResource("2_76e10")
-form_id = &"dragon"
-display_name = "Dragon"
-override_types = true
-type_1 = 17
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_16"]
-script = ExtResource("2_76e10")
-form_id = &"dark"
-display_name = "Dark"
-override_types = true
-type_1 = 18
-type_2 = 0
-tags = PackedStringArray("memory")
-
-[sub_resource type="Resource" id="Resource_form_17"]
-script = ExtResource("2_76e10")
-form_id = &"fairy"
-display_name = "Fairy"
-override_types = true
-type_1 = 19
-type_2 = 0
-tags = PackedStringArray("memory")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_76e10")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17")])
 national_dex_number = 773
 species_name = "Silvally"
 species_id = 773
@@ -311,6 +292,7 @@ description = "La confianza con su Entrenador ha despertado su potencial. Ahora 
 height = 23
 weight = 1005
 body_color = 7
+forms = Array[ExtResource("2_76e10")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26")])
 teachable_moves = Array[int]([14, 46, 53, 57, 58, 63, 85, 86, 92, 104, 120, 129, 153, 156, 157, 161, 164, 173, 179, 182, 184, 196, 200, 201, 203, 207, 211, 214, 216, 218, 237, 240, 241, 242, 247, 257, 258, 263, 277, 286, 304, 324, 332, 334, 337, 366, 369, 371, 387, 403, 404, 416, 421, 422, 423, 424, 428, 430, 432, 434, 442, 488, 496, 518, 519, 520, 526, 555, 590, 636, 660, 724, 733])
 ability_1 = 225

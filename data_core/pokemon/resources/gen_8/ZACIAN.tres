@@ -5,6 +5,22 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_p4bgp")
+form_id = &"crowned"
+display_name = "Rey de las Espadas"
+override_types = true
+type_1 = 19
+type_2 = 9
+override_stats = true
+base_hp = 92
+base_attack = 150
+base_defense = 115
+base_speed = 148
+base_sp_attack = 80
+base_sp_defense = 115
+tags = PackedStringArray("crowned")
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 44
@@ -74,25 +90,8 @@ script = ExtResource("2_learn")
 level = 88
 move = 416
 
-[sub_resource type="Resource" id="Resource_form_0"]
-script = ExtResource("2_p4bgp")
-form_id = &"crowned"
-display_name = "Rey de las Espadas"
-override_types = true
-type_1 = 19
-type_2 = 9
-override_stats = true
-base_hp = 92
-base_attack = 150
-base_defense = 115
-base_speed = 148
-base_sp_attack = 80
-base_sp_defense = 115
-tags = PackedStringArray("crowned")
-
 [resource]
 script = ExtResource("3_struct")
-forms = Array[ExtResource("2_p4bgp")]([SubResource("Resource_form_0")])
 national_dex_number = 888
 species_name = "Zacian"
 species_id = 888
@@ -112,6 +111,7 @@ description = "Este Pokémon está considerado como un héroe de leyenda. Absorb
 height = 28
 weight = 1100
 body_color = 1
+forms = Array[ExtResource("2_p4bgp")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 34, 36, 63, 91, 97, 116, 129, 156, 164, 173, 179, 182, 184, 203, 206, 214, 231, 232, 242, 263, 270, 279, 280, 286, 304, 334, 370, 372, 398, 403, 411, 416, 422, 423, 424, 427, 430, 442, 496, 514, 526, 528, 541, 555, 581, 583, 605, 632, 656, 660, 724, 779, 811])
 ability_1 = 234

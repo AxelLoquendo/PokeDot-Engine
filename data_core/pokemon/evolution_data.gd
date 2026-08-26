@@ -7,6 +7,8 @@ class_name EvolutionData
 
 @export_group("Destino")
 @export var target_species: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
+## Forma que tendrá el Pokémon al evolucionar; "base" conserva la forma normal.
+@export var target_form_id: StringName = &"base"
 
 @export_group("Regla nueva")
 @export var use_advanced_rules: bool = false
