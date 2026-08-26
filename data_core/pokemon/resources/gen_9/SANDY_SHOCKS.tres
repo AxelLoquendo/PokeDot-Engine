@@ -89,7 +89,7 @@ move = 602
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 989
-species_name = "Sandy-Shocks"
+species_name = "Sandy Shocks"
 species_id = 1381
 base_hp = 85
 base_attack = 81

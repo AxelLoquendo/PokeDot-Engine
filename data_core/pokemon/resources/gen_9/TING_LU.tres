@@ -95,7 +95,7 @@ move = 90
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 1003
-species_name = "Ting-Lu"
+species_name = "Ting Lu"
 species_id = 1396
 base_hp = 155
 base_attack = 110

@@ -85,7 +85,7 @@ move = 195
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 987
-species_name = "Flutter-Mane"
+species_name = "Flutter Mane"
 species_id = 1379
 base_hp = 55
 base_attack = 55

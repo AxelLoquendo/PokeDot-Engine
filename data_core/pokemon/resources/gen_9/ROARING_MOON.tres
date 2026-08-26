@@ -89,7 +89,7 @@ move = 38
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 1005
-species_name = "Roaring-Moon"
+species_name = "Roaring Moon"
 species_id = 1398
 base_hp = 105
 base_attack = 139

@@ -79,7 +79,7 @@ move = 56
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 1009
-species_name = "Walking-Wake"
+species_name = "Walking Wake"
 species_id = 1406
 base_hp = 99
 base_attack = 83

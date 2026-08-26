@@ -89,7 +89,7 @@ move = 761
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 1020
-species_name = "Gouging-Fire"
+species_name = "Gouging Fire"
 species_id = 1427
 base_hp = 105
 base_attack = 115

@@ -89,7 +89,7 @@ move = 416
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 1022
-species_name = "Iron-Boulder"
+species_name = "Iron Boulder"
 species_id = 1429
 base_hp = 90
 base_attack = 120

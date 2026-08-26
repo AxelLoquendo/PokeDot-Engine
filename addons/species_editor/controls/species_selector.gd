@@ -21,8 +21,14 @@ func _ready() -> void:
 	popup.id_pressed.connect(_on_selected)
 	add_child(popup)
 
-	_populate()
+	_index_names()
 	_update_text()
+
+func _index_names() -> void:
+	names.clear()
+	for data: PokemonDataStruct in available_species:
+		if data != null:
+			names[int(data.species_id)] = data.species_name
 
 func _populate() -> void:
 	popup.clear()
@@ -42,6 +48,8 @@ func _populate() -> void:
 		names[int(selected_species)] = "UNKNOWN"
 
 func _on_pressed() -> void:
+	if popup.get_item_count() == 0:
+		_populate()
 	var rect: Rect2 = button.get_global_rect()
 	popup.popup(Rect2(
 		rect.position + Vector2(0, rect.size.y),

@@ -89,7 +89,7 @@ move = 315
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 994
-species_name = "Iron-Moth"
+species_name = "Iron Moth"
 species_id = 1386
 base_hp = 80
 base_attack = 70

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ye011ebnamcr"]
 
+[ext_resource type="Script" uid="uid://b7hqa74c2oa3e" path="res://scenes/ui_battle/battle.gd" id="1_axcis"]
 [ext_resource type="Texture2D" uid="uid://cbyih53kmnlcl" path="res://graphics/battle_ground/BG_LongGrass.png" id="1_c8v4i"]
 [ext_resource type="Texture2D" uid="uid://c32c4cujica21" path="res://graphics/battle_interface/fight.png" id="2_k0gm8"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="3_pmg0a"]
@@ -96,6 +97,7 @@ font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 shadow_size = 0
 
 [node name="Battle" type="Node2D" unique_id=2072502865]
+script = ExtResource("1_axcis")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=2015925737]
 position = Vector2(256, 112)
@@ -167,7 +169,6 @@ texture_normal = ExtResource("8_ln23b")
 texture_focused = ExtResource("9_w78s2")
 
 [node name="Overlay_Fight" type="Sprite2D" parent="." unique_id=2098993056]
-visible = false
 position = Vector2(240, 272)
 texture = ExtResource("11_ln23b")
 
@@ -181,10 +182,11 @@ offset_bottom = 46.0
 
 [node name="GridContainer" type="GridContainer" parent="Overlay_Fight/Moves" unique_id=312439128]
 layout_mode = 0
+offset_top = -2.0
 offset_right = 354.0
-offset_bottom = 92.0
-theme_override_constants/h_separation = -3
-theme_override_constants/v_separation = -4
+offset_bottom = 90.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = -1
 columns = 2
 
 [node name="Move" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=374164805]
@@ -194,13 +196,15 @@ texture_focused = ExtResource("13_axcis")
 
 [node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move" unique_id=1643575520]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 9.0
-offset_right = 156.0
-offset_bottom = 37.0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
 text = "Cuchillada"
 label_settings = SubResource("LabelSettings_q4lci")
 horizontal_alignment = 1
+script = ExtResource("14_ymneq")
+ancho_maximo = 53.0
 
 [node name="Move2" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=1838229241]
 layout_mode = 2
@@ -209,13 +213,14 @@ texture_focused = ExtResource("13_axcis")
 
 [node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move2" unique_id=975238828]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 9.0
-offset_right = 156.0
-offset_bottom = 37.0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
 text = "Cuchillada"
 label_settings = SubResource("LabelSettings_3mhqk")
 horizontal_alignment = 1
+script = ExtResource("14_ymneq")
 
 [node name="Move3" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=468471031]
 layout_mode = 2
@@ -224,13 +229,14 @@ texture_focused = ExtResource("13_axcis")
 
 [node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move3" unique_id=385534374]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 9.0
-offset_right = 156.0
-offset_bottom = 37.0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
 text = "Cuchillada"
 label_settings = SubResource("LabelSettings_bg6a1")
 horizontal_alignment = 1
+script = ExtResource("14_ymneq")
 
 [node name="Move4" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=74352521]
 layout_mode = 2
@@ -239,13 +245,14 @@ texture_focused = ExtResource("13_axcis")
 
 [node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move4" unique_id=2141480026]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 9.0
-offset_right = 156.0
-offset_bottom = 37.0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
 text = "Cuchillada"
 label_settings = SubResource("LabelSettings_y8am3")
 horizontal_alignment = 1
+script = ExtResource("14_ymneq")
 
 [node name="PP" type="Label" parent="Overlay_Fight" unique_id=1152143415]
 texture_filter = 1
@@ -270,12 +277,12 @@ position = Vector2(176, -11)
 texture = ExtResource("12_w78s2")
 
 [node name="Pkmn_Player" type="Sprite2D" parent="." unique_id=228095653]
-position = Vector2(128, 160)
+position = Vector2(128, 152)
 scale = Vector2(2, 2)
 texture = ExtResource("4_wp3na")
 
 [node name="Pkmn_Enemy" type="Sprite2D" parent="." unique_id=1376516171]
-position = Vector2(345, 64)
+position = Vector2(353, 80)
 scale = Vector2(2, 2)
 texture = ExtResource("5_7gnqx")
 

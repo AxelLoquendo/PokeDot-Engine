@@ -8,13 +8,13 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3tx01")
 form_id = &"droopy"
-display_name = "Lánguido"
+display_name = "Tatsugiri"
 tags = PackedStringArray("form")
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_3tx01")
 form_id = &"stretchy"
-display_name = "Estirado"
+display_name = "Tatsugiri"
 tags = PackedStringArray("form")
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -78,7 +78,7 @@ move = 406
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 978
-species_name = "Tatsugiri-Curly"
+species_name = "Tatsugiri"
 species_id = 1367
 base_hp = 68
 base_attack = 50

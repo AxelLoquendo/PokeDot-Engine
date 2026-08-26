@@ -85,7 +85,7 @@ move = 586
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 985
-species_name = "Scream-Tail"
+species_name = "Scream Tail"
 species_id = 1377
 base_hp = 115
 base_attack = 65

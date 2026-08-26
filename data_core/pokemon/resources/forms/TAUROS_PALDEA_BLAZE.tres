@@ -76,7 +76,7 @@ move = 370
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 128
-species_name = "Tauros Paldea Blaze"
+species_name = "Tauros"
 species_id = 1403
 base_hp = 75
 base_attack = 110

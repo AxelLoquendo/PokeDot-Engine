@@ -90,7 +90,7 @@ move = 37
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 988
-species_name = "Slither-Wing"
+species_name = "Slither Wing"
 species_id = 1380
 base_hp = 85
 base_attack = 135

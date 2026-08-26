@@ -89,7 +89,7 @@ move = 87
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 1021
-species_name = "Raging-Bolt"
+species_name = "Raging Bolt"
 species_id = 1428
 base_hp = 125
 base_attack = 73

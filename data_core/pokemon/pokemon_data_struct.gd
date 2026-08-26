@@ -114,7 +114,7 @@ class_name PokemonDataStruct
 @export var cry: AudioStream
 
 ## 16 = estilo más fino; 32 = pasos más grandes (elige según tu UI de combate)
-const BATTLE_OFFSET_SCALE: float = 32.0
+const BATTLE_OFFSET_SCALE: float = 2.0
 
 func get_front_sprite_offset_px() -> Vector2:
 	return front_sprite_offset * BATTLE_OFFSET_SCALE

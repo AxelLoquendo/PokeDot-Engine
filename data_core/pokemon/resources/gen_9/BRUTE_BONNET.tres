@@ -80,7 +80,7 @@ move = 76
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 986
-species_name = "Brute-Bonnet"
+species_name = "Brute Bonnet"
 species_id = 1378
 base_hp = 111
 base_attack = 127

@@ -89,7 +89,7 @@ move = 264
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 992
-species_name = "Iron-Hands"
+species_name = "Iron Hands"
 species_id = 1384
 base_hp = 154
 base_attack = 140

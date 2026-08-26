@@ -17,6 +17,7 @@ var form_panel: SpeciesForm
 var status_label: Label
 var status_timer: Timer
 var save_button: Button
+var save_all_button: Button
 var revert_button: Button
 var new_button: Button
 var duplicate_button: Button
@@ -35,10 +36,12 @@ var catalog: SpeciesEditorCatalog
 var enum_manager: SpeciesEnumManager
 var validator: SpeciesValidator
 var all_species: Array[PokemonDataStruct] = []
+var species_by_path: Dictionary = {}
 var selected_species: PokemonDataStruct
 var selected_path := ""
 var pending_path := ""
 var has_unsaved_changes := false
+var dirty_species: Dictionary = {}
 var _is_ready := false
 
 func _init() -> void:
@@ -147,6 +150,12 @@ func _build_ui() -> void:
 	save_button.disabled = true
 	save_button.pressed.connect(_on_save_pressed)
 	buttons.add_child(save_button)
+
+	save_all_button = Button.new()
+	save_all_button.text = "💾 Guardar todo"
+	save_all_button.disabled = true
+	save_all_button.pressed.connect(_on_save_all_pressed)
+	buttons.add_child(save_all_button)
 
 	revert_button = Button.new()
 	revert_button.text = "↶ Revertir"
@@ -429,11 +438,25 @@ func _on_restore_option_selected(option_id: int) -> void:
 	_load_species_from_path(destination)
 	_show_status("✓ Especie restaurada", 2.0)
 
+func save_all_from_shortcut() -> void:
+	_on_save_all_pressed()
+
+func _stash_current_edits() -> void:
+	if selected_species == null or selected_path.is_empty() or not has_unsaved_changes:
+		return
+	if form_panel.apply_to_species(selected_species):
+		dirty_species[selected_path] = selected_species
+
 func _load_species() -> void:
+	_stash_current_edits()
 	if not _is_ready:
 		return
 
 	all_species = repository.load_all_species()
+	species_by_path.clear()
+	for data: PokemonDataStruct in all_species:
+		if data != null:
+			species_by_path[repository.get_species_path(data.species_id)] = data
 	catalog.load_all()
 	form_panel.set_catalog(catalog, all_species)
 	_refresh_list()
@@ -504,16 +527,16 @@ func _on_species_selected(index: int) -> void:
 	if path.is_empty():
 		return
 
-	if has_unsaved_changes and path != selected_path:
-		pending_path = path
-		discard_dialog.popup_centered()
-		return
-
+	_stash_current_edits()
 	_load_species_from_path(path)
 
 func _load_species_from_path(path: String, force_reload: bool = false) -> void:
 	var resource: Resource
-	if force_reload:
+	if not force_reload and dirty_species.has(path):
+		resource = dirty_species[path] as PokemonDataStruct
+	elif not force_reload and species_by_path.has(path):
+		resource = species_by_path[path] as PokemonDataStruct
+	elif force_reload:
 		resource = ResourceLoader.load(
 			path,
 			"",
@@ -527,7 +550,7 @@ func _load_species_from_path(path: String, force_reload: bool = false) -> void:
 
 	selected_path = path
 	selected_species = resource as PokemonDataStruct
-	has_unsaved_changes = false
+	has_unsaved_changes = dirty_species.has(path)
 	form_panel.load_species(selected_species)
 	_update_buttons()
 	_show_status("Seleccionada: %s" % selected_species.species_name, 2.0)
@@ -542,6 +565,8 @@ func _on_form_changed() -> void:
 	if selected_species == null:
 		return
 	has_unsaved_changes = true
+	if not selected_path.is_empty():
+		dirty_species[selected_path] = selected_species
 	_update_buttons()
 	_show_status("⚠ Cambios sin guardar", 2.0)
 
@@ -565,13 +590,42 @@ func _on_save_pressed() -> void:
 		_show_status("✗ Error al guardar: %s" % error_string(result), 3.0)
 		return
 
+	dirty_species.erase(selected_path)
 	has_unsaved_changes = false
 	_update_buttons()
 	_show_status("✓ Guardado: %s" % selected_species.species_name, 3.0)
 
+func _on_save_all_pressed() -> void:
+	_stash_current_edits()
+	if dirty_species.is_empty():
+		_show_status("No hay cambios pendientes", 2.0)
+		return
+	var saved_count: int = 0
+	var dirty_paths: Array[String] = []
+	for key: Variant in dirty_species.keys():
+		dirty_paths.append(str(key))
+	for path: String in dirty_paths:
+		var species: PokemonDataStruct = dirty_species[path] as PokemonDataStruct
+		if species == null:
+			continue
+		var errors: Array[String] = validator.validate(species)
+		if not errors.is_empty():
+			_show_status("No se guardó %s: tiene errores" % path.get_file(), 4.0)
+			push_warning("Species Editor:\\n" + "\\n".join(errors))
+			continue
+		var result: Error = ResourceSaver.save(species, path)
+		if result == OK:
+			saved_count += 1
+			dirty_species.erase(path)
+	_show_status("✓ Guardadas %d especies" % saved_count, 3.0)
+	has_unsaved_changes = dirty_species.has(selected_path)
+	_update_buttons()
+
 func _on_revert_pressed() -> void:
 	if selected_path.is_empty():
 		return
+	dirty_species.erase(selected_path)
+	has_unsaved_changes = false
 	_load_species_from_path(selected_path, true)
 
 func _on_validate_pressed() -> void:
@@ -589,6 +643,8 @@ func _on_validate_pressed() -> void:
 func _update_buttons() -> void:
 	if save_button:
 		save_button.disabled = selected_species == null or not has_unsaved_changes
+	if save_all_button:
+		save_all_button.disabled = dirty_species.is_empty()
 	if revert_button:
 		revert_button.disabled = selected_species == null or not has_unsaved_changes
 	if duplicate_button:

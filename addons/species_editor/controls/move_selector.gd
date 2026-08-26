@@ -21,8 +21,14 @@ func _ready() -> void:
 	move_popup.id_pressed.connect(_on_move_selected)
 	add_child(move_popup)
 
-	_populate_move_menu()
+	_index_names()
 	_update_button_text()
+
+func _index_names() -> void:
+	move_names.clear()
+	for data: MoveData in available_moves:
+		if data != null:
+			move_names[int(data.move_id)] = data.move_name
 
 func _populate_move_menu() -> void:
 	move_popup.clear()
@@ -46,6 +52,8 @@ func _add_move_option(id: int, display_name: String) -> void:
 	move_names[id] = display_name
 
 func _on_move_button_pressed() -> void:
+	if move_popup.get_item_count() == 0:
+		_populate_move_menu()
 	var rect: Rect2 = move_button.get_global_rect()
 	move_popup.popup(Rect2(
 		rect.position + Vector2(0, rect.size.y),

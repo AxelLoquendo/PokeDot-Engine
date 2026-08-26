@@ -77,7 +77,7 @@ move = 59
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 991
-species_name = "Iron-Bundle"
+species_name = "Iron Bundle"
 species_id = 1383
 base_hp = 56
 base_attack = 80

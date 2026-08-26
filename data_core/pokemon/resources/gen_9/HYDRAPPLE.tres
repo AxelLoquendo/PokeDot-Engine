@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://bnrcux53ueahx"]
 
 [ext_resource type="AudioStream" uid="uid://deaqmish7qnuf" path="res://sfx/se/cries/HYDRAPPLE.ogg" id="1_jsemx"]
+[ext_resource type="Texture2D" uid="uid://co6nhrujxpj6d" path="res://graphics/pokemon/back/HYDRAPPLE.png" id="1_wl2t2"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Texture2D" uid="uid://twkrws5etsbb" path="res://graphics/pokemon/front/HYDRAPPLE.png" id="3_iptoi"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
@@ -106,6 +107,7 @@ height = 18
 weight = 930
 body_color = 3
 front_sprite = ExtResource("3_iptoi")
+back_sprite = ExtResource("1_wl2t2")
 icon_sprite = ExtResource("4_wl2t2")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([34, 36, 38, 56, 63, 76, 89, 115, 156, 164, 174, 182, 200, 202, 203, 214, 240, 241, 253, 263, 331, 345, 360, 402, 406, 412, 414, 416, 417, 434, 437, 447, 450, 484, 525, 580, 639, 704, 712, 731, 779, 810, 841])
@@ -117,5 +119,6 @@ egg_group_1 = 7
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 1426
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
 cry = ExtResource("1_jsemx")

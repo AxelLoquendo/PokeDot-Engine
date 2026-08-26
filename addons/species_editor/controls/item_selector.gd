@@ -19,8 +19,14 @@ func _ready() -> void:
 	popup = PopupMenu.new()
 	popup.id_pressed.connect(_on_selected)
 	add_child(popup)
-	_populate()
+	_index_names()
 	_update_text()
+
+func _index_names() -> void:
+	names.clear()
+	for data: ItemData in available_items:
+		if data != null:
+			names[int(data.item_id)] = data.item_name
 
 func _populate() -> void:
 	popup.clear()
@@ -41,6 +47,8 @@ func _add_option(id: int, display_name: String) -> void:
 	names[id] = display_name
 
 func _on_pressed() -> void:
+	if popup.get_item_count() == 0:
+		_populate()
 	var rect: Rect2 = button.get_global_rect()
 	popup.popup(Rect2(rect.position + Vector2(0, rect.size.y), Vector2(270, 0)))
 

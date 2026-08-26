@@ -100,7 +100,7 @@ move = 437
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 1001
-species_name = "Wo-Chien"
+species_name = "Wo Chien"
 species_id = 1394
 base_hp = 85
 base_attack = 85

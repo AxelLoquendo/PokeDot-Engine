@@ -85,7 +85,6 @@ offset_bottom = 38.0
 text = "Bulbasaur"
 label_settings = SubResource("LabelSettings_kmkxw")
 script = ExtResource("5_bbp3n")
-ANCHO_MAXIMO = 110.0
 
 [node name="Level" type="Label" parent="." unique_id=706798250]
 texture_filter = 1

@@ -89,7 +89,7 @@ move = 766
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 984
-species_name = "Great-Tusk"
+species_name = "Great Tusk"
 species_id = 1376
 base_hp = 115
 base_attack = 131
