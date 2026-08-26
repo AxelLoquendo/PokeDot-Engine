@@ -120,6 +120,11 @@ func apply_to_species(species: PokemonDataStruct) -> bool:
 
 func _populate_form(species: PokemonDataStruct) -> void:
 	_add_group_label("🔠 Identidad")
+	_add_field("species_id", "Species ID", str(int(species.species_id)), true)
+	var species_id_field: LineEdit = fields["species_id"] as LineEdit
+	if species_id_field != null:
+		species_id_field.editable = false
+		species_id_field.tooltip_text = "El ID se asigna al crear una especie y no se cambia aquí para proteger referencias."
 	_add_field("name", "Nombre", species.species_name)
 	_add_field("dex_number", "Dex nacional", str(species.national_dex_number), true)
 	_add_field("regional_dex", "Dex regional", str(species.regional_dex_number), true)

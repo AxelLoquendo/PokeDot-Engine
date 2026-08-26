@@ -111,6 +111,8 @@ func _build_ui() -> void:
 	add_child(trash_popup)
 
 	species_list = ItemList.new()
+	species_list.fixed_icon_size = Vector2i(32, 32)
+	species_list.icon_mode = ItemList.ICON_MODE_LEFT
 	species_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	species_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	species_list.item_selected.connect(_on_species_selected)
@@ -453,8 +455,10 @@ func _refresh_list() -> void:
 	var query := search_box.text.strip_edges().to_lower() if search_box else ""
 
 	for entry: Dictionary in repository_entries_filtered(query):
+		var icon: Texture2D = _make_list_icon(entry.get("icon") as Texture2D)
 		var index: int = species_list.add_item(
-			"[%d] %s" % [int(entry.get("id", 0)), str(entry.get("name", ""))]
+			"[%d] %s" % [int(entry.get("id", 0)), str(entry.get("name", ""))],
+			icon
 		)
 		species_list.set_item_metadata(index, str(entry.get("path", "")))
 
@@ -470,9 +474,24 @@ func repository_entries_filtered(query: String) -> Array[Dictionary]:
 		result.append({
 			"id": int(species.species_id),
 			"name": name,
+			"icon": species.icon_sprite,
 			"path": repository.get_species_path(species.species_id),
 		})
 	return result
+
+func _make_list_icon(texture: Texture2D) -> Texture2D:
+	if texture == null:
+		return null
+	var size: Vector2i = texture.get_size()
+	if size.x <= 0 or size.y <= 0:
+		return texture
+	var frame_width: int = size.x
+	if size.x >= size.y * 2:
+		frame_width = int(size.x / 2)
+	var atlas: AtlasTexture = AtlasTexture.new()
+	atlas.atlas = texture
+	atlas.region = Rect2(0, 0, frame_width, size.y)
+	return atlas
 
 func _on_search_changed(_text: String) -> void:
 	_refresh_list()
