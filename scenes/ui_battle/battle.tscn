@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://x0svlm56d2qb" path="res://graphics/battle_interface/run_focus.png" id="9_w78s2"]
 [ext_resource type="Texture2D" uid="uid://bbtelwuwcqyex" path="res://graphics/battle_interface/player_hp_box.png" id="13_j8t3v"]
 [ext_resource type="Texture2D" uid="uid://bt18beno7g8rx" path="res://graphics/battle_interface/enemy_hp_box.png" id="14_axcis"]
+[ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="14_ymneq"]
+[ext_resource type="Texture2D" uid="uid://c5lt6p4qelcmk" path="res://graphics/status/sleep.png" id="15_qkdal"]
+[ext_resource type="Texture2D" uid="uid://csw0nagy2g81b" path="res://graphics/types/Tera/normal.png" id="16_yaib3"]
+[ext_resource type="Texture2D" uid="uid://d2fctsf11ue1w" path="res://graphics/ui_party_menu/icon_mega.png" id="18_ln23b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htemk"]
 font = ExtResource("3_pmg0a")
@@ -25,6 +29,27 @@ shadow_offset = Vector2(0, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_14cdr"]
 font = ExtResource("3_pmg0a")
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymneq"]
+font = ExtResource("3_pmg0a")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2yyve"]
+line_spacing = 0.0
+font = ExtResource("3_pmg0a")
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_w78s2"]
+font = ExtResource("3_pmg0a")
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_6hh4c"]
+font = ExtResource("3_pmg0a")
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_size = 0
 
 [node name="Battle" type="Node2D" unique_id=2072502865]
 
@@ -47,9 +72,9 @@ offset_bottom = 40.0
 
 [node name="Fight" type="TextureButton" parent="Control" unique_id=277366189]
 layout_mode = 0
-offset_left = 256.0
+offset_left = 252.0
 offset_top = 240.0
-offset_right = 312.0
+offset_right = 308.0
 offset_bottom = 252.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("2_k0gm8")
@@ -67,9 +92,9 @@ texture_focused = ExtResource("5_6hh4c")
 
 [node name="Pkmn" type="TextureButton" parent="Control" unique_id=239538719]
 layout_mode = 0
-offset_left = 256.0
+offset_left = 252.0
 offset_top = 280.0
-offset_right = 312.0
+offset_right = 308.0
 offset_bottom = 292.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("6_qkdal")
@@ -86,9 +111,9 @@ texture_normal = ExtResource("8_ln23b")
 texture_focused = ExtResource("9_w78s2")
 
 [node name="BattleText" type="Label" parent="." unique_id=1016510972]
-offset_left = 24.0
+offset_left = 16.0
 offset_top = 237.0
-offset_right = 246.0
+offset_right = 225.0
 offset_bottom = 307.0
 text = "¿Qué debe hacer [NAME_PKMN]?."
 label_settings = SubResource("LabelSettings_htemk")
@@ -96,9 +121,9 @@ autowrap_mode = 2
 
 [node name="BattleNormalText" type="Label" parent="." unique_id=1627713024]
 visible = false
-offset_left = 24.0
+offset_left = 16.0
 offset_top = 237.0
-offset_right = 456.0
+offset_right = 448.0
 offset_bottom = 307.0
 text = "A aparecido un weedle salvaje"
 label_settings = SubResource("LabelSettings_htemk")
@@ -119,12 +144,112 @@ position = Vector2(368, 182)
 scale = Vector2(2, 2)
 texture = ExtResource("13_j8t3v")
 
+[node name="NamePkmnPlayer" type="Label" parent="PlayerHPBox" unique_id=1632025105]
+offset_left = -42.0
+offset_top = -17.0
+offset_right = 7.0
+offset_bottom = -3.0
+text = "Hydrapple"
+label_settings = SubResource("LabelSettings_14cdr")
+script = ExtResource("14_ymneq")
+
+[node name="HpBar" type="ColorRect" parent="PlayerHPBox" unique_id=285381210]
+offset_left = -10.0
+offset_right = 38.0
+offset_bottom = 3.0
+color = Color(0.18431373, 0.92941177, 0.28627452, 1)
+
+[node name="ExpBar" type="ColorRect" parent="PlayerHPBox" unique_id=379054831]
+offset_left = -26.0
+offset_top = 16.0
+offset_right = 37.5
+offset_bottom = 18.0
+color = Color(0.12941177, 0.54901963, 0.9411765, 1)
+
+[node name="Genero" type="Label" parent="PlayerHPBox" unique_id=2051907765]
+offset_left = 50.0
+offset_top = 3.0
+offset_right = 56.0
+offset_bottom = 17.0
+text = "♂"
+label_settings = SubResource("LabelSettings_ymneq")
+
+[node name="HP" type="Label" parent="PlayerHPBox" unique_id=1306400415]
+offset_left = -15.0
+offset_top = 1.5
+offset_right = 39.0
+offset_bottom = 15.5
+text = "00/00"
+label_settings = SubResource("LabelSettings_2yyve")
+horizontal_alignment = 2
+
+[node name="Level" type="Label" parent="PlayerHPBox" unique_id=844723894]
+texture_filter = 1
+offset_left = 31.0
+offset_top = -17.0
+offset_right = 49.0
+offset_bottom = -3.0
+text = "100"
+label_settings = SubResource("LabelSettings_w78s2")
+
+[node name="Status" type="Sprite2D" parent="PlayerHPBox" unique_id=304324858]
+visible = false
+position = Vector2(-39, 12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_qkdal")
+
+[node name="Indicador" type="Sprite2D" parent="PlayerHPBox" unique_id=1892240332]
+visible = false
+position = Vector2(-58, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_yaib3")
+
 [node name="EnemyHPBox" type="Sprite2D" parent="." unique_id=407160177]
 position = Vector2(144, 64)
 scale = Vector2(2, 2)
 texture = ExtResource("14_axcis")
 
-[node name="NamePkmnPlayer" type="Label" parent="." unique_id=1632025105]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="NamePkmnEnemy" type="Label" parent="EnemyHPBox" unique_id=939590809]
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 1.0
+offset_bottom = -1.5
+text = "Hydrapple"
 label_settings = SubResource("LabelSettings_14cdr")
+script = ExtResource("14_ymneq")
+
+[node name="HpBar" type="ColorRect" parent="EnemyHPBox" unique_id=2058615213]
+offset_left = -18.0
+offset_top = 1.0
+offset_right = 30.0
+offset_bottom = 4.0
+color = Color(0.18431373, 0.92941177, 0.28627452, 1)
+
+[node name="Genero" type="Label" parent="EnemyHPBox" unique_id=1215221667]
+offset_left = -55.5
+offset_top = -15.0
+offset_right = -49.5
+offset_bottom = -1.0
+text = "♂"
+label_settings = SubResource("LabelSettings_ymneq")
+
+[node name="Level" type="Label" parent="EnemyHPBox" unique_id=2071288816]
+texture_filter = 1
+offset_left = 20.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = -1.0
+text = "100"
+label_settings = SubResource("LabelSettings_6hh4c")
+
+[node name="Status" type="Sprite2D" parent="EnemyHPBox" unique_id=601846251]
+visible = false
+position = Vector2(-43.5, 6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_qkdal")
+
+[node name="Indicador" type="Sprite2D" parent="EnemyHPBox" unique_id=1496260451]
+visible = false
+position = Vector2(42, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_ln23b")
