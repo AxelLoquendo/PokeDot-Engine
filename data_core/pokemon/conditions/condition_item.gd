@@ -3,7 +3,7 @@ extends EvolutionCondition
 
 class_name EvolutionConditionItem
 
-@export var required_item_id: int = 0
+@export var required_item_id: Items.ItemId = Items.ItemId.ITEM_NONE
 @export var check_held_item: bool = false
 
 func is_met(context: EvolutionContext) -> bool:

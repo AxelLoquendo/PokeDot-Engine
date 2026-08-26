@@ -3,7 +3,7 @@ extends EvolutionCondition
 
 class_name EvolutionConditionPartySpecies
 
-@export var required_species_id: int = 0
+@export var required_species_id: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
 
 func is_met(context: EvolutionContext) -> bool:
 	if context == null:

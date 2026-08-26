@@ -9,6 +9,9 @@ const LEARNSET_TABLE_SCRIPT := preload("res://addons/species_editor/controls/lea
 const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/evolution_table.gd")
 const GRAPHICS_EDITOR_SCRIPT := preload("res://addons/species_editor/controls/graphics_editor.gd")
 const FORMS_EDITOR_SCRIPT := preload("res://addons/species_editor/controls/forms_editor.gd")
+const MOVE_LIST_SCRIPT := preload("res://addons/species_editor/controls/move_id_list_table.gd")
+const ITEM_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/item_selector.gd")
+const SPECIES_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/species_selector.gd")
 
 signal form_changed
 
@@ -23,6 +26,11 @@ var learnset_table: LearnsetTable
 var evolution_table: EvolutionTable
 var graphics_editor: SpeciesGraphicsEditor
 var forms_editor: PokemonFormsEditor
+var teachable_moves_table: MoveIdListTable
+var egg_moves_table: MoveIdListTable
+var item_selectors: Dictionary = {}
+var species_selectors: Dictionary = {}
+var enum_selectors: Dictionary = {}
 
 func set_catalog(catalog: SpeciesEditorCatalog, species: Array[PokemonDataStruct]) -> void:
 	editor_catalog = catalog
@@ -90,6 +98,23 @@ func apply_to_species(species: PokemonDataStruct) -> bool:
 		graphics_editor.apply_to_species(species)
 	if forms_editor:
 		species.forms = forms_editor.get_forms()
+	if teachable_moves_table:
+		species.teachable_moves = teachable_moves_table.get_moves()
+	if egg_moves_table:
+		species.egg_moves = egg_moves_table.get_moves()
+	if item_selectors.has("common"):
+		species.item_common = item_selectors["common"].selected_item
+	if item_selectors.has("rare"):
+		species.item_rare = item_selectors["rare"].selected_item
+	for field_id: String in ["growth_rate", "body_color", "egg_group_1", "egg_group_2", "gender_ratio"]:
+		if enum_selectors.has(field_id):
+			species.set(field_id, enum_selectors[field_id].get_selected_id())
+	species.egg_cycles = maxi(0, _read_int_field("egg_cycles", species.egg_cycles))
+	if species_selectors.has("hatch_species"):
+		species.hatch_species = species_selectors["hatch_species"].selected_species
+	species.is_legendary = _get_check("is_legendary", species.is_legendary)
+	species.is_mythical = _get_check("is_mythical", species.is_mythical)
+	species.is_ultra_beast = _get_check("is_ultra_beast", species.is_ultra_beast)
 
 	return true
 
@@ -122,6 +147,8 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	_add_field("catch_rate", "Captura", str(species.catch_rate), true)
 	_add_field("exp_yield", "EXP", str(species.exp_yield), true)
 	_add_field("friendship", "Amistad", str(species.friendship), true)
+	_add_enum_selector("growth_rate", "Crecimiento", PokemonData.GrowthRate.keys(), PokemonData.GrowthRate.values(), species.growth_rate)
+	_add_enum_selector("body_color", "Color cuerpo", PokemonData.BodyColor.keys(), PokemonData.BodyColor.values(), species.body_color)
 
 	_add_group_label("📖 Pokédex")
 	_add_field("category", "Categoría", species.category_name)
@@ -141,6 +168,22 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	forms_editor.changed.connect(_on_field_changed)
 	add_child(forms_editor)
 
+	_add_group_label("🎒 Objetos encontrados")
+	_add_item_selector("common", "Objeto común", species.item_common)
+	_add_item_selector("rare", "Objeto raro", species.item_rare)
+
+	_add_group_label("🥚 Crianza")
+	_add_enum_selector("egg_group_1", "Grupo huevo 1", PokemonData.EggGroup.keys(), PokemonData.EggGroup.values(), species.egg_group_1)
+	_add_enum_selector("egg_group_2", "Grupo huevo 2", PokemonData.EggGroup.keys(), PokemonData.EggGroup.values(), species.egg_group_2)
+	_add_field("egg_cycles", "Ciclos huevo", str(species.egg_cycles), true)
+	_add_species_selector("hatch_species", "Especie eclosión", species.hatch_species)
+	_add_enum_selector("gender_ratio", "Proporción género", PokemonData.GenderRatio.keys(), PokemonData.GenderRatio.values(), species.gender_ratio)
+
+	_add_group_label("🏷️ Clasificación")
+	_add_check("is_legendary", "Legendario", species.is_legendary)
+	_add_check("is_mythical", "Mítico", species.is_mythical)
+	_add_check("is_ultra_beast", "Ultraente", species.is_ultra_beast)
+
 	_add_group_label("📚 Movimientos por nivel")
 	learnset_table = LEARNSET_TABLE_SCRIPT.new()
 	if editor_catalog:
@@ -149,6 +192,20 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	learnset_table.custom_minimum_size = Vector2(0, 160)
 	learnset_table.changed.connect(_on_field_changed)
 	add_child(learnset_table)
+
+	_add_group_label("💿 Movimientos MT/MO")
+	teachable_moves_table = MOVE_LIST_SCRIPT.new()
+	teachable_moves_table.available_moves = editor_catalog.moves if editor_catalog else []
+	teachable_moves_table.load_moves(species.teachable_moves)
+	teachable_moves_table.changed.connect(_on_field_changed)
+	add_child(teachable_moves_table)
+
+	_add_group_label("🥚 Movimientos huevo")
+	egg_moves_table = MOVE_LIST_SCRIPT.new()
+	egg_moves_table.available_moves = editor_catalog.moves if editor_catalog else []
+	egg_moves_table.load_moves(species.egg_moves)
+	egg_moves_table.changed.connect(_on_field_changed)
+	add_child(egg_moves_table)
 
 	_add_group_label("🔄 Evoluciones")
 	evolution_table = EVOLUTION_TABLE_SCRIPT.new()
@@ -164,7 +221,12 @@ func _clear_form() -> void:
 	fields.clear()
 	type_selectors.clear()
 	ability_selectors.clear()
+	item_selectors.clear()
+	species_selectors.clear()
+	enum_selectors.clear()
 	learnset_table = null
+	teachable_moves_table = null
+	egg_moves_table = null
 	evolution_table = null
 	graphics_editor = null
 	forms_editor = null
@@ -274,6 +336,70 @@ func _add_ability_selector(id: String, label_text: String, value: AbilityId.Id) 
 	selector.ability_changed.connect(_on_field_changed)
 	row.add_child(selector)
 	ability_selectors[id] = selector
+
+func _add_enum_selector(id: String, label_text: String, names: Array, values: Array, current_value: int) -> void:
+	var row: HBoxContainer = HBoxContainer.new()
+	var label: Label = Label.new()
+	label.text = label_text
+	label.custom_minimum_size = Vector2(150, 0)
+	row.add_child(label)
+	var option: OptionButton = OptionButton.new()
+	var selected_index: int = 0
+	for index: int in range(values.size()):
+		var value: int = int(values[index])
+		option.add_item(str(names[index]).replace("_", " ").capitalize(), value)
+		if value == int(current_value):
+			selected_index = index
+	option.select(selected_index)
+	option.item_selected.connect(_on_field_changed)
+	row.add_child(option)
+	add_child(row)
+	enum_selectors[id] = option
+
+func _add_item_selector(id: String, label_text: String, value: Items.ItemId) -> void:
+	var row: HBoxContainer = HBoxContainer.new()
+	var label: Label = Label.new()
+	label.text = label_text
+	label.custom_minimum_size = Vector2(150, 0)
+	row.add_child(label)
+	var selector: ItemSelector = ITEM_SELECTOR_SCRIPT.new()
+	selector.available_items = editor_catalog.items if editor_catalog else []
+	selector.selected_item = value
+	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	selector.item_changed.connect(_on_field_changed)
+	row.add_child(selector)
+	add_child(row)
+	item_selectors[id] = selector
+
+func _add_species_selector(id: String, label_text: String, value: Species.SpeciesID) -> void:
+	var row: HBoxContainer = HBoxContainer.new()
+	var label: Label = Label.new()
+	label.text = label_text
+	label.custom_minimum_size = Vector2(150, 0)
+	row.add_child(label)
+	var selector: SpeciesSelector = SPECIES_SELECTOR_SCRIPT.new()
+	selector.available_species = available_species
+	selector.selected_species = value
+	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	selector.species_changed.connect(_on_field_changed)
+	row.add_child(selector)
+	add_child(row)
+	species_selectors[id] = selector
+
+func _add_check(id: String, label_text: String, value: bool) -> void:
+	var check: CheckBox = CheckBox.new()
+	check.name = id
+	check.text = label_text
+	check.button_pressed = value
+	check.toggled.connect(_on_field_changed)
+	add_child(check)
+	fields[id] = check
+
+func _get_check(id: String, fallback: bool) -> bool:
+	if not fields.has(id):
+		return fallback
+	var check: CheckBox = fields[id] as CheckBox
+	return check.button_pressed if check != null else fallback
 
 func _read_text_field(id: String, fallback: String) -> String:
 	if not fields.has(id):

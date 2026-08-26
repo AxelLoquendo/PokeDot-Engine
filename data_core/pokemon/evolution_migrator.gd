@@ -27,7 +27,7 @@ static func convert_rule(legacy: EvolutionData) -> EvolutionData:
 		PokemonData.EvolutionMethods.EVO_ITEM:
 			result.trigger = EvolutionTrigger.Trigger.ITEM_USED
 			var item: EvolutionConditionItem = EvolutionConditionItem.new()
-			item.required_item_id = legacy.parameter
+			item.required_item_id = legacy.parameter as Items.ItemId
 			result.conditions.append(item)
 		PokemonData.EvolutionMethods.EVO_TRADE:
 			result.trigger = EvolutionTrigger.Trigger.TRADE

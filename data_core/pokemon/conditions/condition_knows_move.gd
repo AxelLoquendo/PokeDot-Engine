@@ -3,7 +3,7 @@ extends EvolutionCondition
 
 class_name EvolutionConditionKnowsMove
 
-@export var required_move_id: int = 0
+@export var required_move_id: Moves.MoveId = Moves.MoveId.MOVE_NONE
 
 func is_met(context: EvolutionContext) -> bool:
 	if context == null or context.pokemon == null:

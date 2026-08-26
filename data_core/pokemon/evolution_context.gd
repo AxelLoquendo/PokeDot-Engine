@@ -7,8 +7,8 @@ var pokemon: PokemonInstance
 var mode: PokemonData.EvolutionMode = PokemonData.EvolutionMode.EVO_MODE_NORMAL
 
 ## Datos aportados por el sistema que inició la comprobación.
-var used_item_id: int = 0
-var trade_partner_species_id: int = 0
+var used_item_id: Items.ItemId = Items.ItemId.ITEM_NONE
+var trade_partner_species_id: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
 var current_map_id: int = 0
 var current_region_id: int = 0
 var current_weather_id: int = 0
