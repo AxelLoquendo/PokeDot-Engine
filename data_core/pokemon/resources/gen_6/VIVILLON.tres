@@ -74,8 +74,129 @@ script = ExtResource("2_learn")
 level = 50
 move = 542
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_qjdsg")
+form_id = &"icy_snow"
+display_name = "Icy Snow"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_qjdsg")
+form_id = &"polar"
+display_name = "Polar"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_qjdsg")
+form_id = &"tundra"
+display_name = "Tundra"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_qjdsg")
+form_id = &"continental"
+display_name = "Continental"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_qjdsg")
+form_id = &"garden"
+display_name = "Garden"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_5"]
+script = ExtResource("2_qjdsg")
+form_id = &"elegant"
+display_name = "Elegant"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_6"]
+script = ExtResource("2_qjdsg")
+form_id = &"meadow"
+display_name = "Meadow"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_7"]
+script = ExtResource("2_qjdsg")
+form_id = &"modern"
+display_name = "Modern"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_8"]
+script = ExtResource("2_qjdsg")
+form_id = &"marine"
+display_name = "Marine"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_9"]
+script = ExtResource("2_qjdsg")
+form_id = &"archipelago"
+display_name = "Archipelago"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_10"]
+script = ExtResource("2_qjdsg")
+form_id = &"high_plains"
+display_name = "High Plains"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_11"]
+script = ExtResource("2_qjdsg")
+form_id = &"sandstorm"
+display_name = "Sandstorm"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_12"]
+script = ExtResource("2_qjdsg")
+form_id = &"river"
+display_name = "River"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_13"]
+script = ExtResource("2_qjdsg")
+form_id = &"monsoon"
+display_name = "Monsoon"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_14"]
+script = ExtResource("2_qjdsg")
+form_id = &"savanna"
+display_name = "Savanna"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_15"]
+script = ExtResource("2_qjdsg")
+form_id = &"sun"
+display_name = "Sun"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_16"]
+script = ExtResource("2_qjdsg")
+form_id = &"ocean"
+display_name = "Ocean"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_17"]
+script = ExtResource("2_qjdsg")
+form_id = &"jungle"
+display_name = "Jungle"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_18"]
+script = ExtResource("2_qjdsg")
+form_id = &"fancy"
+display_name = "Fancy"
+tags = PackedStringArray("vivillon", "pattern")
+
+[sub_resource type="Resource" id="Resource_form_19"]
+script = ExtResource("2_qjdsg")
+form_id = &"pokeball"
+display_name = "Pokeball"
+tags = PackedStringArray("vivillon", "pattern")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_qjdsg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19")])
 national_dex_number = 666
 species_name = "Vivillon"
 species_id = 666

@@ -94,8 +94,57 @@ script = ExtResource("2_learn")
 level = 88
 move = 665
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_3mhkb")
+form_id = &"dusk_mane"
+display_name = "Melena Crepuscular"
+override_types = true
+type_1 = 15
+type_2 = 9
+override_stats = true
+base_hp = 97
+base_attack = 157
+base_defense = 127
+base_speed = 77
+base_sp_attack = 113
+base_sp_defense = 109
+tags = PackedStringArray("fusion")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_3mhkb")
+form_id = &"dawn_wings"
+display_name = "Alas del Alba"
+override_types = true
+type_1 = 15
+type_2 = 8
+override_stats = true
+base_hp = 97
+base_attack = 113
+base_defense = 109
+base_speed = 77
+base_sp_attack = 157
+base_sp_defense = 127
+tags = PackedStringArray("fusion")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_3mhkb")
+form_id = &"ultra"
+display_name = "Ultra"
+override_types = true
+type_1 = 15
+type_2 = 17
+override_stats = true
+base_hp = 97
+base_attack = 167
+base_defense = 97
+base_speed = 129
+base_sp_attack = 167
+base_sp_defense = 97
+tags = PackedStringArray("ultra")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_3mhkb")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 800
 species_name = "Necrozma"
 species_id = 800

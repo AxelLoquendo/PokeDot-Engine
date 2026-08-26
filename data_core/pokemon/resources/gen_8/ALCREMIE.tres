@@ -70,8 +70,387 @@ script = ExtResource("2_learn")
 level = 50
 move = 494
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_vanilla_cream"
+display_name = "Strawberry · Crema Vainilla"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "vanilla_cream")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_ruby_cream"
+display_name = "Strawberry · Crema Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "ruby_cream")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_matcha_cream"
+display_name = "Strawberry · Crema Matcha"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "matcha_cream")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_mint_cream"
+display_name = "Strawberry · Crema Menta"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "mint_cream")
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_lemon_cream"
+display_name = "Strawberry · Crema Limón"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "lemon_cream")
+
+[sub_resource type="Resource" id="Resource_form_5"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_salted_cream"
+display_name = "Strawberry · Crema Salada"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "salted_cream")
+
+[sub_resource type="Resource" id="Resource_form_6"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_ruby_swirl"
+display_name = "Strawberry · Remolino Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "ruby_swirl")
+
+[sub_resource type="Resource" id="Resource_form_7"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_caramel_swirl"
+display_name = "Strawberry · Remolino Caramelo"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "caramel_swirl")
+
+[sub_resource type="Resource" id="Resource_form_8"]
+script = ExtResource("2_i7fqg")
+form_id = &"strawberry_rainbow_swirl"
+display_name = "Strawberry · Remolino Arcoíris"
+tags = PackedStringArray("alcremie", "cosmetic", "strawberry", "rainbow_swirl")
+
+[sub_resource type="Resource" id="Resource_form_9"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_vanilla_cream"
+display_name = "Berry · Crema Vainilla"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "vanilla_cream")
+
+[sub_resource type="Resource" id="Resource_form_10"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_ruby_cream"
+display_name = "Berry · Crema Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "ruby_cream")
+
+[sub_resource type="Resource" id="Resource_form_11"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_matcha_cream"
+display_name = "Berry · Crema Matcha"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "matcha_cream")
+
+[sub_resource type="Resource" id="Resource_form_12"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_mint_cream"
+display_name = "Berry · Crema Menta"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "mint_cream")
+
+[sub_resource type="Resource" id="Resource_form_13"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_lemon_cream"
+display_name = "Berry · Crema Limón"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "lemon_cream")
+
+[sub_resource type="Resource" id="Resource_form_14"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_salted_cream"
+display_name = "Berry · Crema Salada"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "salted_cream")
+
+[sub_resource type="Resource" id="Resource_form_15"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_ruby_swirl"
+display_name = "Berry · Remolino Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "ruby_swirl")
+
+[sub_resource type="Resource" id="Resource_form_16"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_caramel_swirl"
+display_name = "Berry · Remolino Caramelo"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "caramel_swirl")
+
+[sub_resource type="Resource" id="Resource_form_17"]
+script = ExtResource("2_i7fqg")
+form_id = &"berry_rainbow_swirl"
+display_name = "Berry · Remolino Arcoíris"
+tags = PackedStringArray("alcremie", "cosmetic", "berry", "rainbow_swirl")
+
+[sub_resource type="Resource" id="Resource_form_18"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_vanilla_cream"
+display_name = "Love · Crema Vainilla"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "vanilla_cream")
+
+[sub_resource type="Resource" id="Resource_form_19"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_ruby_cream"
+display_name = "Love · Crema Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "ruby_cream")
+
+[sub_resource type="Resource" id="Resource_form_20"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_matcha_cream"
+display_name = "Love · Crema Matcha"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "matcha_cream")
+
+[sub_resource type="Resource" id="Resource_form_21"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_mint_cream"
+display_name = "Love · Crema Menta"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "mint_cream")
+
+[sub_resource type="Resource" id="Resource_form_22"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_lemon_cream"
+display_name = "Love · Crema Limón"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "lemon_cream")
+
+[sub_resource type="Resource" id="Resource_form_23"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_salted_cream"
+display_name = "Love · Crema Salada"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "salted_cream")
+
+[sub_resource type="Resource" id="Resource_form_24"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_ruby_swirl"
+display_name = "Love · Remolino Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "ruby_swirl")
+
+[sub_resource type="Resource" id="Resource_form_25"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_caramel_swirl"
+display_name = "Love · Remolino Caramelo"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "caramel_swirl")
+
+[sub_resource type="Resource" id="Resource_form_26"]
+script = ExtResource("2_i7fqg")
+form_id = &"love_rainbow_swirl"
+display_name = "Love · Remolino Arcoíris"
+tags = PackedStringArray("alcremie", "cosmetic", "love", "rainbow_swirl")
+
+[sub_resource type="Resource" id="Resource_form_27"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_vanilla_cream"
+display_name = "Star · Crema Vainilla"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "vanilla_cream")
+
+[sub_resource type="Resource" id="Resource_form_28"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_ruby_cream"
+display_name = "Star · Crema Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "ruby_cream")
+
+[sub_resource type="Resource" id="Resource_form_29"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_matcha_cream"
+display_name = "Star · Crema Matcha"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "matcha_cream")
+
+[sub_resource type="Resource" id="Resource_form_30"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_mint_cream"
+display_name = "Star · Crema Menta"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "mint_cream")
+
+[sub_resource type="Resource" id="Resource_form_31"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_lemon_cream"
+display_name = "Star · Crema Limón"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "lemon_cream")
+
+[sub_resource type="Resource" id="Resource_form_32"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_salted_cream"
+display_name = "Star · Crema Salada"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "salted_cream")
+
+[sub_resource type="Resource" id="Resource_form_33"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_ruby_swirl"
+display_name = "Star · Remolino Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "ruby_swirl")
+
+[sub_resource type="Resource" id="Resource_form_34"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_caramel_swirl"
+display_name = "Star · Remolino Caramelo"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "caramel_swirl")
+
+[sub_resource type="Resource" id="Resource_form_35"]
+script = ExtResource("2_i7fqg")
+form_id = &"star_rainbow_swirl"
+display_name = "Star · Remolino Arcoíris"
+tags = PackedStringArray("alcremie", "cosmetic", "star", "rainbow_swirl")
+
+[sub_resource type="Resource" id="Resource_form_36"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_vanilla_cream"
+display_name = "Clover · Crema Vainilla"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "vanilla_cream")
+
+[sub_resource type="Resource" id="Resource_form_37"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_ruby_cream"
+display_name = "Clover · Crema Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "ruby_cream")
+
+[sub_resource type="Resource" id="Resource_form_38"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_matcha_cream"
+display_name = "Clover · Crema Matcha"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "matcha_cream")
+
+[sub_resource type="Resource" id="Resource_form_39"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_mint_cream"
+display_name = "Clover · Crema Menta"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "mint_cream")
+
+[sub_resource type="Resource" id="Resource_form_40"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_lemon_cream"
+display_name = "Clover · Crema Limón"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "lemon_cream")
+
+[sub_resource type="Resource" id="Resource_form_41"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_salted_cream"
+display_name = "Clover · Crema Salada"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "salted_cream")
+
+[sub_resource type="Resource" id="Resource_form_42"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_ruby_swirl"
+display_name = "Clover · Remolino Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "ruby_swirl")
+
+[sub_resource type="Resource" id="Resource_form_43"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_caramel_swirl"
+display_name = "Clover · Remolino Caramelo"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "caramel_swirl")
+
+[sub_resource type="Resource" id="Resource_form_44"]
+script = ExtResource("2_i7fqg")
+form_id = &"clover_rainbow_swirl"
+display_name = "Clover · Remolino Arcoíris"
+tags = PackedStringArray("alcremie", "cosmetic", "clover", "rainbow_swirl")
+
+[sub_resource type="Resource" id="Resource_form_45"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_vanilla_cream"
+display_name = "Flower · Crema Vainilla"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "vanilla_cream")
+
+[sub_resource type="Resource" id="Resource_form_46"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_ruby_cream"
+display_name = "Flower · Crema Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "ruby_cream")
+
+[sub_resource type="Resource" id="Resource_form_47"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_matcha_cream"
+display_name = "Flower · Crema Matcha"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "matcha_cream")
+
+[sub_resource type="Resource" id="Resource_form_48"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_mint_cream"
+display_name = "Flower · Crema Menta"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "mint_cream")
+
+[sub_resource type="Resource" id="Resource_form_49"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_lemon_cream"
+display_name = "Flower · Crema Limón"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "lemon_cream")
+
+[sub_resource type="Resource" id="Resource_form_50"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_salted_cream"
+display_name = "Flower · Crema Salada"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "salted_cream")
+
+[sub_resource type="Resource" id="Resource_form_51"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_ruby_swirl"
+display_name = "Flower · Remolino Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "ruby_swirl")
+
+[sub_resource type="Resource" id="Resource_form_52"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_caramel_swirl"
+display_name = "Flower · Remolino Caramelo"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "caramel_swirl")
+
+[sub_resource type="Resource" id="Resource_form_53"]
+script = ExtResource("2_i7fqg")
+form_id = &"flower_rainbow_swirl"
+display_name = "Flower · Remolino Arcoíris"
+tags = PackedStringArray("alcremie", "cosmetic", "flower", "rainbow_swirl")
+
+[sub_resource type="Resource" id="Resource_form_54"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_vanilla_cream"
+display_name = "Ribbon · Crema Vainilla"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "vanilla_cream")
+
+[sub_resource type="Resource" id="Resource_form_55"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_ruby_cream"
+display_name = "Ribbon · Crema Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "ruby_cream")
+
+[sub_resource type="Resource" id="Resource_form_56"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_matcha_cream"
+display_name = "Ribbon · Crema Matcha"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "matcha_cream")
+
+[sub_resource type="Resource" id="Resource_form_57"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_mint_cream"
+display_name = "Ribbon · Crema Menta"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "mint_cream")
+
+[sub_resource type="Resource" id="Resource_form_58"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_lemon_cream"
+display_name = "Ribbon · Crema Limón"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "lemon_cream")
+
+[sub_resource type="Resource" id="Resource_form_59"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_salted_cream"
+display_name = "Ribbon · Crema Salada"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "salted_cream")
+
+[sub_resource type="Resource" id="Resource_form_60"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_ruby_swirl"
+display_name = "Ribbon · Remolino Rubí"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "ruby_swirl")
+
+[sub_resource type="Resource" id="Resource_form_61"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_caramel_swirl"
+display_name = "Ribbon · Remolino Caramelo"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "caramel_swirl")
+
+[sub_resource type="Resource" id="Resource_form_62"]
+script = ExtResource("2_i7fqg")
+form_id = &"ribbon_rainbow_swirl"
+display_name = "Ribbon · Remolino Arcoíris"
+tags = PackedStringArray("alcremie", "cosmetic", "ribbon", "rainbow_swirl")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_i7fqg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26"), SubResource("Resource_form_27"), SubResource("Resource_form_28"), SubResource("Resource_form_29"), SubResource("Resource_form_30"), SubResource("Resource_form_31"), SubResource("Resource_form_32"), SubResource("Resource_form_33"), SubResource("Resource_form_34"), SubResource("Resource_form_35"), SubResource("Resource_form_36"), SubResource("Resource_form_37"), SubResource("Resource_form_38"), SubResource("Resource_form_39"), SubResource("Resource_form_40"), SubResource("Resource_form_41"), SubResource("Resource_form_42"), SubResource("Resource_form_43"), SubResource("Resource_form_44"), SubResource("Resource_form_45"), SubResource("Resource_form_46"), SubResource("Resource_form_47"), SubResource("Resource_form_48"), SubResource("Resource_form_49"), SubResource("Resource_form_50"), SubResource("Resource_form_51"), SubResource("Resource_form_52"), SubResource("Resource_form_53"), SubResource("Resource_form_54"), SubResource("Resource_form_55"), SubResource("Resource_form_56"), SubResource("Resource_form_57"), SubResource("Resource_form_58"), SubResource("Resource_form_59"), SubResource("Resource_form_60"), SubResource("Resource_form_61"), SubResource("Resource_form_62")])
 national_dex_number = 869
 species_name = "Alcremie"
 species_id = 869

@@ -80,8 +80,27 @@ script = ExtResource("2_learn")
 level = 48
 move = 566
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_0ywi5")
+form_id = &"small"
+display_name = "Pequeño"
+tags = PackedStringArray("size")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_0ywi5")
+form_id = &"large"
+display_name = "Grande"
+tags = PackedStringArray("size")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_0ywi5")
+form_id = &"super"
+display_name = "Extragrande"
+tags = PackedStringArray("size")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_0ywi5")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 711
 species_name = "Gourgeist-Average"
 species_id = 711

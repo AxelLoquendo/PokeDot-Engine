@@ -84,8 +84,142 @@ script = ExtResource("2_learn")
 level = 50
 move = 153
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ccj7l")
+form_id = &"meteor_red"
+display_name = "Meteorito Red"
+tags = PackedStringArray("minior", "meteor", "red")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_ccj7l")
+form_id = &"meteor_orange"
+display_name = "Meteorito Orange"
+tags = PackedStringArray("minior", "meteor", "orange")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_ccj7l")
+form_id = &"meteor_yellow"
+display_name = "Meteorito Yellow"
+tags = PackedStringArray("minior", "meteor", "yellow")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_ccj7l")
+form_id = &"meteor_green"
+display_name = "Meteorito Green"
+tags = PackedStringArray("minior", "meteor", "green")
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_ccj7l")
+form_id = &"meteor_blue"
+display_name = "Meteorito Blue"
+tags = PackedStringArray("minior", "meteor", "blue")
+
+[sub_resource type="Resource" id="Resource_form_5"]
+script = ExtResource("2_ccj7l")
+form_id = &"meteor_indigo"
+display_name = "Meteorito Indigo"
+tags = PackedStringArray("minior", "meteor", "indigo")
+
+[sub_resource type="Resource" id="Resource_form_6"]
+script = ExtResource("2_ccj7l")
+form_id = &"meteor_violet"
+display_name = "Meteorito Violet"
+tags = PackedStringArray("minior", "meteor", "violet")
+
+[sub_resource type="Resource" id="Resource_form_7"]
+script = ExtResource("2_ccj7l")
+form_id = &"core_red"
+display_name = "Núcleo Red"
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray("minior", "core", "red")
+
+[sub_resource type="Resource" id="Resource_form_8"]
+script = ExtResource("2_ccj7l")
+form_id = &"core_orange"
+display_name = "Núcleo Orange"
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray("minior", "core", "orange")
+
+[sub_resource type="Resource" id="Resource_form_9"]
+script = ExtResource("2_ccj7l")
+form_id = &"core_yellow"
+display_name = "Núcleo Yellow"
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray("minior", "core", "yellow")
+
+[sub_resource type="Resource" id="Resource_form_10"]
+script = ExtResource("2_ccj7l")
+form_id = &"core_green"
+display_name = "Núcleo Green"
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray("minior", "core", "green")
+
+[sub_resource type="Resource" id="Resource_form_11"]
+script = ExtResource("2_ccj7l")
+form_id = &"core_blue"
+display_name = "Núcleo Blue"
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray("minior", "core", "blue")
+
+[sub_resource type="Resource" id="Resource_form_12"]
+script = ExtResource("2_ccj7l")
+form_id = &"core_indigo"
+display_name = "Núcleo Indigo"
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray("minior", "core", "indigo")
+
+[sub_resource type="Resource" id="Resource_form_13"]
+script = ExtResource("2_ccj7l")
+form_id = &"core_violet"
+display_name = "Núcleo Violet"
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray("minior", "core", "violet")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_ccj7l")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13")])
 national_dex_number = 774
 species_name = "Minior-Red-Meteor"
 species_id = 774

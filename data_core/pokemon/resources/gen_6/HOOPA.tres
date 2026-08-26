@@ -97,8 +97,25 @@ script = ExtResource("2_learn")
 level = 85
 move = 593
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_0uxke")
+form_id = &"unbound"
+display_name = "Desatado"
+override_types = true
+type_1 = 15
+type_2 = 18
+override_stats = true
+base_hp = 80
+base_attack = 160
+base_defense = 60
+base_speed = 80
+base_sp_attack = 170
+base_sp_defense = 130
+tags = PackedStringArray("form_change")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_0uxke")]([SubResource("Resource_form_0")])
 national_dex_number = 720
 species_name = "Hoopa"
 species_id = 720

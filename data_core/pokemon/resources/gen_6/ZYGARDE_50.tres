@@ -103,8 +103,54 @@ script = ExtResource("2_learn")
 level = 88
 move = 245
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_a2vvr")
+form_id = &"ten_percent"
+display_name = "10%"
+override_stats = true
+base_hp = 54
+base_attack = 100
+base_defense = 71
+base_speed = 115
+base_sp_attack = 61
+base_sp_defense = 85
+tags = PackedStringArray("zygarde")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_a2vvr")
+form_id = &"complete"
+display_name = "Completo"
+override_stats = true
+base_hp = 216
+base_attack = 100
+base_defense = 121
+base_speed = 85
+base_sp_attack = 91
+base_sp_defense = 95
+tags = PackedStringArray("zygarde")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_a2vvr")
+form_id = &"ten_power_construct"
+display_name = "10% (Poder)"
+override_stats = true
+base_hp = 54
+base_attack = 100
+base_defense = 71
+base_speed = 115
+base_sp_attack = 61
+base_sp_defense = 85
+tags = PackedStringArray("zygarde", "power_construct")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_a2vvr")
+form_id = &"fifty_power_construct"
+display_name = "50% (Poder)"
+tags = PackedStringArray("zygarde", "power_construct")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_a2vvr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 national_dex_number = 718
 species_name = "Zygarde-50"
 species_id = 718

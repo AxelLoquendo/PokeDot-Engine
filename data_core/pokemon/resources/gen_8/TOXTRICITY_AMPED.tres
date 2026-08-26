@@ -118,8 +118,15 @@ script = ExtResource("2_learn")
 level = 52
 move = 508
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_miewt")
+form_id = &"low_key"
+display_name = "Bajo"
+tags = PackedStringArray("nature_form")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_miewt")]([SubResource("Resource_form_0")])
 national_dex_number = 849
 species_name = "Toxtricity-Amped"
 species_id = 849

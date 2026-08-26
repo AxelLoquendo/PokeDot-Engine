@@ -66,8 +66,39 @@ script = ExtResource("2_learn")
 level = 5
 move = 585
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_vgshg")
+form_id = &"red"
+display_name = "Red"
+tags = PackedStringArray("flower")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_vgshg")
+form_id = &"yellow"
+display_name = "Yellow"
+tags = PackedStringArray("flower")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_vgshg")
+form_id = &"orange"
+display_name = "Orange"
+tags = PackedStringArray("flower")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_vgshg")
+form_id = &"blue"
+display_name = "Blue"
+tags = PackedStringArray("flower")
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_vgshg")
+form_id = &"white"
+display_name = "White"
+tags = PackedStringArray("flower")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_vgshg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4")])
 national_dex_number = 671
 species_name = "Florges"
 species_id = 671

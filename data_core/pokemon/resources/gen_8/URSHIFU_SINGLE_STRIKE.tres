@@ -84,8 +84,18 @@ script = ExtResource("2_learn")
 level = 52
 move = 264
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_8kby4")
+form_id = &"rapid_strike"
+display_name = "Estilo Fluido"
+override_types = true
+type_1 = 2
+type_2 = 12
+tags = PackedStringArray("style")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_8kby4")]([SubResource("Resource_form_0")])
 national_dex_number = 892
 species_name = "Urshifu-Single-Strike"
 species_id = 892

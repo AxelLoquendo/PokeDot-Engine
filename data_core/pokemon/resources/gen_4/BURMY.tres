@@ -24,8 +24,27 @@ script = ExtResource("2_learn")
 level = 20
 move = 237
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ysb11")
+form_id = &"plant"
+display_name = "Planta"
+tags = PackedStringArray("cloak")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_ysb11")
+form_id = &"sandy"
+display_name = "Arena"
+tags = PackedStringArray("cloak")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_ysb11")
+form_id = &"trash"
+display_name = "Basura"
+tags = PackedStringArray("cloak")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_ysb11")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 412
 species_name = "Burmy"
 species_id = 412

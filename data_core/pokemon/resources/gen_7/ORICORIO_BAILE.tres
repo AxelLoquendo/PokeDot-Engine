@@ -94,8 +94,36 @@ script = ExtResource("2_learn")
 level = 47
 move = 542
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_b37sd")
+form_id = &"pom_pom"
+display_name = "Pom-Pom"
+override_types = true
+type_1 = 14
+type_2 = 3
+tags = PackedStringArray("style")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_b37sd")
+form_id = &"pau"
+display_name = "Pa'u"
+override_types = true
+type_1 = 15
+type_2 = 3
+tags = PackedStringArray("style")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_b37sd")
+form_id = &"sensu"
+display_name = "Sensu"
+override_types = true
+type_1 = 8
+type_2 = 3
+tags = PackedStringArray("style")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_b37sd")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 741
 species_name = "Oricorio-Baile"
 species_id = 741

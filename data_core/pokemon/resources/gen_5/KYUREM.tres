@@ -84,8 +84,35 @@ script = ExtResource("2_learn")
 level = 88
 move = 329
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_8xgih")
+form_id = &"white"
+display_name = "Blanco"
+override_stats = true
+base_hp = 125
+base_attack = 120
+base_defense = 90
+base_speed = 95
+base_sp_attack = 170
+base_sp_defense = 100
+tags = PackedStringArray("fusion")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_8xgih")
+form_id = &"black"
+display_name = "Negro"
+override_stats = true
+base_hp = 125
+base_attack = 170
+base_defense = 100
+base_speed = 95
+base_sp_attack = 120
+base_sp_defense = 90
+tags = PackedStringArray("fusion")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_8xgih")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 646
 species_name = "Kyurem"
 species_id = 646

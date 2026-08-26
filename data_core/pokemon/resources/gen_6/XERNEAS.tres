@@ -98,8 +98,21 @@ script = ExtResource("2_learn")
 level = 85
 move = 416
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_uu8sx")
+form_id = &"active"
+display_name = "Activo"
+tags = PackedStringArray("mode")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_uu8sx")
+form_id = &"neutral"
+display_name = "Neutro"
+tags = PackedStringArray("mode")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_uu8sx")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 716
 species_name = "Xerneas"
 species_id = 716

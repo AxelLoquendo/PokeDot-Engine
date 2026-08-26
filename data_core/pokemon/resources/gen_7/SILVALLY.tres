@@ -127,8 +127,171 @@ script = ExtResource("2_learn")
 level = 70
 move = 13
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_76e10")
+form_id = &"normal"
+display_name = "Normal"
+override_types = true
+type_1 = 1
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_76e10")
+form_id = &"fighting"
+display_name = "Fighting"
+override_types = true
+type_1 = 2
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_76e10")
+form_id = &"flying"
+display_name = "Flying"
+override_types = true
+type_1 = 3
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_76e10")
+form_id = &"poison"
+display_name = "Poison"
+override_types = true
+type_1 = 4
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_76e10")
+form_id = &"ground"
+display_name = "Ground"
+override_types = true
+type_1 = 5
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_5"]
+script = ExtResource("2_76e10")
+form_id = &"rock"
+display_name = "Rock"
+override_types = true
+type_1 = 6
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_6"]
+script = ExtResource("2_76e10")
+form_id = &"bug"
+display_name = "Bug"
+override_types = true
+type_1 = 7
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_7"]
+script = ExtResource("2_76e10")
+form_id = &"ghost"
+display_name = "Ghost"
+override_types = true
+type_1 = 8
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_8"]
+script = ExtResource("2_76e10")
+form_id = &"steel"
+display_name = "Steel"
+override_types = true
+type_1 = 9
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_9"]
+script = ExtResource("2_76e10")
+form_id = &"fire"
+display_name = "Fire"
+override_types = true
+type_1 = 11
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_10"]
+script = ExtResource("2_76e10")
+form_id = &"water"
+display_name = "Water"
+override_types = true
+type_1 = 12
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_11"]
+script = ExtResource("2_76e10")
+form_id = &"grass"
+display_name = "Grass"
+override_types = true
+type_1 = 13
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_12"]
+script = ExtResource("2_76e10")
+form_id = &"electric"
+display_name = "Electric"
+override_types = true
+type_1 = 14
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_13"]
+script = ExtResource("2_76e10")
+form_id = &"psychic"
+display_name = "Psychic"
+override_types = true
+type_1 = 15
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_14"]
+script = ExtResource("2_76e10")
+form_id = &"ice"
+display_name = "Ice"
+override_types = true
+type_1 = 16
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_15"]
+script = ExtResource("2_76e10")
+form_id = &"dragon"
+display_name = "Dragon"
+override_types = true
+type_1 = 17
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_16"]
+script = ExtResource("2_76e10")
+form_id = &"dark"
+display_name = "Dark"
+override_types = true
+type_1 = 18
+type_2 = 0
+tags = PackedStringArray("memory")
+
+[sub_resource type="Resource" id="Resource_form_17"]
+script = ExtResource("2_76e10")
+form_id = &"fairy"
+display_name = "Fairy"
+override_types = true
+type_1 = 19
+type_2 = 0
+tags = PackedStringArray("memory")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_76e10")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17")])
 national_dex_number = 773
 species_name = "Silvally"
 species_id = 773

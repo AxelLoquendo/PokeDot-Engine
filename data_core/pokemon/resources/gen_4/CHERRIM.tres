@@ -74,8 +74,21 @@ script = ExtResource("2_learn")
 level = 62
 move = 80
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_db0vr")
+form_id = &"overcast"
+display_name = "Nublado"
+tags = PackedStringArray("weather")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_db0vr")
+form_id = &"sunshine"
+display_name = "Soleado"
+tags = PackedStringArray("weather")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_db0vr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 421
 species_name = "Cherrim"
 species_id = 421

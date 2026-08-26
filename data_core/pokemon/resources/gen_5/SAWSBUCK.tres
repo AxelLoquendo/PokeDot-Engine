@@ -94,8 +94,33 @@ script = ExtResource("2_learn")
 level = 52
 move = 76
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_6n8x8")
+form_id = &"spring"
+display_name = "Spring"
+tags = PackedStringArray("season")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_6n8x8")
+form_id = &"summer"
+display_name = "Summer"
+tags = PackedStringArray("season")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_6n8x8")
+form_id = &"autumn"
+display_name = "Autumn"
+tags = PackedStringArray("season")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_6n8x8")
+form_id = &"winter"
+display_name = "Winter"
+tags = PackedStringArray("season")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_6n8x8")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 national_dex_number = 586
 species_name = "Sawsbuck"
 species_id = 586

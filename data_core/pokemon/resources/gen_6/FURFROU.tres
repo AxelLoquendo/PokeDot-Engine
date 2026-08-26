@@ -68,8 +68,63 @@ script = ExtResource("2_learn")
 level = 48
 move = 538
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_jrpla")
+form_id = &"heart"
+display_name = "Corte Corazón"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_jrpla")
+form_id = &"star"
+display_name = "Corte Estrella"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_jrpla")
+form_id = &"diamond"
+display_name = "Corte Diamante"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_jrpla")
+form_id = &"debutante"
+display_name = "Corte Debutante"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_jrpla")
+form_id = &"matron"
+display_name = "Corte Matrona"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_5"]
+script = ExtResource("2_jrpla")
+form_id = &"dandy"
+display_name = "Corte Caballero"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_6"]
+script = ExtResource("2_jrpla")
+form_id = &"la_reine"
+display_name = "Corte La Reine"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_7"]
+script = ExtResource("2_jrpla")
+form_id = &"kabuki"
+display_name = "Corte Kabuki"
+tags = PackedStringArray("furfrou", "cosmetic")
+
+[sub_resource type="Resource" id="Resource_form_8"]
+script = ExtResource("2_jrpla")
+form_id = &"pharaoh"
+display_name = "Corte Faraón"
+tags = PackedStringArray("furfrou", "cosmetic")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_jrpla")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8")])
 national_dex_number = 676
 species_name = "Furfrou"
 species_id = 676

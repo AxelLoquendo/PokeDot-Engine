@@ -74,8 +74,25 @@ script = ExtResource("2_learn")
 level = 88
 move = 416
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_p4bgp")
+form_id = &"crowned"
+display_name = "Rey de las Espadas"
+override_types = true
+type_1 = 19
+type_2 = 9
+override_stats = true
+base_hp = 92
+base_attack = 150
+base_defense = 115
+base_speed = 148
+base_sp_attack = 80
+base_sp_defense = 115
+tags = PackedStringArray("crowned")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_p4bgp")]([SubResource("Resource_form_0")])
 national_dex_number = 888
 species_name = "Zacian"
 species_id = 888

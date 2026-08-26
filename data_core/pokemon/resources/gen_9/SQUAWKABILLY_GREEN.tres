@@ -82,8 +82,27 @@ script = ExtResource("2_learn")
 level = 52
 move = 179
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_rwgx6")
+form_id = &"blue"
+display_name = "Azul"
+tags = PackedStringArray("plumage")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_rwgx6")
+form_id = &"yellow"
+display_name = "Amarillo"
+tags = PackedStringArray("plumage")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_rwgx6")
+form_id = &"white"
+display_name = "Blanco"
+tags = PackedStringArray("plumage")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_rwgx6")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 national_dex_number = 931
 species_name = "Squawkabilly-Green-Plumage"
 species_id = 1316

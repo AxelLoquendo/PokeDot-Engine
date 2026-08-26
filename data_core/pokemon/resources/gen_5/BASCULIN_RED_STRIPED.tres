@@ -98,8 +98,21 @@ script = ExtResource("2_learn")
 level = 56
 move = 457
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ri33c")
+form_id = &"blue_striped"
+display_name = "Líneas Azules"
+tags = PackedStringArray("basculin")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_ri33c")
+form_id = &"white_striped"
+display_name = "Líneas Blancas"
+tags = PackedStringArray("basculin")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_ri33c")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 550
 species_name = "Basculin-Red-Striped"
 species_id = 550

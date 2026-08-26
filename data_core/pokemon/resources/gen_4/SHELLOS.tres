@@ -73,8 +73,21 @@ script = ExtResource("2_learn")
 level = 45
 move = 262
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_uvvlh")
+form_id = &"west"
+display_name = "Oeste"
+tags = PackedStringArray("regional_color")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_uvvlh")
+form_id = &"east"
+display_name = "Este"
+tags = PackedStringArray("regional_color")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_uvvlh")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 422
 species_name = "Shellos"
 species_id = 422

@@ -103,8 +103,33 @@ script = ExtResource("2_learn")
 level = 91
 move = 120
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_0v4sb")
+form_id = &"douse"
+display_name = "Módulo Hidro"
+tags = PackedStringArray("drive")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_0v4sb")
+form_id = &"shock"
+display_name = "Módulo Fulgor"
+tags = PackedStringArray("drive")
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_0v4sb")
+form_id = &"burn"
+display_name = "Módulo Piro"
+tags = PackedStringArray("drive")
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_0v4sb")
+form_id = &"chill"
+display_name = "Módulo Criogénico"
+tags = PackedStringArray("drive")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_0v4sb")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 national_dex_number = 649
 species_name = "Genesect"
 species_id = 649

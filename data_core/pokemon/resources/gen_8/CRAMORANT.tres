@@ -65,8 +65,21 @@ script = ExtResource("2_learn")
 level = 56
 move = 56
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_g2akr")
+form_id = &"gulping"
+display_name = "Engullidor"
+tags = PackedStringArray("battle")
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_g2akr")
+form_id = &"gorging"
+display_name = "Guloso"
+tags = PackedStringArray("battle")
+
 [resource]
 script = ExtResource("3_struct")
+forms = Array[ExtResource("2_g2akr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 national_dex_number = 845
 species_name = "Cramorant"
 species_id = 845
