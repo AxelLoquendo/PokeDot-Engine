@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://b42mql7j55yo5" path="res://graphics/battle_interface/pokemon_focus.png" id="7_yaib3"]
 [ext_resource type="Texture2D" uid="uid://c8c0604oi6fct" path="res://graphics/battle_interface/run.png" id="8_ln23b"]
 [ext_resource type="Texture2D" uid="uid://x0svlm56d2qb" path="res://graphics/battle_interface/run_focus.png" id="9_w78s2"]
+[ext_resource type="Texture2D" uid="uid://ibsgrtw1i3qp" path="res://graphics/battle_interface/overlay_fight.png" id="11_ln23b"]
+[ext_resource type="Texture2D" uid="uid://cbfgd0b15rwau" path="res://graphics/battle_interface/cursor_fight/normal.png" id="12_j8t3v"]
+[ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="12_w78s2"]
+[ext_resource type="Texture2D" uid="uid://buxgjq1qfw6yt" path="res://graphics/battle_interface/cursor_fight/normal_focus.png" id="13_axcis"]
 [ext_resource type="Texture2D" uid="uid://bbtelwuwcqyex" path="res://graphics/battle_interface/player_hp_box.png" id="13_j8t3v"]
 [ext_resource type="Texture2D" uid="uid://bt18beno7g8rx" path="res://graphics/battle_interface/enemy_hp_box.png" id="14_axcis"]
 [ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="14_ymneq"]
@@ -25,6 +29,46 @@ font_size = 32
 font_color = Color(0.972549, 0.972549, 0.972549, 1)
 shadow_size = 0
 shadow_color = Color(0.40784314, 0.34509805, 0.4392157, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q4lci"]
+font = ExtResource("3_pmg0a")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3mhqk"]
+font = ExtResource("3_pmg0a")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bg6a1"]
+font = ExtResource("3_pmg0a")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y8am3"]
+font = ExtResource("3_pmg0a")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j8t3v"]
+font = ExtResource("3_pmg0a")
+font_size = 32
+font_color = Color(0.2166214, 0.2166214, 0.21662131, 1)
+shadow_size = 0
+shadow_color = Color(0.61420316, 0.6142027, 0.6142028, 1)
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_14cdr"]
@@ -58,76 +102,172 @@ position = Vector2(256, 112)
 scale = Vector2(2, 2)
 texture = ExtResource("1_c8v4i")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1853342013]
+[node name="TextBox" type="ColorRect" parent="." unique_id=1853342013]
 offset_top = 224.0
 offset_right = 480.0
 offset_bottom = 320.0
 color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
-[node name="Control" type="Control" parent="." unique_id=1315055219]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Fight" type="TextureButton" parent="Control" unique_id=277366189]
+[node name="BattleText" type="Label" parent="TextBox" unique_id=1016510972]
 layout_mode = 0
-offset_left = 252.0
-offset_top = 240.0
-offset_right = 308.0
-offset_bottom = 252.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("2_k0gm8")
-texture_focused = ExtResource("3_ymneq")
-
-[node name="Bag" type="TextureButton" parent="Control" unique_id=1206597163]
-layout_mode = 0
-offset_left = 368.0
-offset_top = 240.0
-offset_right = 424.0
-offset_bottom = 252.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("4_2yyve")
-texture_focused = ExtResource("5_6hh4c")
-
-[node name="Pkmn" type="TextureButton" parent="Control" unique_id=239538719]
-layout_mode = 0
-offset_left = 252.0
-offset_top = 280.0
-offset_right = 308.0
-offset_bottom = 292.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("6_qkdal")
-texture_focused = ExtResource("7_yaib3")
-
-[node name="Run" type="TextureButton" parent="Control" unique_id=1094797872]
-layout_mode = 0
-offset_left = 368.0
-offset_top = 280.0
-offset_right = 424.0
-offset_bottom = 292.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("8_ln23b")
-texture_focused = ExtResource("9_w78s2")
-
-[node name="BattleText" type="Label" parent="." unique_id=1016510972]
 offset_left = 16.0
-offset_top = 237.0
+offset_top = 13.0
 offset_right = 225.0
-offset_bottom = 307.0
+offset_bottom = 83.0
 text = "¿Qué debe hacer [NAME_PKMN]?."
 label_settings = SubResource("LabelSettings_htemk")
 autowrap_mode = 2
 
-[node name="BattleNormalText" type="Label" parent="." unique_id=1627713024]
+[node name="BattleNormalText" type="Label" parent="TextBox" unique_id=1627713024]
 visible = false
+layout_mode = 0
 offset_left = 16.0
-offset_top = 237.0
+offset_top = 13.0
 offset_right = 448.0
-offset_bottom = 307.0
+offset_bottom = 83.0
 text = "A aparecido un weedle salvaje"
 label_settings = SubResource("LabelSettings_htemk")
 autowrap_mode = 2
+
+[node name="ActionBattle" type="Control" parent="." unique_id=1315055219]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 116.0
+offset_bottom = 28.0
+
+[node name="GridContainer" type="GridContainer" parent="ActionBattle" unique_id=1814665687]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 240.0
+offset_right = 364.00006
+offset_bottom = 268.00067
+scale = Vector2(2, 2)
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Fight" type="TextureButton" parent="ActionBattle/GridContainer" unique_id=277366189]
+layout_mode = 2
+texture_normal = ExtResource("2_k0gm8")
+texture_focused = ExtResource("3_ymneq")
+
+[node name="Bag" type="TextureButton" parent="ActionBattle/GridContainer" unique_id=1206597163]
+layout_mode = 2
+texture_normal = ExtResource("4_2yyve")
+texture_focused = ExtResource("5_6hh4c")
+
+[node name="Pkmn" type="TextureButton" parent="ActionBattle/GridContainer" unique_id=239538719]
+layout_mode = 2
+texture_normal = ExtResource("6_qkdal")
+texture_focused = ExtResource("7_yaib3")
+
+[node name="Run" type="TextureButton" parent="ActionBattle/GridContainer" unique_id=1094797872]
+layout_mode = 2
+texture_normal = ExtResource("8_ln23b")
+texture_focused = ExtResource("9_w78s2")
+
+[node name="Overlay_Fight" type="Sprite2D" parent="." unique_id=2098993056]
+visible = false
+position = Vector2(240, 272)
+texture = ExtResource("11_ln23b")
+
+[node name="Moves" type="Control" parent="Overlay_Fight" unique_id=1408681135]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -236.0
+offset_top = -42.0
+offset_right = 112.0
+offset_bottom = 46.0
+
+[node name="GridContainer" type="GridContainer" parent="Overlay_Fight/Moves" unique_id=312439128]
+layout_mode = 0
+offset_right = 354.0
+offset_bottom = 92.0
+theme_override_constants/h_separation = -3
+theme_override_constants/v_separation = -4
+columns = 2
+
+[node name="Move" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=374164805]
+layout_mode = 2
+texture_normal = ExtResource("12_j8t3v")
+texture_focused = ExtResource("13_axcis")
+
+[node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move" unique_id=1643575520]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 156.0
+offset_bottom = 37.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_q4lci")
+horizontal_alignment = 1
+
+[node name="Move2" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=1838229241]
+layout_mode = 2
+texture_normal = ExtResource("12_j8t3v")
+texture_focused = ExtResource("13_axcis")
+
+[node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move2" unique_id=975238828]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 156.0
+offset_bottom = 37.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_3mhqk")
+horizontal_alignment = 1
+
+[node name="Move3" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=468471031]
+layout_mode = 2
+texture_normal = ExtResource("12_j8t3v")
+texture_focused = ExtResource("13_axcis")
+
+[node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move3" unique_id=385534374]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 156.0
+offset_bottom = 37.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_bg6a1")
+horizontal_alignment = 1
+
+[node name="Move4" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=74352521]
+layout_mode = 2
+texture_normal = ExtResource("12_j8t3v")
+texture_focused = ExtResource("13_axcis")
+
+[node name="Move_Name" type="Label" parent="Overlay_Fight/Moves/GridContainer/Move4" unique_id=2141480026]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 156.0
+offset_bottom = 37.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_y8am3")
+horizontal_alignment = 1
+
+[node name="PP" type="Label" parent="Overlay_Fight" unique_id=1152143415]
+texture_filter = 1
+offset_left = 146.0
+offset_top = 5.0
+offset_right = 176.0
+offset_bottom = 33.0
+text = "PP:"
+label_settings = SubResource("LabelSettings_j8t3v")
+
+[node name="Number_PP" type="Label" parent="Overlay_Fight/PP" unique_id=879117726]
+texture_filter = 1
+layout_mode = 0
+offset_left = 34.0
+offset_right = 64.0
+offset_bottom = 28.0
+text = "10"
+label_settings = SubResource("LabelSettings_j8t3v")
+
+[node name="Type" type="Sprite2D" parent="Overlay_Fight" unique_id=209018556]
+position = Vector2(176, -11)
+texture = ExtResource("12_w78s2")
 
 [node name="Pkmn_Player" type="Sprite2D" parent="." unique_id=228095653]
 position = Vector2(128, 160)
