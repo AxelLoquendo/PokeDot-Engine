@@ -53,6 +53,11 @@ const STAT_COUNT: int = 6
 ## Tipo Tera de esta criatura (por defecto el type_1 de la especie).
 @export var tera_type: PokemonData.Type = PokemonData.Type.TYPE_NONE
 
+@export_group("Procedencia")
+@export var met_date: String = ""
+@export var met_location: String = ""
+@export_range(1, 100) var met_level: int = 1
+
 # ============================================================
 # ESPECIE
 # ============================================================
@@ -443,6 +448,9 @@ func to_dict() -> Dictionary:
 		"evs": evs.duplicate(),
 		"stats": stats.duplicate(),
 		"moves": move_dicts,
+		"met_date": met_date,
+		"met_location": met_location,
+		"met_level": met_level,
 	}
 
 
@@ -462,6 +470,9 @@ static func from_dict(data: Dictionary) -> PokemonInstance:
 	pokemon.nature = int(data.get("nature", 0)) as PokemonData.Nature
 	pokemon.gender = int(data.get("gender", 0)) as PokemonData.Gender
 	pokemon.personality_value = int(data.get("personality_value", 0))
+	pokemon.met_date = str(data.get("met_date", ""))
+	pokemon.met_location = str(data.get("met_location", ""))
+	pokemon.met_level = clampi(int(data.get("met_level", pokemon.level)), 1, 100)
 
 	var loaded_ivs: Variant = data.get("ivs", [0, 0, 0, 0, 0, 0])
 	var loaded_evs: Variant = data.get("evs", [0, 0, 0, 0, 0, 0])
@@ -493,3 +504,12 @@ static func from_dict(data: Dictionary) -> PokemonInstance:
 		pokemon.current_hp = pokemon.max_hp
 
 	return pokemon
+
+func set_provenance(location: String, obtained_level: int, date: String = "") -> void:
+	met_location = location
+	met_level = clampi(obtained_level, 1, 100)
+
+	if date.is_empty():
+		met_date = Time.get_date_string_from_system()
+	else:
+		met_date = date

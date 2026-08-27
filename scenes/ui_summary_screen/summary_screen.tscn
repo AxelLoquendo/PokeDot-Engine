@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bk8j2mr8sffbp" path="res://graphics/ui_summary_screen/info/info_0.png" id="7_e1dk8"]
 [ext_resource type="Texture2D" uid="uid://drvcwk31u7ym2" path="res://graphics/ui_summary_screen/icon_ball_POKEBALL.png" id="8_a101a"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="9_b4q7a"]
+[ext_resource type="PackedScene" uid="uid://dde67me3gym1a" path="res://scenes/ui_summary_screen/page_2.tscn" id="10_3iqhy"]
 [ext_resource type="Texture2D" uid="uid://dc1lkuq7s04uj" path="res://graphics/ui_summary_screen/info/info_1.png" id="10_5i46e"]
 [ext_resource type="Texture2D" uid="uid://c4cj80ab7f24x" path="res://graphics/items/VENUSAURITE.png" id="11_3iqhy"]
 [ext_resource type="Texture2D" uid="uid://dq3gfx1ce5uik" path="res://graphics/pokemon/front/BULBASAUR.png" id="12_tebq8"]
@@ -63,6 +64,7 @@ position = Vector2(240, 160)
 texture = ExtResource("2_b4q7a")
 
 [node name="Page0" parent="." unique_id=2146259770 instance=ExtResource("5_plwqo")]
+visible = false
 
 [node name="Page1" parent="." unique_id=1094160894 instance=ExtResource("4_5i46e")]
 visible = false
@@ -122,6 +124,8 @@ offset_right = 61.0
 offset_bottom = 57.0
 text = "Venusaurite"
 label_settings = SubResource("LabelSettings_1oo5j")
+
+[node name="Page2" parent="." unique_id=749482474 instance=ExtResource("10_3iqhy")]
 
 [node name="Front" type="Sprite2D" parent="." unique_id=714918628]
 position = Vector2(96, 172)

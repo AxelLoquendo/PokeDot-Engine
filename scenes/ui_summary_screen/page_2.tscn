@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://dde67me3gym1a"]
+
+[ext_resource type="Texture2D" uid="uid://cfci1xst73x00" path="res://graphics/ui_summary_screen/skills/skills_0.png" id="1_8q7fr"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_4h24t"]
+[ext_resource type="Texture2D" uid="uid://boxphi76nuuj1" path="res://graphics/ui_summary_screen/skills/skills_1.png" id="3_sop6m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jaoro"]
+font = ExtResource("2_4h24t")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8q7fr"]
+font = ExtResource("2_4h24t")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4h24t"]
+font = ExtResource("2_4h24t")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sop6m"]
+font = ExtResource("2_4h24t")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_atom2"]
+font = ExtResource("2_4h24t")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1g4v"]
+font = ExtResource("2_4h24t")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bclmw"]
+font = ExtResource("2_4h24t")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nvcns"]
+font = ExtResource("2_4h24t")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4wdn"]
+font = ExtResource("2_4h24t")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j40ky"]
+font = ExtResource("2_4h24t")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a2c5q"]
+font = ExtResource("2_4h24t")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_56k6y"]
+font = ExtResource("2_4h24t")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_at1y2"]
+font = ExtResource("2_4h24t")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[node name="Page2" type="Node2D" unique_id=749482474]
+
+[node name="Skills" type="Sprite2D" parent="." unique_id=470523109]
+position = Vector2(240, 24)
+texture = ExtResource("1_8q7fr")
+
+[node name="Title" type="Label" parent="Skills" unique_id=2051882827]
+offset_left = -214.0
+offset_top = -12.0
+offset_right = -76.0
+offset_bottom = 16.0
+text = "Skills"
+label_settings = SubResource("LabelSettings_jaoro")
+
+[node name="Skills_1" type="Sprite2D" parent="." unique_id=1302209834]
+position = Vector2(336, 184)
+texture = ExtResource("3_sop6m")
+
+[node name="HP" type="Label" parent="Skills_1" unique_id=978990968]
+offset_left = -110.0
+offset_top = -121.0
+offset_bottom = -93.0
+text = "PS"
+label_settings = SubResource("LabelSettings_8q7fr")
+horizontal_alignment = 1
+
+[node name="Number_Hp" type="Label" parent="Skills_1/HP" unique_id=1075924250]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 220.0
+offset_bottom = 28.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_4h24t")
+horizontal_alignment = 2
+
+[node name="Hp_Bar" type="ColorRect" parent="Skills_1/HP" unique_id=31966942]
+modulate = Color(1, 1, 1, 0.73333335)
+layout_mode = 0
+offset_left = 118.0
+offset_top = 31.0
+offset_right = 214.0
+offset_bottom = 37.0
+color = Color(2.887845e-06, 0.8746455, 0.38669965, 1)
+
+[node name="Attack" type="Label" parent="Skills_1" unique_id=1989962292]
+offset_left = -104.0
+offset_top = -85.0
+offset_right = -1.0
+offset_bottom = -57.0
+text = "Ataque"
+label_settings = SubResource("LabelSettings_sop6m")
+
+[node name="Number_Attack" type="Label" parent="Skills_1/Attack" unique_id=957748886]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 220.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_atom2")
+horizontal_alignment = 2
+
+[node name="Defense" type="Label" parent="Skills_1" unique_id=1374864714]
+offset_left = -104.0
+offset_top = -61.0
+offset_right = -20.0
+offset_bottom = -33.0
+text = "Defensa"
+label_settings = SubResource("LabelSettings_i1g4v")
+
+[node name="Number_Defense" type="Label" parent="Skills_1/Defense" unique_id=1816296286]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 220.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_bclmw")
+horizontal_alignment = 2
+
+[node name="SP_Attack" type="Label" parent="Skills_1" unique_id=728042524]
+offset_left = -104.0
+offset_top = -37.0
+offset_right = -1.0
+offset_bottom = -9.0
+text = "At. Esp"
+label_settings = SubResource("LabelSettings_sop6m")
+
+[node name="Number_Sp_Attack" type="Label" parent="Skills_1/SP_Attack" unique_id=907256259]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 220.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_nvcns")
+horizontal_alignment = 2
+
+[node name="SP_Defense" type="Label" parent="Skills_1" unique_id=1632857276]
+offset_left = -104.0
+offset_top = -13.0
+offset_right = -1.0
+offset_bottom = 15.0
+text = "Def. Esp"
+label_settings = SubResource("LabelSettings_a4wdn")
+
+[node name="Number_Sp_Defense" type="Label" parent="Skills_1/SP_Defense" unique_id=18410853]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 220.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_j40ky")
+horizontal_alignment = 2
+
+[node name="Speed" type="Label" parent="Skills_1" unique_id=1019460056]
+offset_left = -104.0
+offset_top = 11.0
+offset_right = -1.0
+offset_bottom = 39.0
+text = "Velocidad"
+label_settings = SubResource("LabelSettings_a2c5q")
+
+[node name="Number_Speed" type="Label" parent="Skills_1/Speed" unique_id=1296061539]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 220.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_56k6y")
+horizontal_alignment = 2
+
+[node name="Ability" type="Label" parent="Skills_1" unique_id=559093121]
+offset_left = -116.0
+offset_top = 39.0
+offset_right = -13.0
+offset_bottom = 67.0
+text = "Habilidad"
+label_settings = SubResource("LabelSettings_at1y2")
+
+[node name="Ability_Name" type="Label" parent="Skills_1/Ability" unique_id=509202466]
+layout_mode = 0
+offset_left = 120.0
+offset_top = -1.0
+offset_right = 260.0
+offset_bottom = 27.0
+text = "---"
+label_settings = SubResource("LabelSettings_atom2")
+horizontal_alignment = 1
+
+[node name="Ability_Description" type="Label" parent="Skills_1/Ability" unique_id=289583335]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 256.0
+offset_bottom = 93.0
+text = "Sin Descripción"
+label_settings = SubResource("LabelSettings_atom2")
+autowrap_mode = 2

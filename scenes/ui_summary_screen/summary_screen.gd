@@ -111,6 +111,8 @@ func _mostrar_pokemon_actual() -> void:
 	_actualizar_ui()
 	if pagina_0:
 		pagina_0.setup(pokemon)
+	if pagina_1:
+		pagina_1.setup(pokemon)
 
 	party_index_changed.emit(party_index)
 	_reproducir_grito()
