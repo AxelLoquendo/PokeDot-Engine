@@ -16,6 +16,8 @@ extends Node2D
 
 @onready var action_menu: Control = $ActionBattle
 @onready var fight_menu: Sprite2D = $Overlay_Fight
+@onready var move_pp_label: Label = $Overlay_Fight/PP/Number_PP
+@onready var move_type_sprite: Sprite2D = $Overlay_Fight/Type
 @onready var battle_text: Label = $TextBox/BattleText
 @onready var battle_normal_text: Label = $TextBox/BattleNormalText
 
@@ -59,6 +61,8 @@ var _action_normals: Array[Texture2D] = []
 var _action_focused: Array[Texture2D] = []
 var _move_normals: Array[Texture2D] = []
 var _move_focused: Array[Texture2D] = []
+var _current_move_normals: Array[Texture2D] = []
+var _current_move_focused: Array[Texture2D] = []
 
 
 func _ready() -> void:
@@ -66,22 +70,40 @@ func _ready() -> void:
 	enemy_sprite_base_pos = enemy_sprite.position
 	
 	# Guardar texturas y desactivar foco nativo
+	# ============================================================
+	# GUARDAR TEXTURAS DE LOS BOTONES DE ACCIONES
+	# ============================================================
 	_action_normals.clear()
 	_action_focused.clear()
+
 	for b: TextureButton in action_buttons:
 		_action_normals.append(b.texture_normal)
 		_action_focused.append(b.texture_focused)
+
 		b.focus_mode = Control.FOCUS_NONE
 		b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
+
+
+	# ============================================================
+	# GUARDAR TEXTURAS DE LOS BOTONES DE MOVIMIENTOS
+	# ============================================================
+
 	_move_normals.clear()
 	_move_focused.clear()
+	_current_move_normals.clear()
+	_current_move_focused.clear()
+
 	for b: TextureButton in move_buttons:
 		_move_normals.append(b.texture_normal)
 		_move_focused.append(b.texture_focused)
+
+		# Texturas actuales; inicialmente son las genéricas.
+		_current_move_normals.append(b.texture_normal)
+		_current_move_focused.append(b.texture_focused)
+
 		b.focus_mode = Control.FOCUS_NONE
 		b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
+
 	player_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 5)
 	enemy_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 8)
 	
@@ -160,11 +182,19 @@ func _handle_action_input(event: InputEvent) -> void:
 
 func _update_action_focus() -> void:
 	for i: int in action_buttons.size():
-		var b: TextureButton = action_buttons[i]
-		if i == selected_action and _action_focused[i]:
-			b.texture_normal = _action_focused[i]
+		var button: TextureButton = action_buttons[i]
+
+		if i >= _action_normals.size():
+			continue
+
+		if i >= _action_focused.size():
+			continue
+
+		if i == selected_action and _action_focused[i] != null:
+			button.texture_normal = _action_focused[i]
 		else:
-			b.texture_normal = _action_normals[i]
+			button.texture_normal = _action_normals[i]
+
 
 
 func _activate_action(index: int) -> void:
@@ -216,11 +246,84 @@ func _handle_move_input(event: InputEvent) -> void:
 
 func _update_move_focus() -> void:
 	for i: int in move_buttons.size():
-		var b: TextureButton = move_buttons[i]
-		if i == selected_move and _move_focused[i]:
-			b.texture_normal = _move_focused[i]
+		var button: TextureButton = move_buttons[i]
+
+		if i >= _current_move_normals.size():
+			continue
+
+		if i >= _current_move_focused.size():
+			continue
+
+		var normal_texture: Texture2D = _current_move_normals[i]
+		var focused_texture: Texture2D = _current_move_focused[i]
+
+		# Ambas texturas pertenecen al tipo del movimiento.
+		button.texture_focused = focused_texture
+
+		# Como usamos navegación manual, simulamos el estado focus
+		# cambiando temporalmente texture_normal.
+		if i == selected_move:
+			button.texture_normal = focused_texture
 		else:
-			b.texture_normal = _move_normals[i]
+			button.texture_normal = normal_texture
+
+	_update_selected_move_info()
+
+func _get_move_button_texture(move_type: PokemonData.Type, focused: bool, fallback: Texture2D) -> Texture2D:
+	if move_type == PokemonData.Type.TYPE_NONE:
+		return fallback
+
+	var type_name: String = PokemonData.Type.keys()[int(move_type)]
+	type_name = type_name.trim_prefix("TYPE_").to_lower()
+
+	var file_name: String = type_name
+
+	if focused:
+		file_name += "_focus"
+
+	var path: String = (
+		"res://graphics/battle_interface/cursor_fight/%s.png"
+		% file_name
+	)
+
+	if not ResourceLoader.exists(path):
+		return fallback
+
+	var texture: Texture2D = load(path) as Texture2D
+
+	if texture == null:
+		return fallback
+
+	return texture
+
+func _update_selected_move_info() -> void:
+	# Valores por defecto cuando no hay un movimiento válido seleccionado.
+	move_pp_label.text = "--/--"
+	move_type_sprite.texture = null
+	move_type_sprite.visible = false
+
+	if player_pokemon == null:
+		return
+
+	if selected_move < 0 or selected_move >= player_pokemon.moves.size():
+		return
+
+	var slot: PokemonMoveSlot = player_pokemon.moves[selected_move]
+
+	if slot == null or slot.is_empty():
+		return
+
+	var move_data: MoveData = MoveDatabase.get_move(slot.move_id)
+
+	if move_data == null:
+		return
+
+	# PP actuales restantes del movimiento.
+	move_pp_label.text = "%d/%d" % [slot.current_pp, move_data.pp]
+
+	# El array de TypeIcons usa el mismo índice que PokemonData.Type.
+	move_type_sprite.texture = TypeIconsDb.get_icon(move_data.type)
+	move_type_sprite.visible = move_type_sprite.texture != null
 
 
 # ============================================================
@@ -375,14 +478,33 @@ func _on_run_pressed() -> void:
 
 func _fill_move_buttons() -> void:
 	var moves: Array[PokemonMoveSlot] = player_pokemon.moves
+
 	for i: int in move_buttons.size():
 		var button: TextureButton = move_buttons[i]
 		var name_label: Label = button.get_node("Move_Name") as Label
+
+		var normal_texture: Texture2D = _move_normals[i]
+		var focused_texture: Texture2D = _move_focused[i]
+
 		if i < moves.size() and moves[i] != null and not moves[i].is_empty():
-			var move_data: MoveData = MoveDatabase.get_move(moves[i].move_id)
+			var slot: PokemonMoveSlot = moves[i]
+			var move_data: MoveData = MoveDatabase.get_move(slot.move_id)
+
 			if move_data:
 				name_label.text = move_data.move_name
-				button.disabled = false
+				button.disabled = slot.current_pp <= 0
+
+				normal_texture = _get_move_button_texture(
+					move_data.type,
+					false,
+					_move_normals[i]
+				)
+
+				focused_texture = _get_move_button_texture(
+					move_data.type,
+					true,
+					_move_focused[i]
+				)
 			else:
 				name_label.text = "---"
 				button.disabled = true
@@ -390,14 +512,34 @@ func _fill_move_buttons() -> void:
 			name_label.text = "---"
 			button.disabled = true
 
+		_current_move_normals[i] = normal_texture
+		_current_move_focused[i] = focused_texture
+
+		# Aplicar inmediatamente las texturas al TextureButton.
+		button.texture_normal = normal_texture
+		button.texture_focused = focused_texture
+
+
+	_update_selected_move_info()
 
 func _on_move_pressed(index: int) -> void:
 	if index < 0 or index >= player_pokemon.moves.size():
 		return
+
 	var slot: PokemonMoveSlot = player_pokemon.moves[index]
+
 	if slot == null or slot.is_empty():
 		return
-	
+
+	if slot.current_pp <= 0:
+		_show_message("¡No quedan PP para este movimiento!")
+		return
+
 	fight_menu.visible = false
 	current_menu = MenuState.BUSY
+
 	await battle.player_choose_move(index)
+
+	# BattleManager ya descontó un PP.
+	# Actualizamos la información por si se vuelve a abrir el menú.
+	_update_selected_move_info()
