@@ -80,12 +80,12 @@ func _ready() -> void:
 	)
 
 	pokemon_prueba3 = PokemonInstance.create(
-		Species.SpeciesID.SPECIES_ABSOL_MEGA,
-		100
+		Species.SpeciesID.SPECIES_BULBASAUR,
+		5
 	)
 
 	var party_prueba: Array[PokemonInstance] = [
-	pokemon_prueba,
+	pokemon_prueba, pokemon_prueba2, pokemon_prueba3
 	]
 	party_actual = party_prueba
 	set_party(party_prueba)

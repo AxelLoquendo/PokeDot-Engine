@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dde67me3gym1a"]
 
+[ext_resource type="Script" uid="uid://de1kkrirj6i1k" path="res://scenes/ui_summary_screen/page_2.gd" id="1_4h24t"]
 [ext_resource type="Texture2D" uid="uid://cfci1xst73x00" path="res://graphics/ui_summary_screen/skills/skills_0.png" id="1_8q7fr"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_4h24t"]
 [ext_resource type="Texture2D" uid="uid://boxphi76nuuj1" path="res://graphics/ui_summary_screen/skills/skills_1.png" id="3_sop6m"]
@@ -102,6 +103,7 @@ shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
 shadow_offset = Vector2(0, 2)
 
 [node name="Page2" type="Node2D" unique_id=749482474]
+script = ExtResource("1_4h24t")
 
 [node name="Skills" type="Sprite2D" parent="." unique_id=470523109]
 position = Vector2(240, 24)
@@ -241,9 +243,8 @@ label_settings = SubResource("LabelSettings_at1y2")
 [node name="Ability_Name" type="Label" parent="Skills_1/Ability" unique_id=509202466]
 layout_mode = 0
 offset_left = 120.0
-offset_top = -1.0
 offset_right = 260.0
-offset_bottom = 27.0
+offset_bottom = 28.0
 text = "---"
 label_settings = SubResource("LabelSettings_atom2")
 horizontal_alignment = 1

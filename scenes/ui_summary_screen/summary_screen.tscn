@@ -64,9 +64,11 @@ position = Vector2(240, 160)
 texture = ExtResource("2_b4q7a")
 
 [node name="Page0" parent="." unique_id=2146259770 instance=ExtResource("5_plwqo")]
-visible = false
 
 [node name="Page1" parent="." unique_id=1094160894 instance=ExtResource("4_5i46e")]
+visible = false
+
+[node name="Page2" parent="." unique_id=749482474 instance=ExtResource("10_3iqhy")]
 visible = false
 
 [node name="Info_0" type="Sprite2D" parent="." unique_id=1609476859]
@@ -124,8 +126,6 @@ offset_right = 61.0
 offset_bottom = 57.0
 text = "Venusaurite"
 label_settings = SubResource("LabelSettings_1oo5j")
-
-[node name="Page2" parent="." unique_id=749482474 instance=ExtResource("10_3iqhy")]
 
 [node name="Front" type="Sprite2D" parent="." unique_id=714918628]
 position = Vector2(96, 172)
