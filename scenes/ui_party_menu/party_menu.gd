@@ -71,8 +71,8 @@ func _ready() -> void:
 	# --------------------------------------------------------
 
 	pokemon_prueba = PokemonInstance.create(
-		Species.SpeciesID.SPECIES_IRON_VALIANT,
-		5
+		Species.SpeciesID.SPECIES_HYDRAPPLE,
+		100
 	)
 	pokemon_prueba2 = PokemonInstance.create(
 		Species.SpeciesID.SPECIES_ARCANINE_HISUI,

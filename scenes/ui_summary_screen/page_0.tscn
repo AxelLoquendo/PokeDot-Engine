@@ -205,3 +205,12 @@ offset_bottom = 52.0
 text = "00000"
 label_settings = SubResource("LabelSettings_f5wj2")
 horizontal_alignment = 1
+
+[node name="Exp_Bar" type="ColorRect" parent="Info_2/Next_Lvl" unique_id=1970149967]
+modulate = Color(1, 1, 1, 0.6862745)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 57.0
+offset_right = 232.0
+offset_bottom = 63.0
+color = Color(0.12941177, 0.54901963, 0.9411765, 1)

@@ -279,9 +279,13 @@ static func create(species: Species.SpeciesID, initial_level: int = 5) -> Pokemo
 	pokemon.level = clampi(initial_level, 1, 100)
 
 	var data: PokemonDataStruct = SpeciesDatabase.get_species(species)
+
 	if data == null:
 		pokemon.recalculate_stats()
 		return pokemon
+
+	# La experiencia inicial debe corresponder al nivel creado.
+	pokemon.experience = ExperienceSystem.get_total_exp_for_level(pokemon.level, data.growth_rate)
 
 	# Personalidad
 	pokemon.personality_value = randi()
