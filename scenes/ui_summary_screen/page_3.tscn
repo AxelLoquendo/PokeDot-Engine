@@ -1,0 +1,388 @@
+[gd_scene format=3 uid="uid://wpqfcrjitnlc"]
+
+[ext_resource type="Script" uid="uid://dxlnqwkq0y1t3" path="res://scenes/ui_summary_screen/page_3.gd" id="1_ap5la"]
+[ext_resource type="Texture2D" uid="uid://hwwviess8qx" path="res://graphics/ui_summary_screen/baseivev/baseivev_0.png" id="1_btuto"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_y18ww"]
+[ext_resource type="Texture2D" uid="uid://d0uyyp38udvs5" path="res://graphics/ui_summary_screen/baseivev/baseivev_1.png" id="3_y18ww"]
+[ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="4_g52c7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g52c7"]
+font = ExtResource("2_y18ww")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ap5la"]
+font = ExtResource("2_y18ww")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3tu8x"]
+font = ExtResource("2_y18ww")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rcl6"]
+font = ExtResource("2_y18ww")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ct6s"]
+font = ExtResource("2_y18ww")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gbosq"]
+font = ExtResource("2_y18ww")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ckxw"]
+font = ExtResource("2_y18ww")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iere2"]
+font = ExtResource("2_y18ww")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5piqr"]
+font = ExtResource("2_y18ww")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggu1m"]
+font = ExtResource("2_y18ww")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qka0e"]
+font = ExtResource("2_y18ww")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpkwf"]
+font = ExtResource("2_y18ww")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_04o7d"]
+font = ExtResource("2_y18ww")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[node name="Page3" type="Node2D" unique_id=246890864]
+script = ExtResource("1_ap5la")
+
+[node name="BaseIvEv" type="Sprite2D" parent="." unique_id=1864499932]
+position = Vector2(240, 24)
+texture = ExtResource("1_btuto")
+
+[node name="Title" type="Label" parent="BaseIvEv" unique_id=582820691]
+offset_left = -214.0
+offset_top = -12.0
+offset_right = -76.0
+offset_bottom = 16.0
+text = "Estadísticas"
+label_settings = SubResource("LabelSettings_g52c7")
+
+[node name="BaseIvEv2" type="Sprite2D" parent="." unique_id=326901273]
+position = Vector2(336, 184)
+texture = ExtResource("3_y18ww")
+
+[node name="Total" type="Label" parent="BaseIvEv2" unique_id=18317465]
+offset_left = -3.0
+offset_top = -109.0
+offset_right = 49.0
+offset_bottom = -81.0
+text = "Total"
+label_settings = SubResource("LabelSettings_ap5la")
+
+[node name="Ev" type="Label" parent="BaseIvEv2" unique_id=880149059]
+offset_left = 90.0
+offset_top = -109.0
+offset_right = 134.0
+offset_bottom = -81.0
+text = "EV"
+label_settings = SubResource("LabelSettings_ap5la")
+horizontal_alignment = 1
+
+[node name="Iv" type="Label" parent="BaseIvEv2" unique_id=956997891]
+offset_left = 52.0
+offset_top = -109.0
+offset_right = 84.0
+offset_bottom = -81.0
+text = "IV"
+label_settings = SubResource("LabelSettings_ap5la")
+horizontal_alignment = 1
+
+[node name="HP" type="Label" parent="BaseIvEv2" unique_id=742040378]
+offset_left = -108.0
+offset_top = -85.0
+offset_right = 2.0
+offset_bottom = -57.0
+text = "PS"
+label_settings = SubResource("LabelSettings_ap5la")
+
+[node name="Number_Hp_Total" type="Label" parent="BaseIvEv2/HP" unique_id=957741136]
+layout_mode = 0
+offset_left = 105.0
+offset_right = 156.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Number_Hp_IV" type="Label" parent="BaseIvEv2/HP" unique_id=1163563680]
+layout_mode = 0
+offset_left = 158.0
+offset_right = 194.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Number_Hp_EV" type="Label" parent="BaseIvEv2/HP" unique_id=1161885890]
+layout_mode = 0
+offset_left = 198.0
+offset_right = 240.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Attack" type="Label" parent="BaseIvEv2" unique_id=380578793]
+offset_left = -108.0
+offset_top = -61.0
+offset_right = -5.0
+offset_bottom = -33.0
+text = "Ataque"
+label_settings = SubResource("LabelSettings_5rcl6")
+
+[node name="Number_Attack_Total" type="Label" parent="BaseIvEv2/Attack" unique_id=1158072314]
+layout_mode = 0
+offset_left = 105.0
+offset_right = 156.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3ct6s")
+horizontal_alignment = 1
+
+[node name="Number_Attack_IV" type="Label" parent="BaseIvEv2/Attack" unique_id=1414199879]
+layout_mode = 0
+offset_left = 158.0
+offset_right = 194.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Number_Attack_EV" type="Label" parent="BaseIvEv2/Attack" unique_id=1177385638]
+layout_mode = 0
+offset_left = 198.0
+offset_right = 240.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Defense" type="Label" parent="BaseIvEv2" unique_id=1440534138]
+offset_left = -108.0
+offset_top = -37.0
+offset_right = -24.0
+offset_bottom = -9.0
+text = "Defensa"
+label_settings = SubResource("LabelSettings_gbosq")
+
+[node name="Number_Defense_Total" type="Label" parent="BaseIvEv2/Defense" unique_id=402225247]
+layout_mode = 0
+offset_left = 105.0
+offset_right = 156.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_2ckxw")
+horizontal_alignment = 1
+
+[node name="Number_Defense_IV" type="Label" parent="BaseIvEv2/Defense" unique_id=511282635]
+layout_mode = 0
+offset_left = 158.0
+offset_right = 194.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Number_Defense_EV" type="Label" parent="BaseIvEv2/Defense" unique_id=1904213417]
+layout_mode = 0
+offset_left = 198.0
+offset_right = 240.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="SP_Attack" type="Label" parent="BaseIvEv2" unique_id=145223725]
+offset_left = -108.0
+offset_top = -13.0
+offset_right = -5.0
+offset_bottom = 15.0
+text = "At. Esp"
+label_settings = SubResource("LabelSettings_iere2")
+
+[node name="Number_Sp_Attack_Total" type="Label" parent="BaseIvEv2/SP_Attack" unique_id=2129593156]
+layout_mode = 0
+offset_left = 105.0
+offset_right = 156.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_5piqr")
+horizontal_alignment = 1
+
+[node name="Number_Sp_Attack_IV" type="Label" parent="BaseIvEv2/SP_Attack" unique_id=988136926]
+layout_mode = 0
+offset_left = 158.0
+offset_right = 194.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Number_Sp_Attack_EV" type="Label" parent="BaseIvEv2/SP_Attack" unique_id=1997092519]
+layout_mode = 0
+offset_left = 198.0
+offset_right = 240.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="SP_Defense" type="Label" parent="BaseIvEv2" unique_id=673471036]
+offset_left = -108.0
+offset_top = 11.0
+offset_right = -5.0
+offset_bottom = 39.0
+text = "Def. Esp"
+label_settings = SubResource("LabelSettings_ggu1m")
+
+[node name="Number_Sp_Defense_Total" type="Label" parent="BaseIvEv2/SP_Defense" unique_id=1404010148]
+layout_mode = 0
+offset_left = 105.0
+offset_right = 156.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_qka0e")
+horizontal_alignment = 1
+
+[node name="Number_Sp_Defense_IV" type="Label" parent="BaseIvEv2/SP_Defense" unique_id=1885780429]
+layout_mode = 0
+offset_left = 158.0
+offset_right = 194.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Number_Sp_Defense_EV" type="Label" parent="BaseIvEv2/SP_Defense" unique_id=431723112]
+layout_mode = 0
+offset_left = 198.0
+offset_right = 240.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Speed" type="Label" parent="BaseIvEv2" unique_id=1630618954]
+offset_left = -108.0
+offset_top = 35.0
+offset_right = -5.0
+offset_bottom = 63.0
+text = "Velocidad"
+label_settings = SubResource("LabelSettings_fpkwf")
+
+[node name="Number_Speed_Total" type="Label" parent="BaseIvEv2/Speed" unique_id=637698823]
+layout_mode = 0
+offset_left = 105.0
+offset_right = 156.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_04o7d")
+horizontal_alignment = 1
+
+[node name="Number_Speed_IV" type="Label" parent="BaseIvEv2/Speed" unique_id=1357388616]
+layout_mode = 0
+offset_left = 158.0
+offset_right = 194.0
+offset_bottom = 28.0
+text = "00"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="Number_Speed_EV" type="Label" parent="BaseIvEv2/Speed" unique_id=372931857]
+layout_mode = 0
+offset_left = 198.0
+offset_right = 240.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_3tu8x")
+horizontal_alignment = 1
+
+[node name="EVs_Total" type="Label" parent="BaseIvEv2" unique_id=1407961213]
+offset_left = -124.0
+offset_top = 71.0
+offset_right = -6.0
+offset_bottom = 99.0
+text = "EVs Totales"
+label_settings = SubResource("LabelSettings_ap5la")
+
+[node name="Number_EVs" type="Label" parent="BaseIvEv2/EVs_Total" unique_id=1248587524]
+layout_mode = 0
+offset_left = 121.0
+offset_right = 268.0
+offset_bottom = 28.0
+text = "0/510"
+label_settings = SubResource("LabelSettings_04o7d")
+horizontal_alignment = 1
+
+[node name="Secret_Power" type="Label" parent="BaseIvEv2" unique_id=169306504]
+offset_left = -124.0
+offset_top = 103.0
+offset_right = -6.0
+offset_bottom = 131.0
+text = "Pod. Oculto"
+label_settings = SubResource("LabelSettings_ap5la")
+
+[node name="Type" type="Sprite2D" parent="BaseIvEv2/Secret_Power" unique_id=1918356909]
+position = Vector2(194, 14)
+texture = ExtResource("4_g52c7")
