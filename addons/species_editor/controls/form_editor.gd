@@ -9,6 +9,7 @@ const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/ev
 
 var current_form: PokemonFormData
 var available_species: Array[PokemonDataStruct] = []
+var form_species_id_input: SpinBox
 var form_id_input: LineEdit
 var name_input: LineEdit
 var type_1: TypeSelector
@@ -49,7 +50,13 @@ func _rebuild() -> void:
 		add_child(empty)
 		return
 
-	form_id_input = _add_text_field("ID de forma", str(current_form.form_id), true)
+	form_species_id_input = _add_integer_field(
+		"SpeciesID de forma (species.gd)",
+		int(current_form.species_id),
+		0,
+		999999
+	)
+	form_id_input = _add_text_field("Clave interna legacy", str(current_form.form_id), true)
 	name_input = _add_text_field("Nombre visible", current_form.display_name, false)
 
 	override_types = CheckBox.new()
@@ -102,6 +109,7 @@ func _rebuild() -> void:
 func apply_to_form(form: PokemonFormData) -> void:
 	if form == null or current_form == null:
 		return
+	form.species_id = int(form_species_id_input.value) as Species.SpeciesID
 	form.form_id = StringName(form_id_input.text.strip_edges())
 	form.display_name = name_input.text.strip_edges()
 	form.override_types = override_types.button_pressed
@@ -119,6 +127,23 @@ func apply_to_form(form: PokemonFormData) -> void:
 	form.front_sprite_offset = Vector2(front_x.value, front_y.value)
 	form.back_sprite_offset = Vector2(back_x.value, back_y.value)
 	form.notes = notes_input.text
+
+func _add_integer_field(label_text: String, value: int, minimum: int, maximum: int) -> SpinBox:
+	var row: HBoxContainer = HBoxContainer.new()
+	var label: Label = Label.new()
+	label.text = label_text
+	label.custom_minimum_size = Vector2(180, 0)
+	row.add_child(label)
+	var input := SpinBox.new()
+	input.min_value = minimum
+	input.max_value = maximum
+	input.step = 1
+	input.value = value
+	input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	input.value_changed.connect(_on_changed)
+	row.add_child(input)
+	add_child(row)
+	return input
 
 func _add_text_field(label_text: String, value: String, is_id: bool) -> LineEdit:
 	var row: HBoxContainer = HBoxContainer.new()

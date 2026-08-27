@@ -31,7 +31,31 @@ func validate(species: PokemonDataStruct) -> Array[String]:
 		if move_id != Moves.MoveId.MOVE_NONE and not _move_exists(move_id):
 			errors.append("Movimiento huevo sin recurso .tres: %d" % int(move_id))
 
+	var form_ids: Dictionary = {}
+	for form: PokemonFormData in species.forms:
+		if form == null:
+			continue
+		var form_id: int = int(form.species_id)
+		if form_id == int(Species.SpeciesID.SPECIES_NONE):
+			errors.append("La forma '%s' no tiene SpeciesID en species.gd." % str(form.form_id))
+			continue
+		if form_id == int(species.species_id):
+			errors.append("La forma '%s' reutiliza el ID de la especie base." % form.get_display_name())
+		if form_ids.has(form_id):
+			errors.append("ID de forma duplicado dentro de la especie: %d" % form_id)
+		form_ids[form_id] = true
+		if form.base_species_id != Species.SpeciesID.SPECIES_NONE and int(form.base_species_id) != int(species.species_id):
+			errors.append("La forma %d apunta a otra especie base (%d)." % [form_id, int(form.base_species_id)])
+		if not _species_enum_id_exists(form_id):
+			errors.append("La forma %d no está declarada en species.gd." % form_id)
+
 	return errors
+
+func _species_enum_id_exists(id: int) -> bool:
+	if not FileAccess.file_exists("res://data_core/pokemon/species.gd"):
+		return false
+	var content := FileAccess.get_file_as_string("res://data_core/pokemon/species.gd")
+	return content.contains("= %d," % id) or content.contains("= %d\\n" % id)
 
 func _ability_exists(id: AbilityId.Id) -> bool:
 	var path: String = "res://data_core/ability/resources/"

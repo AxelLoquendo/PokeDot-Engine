@@ -159,6 +159,18 @@ static func evolve(
 		return false
 	if not can_evolve(pokemon, result.evolution, value):
 		return false
+	# En el modelo nuevo, target_species puede ser el ID de una especie base
+	# o directamente el ID de una forma declarado en species.gd.
 	pokemon.species_id = result.target_species
-	pokemon.form_id = result.target_form_id
+	pokemon.form_id = &"base"
+
+	# Compatibilidad con reglas antiguas que todavía apuntan a una forma textual.
+	if result.target_form_id != &"base":
+		pokemon.form_id = result.target_form_id
+		var target_base: PokemonDataStruct = pokemon.get_species()
+		if target_base != null:
+			for form: PokemonFormData in target_base.forms:
+				if form != null and form.form_id == result.target_form_id and form.species_id != Species.SpeciesID.SPECIES_NONE:
+					pokemon.species_id = form.species_id
+					break
 	return true

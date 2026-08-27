@@ -6,8 +6,9 @@ class_name EvolutionData
 ## Regla de evolución. Los campos legacy se conservan para no romper los .tres actuales.
 
 @export_group("Destino")
+## Puede apuntar a una especie base o directamente al SpeciesID de una forma.
 @export var target_species: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
-## Forma que tendrá el Pokémon al evolucionar; "base" conserva la forma normal.
+## Compatibilidad con reglas antiguas. El modelo nuevo usa target_species.
 @export var target_form_id: StringName = &"base"
 
 @export_group("Regla nueva")

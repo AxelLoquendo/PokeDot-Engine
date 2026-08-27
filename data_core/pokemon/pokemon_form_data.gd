@@ -3,10 +3,15 @@ extends Resource
 
 class_name PokemonFormData
 
-## Variante de una especie. Los campos con inherit_* usan los datos de la especie base.
+## Variante de una especie. La forma tiene su propio SpeciesID dentro de species.gd.
+## Los campos no sobrescritos se heredan de la especie base.
 @export_group("Identidad")
+## ID real de la forma, declarado en Species.SpeciesID.
+@export var species_id: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
+## Identificador legible/legacy. No se usa como identidad principal.
 @export var form_id: StringName = &"base"
 @export var display_name: String = "Forma base"
+## ID de la especie que contiene esta forma.
 @export var base_species_id: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
 
 @export_group("Datos sobrescritos")
@@ -32,9 +37,17 @@ class_name PokemonFormData
 @export var back_sprite_offset: Vector2 = Vector2.ZERO
 @export var override_graphics: bool = false
 
+@export_group("Evoluciones")
+@export var inherit_base_evolutions: bool = true
+@export var evolutions: Array[EvolutionData] = []
+
 @export_group("Metadatos")
 @export var tags: PackedStringArray = []
 @export_multiline var notes: String = ""
 
 func get_display_name() -> String:
-	return display_name if not display_name.is_empty() else str(form_id)
+	if not display_name.is_empty():
+		return display_name
+	if species_id != Species.SpeciesID.SPECIES_NONE:
+		return "ID %d" % int(species_id)
+	return str(form_id)

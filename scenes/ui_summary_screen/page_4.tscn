@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_w7ot0"]
 [ext_resource type="Texture2D" uid="uid://d3y35g8j7mqjk" path="res://graphics/ui_summary_screen/moves/move_1.png" id="3_ou4s1"]
 [ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="4_abrtm"]
+[ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="6_5p822"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ou4s1"]
 font = ExtResource("2_w7ot0")
@@ -52,6 +53,8 @@ offset_bottom = 14.0
 text = "Tera Explosión"
 label_settings = SubResource("LabelSettings_5p822")
 horizontal_alignment = 1
+script = ExtResource("6_5p822")
+ancho_maximo = 80.0
 
 [node name="PP" type="Label" parent="Move_1/Type_Move0" unique_id=610000735]
 offset_left = 60.0
@@ -83,6 +86,8 @@ offset_bottom = 14.0
 text = "Tera Explosión"
 label_settings = SubResource("LabelSettings_5p822")
 horizontal_alignment = 1
+script = ExtResource("6_5p822")
+ancho_maximo = 80.0
 
 [node name="PP" type="Label" parent="Move_1/Type_Move1" unique_id=411867050]
 offset_left = 60.0
@@ -114,6 +119,8 @@ offset_bottom = 14.0
 text = "Tera Explosión"
 label_settings = SubResource("LabelSettings_5p822")
 horizontal_alignment = 1
+script = ExtResource("6_5p822")
+ancho_maximo = 80.0
 
 [node name="PP" type="Label" parent="Move_1/Type_Move2" unique_id=1643926201]
 offset_left = 60.0
@@ -145,6 +152,8 @@ offset_bottom = 14.0
 text = "Tera Explosión"
 label_settings = SubResource("LabelSettings_5p822")
 horizontal_alignment = 1
+script = ExtResource("6_5p822")
+ancho_maximo = 80.0
 
 [node name="PP" type="Label" parent="Move_1/Type_Move3" unique_id=1873971402]
 offset_left = 60.0

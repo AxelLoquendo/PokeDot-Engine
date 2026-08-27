@@ -25,6 +25,9 @@ func set_species(species: PokemonDataStruct) -> void:
 	forms.clear()
 	if species != null:
 		forms = species.forms.duplicate(true)
+		for form: PokemonFormData in forms:
+			if form != null and form.base_species_id == Species.SpeciesID.SPECIES_NONE:
+				form.base_species_id = species.species_id
 	if is_inside_tree():
 		_rebuild()
 
@@ -91,7 +94,8 @@ func _rebuild() -> void:
 	rebuilding = false
 
 func _form_label(form: PokemonFormData) -> String:
-	return "%s (%s)" % [form.get_display_name(), str(form.form_id)]
+	var id_text := "ID pendiente" if form.species_id == Species.SpeciesID.SPECIES_NONE else str(int(form.species_id))
+	return "[%s] %s (%s)" % [id_text, form.get_display_name(), str(form.form_id)]
 
 func _select_form(index: int) -> void:
 	if rebuilding or index < 0 or index >= forms.size():
@@ -108,6 +112,9 @@ func _apply_current_form() -> void:
 func _add_form() -> void:
 	_apply_current_form()
 	var form: PokemonFormData = PokemonFormData.new()
+	# El ID debe corresponder a una constante de species.gd. Se deja en NONE
+	# para obligar a elegir un ID reservado y evitar duplicados accidentales.
+	form.species_id = Species.SpeciesID.SPECIES_NONE
 	form.form_id = StringName("form_%d" % forms.size())
 	form.display_name = "Nueva forma"
 	if current_species != null:
@@ -121,6 +128,8 @@ func _duplicate_form() -> void:
 		return
 	_apply_current_form()
 	var copy: PokemonFormData = forms[selected_index].duplicate(true) as PokemonFormData
+	# Una copia no puede conservar el mismo ID real.
+	copy.species_id = Species.SpeciesID.SPECIES_NONE
 	copy.form_id = StringName("%s_copy" % str(copy.form_id))
 	copy.display_name = "%s Copy" % copy.get_display_name()
 	forms.append(copy)

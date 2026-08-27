@@ -31,6 +31,8 @@ var egg_moves_table: MoveIdListTable
 var item_selectors: Dictionary = {}
 var species_selectors: Dictionary = {}
 var enum_selectors: Dictionary = {}
+var tabs: TabContainer
+var current_page: VBoxContainer
 
 func set_catalog(catalog: SpeciesEditorCatalog, species: Array[PokemonDataStruct]) -> void:
 	editor_catalog = catalog
@@ -118,7 +120,25 @@ func apply_to_species(species: PokemonDataStruct) -> bool:
 
 	return true
 
+func _create_page(title: String) -> void:
+	current_page = VBoxContainer.new()
+	current_page.name = title
+	current_page.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	current_page.add_theme_constant_override("separation", 8)
+	tabs.add_child(current_page)
+
+func _add_to_current_page(control: Node) -> void:
+	if current_page != null:
+		current_page.add_child(control)
+
 func _populate_form(species: PokemonDataStruct) -> void:
+	tabs = TabContainer.new()
+	tabs.name = "PropertySections"
+	tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(tabs)
+	_create_page("Datos base")
+
 	_add_group_label("🔠 Identidad")
 	_add_field("species_id", "Species ID", str(int(species.species_id)), true)
 	var species_id_field: LineEdit = fields["species_id"] as LineEdit
@@ -161,19 +181,27 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	_add_field("height", "Altura", str(species.height), true)
 	_add_field("weight", "Peso", str(species.weight), true)
 
+	_add_group_label("🏷️ Clasificación")
+	_add_check("is_legendary", "Legendario", species.is_legendary)
+	_add_check("is_mythical", "Mítico", species.is_mythical)
+	_add_check("is_ultra_beast", "Ultraente", species.is_ultra_beast)
+
+	_create_page("Gráficos")
 	graphics_editor = GRAPHICS_EDITOR_SCRIPT.new()
 	graphics_editor.set_species(species)
 	graphics_editor.changed.connect(_on_field_changed)
-	add_child(graphics_editor)
+	_add_to_current_page(graphics_editor)
 
+	_create_page("Formas")
 	_add_group_label("🧬 Formas y variantes")
 	forms_editor = FORMS_EDITOR_SCRIPT.new()
 	forms_editor.set_available_species(available_species)
 	forms_editor.set_species(species)
 	forms_editor.custom_minimum_size = Vector2(0, 220)
 	forms_editor.changed.connect(_on_field_changed)
-	add_child(forms_editor)
+	_add_to_current_page(forms_editor)
 
+	_create_page("Crianza")
 	_add_group_label("🎒 Objetos encontrados")
 	_add_item_selector("common", "Objeto común", species.item_common)
 	_add_item_selector("rare", "Objeto raro", species.item_rare)
@@ -185,11 +213,7 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	_add_species_selector("hatch_species", "Especie eclosión", species.hatch_species)
 	_add_enum_selector("gender_ratio", "Proporción género", PokemonData.GenderRatio.keys(), PokemonData.GenderRatio.values(), species.gender_ratio)
 
-	_add_group_label("🏷️ Clasificación")
-	_add_check("is_legendary", "Legendario", species.is_legendary)
-	_add_check("is_mythical", "Mítico", species.is_mythical)
-	_add_check("is_ultra_beast", "Ultraente", species.is_ultra_beast)
-
+	_create_page("Movimientos")
 	_add_group_label("📚 Movimientos por nivel")
 	learnset_table = LEARNSET_TABLE_SCRIPT.new()
 	if editor_catalog:
@@ -197,29 +221,30 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	learnset_table.load_moves(species.level_up_moves)
 	learnset_table.custom_minimum_size = Vector2(0, 160)
 	learnset_table.changed.connect(_on_field_changed)
-	add_child(learnset_table)
+	_add_to_current_page(learnset_table)
 
 	_add_group_label("💿 Movimientos MT/MO")
 	teachable_moves_table = MOVE_LIST_SCRIPT.new()
 	teachable_moves_table.available_moves = editor_catalog.moves if editor_catalog else []
 	teachable_moves_table.load_moves(species.teachable_moves)
 	teachable_moves_table.changed.connect(_on_field_changed)
-	add_child(teachable_moves_table)
+	_add_to_current_page(teachable_moves_table)
 
 	_add_group_label("🥚 Movimientos huevo")
 	egg_moves_table = MOVE_LIST_SCRIPT.new()
 	egg_moves_table.available_moves = editor_catalog.moves if editor_catalog else []
 	egg_moves_table.load_moves(species.egg_moves)
 	egg_moves_table.changed.connect(_on_field_changed)
-	add_child(egg_moves_table)
+	_add_to_current_page(egg_moves_table)
 
+	_create_page("Evoluciones")
 	_add_group_label("🔄 Evoluciones")
 	evolution_table = EVOLUTION_TABLE_SCRIPT.new()
 	evolution_table.available_species = available_species
 	evolution_table.load_evolutions(species.evolutions)
 	evolution_table.custom_minimum_size = Vector2(0, 150)
 	evolution_table.changed.connect(_on_field_changed)
-	add_child(evolution_table)
+	_add_to_current_page(evolution_table)
 
 func _clear_form() -> void:
 	for child: Node in get_children():
@@ -236,18 +261,20 @@ func _clear_form() -> void:
 	evolution_table = null
 	graphics_editor = null
 	forms_editor = null
+	tabs = null
+	current_page = null
 
 func _add_group_label(text: String) -> void:
 	var label := Label.new()
 	label.text = text
 	label.add_theme_font_size_override("font_size", 13)
 	label.add_theme_color_override("font_color", Color(0.55, 0.85, 1.0))
-	add_child(label)
+	_add_to_current_page(label)
 
 func _add_field(id: String, label_text: String, value: String, _numeric := false, multiline := false) -> void:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 8)
-	add_child(row)
+	_add_to_current_page(row)
 
 	var label := Label.new()
 	label.text = label_text
@@ -275,7 +302,7 @@ func _add_field(id: String, label_text: String, value: String, _numeric := false
 func _add_stat_row(id_a: String, label_a: String, value_a: int, id_b: String, label_b: String, value_b: int) -> void:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 8)
-	add_child(row)
+	_add_to_current_page(row)
 
 	var label_a_node := Label.new()
 	label_a_node.text = label_a
@@ -310,7 +337,7 @@ func _add_stat_row(id_a: String, label_a: String, value_a: int, id_b: String, la
 func _add_type_selector(id: String, label_text: String, value: PokemonData.Type) -> void:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 8)
-	add_child(row)
+	_add_to_current_page(row)
 
 	var label := Label.new()
 	label.text = label_text
@@ -327,7 +354,7 @@ func _add_type_selector(id: String, label_text: String, value: PokemonData.Type)
 func _add_ability_selector(id: String, label_text: String, value: AbilityId.Id) -> void:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 8)
-	add_child(row)
+	_add_to_current_page(row)
 
 	var label := Label.new()
 	label.text = label_text
@@ -359,7 +386,7 @@ func _add_enum_selector(id: String, label_text: String, names: Array, values: Ar
 	option.select(selected_index)
 	option.item_selected.connect(_on_field_changed)
 	row.add_child(option)
-	add_child(row)
+	_add_to_current_page(row)
 	enum_selectors[id] = option
 
 func _add_item_selector(id: String, label_text: String, value: Items.ItemId) -> void:
@@ -374,7 +401,7 @@ func _add_item_selector(id: String, label_text: String, value: Items.ItemId) -> 
 	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	selector.item_changed.connect(_on_field_changed)
 	row.add_child(selector)
-	add_child(row)
+	_add_to_current_page(row)
 	item_selectors[id] = selector
 
 func _add_species_selector(id: String, label_text: String, value: Species.SpeciesID) -> void:
@@ -389,7 +416,7 @@ func _add_species_selector(id: String, label_text: String, value: Species.Specie
 	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	selector.species_changed.connect(_on_field_changed)
 	row.add_child(selector)
-	add_child(row)
+	_add_to_current_page(row)
 	species_selectors[id] = selector
 
 func _add_check(id: String, label_text: String, value: bool) -> void:
@@ -398,7 +425,7 @@ func _add_check(id: String, label_text: String, value: bool) -> void:
 	check.text = label_text
 	check.button_pressed = value
 	check.toggled.connect(_on_field_changed)
-	add_child(check)
+	_add_to_current_page(check)
 	fields[id] = check
 
 func _get_check(id: String, fallback: bool) -> bool:
