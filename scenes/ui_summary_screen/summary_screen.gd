@@ -11,6 +11,8 @@ var party_index: int = 0
 @onready var pagina_0: SummaryPageInfo = $Page0
 @onready var pagina_1: SummaryPageMemo = $Page1
 @onready var pagina_2: SummaryPageSkills = $Page2
+@onready var pagina_3: SummaryPageBaseIvEv = $Page3
+@onready var pagina_4: SummaryPageMove = $Page4
 
 # -------- indicadores (hframes = 2) --------
 @onready var page_info: Sprite2D = $Page_Info
@@ -115,6 +117,10 @@ func _mostrar_pokemon_actual() -> void:
 		pagina_1.setup(pokemon)
 	if pagina_2:
 		pagina_2.setup(pokemon)
+	if pagina_3:
+		pagina_3.setup(pokemon)
+	if pagina_4:
+		pagina_4.setup(pokemon)
 
 	party_index_changed.emit(party_index)
 	_reproducir_grito()
@@ -268,6 +274,12 @@ func _mostrar_pagina_actual() -> void:
 	# Page2 (Skills):
 	if pagina_2:
 		pagina_2.visible = (current_page == 2)
+	# Page3 (BaseIvEv):
+	if pagina_3:
+		pagina_3.visible = (current_page == 3)
+	# Page4 (Move):
+	if pagina_4:
+		pagina_4.visible = (current_page == 4)
 
 func close() -> void:
 	summary_closed.emit()

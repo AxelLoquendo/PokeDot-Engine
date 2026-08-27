@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://snfytgevhhoa" path="res://scenes/ui_summary_screen/page_1.tscn" id="4_5i46e"]
 [ext_resource type="Texture2D" uid="uid://psmp4yq33tym" path="res://graphics/ui_summary_screen/page_skills.png" id="4_u3cqw"]
 [ext_resource type="PackedScene" uid="uid://cdwbcll4fjk7h" path="res://scenes/ui_summary_screen/page_0.tscn" id="5_plwqo"]
+[ext_resource type="PackedScene" uid="uid://wpqfcrjitnlc" path="res://scenes/ui_summary_screen/page_3.tscn" id="6_tebq8"]
 [ext_resource type="Texture2D" uid="uid://bk8j2mr8sffbp" path="res://graphics/ui_summary_screen/info/info_0.png" id="7_e1dk8"]
 [ext_resource type="Texture2D" uid="uid://drvcwk31u7ym2" path="res://graphics/ui_summary_screen/icon_ball_POKEBALL.png" id="8_a101a"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="9_b4q7a"]
@@ -69,6 +70,9 @@ texture = ExtResource("2_b4q7a")
 visible = false
 
 [node name="Page2" parent="." unique_id=749482474 instance=ExtResource("10_3iqhy")]
+visible = false
+
+[node name="Page3" parent="." unique_id=246890864 instance=ExtResource("6_tebq8")]
 visible = false
 
 [node name="Info_0" type="Sprite2D" parent="." unique_id=1609476859]

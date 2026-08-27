@@ -348,28 +348,41 @@ static func _roll_gender(ratio: PokemonData.GenderRatio, pid: int) -> PokemonDat
 	match ratio:
 		PokemonData.GenderRatio.GENDER_MALE_100:
 			return PokemonData.Gender.MALE
+
 		PokemonData.GenderRatio.GENDER_FEMALE_100:
 			return PokemonData.Gender.FEMALE
+
 		PokemonData.GenderRatio.GENDER_GENDERLESS:
 			return PokemonData.Gender.GENDERLESS
+
+	var threshold: int
+
+	match ratio:
+		PokemonData.GenderRatio.GENDER_FEMALE_87_5:
+			threshold = 224
+
+		PokemonData.GenderRatio.GENDER_FEMALE_75:
+			threshold = 192
+
+		PokemonData.GenderRatio.GENDER_FEMALE_50:
+			threshold = 128
+
+		PokemonData.GenderRatio.GENDER_FEMALE_25:
+			threshold = 64
+
+		PokemonData.GenderRatio.GENDER_FEMALE_12_5:
+			threshold = 32
+
 		_:
-			# Thresholds aproximados estilo juegos principales (byte bajo del PID).
-			var value: int = pid & 0xFF
-			var threshold: int = 127
-			match ratio:
-				PokemonData.GenderRatio.GENDER_FEMALE_87_5:
-					threshold = 31
-				PokemonData.GenderRatio.GENDER_FEMALE_75:
-					threshold = 63
-				PokemonData.GenderRatio.GENDER_FEMALE_50:
-					threshold = 127
-				PokemonData.GenderRatio.GENDER_FEMALE_25:
-					threshold = 191
-				PokemonData.GenderRatio.GENDER_FEMALE_12_5:
-					threshold = 223
-				_:
-					threshold = 127
-			return PokemonData.Gender.FEMALE if value < threshold else PokemonData.Gender.MALE
+			# Valor seguro para un ratio no reconocido.
+			threshold = 128
+
+	var value: int = pid & 0xFF
+
+	if value < threshold:
+		return PokemonData.Gender.FEMALE
+
+	return PokemonData.Gender.MALE
 
 
 static func _nature_raised_stat(n: PokemonData.Nature) -> Stat:
