@@ -175,18 +175,18 @@ texture = ExtResource("11_ln23b")
 [node name="Moves" type="Control" parent="Overlay_Fight" unique_id=1408681135]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -236.0
+offset_left = -240.0
 offset_top = -42.0
-offset_right = 112.0
+offset_right = 108.0
 offset_bottom = 46.0
 
 [node name="GridContainer" type="GridContainer" parent="Overlay_Fight/Moves" unique_id=312439128]
 layout_mode = 0
 offset_top = -2.0
 offset_right = 354.0
-offset_bottom = 90.0
+offset_bottom = 94.0
 theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = -1
+theme_override_constants/v_separation = 0
 columns = 2
 
 [node name="Move" type="TextureButton" parent="Overlay_Fight/Moves/GridContainer" unique_id=374164805]
