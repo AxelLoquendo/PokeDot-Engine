@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://8sokk8k0w3ad"]
+
+[ext_resource type="Texture2D" uid="uid://cpemqa6dxi0lk" path="res://graphics/items/TAMATOBERRY.png" id="1_37ctr"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 539
+item_name = "Baya Tamate"
+plural_name = "Bayas Tamate"
+item_description = "Hace que un Pokémon sea más amistoso pero baja la Velocidad base."
+price = 80
+pocket = 7
+item_type = 1
+fling_power = 10
+icon = ExtResource("1_37ctr")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bbewk7ex4jyvf"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 236
+item_name = "Saquito fragante"
+plural_name = "Saquitos fragantes"
+item_description = "Un saquito lleno de perfumes amados por cierto Pokémon."
+price = 7
+item_type = 1
+fling_power = 80

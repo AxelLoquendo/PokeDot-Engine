@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://l5ddtxln2jqd"]
+
+[ext_resource type="Texture2D" uid="uid://c4gm8588tyk51" path="res://graphics/items/POWERBELT.png" id="1_e0uwy"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 421
+item_name = "Cinto recio"
+plural_name = "Cintos recios"
+item_description = "Accesorio que ayuda a desarrollar la Defensa, pero reduce su Velocidad."
+price = 10000
+item_type = 4
+hold_effect = 81
+fling_power = 70
+icon = ExtResource("1_e0uwy")

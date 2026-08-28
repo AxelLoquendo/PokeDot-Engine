@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c5kn3353l7oe8"]
+
+[ext_resource type="Texture2D" uid="uid://ckp8i2llwig4m" path="res://graphics/items/FRIENDBALL.png" id="1_e3omo"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 18
+secondary_id = 18
+item_name = "Amigo Ball"
+plural_name = "Amigo Balls"
+item_description = "Hace a los Pokémon más amigables al capturarlos."
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_e3omo")
+effect = 8

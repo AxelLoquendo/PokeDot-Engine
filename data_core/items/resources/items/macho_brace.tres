@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bb338nsystak3"]
+
+[ext_resource type="Texture2D" uid="uid://bbfao167cwexc" path="res://graphics/items/MACHOBRACE.png" id="1_27rqc"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 418
+item_name = "Brazal firme"
+plural_name = "Brazales firmes"
+item_description = "Accesorio que ayuda a desarrollar al Pokémon, pero reduce su Velocidad."
+price = 3000
+item_type = 4
+hold_effect = 24
+fling_power = 60
+icon = ExtResource("1_27rqc")

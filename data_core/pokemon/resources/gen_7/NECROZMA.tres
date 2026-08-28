@@ -7,8 +7,10 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3mhkb")
-form_id = &"dusk_mane"
-display_name = "Melena Crepuscular"
+species_id = 1207
+form_id = &"necrozma_dusk_mane"
+display_name = "Necrozma Dusk Mane"
+base_species_id = 800
 override_types = true
 type_1 = 15
 type_2 = 9
@@ -19,12 +21,14 @@ base_defense = 127
 base_speed = 77
 base_sp_attack = 113
 base_sp_defense = 109
-tags = PackedStringArray("fusion")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_3mhkb")
-form_id = &"dawn_wings"
-display_name = "Alas del Alba"
+species_id = 1208
+form_id = &"necrozma_dawn_wings"
+display_name = "Necrozma Dawn Wings"
+base_species_id = 800
 override_types = true
 type_1 = 15
 type_2 = 8
@@ -35,12 +39,14 @@ base_defense = 109
 base_speed = 77
 base_sp_attack = 157
 base_sp_defense = 127
-tags = PackedStringArray("fusion")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_3mhkb")
-form_id = &"ultra"
-display_name = "Ultra"
+species_id = 1209
+form_id = &"necrozma_ultra"
+display_name = "Necrozma Ultra"
+base_species_id = 800
 override_types = true
 type_1 = 15
 type_2 = 17
@@ -51,7 +57,7 @@ base_defense = 97
 base_speed = 129
 base_sp_attack = 167
 base_sp_defense = 97
-tags = PackedStringArray("ultra")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

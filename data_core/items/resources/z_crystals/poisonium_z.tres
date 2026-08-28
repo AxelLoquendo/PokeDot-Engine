@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://di7mo8ldel5su"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 364
+item_name = "Toxistal Z"
+plural_name = "Toxistales Z"
+item_description = "Mejora los movimientos de tipo Veneno a movimientos Z."
+pocket = 11
+item_type = 4
+hold_effect = 114
+not_consumed = true

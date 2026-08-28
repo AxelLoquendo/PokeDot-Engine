@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b5lnp2w1silfu"]
+
+[ext_resource type="Texture2D" uid="uid://cs5p6iv28m8xn" path="res://graphics/items/ELECTRICGEM.png" id="1_3ic6d"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 342
+item_name = "Gema eléctrica"
+plural_name = "Gema eléctricas"
+item_description = "Potencia un ataque de Tipo Eléctrico."
+item_type = 4
+hold_effect = 94
+icon = ExtResource("1_3ic6d")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dhbqse3buk04c"]
+
+[ext_resource type="Texture2D" uid="uid://cbtyrh3s0ly1x" path="res://graphics/items/MOONSTONE.png" id="1_fcriv"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 217
+item_name = "Piedra lunar"
+plural_name = "Piedra lunars"
+item_description = "Hace evolucionar a ciertas especies de Pokémon."
+price = 3000
+item_type = 1
+fling_power = 30
+icon = ExtResource("1_fcriv")

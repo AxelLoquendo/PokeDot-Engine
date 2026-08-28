@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b7mjc2jggwftb"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 433
+item_name = "Arena fina"
+plural_name = "Arenas finas"
+item_description = "Objeto que potencia los movimientos de tipo Tierra."
+item_type = 4
+hold_effect = 43
+fling_power = 10

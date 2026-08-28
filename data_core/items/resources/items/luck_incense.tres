@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b8uxc7kat5ws4"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c8bi1ulxvrp8p" path="res://graphics/items/LUCKINCENSE.png" id="1_nmyk5"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 411
+item_name = "Incienso duplo"
+plural_name = "Inciensos duplo"
+item_description = "Duplica el dinero en batalla si el portador participa."
+price = 11000
+item_type = 4
+hold_effect = 31
+fling_power = 10
+icon = ExtResource("1_nmyk5")

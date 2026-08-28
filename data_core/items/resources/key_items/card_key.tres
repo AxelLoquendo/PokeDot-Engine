@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b6w345enw7v8p"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 750
+item_name = "Llave magnética"
+plural_name = "Llave magnéticas"
+item_description = "Tarjeta que abre las puertas de la Torre Radio"
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

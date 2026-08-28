@@ -18,6 +18,14 @@ use_advanced_rules = true
 trigger = 2
 conditions = Array[ExtResource("2_bo7rv")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_ck7kp")
+species_id = 1520
+form_id = &"duraludon_gmax"
+display_name = "Duraludon Gmax"
+base_species_id = 884
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 43
@@ -108,6 +116,7 @@ description = "Su cuerpo, similar a un metal pulido, es tan ligero como robusto.
 height = 18
 weight = 400
 body_color = 8
+forms = Array[ExtResource("4_ck7kp")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 34, 36, 38, 46, 63, 76, 85, 86, 87, 103, 113, 115, 156, 157, 164, 173, 182, 184, 200, 203, 213, 214, 232, 263, 280, 317, 319, 334, 337, 360, 399, 406, 416, 430, 434, 442, 444, 446, 484, 492, 496, 525, 555, 661, 704, 712, 724, 726, 779, 841])
 egg_moves = Array[int]([163, 243, 400])

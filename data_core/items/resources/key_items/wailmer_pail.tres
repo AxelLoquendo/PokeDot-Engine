@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c2wsofkus6v1c"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 720
+item_name = "Wailmegadera"
+plural_name = "Wailmegaderas"
+item_description = "Una herramienta utilizada para regar bayas y plantas."
+pocket = 8
+importance = true
+not_consumed = true

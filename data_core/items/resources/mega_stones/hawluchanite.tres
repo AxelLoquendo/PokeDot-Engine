@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://edoai1t3x5qg"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 851
+item_name = "Hawluchanita"
+plural_name = "Hawluchanitas"
+item_description = "Esta piedra permite que Hawlucha megaevolucione en batalla."
+pocket = 10
+item_type = 4
+hold_effect = 103
+fling_power = 80
+not_consumed = true

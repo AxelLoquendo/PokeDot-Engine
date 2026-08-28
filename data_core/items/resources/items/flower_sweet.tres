@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://paplc4yegcxr"]
+
+[ext_resource type="Texture2D" uid="uid://5njc6pclf4ya" path="res://graphics/items/FLOWERSWEET.png" id="1_helul"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 242
+item_name = "Confite flor"
+plural_name = "Confites flor"
+item_description = "Un dulce con forma de flor amado por Milcery."
+price = 500
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_helul")

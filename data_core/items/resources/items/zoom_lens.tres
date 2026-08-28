@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://detswoho4iiiq"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 482
+item_name = "Telescopio"
+plural_name = "Telescopios"
+item_description = "Si el portador se mueve después del oponente, aumenta la precisión."
+price = 10000
+item_type = 4
+hold_effect = 65
+hold_effect_param = 20
+fling_power = 10

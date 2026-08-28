@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://05qohgm1ufvf"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bsilusout2xdq" path="res://graphics/items/GIMMIGHOULCOIN.png" id="1_ku4sg"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 766
+item_name = "Moneda Gimmighoul"
+plural_name = "Monedas Gimmighoul"
+item_description = "Gimmighoul acumula y atesora estas monedas curiosas."
+price = 400
+item_type = 4
+icon = ExtResource("1_ku4sg")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://5dcqcea78c8v"]
+
+[ext_resource type="Texture2D" uid="uid://jof2lsmqfwq" path="res://graphics/items/BLUNDERPOLICY.png" id="1_gfmm1"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 511
+item_name = "Seguro fallo"
+plural_name = "Seguros fallo"
+item_description = "Aumenta la Velocidad si el usuario falla por precisión."
+price = 30000
+item_type = 4
+hold_effect = 118
+fling_power = 80
+icon = ExtResource("1_gfmm1")

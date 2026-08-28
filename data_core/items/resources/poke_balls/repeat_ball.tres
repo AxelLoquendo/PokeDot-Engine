@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://4rwnn88io6oq"]
+
+[ext_resource type="Texture2D" uid="uid://dk1tii8r4pa6" path="res://graphics/items/REPEATBALL.png" id="1_i8hhg"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 13
+secondary_id = 13
+item_name = "Acopio Ball"
+plural_name = "Acopio Balls"
+item_description = "Funciona mejor si ya habías capturado a ese Pokémon."
+price = 1000
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_i8hhg")
+effect = 8

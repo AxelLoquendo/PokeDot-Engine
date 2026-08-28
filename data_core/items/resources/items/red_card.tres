@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://brrlj0reniady"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://ctf5ubut283fc" path="res://graphics/items/REDCARD.png" id="1_r5re4"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 498
+item_name = "Tarjeta roja"
+plural_name = "Tarjeta rojas"
+item_description = "Saca al oponente si golpea al portador."
+price = 3000
+item_type = 4
+hold_effect = 97
+fling_power = 10
+icon = ExtResource("1_r5re4")

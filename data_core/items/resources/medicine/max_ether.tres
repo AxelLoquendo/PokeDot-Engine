@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjtdbxwa5a2ax"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 50
+item_name = "Éter máximo"
+plural_name = "Éteres máximos"
+item_description = "Restaura al 100% los PP de un ataque."
+price = 2000
+pocket = 1
+item_type = 5
+hold_effect_param = 255
+fling_power = 30
+effect = 10

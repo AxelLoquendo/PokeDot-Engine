@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cj2ekm2moga1e"]
+
+[ext_resource type="Texture2D" uid="uid://du04uelwkyx63" path="res://graphics/items/DARKMEMORY.png" id="1_166s7"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 285
+item_name = "Disco siniestro"
+plural_name = "Discos siniestro"
+item_description = "Un disco con datos del tipo Siniestro. Cambia el tipo de Silvally."
+price = 1000
+item_type = 4
+hold_effect = 113
+fling_power = 50
+icon = ExtResource("1_166s7")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cotefplf6n7ao"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 143
+item_name = "Polvo estelar"
+plural_name = "Polvos estelares"
+item_description = "Hermosa arena roja. Se puede vender a un alto precio."
+price = 7
+pocket = 14
+item_type = 4
+fling_power = 30

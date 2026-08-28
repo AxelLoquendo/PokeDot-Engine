@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bkpp1oe73x2ee"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 718
+item_name = "Monedero"
+plural_name = "Monederos"
+item_description = "Una caja que guarda hasta 9999 Monedas."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

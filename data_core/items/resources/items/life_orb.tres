@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://gpwnf3b740tc"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dxm5h8lhslq6l" path="res://graphics/items/LIFEORB.png" id="1_kfrp0"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 479
+item_name = "Vidasfera"
+plural_name = "Vidasferas"
+item_description = "Aumenta potencia de ataques pero consume PS."
+price = 50000
+item_type = 4
+hold_effect = 60
+fling_power = 30
+icon = ExtResource("1_kfrp0")

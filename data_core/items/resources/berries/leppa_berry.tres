@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://daoubu5ci80pc"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://ct8q77ud5orcf" path="res://graphics/items/LEPPABERRY.png" id="1_y35xg"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 519
+item_name = "Baya Zanama"
+plural_name = "Bayas Zanama"
+item_description = "Un objeto que se puede tener y que restaura 10 PP en batalla."
+price = 80
+pocket = 7
+item_type = 5
+hold_effect = 7
+hold_effect_param = 10
+fling_power = 10
+icon = ExtResource("1_y35xg")
+effect = 10

@@ -17,6 +17,14 @@ target_species = 264
 use_advanced_rules = true
 conditions = Array[ExtResource("2_y8bmg")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_66a70")
+species_id = 987
+form_id = &"zigzagoon_galar"
+display_name = "Zigzagoon Galar"
+base_species_id = 263
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -121,6 +129,7 @@ description = "Se mueve en zigzag. Se le da bien encontrar objetos ocultos en la
 height = 4
 weight = 175
 body_color = 5
+forms = Array[ExtResource("4_66a70")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([15, 29, 34, 38, 42, 57, 58, 59, 85, 86, 87, 91, 92, 102, 104, 111, 129, 156, 162, 164, 168, 173, 182, 189, 196, 203, 204, 205, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 247, 249, 250, 263, 270, 271, 290, 304, 341, 343, 351, 352, 363, 374, 387, 402, 441, 445, 447, 451, 468, 496, 497, 514, 526, 541, 590])
 egg_moves = Array[int]([164, 189, 204, 214, 228, 245, 270, 271, 321, 431, 493])

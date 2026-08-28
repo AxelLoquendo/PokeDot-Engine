@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bdjalt0ljjqcy"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 91
+item_name = "Menta alocada"
+plural_name = "Mentas alocadas"
+item_description = "Cambia la naturaleza del Pokémon a Alocada."
+price = 20000
+pocket = 18
+item_type = 1
+fling_power = 10

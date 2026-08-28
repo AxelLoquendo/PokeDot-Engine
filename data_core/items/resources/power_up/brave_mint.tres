@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bj5p6himy1qir"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 84
+item_name = "Menta audaz"
+plural_name = "Mentas audaces"
+item_description = "Cambia la naturaleza del Pokémon a Audaz."
+price = 20000
+pocket = 18
+item_type = 1
+fling_power = 10

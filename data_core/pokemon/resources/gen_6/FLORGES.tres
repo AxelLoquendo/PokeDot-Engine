@@ -7,33 +7,35 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_vgshg")
-form_id = &"red"
-display_name = "Red"
-tags = PackedStringArray("flower")
+species_id = 1142
+form_id = &"florges_yellow"
+display_name = "Florges Yellow"
+base_species_id = 671
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_vgshg")
-form_id = &"yellow"
-display_name = "Yellow"
-tags = PackedStringArray("flower")
+species_id = 1143
+form_id = &"florges_orange"
+display_name = "Florges Orange"
+base_species_id = 671
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_vgshg")
-form_id = &"orange"
-display_name = "Orange"
-tags = PackedStringArray("flower")
+species_id = 1144
+form_id = &"florges_blue"
+display_name = "Florges Blue"
+base_species_id = 671
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_vgshg")
-form_id = &"blue"
-display_name = "Blue"
-tags = PackedStringArray("flower")
-
-[sub_resource type="Resource" id="Resource_form_4"]
-script = ExtResource("2_vgshg")
-form_id = &"white"
-display_name = "White"
-tags = PackedStringArray("flower")
+species_id = 1145
+form_id = &"florges_white"
+display_name = "Florges White"
+base_species_id = 671
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -117,7 +119,7 @@ description = "Habita en preciosos jardines floridos. Absorbe la energía que em
 height = 11
 weight = 100
 body_color = 8
-forms = Array[ExtResource("2_vgshg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4")])
+forms = Array[ExtResource("2_vgshg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([63, 76, 92, 94, 104, 113, 118, 129, 148, 156, 164, 173, 182, 202, 203, 204, 207, 213, 214, 215, 216, 218, 219, 226, 235, 237, 240, 241, 263, 267, 270, 271, 277, 283, 285, 290, 343, 345, 347, 388, 402, 412, 416, 432, 447, 495, 496, 497, 500, 502, 572, 574, 577, 580, 581, 590, 605, 639, 730, 779, 811, 812, 842, 845])
 ability_1 = 166

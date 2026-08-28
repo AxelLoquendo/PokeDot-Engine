@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://4v7lmcitedbg"]
+
+[ext_resource type="Texture2D" uid="uid://jr3tqjblvgiq" path="res://graphics/items/CHOICEBAND.png" id="1_d3rt2"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 442
+item_name = "Cinta elección"
+plural_name = "Cinta eleccións"
+item_description = "Sube Ataque, pero solo puede usarse un movimiento."
+price = 100000
+item_type = 4
+hold_effect = 29
+fling_power = 10
+icon = ExtResource("1_d3rt2")

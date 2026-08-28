@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://61ktpv7dqnq8"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://uq887sybjocb" path="res://graphics/items/ROOMSERVICE.png" id="1_pwc5g"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 512
+item_name = "Servicio raro"
+plural_name = "Servicios raros"
+item_description = "Reduce la Velocidad si Espacio raro está activo."
+price = 20000
+item_type = 4
+hold_effect = 117
+fling_power = 100
+icon = ExtResource("1_pwc5g")

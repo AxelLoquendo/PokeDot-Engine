@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://csqoydj5w87rb"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 701
+item_name = "Necroluna"
+plural_name = "Necrolunas"
+item_description = "Un dispositivo para fusionar y separar a Necrozma usando a Lunala."
+pocket = 8
+item_type = 1
+importance = true
+not_consumed = true

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dl2jjyb82850x"]
+
+[ext_resource type="Texture2D" uid="uid://bf0nn02tv2fmh" path="res://graphics/items/POWERBRACER.png" id="1_drv6b"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 420
+item_name = "Brazal recio"
+plural_name = "Brazales recios"
+item_description = "Accesorio que ayuda a desarrollar el Ataque, pero reduce su Velocidad."
+price = 10000
+item_type = 4
+hold_effect = 81
+fling_power = 70
+icon = ExtResource("1_drv6b")

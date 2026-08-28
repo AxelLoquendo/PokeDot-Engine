@@ -18,6 +18,14 @@ use_advanced_rules = true
 trigger = 2
 conditions = Array[ExtResource("2_j6o11")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_5pm2r")
+species_id = 993
+form_id = &"growlithe_hisui"
+display_name = "Growlithe Hisui"
+base_species_id = 58
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 43
@@ -138,6 +146,7 @@ description = "Es muy agradable y leal. Para ahuyentar al enemigo, se pone a lad
 height = 7
 weight = 190
 body_color = 5
+forms = Array[ExtResource("4_5pm2r")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 53, 70, 82, 83, 91, 92, 97, 99, 102, 104, 115, 117, 126, 129, 130, 156, 164, 168, 173, 174, 179, 182, 184, 189, 200, 203, 204, 207, 213, 214, 216, 218, 219, 225, 231, 237, 241, 242, 249, 257, 261, 263, 270, 290, 315, 332, 343, 363, 370, 394, 422, 424, 445, 488, 496, 510, 514, 528, 555, 583, 590, 660, 779, 843])
 egg_moves = Array[int]([24, 34, 37, 38, 83, 219, 231, 234, 242, 257, 336, 343, 370, 394, 645, 761])

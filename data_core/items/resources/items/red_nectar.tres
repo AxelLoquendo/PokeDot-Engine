@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b5i4tcja6phj7"]
+
+[ext_resource type="Texture2D" uid="uid://456fdtbckvyl" path="res://graphics/items/REDNECTAR.png" id="1_1y2e5"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 246
+item_name = "Néctar rojo"
+plural_name = "Néctares rojos"
+item_description = "Néctar de flor que cambia la forma de ciertos Pokémon."
+price = 300
+item_type = 1
+fling_power = 10
+icon = ExtResource("1_1y2e5")

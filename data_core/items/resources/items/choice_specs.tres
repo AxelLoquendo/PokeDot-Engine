@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://gooq7dygrcgn"]
+
+[ext_resource type="Texture2D" uid="uid://cs8fkh175qckt" path="res://graphics/items/CHOICESPECS.png" id="1_dm58w"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 443
+item_name = "Gafas elección"
+plural_name = "Gafas elección"
+item_description = "Sube Ataque especial, pero solo puede usarse un movimiento."
+price = 100000
+item_type = 4
+hold_effect = 50
+fling_power = 10
+icon = ExtResource("1_dm58w")

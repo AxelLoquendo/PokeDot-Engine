@@ -7,15 +7,11 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_irew7")
-form_id = &"phony"
-display_name = "Falsificado"
-tags = PackedStringArray("authenticity")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_irew7")
-form_id = &"antique"
-display_name = "Auténtico"
-tags = PackedStringArray("authenticity")
+species_id = 1215
+form_id = &"polteageist_antique"
+display_name = "Polteageist Antique"
+base_species_id = 855
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -112,7 +108,7 @@ description = "Se hospeda en teteras dignas de un anticuario. Las originales son
 height = 2
 weight = 4
 body_color = 6
-forms = Array[ExtResource("2_irew7")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
+forms = Array[ExtResource("2_irew7")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([60, 63, 94, 101, 109, 113, 115, 118, 120, 156, 164, 173, 174, 180, 182, 202, 203, 214, 220, 226, 247, 261, 263, 271, 285, 286, 345, 347, 371, 399, 416, 417, 433, 472, 473, 492, 496, 500, 502, 506, 566, 737, 779])
 ability_1 = 133

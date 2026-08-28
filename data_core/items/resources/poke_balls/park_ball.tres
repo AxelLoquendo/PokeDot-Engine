@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c2ekejco7g1id"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bxaojp3gmk1vr" path="res://graphics/items/PARKBALL.png" id="1_jnml3"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 25
+secondary_id = 25
+item_name = "Parque Ball"
+plural_name = "Parque Balls"
+item_description = "Poké Ball especial del Parque Compi."
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_jnml3")
+effect = 8

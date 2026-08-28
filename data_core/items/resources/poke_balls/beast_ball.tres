@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dadyfhko3hyue"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bx8p5sy8lilhr" path="res://graphics/items/BEASTBALL.png" id="1_tsbjd"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 26
+secondary_id = 26
+item_name = "Ente Ball"
+plural_name = "Ente Balls"
+item_description = "Diseñada para cazar Ultra Entes."
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_tsbjd")
+effect = 8

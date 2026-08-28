@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b8nalhqnl2hnm"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cctsuo3k86nb1" path="res://graphics/items/FULLINCENSE.png" id="1_o8tha"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 408
+item_name = "Incienso lento"
+plural_name = "Inciensos lentos"
+item_description = "Si se lleva equipado, hace que el portador se mueva más lentamente."
+price = 5000
+item_type = 4
+hold_effect = 66
+hold_effect_param = 5
+fling_power = 10
+icon = ExtResource("1_o8tha")

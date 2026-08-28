@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b2valfu1xu61r"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://d37cb3y1k7che" path="res://graphics/items/REMEDY.png" id="1_jd3bk"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 817
+item_name = "Remedio"
+plural_name = "Remedies"
+item_description = "Un polvo amargo que restaura PS en 60 puntos."
+price = 150
+item_type = 1
+battle_usage = 1
+fling_power = 30
+icon = ExtResource("1_jd3bk")
+effect = 1

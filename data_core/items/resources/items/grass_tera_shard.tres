@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ckq8sie8pg4c5"]
+
+[ext_resource type="Texture2D" uid="uid://epw3jspobxpl" path="res://graphics/items/GRASSTERASHARD.png" id="1_6kefj"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 783
+item_name = "Teralito planta"
+plural_name = "Teralitos planta"
+item_description = "Estos fragmentos pueden formarse cuando un Pokémon Tera se desmaya."
+item_type = 4
+icon = ExtResource("1_6kefj")

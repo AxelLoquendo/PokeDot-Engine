@@ -5,6 +5,21 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_06uvl")
+species_id = 1156
+form_id = &"aegislash_blade"
+display_name = "Aegislash Blade"
+base_species_id = 681
+override_stats = true
+base_hp = 60
+base_attack = 140
+base_defense = 50
+base_speed = 60
+base_sp_attack = 140
+base_sp_defense = 50
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 14
@@ -96,6 +111,7 @@ description = "Han permanecido junto a estirpes de reyes durante generaciones. M
 height = 17
 weight = 530
 body_color = 5
+forms = Array[ExtResource("2_06uvl")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 63, 92, 103, 104, 115, 156, 157, 164, 173, 179, 180, 182, 203, 206, 207, 213, 214, 216, 218, 237, 240, 241, 247, 249, 263, 280, 290, 332, 334, 335, 351, 360, 370, 393, 403, 416, 421, 427, 430, 442, 495, 496, 514, 590, 632, 636, 656, 724])
 ability_1 = 176

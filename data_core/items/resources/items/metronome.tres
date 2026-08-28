@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bdol5ow117hrt"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://t3482i8a84il" path="res://graphics/items/METRONOME.png" id="1_ysljf"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 483
+item_name = "Metrónomo"
+plural_name = "Metrónomos"
+item_description = "Un objeto que aumenta el poder de un movimiento usado consecutivamente."
+price = 15000
+item_type = 4
+hold_effect = 61
+hold_effect_param = 20
+fling_power = 30
+icon = ExtResource("1_ysljf")

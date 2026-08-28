@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c1y6r64axvbcn"]
+
+[ext_resource type="Texture2D" uid="uid://bv5iioqq6nhb7" path="res://graphics/items/REDAPRICORN.png" id="1_85ejj"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 188
+item_name = "Bonguri rojo"
+plural_name = "Bonguri rojos"
+item_description = "Un Bonguri rojo. Te asalta con su olor."
+item_type = 4
+icon = ExtResource("1_85ejj")

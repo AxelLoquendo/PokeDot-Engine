@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dna0jsnfq3mi4"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 489
+item_name = "Toxiestrella"
+plural_name = "Toxiestrellas"
+item_description = "Daño a portador cada turno. Puede engancharse a oponentes."
+price = 10000
+item_type = 4
+hold_effect = 70
+fling_power = 80

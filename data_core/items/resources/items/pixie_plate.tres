@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dr57yhja82yok"]
+
+[ext_resource type="Texture2D" uid="uid://bkovxnx101l1g" path="res://graphics/items/PIXIEPLATE.png" id="1_0ki23"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 266
+item_name = "Tabla duende"
+plural_name = "Tablas duende"
+item_description = "Una tableta que aumenta el poder de los movimientos de tipo Hada."
+price = 1000
+item_type = 4
+hold_effect = 89
+hold_effect_param = 20
+fling_power = 90
+icon = ExtResource("1_0ki23")

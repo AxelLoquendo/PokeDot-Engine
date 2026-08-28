@@ -17,6 +17,14 @@ target_species = 51
 use_advanced_rules = true
 conditions = Array[ExtResource("2_nn2rf")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_30o6g")
+species_id = 963
+form_id = &"diglett_alola"
+display_name = "Diglett Alola"
+base_species_id = 50
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 10
@@ -116,6 +124,7 @@ description = "Vive un metro por debajo del suelo, donde se alimenta de raíces.
 height = 2
 weight = 8
 body_color = 5
+forms = Array[ExtResource("4_30o6g")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 89, 90, 91, 92, 97, 99, 102, 103, 104, 117, 156, 157, 164, 168, 173, 174, 179, 182, 188, 189, 201, 203, 204, 207, 213, 214, 216, 218, 237, 241, 249, 251, 253, 263, 270, 283, 290, 317, 328, 332, 341, 350, 363, 372, 389, 414, 421, 444, 445, 446, 468, 479, 492, 496, 497, 502, 523, 526, 590, 638, 661, 743, 779])
 egg_moves = Array[int]([29, 103, 157, 179, 185, 203, 228, 246, 251, 253, 262, 310, 426, 468, 515])

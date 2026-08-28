@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://mlafv34vaq3t"]
+
+[ext_resource type="Texture2D" uid="uid://shqhpce5l6dj" path="res://graphics/items/RAZORFANG.png" id="1_0bvv6"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 493
+item_name = "Colmillo agudo"
+plural_name = "Colmillo agudos"
+item_description = "Si se lleva equipado, puede hacer que el objetivo retroceda."
+price = 15000
+item_type = 4
+hold_effect = 30
+hold_effect_param = 10
+fling_power = 30
+icon = ExtResource("1_0bvv6")

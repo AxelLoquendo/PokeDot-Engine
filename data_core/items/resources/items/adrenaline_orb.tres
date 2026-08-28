@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cq51lrss5ku81"]
+
+[ext_resource type="Texture2D" uid="uid://cc385jry4rhfw" path="res://graphics/items/ADRENALINEORB.png" id="1_eeaxt"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 505
+item_name = "Nerviosfera"
+plural_name = "Nerviosferas"
+item_description = "Aumenta Velocidad si el usuario está intimidado, pero solo una vez."
+price = 5000
+item_type = 4
+hold_effect = 112
+fling_power = 30
+icon = ExtResource("1_eeaxt")

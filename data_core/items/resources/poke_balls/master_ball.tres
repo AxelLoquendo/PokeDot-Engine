@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c3jeoaqlsonxy"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bt0o3wmw04sbh"]
 
 [ext_resource type="Texture2D" uid="uid://bgy000b5aikkq" path="res://graphics/items/MASTERBALL.png" id="1_10htt"]
-[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_j6mrl"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
-script = ExtResource("1_j6mrl")
+script = ExtResource("1_itemdata")
 item_id = 4
+secondary_id = 4
 item_name = "Master Ball"
 plural_name = "Master Balls"
 item_description = "La mejor para atrapar Pokémon sin fallar."
-price = 9999
 pocket = 2
 item_type = 4
 battle_usage = 4
 icon = ExtResource("1_10htt")
-metadata/_custom_type_script = "uid://dpxh34fbc3y1v"
+effect = 8

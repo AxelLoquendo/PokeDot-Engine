@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d3f2c2i2dp1om"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 435
+item_name = "Cuchara torcida"
+plural_name = "Cuchara torcidas"
+item_description = "Objeto que potencia los movimientos de tipo Psíquico."
+item_type = 4
+hold_effect = 43
+fling_power = 30

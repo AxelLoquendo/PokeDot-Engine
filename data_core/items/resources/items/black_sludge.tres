@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bijaepvhsq0wj"]
+
+[ext_resource type="Texture2D" uid="uid://v4jmof0f65vq" path="res://graphics/items/BLACKSLUDGE.png" id="1_7hupv"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 487
+item_name = "Lodo negro"
+plural_name = "Lodo negros"
+item_description = "Restaura gradualmente PS de Pokémon de tipo Veneno, y daña a otros."
+price = 10000
+item_type = 4
+hold_effect = 72
+fling_power = 30
+icon = ExtResource("1_7hupv")

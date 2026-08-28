@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dpn5g76q4j0vh"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bovpot2wntml0" path="res://graphics/items/GUARDSPEC.png" id="1_leaoa"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 128
+item_name = "Guardia especial"
+plural_name = "Guardias especiales"
+item_description = "Previene reducción de estadísticas en combate."
+price = 1500
+pocket = 6
+item_type = 4
+fling_power = 30
+icon = ExtResource("1_leaoa")
+effect = 5

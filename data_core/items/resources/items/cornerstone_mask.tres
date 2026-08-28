@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bd5p0bmcbrdtn"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dn8qsr4fnbt5m" path="res://graphics/items/CORNERSTONEMASK.png" id="1_w1vdi"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 803
+item_name = "Máscara cimiento"
+plural_name = "Máscaras cimiento"
+item_description = "Permite a Ogerpon utilizar el tipo Roca en batalla."
+item_type = 4
+hold_effect = 128
+hold_effect_param = 20
+icon = ExtResource("1_w1vdi")

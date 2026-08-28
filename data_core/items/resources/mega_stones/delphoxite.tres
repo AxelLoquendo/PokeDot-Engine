@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dm88cf6dbb38q"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 844
+item_name = "Delphoxita"
+plural_name = "Delphoxitas"
+item_description = "Esta piedra permite que Delphox megaevolucione en batalla."
+pocket = 10
+item_type = 4
+hold_effect = 103
+fling_power = 80
+not_consumed = true

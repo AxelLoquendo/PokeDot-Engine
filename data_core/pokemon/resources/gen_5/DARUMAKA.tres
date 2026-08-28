@@ -29,6 +29,14 @@ use_advanced_rules = true
 trigger = 2
 conditions = Array[ExtResource("2_yfs0j")]([SubResource("Resource_cond1")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("5_j6fhs")
+species_id = 989
+form_id = &"darumaka_galar"
+display_name = "Darumaka Galar"
+base_species_id = 554
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -138,6 +146,7 @@ category_name = "Daruma"
 description = "Como sus excrementos están muy calientes, la gente de antaño se los metía en los bolsillos para calentarse."
 height = 6
 weight = 375
+forms = Array[ExtResource("5_j6fhs")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([5, 7, 25, 46, 53, 70, 76, 83, 91, 92, 104, 116, 126, 156, 157, 164, 168, 173, 182, 203, 207, 213, 214, 216, 218, 227, 237, 241, 249, 253, 257, 261, 263, 264, 269, 276, 280, 283, 289, 290, 315, 317, 360, 369, 374, 394, 424, 428, 447, 488, 496, 510, 526, 590, 612])
 egg_moves = Array[int]([36, 116, 172, 203, 214, 227, 264, 281, 289, 326, 359])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ddnshj4so0suq"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 113
+item_name = "Flauta blanca"
+plural_name = "Flautas blancas"
+item_description = "Una flauta de vidrio que atrae a los Pokémon salvajes."
+price = 20
+item_type = 1
+hold_effect_param = 150
+fling_power = 30

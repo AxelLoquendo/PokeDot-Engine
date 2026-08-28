@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cg6j61vddrheu"]
+
+[ext_resource type="Texture2D" uid="uid://cvabr1h62g6hf" path="res://graphics/items/POWERLENS.png" id="1_85y3n"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 422
+item_name = "Lente recia"
+plural_name = "Lentes recias"
+item_description = "Accesorio que ayuda a mejorar Ataque especial, pero reduce su Velocidad."
+price = 10000
+item_type = 4
+hold_effect = 81
+fling_power = 70
+icon = ExtResource("1_85y3n")

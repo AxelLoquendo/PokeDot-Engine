@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bo5mqu4jyasfn"]
+
+[ext_resource type="Texture2D" uid="uid://c20eggvgx8jfo" path="res://graphics/items/DRAGONSCALE.png" id="1_cvwdk"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 227
+item_name = "Escama dragón"
+plural_name = "Escamas dragón"
+item_description = "Una extraña escama sostenida por Pokémon de tipo Dragón."
+price = 7
+item_type = 1
+hold_effect_param = 10
+fling_power = 30
+icon = ExtResource("1_cvwdk")

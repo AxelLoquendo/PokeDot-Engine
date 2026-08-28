@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c3ph46rf4c2sp"]
+
+[ext_resource type="Texture2D" uid="uid://by8bglnci5er0" path="res://graphics/items/XDEFENSE.png" id="1_eb0u7"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 122
+item_name = "Defensa X"
+plural_name = "Defensas X"
+item_description = "Un objeto útil en la aventura."
+price = 1000
+pocket = 6
+item_type = 6
+fling_power = 30
+icon = ExtResource("1_eb0u7")
+effect = 4

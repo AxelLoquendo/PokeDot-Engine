@@ -6,6 +6,30 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ra4md")
+species_id = 907
+form_id = &"charizard_mega_x"
+display_name = "Charizard Mega X"
+base_species_id = 6
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_ra4md")
+species_id = 908
+form_id = &"charizard_mega_y"
+display_name = "Charizard Mega Y"
+base_species_id = 6
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_ra4md")
+species_id = 1491
+form_id = &"charizard_gmax"
+display_name = "Charizard Gmax"
+base_species_id = 6
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 10
@@ -128,6 +152,7 @@ description = "Cuando lanza una descarga de fuego supercaliente, la roja llama d
 height = 17
 weight = 905
 icon_sprite = ExtResource("3_078g8")
+forms = Array[ExtResource("2_ra4md")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
 teachable_moves = Array[int]([5, 7, 9, 14, 15, 19, 25, 29, 34, 36, 38, 46, 53, 63, 66, 68, 69, 70, 76, 82, 83, 89, 90, 91, 92, 99, 102, 104, 111, 115, 117, 126, 129, 130, 156, 157, 164, 173, 174, 182, 184, 189, 200, 201, 203, 206, 207, 210, 211, 213, 214, 216, 218, 223, 225, 231, 237, 239, 241, 242, 249, 251, 257, 261, 263, 264, 270, 280, 290, 299, 307, 311, 314, 315, 317, 332, 337, 349, 355, 363, 366, 374, 394, 403, 406, 411, 416, 421, 424, 432, 445, 466, 468, 488, 496, 497, 507, 510, 512, 519, 523, 525, 526, 535, 542, 590, 595, 612, 656, 712, 727, 742, 743, 779, 841, 843])
 egg_moves = Array[int]([44, 68, 187, 231, 232, 246, 407, 525])

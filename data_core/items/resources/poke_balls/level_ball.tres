@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c35fqgayrregj"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://coo2btogr26fj" path="res://graphics/items/LEVELBALL.png" id="1_vqcdc"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 15
+secondary_id = 15
+item_name = "Nivel Ball"
+plural_name = "Nivel Balls"
+item_description = "Funciona mejor con Pokémon de nivel bajo."
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_vqcdc")
+effect = 8

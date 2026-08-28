@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://0bfllsagq64u"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://uxt5pyqis8cu" path="res://graphics/items/ORANBERRY.png" id="1_ooxjj"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 520
+item_name = "Baya Aranja"
+plural_name = "Bayas Aranja"
+item_description = "Un objeto que se puede tener y que restaura 10 PS en batalla."
+price = 80
+pocket = 7
+item_type = 1
+hold_effect = 1
+hold_effect_param = 10
+battle_usage = 1
+fling_power = 10
+icon = ExtResource("1_ooxjj")
+effect = 1

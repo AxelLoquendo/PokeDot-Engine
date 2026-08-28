@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_vaov4")
+species_id = 1000
+form_id = &"samurott_hisui"
+display_name = "Samurott Hisui"
+base_species_id = 503
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -115,6 +123,7 @@ description = "En un abrir y cerrar de ojos, puede desenvainar y envainar los sa
 height = 15
 weight = 946
 body_color = 1
+forms = Array[ExtResource("2_vaov4")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 15, 34, 36, 56, 57, 58, 59, 63, 70, 91, 92, 104, 127, 129, 156, 164, 168, 173, 182, 184, 196, 203, 206, 207, 213, 214, 216, 218, 227, 231, 237, 240, 249, 250, 258, 263, 269, 270, 276, 280, 282, 290, 291, 308, 332, 335, 343, 352, 374, 399, 401, 403, 404, 410, 416, 419, 447, 496, 503, 514, 518, 523, 525, 526, 529, 555, 590, 638, 647, 664, 736, 740, 779, 809, 812, 846])
 egg_moves = Array[int]([103, 197, 282, 383, 400, 403, 533, 821])

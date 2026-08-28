@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bdlvbpy0e6gh7"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 32
+item_name = "Restaurar todo"
+plural_name = "Restaurar todo"
+item_description = "Restaura totalmente los PS y el estado de un Pokémon."
+price = 3000
+pocket = 1
+item_type = 1
+hold_effect_param = 255
+battle_usage = 1
+fling_power = 30
+effect = 3

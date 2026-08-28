@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bn4kjlurj6xjd"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 716
+item_name = "Saco bayas"
+plural_name = "Saco bayas"
+item_description = "Un contenedor conveniente que guarda bayas."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

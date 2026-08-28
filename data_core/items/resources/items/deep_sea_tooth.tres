@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bsaq6xucbo5vv"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cxbr7xs10iwub" path="res://graphics/items/DEEPSEATOOTH.png" id="1_o7a5k"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 399
+item_name = "Diente marino"
+plural_name = "Dientes marinos"
+item_description = "Si lo lleva Clamperl, aumenta su Ataque especial."
+price = 2000
+item_type = 4
+hold_effect = 34
+fling_power = 90
+icon = ExtResource("1_o7a5k")

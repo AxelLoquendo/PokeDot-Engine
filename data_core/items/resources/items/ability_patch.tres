@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://11262dpeism2"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://s8ronk4ijv7b" path="res://graphics/items/ABILITYPATCH.png" id="1_mat3r"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 80
+item_name = "Parche habilidad"
+plural_name = "Parches habilidad"
+item_description = "Cambia la habilidad de un Pokémon a su habilidad oculta."
+price = 250000
+item_type = 1
+icon = ExtResource("1_mat3r")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://clhvkj8pgy5lu"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://b2n4u61qq5v7w" path="res://graphics/items/LOVEBALL.png" id="1_nj2ox"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 19
+secondary_id = 19
+item_name = "Amor Ball"
+plural_name = "Amor Balls"
+item_description = "Funciona mejor si el Pokémon es de género opuesto."
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_nj2ox")
+effect = 8

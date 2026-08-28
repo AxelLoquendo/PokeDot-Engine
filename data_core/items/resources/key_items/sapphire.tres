@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://rvbn6bdgk1qn"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 757
+item_name = "Zafiro"
+plural_name = "Zafiros"
+item_description = "Una gema azul brillante que simboliza la honestidad."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

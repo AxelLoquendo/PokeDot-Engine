@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://blbipfcejeok0"]
+
+[ext_resource type="Texture2D" uid="uid://dcwivyt5d6iql" path="res://graphics/items/QUALOTBERRY.png" id="1_7p7cw"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 536
+item_name = "Baya Ispero"
+plural_name = "Bayas Ispero"
+item_description = "Hace que un Pokémon sea más amistoso pero baja la Defensa base."
+price = 80
+pocket = 7
+item_type = 1
+fling_power = 10
+icon = ExtResource("1_7p7cw")

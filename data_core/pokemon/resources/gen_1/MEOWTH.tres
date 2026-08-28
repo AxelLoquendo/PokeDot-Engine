@@ -37,6 +37,30 @@ target_species = 863
 use_advanced_rules = true
 conditions = Array[ExtResource("2_dp5hs")]([SubResource("Resource_cond2")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("5_2hckk")
+species_id = 965
+form_id = &"meowth_alola"
+display_name = "Meowth Alola"
+base_species_id = 52
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("5_2hckk")
+species_id = 974
+form_id = &"meowth_galar"
+display_name = "Meowth Galar"
+base_species_id = 52
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("5_2hckk")
+species_id = 1494
+form_id = &"meowth_gmax"
+display_name = "Meowth Gmax"
+base_species_id = 52
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 45
@@ -141,6 +165,7 @@ description = "Es de naturaleza nocturna. Le atraen los objetos brillantes."
 height = 4
 weight = 42
 body_color = 2
+forms = Array[ExtResource("5_2hckk")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([6, 15, 29, 34, 36, 38, 55, 61, 85, 86, 87, 91, 92, 97, 99, 102, 103, 104, 111, 117, 129, 130, 133, 138, 148, 156, 164, 168, 171, 173, 174, 180, 182, 189, 192, 196, 197, 203, 204, 206, 207, 213, 214, 216, 218, 220, 231, 232, 237, 240, 241, 244, 247, 253, 259, 263, 269, 270, 282, 283, 289, 290, 304, 313, 332, 343, 351, 352, 363, 369, 371, 372, 387, 399, 402, 408, 417, 421, 441, 445, 468, 492, 496, 497, 514, 526, 555, 583, 590, 638, 736, 779, 811, 812])
 egg_moves = Array[int]([39, 95, 133, 175, 180, 204, 231, 244, 274, 289, 316, 343, 386, 387, 492])

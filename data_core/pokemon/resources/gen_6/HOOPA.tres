@@ -7,8 +7,10 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_0uxke")
-form_id = &"unbound"
-display_name = "Desatado"
+species_id = 1168
+form_id = &"hoopa_unbound"
+display_name = "Hoopa Unbound"
+base_species_id = 720
 override_types = true
 type_1 = 15
 type_2 = 18
@@ -19,7 +21,7 @@ base_defense = 60
 base_speed = 80
 base_sp_attack = 170
 base_sp_defense = 130
-tags = PackedStringArray("form_change")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

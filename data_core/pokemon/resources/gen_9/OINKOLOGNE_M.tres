@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_8w4cb")
+species_id = 1300
+form_id = &"oinkologne_f"
+display_name = "Oinkologne F"
+base_species_id = 1299
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -99,6 +107,7 @@ description = "Oinkologne is proud of its fine, glossy skin. It emits a concentr
 height = 10
 weight = 1200
 body_color = 7
+forms = Array[ExtResource("2_8w4cb")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([34, 36, 38, 63, 91, 156, 162, 164, 168, 174, 182, 189, 203, 214, 240, 241, 253, 263, 270, 283, 304, 331, 341, 402, 412, 414, 416, 428, 442, 523, 574, 583, 0, 624, 658, 683, 707, 739, 740])
 ability_1 = 268

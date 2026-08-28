@@ -123,6 +123,14 @@ target_species = 700
 use_advanced_rules = true
 conditions = Array[ExtResource("2_krc64")]([SubResource("Resource_cond10")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("6_bqjdw")
+species_id = 1499
+form_id = &"eevee_gmax"
+display_name = "Eevee Gmax"
+base_species_id = 133
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -234,6 +242,7 @@ description = "Un extraño Pokémon que se adapta a los entornos más hostiles g
 height = 3
 weight = 65
 body_color = 5
+forms = Array[ExtResource("6_bqjdw")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([6, 29, 34, 36, 38, 46, 91, 92, 99, 102, 104, 115, 116, 117, 129, 130, 156, 164, 173, 174, 182, 189, 197, 203, 204, 207, 213, 214, 215, 216, 218, 226, 231, 237, 240, 241, 247, 263, 270, 290, 304, 311, 313, 343, 347, 363, 387, 445, 496, 497, 500, 514, 526, 590, 636, 779, 811, 842])
 egg_moves = Array[int]([24, 174, 175, 189, 197, 203, 204, 273, 281, 313, 321, 343, 363, 445, 485, 500])

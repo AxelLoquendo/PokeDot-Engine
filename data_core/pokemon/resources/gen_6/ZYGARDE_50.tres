@@ -7,8 +7,10 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_a2vvr")
-form_id = &"ten_percent"
-display_name = "10%"
+species_id = 1164
+form_id = &"zygarde_10_aura_break"
+display_name = "Zygarde 10 Aura Break"
+base_species_id = 718
 override_stats = true
 base_hp = 54
 base_attack = 100
@@ -16,12 +18,30 @@ base_defense = 71
 base_speed = 115
 base_sp_attack = 61
 base_sp_defense = 85
-tags = PackedStringArray("zygarde")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_a2vvr")
-form_id = &"complete"
-display_name = "Completo"
+species_id = 1165
+form_id = &"zygarde_10_power_construct"
+display_name = "Zygarde 10 Power Construct"
+base_species_id = 718
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_a2vvr")
+species_id = 1166
+form_id = &"zygarde_50_power_construct"
+display_name = "Zygarde 50 Power Construct"
+base_species_id = 718
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_a2vvr")
+species_id = 1167
+form_id = &"zygarde_complete"
+display_name = "Zygarde Complete"
+base_species_id = 718
 override_stats = true
 base_hp = 216
 base_attack = 100
@@ -29,26 +49,15 @@ base_defense = 121
 base_speed = 85
 base_sp_attack = 91
 base_sp_defense = 95
-tags = PackedStringArray("zygarde")
+tags = PackedStringArray()
 
-[sub_resource type="Resource" id="Resource_form_2"]
+[sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_a2vvr")
-form_id = &"ten_power_construct"
-display_name = "10% (Poder)"
-override_stats = true
-base_hp = 54
-base_attack = 100
-base_defense = 71
-base_speed = 115
-base_sp_attack = 61
-base_sp_defense = 85
-tags = PackedStringArray("zygarde", "power_construct")
-
-[sub_resource type="Resource" id="Resource_form_3"]
-script = ExtResource("2_a2vvr")
-form_id = &"fifty_power_construct"
-display_name = "50% (Poder)"
-tags = PackedStringArray("zygarde", "power_construct")
+species_id = 1547
+form_id = &"zygarde_mega"
+display_name = "Zygarde Mega"
+base_species_id = 718
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -170,7 +179,7 @@ description = "Cuando el ecosistema de Kalos se encuentra en peligro, aparece y 
 height = 50
 weight = 3050
 body_color = 3
-forms = Array[ExtResource("2_a2vvr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
+forms = Array[ExtResource("2_a2vvr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([20, 34, 63, 70, 89, 91, 92, 104, 129, 156, 157, 164, 173, 179, 180, 182, 200, 201, 203, 207, 214, 216, 218, 219, 220, 231, 237, 241, 242, 249, 263, 276, 280, 290, 304, 335, 349, 351, 371, 406, 411, 414, 416, 428, 434, 444, 447, 482, 496, 514, 523, 525, 590, 630, 661, 712, 727, 734, 743])
 ability_1 = 188

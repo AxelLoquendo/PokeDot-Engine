@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjvc5bdwpmvnl"]
+
+[ext_resource type="Texture2D" uid="uid://38r64vvlfiwh" path="res://graphics/items/BRIGHTPOWDER.png" id="1_fsbqx"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 459
+item_name = "Polvo brillo"
+plural_name = "Polvo brillos"
+item_description = "Un objeto que emite un resplandor para reducir precisión."
+price = 30000
+item_type = 4
+hold_effect = 22
+hold_effect_param = 10
+fling_power = 10
+icon = ExtResource("1_fsbqx")

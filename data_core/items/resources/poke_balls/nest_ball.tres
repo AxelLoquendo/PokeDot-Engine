@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dfyimkxlpcbov"]
+
+[ext_resource type="Texture2D" uid="uid://juk5d75ghgv1" path="res://graphics/items/NESTBALL.png" id="1_cjijv"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 8
+secondary_id = 8
+item_name = "Nido Ball"
+plural_name = "Nido Balls"
+item_description = "Una Poké Ball que funciona mejor con Pokémon más débiles."
+price = 1000
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_cjijv")
+effect = 8

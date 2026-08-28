@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cimjqqy0465ll"]
+
+[ext_resource type="Texture2D" uid="uid://c273jpnhx2ybt" path="res://graphics/items/METALPOWDER.png" id="1_dds7r"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 396
+item_name = "Polvo metálico"
+plural_name = "Polvo metálicos"
+item_description = "Un objeto que se sostiene y que aumenta la Defensa de Ditto."
+price = 1000
+item_type = 4
+hold_effect = 46
+fling_power = 10
+icon = ExtResource("1_dds7r")

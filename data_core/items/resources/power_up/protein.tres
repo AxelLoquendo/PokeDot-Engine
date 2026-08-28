@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://curn524qupvp7"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 66
+item_name = "Proteína"
+plural_name = "Proteínas"
+item_description = "Aumenta Ataque base de un Pokémon."
+price = 10000
+pocket = 18
+item_type = 1
+fling_power = 30

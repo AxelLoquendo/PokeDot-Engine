@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b7r4wgfhq3kc8"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 700
+item_name = "Necrosol"
+plural_name = "Necrosols"
+item_description = "Un dispositivo para fusionar y separar a Necrozma usando a Solgaleo."
+pocket = 8
+item_type = 1
+importance = true
+not_consumed = true

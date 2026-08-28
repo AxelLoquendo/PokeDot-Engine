@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dpjn6jlbo0rvd"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://drdtw4l166u0m" path="res://graphics/items/DESTINYKNOT.png" id="1_tfbkc"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 486
+item_name = "Lazo destino"
+plural_name = "Lazo destinos"
+item_description = "Si el portador se enamora, el oponente también."
+price = 20000
+item_type = 4
+hold_effect = 73
+fling_power = 10
+icon = ExtResource("1_tfbkc")

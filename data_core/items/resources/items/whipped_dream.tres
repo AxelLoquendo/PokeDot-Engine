@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://xvt6wnseux5"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 235
+item_name = "Dulce de nata"
+plural_name = "Dulces de nata"
+item_description = "Un dulce suave y dulce amado por cierto Pokémon."
+price = 7
+item_type = 1
+fling_power = 80

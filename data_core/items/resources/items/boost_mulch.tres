@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://djur6j3mf8dfp"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 186
+item_name = "Abono fructífero"
+plural_name = "Abonos fructíferos"
+item_description = "Un fertilizante que aumenta la velocidad de secado del suelo blando."
+price = 200
+item_type = 4
+fling_power = 30

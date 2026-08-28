@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c40bm7genk14n"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 434
+item_name = "Pico afilado"
+plural_name = "Pico afilados"
+item_description = "Objeto que potencia los movimientos de tipo Volador."
+item_type = 4
+hold_effect = 43
+fling_power = 50

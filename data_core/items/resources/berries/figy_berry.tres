@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dl8ua6b83iw64"]
+
+[ext_resource type="Texture2D" uid="uid://cdsopb0pyxxb8" path="res://graphics/items/FIGYBERRY.png" id="1_drv7k"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 524
+item_name = "Baya Higog"
+plural_name = "Bayas Higog"
+item_description = "Restaura PS, pero puede causar confusión."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 10
+fling_power = 10
+icon = ExtResource("1_drv7k")

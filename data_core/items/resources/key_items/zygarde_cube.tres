@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b2r2y5uetlco1"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 698
+item_name = "Arca de Zygarde"
+plural_name = "Arca de Zygardes"
+item_description = "Un objeto para almacenar los Núcleos y Células de Zygarde."
+pocket = 8
+item_type = 1
+importance = true
+not_consumed = true

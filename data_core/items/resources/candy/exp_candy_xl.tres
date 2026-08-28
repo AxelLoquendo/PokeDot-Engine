@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcuwf8t0gnc88"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://coopsi7yax47v" path="res://graphics/items/EXPCANDYXL.png" id="1_vji3d"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 107
+item_name = "Caramelo exp. XL"
+plural_name = "Caramelos exp. XL"
+item_description = "Otorga muchísima experiencia a un Pokémon."
+price = 10000
+pocket = 16
+item_type = 1
+hold_effect_param = 30000
+fling_power = 30
+icon = ExtResource("1_vji3d")

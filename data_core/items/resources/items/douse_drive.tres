@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b7ybuccm5a6uq"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cmsse62lkoxis" path="res://graphics/items/DOUSEDRIVE.png" id="1_llfic"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 267
+item_name = "HidroROM"
+plural_name = "HidroROMs"
+item_description = "Cambia ataque Tecno shock de Genesect a tipo Agua."
+item_type = 4
+hold_effect = 93
+fling_power = 70
+icon = ExtResource("1_llfic")

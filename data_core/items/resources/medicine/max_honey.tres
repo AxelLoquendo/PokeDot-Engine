@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcigdsxl65xbq"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 56
+item_name = "Maxipanal"
+plural_name = "Maxipanales"
+item_description = "Revive a un Pokémon debilitado con todos sus PS."
+price = 8000
+pocket = 1
+item_type = 1
+battle_usage = 3
+fling_power = 30
+effect = 9

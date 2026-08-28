@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cv4j81y4ifkvl"]
+
+[ext_resource type="Texture2D" uid="uid://ypodxsetfoge" path="res://graphics/items/MAGOBERRY.png" id="1_4dp57"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 541
+item_name = "Baya Aostan"
+plural_name = "Bayas Aostan"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Aostan."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_4dp57")

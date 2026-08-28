@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://csfu21l25qovr"]
+
+[ext_resource type="Texture2D" uid="uid://c2cyo5kqyy61j" path="res://graphics/items/ROSELIBERRY.png" id="1_hqvfo"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 566
+item_name = "Baya Hibis"
+plural_name = "Bayas Hibis"
+item_description = "Un objeto que debilita un movimiento de tipo Hada si es débil a él."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 80
+fling_power = 10
+icon = ExtResource("1_hqvfo")

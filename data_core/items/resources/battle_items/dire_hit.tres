@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dojowobx7r0gb"]
+
+[ext_resource type="Texture2D" uid="uid://c4syfm0fnv5xl" path="res://graphics/items/DIREHIT.png" id="1_d365x"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 127
+item_name = "Directo"
+plural_name = "Directos"
+item_description = "Aumenta ratio de críticos durante una batalla."
+price = 1000
+pocket = 6
+item_type = 6
+fling_power = 30
+icon = ExtResource("1_d365x")
+effect = 6

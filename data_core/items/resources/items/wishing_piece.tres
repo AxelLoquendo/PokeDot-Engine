@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dno6jv8nhev4n"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 195
+item_name = "Trozo deseo"
+plural_name = "Trozos deseo"
+item_description = "Activa una incursión Dynamax al lanzarlo a un nido Pokémon."
+price = 20
+item_type = 4
+fling_power = 50

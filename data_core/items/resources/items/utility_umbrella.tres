@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://beurcym7ht1q1"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 513
+item_name = "Parasol multiuso"
+plural_name = "Parasoles multiusos"
+item_description = "Sombrilla que protege de efectos del clima."
+price = 15000
+item_type = 4
+hold_effect = 115
+fling_power = 60

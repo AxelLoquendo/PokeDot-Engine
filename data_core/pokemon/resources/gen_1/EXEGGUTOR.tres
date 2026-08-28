@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_1e7m1")
+species_id = 972
+form_id = &"exeggutor_alola"
+display_name = "Exeggutor Alola"
+base_species_id = 103
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 23
@@ -109,6 +117,7 @@ description = "Sus tres cabezas piensan de forma independiente. Sin embargo, son
 height = 20
 weight = 1200
 body_color = 2
+forms = Array[ExtResource("2_1e7m1")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([14, 29, 34, 36, 38, 60, 63, 67, 70, 72, 76, 89, 92, 94, 99, 100, 102, 104, 113, 115, 117, 120, 121, 138, 148, 149, 153, 156, 164, 168, 171, 173, 174, 182, 188, 202, 203, 205, 207, 213, 214, 216, 218, 235, 237, 241, 244, 246, 248, 253, 263, 267, 270, 271, 285, 286, 290, 331, 335, 345, 347, 356, 363, 384, 388, 402, 412, 416, 427, 428, 433, 437, 445, 447, 473, 477, 496, 500, 523, 580, 590, 611, 641, 661, 725, 731, 733, 779, 845])
 ability_1 = 34

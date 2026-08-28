@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dog2lxipasfwl"]
+
+[ext_resource type="Texture2D" uid="uid://u2wgimocp8qu" path="res://graphics/items/GHOSTGEM.png" id="1_dvtyl"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 352
+item_name = "Gema fantasma"
+plural_name = "Gema fantasmas"
+item_description = "Potencia un ataque de Tipo Fantasma."
+item_type = 4
+hold_effect = 94
+icon = ExtResource("1_dvtyl")

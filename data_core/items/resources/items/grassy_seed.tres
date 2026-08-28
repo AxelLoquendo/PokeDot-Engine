@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b7mqsjivylpqc"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bmaxiutlb8h5w" path="res://graphics/items/GRASSYSEED.png" id="1_u8vvo"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 454
+item_name = "Semilla hierba"
+plural_name = "Semillas hierba"
+item_description = "Aumenta Defensa en Campo de hierba, pero solo una vez."
+price = 20000
+item_type = 4
+hold_effect = 111
+fling_power = 10
+icon = ExtResource("1_u8vvo")

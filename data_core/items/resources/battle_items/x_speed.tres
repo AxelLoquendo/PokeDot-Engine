@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dd7vuos75otx7"]
+
+[ext_resource type="Texture2D" uid="uid://dmghwrqbwsqnx" path="res://graphics/items/XSPEED.png" id="1_aichj"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 125
+item_name = "Velocidad X"
+plural_name = "Velocidades X"
+item_description = "Un objeto útil en la aventura."
+price = 1000
+pocket = 6
+item_type = 6
+fling_power = 30
+icon = ExtResource("1_aichj")
+effect = 4

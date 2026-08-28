@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bkj7uydgeetuv"]
+
+[ext_resource type="Texture2D" uid="uid://r2o1u04ee0qi" path="res://graphics/items/MENTALHERB.png" id="1_aw8bk"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 464
+item_name = "Hierba mental"
+plural_name = "Hierba mentals"
+item_description = "Un objeto útil en la aventura."
+price = 10000
+item_type = 4
+hold_effect = 28
+fling_power = 10
+icon = ExtResource("1_aw8bk")

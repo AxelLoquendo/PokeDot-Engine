@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cqp6acktv0wcb"]
+
+[ext_resource type="Texture2D" uid="uid://pr7i2rfa5cc" path="res://graphics/items/RAZORCLAW.png" id="1_5nsxw"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 492
+item_name = "Garra afilada"
+plural_name = "Garra afiladas"
+item_description = "Aumenta ratio de golpes críticos."
+price = 15000
+item_type = 4
+hold_effect = 40
+fling_power = 80
+icon = ExtResource("1_5nsxw")

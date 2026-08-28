@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://rsmdb20f41jd"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 704
+item_name = "Superpulsera Z"
+plural_name = "Superpulsera Zs"
+item_description = "Un extraño anillo que permite el uso de los movimientos Z."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

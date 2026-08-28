@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cpmwpu2uh4n76"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dp4aien3u0ewg" path="res://graphics/items/GANLONBERRY.png" id="1_yanbq"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 568
+item_name = "Baya Gonlan"
+plural_name = "Bayas Gonlan"
+item_description = "Un objeto que aumenta la Defensa en un apuro."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 16
+hold_effect_param = 4
+fling_power = 10
+icon = ExtResource("1_yanbq")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c20cncua1mklp"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 473
+item_name = "Cascabel concha"
+plural_name = "Cascabel conchas"
+item_description = "Restaura PS cada vez que inflige daño."
+price = 20000
+item_type = 4
+hold_effect = 44
+hold_effect_param = 8
+fling_power = 30

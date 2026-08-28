@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bx1kptaawxkrd"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c6gwi83b7j8t8" path="res://graphics/items/ROCKGEM.png" id="1_k3qo8"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 351
+item_name = "Gema roca"
+plural_name = "Gema rocas"
+item_description = "Potencia un ataque de Tipo Roca."
+item_type = 4
+hold_effect = 94
+icon = ExtResource("1_k3qo8")

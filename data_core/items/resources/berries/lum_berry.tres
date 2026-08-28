@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://6gpyo5tc3lwt"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cvo7fqkqhaceh" path="res://graphics/items/LUMBERRY.png" id="1_si8it"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 522
+item_name = "Baya Ziuela"
+plural_name = "Bayas Ziuela"
+item_description = "Cura cualquier problema de estado en batalla."
+price = 80
+pocket = 7
+item_type = 1
+hold_effect = 9
+battle_usage = 2
+fling_power = 10
+icon = ExtResource("1_si8it")
+effect = 2

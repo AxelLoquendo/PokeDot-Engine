@@ -5,6 +5,30 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_njvpt")
+species_id = 1112
+form_id = &"greninja_bond"
+display_name = "Greninja Bond"
+base_species_id = 658
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_njvpt")
+species_id = 1113
+form_id = &"greninja_ash"
+display_name = "Greninja Ash"
+base_species_id = 658
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_njvpt")
+species_id = 1540
+form_id = &"greninja_mega"
+display_name = "Greninja Mega"
+base_species_id = 658
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 1
@@ -123,6 +147,7 @@ description = "Comprime el agua y crea estrellas ninja con las que ataca al enem
 height = 15
 weight = 400
 body_color = 1
+forms = Array[ExtResource("2_njvpt")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([8, 14, 15, 36, 56, 57, 58, 59, 63, 67, 70, 91, 92, 104, 114, 127, 129, 156, 157, 164, 168, 173, 180, 182, 189, 191, 196, 203, 206, 207, 213, 214, 216, 218, 237, 240, 249, 263, 269, 270, 272, 280, 289, 290, 291, 308, 311, 317, 332, 340, 341, 352, 369, 374, 390, 399, 416, 441, 447, 479, 482, 490, 496, 497, 503, 512, 518, 526, 590, 612, 656, 664, 779, 809, 811, 812, 846])
 egg_moves = Array[int]([68, 191, 390, 415, 514])

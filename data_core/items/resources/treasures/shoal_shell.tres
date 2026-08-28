@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c7ooftwx0hdxs"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 147
+item_name = "Concha cardumen"
+plural_name = "Conchas cardumen"
+item_description = "Una concha obtenida de lo profundo de la Cueva Cardumen."
+price = 20
+pocket = 14
+item_type = 4
+fling_power = 30

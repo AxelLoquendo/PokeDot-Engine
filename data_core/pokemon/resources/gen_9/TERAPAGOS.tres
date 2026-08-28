@@ -5,6 +5,22 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_fpkyb")
+species_id = 1432
+form_id = &"terapagos_terastal"
+display_name = "Terapagos Terastal"
+base_species_id = 1431
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_fpkyb")
+species_id = 1433
+form_id = &"terapagos_stellar"
+display_name = "Terapagos Stellar"
+base_species_id = 1431
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 110
@@ -84,6 +100,7 @@ description = "Terapagos protects itself using its power to transform energy int
 height = 2
 weight = 65
 body_color = 1
+forms = Array[ExtResource("2_fpkyb")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([34, 36, 38, 46, 53, 57, 58, 63, 76, 85, 87, 89, 92, 156, 157, 164, 182, 203, 214, 240, 241, 242, 263, 311, 347, 352, 356, 360, 394, 396, 399, 405, 406, 408, 412, 414, 416, 428, 430, 442, 444, 446, 484, 500, 528, 535, 605, 704, 728, 743, 789, 844])
 ability_1 = 307

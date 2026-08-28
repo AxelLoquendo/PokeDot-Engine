@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://gxb4m28kihe6"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://d0nd5rq03fxcl" path="res://graphics/items/RABUTABERRY.png" id="1_o4smf"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 542
+item_name = "Baya Rautan"
+plural_name = "Bayas Rautan"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Rautan."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_o4smf")

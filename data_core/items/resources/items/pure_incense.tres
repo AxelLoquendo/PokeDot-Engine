@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b7s1t4ui8jyak"]
+
+[ext_resource type="Texture2D" uid="uid://ckehd80ruiyt7" path="res://graphics/items/PUREINCENSE.png" id="1_6p7hv"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 412
+item_name = "Incienso puro"
+plural_name = "Inciensos puros"
+item_description = "Si se lleva equipado, repele bastante a los Pokémon salvajes."
+price = 6000
+item_type = 4
+hold_effect = 32
+fling_power = 10
+icon = ExtResource("1_6p7hv")

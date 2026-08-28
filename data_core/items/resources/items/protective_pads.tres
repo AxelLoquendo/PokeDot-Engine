@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://5d1gdw1ov0f3"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://uw5k36tmp4gq" path="res://graphics/items/PROTECTIVEPADS.png" id="1_lfbap"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 507
+item_name = "Paracontacto"
+plural_name = "Paracontactos"
+item_description = "Protege al portador de efectos de movimientos de contacto."
+price = 15000
+item_type = 4
+hold_effect = 109
+fling_power = 30
+icon = ExtResource("1_lfbap")

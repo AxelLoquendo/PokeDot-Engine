@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dox2cyufijfdp"]
+
+[ext_resource type="Texture2D" uid="uid://dcx8c3uq4jfhi" path="res://graphics/items/POWERANKLET.png" id="1_asc5n"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 424
+item_name = "Franja recia"
+plural_name = "Franjas recias"
+item_description = "Accesorio que ayuda a mejorar Velocidad, pero la reduce."
+price = 10000
+item_type = 4
+hold_effect = 81
+fling_power = 70
+icon = ExtResource("1_asc5n")

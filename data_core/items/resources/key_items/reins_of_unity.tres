@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d0tvqnjqky7rm"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 702
+item_name = "Riendas unión"
+plural_name = "Riendas unións"
+item_description = "Riendas que unen a Calyrex con su amado corcel."
+pocket = 8
+item_type = 1
+importance = true
+not_consumed = true

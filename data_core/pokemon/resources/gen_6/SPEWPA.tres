@@ -7,123 +7,155 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_jnx86")
-form_id = &"icy_snow"
-display_name = "Icy Snow"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1457
+form_id = &"spewpa_polar"
+display_name = "Spewpa Polar"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_jnx86")
-form_id = &"polar"
-display_name = "Polar"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1458
+form_id = &"spewpa_tundra"
+display_name = "Spewpa Tundra"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_jnx86")
-form_id = &"tundra"
-display_name = "Tundra"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1459
+form_id = &"spewpa_continental"
+display_name = "Spewpa Continental"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_jnx86")
-form_id = &"continental"
-display_name = "Continental"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1460
+form_id = &"spewpa_garden"
+display_name = "Spewpa Garden"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_jnx86")
-form_id = &"garden"
-display_name = "Garden"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1461
+form_id = &"spewpa_elegant"
+display_name = "Spewpa Elegant"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_jnx86")
-form_id = &"elegant"
-display_name = "Elegant"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1462
+form_id = &"spewpa_meadow"
+display_name = "Spewpa Meadow"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("2_jnx86")
-form_id = &"meadow"
-display_name = "Meadow"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1463
+form_id = &"spewpa_modern"
+display_name = "Spewpa Modern"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("2_jnx86")
-form_id = &"modern"
-display_name = "Modern"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1464
+form_id = &"spewpa_marine"
+display_name = "Spewpa Marine"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("2_jnx86")
-form_id = &"marine"
-display_name = "Marine"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1465
+form_id = &"spewpa_archipelago"
+display_name = "Spewpa Archipelago"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
 script = ExtResource("2_jnx86")
-form_id = &"archipelago"
-display_name = "Archipelago"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1466
+form_id = &"spewpa_high_plains"
+display_name = "Spewpa High Plains"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
 script = ExtResource("2_jnx86")
-form_id = &"high_plains"
-display_name = "High Plains"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1467
+form_id = &"spewpa_sandstorm"
+display_name = "Spewpa Sandstorm"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
 script = ExtResource("2_jnx86")
-form_id = &"sandstorm"
-display_name = "Sandstorm"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1468
+form_id = &"spewpa_river"
+display_name = "Spewpa River"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
 script = ExtResource("2_jnx86")
-form_id = &"river"
-display_name = "River"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1469
+form_id = &"spewpa_monsoon"
+display_name = "Spewpa Monsoon"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
 script = ExtResource("2_jnx86")
-form_id = &"monsoon"
-display_name = "Monsoon"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1470
+form_id = &"spewpa_savanna"
+display_name = "Spewpa Savanna"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
 script = ExtResource("2_jnx86")
-form_id = &"savanna"
-display_name = "Savanna"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1471
+form_id = &"spewpa_sun"
+display_name = "Spewpa Sun"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
 script = ExtResource("2_jnx86")
-form_id = &"sun"
-display_name = "Sun"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1472
+form_id = &"spewpa_ocean"
+display_name = "Spewpa Ocean"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
 script = ExtResource("2_jnx86")
-form_id = &"ocean"
-display_name = "Ocean"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1473
+form_id = &"spewpa_jungle"
+display_name = "Spewpa Jungle"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
 script = ExtResource("2_jnx86")
-form_id = &"jungle"
-display_name = "Jungle"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1474
+form_id = &"spewpa_fancy"
+display_name = "Spewpa Fancy"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
 script = ExtResource("2_jnx86")
-form_id = &"fancy"
-display_name = "Fancy"
-tags = PackedStringArray("vivillon", "pattern")
-
-[sub_resource type="Resource" id="Resource_form_19"]
-script = ExtResource("2_jnx86")
-form_id = &"pokeball"
-display_name = "Pokeball"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1475
+form_id = &"spewpa_pokeball"
+display_name = "Spewpa Pokeball"
+base_species_id = 665
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -154,7 +186,7 @@ description = "Habita en la sombra de la espesura. Si percibe alguna amenaza, su
 height = 3
 weight = 84
 body_color = 4
-forms = Array[ExtResource("2_jnx86")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19")])
+forms = Array[ExtResource("2_jnx86")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
 teachable_moves = Array[int]([182, 334, 450, 522, 527, 779, 810])
 ability_1 = 61

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcpxpua862jp1"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 157
+item_name = "Real de cobre"
+plural_name = "Reales de cobre"
+item_description = "Una moneda de cobre usada antiguamente. Se vende caro."
+price = 2000
+pocket = 14
+item_type = 4
+fling_power = 30

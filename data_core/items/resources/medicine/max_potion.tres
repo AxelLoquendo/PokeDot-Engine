@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://g6j5l2830lrt"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 31
+item_name = "Poción máxima"
+plural_name = "Pociones máximas"
+item_description = "Restaura totalmente PS de un Pokémon."
+price = 2500
+pocket = 1
+item_type = 1
+hold_effect_param = 255
+battle_usage = 1
+fling_power = 30
+effect = 1

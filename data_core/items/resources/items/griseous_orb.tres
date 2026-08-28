@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cco84xr5xgjob"]
+
+[ext_resource type="Texture2D" uid="uid://y71bdxw78h4o" path="res://graphics/items/GRISEOUSORB.png" id="1_5n6l2"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 403
+item_name = "Griseosfera"
+plural_name = "Griseosferas"
+item_description = "Aumenta el poder de los movimientos de tipo Dragón y Fantasma de Giratina."
+item_type = 4
+hold_effect = 78
+hold_effect_param = 20
+fling_power = 60
+icon = ExtResource("1_5n6l2")

@@ -7,123 +7,155 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_qjdsg")
-form_id = &"icy_snow"
-display_name = "Icy Snow"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1114
+form_id = &"vivillon_polar"
+display_name = "Vivillon Polar"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_qjdsg")
-form_id = &"polar"
-display_name = "Polar"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1115
+form_id = &"vivillon_tundra"
+display_name = "Vivillon Tundra"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_qjdsg")
-form_id = &"tundra"
-display_name = "Tundra"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1116
+form_id = &"vivillon_continental"
+display_name = "Vivillon Continental"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_qjdsg")
-form_id = &"continental"
-display_name = "Continental"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1117
+form_id = &"vivillon_garden"
+display_name = "Vivillon Garden"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_qjdsg")
-form_id = &"garden"
-display_name = "Garden"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1118
+form_id = &"vivillon_elegant"
+display_name = "Vivillon Elegant"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_qjdsg")
-form_id = &"elegant"
-display_name = "Elegant"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1119
+form_id = &"vivillon_meadow"
+display_name = "Vivillon Meadow"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("2_qjdsg")
-form_id = &"meadow"
-display_name = "Meadow"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1120
+form_id = &"vivillon_modern"
+display_name = "Vivillon Modern"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("2_qjdsg")
-form_id = &"modern"
-display_name = "Modern"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1121
+form_id = &"vivillon_marine"
+display_name = "Vivillon Marine"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("2_qjdsg")
-form_id = &"marine"
-display_name = "Marine"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1122
+form_id = &"vivillon_archipelago"
+display_name = "Vivillon Archipelago"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
 script = ExtResource("2_qjdsg")
-form_id = &"archipelago"
-display_name = "Archipelago"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1123
+form_id = &"vivillon_high_plains"
+display_name = "Vivillon High Plains"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
 script = ExtResource("2_qjdsg")
-form_id = &"high_plains"
-display_name = "High Plains"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1124
+form_id = &"vivillon_sandstorm"
+display_name = "Vivillon Sandstorm"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
 script = ExtResource("2_qjdsg")
-form_id = &"sandstorm"
-display_name = "Sandstorm"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1125
+form_id = &"vivillon_river"
+display_name = "Vivillon River"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
 script = ExtResource("2_qjdsg")
-form_id = &"river"
-display_name = "River"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1126
+form_id = &"vivillon_monsoon"
+display_name = "Vivillon Monsoon"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
 script = ExtResource("2_qjdsg")
-form_id = &"monsoon"
-display_name = "Monsoon"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1127
+form_id = &"vivillon_savanna"
+display_name = "Vivillon Savanna"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
 script = ExtResource("2_qjdsg")
-form_id = &"savanna"
-display_name = "Savanna"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1128
+form_id = &"vivillon_sun"
+display_name = "Vivillon Sun"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
 script = ExtResource("2_qjdsg")
-form_id = &"sun"
-display_name = "Sun"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1129
+form_id = &"vivillon_ocean"
+display_name = "Vivillon Ocean"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
 script = ExtResource("2_qjdsg")
-form_id = &"ocean"
-display_name = "Ocean"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1130
+form_id = &"vivillon_jungle"
+display_name = "Vivillon Jungle"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
 script = ExtResource("2_qjdsg")
-form_id = &"jungle"
-display_name = "Jungle"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1131
+form_id = &"vivillon_fancy"
+display_name = "Vivillon Fancy"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
 script = ExtResource("2_qjdsg")
-form_id = &"fancy"
-display_name = "Fancy"
-tags = PackedStringArray("vivillon", "pattern")
-
-[sub_resource type="Resource" id="Resource_form_19"]
-script = ExtResource("2_qjdsg")
-form_id = &"pokeball"
-display_name = "Pokeball"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1132
+form_id = &"vivillon_pokeball"
+display_name = "Vivillon Pokeball"
+base_species_id = 666
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -218,7 +250,7 @@ description = "En el mundo existen Vivillon con diferentes motivos en sus alas. 
 height = 12
 weight = 170
 body_color = 8
-forms = Array[ExtResource("2_qjdsg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19")])
+forms = Array[ExtResource("2_qjdsg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([60, 63, 76, 92, 94, 104, 109, 113, 129, 138, 148, 156, 164, 168, 173, 182, 202, 203, 207, 213, 214, 216, 218, 219, 237, 240, 241, 244, 263, 283, 290, 311, 314, 324, 332, 334, 347, 355, 366, 369, 403, 405, 412, 416, 432, 450, 496, 512, 522, 527, 542, 577, 590, 611, 636, 639, 734, 779, 810])
 ability_1 = 19

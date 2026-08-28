@@ -7,15 +7,11 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_kov5h")
-form_id = &"west"
-display_name = "Oeste"
-tags = PackedStringArray("regional_color")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_kov5h")
-form_id = &"east"
-display_name = "Este"
-tags = PackedStringArray("regional_color")
+species_id = 1063
+form_id = &"gastrodon_east"
+display_name = "Gastrodon East"
+base_species_id = 423
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -104,7 +100,7 @@ description = "Si se ve amenazado por sus enemigos naturales, segrega un líquid
 height = 9
 weight = 299
 body_color = 6
-forms = Array[ExtResource("2_kov5h")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
+forms = Array[ExtResource("2_kov5h")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([29, 34, 36, 56, 57, 58, 59, 63, 70, 81, 89, 91, 92, 104, 127, 133, 148, 156, 157, 164, 173, 174, 182, 188, 189, 191, 196, 201, 203, 207, 213, 214, 216, 218, 220, 237, 240, 246, 249, 250, 258, 263, 270, 290, 291, 311, 317, 328, 330, 335, 341, 350, 352, 362, 363, 414, 416, 444, 445, 446, 482, 496, 503, 523, 590, 611, 661, 664, 734, 779, 809, 812])
 ability_1 = 60

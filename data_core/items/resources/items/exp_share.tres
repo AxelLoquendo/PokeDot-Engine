@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://4qg11ymb34al"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://5sqjh5nn5qul" path="res://graphics/items/EXPSHARE.png" id="1_jx1uh"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 461
+item_name = "Repartir exp."
+plural_name = "Repartir exp."
+item_description = "Este dispositivo da exp. a otros miembros del equipo."
+hold_effect = 25
+fling_power = 30
+importance = true
+icon = ExtResource("1_jx1uh")

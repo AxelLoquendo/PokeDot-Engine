@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://do2outnqif0vh"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 721
+item_name = "Pokéradar"
+plural_name = "Pokéradars"
+item_description = "Una herramienta usada para buscar Pokémon ocultos en la hierba."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

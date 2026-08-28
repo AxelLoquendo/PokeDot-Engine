@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://t0ksas7afg4c"]
+
+[ext_resource type="Texture2D" uid="uid://oo40n337lf5r" path="res://graphics/items/NOMELBERRY.png" id="1_i3giv"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 543
+item_name = "Baya Monli"
+plural_name = "Bayas Monli"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Monli."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_i3giv")

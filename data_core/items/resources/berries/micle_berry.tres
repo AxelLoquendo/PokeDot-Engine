@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cndk4arq0it34"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dnk60swoaqfk6" path="res://graphics/items/MICLEBERRY.png" id="1_whuqd"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 575
+item_name = "Baya Lagro"
+plural_name = "Bayas Lagro"
+item_description = "Un objeto que aumenta Precisión en un apuro."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 83
+hold_effect_param = 4
+fling_power = 10
+icon = ExtResource("1_whuqd")

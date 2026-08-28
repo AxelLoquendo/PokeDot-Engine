@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cxi3288ncv5yr"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 404
+item_name = "Incienso marino"
+plural_name = "Inciensos marinos"
+item_description = "Si se lleva equipado, potencia levemente ataques de tipo Agua."
+price = 2000
+item_type = 4
+hold_effect = 43
+hold_effect_param = 20
+fling_power = 10

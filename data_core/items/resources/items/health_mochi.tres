@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://1mxequ6n6qvr"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://daeh2sveqin3p" path="res://graphics/items/HEALTHMOCHI.png" id="1_rs5eq"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 806
+item_name = "Mochi vigor"
+plural_name = "Mochis vigor"
+item_description = "Aumenta puntos de esfuerzo de PS."
+price = 500
+item_type = 1
+fling_power = 30
+icon = ExtResource("1_rs5eq")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://de273hdxymie8"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 697
+item_name = "Punta ADN"
+plural_name = "Punta ADNs"
+item_description = "Divisor que fusiona a Kyurem con un cierto Pokémon."
+pocket = 8
+item_type = 1
+importance = true
+not_consumed = true

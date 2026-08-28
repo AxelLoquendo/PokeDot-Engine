@@ -5,6 +5,21 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_30gs1")
+species_id = 1071
+form_id = &"giratina_origin"
+display_name = "Giratina Origin"
+base_species_id = 487
+override_stats = true
+base_hp = 150
+base_attack = 120
+base_defense = 100
+base_speed = 90
+base_sp_attack = 120
+base_sp_defense = 100
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 425
@@ -105,6 +120,7 @@ description = "Vive en el Mundo Distorsión, un mundo opuesto al nuestro y cuyas
 height = 45
 weight = 7500
 body_color = 4
+forms = Array[ExtResource("2_30gs1")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([15, 19, 29, 34, 36, 46, 63, 70, 85, 86, 87, 89, 92, 94, 104, 109, 129, 138, 156, 164, 173, 174, 180, 182, 184, 189, 196, 200, 203, 207, 210, 211, 214, 216, 218, 219, 220, 231, 237, 239, 240, 241, 244, 246, 247, 249, 261, 263, 290, 304, 314, 318, 332, 337, 347, 351, 356, 363, 371, 396, 399, 401, 406, 412, 414, 416, 421, 431, 432, 434, 442, 444, 451, 466, 468, 477, 496, 497, 506, 523, 525, 566, 590, 656, 712, 734, 737, 742, 779])
 ability_1 = 46

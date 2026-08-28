@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c2ok2a7lp64sf"]
+
+[ext_resource type="Texture2D" uid="uid://bapactdavy5qe" path="res://graphics/items/EJECTBUTTON.png" id="1_02qo8"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 501
+item_name = "Botón escape"
+plural_name = "Botón escapes"
+item_description = "Saca al usuario del combate si es golpeado por rival."
+price = 30000
+item_type = 4
+hold_effect = 100
+fling_power = 30
+icon = ExtResource("1_02qo8")

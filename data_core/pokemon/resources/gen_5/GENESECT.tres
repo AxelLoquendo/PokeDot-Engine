@@ -7,27 +7,35 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_0v4sb")
-form_id = &"douse"
-display_name = "Módulo Hidro"
-tags = PackedStringArray("drive")
+species_id = 1108
+form_id = &"genesect_douse"
+display_name = "Genesect Douse"
+base_species_id = 649
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_0v4sb")
-form_id = &"shock"
-display_name = "Módulo Fulgor"
-tags = PackedStringArray("drive")
+species_id = 1109
+form_id = &"genesect_shock"
+display_name = "Genesect Shock"
+base_species_id = 649
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_0v4sb")
-form_id = &"burn"
-display_name = "Módulo Piro"
-tags = PackedStringArray("drive")
+species_id = 1110
+form_id = &"genesect_burn"
+display_name = "Genesect Burn"
+base_species_id = 649
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_0v4sb")
-form_id = &"chill"
-display_name = "Módulo Criogénico"
-tags = PackedStringArray("drive")
+species_id = 1111
+form_id = &"genesect_chill"
+display_name = "Genesect Chill"
+base_species_id = 649
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://k1x7633g4hsa"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bk8slwvod11ic" path="res://graphics/items/POKETOY.png" id="1_p4odc"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 131
+item_name = "Pokéseñuelo"
+plural_name = "Pokéseñuelos"
+item_description = "Usar para huir de cualquier batalla con un Pokémon salvaje."
+price = 100
+pocket = 6
+item_type = 4
+fling_power = 30
+icon = ExtResource("1_p4odc")
+effect = 7

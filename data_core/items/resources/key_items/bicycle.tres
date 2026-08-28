@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://if7xi1sgufqh"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 706
+item_name = "Bicicleta"
+plural_name = "Bicicletas"
+item_description = "Una bicicleta plegable que es más rápida que las zapatillas."
+pocket = 8
+importance = true
+not_consumed = true

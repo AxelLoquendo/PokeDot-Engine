@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://srx7y47oswbv"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 449
+item_name = "Roca suave"
+plural_name = "Roca suaves"
+item_description = "Extiende la duración de Tormenta arena si es usada por portador."
+price = 8000
+item_type = 4
+hold_effect = 56
+fling_power = 10

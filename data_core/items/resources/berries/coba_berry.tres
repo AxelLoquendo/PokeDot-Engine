@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://g6jsald8xvch"]
+
+[ext_resource type="Texture2D" uid="uid://dgrfxa3j58nin" path="res://graphics/items/COBABERRY.png" id="1_f7cw5"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 558
+item_name = "Baya Kouba"
+plural_name = "Bayas Kouba"
+item_description = "Un objeto que debilita un movimiento de tipo Volador si es débil a él."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 80
+fling_power = 10
+icon = ExtResource("1_f7cw5")

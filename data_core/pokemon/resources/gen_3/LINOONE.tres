@@ -22,6 +22,14 @@ target_species = 862
 use_advanced_rules = true
 conditions = Array[ExtResource("2_ytp3j")]([SubResource("Resource_cond0"), SubResource("Resource_cond1")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("5_55v04")
+species_id = 988
+form_id = &"linoone_galar"
+display_name = "Linoone Galar"
+base_species_id = 264
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 28
@@ -148,6 +156,7 @@ description = "En línea recta corre a algo más de 100 km/h, pero no es tan há
 height = 5
 weight = 325
 body_color = 8
+forms = Array[ExtResource("5_55v04")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22")])
 teachable_moves = Array[int]([15, 29, 34, 38, 42, 46, 57, 58, 59, 63, 70, 85, 86, 87, 91, 92, 102, 104, 111, 129, 156, 162, 164, 168, 173, 182, 189, 196, 203, 204, 205, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 247, 249, 250, 263, 270, 271, 290, 304, 341, 343, 351, 352, 363, 374, 387, 402, 416, 421, 441, 445, 447, 451, 468, 496, 497, 514, 526, 541, 583, 590, 638, 661])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])

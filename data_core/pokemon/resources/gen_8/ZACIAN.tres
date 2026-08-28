@@ -7,8 +7,10 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_p4bgp")
-form_id = &"crowned"
-display_name = "Rey de las Espadas"
+species_id = 1227
+form_id = &"zacian_crowned"
+display_name = "Zacian Crowned"
+base_species_id = 888
 override_types = true
 type_1 = 19
 type_2 = 9
@@ -19,7 +21,7 @@ base_defense = 115
 base_speed = 148
 base_sp_attack = 80
 base_sp_defense = 115
-tags = PackedStringArray("crowned")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

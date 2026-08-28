@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cioc86phxr6tb"]
+
+[ext_resource type="Texture2D" uid="uid://dne77sdt0r1co" path="res://graphics/items/BABIRIBERRY.png" id="1_7oija"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 565
+item_name = "Baya Baribá"
+plural_name = "Bayas Baribá"
+item_description = "Un objeto que debilita un movimiento de tipo Acero si es débil a él."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 80
+fling_power = 10
+icon = ExtResource("1_7oija")

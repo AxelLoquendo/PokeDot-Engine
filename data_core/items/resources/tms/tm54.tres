@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bxginc10f4muj"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 635
+item_name = "TM54"
+plural_name = "TM54s"
+item_description = "Máquina Técnica. Enseña un movimiento a un Pokémon. (TM54)"
+price = 3000
+pocket = 4
+item_type = 5

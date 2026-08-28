@@ -55,7 +55,7 @@ func _rebuild() -> void:
 	_add_spin("hold_effect_param", "Parámetro del efecto", current_item.hold_effect_param, 0, 999999999, 1)
 	_add_enum("battle_usage", "Uso en batalla", Items.BattleUsage.keys(), Items.BattleUsage.values(), current_item.battle_usage)
 	_add_spin("fling_power", "Potencia de Lanzamiento", current_item.fling_power, 0, 999, 1)
-	_add_enum("effect", "Efecto real", Items.ItemEffect.keys(), Items.ItemEffect.values(), current_item.effect)
+	_add_enum("effect", "Efecto real", Items.EffectItem.keys(), Items.EffectItem.values(), current_item.effect)
 
 	_add_heading("🏷️ Banderas")
 	_add_check("importance", "Ítem clave / importante", current_item.importance)
@@ -84,7 +84,7 @@ func apply_to_item(item: ItemData) -> bool:
 	item.not_consumed = _check_value("not_consumed", item.not_consumed)
 	if resource_fields.has("icon"):
 		item.icon = (resource_fields["icon"] as EditorResourcePicker).edited_resource as Texture2D
-	item.effect = _enum_value("effect", item.effect) as Items.ItemEffect
+	item.effect = _enum_value("effect", item.effect) as Items.EffectItem
 	return true
 
 func _clear_children() -> void:
@@ -131,15 +131,16 @@ func _add_spin(id: String, label_text: String, value: int, minimum: int, maximum
 	fields[id] = spin
 	add_child(row)
 
-func _add_enum(id: String, label_text: String, keys: Array, values: Array, value: int) -> void:
+func _add_enum(id: String, label_text: String, keys: Array, values: Array, value: Variant) -> void:
 	var row: HBoxContainer = _row(label_text)
 	var option: OptionButton = OptionButton.new()
 	option.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var numeric_value: int = 0 if value is Dictionary else int(value)
 	for index: int in range(values.size()):
 		option.add_item(_enum_label(str(keys[index])), int(values[index]))
-	if option.get_item_index(value) < 0:
-		option.add_item("[%d] DESCONOCIDO" % value, value)
-	option.select(option.get_item_index(value))
+	if option.get_item_index(numeric_value) < 0:
+		option.add_item("SIN EFECTO" if numeric_value == 0 else "[%d] DESCONOCIDO" % numeric_value, numeric_value)
+	option.select(option.get_item_index(numeric_value))
 	option.item_selected.connect(_on_changed)
 	row.add_child(option)
 	enum_fields[id] = option
@@ -196,8 +197,9 @@ func _spin_value(id: String, fallback: int) -> int:
 func _check_value(id: String, fallback: bool) -> bool:
 	return (fields[id] as CheckBox).button_pressed if fields.has(id) else fallback
 
-func _enum_value(id: String, fallback: int) -> int:
-	return (enum_fields[id] as OptionButton).get_selected_id() if enum_fields.has(id) else fallback
+func _enum_value(id: String, fallback: Variant) -> int:
+	var numeric_fallback: int = 0 if fallback is Dictionary else int(fallback)
+	return (enum_fields[id] as OptionButton).get_selected_id() if enum_fields.has(id) else numeric_fallback
 
 func _enum_label(raw: String) -> String:
 	var value: String = raw

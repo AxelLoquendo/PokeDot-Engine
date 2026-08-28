@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_2tmwn")
+species_id = 1567
+form_id = &"scovillain_mega"
+display_name = "Scovillain Mega"
+base_species_id = 1340
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 43
@@ -107,6 +115,7 @@ description = "The red head converts spicy chemicals into fire energy and blasts
 height = 9
 weight = 150
 body_color = 3
+forms = Array[ExtResource("2_2tmwn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([36, 53, 63, 76, 126, 156, 162, 164, 168, 182, 184, 201, 202, 203, 214, 241, 242, 261, 263, 270, 283, 315, 331, 345, 402, 412, 416, 424, 428, 437, 447, 580, 661, 731, 735, 736, 779, 811, 843])
 ability_1 = 34

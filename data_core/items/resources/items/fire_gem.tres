@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bwl8gxse2r8tt"]
+
+[ext_resource type="Texture2D" uid="uid://dfuae1agqvi5x" path="res://graphics/items/FIREGEM.png" id="1_738q8"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 340
+item_name = "Gema fuego"
+plural_name = "Gema fuegos"
+item_description = "Potencia un ataque de Tipo Fuego."
+item_type = 4
+hold_effect = 94
+icon = ExtResource("1_738q8")

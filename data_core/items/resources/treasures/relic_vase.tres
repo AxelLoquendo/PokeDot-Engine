@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://thvyd3uqnrti"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 160
+item_name = "Ánfora antigua"
+plural_name = "Ánforas antiguas"
+item_description = "Un jarrón hecho hace mucho tiempo. Se vende a un alto precio."
+price = 100000
+pocket = 14
+item_type = 4
+fling_power = 30

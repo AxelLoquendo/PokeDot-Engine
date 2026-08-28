@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bv21pyldrtvxq"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dhh4qrsbpby4c" path="res://graphics/items/LUCKYPUNCH.png" id="1_lbnt2"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 395
+item_name = "Puño suerte"
+plural_name = "Puños suerte"
+item_description = "Un objeto que se sostiene y que aumenta la tasa de golpes críticos de Chansey."
+price = 1000
+item_type = 4
+hold_effect = 45
+fling_power = 40
+icon = ExtResource("1_lbnt2")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cpqkg11osc66n"]
+
+[ext_resource type="Texture2D" uid="uid://cor4g3jd141e5" path="res://graphics/items/IAPAPABERRY.png" id="1_4i8cl"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 528
+item_name = "Baya Pabaya"
+plural_name = "Bayas Pabaya"
+item_description = "Restaura PS, pero puede causar confusión."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 14
+fling_power = 10
+icon = ExtResource("1_4i8cl")

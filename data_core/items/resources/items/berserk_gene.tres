@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://by4exvu3yr5q5"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://by4eggdu8laww" path="res://graphics/items/BERSERKGENE.png" id="1_xwegv"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 798
+item_name = "Gen loco"
+plural_name = "Genes locos"
+item_description = "Aumenta drásticamente el Ataque, pero causa confusión duradera."
+price = 20
+item_type = 4
+hold_effect = 129
+fling_power = 10
+icon = ExtResource("1_xwegv")

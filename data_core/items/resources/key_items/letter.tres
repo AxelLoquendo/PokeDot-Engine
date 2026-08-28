@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://lbfapcv3st0t"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 732
+item_name = "Carta a Máximo"
+plural_name = "Carta a Máximos"
+item_description = "Una carta de Máximo del Presidente de Devon S.A."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

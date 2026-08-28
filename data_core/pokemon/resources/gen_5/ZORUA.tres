@@ -17,6 +17,14 @@ target_species = 571
 use_advanced_rules = true
 conditions = Array[ExtResource("2_6yl5f")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_amj2h")
+species_id = 1002
+form_id = &"zorua_hisui"
+display_name = "Zorua Hisui"
+base_species_id = 570
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 10
@@ -127,6 +135,7 @@ description = "Adopta la apariencia de su enemigo para engañarlo vilmente y apr
 height = 7
 weight = 125
 body_color = 7
+forms = Array[ExtResource("4_amj2h")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([14, 15, 36, 46, 91, 92, 97, 101, 104, 109, 129, 156, 164, 168, 173, 180, 182, 184, 188, 203, 207, 213, 214, 216, 218, 220, 227, 237, 240, 241, 244, 247, 253, 259, 263, 269, 270, 271, 279, 282, 286, 289, 290, 304, 313, 332, 340, 343, 347, 369, 371, 372, 373, 374, 399, 417, 421, 447, 468, 492, 496, 506, 510, 514, 555, 590, 734, 735, 736, 779])
 egg_moves = Array[int]([68, 197, 262, 289, 326, 383, 389, 399, 445])

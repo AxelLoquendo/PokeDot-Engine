@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://brdbpcqmpl5fk"]
+
+[ext_resource type="Texture2D" uid="uid://ddrqab44whtt1" path="res://graphics/items/EVIOLITE.png" id="1_cftnf"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 494
+item_name = "Mineral evolutivo"
+plural_name = "Mineral evolutivos"
+item_description = "Aumenta Defensa y Defensa especial si puede evolucionar."
+price = 50000
+item_type = 4
+hold_effect = 91
+hold_effect_param = 50
+fling_power = 40
+icon = ExtResource("1_cftnf")

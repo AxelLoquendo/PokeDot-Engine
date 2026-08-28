@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://brnnjxjj04tp2"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 54
+item_name = "Ceniza sagrada"
+plural_name = "Cenizas sagradas"
+item_description = "Revive y restaura completamente a todos los Pokémon."
+price = 50000
+pocket = 1
+item_type = 1
+fling_power = 30

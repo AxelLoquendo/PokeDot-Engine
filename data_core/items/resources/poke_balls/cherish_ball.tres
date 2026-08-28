@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://0y1qek63wvgu"]
+
+[ext_resource type="Texture2D" uid="uid://86t6xnjhl3jd" path="res://graphics/items/CHERISHBALL.png" id="1_gtaxs"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 27
+secondary_id = 27
+item_name = "Gloria Ball"
+plural_name = "Gloria Balls"
+item_description = "Poké Ball rara que se creó para conmemorar algo."
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_gtaxs")
+effect = 8

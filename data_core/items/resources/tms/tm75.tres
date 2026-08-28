@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bpjsaxg710h3s"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 656
+item_name = "TM75"
+plural_name = "TM75s"
+item_description = "Máquina Técnica. Enseña un movimiento a un Pokémon. (TM75)"
+price = 3000
+pocket = 4
+item_type = 5

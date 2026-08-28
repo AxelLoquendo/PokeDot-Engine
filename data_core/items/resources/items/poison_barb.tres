@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://41esjefrgur4"]
+
+[ext_resource type="Texture2D" uid="uid://bufkec0wxukqv" path="res://graphics/items/POISONBARB.png" id="1_epkff"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 432
+item_name = "Flecha venenosa"
+plural_name = "Flecha venenosas"
+item_description = "Objeto que potencia los movimientos de tipo Veneno."
+item_type = 4
+hold_effect = 43
+fling_power = 70
+icon = ExtResource("1_epkff")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://7j8oocf782oj"]
+
+[ext_resource type="Texture2D" uid="uid://do5wlelq6rsk0" path="res://graphics/items/HONDEWBERRY.png" id="1_gd61e"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 537
+item_name = "Baya Meluce"
+plural_name = "Bayas Meluce"
+item_description = "Hace a un Pokémon más amistoso pero baja el Ataque especial."
+price = 80
+pocket = 7
+item_type = 1
+fling_power = 10
+icon = ExtResource("1_gd61e")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dd64l3so1mj6x"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 734
+item_name = "Gafas aislantes"
+plural_name = "Gafas aislantes"
+item_description = "Gafas prácticas que protegen los ojos de tormentas del desierto."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bww6hya0se3pc"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dous1i6w4b5m1" path="res://graphics/items/RESISTMOCHI.png" id="1_o4p3b"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 808
+item_name = "Mochi aguante"
+plural_name = "Mochis aguante"
+item_description = "Aumenta puntos de esfuerzo de Defensa."
+price = 500
+item_type = 1
+fling_power = 30
+icon = ExtResource("1_o4p3b")

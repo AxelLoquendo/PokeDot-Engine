@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dw3upa31tx1ip"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bjeab18qfn8gp" path="res://graphics/items/DRAGONTERASHARD.png" id="1_vu0fj"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 776
+item_name = "Teralito dragón"
+plural_name = "Teralitos dragón"
+item_description = "Estos fragmentos pueden formarse cuando un Pokémon Tera se desmaya."
+item_type = 4
+icon = ExtResource("1_vu0fj")

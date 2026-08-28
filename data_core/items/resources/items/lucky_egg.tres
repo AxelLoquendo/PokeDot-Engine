@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dc5dksnx8ei4x"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cgqdthuorku5a" path="res://graphics/items/LUCKYEGG.png" id="1_s5ka5"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 470
+item_name = "Huevo suerte"
+plural_name = "Huevos suerte"
+item_description = "Aumenta ligeramente los puntos de experiencia del Pokémon que lo lleva."
+price = 10000
+item_type = 4
+hold_effect = 39
+fling_power = 30
+icon = ExtResource("1_s5ka5")

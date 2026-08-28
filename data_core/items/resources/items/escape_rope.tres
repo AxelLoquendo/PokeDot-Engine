@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bnuv2rhite0us"]
+
+[ext_resource type="Texture2D" uid="uid://dyy47n6cy5bi7" path="res://graphics/items/ESCAPEROPE.png" id="1_en218"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 120
+item_name = "Cuerda huida"
+plural_name = "Cuerdas huida"
+item_description = "Úsala para escapar instantáneamente de cuevas o calabozos."
+fling_power = 30
+importance = true
+icon = ExtResource("1_en218")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cvwhaf43c4rtj"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bw00m42t8ppo8" path="res://graphics/items/FRESHSTARTMOCHI.png" id="1_nycn2"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 812
+item_name = "Mochi reinicio"
+plural_name = "Mochis reinicio"
+item_description = "Un objeto que reinicia todos los puntos base de un Pokémon."
+price = 300
+item_type = 1
+fling_power = 30
+icon = ExtResource("1_nycn2")

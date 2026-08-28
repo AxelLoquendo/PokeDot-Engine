@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dan81spo6mnxg"]
+
+[ext_resource type="Texture2D" uid="uid://bgjboyrumug45" path="res://graphics/items/LURE.png" id="1_8qiek"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 119
+item_name = "Colonia máxima"
+plural_name = "Colonias máximas"
+item_description = "Hace a los Pokémon más propensos durante 250 pasos."
+price = 900
+item_type = 4
+hold_effect_param = 250
+fling_power = 30
+icon = ExtResource("1_8qiek")

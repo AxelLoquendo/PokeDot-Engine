@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c0im22xfnbxq5"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cb0fc32vr2n3s" path="res://graphics/items/ABILITYCAPSULE.png" id="1_k8s0y"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 79
+item_name = "Cápsula habilidad"
+plural_name = "Cápsulas habilidad"
+item_description = "Cambia la habilidad de un Pokémon."
+price = 100000
+item_type = 1
+icon = ExtResource("1_k8s0y")

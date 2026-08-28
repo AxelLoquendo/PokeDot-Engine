@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dfkdewxen5rfn"]
+
+[ext_resource type="Texture2D" uid="uid://38tpwxy4c8cu" path="res://graphics/items/CLEANSETAG.png" id="1_bawna"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 467
+item_name = "Amuleto"
+plural_name = "Amuletos"
+item_description = "Si se lleva equipado, repele bastante a los Pokémon salvajes."
+price = 5000
+item_type = 4
+hold_effect = 32
+fling_power = 30
+icon = ExtResource("1_bawna")

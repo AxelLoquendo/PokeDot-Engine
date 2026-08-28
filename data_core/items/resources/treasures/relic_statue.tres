@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cqyqq26bj24bg"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 162
+item_name = "Efigie antigua"
+plural_name = "Efigies antiguas"
+item_description = "Una estatua antigua. Se vende a un alto precio."
+price = 400000
+pocket = 14
+item_type = 4
+fling_power = 30

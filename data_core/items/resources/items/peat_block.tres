@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b23mmrsn7o8g6"]
+
+[ext_resource type="Texture2D" uid="uid://brxgduqknli8v" path="res://graphics/items/PEATBLOCK.png" id="1_fbi0f"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 797
+item_name = "Bloque de turba"
+plural_name = "Bloques de turba"
+item_description = "Un bloque de material que hace que algunos Pokémon evolucionen."
+price = 10000
+item_type = 1
+fling_power = 30
+icon = ExtResource("1_fbi0f")

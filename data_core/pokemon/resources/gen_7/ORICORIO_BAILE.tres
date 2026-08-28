@@ -7,30 +7,36 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_b37sd")
-form_id = &"pom_pom"
-display_name = "Pom-Pom"
+species_id = 1169
+form_id = &"oricorio_pom_pom"
+display_name = "Oricorio Pom Pom"
+base_species_id = 741
 override_types = true
 type_1 = 14
 type_2 = 3
-tags = PackedStringArray("style")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_b37sd")
-form_id = &"pau"
-display_name = "Pa'u"
+species_id = 1170
+form_id = &"oricorio_pau"
+display_name = "Oricorio Pau"
+base_species_id = 741
 override_types = true
 type_1 = 15
 type_2 = 3
-tags = PackedStringArray("style")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_b37sd")
-form_id = &"sensu"
-display_name = "Sensu"
+species_id = 1171
+form_id = &"oricorio_sensu"
+display_name = "Oricorio Sensu"
+base_species_id = 741
 override_types = true
 type_1 = 8
 type_2 = 3
-tags = PackedStringArray("style")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

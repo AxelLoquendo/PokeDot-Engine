@@ -17,6 +17,14 @@ target_species = 78
 use_advanced_rules = true
 conditions = Array[ExtResource("2_1gcqw")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_sxxlc")
+species_id = 975
+form_id = &"ponyta_galar"
+display_name = "Ponyta Galar"
+base_species_id = 77
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -110,6 +118,7 @@ description = "Cuando nace, apenas puede tenerse en pie. Pero va fortaleciendo l
 height = 10
 weight = 300
 body_color = 2
+forms = Array[ExtResource("4_sxxlc")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([29, 32, 34, 36, 38, 53, 67, 70, 76, 83, 92, 97, 99, 102, 104, 115, 117, 126, 129, 130, 156, 164, 173, 174, 182, 203, 204, 207, 213, 214, 216, 218, 231, 237, 241, 257, 261, 263, 290, 315, 340, 363, 394, 445, 488, 496, 497, 502, 510, 528, 583, 590, 595, 630, 632])
 egg_moves = Array[int]([24, 32, 37, 38, 67, 95, 98, 172, 204, 234, 445, 502, 630])

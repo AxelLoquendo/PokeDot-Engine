@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_3ikgh")
+species_id = 918
+form_id = &"aerodactyl_mega"
+display_name = "Aerodactyl Mega"
+base_species_id = 142
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 44
@@ -113,6 +121,7 @@ description = "Se regeneró a partir de material genético de un dinosaurio enco
 height = 18
 weight = 590
 body_color = 6
+forms = Array[ExtResource("2_3ikgh")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([13, 18, 19, 29, 36, 38, 46, 53, 63, 70, 82, 89, 92, 97, 99, 102, 104, 115, 117, 126, 129, 143, 156, 157, 164, 168, 173, 174, 182, 184, 197, 201, 203, 207, 211, 213, 214, 216, 218, 225, 231, 237, 239, 240, 241, 242, 246, 249, 257, 259, 263, 269, 290, 314, 317, 332, 337, 349, 350, 355, 363, 366, 371, 372, 397, 401, 406, 414, 416, 422, 423, 424, 432, 442, 444, 445, 446, 466, 468, 479, 496, 507, 510, 523, 542, 590, 636, 656, 660, 728, 742])
 egg_moves = Array[int]([18, 174, 193, 211, 225, 228, 355, 366, 372, 469])

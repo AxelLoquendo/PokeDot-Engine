@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bi34piry5inwy"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 190
+item_name = "Bonguri amarillo"
+plural_name = "Bonguri amarillos"
+item_description = "Un Bonguri amarillo. Tiene un aroma revitalizante."
+item_type = 4

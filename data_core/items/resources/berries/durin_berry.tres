@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b2dh2n5thaw8f"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cjhxk0gpnchp" path="res://graphics/items/DURINBERRY.png" id="1_scxo2"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 547
+item_name = "Baya Rudion"
+plural_name = "Bayas Rudion"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Rudion."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_scxo2")

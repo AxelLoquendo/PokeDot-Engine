@@ -5,6 +5,61 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ff5fe")
+species_id = 1064
+form_id = &"rotom_heat"
+display_name = "Rotom Heat"
+base_species_id = 479
+override_types = true
+type_1 = 11
+type_2 = 8
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_ff5fe")
+species_id = 1065
+form_id = &"rotom_wash"
+display_name = "Rotom Wash"
+base_species_id = 479
+override_types = true
+type_1 = 12
+type_2 = 8
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_ff5fe")
+species_id = 1066
+form_id = &"rotom_frost"
+display_name = "Rotom Frost"
+base_species_id = 479
+override_types = true
+type_1 = 16
+type_2 = 8
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_ff5fe")
+species_id = 1067
+form_id = &"rotom_fan"
+display_name = "Rotom Fan"
+base_species_id = 479
+override_types = true
+type_1 = 3
+type_2 = 8
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_ff5fe")
+species_id = 1068
+form_id = &"rotom_mow"
+display_name = "Rotom Mow"
+base_species_id = 479
+override_types = true
+type_1 = 13
+type_2 = 8
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 104
@@ -115,6 +170,7 @@ category_name = "Plasma"
 description = "Desde hace mucho tiempo se estudia su singular motor como fuente de energía motriz."
 height = 3
 weight = 3
+forms = Array[ExtResource("2_ff5fe")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([85, 86, 87, 92, 101, 104, 109, 113, 115, 129, 138, 148, 156, 164, 168, 173, 180, 182, 189, 203, 207, 214, 216, 218, 220, 237, 240, 241, 244, 247, 253, 261, 263, 268, 270, 271, 289, 290, 304, 324, 351, 363, 389, 399, 417, 432, 451, 466, 477, 486, 492, 496, 500, 502, 506, 521, 527, 590, 598, 604, 804, 809, 851])
 ability_1 = 26

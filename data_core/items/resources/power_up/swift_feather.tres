@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ccwpaqhnp71t7"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 78
+item_name = "Pluma ímpetu"
+plural_name = "Plumas ímpetu"
+item_description = "Aumenta puntos de esfuerzo de Velocidad."
+price = 300
+pocket = 18
+item_type = 1
+fling_power = 20

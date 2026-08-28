@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c75yyokbc67ly"]
+
+[ext_resource type="Texture2D" uid="uid://c2todl00o2472" path="res://graphics/items/FLAMEORB.png" id="1_78llp"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 445
+item_name = "Llamasfera"
+plural_name = "Llamasferas"
+item_description = "Un orbe extraño que inflige una quemadura al portador en batalla."
+price = 15000
+item_type = 4
+hold_effect = 68
+fling_power = 30
+icon = ExtResource("1_78llp")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cxfy4wwgys3js"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 33
+item_name = "Revivir"
+plural_name = "Revivir"
+item_description = "Revive a un Pokémon derrotado con 50% de sus PS."
+price = 2000
+pocket = 1
+item_type = 1
+battle_usage = 3
+fling_power = 30
+effect = 9

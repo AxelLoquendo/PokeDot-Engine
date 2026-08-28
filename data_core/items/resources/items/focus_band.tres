@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bh23i8rlng8n5"]
+
+[ext_resource type="Texture2D" uid="uid://crymynhw32afk" path="res://graphics/items/FOCUSBAND.png" id="1_goe48"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 469
+item_name = "Cinta aguante"
+plural_name = "Cinta aguantes"
+item_description = "A veces resiste golpes que debilitarían al al Pokémon."
+price = 10000
+item_type = 4
+hold_effect = 38
+hold_effect_param = 10
+fling_power = 10
+icon = ExtResource("1_goe48")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bgtj3vnmvwobq"]
+
+[ext_resource type="Texture2D" uid="uid://cof7gw4ejwyfr" path="res://graphics/items/GRISEOUSCORE.png" id="1_ii0t8"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 793
+item_name = "Gran griseosfera"
+plural_name = "Gran griseosferas"
+item_description = "Una gema grande y brillante que permite a Giratina cambiar de forma."
+item_type = 4
+hold_effect = 78
+hold_effect_param = 20
+fling_power = 60
+icon = ExtResource("1_ii0t8")

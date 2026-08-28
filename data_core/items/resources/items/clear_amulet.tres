@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://da4k1jlt1fhms"]
+
+[ext_resource type="Texture2D" uid="uid://dctbpxdyldnai" path="res://graphics/items/CLEARAMULET.png" id="1_bktp7"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 759
+item_name = "Amuleto puro"
+plural_name = "Amuleto puros"
+item_description = "Previene la reducción de estadísticas para el portador de este objeto."
+price = 30000
+item_type = 4
+hold_effect = 122
+fling_power = 30
+icon = ExtResource("1_bktp7")

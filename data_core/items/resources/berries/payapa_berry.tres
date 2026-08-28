@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cny0ooeclvfwh"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://csbpt4lum58ir" path="res://graphics/items/PAYAPABERRY.png" id="1_wyvu7"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 559
+item_name = "Baya Payapa"
+plural_name = "Bayas Payapa"
+item_description = "Un objeto que debilita un movimiento de tipo Psíquico si es débil a él."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 80
+fling_power = 10
+icon = ExtResource("1_wyvu7")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://huk27gu638mw"]
+
+[ext_resource type="Texture2D" uid="uid://u1xwbgsqoe7o" path="res://graphics/items/METALALLOY.png" id="1_5j8i5"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 814
+item_name = "Metal compuesto"
+plural_name = "Metales compuestos"
+item_description = "Un metal peculiar que hace que ciertos Pokémon evolucionen."
+price = 6000
+item_type = 1
+icon = ExtResource("1_5j8i5")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dxobb2hp4ehsu"]
+
+[ext_resource type="Texture2D" uid="uid://dss58nca587tr" path="res://graphics/items/GRASSMEMORY.png" id="1_flggd"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 274
+item_name = "Disco planta"
+plural_name = "Discos planta"
+item_description = "Un disco con datos del tipo Planta. Cambia el tipo de Silvally."
+price = 1000
+item_type = 4
+hold_effect = 113
+fling_power = 50
+icon = ExtResource("1_flggd")

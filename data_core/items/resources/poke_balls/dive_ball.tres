@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://0uajj2tfubic"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bk0kxpcbomgwr" path="res://graphics/items/DIVEBALL.png" id="1_or68v"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 9
+secondary_id = 9
+item_name = "Buceo Ball"
+plural_name = "Buceo Balls"
+item_description = "Funciona mejor con Pokémon del fondo del mar."
+price = 1000
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_or68v")
+effect = 8

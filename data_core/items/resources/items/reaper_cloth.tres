@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bqdlusfh5gdkx"]
+
+[ext_resource type="Texture2D" uid="uid://cnes3h6q2ron3" path="res://graphics/items/REAPERCLOTH.png" id="1_agsrj"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 233
+item_name = "Tela terrible"
+plural_name = "Telas terribles"
+item_description = "Amada por cierto Pokémon. Empapada en energía espiritual."
+price = 7
+item_type = 1
+fling_power = 10
+icon = ExtResource("1_agsrj")

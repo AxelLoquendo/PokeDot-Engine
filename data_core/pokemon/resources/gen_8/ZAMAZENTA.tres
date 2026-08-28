@@ -7,8 +7,10 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_usgil")
-form_id = &"crowned"
-display_name = "Rey de los Escudos"
+species_id = 1228
+form_id = &"zamazenta_crowned"
+display_name = "Zamazenta Crowned"
+base_species_id = 889
 override_types = true
 type_1 = 2
 type_2 = 9
@@ -19,7 +21,7 @@ base_defense = 140
 base_speed = 128
 base_sp_attack = 80
 base_sp_defense = 140
-tags = PackedStringArray("crowned")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

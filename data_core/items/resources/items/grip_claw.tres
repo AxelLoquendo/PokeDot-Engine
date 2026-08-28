@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cdgugd5k0ii6o"]
+
+[ext_resource type="Texture2D" uid="uid://5qji7dwl0x8q" path="res://graphics/items/GRIPCLAW.png" id="1_404h5"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 488
+item_name = "Garra garfio"
+plural_name = "Garra garfios"
+item_description = "Ataques de atadura de portador duran 7 turnos."
+price = 10000
+item_type = 4
+hold_effect = 52
+fling_power = 90
+icon = ExtResource("1_404h5")

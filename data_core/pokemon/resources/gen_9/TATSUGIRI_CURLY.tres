@@ -7,15 +7,43 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3tx01")
-form_id = &"droopy"
-display_name = "Tatsugiri"
-tags = PackedStringArray("form")
+species_id = 1368
+form_id = &"tatsugiri_droopy"
+display_name = "Tatsugiri Droopy"
+base_species_id = 1367
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_3tx01")
-form_id = &"stretchy"
-display_name = "Tatsugiri"
-tags = PackedStringArray("form")
+species_id = 1369
+form_id = &"tatsugiri_stretchy"
+display_name = "Tatsugiri Stretchy"
+base_species_id = 1367
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_3tx01")
+species_id = 1569
+form_id = &"tatsugiri_curly_mega"
+display_name = "Tatsugiri Curly Mega"
+base_species_id = 1367
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_3"]
+script = ExtResource("2_3tx01")
+species_id = 1570
+form_id = &"tatsugiri_droopy_mega"
+display_name = "Tatsugiri Droopy Mega"
+base_species_id = 1367
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_4"]
+script = ExtResource("2_3tx01")
+species_id = 1571
+form_id = &"tatsugiri_stretchy_mega"
+display_name = "Tatsugiri Stretchy Mega"
+base_species_id = 1367
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -78,7 +106,7 @@ move = 406
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 978
-species_name = "Tatsugiri"
+species_name = "Tatsugiri-Curly"
 species_id = 1367
 base_hp = 68
 base_attack = 50
@@ -98,7 +126,7 @@ description = "This is a small dragon Pokémon. It lives inside the mouth of Don
 height = 3
 weight = 80
 body_color = 9
-forms = Array[ExtResource("2_3tx01")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
+forms = Array[ExtResource("2_3tx01")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([36, 56, 57, 63, 156, 164, 182, 196, 200, 203, 214, 226, 240, 250, 263, 269, 270, 330, 349, 352, 406, 416, 417, 434, 642, 779, 812, 841])
 egg_moves = Array[int]([68, 226, 229])

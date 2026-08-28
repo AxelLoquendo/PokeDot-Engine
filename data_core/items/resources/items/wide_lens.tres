@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://df3dn1pb6cuhv"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 474
+item_name = "Lupa"
+plural_name = "Lupas"
+item_description = "Aumenta ligeramente precisión de los movimientos."
+price = 20000
+item_type = 4
+hold_effect = 63
+hold_effect_param = 10
+fling_power = 10

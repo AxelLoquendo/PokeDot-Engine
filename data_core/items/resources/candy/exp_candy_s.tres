@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://4roq0b8xba0b"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bdx7h7q61kblt" path="res://graphics/items/EXPCANDYS.png" id="1_ylsge"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 104
+item_name = "Caramelo exp. S"
+plural_name = "Caramelos exp. S"
+item_description = "Otorga poca experiencia a un Pokémon."
+price = 240
+pocket = 16
+item_type = 1
+hold_effect_param = 800
+fling_power = 30
+icon = ExtResource("1_ylsge")

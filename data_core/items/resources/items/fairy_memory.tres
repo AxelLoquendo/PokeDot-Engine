@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cxvo2si5iabuu"]
+
+[ext_resource type="Texture2D" uid="uid://bm0orv4hhyf4h" path="res://graphics/items/FAIRYMEMORY.png" id="1_g4cr3"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 287
+item_name = "Disco hada"
+plural_name = "Discos hada"
+item_description = "Un disco con datos del tipo Hada. Cambia el tipo de Silvally."
+price = 1000
+item_type = 4
+hold_effect = 113
+fling_power = 50
+icon = ExtResource("1_g4cr3")

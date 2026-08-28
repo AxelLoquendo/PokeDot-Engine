@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bj12iahb5aw5c"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://jkcip7j8fldd" path="res://graphics/items/PECHABERRY.png" id="1_muhd7"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 516
+item_name = "Baya Meloc"
+plural_name = "Bayas Meloc"
+item_description = "Un objeto que se puede tener y que cura el envenenamiento en batalla."
+price = 80
+pocket = 7
+item_type = 1
+hold_effect = 4
+battle_usage = 2
+fling_power = 10
+icon = ExtResource("1_muhd7")
+effect = 2

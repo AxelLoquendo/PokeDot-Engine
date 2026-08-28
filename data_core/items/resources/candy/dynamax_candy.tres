@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cm7w1ae58q85r"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cvu6m4x1o1wsu" path="res://graphics/items/DYNAMAXCANDY.png" id="1_mci84"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 108
+item_name = "Caramelo Dynamax"
+plural_name = "Caramelos Dynamax"
+item_description = "Sube el nivel Dynamax de un Pokémon."
+pocket = 16
+item_type = 1
+fling_power = 30
+icon = ExtResource("1_mci84")

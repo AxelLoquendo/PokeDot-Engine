@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://doi152myu287i"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://djucdnvxv2f3n" path="res://graphics/items/PROTECTOR.png" id="1_mju0x"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 229
+item_name = "Protector"
+plural_name = "Protectores"
+item_description = "Amado por cierto Pokémon. Es rígido y pesado."
+price = 7
+item_type = 1
+fling_power = 80
+icon = ExtResource("1_mju0x")

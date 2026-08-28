@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dd1k2d5nahr0f"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 755
+item_name = "Té"
+plural_name = "Tés"
+item_description = "Un té que quita la sed preparado por una anciana."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

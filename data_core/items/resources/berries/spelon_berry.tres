@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ccdluysvg2h72"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://em5rq7y5rq4x" path="res://graphics/items/SPELONBERRY.png" id="1_uwpcn"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 544
+item_name = "Baya Wikano"
+plural_name = "Bayas Wikano"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Wikano."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_uwpcn")

@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_psohr")
+species_id = 931
+form_id = &"sableye_mega"
+display_name = "Sableye Mega"
+base_species_id = 302
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 10
@@ -132,6 +140,7 @@ description = "Se oculta en cavernas oscuras. De tanto comer gemas, sus ojos son
 height = 5
 weight = 110
 body_color = 6
+forms = Array[ExtResource("2_psohr")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 8, 9, 15, 25, 29, 34, 36, 38, 60, 63, 67, 68, 69, 86, 91, 92, 94, 101, 102, 104, 109, 113, 115, 118, 138, 148, 156, 164, 168, 171, 173, 180, 182, 189, 196, 202, 203, 207, 210, 213, 214, 216, 218, 220, 223, 227, 232, 237, 240, 241, 244, 247, 249, 259, 261, 263, 264, 269, 270, 271, 272, 277, 280, 282, 285, 286, 289, 290, 317, 324, 332, 339, 341, 347, 351, 352, 356, 360, 363, 371, 373, 374, 389, 398, 399, 404, 408, 409, 412, 416, 417, 421, 428, 445, 466, 468, 472, 477, 490, 492, 496, 502, 506, 510, 511, 514, 555, 566, 590, 605, 612, 638, 734, 736, 737, 779])
 egg_moves = Array[int]([105, 212, 236, 244, 259, 260, 271, 286, 364, 368, 389, 417, 445])

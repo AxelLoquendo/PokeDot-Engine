@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_wbotn")
+species_id = 1535
+form_id = &"scrafty_mega"
+display_name = "Scrafty Mega"
+base_species_id = 560
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 29
@@ -117,6 +125,7 @@ category_name = "Gamberro"
 description = "Se protege de los ataques con la muda de su piel mientras reparte patadas. Cuanto mayor es su cresta, más se le respeta."
 height = 11
 weight = 300
+forms = Array[ExtResource("2_wbotn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([5, 7, 8, 9, 14, 25, 34, 36, 38, 46, 63, 67, 70, 91, 92, 104, 118, 133, 156, 157, 162, 164, 168, 173, 174, 179, 180, 182, 184, 188, 200, 203, 207, 213, 214, 216, 218, 227, 231, 237, 240, 241, 242, 249, 251, 253, 259, 263, 264, 269, 270, 279, 280, 282, 283, 289, 290, 313, 317, 334, 337, 339, 349, 370, 371, 372, 374, 398, 399, 406, 409, 411, 416, 428, 442, 444, 447, 479, 490, 491, 492, 496, 510, 514, 525, 526, 530, 555, 590, 612, 638, 736, 739, 779, 811, 846])
 egg_moves = Array[int]([68, 197, 252, 501])

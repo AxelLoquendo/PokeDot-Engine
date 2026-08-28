@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bycdn77gkxhhh"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://drjvexsts2mue" path="res://graphics/items/MASTERPIECETEACUP.png" id="1_rtkg2"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 802
+item_name = "Cuenco exquisito"
+plural_name = "Cuencos exquisitos"
+item_description = "Una taza astillada que hace que ciertos Pokémon evolucionen."
+price = 38000
+item_type = 1
+fling_power = 80
+icon = ExtResource("1_rtkg2")

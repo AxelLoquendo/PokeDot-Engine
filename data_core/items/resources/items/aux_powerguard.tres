@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b4crkqjn0wksg"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dh473w22v5axp" path="res://graphics/items/AUXPOWERGUARD.png" id="1_pf01g"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 823
+item_name = "Gragea multi"
+plural_name = "Grageas multi"
+item_description = "Un objeto útil en la aventura."
+price = 1200
+item_type = 4
+icon = ExtResource("1_pf01g")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://chwamp3w0lj26"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 52
+item_name = "Elixir máximo"
+plural_name = "Elixires máximos"
+item_description = "Restaura al 100% los PP de ataques de un Pokémon."
+price = 4500
+pocket = 1
+item_type = 1
+hold_effect_param = 255
+fling_power = 30
+effect = 10

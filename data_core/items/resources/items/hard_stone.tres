@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://8qxjygur3usl"]
+
+[ext_resource type="Texture2D" uid="uid://2e7qyrhoqa1q" path="res://graphics/items/HARDSTONE.png" id="1_gq734"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 437
+item_name = "Piedra dura"
+plural_name = "Piedra duras"
+item_description = "Objeto que potencia los movimientos de tipo Roca."
+item_type = 4
+hold_effect = 43
+fling_power = 100
+icon = ExtResource("1_gq734")

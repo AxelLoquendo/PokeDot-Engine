@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ci27c660yqocs"]
+
+[ext_resource type="Texture2D" uid="uid://2a4knetxmfm5" path="res://graphics/items/LINKINGCORD.png" id="1_d6uow"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 796
+item_name = "Cordón unión"
+plural_name = "Cordones unión"
+item_description = "Una cuerda misteriosa que hace que algunos Pokémon evolucionen."
+price = 8000
+item_type = 1
+fling_power = 30
+icon = ExtResource("1_d6uow")

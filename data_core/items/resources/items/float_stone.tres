@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bf71a3we7o26o"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cxr74i8todatv" path="res://graphics/items/FLOATSTONE.png" id="1_xfecq"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 495
+item_name = "Piedra pómez"
+plural_name = "Piedra pómezs"
+item_description = "Es tan ligera que, al ser sostenida, reduce a la mitad el peso de un Pokémon."
+price = 10000
+item_type = 4
+hold_effect = 90
+fling_power = 30
+icon = ExtResource("1_xfecq")

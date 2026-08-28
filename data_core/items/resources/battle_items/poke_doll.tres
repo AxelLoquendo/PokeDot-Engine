@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://o8oo0nc55agv"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dcyer2wdpbqou" path="res://graphics/items/POKEDOLL.png" id="1_j82ww"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 129
+item_name = "Poké muñeco"
+plural_name = "Poké muñecos"
+item_description = "Usar para huir de cualquier batalla con un Pokémon salvaje."
+price = 300
+pocket = 6
+item_type = 4
+fling_power = 30
+icon = ExtResource("1_j82ww")
+effect = 7

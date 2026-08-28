@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ijjjp"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
-[ext_resource type="Texture2D" uid="uid://c8uk3mbykk6m5" path="res://graphics/pokemon/icons/DUDUNSPARCE.png" id="3_0a36a"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ijjjp")
+species_id = 1374
+form_id = &"dudunsparce_three_segment"
+display_name = "Dudunsparce Three Segment"
+base_species_id = 1373
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -92,7 +99,7 @@ move = 586
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 982
-species_name = "Dudunsparce"
+species_name = "Dudunsparce-Two-Segment"
 species_id = 1373
 base_hp = 125
 base_attack = 100
@@ -110,7 +117,7 @@ description = "This Pokémon uses its hard tail to make its nest by boring holes
 height = 36
 weight = 392
 body_color = 2
-icon_sprite = ExtResource("3_0a36a")
+forms = Array[ExtResource("2_ijjjp")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([34, 36, 38, 53, 58, 59, 63, 76, 85, 87, 89, 91, 92, 97, 126, 133, 156, 157, 164, 168, 174, 180, 182, 184, 189, 200, 201, 203, 214, 220, 226, 240, 241, 244, 247, 253, 263, 270, 283, 304, 317, 341, 342, 347, 360, 366, 398, 403, 414, 416, 428, 444, 446, 484, 500, 506, 523, 525, 528, 529, 542, 638, 642, 647, 661, 704, 712, 727, 734, 742, 779, 789, 810, 812])
 ability_1 = 32

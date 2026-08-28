@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://73267og1bc2r"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 210
+item_name = "Carta retro"
+plural_name = "Cartas retro"
+item_description = "Un Carta con dibujos de tres Pokémon."
+price = 50
+pocket = 9
+item_type = 0

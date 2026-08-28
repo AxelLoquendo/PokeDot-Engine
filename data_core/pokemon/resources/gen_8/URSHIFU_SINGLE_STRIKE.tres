@@ -7,12 +7,30 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_8kby4")
-form_id = &"rapid_strike"
-display_name = "Estilo Fluido"
+species_id = 1230
+form_id = &"urshifu_rapid_strike"
+display_name = "Urshifu Rapid Strike"
+base_species_id = 892
 override_types = true
 type_1 = 2
 type_2 = 12
-tags = PackedStringArray("style")
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_8kby4")
+species_id = 1521
+form_id = &"urshifu_single_strike_gmax"
+display_name = "Urshifu Single Strike Gmax"
+base_species_id = 892
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_8kby4")
+species_id = 1522
+form_id = &"urshifu_rapid_strike_gmax"
+display_name = "Urshifu Rapid Strike Gmax"
+base_species_id = 892
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -116,7 +134,7 @@ description = "Su estilo de lucha se basa en abatir a sus rivales de un solo gol
 height = 19
 weight = 1050
 body_color = 7
-forms = Array[ExtResource("2_8kby4")]([SubResource("Resource_form_0")])
+forms = Array[ExtResource("2_8kby4")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 8, 9, 14, 25, 34, 36, 38, 46, 67, 91, 116, 129, 156, 157, 164, 173, 179, 182, 184, 203, 206, 213, 214, 232, 242, 251, 263, 264, 269, 270, 276, 279, 280, 317, 332, 334, 339, 369, 370, 371, 372, 374, 396, 398, 399, 409, 411, 416, 428, 442, 444, 490, 492, 496, 512, 514, 526, 555, 626, 638, 704, 736, 739, 779, 811])
 ability_1 = 260

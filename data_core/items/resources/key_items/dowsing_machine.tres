@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bh80v3jss7060"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 712
+item_name = "Zahorí"
+plural_name = "Zahorís"
+item_description = "Un dispositivo que señala un objeto invisible con sonido."
+pocket = 8
+importance = true
+not_consumed = true

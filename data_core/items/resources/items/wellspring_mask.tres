@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://djx4q5coxeyke"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 804
+item_name = "Máscara fuente"
+plural_name = "Máscaras fuente"
+item_description = "Permite a Ogerpon utilizar el tipo Agua en batalla."
+item_type = 4
+hold_effect = 128
+hold_effect_param = 20

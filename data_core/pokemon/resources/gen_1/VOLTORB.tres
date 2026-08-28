@@ -29,6 +29,14 @@ use_advanced_rules = true
 trigger = 2
 conditions = Array[ExtResource("2_31v0y")]([SubResource("Resource_cond1")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("5_4u0qf")
+species_id = 995
+form_id = &"voltorb_hisui"
+display_name = "Voltorb Hisui"
+base_species_id = 100
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -137,6 +145,7 @@ category_name = "Bola"
 description = "Fue descubierto cuando se crearon las Poké Balls. Se dice que tiene algo que ver con ellas."
 height = 5
 weight = 104
+forms = Array[ExtResource("5_4u0qf")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([29, 36, 38, 85, 86, 87, 92, 97, 99, 100, 102, 104, 113, 115, 117, 120, 129, 148, 153, 156, 164, 168, 173, 174, 182, 192, 203, 205, 207, 214, 216, 218, 237, 240, 259, 263, 268, 269, 270, 277, 290, 319, 324, 351, 360, 363, 389, 393, 451, 486, 492, 496, 521, 527, 528, 590, 598, 604, 779])
 egg_moves = Array[int]([278, 319])

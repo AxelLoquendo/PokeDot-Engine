@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dceq7smf5f8xc"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 205
+item_name = "Carta imagen"
+plural_name = "Cartas imagen"
+item_description = "Carta con un dibujo del Pokémon que lo sostiene."
+price = 50
+pocket = 9
+item_type = 0

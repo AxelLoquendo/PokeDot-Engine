@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dyt4kpqa7rue1"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 693
+item_name = "Amuleto experiencia"
+plural_name = "Amuleto experiencias"
+item_description = "Un amuleto que aumenta cantidad de experiencia ganada en batalla."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

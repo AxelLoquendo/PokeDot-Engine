@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b7u6bnoaye3qh"]
+
+[ext_resource type="Texture2D" uid="uid://4xhai17dnktj" path="res://graphics/items/BIGBAMBOOSHOOT.png" id="1_gebcp"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 765
+item_name = "Bambú grande"
+plural_name = "Bambúes grandes"
+item_description = "Un brote de bambú grande y raro. Mejor vendido a gourmets."
+price = 3000
+item_type = 4
+fling_power = 30
+icon = ExtResource("1_gebcp")

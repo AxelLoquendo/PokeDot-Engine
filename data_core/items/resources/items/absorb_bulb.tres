@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dygs1h5hnmlrw"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cf3l67c4yqcd5" path="res://graphics/items/ABSORBBULB.png" id="1_k55w5"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 455
+item_name = "Túberculo"
+plural_name = "Túberculos"
+item_description = "Sube Ataque especial si recibe ataque de Agua, pero solo una vez."
+price = 5000
+item_type = 4
+hold_effect = 101
+fling_power = 30
+icon = ExtResource("1_k55w5")

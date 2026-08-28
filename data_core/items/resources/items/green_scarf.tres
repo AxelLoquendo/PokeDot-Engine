@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bd8ugou5rbc3b"]
+
+[ext_resource type="Texture2D" uid="uid://cmhkj7yep40am" path="res://graphics/items/GREENSCARF.png" id="1_d5gto"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 416
+item_name = "Pañuelo verde"
+plural_name = "Pañuelos verdes"
+item_description = "Acesorio que aumenta la Inteligencia en los Concursos."
+price = 100
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_d5gto")

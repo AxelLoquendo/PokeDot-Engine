@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b1stb36lyy8cp"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dkvpergojrecn" path="res://graphics/items/ROCKYHELMET.png" id="1_r5tf5"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 496
+item_name = "Casco dentado"
+plural_name = "Casco dentados"
+item_description = "Daño al oponente si entran en contacto con el portador."
+price = 50000
+item_type = 4
+hold_effect = 95
+fling_power = 60
+icon = ExtResource("1_r5tf5")

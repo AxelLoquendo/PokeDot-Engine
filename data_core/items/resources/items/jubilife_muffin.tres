@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bd1uc7mc5yirq"]
+
+[ext_resource type="Texture2D" uid="uid://cl26l8e11b2si" path="res://graphics/items/JUBILIFEMUFFIN.png" id="1_dntjj"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 816
+item_name = "Bizcocho Jubileo"
+plural_name = "Bizcochos Jubileo"
+item_description = "Cura todos los problemas de estado de un Pokémon."
+price = 250
+item_type = 1
+battle_usage = 2
+fling_power = 30
+icon = ExtResource("1_dntjj")
+effect = 2

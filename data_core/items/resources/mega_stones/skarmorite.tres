@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c6baqpw1ivxc8"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 835
+item_name = "Skarmorita"
+plural_name = "Skarmoritas"
+item_description = "Esta piedra permite que Skarmory megaevolucione en batalla."
+pocket = 10
+item_type = 4
+hold_effect = 103
+fling_power = 80
+not_consumed = true

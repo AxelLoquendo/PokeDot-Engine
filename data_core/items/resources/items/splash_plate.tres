@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cy4s8eopq4yx2"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 251
+item_name = "Tabla linfa"
+plural_name = "Tablas linfa"
+item_description = "Una tableta que aumenta el poder de los movimientos de tipo Agua."
+price = 1000
+item_type = 4
+hold_effect = 89
+hold_effect_param = 20
+fling_power = 90

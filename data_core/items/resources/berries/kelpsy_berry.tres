@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://s86finvt1abj"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cfhixnicriggu" path="res://graphics/items/KELPSYBERRY.png" id="1_n71o5"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 535
+item_name = "Baya Algama"
+plural_name = "Bayas Algama"
+item_description = "Hace que un Pokémon sea más amistoso pero baja el Ataque base."
+price = 80
+pocket = 7
+item_type = 1
+fling_power = 10
+icon = ExtResource("1_n71o5")

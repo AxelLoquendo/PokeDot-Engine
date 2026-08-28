@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dpcrdnt68mip3"]
+
+[ext_resource type="Texture2D" uid="uid://cyqao5bkxs346" path="res://graphics/items/LIGHTBALL.png" id="1_eyipi"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 392
+item_name = "Bola luminosa"
+plural_name = "Bolas luminosas"
+item_description = "Si lo lleva Pikachu, aumenta su Ataque, y su Ataque especial."
+price = 1000
+item_type = 4
+hold_effect = 42
+fling_power = 30
+icon = ExtResource("1_eyipi")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dgjauagj4o8gf"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://b74ikdxuwjddq" path="res://graphics/items/ELECTRICMEMORY.png" id="1_oldyf"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 273
+item_name = "Disco eléctrico"
+plural_name = "Discos elécrico"
+item_description = "Un disco con datos del tipo Eléctrico. Cambia el tipo de Silvally."
+price = 1000
+item_type = 4
+hold_effect = 113
+fling_power = 50
+icon = ExtResource("1_oldyf")

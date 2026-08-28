@@ -7,21 +7,27 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_rwgx6")
-form_id = &"blue"
-display_name = "Azul"
-tags = PackedStringArray("plumage")
+species_id = 1317
+form_id = &"squawkabilly_blue"
+display_name = "Squawkabilly Blue"
+base_species_id = 1316
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_rwgx6")
-form_id = &"yellow"
-display_name = "Amarillo"
-tags = PackedStringArray("plumage")
+species_id = 1318
+form_id = &"squawkabilly_yellow"
+display_name = "Squawkabilly Yellow"
+base_species_id = 1316
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_rwgx6")
-form_id = &"white"
-display_name = "Blanco"
-tags = PackedStringArray("plumage")
+species_id = 1319
+form_id = &"squawkabilly_white"
+display_name = "Squawkabilly White"
+base_species_id = 1316
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cqg0ys21b6kvv"]
+
+[ext_resource type="Texture2D" uid="uid://cwskkfydf1pxk" path="res://graphics/items/BELUEBERRY.png" id="1_7v1or"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 548
+item_name = "Baya Andano"
+plural_name = "Bayas Andano"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Andano."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_7v1or")

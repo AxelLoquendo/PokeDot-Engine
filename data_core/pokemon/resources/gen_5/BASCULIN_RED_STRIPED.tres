@@ -7,15 +7,19 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ri33c")
-form_id = &"blue_striped"
-display_name = "Líneas Azules"
-tags = PackedStringArray("basculin")
+species_id = 1090
+form_id = &"basculin_blue_striped"
+display_name = "Basculin Blue Striped"
+base_species_id = 550
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_ri33c")
-form_id = &"white_striped"
-display_name = "Líneas Blancas"
-tags = PackedStringArray("basculin")
+species_id = 1091
+form_id = &"basculin_white_striped"
+display_name = "Basculin White Striped"
+base_species_id = 550
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

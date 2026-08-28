@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://2xcqhbqu4nqe"]
+
+[ext_resource type="Texture2D" uid="uid://dy0wf6xul2xks" path="res://graphics/items/CHERIBERRY.png" id="1_4t0db"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 514
+item_name = "Baya Ziuela"
+plural_name = "Bayas Ziuela"
+item_description = "Un objeto que se puede tener y que cura la parálisis en batalla."
+price = 80
+pocket = 7
+item_type = 1
+hold_effect = 2
+battle_usage = 2
+fling_power = 10
+icon = ExtResource("1_4t0db")
+effect = 2

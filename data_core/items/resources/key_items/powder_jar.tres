@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b046iox3wwhjw"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 719
+item_name = "Bote polvos"
+plural_name = "Bote polvos"
+item_description = "Aquí puedes guardar polvo de bayas"
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

@@ -7,123 +7,155 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_oaas5")
-form_id = &"icy_snow"
-display_name = "Icy Snow"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1438
+form_id = &"scatterbug_polar"
+display_name = "Scatterbug Polar"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_oaas5")
-form_id = &"polar"
-display_name = "Polar"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1439
+form_id = &"scatterbug_tundra"
+display_name = "Scatterbug Tundra"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_oaas5")
-form_id = &"tundra"
-display_name = "Tundra"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1440
+form_id = &"scatterbug_continental"
+display_name = "Scatterbug Continental"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_oaas5")
-form_id = &"continental"
-display_name = "Continental"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1441
+form_id = &"scatterbug_garden"
+display_name = "Scatterbug Garden"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_oaas5")
-form_id = &"garden"
-display_name = "Garden"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1442
+form_id = &"scatterbug_elegant"
+display_name = "Scatterbug Elegant"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_oaas5")
-form_id = &"elegant"
-display_name = "Elegant"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1443
+form_id = &"scatterbug_meadow"
+display_name = "Scatterbug Meadow"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("2_oaas5")
-form_id = &"meadow"
-display_name = "Meadow"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1444
+form_id = &"scatterbug_modern"
+display_name = "Scatterbug Modern"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("2_oaas5")
-form_id = &"modern"
-display_name = "Modern"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1445
+form_id = &"scatterbug_marine"
+display_name = "Scatterbug Marine"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("2_oaas5")
-form_id = &"marine"
-display_name = "Marine"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1446
+form_id = &"scatterbug_archipelago"
+display_name = "Scatterbug Archipelago"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
 script = ExtResource("2_oaas5")
-form_id = &"archipelago"
-display_name = "Archipelago"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1447
+form_id = &"scatterbug_high_plains"
+display_name = "Scatterbug High Plains"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
 script = ExtResource("2_oaas5")
-form_id = &"high_plains"
-display_name = "High Plains"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1448
+form_id = &"scatterbug_sandstorm"
+display_name = "Scatterbug Sandstorm"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
 script = ExtResource("2_oaas5")
-form_id = &"sandstorm"
-display_name = "Sandstorm"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1449
+form_id = &"scatterbug_river"
+display_name = "Scatterbug River"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
 script = ExtResource("2_oaas5")
-form_id = &"river"
-display_name = "River"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1450
+form_id = &"scatterbug_monsoon"
+display_name = "Scatterbug Monsoon"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
 script = ExtResource("2_oaas5")
-form_id = &"monsoon"
-display_name = "Monsoon"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1451
+form_id = &"scatterbug_savanna"
+display_name = "Scatterbug Savanna"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
 script = ExtResource("2_oaas5")
-form_id = &"savanna"
-display_name = "Savanna"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1452
+form_id = &"scatterbug_sun"
+display_name = "Scatterbug Sun"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
 script = ExtResource("2_oaas5")
-form_id = &"sun"
-display_name = "Sun"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1453
+form_id = &"scatterbug_ocean"
+display_name = "Scatterbug Ocean"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
 script = ExtResource("2_oaas5")
-form_id = &"ocean"
-display_name = "Ocean"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1454
+form_id = &"scatterbug_jungle"
+display_name = "Scatterbug Jungle"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
 script = ExtResource("2_oaas5")
-form_id = &"jungle"
-display_name = "Jungle"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1455
+form_id = &"scatterbug_fancy"
+display_name = "Scatterbug Fancy"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
 script = ExtResource("2_oaas5")
-form_id = &"fancy"
-display_name = "Fancy"
-tags = PackedStringArray("vivillon", "pattern")
-
-[sub_resource type="Resource" id="Resource_form_19"]
-script = ExtResource("2_oaas5")
-form_id = &"pokeball"
-display_name = "Pokeball"
-tags = PackedStringArray("vivillon", "pattern")
+species_id = 1456
+form_id = &"scatterbug_pokeball"
+display_name = "Scatterbug Pokeball"
+base_species_id = 664
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -164,7 +196,7 @@ description = "Cuando recibe el ataque de un Pokémon pájaro, expulsa unas esca
 height = 3
 weight = 25
 body_color = 4
-forms = Array[ExtResource("2_oaas5")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19")])
+forms = Array[ExtResource("2_oaas5")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([450, 522, 779, 810])
 egg_moves = Array[int]([77, 78, 476])

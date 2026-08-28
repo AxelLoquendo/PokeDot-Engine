@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://du5yddljotq4p"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://b7h8syt50ur1o" path="res://graphics/items/LUXURYBALL.png" id="1_wpnh7"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 14
+secondary_id = 14
+item_name = "Lujo Ball"
+plural_name = "Lujo Balls"
+item_description = "Es acogedora, y hace a los Pokémon más amigables."
+price = 3000
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_wpnh7")
+effect = 8

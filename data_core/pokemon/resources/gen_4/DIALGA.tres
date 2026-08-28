@@ -5,6 +5,21 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_mn7lm")
+species_id = 1069
+form_id = &"dialga_origin"
+display_name = "Dialga Origin"
+base_species_id = 483
+override_stats = true
+base_hp = 100
+base_attack = 100
+base_defense = 120
+base_speed = 90
+base_sp_attack = 150
+base_sp_defense = 120
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 184
@@ -95,6 +110,7 @@ description = "Un Pokémon de leyenda. Se dice que el tiempo comenzó a avanzar 
 height = 54
 weight = 6830
 body_color = 8
+forms = Array[ExtResource("2_mn7lm")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([15, 29, 34, 36, 46, 53, 58, 59, 63, 70, 85, 86, 87, 89, 92, 104, 126, 129, 148, 156, 157, 164, 173, 182, 184, 189, 200, 201, 203, 207, 210, 214, 216, 218, 219, 231, 232, 237, 239, 240, 241, 244, 246, 249, 263, 271, 280, 290, 304, 315, 317, 319, 332, 334, 337, 339, 351, 356, 363, 393, 396, 406, 408, 411, 414, 416, 421, 430, 433, 434, 442, 444, 446, 468, 484, 496, 497, 510, 523, 525, 590, 661, 704, 712, 724, 727, 779])
 ability_1 = 46

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dgtk4mxsr0gjj"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://btfu4mvtp7gyx" path="res://graphics/items/AGUAVBERRY.png" id="1_pqn3s"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 527
+item_name = "Baya Guaya"
+plural_name = "Bayas Guaya"
+item_description = "Restaura PS, pero puede causar confusión."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 13
+fling_power = 10
+icon = ExtResource("1_pqn3s")

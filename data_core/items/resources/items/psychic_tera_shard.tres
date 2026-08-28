@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bohpk1dhm3jt6"]
+
+[ext_resource type="Texture2D" uid="uid://ub3tov1oop27" path="res://graphics/items/PSYCHICTERASHARD.png" id="1_6wuh7"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 788
+item_name = "Teralito psíquico"
+plural_name = "Teralitos psíquico"
+item_description = "Estos fragmentos pueden formarse cuando un Pokémon Tera se desmaya."
+item_type = 4
+icon = ExtResource("1_6wuh7")

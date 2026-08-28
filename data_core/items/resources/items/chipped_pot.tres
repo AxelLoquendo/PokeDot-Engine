@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bt2pr7mjddyxp"]
+
+[ext_resource type="Texture2D" uid="uid://qoy4ifg1v25t" path="res://graphics/items/CHIPPEDPOT.png" id="1_5fo1c"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 224
+item_name = "Tetera rota"
+plural_name = "Teteras rotas"
+item_description = "Una tetera astillada que hace que ciertos Pokémon evolucionen."
+price = 38000
+item_type = 1
+fling_power = 80
+icon = ExtResource("1_5fo1c")

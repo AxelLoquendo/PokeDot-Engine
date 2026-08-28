@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ds3u040k40n5l"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cq3l1eurtad4x" path="res://graphics/items/GROUNDGEM.png" id="1_rhqng"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 347
+item_name = "Gema tierra"
+plural_name = "Gema tierras"
+item_description = "Potencia un ataque de Tipo Tierra."
+item_type = 4
+hold_effect = 94
+icon = ExtResource("1_rhqng")

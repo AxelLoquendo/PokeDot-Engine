@@ -5,6 +5,36 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_w7rca")
+species_id = 1051
+form_id = &"castform_sunny"
+display_name = "Castform Sunny"
+base_species_id = 351
+override_types = true
+type_1 = 11
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_w7rca")
+species_id = 1052
+form_id = &"castform_rainy"
+display_name = "Castform Rainy"
+base_species_id = 351
+override_types = true
+type_1 = 12
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_w7rca")
+species_id = 1053
+form_id = &"castform_snowy"
+display_name = "Castform Snowy"
+base_species_id = 351
+override_types = true
+type_1 = 16
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -90,6 +120,7 @@ description = "Sus células son muy sensibles a los cambios de temperatura y hum
 height = 3
 weight = 8
 body_color = 7
+forms = Array[ExtResource("2_w7rca")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([34, 38, 53, 58, 59, 76, 85, 86, 87, 92, 102, 104, 111, 126, 129, 148, 156, 164, 168, 173, 182, 196, 201, 203, 207, 213, 214, 216, 218, 237, 240, 241, 244, 247, 258, 263, 290, 351, 352, 363, 366, 387, 412, 419, 432, 445, 466, 496, 503, 510, 514, 526, 590])
 egg_moves = Array[int]([50, 133, 244, 248, 322, 381, 385, 466, 499, 506, 513])

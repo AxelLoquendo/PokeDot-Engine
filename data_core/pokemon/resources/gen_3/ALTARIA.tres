@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_tfrj5")
+species_id = 938
+form_id = &"altaria_mega"
+display_name = "Altaria Mega"
+base_species_id = 334
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 45
@@ -120,6 +128,7 @@ description = "Vuela pausadamente por el cielo azul. Su hermoso trino cautiva a 
 height = 11
 weight = 206
 body_color = 1
+forms = Array[ExtResource("2_tfrj5")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([19, 34, 36, 38, 46, 53, 58, 63, 76, 83, 89, 92, 97, 102, 104, 114, 126, 129, 138, 143, 156, 164, 168, 173, 182, 189, 200, 203, 206, 207, 211, 213, 214, 215, 216, 218, 219, 231, 237, 239, 240, 241, 244, 249, 253, 257, 261, 263, 270, 283, 290, 297, 304, 311, 314, 332, 337, 349, 355, 363, 365, 366, 384, 406, 413, 416, 432, 434, 445, 466, 468, 472, 496, 497, 510, 512, 523, 542, 574, 583, 590, 605, 712, 742, 779, 809, 811, 841, 842])
 ability_1 = 30

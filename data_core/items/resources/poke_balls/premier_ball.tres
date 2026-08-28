@@ -1,17 +1,18 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bh7siu2jxmrah"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://byuyjjjf7nsfd"]
 
-[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_7hvk2"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 [ext_resource type="Texture2D" uid="uid://74ds1jeuylgh" path="res://graphics/items/PREMIERBALL.png" id="1_tvbx8"]
 
 [resource]
-script = ExtResource("1_7hvk2")
+script = ExtResource("1_itemdata")
 item_id = 5
+secondary_id = 5
 item_name = "Honor Ball"
 plural_name = "Honor Balls"
 item_description = "Rara, creada en conmemoración de algún evento."
-price = 200
+price = 20
 pocket = 2
 item_type = 4
 battle_usage = 4
 icon = ExtResource("1_tvbx8")
-metadata/_custom_type_script = "uid://dpxh34fbc3y1v"
+effect = 8

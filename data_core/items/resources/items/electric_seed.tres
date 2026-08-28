@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dym3o7en2nl3f"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bctxmfg0fdli6" path="res://graphics/items/ELECTRICSEED.png" id="1_mjt7l"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 451
+item_name = "Semilla electro"
+plural_name = "Semillas electro"
+item_description = "Aumenta Defensa en Campo eléctrico, pero solo una vez."
+price = 20000
+item_type = 4
+hold_effect = 111
+fling_power = 10
+icon = ExtResource("1_mjt7l")

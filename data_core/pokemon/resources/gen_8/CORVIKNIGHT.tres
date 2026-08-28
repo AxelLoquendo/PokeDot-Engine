@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_fq20s")
+species_id = 1506
+form_id = &"corviknight_gmax"
+display_name = "Corviknight Gmax"
+base_species_id = 823
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 43
@@ -95,6 +103,7 @@ description = "No tiene rival en los cielos de Galar. El acero negro y lustroso 
 height = 22
 weight = 750
 body_color = 6
+forms = Array[ExtResource("2_fq20s")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([19, 34, 36, 38, 63, 97, 103, 113, 115, 116, 129, 156, 164, 168, 173, 174, 179, 180, 182, 184, 203, 211, 213, 214, 232, 240, 241, 263, 269, 279, 313, 314, 319, 332, 334, 339, 366, 369, 371, 372, 403, 413, 416, 417, 430, 442, 484, 496, 514, 526, 542, 704, 724, 742, 779])
 egg_moves = Array[int]([28, 143, 180, 249, 355, 366, 432])

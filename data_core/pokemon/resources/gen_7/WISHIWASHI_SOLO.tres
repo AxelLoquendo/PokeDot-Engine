@@ -5,6 +5,21 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_4ejq5")
+species_id = 1175
+form_id = &"wishiwashi_school"
+display_name = "Wishiwashi School"
+base_species_id = 746
+override_stats = true
+base_hp = 45
+base_attack = 140
+base_defense = 130
+base_speed = 30
+base_sp_attack = 140
+base_sp_defense = 135
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 45
@@ -105,6 +120,7 @@ description = "Al sentirse amenazado, sus ojos emiten cierto brillo, algo que at
 height = 2
 weight = 3
 body_color = 1
+forms = Array[ExtResource("2_4ejq5")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([56, 57, 58, 89, 92, 104, 127, 156, 164, 173, 182, 203, 207, 213, 214, 216, 218, 231, 237, 240, 250, 251, 253, 258, 263, 270, 283, 291, 330, 341, 343, 352, 362, 369, 401, 496, 503, 523, 590, 664, 727, 740])
 egg_moves = Array[int]([36, 54, 250, 330, 346, 352])

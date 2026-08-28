@@ -7,21 +7,19 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ysb11")
-form_id = &"plant"
-display_name = "Planta"
-tags = PackedStringArray("cloak")
+species_id = 1057
+form_id = &"burmy_sandy"
+display_name = "Burmy Sandy"
+base_species_id = 412
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_ysb11")
-form_id = &"sandy"
-display_name = "Arena"
-tags = PackedStringArray("cloak")
-
-[sub_resource type="Resource" id="Resource_form_2"]
-script = ExtResource("2_ysb11")
-form_id = &"trash"
-display_name = "Basura"
-tags = PackedStringArray("cloak")
+species_id = 1058
+form_id = &"burmy_trash"
+display_name = "Burmy Trash"
+base_species_id = 412
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -63,7 +61,7 @@ description = "Para protegerse de los vientos fríos invernales, se cubre con un
 height = 2
 weight = 34
 body_color = 3
-forms = Array[ExtResource("2_ysb11")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
+forms = Array[ExtResource("2_ysb11")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([81, 173, 182, 237, 450, 527])
 ability_1 = 61

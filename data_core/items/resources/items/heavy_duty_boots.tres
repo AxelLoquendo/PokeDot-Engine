@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dn0a8tl4vo7jf"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c1r1dktuoxxmk" path="res://graphics/items/HEAVYDUTYBOOTS.png" id="1_ybrfb"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 510
+item_name = "Botas gruesas"
+plural_name = "Botas gruesas"
+item_description = "Botas que previenen los efectos de trampas en el campo."
+price = 20000
+item_type = 4
+hold_effect = 119
+fling_power = 80
+icon = ExtResource("1_ybrfb")

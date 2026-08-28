@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cruv5luhv380l"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 375
+item_name = "Pikastal Z"
+plural_name = "Pikastales Z"
+item_description = "Convierte Placaje eléctrico de Pikachu en un movimiento Z."
+pocket = 11
+item_type = 4
+hold_effect = 114
+not_consumed = true

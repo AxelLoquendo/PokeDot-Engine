@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d2okkqulea5ui"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 268
+item_name = "FulgoROM"
+plural_name = "FulgoROMs"
+item_description = "Cambia ataque Tecno shock de Genesect a tipo Eléctrico."
+item_type = 4
+hold_effect = 93
+fling_power = 70

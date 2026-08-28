@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_tfodg")
+species_id = 1226
+form_id = &"morpeko_hangry"
+display_name = "Morpeko Hangry"
+base_species_id = 877
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 39
@@ -95,6 +103,7 @@ description = "Siempre tiene hambre. Se nutre de las semillas que guarda en una 
 height = 3
 weight = 30
 body_color = 2
+forms = Array[ExtResource("2_tfodg")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([9, 36, 38, 85, 86, 87, 97, 129, 156, 162, 164, 168, 173, 179, 180, 182, 184, 200, 203, 213, 214, 226, 242, 253, 263, 268, 269, 279, 280, 282, 283, 313, 331, 371, 372, 374, 399, 402, 417, 422, 423, 424, 451, 486, 492, 496, 521, 527, 528, 555, 598, 604, 660, 661, 732, 736, 779])
 egg_moves = Array[int]([162, 207, 229, 252, 268, 321, 511, 575])

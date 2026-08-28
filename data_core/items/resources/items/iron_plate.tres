@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://kjm6cm1hwtbq"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dses2qlh28ton" path="res://graphics/items/IRONPLATE.png" id="1_rja32"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 265
+item_name = "Tabla acero"
+plural_name = "Tablas acero"
+item_description = "Una tableta que aumenta el poder de los movimientos de tipo Acero."
+price = 1000
+item_type = 4
+hold_effect = 89
+hold_effect_param = 20
+fling_power = 90
+icon = ExtResource("1_rja32")

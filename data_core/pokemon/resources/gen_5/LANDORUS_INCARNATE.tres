@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_t0w0g")
+species_id = 1102
+form_id = &"landorus_therian"
+display_name = "Landorus Therian"
+base_species_id = 645
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 88
@@ -129,6 +137,7 @@ description = "Lo consideran una deidad de las cosechas porque los cultivos crec
 height = 15
 weight = 680
 body_color = 5
+forms = Array[ExtResource("2_t0w0g")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([14, 19, 34, 36, 63, 70, 89, 91, 92, 94, 104, 120, 153, 156, 157, 164, 173, 182, 184, 188, 189, 200, 201, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 249, 263, 269, 272, 276, 280, 282, 286, 290, 311, 317, 328, 335, 339, 341, 347, 356, 369, 371, 374, 397, 411, 414, 416, 417, 432, 444, 446, 447, 479, 482, 496, 523, 590, 656, 661, 743, 779])
 ability_1 = 159

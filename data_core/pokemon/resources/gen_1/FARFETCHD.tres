@@ -12,6 +12,14 @@ target_species = 865
 use_advanced_rules = true
 trigger = 6
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("3_hwhfw")
+species_id = 979
+form_id = &"farfetchd_galar"
+display_name = "Farfetchd Galar"
+base_species_id = 83
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 28
@@ -131,6 +139,7 @@ description = "El puerro que lleva es su mejor arma. Suele usarlo como espada pa
 height = 8
 weight = 150
 body_color = 5
+forms = Array[ExtResource("3_hwhfw")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([13, 14, 15, 18, 19, 29, 34, 36, 38, 92, 97, 99, 102, 104, 115, 116, 117, 129, 130, 143, 156, 164, 168, 173, 174, 182, 189, 197, 203, 206, 207, 210, 211, 213, 214, 216, 218, 226, 231, 237, 239, 241, 244, 253, 257, 263, 270, 279, 282, 290, 314, 332, 343, 348, 355, 363, 365, 366, 369, 370, 387, 398, 403, 413, 432, 445, 466, 496, 512, 514, 526, 590, 632, 636, 638, 656, 742])
 egg_moves = Array[int]([16, 98, 119, 143, 174, 175, 189, 193, 211, 279, 297, 343, 348, 355, 364, 376, 400, 493, 515, 623])

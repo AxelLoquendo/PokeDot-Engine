@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://6wjpyl1nhau8"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 699
+item_name = "Vasija castigo"
+plural_name = "Vasija castigos"
+item_description = "Una botella usada para sellar a un cierto Pokémon hace mucho tiempo."
+pocket = 8
+item_type = 1
+importance = true
+not_consumed = true

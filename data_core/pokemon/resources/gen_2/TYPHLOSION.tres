@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_1q3md")
+species_id = 997
+form_id = &"typhlosion_hisui"
+display_name = "Typhlosion Hisui"
+base_species_id = 157
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -110,6 +118,7 @@ description = "Si su furia crece, se calienta tanto que cualquier cosa que toque
 height = 17
 weight = 795
 body_color = 2
+forms = Array[ExtResource("2_1q3md")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([5, 7, 9, 15, 25, 29, 34, 36, 38, 46, 53, 63, 67, 68, 69, 70, 76, 83, 89, 91, 92, 101, 102, 104, 109, 111, 126, 129, 156, 157, 164, 173, 174, 179, 180, 182, 189, 197, 203, 205, 207, 210, 213, 214, 216, 218, 223, 231, 237, 241, 247, 249, 257, 261, 263, 264, 267, 270, 280, 283, 290, 307, 315, 317, 332, 343, 347, 360, 363, 374, 394, 411, 416, 421, 424, 428, 431, 442, 445, 488, 496, 506, 510, 519, 523, 526, 528, 583, 590, 612, 636, 638, 661, 735, 737, 743, 779, 843])
 egg_moves = Array[int]([24, 174, 179, 326, 336, 343])

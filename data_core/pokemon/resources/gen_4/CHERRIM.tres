@@ -7,15 +7,11 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_db0vr")
-form_id = &"overcast"
-display_name = "Nublado"
-tags = PackedStringArray("weather")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_db0vr")
-form_id = &"sunshine"
-display_name = "Soleado"
-tags = PackedStringArray("weather")
+species_id = 1061
+form_id = &"cherrim_sunshine"
+display_name = "Cherrim Sunshine"
+base_species_id = 421
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -107,7 +103,7 @@ description = "Cuando los rayos de sol inundan su capullo, abre de par en par su
 height = 5
 weight = 93
 body_color = 6
-forms = Array[ExtResource("2_db0vr")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
+forms = Array[ExtResource("2_db0vr")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 63, 76, 92, 104, 148, 156, 164, 173, 182, 202, 203, 205, 207, 213, 214, 216, 218, 219, 235, 237, 241, 263, 267, 270, 290, 311, 331, 345, 363, 388, 402, 412, 416, 445, 447, 496, 577, 580, 583, 590, 605, 632, 636, 639, 731])
 ability_1 = 122

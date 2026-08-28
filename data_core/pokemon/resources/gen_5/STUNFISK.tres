@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_ap7ue")
+species_id = 992
+form_id = &"stunfisk_galar"
+display_name = "Stunfisk Galar"
+base_species_id = 618
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -122,6 +130,7 @@ description = "Ni un pisotón de un luchador de sumo lo aplastaría gracias a su
 height = 7
 weight = 110
 body_color = 5
+forms = Array[ExtResource("2_ap7ue")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([57, 85, 86, 87, 89, 91, 92, 104, 148, 156, 157, 164, 173, 180, 182, 188, 201, 203, 207, 213, 214, 216, 218, 220, 237, 240, 253, 263, 279, 283, 290, 317, 330, 340, 341, 351, 352, 371, 393, 401, 414, 444, 446, 482, 492, 496, 503, 523, 527, 590, 598, 604, 611, 661, 736])
 egg_moves = Array[int]([174, 180, 209, 214, 220, 281, 310, 351, 382, 414, 513, 598])

@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_5s04e")
+species_id = 1500
+form_id = &"snorlax_gmax"
+display_name = "Snorlax Gmax"
+base_species_id = 143
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -179,6 +187,7 @@ description = "No se encuentra satisfecho hasta que no se come 400 kg de comida 
 height = 21
 weight = 4600
 body_color = 4
+forms = Array[ExtResource("2_5s04e")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26"), SubResource("Resource_move27"), SubResource("Resource_move28"), SubResource("Resource_move29"), SubResource("Resource_move30"), SubResource("Resource_move31"), SubResource("Resource_move32")])
 teachable_moves = Array[int]([5, 6, 7, 8, 9, 25, 29, 34, 36, 38, 53, 55, 56, 57, 58, 59, 61, 63, 66, 68, 69, 70, 76, 85, 87, 89, 90, 91, 92, 94, 99, 102, 103, 104, 111, 115, 117, 118, 120, 126, 130, 133, 149, 156, 157, 164, 173, 174, 182, 189, 192, 196, 200, 201, 203, 204, 205, 207, 213, 214, 216, 218, 223, 227, 237, 240, 241, 242, 244, 247, 249, 250, 253, 263, 264, 270, 276, 278, 280, 289, 290, 304, 317, 335, 343, 351, 352, 363, 374, 387, 402, 411, 416, 428, 431, 441, 442, 445, 479, 484, 495, 496, 510, 514, 523, 526, 528, 535, 590, 612, 626, 630, 661, 704, 726, 733, 779, 811, 812, 840, 844])
 egg_moves = Array[int]([18, 38, 68, 90, 122, 164, 174, 204, 228, 363, 380, 495, 562, 612])

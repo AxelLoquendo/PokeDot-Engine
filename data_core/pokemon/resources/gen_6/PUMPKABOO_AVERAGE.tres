@@ -7,21 +7,27 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_w7hru")
-form_id = &"small"
-display_name = "Pequeño"
-tags = PackedStringArray("size")
+species_id = 1157
+form_id = &"pumpkaboo_small"
+display_name = "Pumpkaboo Small"
+base_species_id = 710
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_w7hru")
-form_id = &"large"
-display_name = "Grande"
-tags = PackedStringArray("size")
+species_id = 1158
+form_id = &"pumpkaboo_large"
+display_name = "Pumpkaboo Large"
+base_species_id = 710
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_w7hru")
-form_id = &"super"
-display_name = "Extragrande"
-tags = PackedStringArray("size")
+species_id = 1159
+form_id = &"pumpkaboo_super"
+display_name = "Pumpkaboo Super"
+base_species_id = 710
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

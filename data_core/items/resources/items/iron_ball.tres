@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cj54rp64pwjjo"]
+
+[ext_resource type="Texture2D" uid="uid://cgol5c83hvgm0" path="res://graphics/items/IRONBALL.png" id="1_ejgdb"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 484
+item_name = "Bola férrea"
+plural_name = "Bola férreas"
+item_description = "Reduce Velocidad y permite que tipo Volador reciba ataques de Tierra."
+price = 20000
+item_type = 4
+hold_effect = 71
+fling_power = 130
+icon = ExtResource("1_ejgdb")

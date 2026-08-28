@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bywsjse7evcw"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://l5cpc6dgyxry" path="res://graphics/items/STABLEMULCH.png" id="1_vgnyg"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 184
+item_name = "Abono fértil"
+plural_name = "Abonos fértiles"
+item_description = "Un fertilizante que aumenta la cantidad de bayas cosechadas."
+price = 200
+item_type = 4
+fling_power = 30
+icon = ExtResource("1_vgnyg")

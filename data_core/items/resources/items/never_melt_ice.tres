@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cr2ckq73hay7l"]
+
+[ext_resource type="Texture2D" uid="uid://c3hkimsm55gc2" path="res://graphics/items/NEVERMELTICE.png" id="1_5aofx"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 430
+item_name = "Antiderretir"
+plural_name = "Antiderretirs"
+item_description = "Objeto que potencia los movimientos de tipo Hielo."
+item_type = 4
+hold_effect = 43
+fling_power = 30
+icon = ExtResource("1_5aofx")

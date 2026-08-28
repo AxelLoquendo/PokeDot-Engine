@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bpu78sx08oi8x"]
+
+[ext_resource type="Texture2D" uid="uid://cgw3xkv056gvb" path="res://graphics/items/ROWAPBERRY.png" id="1_it5j0"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 578
+item_name = "Baya Magua"
+plural_name = "Bayas Magua"
+item_description = "Si recibe un movimiento especial, hiere al atacante un poco."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 86
+fling_power = 10
+icon = ExtResource("1_it5j0")

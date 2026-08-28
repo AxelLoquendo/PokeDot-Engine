@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://60crji2rtwxn"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dm7h4xuhp7wdq" path="res://graphics/items/FLUFFYTAIL.png" id="1_iyoel"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 130
+item_name = "Cola Skitty"
+plural_name = "Colas Skitty"
+item_description = "Usar para huir de cualquier batalla con un Pokémon salvaje."
+price = 100
+pocket = 6
+item_type = 4
+fling_power = 30
+icon = ExtResource("1_iyoel")
+effect = 7

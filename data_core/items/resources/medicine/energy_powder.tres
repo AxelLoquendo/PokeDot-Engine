@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://di8edf8qelq3k"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 39
+item_name = "Polvo energía"
+plural_name = "Polvos energía"
+item_description = "Medicina para Pokémon."
+price = 500
+pocket = 1
+item_type = 1
+battle_usage = 1
+fling_power = 30
+effect = 1

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cfwj525arypha"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c2t8ero1d4vms" path="res://graphics/items/RAWSTBERRY.png" id="1_vs3hl"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 517
+item_name = "Baya Safre"
+plural_name = "Bayas Safre"
+item_description = "Un objeto que se puede tener y que cura una quemadura en batalla."
+price = 80
+pocket = 7
+item_type = 1
+hold_effect = 5
+battle_usage = 2
+fling_power = 10
+icon = ExtResource("1_vs3hl")
+effect = 2

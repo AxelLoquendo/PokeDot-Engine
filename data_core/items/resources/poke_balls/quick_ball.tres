@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bwjbkuujaoa80"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c3wfcgv6oywfm" path="res://graphics/items/QUICKBALL.png" id="1_tb2ta"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 12
+secondary_id = 12
+item_name = "Veloz Ball"
+plural_name = "Veloz Balls"
+item_description = "Funciona genial si es el primer turno."
+price = 1000
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_tb2ta")
+effect = 8

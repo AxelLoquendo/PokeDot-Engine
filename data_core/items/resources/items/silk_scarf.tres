@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bsn3g7chvtqyq"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 425
+item_name = "Pañuelo de seda"
+plural_name = "Pañuelos de seda"
+item_description = "Objeto que potencia los movimientos de tipo Normal."
+item_type = 4
+hold_effect = 43
+fling_power = 10

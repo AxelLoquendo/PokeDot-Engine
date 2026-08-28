@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://vkuett7b4gdv"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 752
+item_name = "Visor Silph"
+plural_name = "Visor Silphs"
+item_description = "Hace que los Pokémon invisibles sean visibles."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

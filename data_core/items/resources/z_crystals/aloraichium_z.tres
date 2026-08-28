@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://crxhc0410fda4"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 389
+item_name = "Alo-Raistal Z"
+plural_name = "Alo-Raistales Z"
+item_description = "Convierte Rayo de Raichu de Alola en un movimiento Z."
+pocket = 11
+item_type = 4
+hold_effect = 114
+not_consumed = true

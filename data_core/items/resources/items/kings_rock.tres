@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://drqnyamu2o1j3"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dolsgp57781hg" path="res://graphics/items/KINGSROCK.png" id="1_jiwr3"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 465
+item_name = "Roca del rey"
+plural_name = "Roca del reys"
+item_description = "Si se lleva equipado, puede hacer que el objetivo retroceda."
+price = 10000
+item_type = 4
+hold_effect = 30
+hold_effect_param = 10
+fling_power = 30
+icon = ExtResource("1_jiwr3")

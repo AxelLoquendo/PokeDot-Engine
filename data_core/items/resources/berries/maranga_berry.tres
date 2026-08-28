@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://hcf7ae4kujf8"]
+
+[ext_resource type="Texture2D" uid="uid://co2328q7g2icj" path="res://graphics/items/MARANGABERRY.png" id="1_bws8s"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 580
+item_name = "Baya Maranga"
+plural_name = "Bayas Maranga"
+item_description = "Si recibe un movimiento especial, sube Defensa especial un poco."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 88
+fling_power = 10
+icon = ExtResource("1_bws8s")

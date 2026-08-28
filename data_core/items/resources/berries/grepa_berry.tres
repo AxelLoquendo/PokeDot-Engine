@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bhvwtkye3v76s"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://crj7a52rfdnn4" path="res://graphics/items/GREPABERRY.png" id="1_o0dtt"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 538
+item_name = "Baya Uvav"
+plural_name = "Bayas Uvav"
+item_description = "Hace a un Pokémon más amistoso pero baja la Defensa especial."
+price = 80
+pocket = 7
+item_type = 1
+fling_power = 10
+icon = ExtResource("1_o0dtt")

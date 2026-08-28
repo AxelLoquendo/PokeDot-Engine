@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b2w5wrtdc6qoq"]
+
+[ext_resource type="Texture2D" uid="uid://c2e1ylfxky1qh" path="res://graphics/items/POWERHERB.png" id="1_c312r"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 480
+item_name = "Hierba única"
+plural_name = "Hierba únicas"
+item_description = "Permite el uso inmediato de un movimiento que normalmente requiere carga."
+price = 30000
+item_type = 4
+hold_effect = 57
+fling_power = 10
+icon = ExtResource("1_c312r")

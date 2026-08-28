@@ -7,171 +7,219 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_rmot4")
-form_id = &"a"
-display_name = "A"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1024
+form_id = &"unown_b"
+display_name = "Unown B"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_rmot4")
-form_id = &"b"
-display_name = "B"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1025
+form_id = &"unown_c"
+display_name = "Unown C"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_rmot4")
-form_id = &"c"
-display_name = "C"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1026
+form_id = &"unown_d"
+display_name = "Unown D"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_rmot4")
-form_id = &"d"
-display_name = "D"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1027
+form_id = &"unown_e"
+display_name = "Unown E"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_rmot4")
-form_id = &"e"
-display_name = "E"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1028
+form_id = &"unown_f"
+display_name = "Unown F"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_rmot4")
-form_id = &"f"
-display_name = "F"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1029
+form_id = &"unown_g"
+display_name = "Unown G"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("2_rmot4")
-form_id = &"g"
-display_name = "G"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1030
+form_id = &"unown_h"
+display_name = "Unown H"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("2_rmot4")
-form_id = &"h"
-display_name = "H"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1031
+form_id = &"unown_i"
+display_name = "Unown I"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("2_rmot4")
-form_id = &"i"
-display_name = "I"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1032
+form_id = &"unown_j"
+display_name = "Unown J"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
 script = ExtResource("2_rmot4")
-form_id = &"j"
-display_name = "J"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1033
+form_id = &"unown_k"
+display_name = "Unown K"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
 script = ExtResource("2_rmot4")
-form_id = &"k"
-display_name = "K"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1034
+form_id = &"unown_l"
+display_name = "Unown L"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
 script = ExtResource("2_rmot4")
-form_id = &"l"
-display_name = "L"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1035
+form_id = &"unown_m"
+display_name = "Unown M"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
 script = ExtResource("2_rmot4")
-form_id = &"m"
-display_name = "M"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1036
+form_id = &"unown_n"
+display_name = "Unown N"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
 script = ExtResource("2_rmot4")
-form_id = &"n"
-display_name = "N"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1037
+form_id = &"unown_o"
+display_name = "Unown O"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
 script = ExtResource("2_rmot4")
-form_id = &"o"
-display_name = "O"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1038
+form_id = &"unown_p"
+display_name = "Unown P"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
 script = ExtResource("2_rmot4")
-form_id = &"p"
-display_name = "P"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1039
+form_id = &"unown_q"
+display_name = "Unown Q"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
 script = ExtResource("2_rmot4")
-form_id = &"q"
-display_name = "Q"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1040
+form_id = &"unown_r"
+display_name = "Unown R"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
 script = ExtResource("2_rmot4")
-form_id = &"r"
-display_name = "R"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1041
+form_id = &"unown_s"
+display_name = "Unown S"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
 script = ExtResource("2_rmot4")
-form_id = &"s"
-display_name = "S"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1042
+form_id = &"unown_t"
+display_name = "Unown T"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_19"]
 script = ExtResource("2_rmot4")
-form_id = &"t"
-display_name = "T"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1043
+form_id = &"unown_u"
+display_name = "Unown U"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_20"]
 script = ExtResource("2_rmot4")
-form_id = &"u"
-display_name = "U"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1044
+form_id = &"unown_v"
+display_name = "Unown V"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_21"]
 script = ExtResource("2_rmot4")
-form_id = &"v"
-display_name = "V"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1045
+form_id = &"unown_w"
+display_name = "Unown W"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_22"]
 script = ExtResource("2_rmot4")
-form_id = &"w"
-display_name = "W"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1046
+form_id = &"unown_x"
+display_name = "Unown X"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_23"]
 script = ExtResource("2_rmot4")
-form_id = &"x"
-display_name = "X"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1047
+form_id = &"unown_y"
+display_name = "Unown Y"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_24"]
 script = ExtResource("2_rmot4")
-form_id = &"y"
-display_name = "Y"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1048
+form_id = &"unown_z"
+display_name = "Unown Z"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_25"]
 script = ExtResource("2_rmot4")
-form_id = &"z"
-display_name = "Z"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1049
+form_id = &"unown_exclamation"
+display_name = "Unown Exclamation"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_26"]
 script = ExtResource("2_rmot4")
-form_id = &"exclamation"
-display_name = "Exclamation"
-tags = PackedStringArray("unown", "cosmetic")
-
-[sub_resource type="Resource" id="Resource_form_27"]
-script = ExtResource("2_rmot4")
-form_id = &"question"
-display_name = "Question"
-tags = PackedStringArray("unown", "cosmetic")
+species_id = 1050
+form_id = &"unown_question"
+display_name = "Unown Question"
+base_species_id = 201
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -199,7 +247,7 @@ description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma par
 height = 5
 weight = 50
 body_color = 4
-forms = Array[ExtResource("2_rmot4")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26"), SubResource("Resource_form_27")])
+forms = Array[ExtResource("2_rmot4")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
 teachable_moves = Array[int]([237])
 ability_1 = 26

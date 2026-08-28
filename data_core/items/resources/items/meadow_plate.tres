@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bg2bcmu323e4e"]
+
+[ext_resource type="Texture2D" uid="uid://cmi4e3yyb3se2" path="res://graphics/items/MEADOWPLATE.png" id="1_infwa"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 253
+item_name = "Tabla pradal"
+plural_name = "Tablas pradal"
+item_description = "Una tableta que aumenta el poder de los movimientos de tipo Planta."
+price = 1000
+item_type = 4
+hold_effect = 89
+hold_effect_param = 20
+fling_power = 90
+icon = ExtResource("1_infwa")

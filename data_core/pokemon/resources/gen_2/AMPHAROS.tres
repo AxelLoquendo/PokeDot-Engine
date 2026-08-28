@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_tndg1")
+species_id = 921
+form_id = &"ampharos_mega"
+display_name = "Ampharos Mega"
+base_species_id = 181
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 7
@@ -127,6 +135,7 @@ description = "La punta de su cola reluce brillantemente y puede ser vista desde
 height = 14
 weight = 615
 body_color = 2
+forms = Array[ExtResource("2_tndg1")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 46, 63, 67, 68, 69, 70, 85, 86, 87, 91, 92, 97, 102, 104, 109, 111, 113, 115, 129, 148, 156, 164, 173, 174, 182, 192, 200, 203, 207, 213, 214, 215, 216, 218, 219, 223, 231, 237, 240, 241, 249, 263, 264, 268, 270, 280, 283, 290, 324, 351, 363, 374, 393, 406, 408, 411, 416, 431, 445, 451, 486, 495, 496, 497, 521, 523, 525, 527, 528, 590, 598, 604, 605, 612, 636, 656, 661, 712, 728, 779, 811, 841, 844])
 ability_1 = 9

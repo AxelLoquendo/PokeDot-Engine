@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b0nhpnw5ib1t7"]
+
+[ext_resource type="Texture2D" uid="uid://b1ocvn47von3c" path="res://graphics/items/CHARCOAL.png" id="1_6hxue"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 426
+item_name = "Carbón"
+plural_name = "Carbóns"
+item_description = "Objeto que potencia los movimientos de tipo Fuego."
+price = 3000
+item_type = 4
+hold_effect = 43
+fling_power = 30
+icon = ExtResource("1_6hxue")

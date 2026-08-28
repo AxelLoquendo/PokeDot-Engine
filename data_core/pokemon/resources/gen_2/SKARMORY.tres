@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_o8h7h")
+species_id = 1530
+form_id = &"skarmory_mega"
+display_name = "Skarmory Mega"
+base_species_id = 227
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 43
@@ -131,6 +139,7 @@ description = "Después de anidar en zarzas, las alas de sus polluelos crecen fo
 height = 17
 weight = 505
 body_color = 7
+forms = Array[ExtResource("2_o8h7h")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([14, 15, 19, 36, 38, 46, 63, 68, 92, 97, 102, 104, 129, 143, 148, 156, 157, 164, 168, 173, 174, 179, 182, 189, 191, 196, 197, 201, 203, 207, 210, 211, 213, 214, 216, 218, 232, 237, 239, 241, 249, 259, 263, 269, 290, 314, 317, 319, 328, 332, 334, 355, 363, 365, 366, 371, 372, 385, 399, 403, 404, 413, 416, 430, 432, 442, 445, 446, 466, 496, 507, 529, 542, 590, 704, 724, 742, 779])
 egg_moves = Array[int]([18, 65, 143, 174, 203, 228, 314, 355, 364, 372, 385, 400, 413, 446])

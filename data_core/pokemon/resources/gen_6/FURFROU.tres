@@ -7,57 +7,75 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_jrpla")
-form_id = &"heart"
-display_name = "Corte Corazón"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1146
+form_id = &"furfrou_heart"
+display_name = "Furfrou Heart"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_jrpla")
-form_id = &"star"
-display_name = "Corte Estrella"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1147
+form_id = &"furfrou_star"
+display_name = "Furfrou Star"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_jrpla")
-form_id = &"diamond"
-display_name = "Corte Diamante"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1148
+form_id = &"furfrou_diamond"
+display_name = "Furfrou Diamond"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_jrpla")
-form_id = &"debutante"
-display_name = "Corte Debutante"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1149
+form_id = &"furfrou_debutante"
+display_name = "Furfrou Debutante"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_jrpla")
-form_id = &"matron"
-display_name = "Corte Matrona"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1150
+form_id = &"furfrou_matron"
+display_name = "Furfrou Matron"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_jrpla")
-form_id = &"dandy"
-display_name = "Corte Caballero"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1151
+form_id = &"furfrou_dandy"
+display_name = "Furfrou Dandy"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("2_jrpla")
-form_id = &"la_reine"
-display_name = "Corte La Reine"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1152
+form_id = &"furfrou_la_reine"
+display_name = "Furfrou La Reine"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("2_jrpla")
-form_id = &"kabuki"
-display_name = "Corte Kabuki"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1153
+form_id = &"furfrou_kabuki"
+display_name = "Furfrou Kabuki"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("2_jrpla")
-form_id = &"pharaoh"
-display_name = "Corte Faraón"
-tags = PackedStringArray("furfrou", "cosmetic")
+species_id = 1154
+form_id = &"furfrou_pharaoh"
+display_name = "Furfrou Pharaoh"
+base_species_id = 676
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

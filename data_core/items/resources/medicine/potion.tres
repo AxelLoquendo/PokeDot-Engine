@@ -1,20 +1,17 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dnu0hndsnhydg"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bs6q1qupdomrs"]
 
-[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_43734"]
-[ext_resource type="Texture2D" uid="uid://cxgsv71flsm8s" path="res://graphics/items/POTION.png" id="1_ilruc"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
-script = ExtResource("1_43734")
+script = ExtResource("1_itemdata")
 item_id = 28
 item_name = "Poción"
 plural_name = "Pociones"
 item_description = "Restaura PS de un Pokémon en 20 puntos."
-price = 300
+price = 200
 pocket = 1
 item_type = 1
-hold_effect = 1
+hold_effect_param = 20
 battle_usage = 1
 fling_power = 30
-icon = ExtResource("1_ilruc")
 effect = 1
-metadata/_custom_type_script = "uid://dpxh34fbc3y1v"

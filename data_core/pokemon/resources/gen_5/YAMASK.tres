@@ -23,6 +23,14 @@ target_species = 867
 use_advanced_rules = true
 trigger = 6
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_k7577")
+species_id = 991
+form_id = &"yamask_galar"
+display_name = "Yamask Galar"
+base_species_id = 562
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 182
@@ -127,6 +135,7 @@ description = "Almas de humanos sepultados en tumbas que han adquirido forma de 
 height = 5
 weight = 15
 body_color = 4
+forms = Array[ExtResource("4_k7577")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([92, 94, 104, 138, 148, 156, 164, 168, 173, 180, 182, 203, 207, 213, 214, 216, 218, 219, 220, 237, 240, 244, 247, 261, 263, 271, 272, 277, 282, 285, 286, 289, 290, 313, 334, 335, 347, 351, 371, 373, 390, 399, 412, 417, 428, 433, 472, 477, 495, 496, 502, 506, 590, 611, 737])
 egg_moves = Array[int]([50, 171, 203, 262, 286, 313, 377, 390, 417, 502, 578])

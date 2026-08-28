@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c3pdlbtd1t41d"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 611
+item_name = "TM30"
+plural_name = "TM30s"
+item_description = "Máquina Técnica. Enseña un movimiento a un Pokémon. (TM30)"
+price = 1000
+pocket = 4
+item_type = 5

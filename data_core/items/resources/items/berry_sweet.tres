@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://76tgaiykoxl2"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://d3d0tvjnnkcd3" path="res://graphics/items/BERRYSWEET.png" id="1_qd8ul"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 240
+item_name = "Confite fruto"
+plural_name = "Confites fruto"
+item_description = "Un dulce con forma de baya amado por Milcery."
+price = 500
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_qd8ul")

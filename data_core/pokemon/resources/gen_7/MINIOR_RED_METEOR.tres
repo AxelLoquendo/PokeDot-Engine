@@ -7,50 +7,73 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ccj7l")
-form_id = &"meteor_red"
-display_name = "Meteorito Red"
-tags = PackedStringArray("minior", "meteor", "red")
+species_id = 1193
+form_id = &"minior_meteor_orange"
+display_name = "Minior Meteor Orange"
+base_species_id = 774
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_ccj7l")
-form_id = &"meteor_orange"
-display_name = "Meteorito Orange"
-tags = PackedStringArray("minior", "meteor", "orange")
+species_id = 1194
+form_id = &"minior_meteor_yellow"
+display_name = "Minior Meteor Yellow"
+base_species_id = 774
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_ccj7l")
-form_id = &"meteor_yellow"
-display_name = "Meteorito Yellow"
-tags = PackedStringArray("minior", "meteor", "yellow")
+species_id = 1195
+form_id = &"minior_meteor_green"
+display_name = "Minior Meteor Green"
+base_species_id = 774
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_ccj7l")
-form_id = &"meteor_green"
-display_name = "Meteorito Green"
-tags = PackedStringArray("minior", "meteor", "green")
+species_id = 1196
+form_id = &"minior_meteor_blue"
+display_name = "Minior Meteor Blue"
+base_species_id = 774
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_ccj7l")
-form_id = &"meteor_blue"
-display_name = "Meteorito Blue"
-tags = PackedStringArray("minior", "meteor", "blue")
+species_id = 1197
+form_id = &"minior_meteor_indigo"
+display_name = "Minior Meteor Indigo"
+base_species_id = 774
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_ccj7l")
-form_id = &"meteor_indigo"
-display_name = "Meteorito Indigo"
-tags = PackedStringArray("minior", "meteor", "indigo")
+species_id = 1198
+form_id = &"minior_meteor_violet"
+display_name = "Minior Meteor Violet"
+base_species_id = 774
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("2_ccj7l")
-form_id = &"meteor_violet"
-display_name = "Meteorito Violet"
-tags = PackedStringArray("minior", "meteor", "violet")
+species_id = 1199
+form_id = &"minior_core_red"
+display_name = "Minior Core Red"
+base_species_id = 774
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 60
+base_speed = 120
+base_sp_attack = 100
+base_sp_defense = 60
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("2_ccj7l")
-form_id = &"core_red"
-display_name = "Núcleo Red"
+species_id = 1200
+form_id = &"minior_core_orange"
+display_name = "Minior Core Orange"
+base_species_id = 774
 override_stats = true
 base_hp = 60
 base_attack = 100
@@ -58,12 +81,14 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
-tags = PackedStringArray("minior", "core", "red")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("2_ccj7l")
-form_id = &"core_orange"
-display_name = "Núcleo Orange"
+species_id = 1201
+form_id = &"minior_core_yellow"
+display_name = "Minior Core Yellow"
+base_species_id = 774
 override_stats = true
 base_hp = 60
 base_attack = 100
@@ -71,12 +96,14 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
-tags = PackedStringArray("minior", "core", "orange")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
 script = ExtResource("2_ccj7l")
-form_id = &"core_yellow"
-display_name = "Núcleo Yellow"
+species_id = 1202
+form_id = &"minior_core_green"
+display_name = "Minior Core Green"
+base_species_id = 774
 override_stats = true
 base_hp = 60
 base_attack = 100
@@ -84,12 +111,14 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
-tags = PackedStringArray("minior", "core", "yellow")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
 script = ExtResource("2_ccj7l")
-form_id = &"core_green"
-display_name = "Núcleo Green"
+species_id = 1203
+form_id = &"minior_core_blue"
+display_name = "Minior Core Blue"
+base_species_id = 774
 override_stats = true
 base_hp = 60
 base_attack = 100
@@ -97,12 +126,14 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
-tags = PackedStringArray("minior", "core", "green")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
 script = ExtResource("2_ccj7l")
-form_id = &"core_blue"
-display_name = "Núcleo Blue"
+species_id = 1204
+form_id = &"minior_core_indigo"
+display_name = "Minior Core Indigo"
+base_species_id = 774
 override_stats = true
 base_hp = 60
 base_attack = 100
@@ -110,12 +141,14 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
-tags = PackedStringArray("minior", "core", "blue")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
 script = ExtResource("2_ccj7l")
-form_id = &"core_indigo"
-display_name = "Núcleo Indigo"
+species_id = 1205
+form_id = &"minior_core_violet"
+display_name = "Minior Core Violet"
+base_species_id = 774
 override_stats = true
 base_hp = 60
 base_attack = 100
@@ -123,20 +156,7 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
-tags = PackedStringArray("minior", "core", "indigo")
-
-[sub_resource type="Resource" id="Resource_form_13"]
-script = ExtResource("2_ccj7l")
-form_id = &"core_violet"
-display_name = "Núcleo Violet"
-override_stats = true
-base_hp = 60
-base_attack = 100
-base_defense = 60
-base_speed = 120
-base_sp_attack = 100
-base_sp_defense = 60
-tags = PackedStringArray("minior", "core", "violet")
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -241,7 +261,7 @@ description = "Vive en la capa de ozono hasta que su caparazón se hace demasiad
 height = 3
 weight = 400
 body_color = 5
-forms = Array[ExtResource("2_ccj7l")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13")])
+forms = Array[ExtResource("2_ccj7l")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([36, 38, 63, 76, 89, 92, 94, 104, 109, 113, 115, 129, 153, 156, 157, 164, 173, 182, 201, 203, 207, 213, 214, 216, 218, 219, 237, 244, 263, 283, 317, 347, 350, 356, 360, 369, 387, 393, 397, 408, 414, 416, 428, 442, 444, 446, 451, 477, 496, 512, 523, 590, 605, 728, 743, 779])
 ability_1 = 197

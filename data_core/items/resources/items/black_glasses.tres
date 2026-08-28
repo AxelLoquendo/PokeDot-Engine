@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cy3ehfrejocy8"]
+
+[ext_resource type="Texture2D" uid="uid://ncg4rswhtcfg" path="res://graphics/items/BLACKGLASSES.png" id="1_c4dq0"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 440
+item_name = "Gafa oscura"
+plural_name = "Gafas oscuras"
+item_description = "Objeto que potencia los movimientos de tipo Siniestro."
+item_type = 4
+hold_effect = 43
+fling_power = 30
+icon = ExtResource("1_c4dq0")

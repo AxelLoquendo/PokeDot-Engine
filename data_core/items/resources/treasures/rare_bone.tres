@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b1of52d4oqugm"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 154
+item_name = "Hueso raro"
+plural_name = "Huesos raros"
+item_description = "Hueso muy extraño. Puede venderse a un alto precio."
+price = 7
+pocket = 14
+item_type = 4
+fling_power = 100

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dyer6pycrj07k"]
+
+[ext_resource type="Texture2D" uid="uid://xt1m7ikdtipd" path="res://graphics/items/ADAMANTORB.png" id="1_5bfwj"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 401
+item_name = "Diamansfera"
+plural_name = "Diamansferas"
+item_description = "Aumenta el poder de los movimientos de tipo Dragón y Acero de Dialga."
+item_type = 4
+hold_effect = 76
+hold_effect_param = 20
+fling_power = 60
+icon = ExtResource("1_5bfwj")

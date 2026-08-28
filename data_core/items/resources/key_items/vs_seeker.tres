@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bxhs5a2hcbsuw"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 714
+item_name = "Buscapelea"
+plural_name = "Buscapeleas"
+item_description = "Unidad recargable que marca a Entrenadores listos para batallar."
+pocket = 8
+importance = true
+not_consumed = true

@@ -7,15 +7,19 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_g2akr")
-form_id = &"gulping"
-display_name = "Engullidor"
-tags = PackedStringArray("battle")
+species_id = 1211
+form_id = &"cramorant_gulping"
+display_name = "Cramorant Gulping"
+base_species_id = 845
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_g2akr")
-form_id = &"gorging"
-display_name = "Guloso"
-tags = PackedStringArray("battle")
+species_id = 1212
+form_id = &"cramorant_gorging"
+display_name = "Cramorant Gorging"
+base_species_id = 845
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

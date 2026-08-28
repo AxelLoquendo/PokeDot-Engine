@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://y7cmr2gdq7xa"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dh70ut6w68ny3" path="res://graphics/items/FINEREMEDY.png" id="1_w4q8y"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 818
+item_name = "Superremedio"
+plural_name = "Fine Remedies"
+item_description = "Un polvo amargo que restaura PS en 100 puntos."
+price = 150
+item_type = 1
+battle_usage = 1
+fling_power = 30
+icon = ExtResource("1_w4q8y")
+effect = 1

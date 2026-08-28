@@ -29,6 +29,14 @@ use_advanced_rules = true
 trigger = 2
 conditions = Array[ExtResource("2_arm0u")]([SubResource("Resource_cond1")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_yexxn")
+species_id = 961
+form_id = &"vulpix_alola"
+display_name = "Vulpix Alola"
+base_species_id = 37
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 39
@@ -163,6 +171,7 @@ description = "Cuando nace solo tiene una cola, pero a medida que crece, esta se
 height = 6
 weight = 99
 body_color = 5
+forms = Array[ExtResource("4_yexxn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 53, 83, 91, 92, 97, 99, 102, 104, 109, 115, 117, 126, 129, 130, 156, 164, 173, 174, 180, 182, 203, 204, 207, 213, 214, 216, 218, 219, 220, 226, 227, 231, 237, 241, 244, 257, 261, 263, 270, 272, 286, 290, 311, 315, 343, 363, 371, 384, 394, 399, 412, 417, 428, 445, 466, 488, 492, 496, 506, 510, 541, 555, 590, 595, 608, 735, 779])
 egg_moves = Array[int]([46, 50, 95, 175, 180, 185, 244, 257, 262, 290, 326, 336, 361, 384, 394, 412, 445, 488, 506, 541, 608])

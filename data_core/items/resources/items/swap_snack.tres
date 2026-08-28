@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c1q3suuni7kvw"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 825
+item_name = "Bocadito inversión"
+plural_name = "Bocaditos inversión"
+item_description = "Invierte temporalmente valores ofensivos y defensivos del Pokémon."
+price = 1200
+item_type = 4

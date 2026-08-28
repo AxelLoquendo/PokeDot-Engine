@@ -225,7 +225,7 @@ func _refresh_list() -> void:
 		var haystack: String = "%s %s %s %s %s" % [
 			id_text, item.item_name, item.plural_name,
 			_enum_text(Items.ItemType.keys(), Items.ItemType.values(), item.item_type),
-			_enum_text(Items.ItemEffect.keys(), Items.ItemEffect.values(), item.effect)
+			_enum_text(Items.EffectItem.keys(), Items.EffectItem.values(), item.effect)
 		]
 		if not query.is_empty() and not haystack.to_lower().contains(query):
 			continue
@@ -234,11 +234,16 @@ func _refresh_list() -> void:
 		)
 		item_list.set_item_metadata(index, str(record.get("path", "")))
 
-func _enum_text(keys: Array, values: Array, value: int) -> String:
+func _enum_text(keys: Array, values: Array, value: Variant) -> String:
+	var numeric_value: int = _enum_int(value)
 	for index: int in range(values.size()):
-		if int(values[index]) == int(value):
+		if int(values[index]) == numeric_value:
 			return str(keys[index])
-	return ""
+	return "SIN EFECTO" if numeric_value == 0 else "UNKNOWN (%d)" % numeric_value
+
+func _enum_int(value: Variant) -> int:
+	# `Items.EffectItem` sin un miembro produjo el diccionario del enum.
+	return 0 if value is Dictionary else int(value)
 
 func _on_search_changed(_text: String) -> void:
 	_refresh_list()
@@ -412,7 +417,7 @@ func _make_template() -> ItemData:
 	data.fling_power = 0
 	data.importance = false
 	data.not_consumed = false
-	data.effect = Items.ItemEffect.NONE
+	data.effect = 0 as Items.EffectItem
 	return data
 
 func _on_delete_pressed() -> void:

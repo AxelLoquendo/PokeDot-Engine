@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bj00wieja4f5u"]
+
+[ext_resource type="Texture2D" uid="uid://2chuck7727qm" path="res://graphics/items/GREENAPRICORN.png" id="1_hnwdu"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 191
+item_name = "Bonguri verde"
+plural_name = "Bonguri verdes"
+item_description = "Un Bonguri verde. Tiene un aroma extraño y aromático."
+item_type = 4
+icon = ExtResource("1_hnwdu")

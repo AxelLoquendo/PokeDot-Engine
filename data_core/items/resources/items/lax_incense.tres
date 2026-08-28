@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://br8cj44lubba2"]
+
+[ext_resource type="Texture2D" uid="uid://g607ohnt17c3" path="res://graphics/items/LAXINCENSE.png" id="1_18cbb"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 405
+item_name = "Incienso suave"
+plural_name = "Inciensos suaves"
+item_description = "Accesorio que reduce ligeramente precisión del oponente."
+price = 5000
+item_type = 4
+hold_effect = 22
+hold_effect_param = 10
+fling_power = 10
+icon = ExtResource("1_18cbb")

@@ -7,27 +7,27 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_6n8x8")
-form_id = &"spring"
-display_name = "Spring"
-tags = PackedStringArray("season")
+species_id = 1097
+form_id = &"sawsbuck_summer"
+display_name = "Sawsbuck Summer"
+base_species_id = 586
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_6n8x8")
-form_id = &"summer"
-display_name = "Summer"
-tags = PackedStringArray("season")
+species_id = 1098
+form_id = &"sawsbuck_autumn"
+display_name = "Sawsbuck Autumn"
+base_species_id = 586
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_6n8x8")
-form_id = &"autumn"
-display_name = "Autumn"
-tags = PackedStringArray("season")
-
-[sub_resource type="Resource" id="Resource_form_3"]
-script = ExtResource("2_6n8x8")
-form_id = &"winter"
-display_name = "Winter"
-tags = PackedStringArray("season")
+species_id = 1099
+form_id = &"sawsbuck_winter"
+display_name = "Sawsbuck Winter"
+base_species_id = 586
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -140,7 +140,7 @@ description = "Cambia de morada dependiendo de las estaciones. Observando sus cu
 height = 19
 weight = 925
 body_color = 5
-forms = Array[ExtResource("2_6n8x8")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
+forms = Array[ExtResource("2_6n8x8")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 63, 76, 86, 91, 92, 97, 104, 113, 148, 156, 164, 173, 174, 182, 202, 203, 204, 207, 213, 214, 216, 218, 219, 226, 235, 237, 240, 241, 247, 249, 263, 267, 270, 283, 290, 313, 331, 340, 345, 387, 388, 402, 412, 416, 428, 437, 447, 496, 497, 514, 523, 526, 528, 572, 580, 583, 590, 630, 638, 647, 661, 731, 779, 811])
 ability_1 = 34

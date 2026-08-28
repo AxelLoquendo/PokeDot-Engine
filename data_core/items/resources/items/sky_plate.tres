@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cy0sir48n56fn"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 258
+item_name = "Tabla cielo"
+plural_name = "Tablas cielo"
+item_description = "Una tableta que aumenta el poder de los movimientos de tipo Volador."
+price = 1000
+item_type = 4
+hold_effect = 89
+hold_effect_param = 20
+fling_power = 90

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dbjluwsn1le01"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://q5m4ka53gtod" path="res://graphics/items/TM_CASE.png" id="1_wjpjg"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 715
+item_name = "TM_CASE"
+plural_name = "TM_CASEs"
+item_description = "Máquina Técnica. Enseña un movimiento a un Pokémon."
+pocket = 4
+item_type = 5
+importance = true
+icon = ExtResource("1_wjpjg")

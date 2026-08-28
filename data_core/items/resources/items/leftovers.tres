@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://lluwf7atq2x3"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cjptj8y7kxn01" path="res://graphics/items/LEFTOVERS.png" id="1_qe4s4"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 472
+item_name = "Restos"
+plural_name = "Restos"
+item_description = "Restaura gradualmente PS en batalla."
+price = 20000
+item_type = 4
+hold_effect = 41
+hold_effect_param = 10
+fling_power = 10
+icon = ExtResource("1_qe4s4")

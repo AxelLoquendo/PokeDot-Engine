@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ca0igy6nd4m7l"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 101
+item_name = "Menta seria"
+plural_name = "Mentas serias"
+item_description = "Cambia la naturaleza del Pokémon a Seria."
+price = 20000
+pocket = 18
+item_type = 1
+fling_power = 10

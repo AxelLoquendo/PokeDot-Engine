@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cohs3od378ary"]
+
+[ext_resource type="Texture2D" uid="uid://c064467a2cl8h" path="res://graphics/items/BINDINGBAND.png" id="1_0o224"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 500
+item_name = "Banda atadura"
+plural_name = "Banda ataduras"
+item_description = "Aumenta el poder de los movimientos de atadura cuando se sostiene."
+price = 20000
+item_type = 4
+hold_effect = 99
+fling_power = 30
+icon = ExtResource("1_0o224")

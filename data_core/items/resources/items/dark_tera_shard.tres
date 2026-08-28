@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b3ti4fhds2avf"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://drxnweofkgiah" path="res://graphics/items/DARKTERASHARD.png" id="1_w8fe5"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 775
+item_name = "Teralito siniestro"
+plural_name = "Teralitos siniestro"
+item_description = "Estos fragmentos pueden formarse cuando un Pokémon Tera se desmaya."
+item_type = 4
+icon = ExtResource("1_w8fe5")

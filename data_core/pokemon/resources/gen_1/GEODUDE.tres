@@ -17,6 +17,14 @@ target_species = 75
 use_advanced_rules = true
 conditions = Array[ExtResource("2_c82rt")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_qlt37")
+species_id = 967
+form_id = &"geodude_alola"
+display_name = "Geodude Alola"
+base_species_id = 74
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -123,6 +131,7 @@ description = "Aparecen en llanos y montañas. Como parecen rocas, la gente se t
 height = 4
 weight = 200
 body_color = 5
+forms = Array[ExtResource("4_qlt37")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 9, 29, 34, 36, 38, 53, 66, 68, 69, 70, 89, 90, 91, 92, 99, 102, 104, 111, 117, 118, 120, 126, 153, 156, 157, 164, 173, 174, 182, 184, 189, 201, 203, 205, 207, 213, 214, 216, 218, 223, 237, 241, 246, 249, 263, 264, 267, 276, 280, 290, 317, 334, 335, 341, 350, 360, 363, 374, 389, 397, 414, 431, 444, 445, 446, 479, 496, 510, 523, 590, 612, 630, 661, 779])
 egg_moves = Array[int]([5, 157, 174, 175, 203, 223, 264, 335, 359, 431, 469, 475])

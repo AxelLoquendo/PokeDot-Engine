@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://brmcujlw5q6cf"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://ir1njh38cjte" path="res://graphics/items/FOCUSSASH.png" id="1_oyd3c"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 481
+item_name = "Banda aguante"
+plural_name = "Bandas aguante"
+item_description = "Si portador tiene PS completos, aguanta golpes que lo debilitarían."
+price = 50000
+item_type = 4
+hold_effect = 67
+fling_power = 10
+icon = ExtResource("1_oyd3c")

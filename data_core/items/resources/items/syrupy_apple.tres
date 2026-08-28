@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c78sd1f8ygah"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 800
+item_name = "Manzana melosa"
+plural_name = "Manzanas melosas"
+item_description = "Una manzana muy almibada que hace que ciertos Pokémon evolucionen."
+price = 2200
+item_type = 1
+fling_power = 30

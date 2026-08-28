@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bwodw1f17y0m1"]
+
+[ext_resource type="Texture2D" uid="uid://bkfjlt3iu8132" path="res://graphics/items/WIKIBERRY.png" id="1_fr7kp"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 525
+item_name = "Baya Wiki"
+plural_name = "Bayas Wiki"
+item_description = "Restaura PS, pero puede causar confusión."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 11
+fling_power = 10
+icon = ExtResource("1_fr7kp")

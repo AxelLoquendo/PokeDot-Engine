@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://doilgds800r4n"]
+
+[ext_resource type="Texture2D" uid="uid://u78xfqa7gcmo" path="res://graphics/items/OVALSTONE.png" id="1_h5ebm"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 237
+item_name = "Piedra oval"
+plural_name = "Piedras ovales"
+item_description = "Hace que cierto Pokémon evolucione. Tiene forma de huevo."
+price = 2000
+item_type = 1
+fling_power = 80
+icon = ExtResource("1_h5ebm")

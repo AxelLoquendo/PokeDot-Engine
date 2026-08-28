@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://l2ef1sq60plx"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 864
+item_name = "Lucarionite Z"
+plural_name = "Lucarionite Zs"
+item_description = "This stone enables Lucario to Mega Evolve in battle."
+pocket = 10
+item_type = 4
+hold_effect = 103
+fling_power = 80
+not_consumed = true

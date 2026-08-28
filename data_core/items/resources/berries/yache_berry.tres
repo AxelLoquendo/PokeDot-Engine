@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cf3scqhmcic1y"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://b0d55oajbrm36" path="res://graphics/items/YACHEBERRY.png" id="1_n3jx7"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 554
+item_name = "Baya Rimoya"
+plural_name = "Bayas Rimoya"
+item_description = "Un objeto que debilita un movimiento de tipo Hielo si es débil a él."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 80
+fling_power = 10
+icon = ExtResource("1_n3jx7")

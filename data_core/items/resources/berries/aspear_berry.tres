@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dtenps1gav3ob"]
+
+[ext_resource type="Texture2D" uid="uid://c3y03cw1r64rj" path="res://graphics/items/ASPEARBERRY.png" id="1_e7jg5"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 518
+item_name = "Baya Perasi"
+plural_name = "Bayas Perasi"
+item_description = "Un objeto que se puede tener y que descongela a un Pokémon en batalla."
+price = 80
+pocket = 7
+item_type = 1
+hold_effect = 6
+battle_usage = 2
+fling_power = 10
+icon = ExtResource("1_e7jg5")
+effect = 2

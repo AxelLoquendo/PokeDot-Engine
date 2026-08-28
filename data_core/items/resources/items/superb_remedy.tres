@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ckyu4g0fe1r8v"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 819
+item_name = "Hiperremedio"
+plural_name = "Superb Remedies"
+item_description = "Un polvo amargo que restaura PS en 150 puntos."
+price = 750
+item_type = 1
+battle_usage = 1
+fling_power = 30
+effect = 1

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cnpyxs2xdleum"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://djonkrp44k7rb" path="res://graphics/items/QUICKCLAW.png" id="1_jpdep"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 462
+item_name = "Garra rápida"
+plural_name = "Garra rápidas"
+item_description = "Un objeto que ocasionalmente permite atacar primero."
+price = 8000
+item_type = 4
+hold_effect = 26
+hold_effect_param = 20
+fling_power = 80
+icon = ExtResource("1_jpdep")

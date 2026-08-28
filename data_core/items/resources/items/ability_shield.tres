@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bfq7n2dml3qho"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://u7c5tm3al6bo" path="res://graphics/items/ABILITYSHIELD.png" id="1_w7f5g"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 758
+item_name = "Cápsula habilidad"
+plural_name = "Cápsula habilidads"
+item_description = "Los cambios de habilidad se previenen para el portador de este objeto."
+price = 20000
+item_type = 4
+hold_effect = 121
+fling_power = 30
+icon = ExtResource("1_w7f5g")

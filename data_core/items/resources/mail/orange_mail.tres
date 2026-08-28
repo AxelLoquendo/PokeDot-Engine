@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://wra4d3603tsi"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 199
+item_name = "Carta naranja"
+plural_name = "Cartas naranjas"
+item_description = "Tiene la imagen de Zigzagoon."
+price = 50
+pocket = 9
+item_type = 0

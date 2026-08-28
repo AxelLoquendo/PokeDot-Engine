@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b57pe500ygp1"]
+
+[ext_resource type="Texture2D" uid="uid://ch2amnkkkpotr" path="res://graphics/items/LUMINOUSMOSS.png" id="1_hshhx"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 457
+item_name = "Musgo brillante"
+plural_name = "Musgos brillantes"
+item_description = "Sube Defensa especial si recibe ataque de Agua, pero solo una vez."
+price = 5000
+item_type = 4
+hold_effect = 105
+fling_power = 30
+icon = ExtResource("1_hshhx")

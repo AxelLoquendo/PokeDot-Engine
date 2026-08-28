@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dibu7qstaciwn"]
+
+[ext_resource type="Texture2D" uid="uid://dtgnadimmk62k" path="res://graphics/items/PINKSCARF.png" id="1_8d137"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 415
+item_name = "Pañuelo rosa"
+plural_name = "Pañuelos rosas"
+item_description = "Acesorio que aumenta el Encanto en los Concursos."
+price = 100
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_8d137")

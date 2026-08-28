@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://kqm3ii0axl4x"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 47
+item_name = "Despertar"
+plural_name = "Despertares"
+item_description = "Despierta al Pokémon dormido."
+price = 200
+pocket = 1
+item_type = 1
+battle_usage = 2
+fling_power = 30
+effect = 2

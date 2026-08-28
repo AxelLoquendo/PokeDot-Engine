@@ -26,7 +26,7 @@ class_name ItemData
 @export var icon: Texture2D
 
 # efecto real del objeto
-@export var effect: Items.ItemEffect = Items.ItemEffect.NONE
+@export var effect: Items.EffectItem = Items.EffectItem.EFFECT_ITEM_NONE
 
 
 func _validate() -> Array[String]:

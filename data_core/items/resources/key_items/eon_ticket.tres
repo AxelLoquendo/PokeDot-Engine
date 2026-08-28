@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dhap0jjasfgxn"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 728
+item_name = "Ticket eón"
+plural_name = "Ticket eóns"
+item_description = "El ticket para un ferry a una Isla del Sur."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://byvuv4c2r6ut2"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dmxr2ao4h3svb" path="res://graphics/items/DUBIOUSDISC.png" id="1_qd6ve"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 232
+item_name = "Disco extraño"
+plural_name = "Discos extraños"
+item_description = "Un dispositivo claro rebosante de datos dudosos."
+price = 7
+item_type = 1
+fling_power = 50
+icon = ExtResource("1_qd6ve")

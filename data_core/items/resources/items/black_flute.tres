@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c53ttowft6wsr"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://ewow1h7a4ito" path="res://graphics/items/BLACKFLUTE.png" id="1_qclii"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 112
+item_name = "Flauta negra"
+plural_name = "Flautas negras"
+item_description = "Una flauta de vidrio que ahuyenta a los Pokémon salvajes."
+price = 20
+item_type = 1
+hold_effect_param = 50
+fling_power = 30
+icon = ExtResource("1_qclii")

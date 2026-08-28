@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://uh7y75rbplki"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://do78jqt0hqa6l" path="res://graphics/items/SPORTBALL.png" id="1_xa05d"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 24
+secondary_id = 24
+item_name = "Competi Ball"
+plural_name = "Competi Balls"
+item_description = "Se usa solo en el Concurso Cazabichos."
+pocket = 2
+item_type = 4
+battle_usage = 4
+icon = ExtResource("1_xa05d")
+effect = 8

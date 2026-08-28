@@ -14,7 +14,10 @@ func validate(item: ItemData, repository: ItemEditorRepository = null, path: Str
 		errors.append("hold_effect no es válido.")
 	if not int(item.battle_usage) in Items.BattleUsage.values():
 		errors.append("battle_usage no es válido.")
-	if not int(item.effect) in Items.ItemEffect.values():
+	# EffectItem no define NONE; 0 representa un objeto sin efecto real.
+	var raw_effect: Variant = item.effect
+	var effect_value: int = 0 if raw_effect is Dictionary else int(raw_effect)
+	if effect_value != 0 and not effect_value in Items.EffectItem.values():
 		errors.append("effect no es válido.")
 	if item.secondary_id < 0:
 		errors.append("secondary_id no puede ser negativo.")

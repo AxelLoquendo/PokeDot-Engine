@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cg5r8s740fhp2"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 858
+item_name = "Raichunite X"
+plural_name = "Raichunite Xs"
+item_description = "This stone enables Raichu to Mega Evolve in battle."
+pocket = 10
+item_type = 4
+hold_effect = 103
+fling_power = 80
+not_consumed = true

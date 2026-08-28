@@ -13,7 +13,7 @@ efecto.
 - Formulario para todos los campos exportados de `ItemData`.
 - `OptionButton` generado desde los enums reales `Items.ItemId`,
   `ItemConstants.Pocket`, `Items.ItemType`, `HoldEffects.HoldEffect`,
-  `Items.BattleUsage` e `Items.ItemEffect`.
+  `Items.BattleUsage` e `Items.EffectItem`.
 - `EditorResourcePicker` `Texture2D` y vista previa para `icon`.
 - Validación oficial mediante `ItemData._validate()` más validaciones de
   enums, parámetros y IDs duplicados.

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://e2pehk72fjpe"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 588
+item_name = "TM07"
+plural_name = "TM07s"
+item_description = "Máquina Técnica. Enseña un movimiento a un Pokémon. (TM07)"
+price = 1000
+pocket = 4
+item_type = 5

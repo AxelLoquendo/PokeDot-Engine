@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dlt6of0d5few4"]
+
+[ext_resource type="Texture2D" uid="uid://fdjvsv4rcct0" path="res://graphics/items/CHESTOBERRY.png" id="1_fqnsx"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 515
+item_name = "Baya Atania"
+plural_name = "Bayas Atania"
+item_description = "Un objeto que se puede tener y que despierta a un Pokémon en batalla."
+price = 80
+pocket = 7
+item_type = 1
+hold_effect = 3
+battle_usage = 2
+fling_power = 10
+icon = ExtResource("1_fqnsx")
+effect = 2

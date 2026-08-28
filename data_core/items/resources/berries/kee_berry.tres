@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://je53wme1cbmr"]
+
+[ext_resource type="Texture2D" uid="uid://csjjndpnocpux" path="res://graphics/items/KEEBERRY.png" id="1_cw0op"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 579
+item_name = "Baya Biglia"
+plural_name = "Bayas Biglia"
+item_description = "Si recibe un movimiento físico, sube Defensa un poco."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 87
+fling_power = 10
+icon = ExtResource("1_cw0op")

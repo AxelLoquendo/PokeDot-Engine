@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bkggc244j1eq6"]
+
+[ext_resource type="Texture2D" uid="uid://bsfyrq0fvj76y" path="res://graphics/items/ARMORITEORE.png" id="1_hbygx"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 197
+item_name = "Duralium"
+plural_name = "Duraliums"
+item_description = "Un mineral raro. Se puede encontrar en la Isla de la Armadura en Galar."
+price = 20
+item_type = 4
+fling_power = 30
+icon = ExtResource("1_hbygx")

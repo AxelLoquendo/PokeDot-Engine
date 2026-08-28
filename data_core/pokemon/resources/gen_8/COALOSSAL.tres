@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_275gq")
+species_id = 1509
+form_id = &"coalossal_gmax"
+display_name = "Coalossal Gmax"
+base_species_id = 839
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -92,6 +100,7 @@ description = "Aunque es de carácter sereno, monta en cólera si ve a seres hum
 height = 28
 weight = 3105
 body_color = 4
+forms = Array[ExtResource("2_275gq")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([5, 7, 25, 34, 36, 53, 63, 76, 83, 89, 91, 115, 120, 126, 156, 157, 164, 173, 174, 182, 191, 201, 203, 213, 214, 241, 257, 261, 263, 315, 317, 328, 334, 350, 360, 394, 408, 414, 416, 442, 444, 446, 479, 484, 488, 496, 503, 523, 535, 630, 704, 728, 743, 779, 843])
 ability_1 = 243

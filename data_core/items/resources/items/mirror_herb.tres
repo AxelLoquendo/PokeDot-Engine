@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bbh0p3ipkhfrf"]
+
+[ext_resource type="Texture2D" uid="uid://8cf7usabkuq1" path="res://graphics/items/MIRRORHERB.png" id="1_0n3dx"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 769
+item_name = "Hierba copia"
+plural_name = "Hierbas copia"
+item_description = "Refleja el aumento de estadísticas del enemigo pero solo una vez."
+price = 30000
+item_type = 4
+hold_effect = 123
+fling_power = 30
+icon = ExtResource("1_0n3dx")

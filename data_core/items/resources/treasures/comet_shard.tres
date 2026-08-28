@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b5us4krxgekxa"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 145
+item_name = "Fragmento cometa"
+plural_name = "Fragmento cometas"
+item_description = "Fragmento de cometa. Se vendería a un alto precio."
+price = 25000
+pocket = 14
+item_type = 4
+fling_power = 30

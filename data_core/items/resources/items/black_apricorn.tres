@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://2my1827x107"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c51wlbuyu5lup" path="res://graphics/items/BLACKAPRICORN.png" id="1_xa3et"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 194
+item_name = "Bonguri negro"
+plural_name = "Bonguri negros"
+item_description = "Un Bonguri negro. Tiene un aroma indescriptible."
+item_type = 4
+icon = ExtResource("1_xa3et")

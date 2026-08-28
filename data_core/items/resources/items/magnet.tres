@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://1shnqbh1eeef"]
+
+[ext_resource type="Texture2D" uid="uid://c0hd05h3fpkwh" path="res://graphics/items/MAGNET.png" id="1_b67y5"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 428
+item_name = "Imán"
+plural_name = "Imáns"
+item_description = "Objeto que potencia los movimientos de tipo Eléctrico."
+item_type = 4
+hold_effect = 43
+fling_power = 30
+icon = ExtResource("1_b67y5")

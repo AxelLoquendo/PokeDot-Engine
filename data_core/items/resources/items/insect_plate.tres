@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d1o7q3xvyyin6"]
+
+[ext_resource type="Texture2D" uid="uid://drqp6krdctics" path="res://graphics/items/INSECTPLATE.png" id="1_hblnf"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 260
+item_name = "Tabla bicho"
+plural_name = "Tablas bicho"
+item_description = "Una tableta que aumenta el poder de los movimientos de tipo Bicho."
+price = 1000
+item_type = 4
+hold_effect = 89
+hold_effect_param = 20
+fling_power = 90
+icon = ExtResource("1_hblnf")

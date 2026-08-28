@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bixfanrdg5t1i"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 95
+item_name = "Menta cauta"
+plural_name = "Mentas cautas"
+item_description = "Cambia la naturaleza del Pokémon a Cauta."
+price = 20000
+pocket = 18
+item_type = 1
+fling_power = 10

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://6poejaktfsh1"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 238
+item_name = "Confite fresa"
+plural_name = "Confites fresa"
+item_description = "Un dulce con forma de fresa amado por Milcery."
+price = 500
+item_type = 4
+fling_power = 10

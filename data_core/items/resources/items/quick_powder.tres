@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://duqkfw42cby3a"]
+
+[ext_resource type="Texture2D" uid="uid://4tmkfy6h2cgs" path="res://graphics/items/QUICKPOWDER.png" id="1_277oj"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 397
+item_name = "Polvo veloz"
+plural_name = "Polvo velozs"
+item_description = "Si lo lleva Dito, este polvo raro aumenta su Velocidad."
+price = 1000
+item_type = 4
+hold_effect = 75
+fling_power = 10
+icon = ExtResource("1_277oj")

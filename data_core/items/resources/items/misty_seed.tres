@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dxbk6dbbq2lgf"]
+
+[ext_resource type="Texture2D" uid="uid://d08jmbtqrgng4" path="res://graphics/items/MISTYSEED.png" id="1_7jksd"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 453
+item_name = "Semilla bruma"
+plural_name = "Semillas bruma"
+item_description = "Aumenta Defensa Especial en Campo de niebla, pero solo una vez."
+price = 20000
+item_type = 4
+hold_effect = 111
+fling_power = 10
+icon = ExtResource("1_7jksd")

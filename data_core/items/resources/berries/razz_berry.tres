@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b02skn8uf5sia"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://b20fsl7bmb4v0" path="res://graphics/items/RAZZBERRY.png" id="1_wd24i"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 529
+item_name = "Baya Latano"
+plural_name = "Bayas Latano"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Latano."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_wd24i")

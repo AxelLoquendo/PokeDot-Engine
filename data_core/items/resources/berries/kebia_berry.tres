@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d17pd68jlan67"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://uec0rebcbgnq" path="res://graphics/items/KEBIABERRY.png" id="1_nx2qy"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 556
+item_name = "Baya Kebia"
+plural_name = "Bayas Kebia"
+item_description = "Un objeto que debilita un movimiento de tipo Veneno si es débil a él."
+price = 80
+pocket = 7
+item_type = 4
+hold_effect = 80
+fling_power = 10
+icon = ExtResource("1_nx2qy")

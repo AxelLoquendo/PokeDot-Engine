@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dwq6wtsa048sc"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 53
+item_name = "Zumo de baya"
+plural_name = "Zumos de baya"
+item_description = "Un jugo 100% puro que restaura PS en 20 puntos."
+price = 100
+pocket = 1
+item_type = 1
+hold_effect = 1
+hold_effect_param = 20
+battle_usage = 1
+fling_power = 30
+effect = 1

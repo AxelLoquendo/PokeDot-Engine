@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cv35wsbmmdxtn"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cog5x3bb1wkfe" path="res://graphics/items/BLUKBERRY.png" id="1_lnn26"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 530
+item_name = "Baya Oram"
+plural_name = "Bayas Oram"
+item_description = "Ingrediente de Pokécubos. Plántala en suelo fértil para obtener Oram."
+price = 80
+pocket = 7
+item_type = 4
+fling_power = 10
+icon = ExtResource("1_lnn26")

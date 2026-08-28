@@ -17,6 +17,14 @@ target_species = 864
 use_advanced_rules = true
 conditions = Array[ExtResource("2_7lqto")]([SubResource("Resource_cond0")])
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("4_8isqc")
+species_id = 986
+form_id = &"corsola_galar"
+display_name = "Corsola Galar"
+base_species_id = 222
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -139,6 +147,7 @@ description = "Crece y muda continuamente. La parte superior de su cabeza es muy
 height = 6
 weight = 50
 body_color = 9
+forms = Array[ExtResource("4_8isqc")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([29, 34, 38, 56, 57, 58, 59, 70, 89, 91, 92, 94, 102, 103, 104, 111, 113, 115, 120, 133, 153, 156, 157, 164, 173, 174, 182, 189, 196, 201, 203, 205, 207, 213, 214, 216, 218, 219, 237, 240, 241, 246, 247, 249, 250, 258, 263, 267, 277, 283, 290, 317, 333, 334, 347, 350, 352, 362, 363, 389, 397, 408, 414, 444, 445, 446, 496, 503, 523, 590, 638, 661, 664, 728])
 egg_moves = Array[int]([54, 103, 109, 112, 117, 133, 157, 174, 219, 267, 275, 293, 333, 352, 392, 457, 664])

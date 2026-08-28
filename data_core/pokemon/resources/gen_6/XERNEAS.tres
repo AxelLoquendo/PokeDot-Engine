@@ -7,15 +7,11 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_uu8sx")
-form_id = &"active"
-display_name = "Activo"
-tags = PackedStringArray("mode")
-
-[sub_resource type="Resource" id="Resource_form_1"]
-script = ExtResource("2_uu8sx")
-form_id = &"neutral"
-display_name = "Neutro"
-tags = PackedStringArray("mode")
+species_id = 1163
+form_id = &"xerneas_active"
+display_name = "Xerneas Active"
+base_species_id = 716
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -131,7 +127,7 @@ description = "Según las leyendas, puede compartir el secreto de la vida eterna
 height = 30
 weight = 2150
 body_color = 1
-forms = Array[ExtResource("2_uu8sx")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
+forms = Array[ExtResource("2_uu8sx")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([15, 34, 46, 63, 85, 86, 87, 92, 94, 104, 113, 115, 129, 148, 156, 157, 164, 173, 182, 200, 203, 207, 214, 216, 218, 224, 237, 240, 241, 244, 258, 263, 267, 283, 290, 304, 335, 347, 356, 370, 411, 416, 428, 430, 432, 447, 472, 473, 496, 497, 577, 581, 583, 590, 605, 636, 647, 730, 733])
 ability_1 = 187

@@ -5,6 +5,14 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_cj0jr")
+species_id = 943
+form_id = &"metagross_mega"
+display_name = "Metagross Mega"
+base_species_id = 376
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 33
@@ -108,6 +116,7 @@ description = "Gracias a sus cuatro cerebros, es más inteligente que un superor
 height = 16
 weight = 5500
 body_color = 1
+forms = Array[ExtResource("2_cj0jr")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([8, 9, 15, 29, 34, 36, 38, 63, 70, 89, 92, 94, 97, 102, 104, 111, 113, 115, 120, 129, 148, 153, 156, 157, 164, 173, 182, 184, 188, 189, 196, 201, 203, 205, 207, 210, 214, 216, 218, 223, 232, 237, 240, 241, 244, 247, 248, 249, 263, 264, 271, 280, 282, 290, 317, 322, 324, 332, 334, 335, 356, 360, 363, 393, 397, 416, 421, 427, 428, 430, 442, 444, 446, 447, 468, 473, 477, 484, 496, 502, 523, 590, 612, 636, 656, 660, 661, 704, 724, 725, 726, 728, 779, 811, 840, 845])
 egg_moves = Array[int]([153, 468])

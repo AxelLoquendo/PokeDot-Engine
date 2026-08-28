@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dn17uuxobrghe"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 46
+item_name = "Antihielo"
+plural_name = "Antihielos"
+item_description = "Cura al Pokémon de una congelación."
+price = 200
+pocket = 1
+item_type = 1
+battle_usage = 2
+fling_power = 30
+effect = 2

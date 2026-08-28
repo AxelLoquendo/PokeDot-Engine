@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cpmr2pwsryry6"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 691
+item_name = "Amuleto iris"
+plural_name = "Amuleto iris"
+item_description = "Aumenta probabilidad de encontrar Pokémon variocolor."
+pocket = 8
+item_type = 4
+importance = true
+not_consumed = true

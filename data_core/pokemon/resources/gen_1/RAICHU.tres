@@ -5,6 +5,30 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
+[sub_resource type="Resource" id="Resource_form_0"]
+script = ExtResource("2_su7xh")
+species_id = 958
+form_id = &"raichu_alola"
+display_name = "Raichu Alola"
+base_species_id = 26
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_su7xh")
+species_id = 1553
+form_id = &"raichu_mega_x"
+display_name = "Raichu Mega X"
+base_species_id = 26
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_su7xh")
+species_id = 1554
+form_id = &"raichu_mega_y"
+display_name = "Raichu Mega Y"
+base_species_id = 26
+tags = PackedStringArray()
+
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
 move = 9
@@ -115,6 +139,7 @@ description = "Cuando se carga de electricidad, sus músculos se tensan y se vue
 height = 8
 weight = 300
 body_color = 2
+forms = Array[ExtResource("2_su7xh")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
 teachable_moves = Array[int]([5, 6, 9, 25, 29, 34, 36, 38, 57, 63, 66, 68, 69, 70, 85, 86, 87, 91, 92, 97, 99, 102, 104, 111, 113, 115, 117, 129, 130, 148, 156, 164, 168, 173, 174, 179, 182, 189, 192, 197, 203, 204, 205, 207, 213, 214, 216, 218, 219, 223, 227, 231, 237, 240, 249, 253, 263, 264, 268, 270, 280, 282, 283, 290, 324, 343, 347, 351, 363, 374, 393, 411, 416, 417, 445, 447, 451, 486, 496, 497, 521, 527, 528, 574, 577, 583, 590, 598, 604, 636, 646, 656, 732, 779, 811, 842, 846])
 ability_1 = 9

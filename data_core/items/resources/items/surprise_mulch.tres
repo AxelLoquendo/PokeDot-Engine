@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cne1wl8w40vcf"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 185
+item_name = "Abono sorpresa"
+plural_name = "Abonos sorpresa"
+item_description = "Un fertilizante que aumenta probabilidad de mutaciones en las bayas."
+price = 200
+item_type = 4
+fling_power = 30

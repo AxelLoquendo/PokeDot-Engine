@@ -7,9 +7,27 @@
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_miewt")
-form_id = &"low_key"
-display_name = "Bajo"
-tags = PackedStringArray("nature_form")
+species_id = 1213
+form_id = &"toxtricity_low_key"
+display_name = "Toxtricity Low Key"
+base_species_id = 849
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_1"]
+script = ExtResource("2_miewt")
+species_id = 1513
+form_id = &"toxtricity_amped_gmax"
+display_name = "Toxtricity Amped Gmax"
+base_species_id = 849
+tags = PackedStringArray()
+
+[sub_resource type="Resource" id="Resource_form_2"]
+script = ExtResource("2_miewt")
+species_id = 1514
+form_id = &"toxtricity_low_key_gmax"
+display_name = "Toxtricity Low Key Gmax"
+base_species_id = 849
+tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -147,7 +165,7 @@ description = "Cuando rasga las protuberancias del pecho para generar energía e
 height = 16
 weight = 400
 body_color = 6
-forms = Array[ExtResource("2_miewt")]([SubResource("Resource_form_0")])
+forms = Array[ExtResource("2_miewt")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24")])
 teachable_moves = Array[int]([5, 7, 9, 25, 36, 63, 85, 86, 87, 92, 103, 118, 129, 156, 164, 168, 173, 182, 184, 188, 203, 204, 213, 214, 227, 240, 241, 253, 263, 268, 269, 270, 280, 283, 304, 319, 342, 371, 374, 390, 398, 409, 416, 422, 441, 451, 474, 482, 486, 491, 496, 500, 506, 521, 527, 528, 555, 598, 604, 638, 732, 779, 811, 845])
 ability_1 = 244

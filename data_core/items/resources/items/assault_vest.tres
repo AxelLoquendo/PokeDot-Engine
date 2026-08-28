@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dbausmnwyda00"]
+
+[ext_resource type="Texture2D" uid="uid://dr0kaoucb6515" path="res://graphics/items/ASSAULTVEST.png" id="1_3g5xb"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 503
+item_name = "Chaleco asalto"
+plural_name = "Chalecos asalto"
+item_description = "Sube Defensa especial, pero impide uso de movimientos de estado."
+price = 50000
+item_type = 4
+hold_effect = 92
+hold_effect_param = 50
+fling_power = 80
+icon = ExtResource("1_3g5xb")

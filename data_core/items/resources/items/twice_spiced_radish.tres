@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://1bou3lejqmr0"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 826
+item_name = "Encurtidoble"
+plural_name = "Twice-Spiced Radishes"
+item_description = "Hace que Pokémon causen un 50% más de daño temporalmente."
+price = 1600
+item_type = 4

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cv48w0woie2mb"]
+
+[ext_resource type="Texture2D" uid="uid://gyl5xtlmgdb4" path="res://graphics/items/FLYINGMEMORY.png" id="1_ah28u"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 279
+item_name = "Disco volador"
+plural_name = "Discos volador"
+item_description = "Un disco con datos del tipo Volador. Cambia el tipo de Silvally."
+price = 1000
+item_type = 4
+hold_effect = 113
+fling_power = 50
+icon = ExtResource("1_ah28u")

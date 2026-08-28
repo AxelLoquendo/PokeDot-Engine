@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cnsqvcteitvqd"]
+
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://djgs7rdsqbbk8" path="res://graphics/items/EJECTPACK.png" id="1_xnf6o"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 509
+item_name = "Mochila escape"
+plural_name = "Mochilas escape"
+item_description = "Fuerza al usuario a cambiar si sus estadísticas son bajadas."
+price = 30000
+item_type = 4
+hold_effect = 116
+fling_power = 50
+icon = ExtResource("1_xnf6o")

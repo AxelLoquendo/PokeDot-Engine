@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dfmh8bgh6pty7"]
+
+[ext_resource type="Texture2D" uid="uid://dk6d7qgy3joi1" path="res://graphics/items/CHILLDRIVE.png" id="1_btk2f"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 270
+item_name = "CrioROM"
+plural_name = "CrioROMs"
+item_description = "Cambia ataque Tecno shock de Genesect a tipo Hielo."
+item_type = 4
+hold_effect = 93
+fling_power = 70
+icon = ExtResource("1_btk2f")

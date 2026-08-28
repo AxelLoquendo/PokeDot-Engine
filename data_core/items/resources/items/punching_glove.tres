@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bwpb0cv3r116u"]
+
+[ext_resource type="Texture2D" uid="uid://bk8byn1hpy14p" path="res://graphics/items/PUNCHINGGLOVE.png" id="1_61ts7"]
+[ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+
+[resource]
+script = ExtResource("1_itemdata")
+item_id = 760
+item_name = "Guante de boxeo"
+plural_name = "Guante de boxeos"
+item_description = "Aumenta los movimientos de golpeo y elimina su contacto."
+price = 15000
+item_type = 4
+hold_effect = 124
+fling_power = 30
+icon = ExtResource("1_61ts7")
