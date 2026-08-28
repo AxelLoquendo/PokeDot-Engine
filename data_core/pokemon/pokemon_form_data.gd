@@ -37,9 +37,22 @@ class_name PokemonFormData
 @export var back_sprite_offset: Vector2 = Vector2.ZERO
 @export var override_graphics: bool = false
 
+@export_group("Movimientos")
+@export var inherit_base_moves: bool = true
+@export var level_up_moves: Array[LevelUpMove] = []
+@export var teachable_moves: Array[Moves.MoveId] = []
+@export var egg_moves: Array[Moves.MoveId] = []
+
 @export_group("Evoluciones")
 @export var inherit_base_evolutions: bool = true
 @export var evolutions: Array[EvolutionData] = []
+
+@export_group("Pokédex de la forma")
+@export var override_pokedex: bool = false
+@export var category_name: String = ""
+@export_multiline var description: String = ""
+@export var height: int = 0
+@export var weight: int = 0
 
 @export_group("Metadatos")
 @export var tags: PackedStringArray = []

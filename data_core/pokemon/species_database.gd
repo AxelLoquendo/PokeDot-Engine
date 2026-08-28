@@ -231,6 +231,21 @@ func _build_resolved_species(base_species: PokemonDataStruct, form: PokemonFormD
 		resolved.base_sp_attack = form.base_sp_attack
 		resolved.base_sp_defense = form.base_sp_defense
 
+	if form.inherit_base_moves:
+		resolved.level_up_moves = _merge_level_up_moves(base_species.level_up_moves, form.level_up_moves)
+		resolved.teachable_moves = _merge_move_ids(base_species.teachable_moves, form.teachable_moves)
+		resolved.egg_moves = _merge_move_ids(base_species.egg_moves, form.egg_moves)
+	else:
+		resolved.level_up_moves = form.level_up_moves.duplicate(true)
+		resolved.teachable_moves = form.teachable_moves.duplicate()
+		resolved.egg_moves = form.egg_moves.duplicate()
+
+	if form.override_pokedex:
+		resolved.category_name = form.category_name
+		resolved.description = form.description
+		resolved.height = form.height
+		resolved.weight = form.weight
+
 	if form.override_graphics:
 		if form.front_sprite != null:
 			resolved.front_sprite = form.front_sprite
@@ -256,3 +271,29 @@ func _build_resolved_species(base_species: PokemonDataStruct, form: PokemonFormD
 		resolved.evolutions = form.evolutions.duplicate(true)
 
 	return resolved
+
+func _merge_move_ids(base_moves: Array[Moves.MoveId], form_moves: Array[Moves.MoveId]) -> Array[Moves.MoveId]:
+	var result: Array[Moves.MoveId] = base_moves.duplicate()
+	var seen: Dictionary = {}
+	for move: Moves.MoveId in result:
+		seen[int(move)] = true
+	for move: Moves.MoveId in form_moves:
+		if not seen.has(int(move)):
+			result.append(move)
+			seen[int(move)] = true
+	return result
+
+func _merge_level_up_moves(base_moves: Array[LevelUpMove], form_moves: Array[LevelUpMove]) -> Array[LevelUpMove]:
+	var result: Array[LevelUpMove] = base_moves.duplicate(true)
+	var seen: Dictionary = {}
+	for move: LevelUpMove in result:
+		if move != null:
+			seen["%d:%d" % [move.level, int(move.move)]] = true
+	for move: LevelUpMove in form_moves:
+		if move == null:
+			continue
+		var key: String = "%d:%d" % [move.level, int(move.move)]
+		if not seen.has(key):
+			result.append(move.duplicate(true) as LevelUpMove)
+			seen[key] = true
+	return result

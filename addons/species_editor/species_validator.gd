@@ -48,6 +48,20 @@ func validate(species: PokemonDataStruct) -> Array[String]:
 			errors.append("La forma %d apunta a otra especie base (%d)." % [form_id, int(form.base_species_id)])
 		if not _species_enum_id_exists(form_id):
 			errors.append("La forma %d no está declarada en species.gd." % form_id)
+		if form.override_pokedex:
+			if form.category_name.is_empty():
+				errors.append("La forma %d tiene la categoría de Pokédex vacía." % form_id)
+			if form.description.is_empty():
+				errors.append("La forma %d tiene la descripción de Pokédex vacía." % form_id)
+		for move: Moves.MoveId in form.teachable_moves:
+			if move != Moves.MoveId.MOVE_NONE and not _move_exists(move):
+				errors.append("MT/MO de la forma %d sin recurso .tres: %d" % [form_id, int(move)])
+		for move: Moves.MoveId in form.egg_moves:
+			if move != Moves.MoveId.MOVE_NONE and not _move_exists(move):
+				errors.append("Movimiento huevo de la forma %d sin recurso .tres: %d" % [form_id, int(move)])
+		for level_move: LevelUpMove in form.level_up_moves:
+			if level_move != null and not _move_exists(level_move.move):
+				errors.append("Movimiento de nivel de la forma %d sin recurso .tres: %d" % [form_id, int(level_move.move)])
 
 	return errors
 

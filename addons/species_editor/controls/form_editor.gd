@@ -6,9 +6,12 @@ class_name PokemonFormEditor
 signal changed
 
 const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/evolution_table.gd")
+const LEARNSET_TABLE_SCRIPT := preload("res://addons/species_editor/controls/learnset_table.gd")
+const MOVE_LIST_SCRIPT := preload("res://addons/species_editor/controls/move_id_list_table.gd")
 
 var current_form: PokemonFormData
 var available_species: Array[PokemonDataStruct] = []
+var available_moves: Array[MoveData] = []
 var form_species_id_input: SpinBox
 var form_id_input: LineEdit
 var name_input: LineEdit
@@ -29,9 +32,21 @@ var back_y: SpinBox
 var notes_input: TextEdit
 var evolution_table: EvolutionTable
 var inherit_evolutions: CheckBox
+var inherit_moves: CheckBox
+var form_level_up_moves: LearnsetTable
+var form_teachable_moves: MoveIdListTable
+var form_egg_moves: MoveIdListTable
+var override_pokedex: CheckBox
+var pokedex_category_input: LineEdit
+var pokedex_description_input: TextEdit
+var pokedex_height_input: SpinBox
+var pokedex_weight_input: SpinBox
 
 func set_available_species(values: Array[PokemonDataStruct]) -> void:
 	available_species = values
+
+func set_available_moves(values: Array[MoveData]) -> void:
+	available_moves = values
 
 func load_form(form: PokemonFormData) -> void:
 	current_form = form
@@ -68,6 +83,32 @@ func _rebuild() -> void:
 	type_2 = _make_type_selector(current_form.type_2)
 	_add_labeled_control("Tipo 1 (NONE = heredar)", type_1)
 	_add_labeled_control("Tipo 2 (NONE = heredar)", type_2)
+
+	_add_form_pokedex_editor()
+
+	inherit_moves = CheckBox.new()
+	inherit_moves.text = "Heredar movimientos de la especie base y añadir los de esta forma"
+	inherit_moves.button_pressed = current_form.inherit_base_moves
+	inherit_moves.toggled.connect(_on_changed)
+	add_child(inherit_moves)
+	_add_section_label("Movimientos por nivel propios")
+	form_level_up_moves = LEARNSET_TABLE_SCRIPT.new()
+	form_level_up_moves.available_moves = available_moves
+	form_level_up_moves.load_moves(current_form.level_up_moves)
+	form_level_up_moves.changed.connect(_on_changed)
+	add_child(form_level_up_moves)
+	_add_section_label("Movimientos MT/MO propios")
+	form_teachable_moves = MOVE_LIST_SCRIPT.new()
+	form_teachable_moves.available_moves = available_moves
+	form_teachable_moves.load_moves(current_form.teachable_moves)
+	form_teachable_moves.changed.connect(_on_changed)
+	add_child(form_teachable_moves)
+	_add_section_label("Movimientos huevo propios")
+	form_egg_moves = MOVE_LIST_SCRIPT.new()
+	form_egg_moves.available_moves = available_moves
+	form_egg_moves.load_moves(current_form.egg_moves)
+	form_egg_moves.changed.connect(_on_changed)
+	add_child(form_egg_moves)
 
 	inherit_evolutions = CheckBox.new()
 	inherit_evolutions.text = "Heredar evoluciones de la especie base"
@@ -106,6 +147,21 @@ func _rebuild() -> void:
 	notes_input.text_changed.connect(_on_changed)
 	add_child(notes_input)
 
+func _add_form_pokedex_editor() -> void:
+	var title := Label.new()
+	title.text = "📖 Entrada de Pokédex de la forma"
+	title.add_theme_font_size_override("font_size", 13)
+	add_child(title)
+	override_pokedex = CheckBox.new()
+	override_pokedex.text = "Usar una entrada de Pokédex propia"
+	override_pokedex.button_pressed = current_form.override_pokedex
+	override_pokedex.toggled.connect(_on_changed)
+	add_child(override_pokedex)
+	pokedex_category_input = _add_text_field("Categoría", current_form.category_name, false)
+	pokedex_description_input = _add_multiline_field("Descripción", current_form.description)
+	pokedex_height_input = _add_integer_field("Altura", current_form.height, 0, 9999)
+	pokedex_weight_input = _add_integer_field("Peso", current_form.weight, 0, 999999)
+
 func apply_to_form(form: PokemonFormData) -> void:
 	if form == null or current_form == null:
 		return
@@ -115,6 +171,15 @@ func apply_to_form(form: PokemonFormData) -> void:
 	form.override_types = override_types.button_pressed
 	form.type_1 = type_1.selected_type
 	form.type_2 = type_2.selected_type
+	form.override_pokedex = override_pokedex.button_pressed
+	form.category_name = pokedex_category_input.text.strip_edges()
+	form.description = pokedex_description_input.text
+	form.height = int(pokedex_height_input.value)
+	form.weight = int(pokedex_weight_input.value)
+	form.inherit_base_moves = inherit_moves.button_pressed
+	form.level_up_moves = form_level_up_moves.get_moves()
+	form.teachable_moves = form_teachable_moves.get_moves()
+	form.egg_moves = form_egg_moves.get_moves()
 	form.inherit_base_evolutions = inherit_evolutions.button_pressed
 	form.evolutions = evolution_table.get_evolutions()
 	form.override_graphics = override_graphics.button_pressed
@@ -145,15 +210,36 @@ func _add_integer_field(label_text: String, value: int, minimum: int, maximum: i
 	add_child(row)
 	return input
 
+func _add_section_label(text: String) -> void:
+	var label := Label.new()
+	label.text = text
+	label.add_theme_color_override("font_color", Color(0.55, 0.85, 1.0))
+	add_child(label)
+
 func _add_text_field(label_text: String, value: String, is_id: bool) -> LineEdit:
 	var row: HBoxContainer = HBoxContainer.new()
 	var label: Label = Label.new()
 	label.text = label_text
 	label.custom_minimum_size = Vector2(180, 0)
 	row.add_child(label)
-	var input: LineEdit = LineEdit.new()
+	var input := LineEdit.new()
 	input.name = "__form_id_input" if is_id else "__name_input"
 	input.text = value
+	input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	input.text_changed.connect(_on_changed)
+	row.add_child(input)
+	add_child(row)
+	return input
+
+func _add_multiline_field(label_text: String, value: String) -> TextEdit:
+	var row: HBoxContainer = HBoxContainer.new()
+	var label: Label = Label.new()
+	label.text = label_text
+	label.custom_minimum_size = Vector2(180, 0)
+	row.add_child(label)
+	var input := TextEdit.new()
+	input.text = value
+	input.custom_minimum_size = Vector2(0, 90)
 	input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	input.text_changed.connect(_on_changed)
 	row.add_child(input)
