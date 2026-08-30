@@ -35,6 +35,8 @@ extends Node2D
 	$Overlay_Fight/Moves/GridContainer/Move4
 ]
 
+const PARTY_SCENE: PackedScene = preload("res://scenes/ui_party_menu/party_menu.tscn")
+
 var player_pokemon: PokemonInstance
 var enemy_pokemon: PokemonInstance
 var player_sprite_base_pos: Vector2
@@ -56,7 +58,6 @@ var enemy_hp_bar_target: float = 48.0
 var player_current_hp: int = 0
 var enemy_current_hp: int = 0
 
-# Texturas normales para restaurar al cambiar selección
 var _action_normals: Array[Texture2D] = []
 var _action_focused: Array[Texture2D] = []
 var _move_normals: Array[Texture2D] = []
@@ -66,63 +67,58 @@ var _current_move_focused: Array[Texture2D] = []
 
 var _ended_by_run: bool = false
 var _battle_closing: bool = false
+var _party_ui: PartyMenu = null
+var _force_switch_pending: bool = false
+
 
 func _ready() -> void:
 	player_sprite_base_pos = player_sprite.position
 	enemy_sprite_base_pos = enemy_sprite.position
-	
-	# Guardar texturas y desactivar foco nativo
-	# ============================================================
-	# GUARDAR TEXTURAS DE LOS BOTONES DE ACCIONES
-	# ============================================================
+
 	_action_normals.clear()
 	_action_focused.clear()
-
 	for b: TextureButton in action_buttons:
 		_action_normals.append(b.texture_normal)
 		_action_focused.append(b.texture_focused)
-
 		b.focus_mode = Control.FOCUS_NONE
 		b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-
-	# ============================================================
-	# GUARDAR TEXTURAS DE LOS BOTONES DE MOVIMIENTOS
-	# ============================================================
 
 	_move_normals.clear()
 	_move_focused.clear()
 	_current_move_normals.clear()
 	_current_move_focused.clear()
-
 	for b: TextureButton in move_buttons:
 		_move_normals.append(b.texture_normal)
 		_move_focused.append(b.texture_focused)
-
-		# Texturas actuales; inicialmente son las genéricas.
 		_current_move_normals.append(b.texture_normal)
 		_current_move_focused.append(b.texture_focused)
-
 		b.focus_mode = Control.FOCUS_NONE
 		b.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	_ended_by_run = false
 	_battle_closing = false
+	_force_switch_pending = false
 
 	if BattleSession.tiene_datos():
 		player_pokemon = BattleSession.player_pokemon
 		enemy_pokemon = BattleSession.enemy_pokemon
 	else:
-		# Fallback si abres la escena sola (debug)
 		player_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 5)
 		enemy_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 8)
+
+	var party: Array[PokemonInstance] = []
+	if BattleSession.player_controller != null:
+		var pdata: CharacterPlayer = BattleSession.player_controller.character_data as CharacterPlayer
+		if pdata != null:
+			party = pdata.party
 
 	battle = BattleManager.new()
 	battle.message.connect(_on_battle_message)
 	battle.hp_changed.connect(_on_hp_changed)
 	battle.battle_ended.connect(_on_battle_ended)
 	battle.turn_ended.connect(_on_turn_ended)
-	battle.start_battle(player_pokemon, enemy_pokemon)
+	battle.player_must_switch.connect(_on_player_must_switch)
+	battle.start_battle(player_pokemon, enemy_pokemon, party)
 
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
@@ -138,13 +134,14 @@ func _ready() -> void:
 	_update_action_focus()
 	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 
+
 func _process(delta: float) -> void:
 	if absf(player_hp_bar.size.x - player_hp_bar_target) > 0.5:
 		player_hp_bar.size.x = move_toward(player_hp_bar.size.x, player_hp_bar_target, HP_ANIM_SPEED * delta)
 		player_hp_bar.color = _hp_color(player_hp_bar.size.x / PLAYER_HP_BAR_MAX_WIDTH)
 	else:
 		player_hp_bar.size.x = player_hp_bar_target
-	
+
 	if absf(enemy_hp_bar.size.x - enemy_hp_bar_target) > 0.5:
 		enemy_hp_bar.size.x = move_toward(enemy_hp_bar.size.x, enemy_hp_bar_target, HP_ANIM_SPEED * delta)
 		enemy_hp_bar.color = _hp_color(enemy_hp_bar.size.x / ENEMY_HP_BAR_MAX_WIDTH)
@@ -161,14 +158,10 @@ func _input(event: InputEvent) -> void:
 		_handle_move_input(event)
 
 
-# ============================================================
-# NAVEGACIÓN - ACCIONES
-# ============================================================
-
 func _handle_action_input(event: InputEvent) -> void:
 	var cols: int = 2
 	var moved: bool = false
-	
+
 	if event.is_action_pressed("Right"):
 		selected_action = (selected_action + 1) % action_buttons.size()
 		moved = true
@@ -184,7 +177,7 @@ func _handle_action_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("buttonA"):
 		_activate_action(selected_action)
 		return
-	
+
 	if moved:
 		_update_action_focus()
 
@@ -192,18 +185,12 @@ func _handle_action_input(event: InputEvent) -> void:
 func _update_action_focus() -> void:
 	for i: int in action_buttons.size():
 		var button: TextureButton = action_buttons[i]
-
-		if i >= _action_normals.size():
+		if i >= _action_normals.size() or i >= _action_focused.size():
 			continue
-
-		if i >= _action_focused.size():
-			continue
-
 		if i == selected_action and _action_focused[i] != null:
 			button.texture_normal = _action_focused[i]
 		else:
 			button.texture_normal = _action_normals[i]
-
 
 
 func _activate_action(index: int) -> void:
@@ -218,14 +205,10 @@ func _activate_action(index: int) -> void:
 			_on_run_pressed()
 
 
-# ============================================================
-# NAVEGACIÓN - MOVIMIENTOS
-# ============================================================
-
 func _handle_move_input(event: InputEvent) -> void:
 	var cols: int = 2
 	var moved: bool = false
-	
+
 	if event.is_action_pressed("Right"):
 		selected_move = (selected_move + 1) % move_buttons.size()
 		moved = true
@@ -248,7 +231,7 @@ func _handle_move_input(event: InputEvent) -> void:
 		_update_action_focus()
 		_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 		return
-	
+
 	if moved:
 		_update_move_focus()
 
@@ -256,111 +239,93 @@ func _handle_move_input(event: InputEvent) -> void:
 func _update_move_focus() -> void:
 	for i: int in move_buttons.size():
 		var button: TextureButton = move_buttons[i]
-
-		if i >= _current_move_normals.size():
+		if i >= _current_move_normals.size() or i >= _current_move_focused.size():
 			continue
-
-		if i >= _current_move_focused.size():
-			continue
-
 		var normal_texture: Texture2D = _current_move_normals[i]
 		var focused_texture: Texture2D = _current_move_focused[i]
-
-		# Ambas texturas pertenecen al tipo del movimiento.
 		button.texture_focused = focused_texture
-
-		# Como usamos navegación manual, simulamos el estado focus
-		# cambiando temporalmente texture_normal.
 		if i == selected_move:
 			button.texture_normal = focused_texture
 		else:
 			button.texture_normal = normal_texture
-
 	_update_selected_move_info()
 
-func _get_move_button_texture(move_type: PokemonData.Type, focused: bool, fallback: Texture2D) -> Texture2D:
+
+func _get_move_button_texture(
+	move_type: PokemonData.Type,
+	focused: bool,
+	fallback: Texture2D
+) -> Texture2D:
 	if move_type == PokemonData.Type.TYPE_NONE:
 		return fallback
 
 	var type_name: String = PokemonData.Type.keys()[int(move_type)]
 	type_name = type_name.trim_prefix("TYPE_").to_lower()
-
 	var file_name: String = type_name
-
 	if focused:
 		file_name += "_focus"
 
-	var path: String = (
-		"res://graphics/battle_interface/cursor_fight/%s.png"
-		% file_name
-	)
-
+	var path: String = "res://graphics/battle_interface/cursor_fight/%s.png" % file_name
 	if not ResourceLoader.exists(path):
 		return fallback
 
 	var texture: Texture2D = load(path) as Texture2D
-
 	if texture == null:
 		return fallback
-
 	return texture
 
+
 func _update_selected_move_info() -> void:
-	# Valores por defecto cuando no hay un movimiento válido seleccionado.
 	move_pp_label.text = "--/--"
 	move_type_sprite.texture = null
 	move_type_sprite.visible = false
 
 	if player_pokemon == null:
 		return
-
 	if selected_move < 0 or selected_move >= player_pokemon.moves.size():
 		return
 
 	var slot: PokemonMoveSlot = player_pokemon.moves[selected_move]
-
 	if slot == null or slot.is_empty():
 		return
 
 	var move_data: MoveData = MoveDatabase.get_move(slot.move_id)
-
 	if move_data == null:
 		return
 
-	# PP actuales restantes del movimiento.
 	move_pp_label.text = "%d/%d" % [slot.current_pp, move_data.pp]
-
-	# El array de TypeIcons usa el mismo índice que PokemonData.Type.
 	move_type_sprite.texture = TypeIconsDb.get_icon(move_data.type)
 	move_type_sprite.visible = move_type_sprite.texture != null
 
 
-# ============================================================
-# UI
-# ============================================================
-
 func _update_ui() -> void:
 	player_sprite.texture = player_pokemon.get_back_sprite()
 	enemy_sprite.texture = enemy_pokemon.get_front_sprite()
-	
+
 	var back_offset: Vector2 = _get_back_offset_px(player_pokemon)
 	var front_offset: Vector2 = _get_front_offset_px(enemy_pokemon)
-	player_sprite.position = Vector2(player_sprite_base_pos.x, player_sprite_base_pos.y + back_offset.y)
-	enemy_sprite.position = Vector2(enemy_sprite_base_pos.x, enemy_sprite_base_pos.y + front_offset.y)
-	
+	player_sprite.position = Vector2(
+		player_sprite_base_pos.x,
+		player_sprite_base_pos.y + back_offset.y
+	)
+	enemy_sprite.position = Vector2(
+		enemy_sprite_base_pos.x,
+		enemy_sprite_base_pos.y + front_offset.y
+	)
+
 	if player_name_label.has_method("cambiar_texto"):
 		player_name_label.cambiar_texto(player_pokemon.get_display_name())
 	else:
 		player_name_label.text = player_pokemon.get_display_name()
-	
+
 	if enemy_name_label.has_method("cambiar_texto"):
 		enemy_name_label.cambiar_texto(enemy_pokemon.get_display_name())
 	else:
 		enemy_name_label.text = enemy_pokemon.get_display_name()
-	
+
 	player_level_label.text = str(player_pokemon.level)
 	enemy_level_label.text = str(enemy_pokemon.level)
-	
+
 	_set_gender(player_gender, player_pokemon.gender)
 	_set_gender(enemy_gender, enemy_pokemon.gender)
 	_update_hp_bars()
@@ -371,7 +336,7 @@ func _set_gender(label: Label, gender: PokemonData.Gender) -> void:
 		label.label_settings = LabelSettings.new()
 	elif label.label_settings.resource_path != "":
 		label.label_settings = label.label_settings.duplicate()
-	
+
 	match gender:
 		PokemonData.Gender.MALE:
 			label.text = "♂"
@@ -385,8 +350,12 @@ func _set_gender(label: Label, gender: PokemonData.Gender) -> void:
 
 func _update_hp_bars() -> void:
 	player_hp_label.text = "%d/%d" % [player_current_hp, player_pokemon.max_hp]
-	player_hp_bar_target = PLAYER_HP_BAR_MAX_WIDTH * (float(player_current_hp) / float(maxi(player_pokemon.max_hp, 1)))
-	enemy_hp_bar_target = ENEMY_HP_BAR_MAX_WIDTH * (float(enemy_current_hp) / float(maxi(enemy_pokemon.max_hp, 1)))
+	player_hp_bar_target = PLAYER_HP_BAR_MAX_WIDTH * (
+		float(player_current_hp) / float(maxi(player_pokemon.max_hp, 1))
+	)
+	enemy_hp_bar_target = ENEMY_HP_BAR_MAX_WIDTH * (
+		float(enemy_current_hp) / float(maxi(enemy_pokemon.max_hp, 1))
+	)
 
 
 func _hp_color(ratio: float) -> Color:
@@ -429,10 +398,6 @@ func _show_message_box(text: String) -> void:
 	battle_text.text = text
 
 
-# ============================================================
-# SEÑALES DEL BATTLE MANAGER
-# ============================================================
-
 func _on_battle_message(text: String) -> void:
 	_show_message(text)
 
@@ -464,7 +429,6 @@ func _on_battle_ended(player_won: bool) -> void:
 	else:
 		_show_message_box("...")
 
-	# Pequeña pausa para leer el mensaje
 	await get_tree().create_timer(1.0).timeout
 
 	if TransicionManager != null:
@@ -475,6 +439,7 @@ func _on_battle_ended(player_won: bool) -> void:
 	if TransicionManager != null:
 		await TransicionManager.fade_in(0.25)
 
+
 func _on_turn_ended() -> void:
 	action_menu.visible = true
 	current_menu = MenuState.ACTIONS
@@ -482,10 +447,6 @@ func _on_turn_ended() -> void:
 	_update_action_focus()
 	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 
-
-# ============================================================
-# ACCIONES DE MENÚ
-# ============================================================
 
 func _on_fight_pressed() -> void:
 	action_menu.visible = false
@@ -501,13 +462,66 @@ func _on_bag_pressed() -> void:
 
 
 func _on_pkmn_pressed() -> void:
-	_show_message("¡Aún no implementado!")
+	_abrir_party_batalla(false)
+
+
+func _on_player_must_switch() -> void:
+	_force_switch_pending = true
+	_abrir_party_batalla(true)
+
+
+func _abrir_party_batalla(forzar: bool) -> void:
+	if _party_ui != null and is_instance_valid(_party_ui):
+		return
+
+	current_menu = MenuState.BUSY
+	action_menu.visible = false
+	fight_menu.visible = false
+
+	var datos: CharacterPlayer = null
+	if BattleSession.player_controller != null:
+		datos = BattleSession.player_controller.character_data as CharacterPlayer
+
+	if datos == null:
+		_show_message("¡No hay equipo disponible!")
+		current_menu = MenuState.ACTIONS
+		action_menu.visible = true
+		return
+
+	_party_ui = PARTY_SCENE.instantiate() as PartyMenu
+	add_child(_party_ui)
+	_party_ui.battle_pokemon_selected.connect(_on_party_pokemon_selected)
+	_party_ui.battle_cancelled.connect(_on_party_cancelled)
+	_party_ui.party_closed.connect(_on_party_closed)
+	_party_ui.setup_battle(datos, player_pokemon, forzar)
+
+
+func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
+	var free_switch: bool = _force_switch_pending
+	_force_switch_pending = false
+	player_pokemon = mon
+	await battle.player_choose_switch(mon, free_switch)
+	_update_ui()
+
+
+func _on_party_cancelled() -> void:
+	_force_switch_pending = false
+	action_menu.visible = true
+	current_menu = MenuState.ACTIONS
+	selected_action = 0
+	_update_action_focus()
+	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
+
+
+func _on_party_closed() -> void:
+	_party_ui = null
 
 
 func _on_run_pressed() -> void:
 	current_menu = MenuState.BUSY
 	_ended_by_run = true
 	battle.player_choose_run()
+
 
 func _fill_move_buttons() -> void:
 	var moves: Array[PokemonMoveSlot] = player_pokemon.moves
@@ -526,17 +540,11 @@ func _fill_move_buttons() -> void:
 			if move_data:
 				name_label.text = move_data.move_name
 				button.disabled = slot.current_pp <= 0
-
 				normal_texture = _get_move_button_texture(
-					move_data.type,
-					false,
-					_move_normals[i]
+					move_data.type, false, _move_normals[i]
 				)
-
 				focused_texture = _get_move_button_texture(
-					move_data.type,
-					true,
-					_move_focused[i]
+					move_data.type, true, _move_focused[i]
 				)
 			else:
 				name_label.text = "---"
@@ -547,32 +555,24 @@ func _fill_move_buttons() -> void:
 
 		_current_move_normals[i] = normal_texture
 		_current_move_focused[i] = focused_texture
-
-		# Aplicar inmediatamente las texturas al TextureButton.
 		button.texture_normal = normal_texture
 		button.texture_focused = focused_texture
 
-
 	_update_selected_move_info()
+
 
 func _on_move_pressed(index: int) -> void:
 	if index < 0 or index >= player_pokemon.moves.size():
 		return
 
 	var slot: PokemonMoveSlot = player_pokemon.moves[index]
-
 	if slot == null or slot.is_empty():
 		return
-
 	if slot.current_pp <= 0:
 		_show_message("¡No quedan PP para este movimiento!")
 		return
 
 	fight_menu.visible = false
 	current_menu = MenuState.BUSY
-
 	await battle.player_choose_move(index)
-
-	# BattleManager ya descontó un PP.
-	# Actualizamos la información por si se vuelve a abrir el menú.
 	_update_selected_move_info()

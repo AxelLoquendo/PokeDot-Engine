@@ -2,6 +2,8 @@ extends CanvasLayer
 class_name PartyMenu
 
 signal party_closed
+signal battle_pokemon_selected(pokemon: PokemonInstance)
+signal battle_cancelled
 
 # ============================================================
 # REFERENCIAS
@@ -53,12 +55,16 @@ enum MenuMode {
 	ITEM_CONTEXT,
 	SWAP_POKEMON,
 	SWAP_ITEM,
+	BATTLE_SELECT,
 }
 
 var menu_mode: MenuMode = MenuMode.SLOTS
 var context_index: int = 0
 var item_context_index: int = 0
 var swap_from_index: int = -1
+
+var battle_active: PokemonInstance = null
+var battle_force_switch: bool = false
 
 const CONTEXT_OPTIONS: PackedStringArray = ["Resumen", "Cambiar", "Objeto"]
 const ITEM_OPTIONS: PackedStringArray = ["Dar", "Quitar", "Mover"]
@@ -114,6 +120,17 @@ func setup(datos_jugador: CharacterPlayer) -> void:
 	seleccion_cancel = false
 	if slots.size() > 0:
 		call_deferred("_after_setup_focus")
+
+func setup_battle(datos_jugador: CharacterPlayer, activo: PokemonInstance, forzar: bool = false) -> void:
+	battle_active = activo
+	battle_force_switch = forzar
+	setup(datos_jugador)
+	menu_mode = MenuMode.BATTLE_SELECT
+	if context_help != null:
+		if forzar:
+			context_help.text = "¡Elige un Pokémon!"
+		else:
+			context_help.text = "¿Qué Pokémon quieres sacar?"
 
 func _after_setup_focus() -> void:
 	var ultimo: int = _obtener_ultimo_slot_visible()
@@ -225,6 +242,19 @@ func _input(event: InputEvent) -> void:
 				_cerrar_contextos()
 			MenuMode.ITEM_CONTEXT:
 				_abrir_menu_contexto()  # vuelve al menú anterior
+			MenuMode.BATTLE_SELECT:
+				if battle_force_switch:
+					return  # no se puede cancelar
+				battle_cancelled.emit()
+				close()
+			MenuMode.BATTLE_SELECT:
+				if seleccion_cancel:
+					if battle_force_switch:
+						return
+					battle_cancelled.emit()
+					close()
+				else:
+					_confirmar_seleccion_batalla()
 		return
 
 	# ---------- A ----------
@@ -272,6 +302,24 @@ func _input(event: InputEvent) -> void:
 			return
 		_abrir_summary()
 		return
+
+func _confirmar_seleccion_batalla() -> void:
+	if indice_seleccion < 0 or indice_seleccion >= party_actual.size():
+		return
+	var mon: PokemonInstance = party_actual[indice_seleccion]
+	if mon == null:
+		return
+	if mon.is_fainted():
+		if context_help != null:
+			context_help.text = "¡No puede combatir!"
+		return
+	if mon == battle_active:
+		if context_help != null:
+			context_help.text = "¡Ese Pokémon ya está en combate!"
+		return
+
+	battle_pokemon_selected.emit(mon)
+	close()
 
 func _navegar(direccion: int, vertical: bool) -> void:
 	match menu_mode:
