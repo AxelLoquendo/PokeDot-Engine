@@ -350,10 +350,11 @@ func _open_party_menu() -> void:
 	party_menu.party_closed.connect(_on_party_closed)
 
 func _on_party_closed() -> void:
-
 	party_menu.queue_free()
 	party_menu = null
-
+	var p: CharacterController = get_tree().get_first_node_in_group("player") as CharacterController
+	if p and p.get("follower") != null and p.follower:
+		p.follower.refrescar_desde_party()
 	_reactivate_menu()
 
 func _player_has_pokemon() -> bool:

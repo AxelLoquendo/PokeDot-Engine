@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cdhiq61pujjs6" path="res://data_core/pokemon/pokemon_instance.gd" id="4_fm80t"]
 [ext_resource type="PackedScene" uid="uid://bwnyqv7lngyco" path="res://scenes/ui_start_menu/start_menu.tscn" id="7_0owmy"]
 [ext_resource type="Texture2D" uid="uid://bhhkkbe3wvg4q" path="res://game/graphics_eb/overworld/player/male/kael/normal.png" id="9_gx1jg"]
+[ext_resource type="PackedScene" uid="uid://c56ythh6h5mfk" path="res://scenes/follower_mon/follower_mon.tscn" id="11_je7p5"]
 
 [sub_resource type="Resource" id="Resource_ugbui"]
 script = ExtResource("2_h17s1")
@@ -25,8 +26,6 @@ script = ExtResource("2_0owmy")
 name = "Kael"
 gender_option = SubResource("Resource_xuxe7")
 bag = SubResource("Resource_ugbui")
-created_at = null
-trainer_id = null
 sprite_overworld = 1
 running_speed = 12.0
 shadow_size = 2
@@ -410,11 +409,14 @@ scale = Vector2(1.0625, 1)
 texture = ExtResource("4_75vfm")
 script = ExtResource("3_gmlin")
 
+[node name="FollowerMon" parent="." unique_id=85993173 instance=ExtResource("11_je7p5")]
+position = Vector2(0, -16)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1775974619]
 sprite_frames = SubResource("SpriteFrames_ds1xl")
 animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.06463589
+frame_progress = 0.5545063
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=246521600]
 zoom = Vector2(2, 2)

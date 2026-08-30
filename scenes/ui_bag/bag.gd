@@ -831,29 +831,22 @@ func _get_pocket_graphic_index() -> int:
 # ============================================================
 
 func close_bag() -> void:
-
 	if not es_abierto:
 		return
 
-
 	es_abierto = false
-
 
 	sprite_item.texture = null
 	label_descripcion.text = ""
-
 	_limpiar_slots()
-
-
 	visible = false
 
-
-	_desbloquear_jugador()
-
+	# Si la abrió el party para dar un held, el party sigue abierto:
+	# no devolver el control al jugador.
+	if bag_mode != BagMode.GIVE_HELD:
+		_desbloquear_jugador()
 
 	bag_closed.emit()
-
-
 	queue_free()
 
 

@@ -1,6 +1,7 @@
 extends Node2D
 class_name CharacterController
 
+signal paso_completado(casilla_origen: Vector2i, direccion: Vector2, velocidad: float)
 const TILE_SIZE: int = 16
 const CAPA_PERSONAJES: int = 0
 
@@ -448,14 +449,11 @@ func complete_move() -> void:
 	percent_moved_to_next_tile = 0.0
 	is_moving = false
 
-	#var gestor: MapManager = mapa_raiz.get_parent() as MapManager
-	#if gestor:
-	#	gestor.comprobar_transicion()
 	if map_manager:
 		map_manager.comprobar_transicion()
 
-	#print("📍 Posición final: ", global_position, " → Casilla: ", casilla_actual)
-
+	# Acompañante / sistemas que siguen al personaje
+	paso_completado.emit(casilla_vieja, input_direction, obtener_velocidad_movimiento())
 
 func snap_to_grid(pos: Vector2) -> Vector2:
 	pos.x = floor(pos.x / TILE_SIZE) * TILE_SIZE + TILE_SIZE / 2.0

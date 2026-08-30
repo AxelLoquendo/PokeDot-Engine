@@ -617,6 +617,7 @@ func _on_item_chosen_for_held(item_id: Items.ItemId) -> void:
 
 func _on_give_bag_closed() -> void:
 	bag_ui_dar = null
+	_bloquear_jugador()
 	set_process_input(true)
 	_cerrar_contextos()
 

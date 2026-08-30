@@ -15,9 +15,18 @@ var tiempo_direccion_pendiente: float = 0.0
 var corriendo_en_paso: bool = false
 
 
+@onready var follower: FollowerPokemon = $FollowerMon  # ruta real
+
 func _ready() -> void:
 	super._ready()
 	add_to_group(&"player")
+	if follower:
+		# Deferir: casilla_actual ya está en super._ready
+		call_deferred("_init_follower")
+
+func _init_follower() -> void:
+	if follower:
+		follower.setup(self)
 
 func obtener_velocidad_movimiento() -> float:
 	if corriendo_en_paso:
