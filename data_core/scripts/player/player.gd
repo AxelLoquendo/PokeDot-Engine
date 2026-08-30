@@ -39,6 +39,10 @@ func _init_follower() -> void:
 
 	follower.setup(self)
 
+func refrescar_follower() -> void:
+	if follower:
+		follower.refrescar_desde_party()
+
 func obtener_velocidad_movimiento() -> float:
 	if corriendo_en_paso:
 		return character_data.running_speed

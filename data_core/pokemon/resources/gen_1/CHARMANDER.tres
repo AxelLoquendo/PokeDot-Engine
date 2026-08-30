@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ccih7"]
 [ext_resource type="Texture2D" uid="uid://dub0mafse2ox6" path="res://graphics/pokemon/icons/CHARMANDER.png" id="5_6fh2a"]
+[ext_resource type="Texture2D" uid="uid://7pc2gevpjl5w" path="res://graphics/pokemon/follower/CHARMANDER.png" id="7_a8ltl"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -122,6 +123,7 @@ description = "La llama de su cola indica la fuerza vital de Charmander. Será b
 height = 6
 weight = 85
 icon_sprite = ExtResource("5_6fh2a")
+overworld_scene = ExtResource("7_a8ltl")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 9, 14, 15, 25, 29, 34, 36, 38, 46, 53, 66, 68, 69, 70, 82, 83, 91, 92, 99, 102, 104, 111, 115, 117, 126, 129, 130, 156, 157, 164, 173, 174, 182, 184, 189, 200, 203, 206, 207, 210, 213, 214, 216, 218, 223, 225, 231, 232, 237, 241, 242, 249, 251, 257, 261, 263, 264, 270, 280, 290, 311, 315, 317, 332, 337, 349, 363, 374, 394, 406, 411, 421, 424, 445, 468, 488, 496, 497, 510, 512, 519, 525, 526, 590, 612, 712, 779, 843])
 egg_moves = Array[int]([14, 17, 44, 68, 157, 187, 200, 231, 232, 242, 246, 251, 264, 314, 349, 394, 406, 407, 525])

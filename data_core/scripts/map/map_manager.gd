@@ -251,6 +251,11 @@ func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
 		desactivar_contenido_mapa(previous_map)
 		previous_map.visible = false
 
+	if jugador is CharacterController: # o el tipo real de tu player
+		var f: FollowerPokemon = jugador.get_node_or_null("FollowerMon") as FollowerPokemon
+		if f:
+			f.resetear_seguimiento()
+
 	current_map = target
 	current_map.position = Vector2.ZERO
 	current_map.activo = true
