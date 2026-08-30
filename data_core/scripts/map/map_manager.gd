@@ -223,7 +223,7 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 	MapPopUp.mostrar_mapa(current_map)
 	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_TRANSITION)
 	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_LOAD)
-
+	_avisar_follower_jugador()
 
 ## Warp de script: solo mueve al jugador a una sección de mapa concreta.
 func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
@@ -279,7 +279,16 @@ func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
 	MapPopUp.mostrar_mapa(current_map)
 	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_TRANSITION)
 	current_map.trigger_map_scripts(MapScriptEntry.Trigger.ON_LOAD)
+	_avisar_follower_jugador()
 	return true
+
+
+func _avisar_follower_jugador() -> void:
+	if jugador == null:
+		return
+	var nodo: Node = jugador.get_node_or_null("FollowerMon")
+	if nodo is FollowerPokemon:
+		(nodo as FollowerPokemon).resetear_seguimiento()
 
 func colocar_vecino(
 	mapa: MapAttributes,

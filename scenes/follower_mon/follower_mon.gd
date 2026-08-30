@@ -1,7 +1,7 @@
 extends Node2D
 class_name FollowerPokemon
 
-## Pokémon acompañante: sigue al jugador con 1 casilla de retraso.
+## Pokémon acompañante: 1 casilla detrás, movimiento en paralelo al jugador.
 ## Carga dinámicamente overworld_scene (o graphics/pokemon/follower/<NOMBRE>.png).
 
 const FOLLOWER_FOLDER: String = "res://graphics/pokemon/follower/"
@@ -21,10 +21,12 @@ var tween_mov: Tween = null
 var alternar_paso: bool = false
 var idle_actual: String = "idle_down"
 var _frames_propios: bool = false
+## Evita lanzar el mismo paso dos veces mientras el jugador sigue is_moving.
+var _siguiendo_paso_actual: bool = false
 
 
 func _ready() -> void:
-	# Independiente del transform del Player (era la causa principal del visual roto).
+	# Independiente del transform del Player.
 	top_level = true
 	visible = false
 	if anim != null:
@@ -34,30 +36,48 @@ func _ready() -> void:
 
 func setup(p_jugador: CharacterController) -> void:
 	jugador = p_jugador
-
-	if jugador != null and not jugador.paso_completado.is_connected(_on_jugador_paso):
-		jugador.paso_completado.connect(_on_jugador_paso)
-
 	refrescar_desde_party()
 
 
 func _exit_tree() -> void:
-	if jugador != null and is_instance_valid(jugador):
-		if jugador.paso_completado.is_connected(_on_jugador_paso):
-			jugador.paso_completado.disconnect(_on_jugador_paso)
+	if tween_mov != null and tween_mov.is_valid():
+		tween_mov.kill()
 
 
 func _process(_delta: float) -> void:
-	if not activo:
+	if not activo or jugador == null:
 		return
-	# Mismo criterio de profundidad que CharacterController.
-	z_index = int(global_position.y)
+
+	z_index = int(global_position.y) - 1
+
+	# Paso normal: moverse en paralelo
+	if jugador.is_moving:
+		if not _siguiendo_paso_actual:
+			_siguiendo_paso_actual = true
+			var velocidad: float = jugador.obtener_velocidad_movimiento()
+			_mover_a_casilla(jugador.casilla_actual, velocidad)
+	else:
+		_siguiendo_paso_actual = false
+
+	# Rampa / escalera / warp: el jugador se movió sin is_moving
+	if not jugador.is_moving and not jugador.ejecutando_evento:
+		_corregir_si_quedo_lejos()
+
+
+func _corregir_si_quedo_lejos() -> void:
+	var casilla_follower: Vector2i = _global_a_casilla(global_position)
+	var casilla_jugador: Vector2i = jugador.casilla_actual
+	var dist: int = absi(casilla_follower.x - casilla_jugador.x) + absi(casilla_follower.y - casilla_jugador.y)
+	# > 1 = no está en la casilla de atrás (rampa salta 2, escalera diagonal, warp…)
+	if dist > 1:
+		resetear_seguimiento()
 
 
 func refrescar_desde_party() -> void:
 	activo = false
 	visible = false
 	mon_actual = null
+	_siguiendo_paso_actual = false
 	_limpiar_anim()
 
 	if jugador == null or anim == null:
@@ -87,7 +107,6 @@ func refrescar_desde_party() -> void:
 
 
 func _elegir_mon(party: Array[PokemonInstance]) -> PokemonInstance:
-	# Primer mon del party con sprite de overworld disponible.
 	for mon: PokemonInstance in party:
 		if mon == null:
 			continue
@@ -101,11 +120,9 @@ func _resolver_textura(mon: PokemonInstance) -> Texture2D:
 	if sp == null:
 		return null
 
-	# 1) Campo del recurso de especie
 	if sp.overworld_scene != null:
 		return sp.overworld_scene
 
-	# 2) Fallback por nombre de archivo (SPECIES_BULBASAUR → BULBASAUR.png)
 	var nombre: String = _nombre_archivo_especie(sp)
 	if nombre.is_empty():
 		return null
@@ -121,7 +138,6 @@ func _nombre_archivo_especie(sp: PokemonDataStruct) -> String:
 	if not sp.species_name.is_empty():
 		return sp.species_name.to_upper().replace(" ", "").replace(".", "").replace("'", "")
 
-	# Fallback desde el enum: SPECIES_BULBASAUR → BULBASAUR
 	var keys: Array = Species.SpeciesID.keys()
 	var values: Array = Species.SpeciesID.values()
 	var idx: int = values.find(sp.species_id)
@@ -137,7 +153,6 @@ func _aplicar_textura(textura: Texture2D) -> bool:
 	if anim == null or anim.sprite_frames == null:
 		return false
 
-	# Copia local de SpriteFrames (igual que CharacterController).
 	if not _frames_propios:
 		var copia: SpriteFrames = anim.sprite_frames.duplicate(true) as SpriteFrames
 		if copia == null:
@@ -178,9 +193,10 @@ func _sincronizar_posicion_inicial() -> void:
 	if tween_mov != null and tween_mov.is_valid():
 		tween_mov.kill()
 
+	_siguiendo_paso_actual = false
+
 	var direccion_atras: Vector2i = _vector_direccion(jugador.current_direction)
 	var casilla_detras: Vector2i = jugador.casilla_actual - direccion_atras
-
 	global_position = _casilla_a_global(casilla_detras)
 
 	idle_actual = _obtener_idle(Vector2(direccion_atras))
@@ -212,12 +228,6 @@ func _obtener_idle(direccion: Vector2) -> String:
 	if direccion.x > 0.0:
 		return "idle_right"
 	return "idle_down"
-
-
-func _on_jugador_paso(casilla_origen: Vector2i, _direccion_jugador: Vector2, velocidad: float) -> void:
-	if not activo:
-		return
-	_mover_a_casilla(casilla_origen, velocidad)
 
 
 func _mover_a_casilla(casilla_destino: Vector2i, velocidad: float) -> void:
@@ -253,7 +263,6 @@ func _global_a_casilla(posicion: Vector2) -> Vector2i:
 
 
 func _casilla_a_global(casilla: Vector2i) -> Vector2:
-	# Igual que CharacterController.snap_to_grid
 	var ts: float = float(CharacterController.TILE_SIZE)
 	return Vector2(
 		float(casilla.x) * ts + ts * 0.5,
@@ -298,4 +307,5 @@ func _reproducir_idle() -> void:
 func resetear_seguimiento() -> void:
 	if tween_mov != null and tween_mov.is_valid():
 		tween_mov.kill()
+	_siguiendo_paso_actual = false
 	_sincronizar_posicion_inicial()

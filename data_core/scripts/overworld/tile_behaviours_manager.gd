@@ -7,6 +7,11 @@ func _ready() -> void:
 	reproductor_salto.stream = preload("res://sfx/se/Player jump.ogg")
 	add_child(reproductor_salto)
 
+func _avisar_follower(personaje: CharacterController) -> void:
+	var nodo: Node = personaje.get_node_or_null("FollowerMon")
+	if nodo is FollowerPokemon:
+		(nodo as FollowerPokemon).resetear_seguimiento()
+
 func ejecutar_comportamiento(comportamiento: String, personaje: CharacterController, tile_data: TileData, _casilla: Vector2i, direccion: Vector2) -> bool:
 
 	match comportamiento:
@@ -131,18 +136,15 @@ func salto_rampa(personaje: CharacterController, direccion: Vector2) -> void:
 	tween.finished.connect(
 		func() -> void:
 			personaje.position = final
-			personaje.anim_player.position.y = 0
+			personaje.anim_player.position.y = 0.0
 
-			personaje.casilla_actual = personaje.posicion_a_casilla(
-				personaje.global_position
-			)
+			personaje.casilla_actual = personaje.posicion_a_casilla(personaje.global_position)
+			personaje.casilla_reservada = personaje.casilla_actual
 
-			EventObjects.registrar_casilla(
-				personaje.casilla_actual,
-				personaje
-			)
+			EventObjects.registrar_casilla(personaje.casilla_actual, personaje)
 
 			personaje.ejecutando_evento = false
+			_avisar_follower(personaje)
 	)
 
 func comportamiento_puerta(_personaje: CharacterController) -> void:
@@ -236,6 +238,7 @@ func mover_escalera_right(personaje: CharacterController, desplazamiento: Vector
 		)
 
 		personaje.ejecutando_evento = false
+		_avisar_follower(personaje)
 	)
 
 func mover_escalera_left(personaje: CharacterController, desplazamiento: Vector2) -> void:
@@ -286,6 +289,7 @@ func mover_escalera_left(personaje: CharacterController, desplazamiento: Vector2
 		)
 
 		personaje.ejecutando_evento = false
+		_avisar_follower(personaje)
 	)
 
 func obtener_stairs_right(casilla: Vector2i) -> Vector2i:
