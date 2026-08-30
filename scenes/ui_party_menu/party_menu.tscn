@@ -9,12 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://b6xxmo1841j5r" path="res://scenes/ui_party_menu/party_slot.tscn" id="6_d21bo"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="7_q1hkr"]
 [ext_resource type="AudioStream" uid="uid://ugvcsatfat3w" path="res://sfx/se/GUI sel cursor.ogg" id="8_65yxq"]
+[ext_resource type="Texture2D" uid="uid://b6jp0w58i5x43" path="res://graphics/text_window/choice 1.png" id="10_k1e0n"]
+[ext_resource type="Texture2D" uid="uid://batr4ra625ugk" path="res://graphics/text_window/sel_arrow.png" id="11_va8ih"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pj0hq"]
 font = ExtResource("7_q1hkr")
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.22352941)
 shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_au74j"]
+font = ExtResource("7_q1hkr")
+font_size = 32
+font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+shadow_size = 0
+shadow_color = Color(0.37254903, 0.37254903, 0.37254903, 0.6)
+shadow_offset = Vector2(0, 2)
 
 [node name="Party_Menu" type="CanvasLayer" unique_id=48353372]
 script = ExtResource("1_65yxq")
@@ -83,3 +93,31 @@ layout_mode = 2
 
 [node name="Cursor" type="AudioStreamPlayer" parent="." unique_id=1549473905]
 stream = ExtResource("8_65yxq")
+
+[node name="ContextPanel" type="NinePatchRect" parent="." unique_id=1833498359]
+offset_left = 352.0
+offset_top = 200.0
+offset_right = 479.0
+offset_bottom = 312.0
+texture = ExtResource("10_k1e0n")
+region_rect = Rect2(2, 2, 44, 44)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_vertical = 1
+
+[node name="ContextLabel" type="Label" parent="ContextPanel" unique_id=559537345]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 10.0
+offset_right = 92.0
+offset_bottom = 100.0
+text = "Resumen
+Cambiar
+Objeto"
+label_settings = SubResource("LabelSettings_au74j")
+
+[node name="ContextCursor" type="Sprite2D" parent="ContextPanel" unique_id=1167566198]
+position = Vector2(19, 24)
+texture = ExtResource("11_va8ih")

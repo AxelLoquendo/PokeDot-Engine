@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="4_i1e4l"]
 [ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="5_bbp3n"]
 [ext_resource type="Texture2D" uid="uid://dqx7alqy4dffq" path="res://game/graphics_eb/ui_party_menu/box_female_select.png" id="5_kmkxw"]
+[ext_resource type="Texture2D" uid="uid://pu240bc240fm" path="res://game/graphics_eb/ui_party_menu/box_male_switch.png" id="6_kmkxw"]
 [ext_resource type="Texture2D" uid="uid://c5lt6p4qelcmk" path="res://graphics/status/sleep.png" id="8_bljkr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bljkr"]
@@ -56,6 +57,7 @@ offset_right = 112.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("1_vp6ju")
+texture_pressed = ExtResource("6_kmkxw")
 texture_focused = ExtResource("2_d510d")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=249025991]
