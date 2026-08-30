@@ -9,21 +9,22 @@ class_name FollowerPokemon
 var jugador: CharacterController = null
 var activo: bool = false
 
-var cola: Array[Vector2i] = []
-@export var retraso_casillas: int = 1
-
 ## Desfase visual del sprite (píxeles). Ajusta si flota o se hunde.
 @export var sprite_offset: Vector2 = Vector2(0, -8)
 
 var tween_mov: Tween = null
+var alternar_paso: bool = false
+var idle_actual: String = "idle_down"
 
 
 func setup(p_jugador: CharacterController) -> void:
 	jugador = p_jugador
-	if jugador and not jugador.paso_completado.is_connected(_on_jugador_paso):
+
+	if (jugador and not jugador.paso_completado.is_connected(_on_jugador_paso)):
 		jugador.paso_completado.connect(_on_jugador_paso)
+
 	refrescar_desde_party()
-	_sincronizar_posicion_inicial()
+
 
 
 func _exit_tree() -> void:
@@ -33,7 +34,6 @@ func _exit_tree() -> void:
 
 
 func refrescar_desde_party() -> void:
-	cola.clear()
 	activo = false
 	visible = false
 	_limpiar_anim()
@@ -49,18 +49,11 @@ func refrescar_desde_party() -> void:
 	if mon == null:
 		return
 
-	var species: PokemonDataStruct = mon.get_species()
-	if species == null:
+	if anim == null or anim.sprite_frames == null:
 		return
 
-	var tex: Texture2D = species.overworld_scene
-	if mon.gender == PokemonData.Gender.FEMALE and species.overworld_scene_female != null:
-		tex = species.overworld_scene_female
+	anim.offset = sprite_offset
 
-	if tex == null:
-		return
-
-	_aplicar_textura(tex)
 	activo = true
 	visible = true
 	_sincronizar_posicion_inicial()
@@ -75,70 +68,134 @@ func _elegir_mon(party: Array[PokemonInstance]) -> PokemonInstance:
 			return mon
 	return null
 
-
-func _aplicar_textura(tex: Texture2D) -> void:
-	if anim == null or tex == null:
-		return
-
-	var frames: SpriteFrames = SpriteFrames.new()
-
-	frames.add_animation("idle")
-	frames.set_animation_loop("idle", true)
-	frames.add_frame("idle", tex)
-
-	for nombre: String in ["walk_down", "walk_up", "walk_left", "walk_right"]:
-		frames.add_animation(nombre)
-		frames.set_animation_loop(nombre, true)
-		frames.add_frame(nombre, tex)
-
-	anim.sprite_frames = frames
-	anim.offset = sprite_offset
-	anim.play("idle")
-
-
 func _limpiar_anim() -> void:
 	if anim == null:
 		return
+
 	anim.stop()
-	anim.sprite_frames = null
+
 
 
 func _sincronizar_posicion_inicial() -> void:
 	if jugador == null or not activo:
 		return
+
 	if tween_mov and tween_mov.is_valid():
 		tween_mov.kill()
-	global_position = _casilla_a_global(jugador.casilla_actual)
+
+	var direccion_atras: Vector2i = (
+		_vector_direccion(jugador.current_direction)
+	)
+
+	var casilla_detras: Vector2i = (
+		jugador.casilla_actual - direccion_atras
+	)
+
+	global_position = _casilla_a_global(casilla_detras)
+
+	idle_actual = _obtener_idle(
+		Vector2(direccion_atras)
+	)
+
+	if anim and anim.sprite_frames:
+		if anim.sprite_frames.has_animation(idle_actual):
+			anim.play(idle_actual)
+
+func _vector_direccion(direccion: CharacterController.Direction) -> Vector2i:
+	match direccion:
+		CharacterController.Direction.NORTH:
+			return Vector2i.UP
+
+		CharacterController.Direction.SOUTH:
+			return Vector2i.DOWN
+
+		CharacterController.Direction.EAST:
+			return Vector2i.RIGHT
+
+		CharacterController.Direction.WEST:
+			return Vector2i.LEFT
+
+	return Vector2i.DOWN
+
+func _obtener_idle(direccion: Vector2) -> String:
+	if direccion.y < 0.0:
+		return "idle_up"
+
+	if direccion.y > 0.0:
+		return "idle_down"
+
+	if direccion.x < 0.0:
+		return "idle_left"
+
+	if direccion.x > 0.0:
+		return "idle_right"
+
+	return "idle_down"
 
 
-func _on_jugador_paso(casilla_origen: Vector2i, direccion: Vector2, velocidad: float) -> void:
+func _on_jugador_paso(casilla_origen: Vector2i, _direccion_jugador: Vector2, velocidad: float) -> void:
 	if not activo:
 		return
-	cola.append(casilla_origen)
-	if cola.size() <= retraso_casillas:
+
+	_mover_a_casilla(casilla_origen, velocidad)
+
+
+
+func _mover_a_casilla(
+	casilla_destino: Vector2i,
+	velocidad: float
+) -> void:
+	if anim == null or anim.sprite_frames == null:
 		return
-	var dest: Vector2i = cola.pop_front()
-	_mover_a_casilla(dest, direccion, velocidad)
 
+	var destino: Vector2 = (
+		_casilla_a_global(casilla_destino)
+	)
 
-func _mover_a_casilla(casilla: Vector2i, direccion: Vector2, velocidad: float) -> void:
-	var destino: Vector2 = _casilla_a_global(casilla)
-	var duracion: float = 1.0 / maxf(velocidad, 0.01)
+	var casilla_actual_follower: Vector2i = (
+		_global_a_casilla(global_position)
+	)
+
+	var desplazamiento: Vector2i = (
+		casilla_destino - casilla_actual_follower
+	)
+
+	if desplazamiento == Vector2i.ZERO:
+		_reproducir_idle()
+		return
+
+	# La dirección se calcula según el movimiento real
+	# del acompañante, no según la dirección nueva del jugador.
+	_mirar(Vector2(desplazamiento))
+
+	var duracion: float = 1.0 / maxf(
+		velocidad,
+		0.01
+	)
 
 	if tween_mov and tween_mov.is_valid():
 		tween_mov.kill()
 
-	_mirar(direccion)
-
 	tween_mov = create_tween()
-	tween_mov.tween_property(self, "global_position", destino, duracion)
-	tween_mov.finished.connect(_on_paso_terminado, CONNECT_ONE_SHOT)
 
+	tween_mov.tween_property(
+		self,
+		"global_position",
+		destino,
+		duracion
+	)
 
-func _on_paso_terminado() -> void:
-	if anim and anim.sprite_frames and anim.sprite_frames.has_animation("idle"):
-		anim.play("idle")
+	tween_mov.finished.connect(_reproducir_idle, CONNECT_ONE_SHOT)
 
+func _global_a_casilla(posicion: Vector2) -> Vector2i:
+	var tile_size: float = float(
+		CharacterController.TILE_SIZE
+	)
+
+	return Vector2i(
+		floori(posicion.x / tile_size),
+		floori(posicion.y / tile_size)
+	)
 
 func _casilla_a_global(casilla: Vector2i) -> Vector2:
 	# Igual que CharacterController.snap_to_grid / posicion_a_casilla
@@ -153,27 +210,47 @@ func _mirar(direccion: Vector2) -> void:
 	if anim == null or anim.sprite_frames == null:
 		return
 
-	var nombre: String = "walk_down"
-	if direccion.y < 0.0:
-		nombre = "walk_up"
-	elif direccion.y > 0.0:
-		nombre = "walk_down"
-	elif direccion.x < 0.0:
-		nombre = "walk_left"
-	elif direccion.x > 0.0:
-		nombre = "walk_right"
+	var direccion_nombre: String = "down"
 
-	if anim.sprite_frames.has_animation(nombre):
-		anim.play(nombre)
-	elif anim.sprite_frames.has_animation("idle"):
-		anim.play("idle")
+	if direccion.y < 0.0:
+		direccion_nombre = "up"
+	elif direccion.y > 0.0:
+		direccion_nombre = "down"
+	elif direccion.x < 0.0:
+		direccion_nombre = "left"
+	elif direccion.x > 0.0:
+		direccion_nombre = "right"
+
+	idle_actual = "idle_" + direccion_nombre
+
+	var prefijo: String = (
+		"first_step_"
+		if not alternar_paso
+		else "second_step_"
+	)
+
+	var nombre_animacion: String = (
+		prefijo + direccion_nombre
+	)
+
+	alternar_paso = not alternar_paso
+
+	if anim.sprite_frames.has_animation(nombre_animacion):
+		anim.play(nombre_animacion)
+	else:
+		_reproducir_idle()
+
+func _reproducir_idle() -> void:
+	if anim == null or anim.sprite_frames == null:
+		return
+
+	if anim.sprite_frames.has_animation(idle_actual):
+		anim.play(idle_actual)
 
 
 ## Tras warp / cambio de mapa / teletransporte del jugador
 func resetear_seguimiento() -> void:
-	cola.clear()
 	if tween_mov and tween_mov.is_valid():
 		tween_mov.kill()
+
 	_sincronizar_posicion_inicial()
-	if anim and anim.sprite_frames and anim.sprite_frames.has_animation("idle"):
-		anim.play("idle")

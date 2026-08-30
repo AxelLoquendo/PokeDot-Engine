@@ -20,13 +20,24 @@ var corriendo_en_paso: bool = false
 func _ready() -> void:
 	super._ready()
 	add_to_group(&"player")
+
+	# FollowerPokemon es un sistema de runtime.
+	# No debe inicializarse dentro del editor.
+	if Engine.is_editor_hint():
+		return
+
 	if follower:
-		# Deferir: casilla_actual ya está en super._ready
 		call_deferred("_init_follower")
 
+
 func _init_follower() -> void:
-	if follower:
-		follower.setup(self)
+	if Engine.is_editor_hint():
+		return
+
+	if not is_instance_valid(follower):
+		return
+
+	follower.setup(self)
 
 func obtener_velocidad_movimiento() -> float:
 	if corriendo_en_paso:
