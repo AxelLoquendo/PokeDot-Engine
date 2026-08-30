@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://brsbkhcw6qqug"]
 
+[ext_resource type="Texture2D" uid="uid://be5c1vsh8fac6" path="res://graphics/items/RUSTEDSWORD.png" id="1_dyd3h"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -9,3 +10,4 @@ item_name = "Espada oxidada"
 plural_name = "Espadas oxidadas"
 item_description = "Una espada oxidada. Un héroe la usó para detener un desastre."
 item_type = 4
+icon = ExtResource("1_dyd3h")

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c40bm7genk14n"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://yw0gj4ap2rnu" path="res://graphics/items/SHARPBEAK.png" id="1_q7rk5"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -11,3 +12,4 @@ item_description = "Objeto que potencia los movimientos de tipo Volador."
 item_type = 4
 hold_effect = 43
 fling_power = 50
+icon = ExtResource("1_q7rk5")

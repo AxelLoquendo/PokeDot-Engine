@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://uuvkknx0u662"]
 
+[ext_resource type="Texture2D" uid="uid://c0f8jo3eie8ba" path="res://graphics/items/SOULDEW.png" id="1_hisf6"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ item_type = 4
 hold_effect = 33
 hold_effect_param = 20
 fling_power = 30
+icon = ExtResource("1_hisf6")

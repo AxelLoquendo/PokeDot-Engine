@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b7mjc2jggwftb"]
 
+[ext_resource type="Texture2D" uid="uid://dfuayvri2b6cn" path="res://graphics/items/SOFTSAND.png" id="1_ij7cm"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Objeto que potencia los movimientos de tipo Tierra."
 item_type = 4
 hold_effect = 43
 fling_power = 10
+icon = ExtResource("1_ij7cm")

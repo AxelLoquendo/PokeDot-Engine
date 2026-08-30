@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d3f2c2i2dp1om"]
 
+[ext_resource type="Texture2D" uid="uid://cqfvai2fba6hy" path="res://graphics/items/TWISTEDSPOON.png" id="1_fnex1"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Objeto que potencia los movimientos de tipo Psíquico."
 item_type = 4
 hold_effect = 43
 fling_power = 30
+icon = ExtResource("1_fnex1")

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dno6jv8nhev4n"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://d1aeunpjkhocw" path="res://graphics/items/WISHINGPIECE.png" id="1_jp5d8"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -11,3 +12,4 @@ item_description = "Activa una incursión Dynamax al lanzarlo a un nido Pokémon
 price = 20
 item_type = 4
 fling_power = 50
+icon = ExtResource("1_jp5d8")

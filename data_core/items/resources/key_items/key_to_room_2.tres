@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://v566inww57cp"]
 
+[ext_resource type="Texture2D" uid="uid://b1fvg4omvu4u7" path="res://graphics/items/KEYTOROOM2.png" id="1_7stdh"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ pocket = 8
 item_type = 4
 importance = true
 not_consumed = true
+icon = ExtResource("1_7stdh")

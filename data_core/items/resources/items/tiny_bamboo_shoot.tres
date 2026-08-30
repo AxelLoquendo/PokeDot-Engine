@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b1s8cu3htx4gl"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bqma0xgvtkllh" path="res://graphics/items/TINYBAMBOOSHOOT.png" id="1_ko84l"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -11,3 +12,4 @@ item_description = "Un brote de bambú pequeño y raro. Mejor vendido a gourmets
 price = 750
 item_type = 4
 fling_power = 30
+icon = ExtResource("1_ko84l")

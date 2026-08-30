@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b4p7c0wgiweak"]
 
+[ext_resource type="Texture2D" uid="uid://dqo8or6spbek0" path="res://graphics/items/FOSSILIZEDDINO.png" id="1_1igc4"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -14,3 +15,4 @@ item_type = 4
 fling_power = 100
 importance = true
 not_consumed = true
+icon = ExtResource("1_1igc4")

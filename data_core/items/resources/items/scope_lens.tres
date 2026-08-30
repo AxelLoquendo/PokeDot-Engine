@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://y2c3t2dh3jlk"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://ofcrm2mmunch" path="res://graphics/items/SCOPELENS.png" id="1_pj8i3"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -12,3 +13,4 @@ price = 15000
 item_type = 4
 hold_effect = 40
 fling_power = 30
+icon = ExtResource("1_pj8i3")

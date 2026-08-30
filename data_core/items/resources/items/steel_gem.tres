@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcpfkhyb11ghc"]
 
+[ext_resource type="Texture2D" uid="uid://mkbexcguk7vv" path="res://graphics/items/STEELGEM.png" id="1_g7fro"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -10,3 +11,4 @@ plural_name = "Gema aceros"
 item_description = "Potencia un ataque de Tipo Acero."
 item_type = 4
 hold_effect = 94
+icon = ExtResource("1_g7fro")

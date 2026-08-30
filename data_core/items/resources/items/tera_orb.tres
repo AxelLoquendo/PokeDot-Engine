@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dn4j3mekremim"]
 
+[ext_resource type="Texture2D" uid="uid://bfishmsn1ot6n" path="res://graphics/items/TERAORB.png" id="1_8phyn"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -10,3 +11,4 @@ plural_name = "Orbe Teracristals"
 item_description = "La energía acumulada puede usarse para causar Terastalización."
 item_type = 4
 importance = true
+icon = ExtResource("1_8phyn")

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bd0expf58ws7c"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bbd37deokrg0m" path="res://graphics/items/TERRAINEXTENDER.png" id="1_n85gn"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -12,3 +13,4 @@ price = 15000
 item_type = 4
 hold_effect = 110
 fling_power = 60
+icon = ExtResource("1_n85gn")

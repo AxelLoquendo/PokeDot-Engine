@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://if7xi1sgufqh"]
 
+[ext_resource type="Texture2D" uid="uid://drcl3m22oaii8" path="res://graphics/items/BICYCLE.png" id="1_bajj8"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Una bicicleta plegable que es más rápida que las zapatilla
 pocket = 8
 importance = true
 not_consumed = true
+icon = ExtResource("1_bajj8")

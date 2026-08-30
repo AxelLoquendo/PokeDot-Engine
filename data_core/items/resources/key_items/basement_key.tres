@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bwv2lyx1bqd52"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bweu7b1g5uu0d" path="res://graphics/items/BASEMENTKEY.png" id="1_s2s2l"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -12,3 +13,4 @@ pocket = 8
 item_type = 4
 importance = true
 not_consumed = true
+icon = ExtResource("1_s2s2l")

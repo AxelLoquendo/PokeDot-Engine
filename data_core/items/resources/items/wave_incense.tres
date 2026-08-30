@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://h5avj75oownk"]
 
+[ext_resource type="Texture2D" uid="uid://b1l3sk7u128hy" path="res://graphics/items/WAVEINCENSE.png" id="1_dlgio"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -13,3 +14,4 @@ item_type = 4
 hold_effect = 43
 hold_effect_param = 20
 fling_power = 10
+icon = ExtResource("1_dlgio")

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cph8jy34v4pyq"]
 
+[ext_resource type="Texture2D" uid="uid://502ikfdimyye" path="res://graphics/items/STEELTERASHARD.png" id="1_120c0"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -9,3 +10,4 @@ item_name = "Teralito acero"
 plural_name = "Teralitos acero"
 item_description = "Estos fragmentos pueden formarse cuando un Pokémon Tera se desmaya."
 item_type = 4
+icon = ExtResource("1_120c0")

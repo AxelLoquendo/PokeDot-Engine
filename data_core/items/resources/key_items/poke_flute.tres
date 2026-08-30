@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bvvyf7kw1n0ux"]
 
+[ext_resource type="Texture2D" uid="uid://ff5nv2oavqnh" path="res://graphics/items/POKEFLUTE.png" id="1_df4gv"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,4 +13,5 @@ pocket = 8
 item_type = 4
 importance = true
 not_consumed = true
+icon = ExtResource("1_df4gv")
 effect = 12

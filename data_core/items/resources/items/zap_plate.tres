@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cxgjri4fmah5x"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bsn1n4ixfdgpm" path="res://graphics/items/ZAPPLATE.png" id="1_q3q5u"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -13,3 +14,4 @@ item_type = 4
 hold_effect = 89
 hold_effect_param = 20
 fling_power = 90
+icon = ExtResource("1_q3q5u")

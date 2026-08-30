@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cpmb80b0gqajj"]
 
+[ext_resource type="Texture2D" uid="uid://be08y3nr3ie7l" path="res://graphics/items/YELLOWSCARF.png" id="1_fasnv"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Acesorio que aumenta la Dureza en los Concursos."
 price = 100
 item_type = 4
 fling_power = 10
+icon = ExtResource("1_fasnv")

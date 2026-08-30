@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://buhtdtdvnepw"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dm04gn2oh5y8v" path="res://graphics/items/UPGRADE.png" id="1_jmiki"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -11,3 +12,4 @@ item_description = "Una caja peculiar hecha por Silph Co."
 price = 7
 item_type = 1
 fling_power = 30
+icon = ExtResource("1_jmiki")

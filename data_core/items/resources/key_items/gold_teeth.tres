@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c28olt48i6bw8"]
 
+[ext_resource type="Texture2D" uid="uid://dk6kuxdcoisfo" path="res://graphics/items/GOLDTEETH.png" id="1_6nab6"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ pocket = 8
 item_type = 4
 importance = true
 not_consumed = true
+icon = ExtResource("1_6nab6")

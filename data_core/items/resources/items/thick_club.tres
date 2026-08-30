@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b3dds0sk5jtme"]
 
+[ext_resource type="Texture2D" uid="uid://cs1q7d5j15mgx" path="res://graphics/items/THICKCLUB.png" id="1_6etih"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ price = 1000
 item_type = 4
 hold_effect = 47
 fling_power = 90
+icon = ExtResource("1_6etih")

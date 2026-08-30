@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://doqpnb347kimt"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c0emo5lo8ohuh" path="res://graphics/items/SOOTHEBELL.png" id="1_jbwgv"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -12,3 +13,4 @@ price = 5000
 item_type = 4
 hold_effect = 27
 fling_power = 10
+icon = ExtResource("1_jbwgv")

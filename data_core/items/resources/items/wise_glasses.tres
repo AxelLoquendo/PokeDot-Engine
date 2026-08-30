@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bpeigxj5hmlhw"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://y1f8yj7rbnt1" path="res://graphics/items/WISEGLASSES.png" id="1_qeaj7"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -13,3 +14,4 @@ item_type = 4
 hold_effect = 64
 hold_effect_param = 10
 fling_power = 10
+icon = ExtResource("1_qeaj7")

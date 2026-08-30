@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ilni58hs7xxl"]
 
+[ext_resource type="Texture2D" uid="uid://cyf3x8uoc7hwm" path="res://graphics/items/FOSSILIZEDDRAKE.png" id="1_gslkv"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -14,3 +15,4 @@ item_type = 4
 fling_power = 100
 importance = true
 not_consumed = true
+icon = ExtResource("1_gslkv")

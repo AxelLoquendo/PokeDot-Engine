@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c78sd1f8ygah"]
 
+[ext_resource type="Texture2D" uid="uid://cdi64h755jqpk" path="res://graphics/items/SYRUPYAPPLE.png" id="1_hwkak"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Una manzana muy almibada que hace que ciertos Pokémon evolu
 price = 2200
 item_type = 1
 fling_power = 30
+icon = ExtResource("1_hwkak")

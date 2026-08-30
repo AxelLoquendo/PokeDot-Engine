@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cktayfit04qv8"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dvo8hgxxf3enx" path="res://graphics/items/SHEDSHELL.png" id="1_og4ec"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -12,3 +13,4 @@ price = 20000
 item_type = 4
 hold_effect = 74
 fling_power = 10
+icon = ExtResource("1_og4ec")

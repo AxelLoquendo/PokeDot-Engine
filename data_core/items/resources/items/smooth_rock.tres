@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://srx7y47oswbv"]
 
+[ext_resource type="Texture2D" uid="uid://2uhk7uwxlxbv" path="res://graphics/items/SMOOTHROCK.png" id="1_bsb3c"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ price = 8000
 item_type = 4
 hold_effect = 56
 fling_power = 10
+icon = ExtResource("1_bsb3c")

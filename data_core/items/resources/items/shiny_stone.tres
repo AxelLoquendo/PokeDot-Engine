@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dgox73kappr6d"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c3c6xj5s8qh5" path="res://graphics/items/SHINYSTONE.png" id="1_pa2b4"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -11,3 +12,4 @@ item_description = "Hace evolucionar a ciertas especies de Pokémon."
 price = 3000
 item_type = 1
 fling_power = 30
+icon = ExtResource("1_pa2b4")

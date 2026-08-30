@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bi34piry5inwy"]
 
+[ext_resource type="Texture2D" uid="uid://cnafnh7ou2q55" path="res://graphics/items/YELLOWAPRICORN.png" id="1_bh8ro"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -9,3 +10,4 @@ item_name = "Bonguri amarillo"
 plural_name = "Bonguri amarillos"
 item_description = "Un Bonguri amarillo. Tiene un aroma revitalizante."
 item_type = 4
+icon = ExtResource("1_bh8ro")

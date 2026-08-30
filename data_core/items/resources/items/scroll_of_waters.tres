@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cjeucsr7pivw7"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dblsq2qq4m41u" path="res://graphics/items/SCROLLOFWATERS.png" id="1_u6g63"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -10,3 +11,4 @@ plural_name = "Manuscrito aguas"
 item_description = "Un pergamino peculiar con secretos del camino acuático."
 item_type = 1
 importance = true
+icon = ExtResource("1_u6g63")

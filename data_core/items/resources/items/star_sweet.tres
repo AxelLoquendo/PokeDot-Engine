@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dyfotl0e0l2tw"]
 
+[ext_resource type="Texture2D" uid="uid://b8iej2bbfqtt0" path="res://graphics/items/STARSWEET.png" id="1_ffcts"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Un dulce con forma de estrella amado por Milcery."
 price = 500
 item_type = 4
 fling_power = 10
+icon = ExtResource("1_ffcts")

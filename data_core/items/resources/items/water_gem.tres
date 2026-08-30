@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cmabap8kijo8l"]
 
+[ext_resource type="Texture2D" uid="uid://wiaajl0ib51s" path="res://graphics/items/WATERGEM.png" id="1_alol3"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -10,3 +11,4 @@ plural_name = "Gema aguas"
 item_description = "Potencia un ataque de Tipo Agua."
 item_type = 4
 hold_effect = 94
+icon = ExtResource("1_alol3")

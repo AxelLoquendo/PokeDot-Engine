@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://qghs70q11tde"]
 
+[ext_resource type="Texture2D" uid="uid://cknqktogt30tp" path="res://graphics/items/THROATSPRAY.png" id="1_1s1bp"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ price = 20000
 item_type = 4
 hold_effect = 120
 fling_power = 30
+icon = ExtResource("1_1s1bp")

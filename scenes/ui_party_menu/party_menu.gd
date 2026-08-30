@@ -57,9 +57,9 @@ var seleccion_cancel: bool = false
 # READY
 # ============================================================
 
-var pokemon_prueba: PokemonInstance
-var pokemon_prueba2: PokemonInstance
-var pokemon_prueba3: PokemonInstance
+#var pokemon_prueba: PokemonInstance
+#var pokemon_prueba2: PokemonInstance
+#var pokemon_prueba3: PokemonInstance
 
 func _ready() -> void:
 	_inicializar_slots()
@@ -70,25 +70,13 @@ func _ready() -> void:
 	# Pokémon de prueba
 	# --------------------------------------------------------
 
-	pokemon_prueba = PokemonInstance.create(
-		Species.SpeciesID.SPECIES_HYDRAPPLE,
-		100
-	)
-	pokemon_prueba2 = PokemonInstance.create(
-		Species.SpeciesID.SPECIES_ARCEUS_FAIRY,
-		50
-	)
+#	pokemon_prueba = PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 100)
+#	pokemon_prueba2 = PokemonInstance.create(Species.SpeciesID.SPECIES_ARCEUS_FAIRY, 50)
+#	pokemon_prueba3 = PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 5)
 
-	pokemon_prueba3 = PokemonInstance.create(
-		Species.SpeciesID.SPECIES_BULBASAUR,
-		5
-	)
-
-	var party_prueba: Array[PokemonInstance] = [
-	pokemon_prueba, pokemon_prueba2, pokemon_prueba3
-	]
-	party_actual = party_prueba
-	set_party(party_prueba)
+#	var party_prueba: Array[PokemonInstance] = [pokemon_prueba, pokemon_prueba2, pokemon_prueba3]
+#	party_actual = party_prueba
+#	set_party(player_data.party)
 
 	# --------------------------------------------------------
 	# Bloquear jugador
@@ -116,12 +104,26 @@ func _reproducir_cursor() -> void:
 
 func setup(datos_jugador: CharacterPlayer) -> void:
 	player_data = datos_jugador
-
 	_actualizar_cajas_genero()
 
-	# Reestablecer selección visual después de configurar las cajas.
+	if player_data != null:
+		set_party(player_data.party)
+	else:
+		set_party([])
+
+	indice_seleccion = 0
+	seleccion_cancel = false
 	if slots.size() > 0:
-		call_deferred("_seleccionar_slot", 0)
+		call_deferred("_after_setup_focus")
+
+
+func _after_setup_focus() -> void:
+	var ultimo: int = _obtener_ultimo_slot_visible()
+	if ultimo >= 0:
+		_seleccionar_slot(0)
+	else:
+		# Equipo vacío → foco en Cancel
+		_seleccionar_cancel()
 
 func _actualizar_cajas_genero() -> void:
 	if player_data == null:

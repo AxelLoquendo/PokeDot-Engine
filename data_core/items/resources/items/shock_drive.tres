@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d2okkqulea5ui"]
 
+[ext_resource type="Texture2D" uid="uid://b6qntf4c7pa00" path="res://graphics/items/SHOCKDRIVE.png" id="1_35yji"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Cambia ataque Tecno shock de Genesect a tipo Eléctrico."
 item_type = 4
 hold_effect = 93
 fling_power = 70
+icon = ExtResource("1_35yji")

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://v1hlq0pausp1"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://dpcibipl8txsq" path="res://graphics/items/SILVERPOWDER.png" id="1_xvnq7"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -11,3 +12,4 @@ item_description = "Objeto que potencia los movimientos de tipo Bicho."
 item_type = 4
 hold_effect = 43
 fling_power = 10
+icon = ExtResource("1_xvnq7")

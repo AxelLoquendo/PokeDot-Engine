@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://crhvkm1y3b3qf"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://bgjboyrumug45" path="res://graphics/items/LURE.png" id="1_mfyd6"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -12,3 +13,4 @@ price = 700
 item_type = 4
 hold_effect_param = 200
 fling_power = 30
+icon = ExtResource("1_mfyd6")

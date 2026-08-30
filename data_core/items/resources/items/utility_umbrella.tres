@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://beurcym7ht1q1"]
 
+[ext_resource type="Texture2D" uid="uid://do5pyiife6vp7" path="res://graphics/items/UTILITYUMBRELLA.png" id="1_22e04"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ price = 15000
 item_type = 4
 hold_effect = 115
 fling_power = 60
+icon = ExtResource("1_22e04")

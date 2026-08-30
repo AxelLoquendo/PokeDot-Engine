@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bjpew0yk83h7i"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://c607w7q7fbgh8" path="res://graphics/items/DOMEFOSSIL.png" id="1_j4rok"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -14,3 +15,4 @@ item_type = 4
 fling_power = 100
 importance = true
 not_consumed = true
+icon = ExtResource("1_j4rok")

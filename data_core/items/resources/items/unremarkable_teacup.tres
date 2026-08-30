@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bi5hb08yka0l0"]
 
+[ext_resource type="Texture2D" uid="uid://c0pwqosfg3oik" path="res://graphics/items/UNREMARKABLETEACUP.png" id="1_gadtk"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Una taza agrietada que hace que ciertos Pokémon evolucionen
 price = 1600
 item_type = 1
 fling_power = 80
+icon = ExtResource("1_gadtk")

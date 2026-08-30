@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dna0jsnfq3mi4"]
 
+[ext_resource type="Texture2D" uid="uid://f62r03u63t2t" path="res://graphics/items/STICKYBARB.png" id="1_42wiy"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ price = 10000
 item_type = 4
 hold_effect = 70
 fling_power = 80
+icon = ExtResource("1_42wiy")

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dfu3wav4t0030"]
 
+[ext_resource type="Texture2D" uid="uid://bvfm2vlicbuh4" path="res://graphics/items/BLUEORB.png" id="1_bpcd7"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -13,3 +14,4 @@ item_type = 4
 hold_effect = 108
 importance = true
 not_consumed = true
+icon = ExtResource("1_bpcd7")

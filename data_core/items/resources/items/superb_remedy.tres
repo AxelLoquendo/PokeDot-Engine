@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ckyu4g0fe1r8v"]
 
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
+[ext_resource type="Texture2D" uid="uid://cxicel63kv2pa" path="res://graphics/items/SUPERB_REMEDY.png" id="1_ufqdu"]
 
 [resource]
 script = ExtResource("1_itemdata")
@@ -12,4 +13,5 @@ price = 750
 item_type = 1
 battle_usage = 1
 fling_power = 30
+icon = ExtResource("1_ufqdu")
 effect = 1

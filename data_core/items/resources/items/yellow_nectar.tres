@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bj38bjxgqxilp"]
 
+[ext_resource type="Texture2D" uid="uid://dl4kepdh3miql" path="res://graphics/items/YELLOWNECTAR.png" id="1_cjhp0"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -11,3 +12,4 @@ item_description = "Néctar de flor que cambia la forma de ciertos Pokémon."
 price = 300
 item_type = 1
 fling_power = 10
+icon = ExtResource("1_cjhp0")

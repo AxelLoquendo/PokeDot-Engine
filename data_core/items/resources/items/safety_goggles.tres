@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ce00nl8syii63"]
 
+[ext_resource type="Texture2D" uid="uid://s6q4ue4jkavj" path="res://graphics/items/SAFETYGOGGLES.png" id="1_4d0h6"]
 [ext_resource type="Script" uid="uid://dpxh34fbc3y1v" path="res://data_core/items/item_data.gd" id="1_itemdata"]
 
 [resource]
@@ -12,3 +13,4 @@ price = 20000
 item_type = 4
 hold_effect = 104
 fling_power = 80
+icon = ExtResource("1_4d0h6")
