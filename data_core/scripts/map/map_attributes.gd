@@ -81,6 +81,11 @@ signal usar_nubes_cambiado(estado: bool)
 ## Compatibilidad con mapas creados antes del sistema de tipos.
 @export_file("*.gd", "*.txt") var map_script: String = ""
 @export var map_scripts: Array[MapScriptEntry] = []
+@export_group("Wild Encounters")
+@export var grass_encounters: WildEncounterTable
+# Más adelante:
+# @export var water_encounters: WildEncounterTable
+# @export var cave_encounters: WildEncounterTable
 
 # Lógica
 var activo: bool = true

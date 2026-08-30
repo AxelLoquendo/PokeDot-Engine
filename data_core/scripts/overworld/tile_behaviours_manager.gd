@@ -154,8 +154,30 @@ func salto_rampa(personaje: CharacterController, direccion: Vector2) -> void:
 func comportamiento_puerta(_personaje: CharacterController) -> void:
 	print("Entrando puerta")
 
-func comportamiento_hierba(_personaje: CharacterController) -> void:
-	print("Hierba")
+func comportamiento_hierba(personaje: CharacterController) -> void:
+	# Solo al completar el paso, no al comprobar el destino
+	if not personaje.is_moving:
+		return
+	if not (personaje.character_data is CharacterPlayer):
+		return
+
+	var mapa: MapAttributes = personaje.mapa_raiz as MapAttributes
+	if mapa == null or mapa.grass_encounters == null:
+		return
+
+	var salvaje: PokemonInstance = mapa.grass_encounters.intentar_encuentro()
+	if salvaje == null:
+		return
+
+	_iniciar_encuentro_salvaje(personaje, salvaje)
+
+
+func _iniciar_encuentro_salvaje(personaje: CharacterController, salvaje: PokemonInstance) -> void:
+	# De momento: log + bloquear input. Luego: transición a batalla.
+	print("¡Encuentro salvaje! ", salvaje.species_id, " Nv.", salvaje.level)
+	personaje.ejecutando_evento = true
+	# TODO: BattleManager.start_wild_battle(personaje, salvaje)
+	# Al volver de batalla: personaje.ejecutando_evento = false
 
 # Escaleras Laterales
 func comportamiento_escalera_subida_left(direccion: Vector2) -> Vector2:
