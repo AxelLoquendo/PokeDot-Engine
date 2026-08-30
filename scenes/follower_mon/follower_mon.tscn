@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://p31g81qyiovh" path="res://scenes/follower_mon/follower_mon.gd" id="1_ivrco"]
 [ext_resource type="SpriteFrames" uid="uid://caue7t8k4e6s" path="res://data_core/pokemon/follower_mon_large.tres" id="1_py41b"]
+[ext_resource type="Texture2D" uid="uid://cg0fvuuc136f7" path="res://graphics/overworld/shadow/shadow_medium.png" id="2_yuxi7"]
 
 [node name="FollowerMon" type="Node2D" unique_id=85993173]
 script = ExtResource("1_ivrco")
 sprite_offset = Vector2(0, 0)
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1883065112]
+modulate = Color(1, 1, 1, 0.5058824)
+texture = ExtResource("2_yuxi7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1817586280]
 sprite_frames = ExtResource("1_py41b")

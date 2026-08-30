@@ -9,7 +9,21 @@ const FRAMES_SMALL: SpriteFrames = preload("res://data_core/pokemon/follower_mon
 const FRAMES_LARGE: SpriteFrames = preload("res://data_core/pokemon/follower_mon_large.tres")
 const SHEET_LARGE_MIN: int = 256
 
+const SHADOW_TEXTURES: Array[String] = [
+	"",
+	"res://graphics/overworld/shadow/shadow_small.png",
+	"res://graphics/overworld/shadow/shadow_medium.png",
+	"res://graphics/overworld/shadow/shadow_large.png",
+	"res://graphics/overworld/shadow/shadow_extra_large.png",
+]
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sombra: Sprite2D = $Shadow
+
+@export var shadow_offset: Vector2 = Vector2(-0.5, 11.0)
+## 1=S, 2=M, 3=L, 4=XL — por defecto según celda si queda en 0
+@export var shadow_size_small: int = 2
+@export var shadow_size_large: int = 3
 
 var jugador: CharacterController = null
 var activo: bool = false
@@ -26,12 +40,20 @@ var _siguiendo_paso_actual: bool = false
 ## true mientras salta rampa o se desliza por escalera
 var en_secuencia_especial: bool = false
 
+@export var idle_anim_speed: float = 2.5  ## frames por segundo del “respirar”
+var _idle_timer: float = 0.0
+var _idle_usando_first: bool = true
+
 func _ready() -> void:
 	top_level = true
 	visible = false
 	if anim != null:
 		anim.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		anim.scale = Vector2.ONE  # sin 0.5
+		anim.scale = Vector2.ONE
+	if sombra != null:
+		sombra.visible = false
+		sombra.z_as_relative = true
+		sombra.z_index = -1
 
 
 func _aplicar_textura(textura: Texture2D) -> bool:
@@ -72,8 +94,33 @@ func _aplicar_textura(textura: Texture2D) -> bool:
 	var celda: int = _tamano_celda(textura)
 	var extra_y: float = -float(celda - 32) * 0.5
 	anim.offset = sprite_offset + Vector2(0.0, extra_y)
+	_actualizar_sombra(celda)
 	return true
 
+func _actualizar_sombra(celda: int) -> void:
+	if sombra == null:
+		return
+
+	var indice: int = shadow_size_small if celda <= 32 else shadow_size_large
+	if indice < 1 or indice >= SHADOW_TEXTURES.size():
+		sombra.visible = false
+		return
+
+	var ruta: String = SHADOW_TEXTURES[indice]
+	if ruta.is_empty() or not ResourceLoader.exists(ruta):
+		sombra.visible = false
+		return
+
+	var textura: Texture2D = load(ruta) as Texture2D
+	if textura == null:
+		sombra.visible = false
+		return
+
+	sombra.texture = textura
+	sombra.position = shadow_offset
+	sombra.modulate = Color(1.0, 1.0, 1.0, 0.505)
+	# La visibilidad la controla refrescar_desde_party / el nodo raíz
+	sombra.visible = true
 
 func _tamano_celda(textura: Texture2D) -> int:
 	# Sheet 256 → celdas 64; sheet 128 → celdas 32
@@ -115,7 +162,38 @@ func _process(_delta: float) -> void:
 	else:
 		_siguiendo_paso_actual = false
 		_corregir_si_quedo_lejos()
+		_actualizar_idle_animado(_delta)
 
+func _actualizar_idle_animado(delta: float) -> void:
+	if anim == null or anim.sprite_frames == null:
+		return
+	# No pisar un tween de paso que aún no terminó
+	if tween_mov != null and tween_mov.is_valid() and tween_mov.is_running():
+		return
+
+	_idle_timer += delta
+	var intervalo: float = 1.0 / maxf(idle_anim_speed, 0.01)
+	if _idle_timer < intervalo:
+		return
+
+	_idle_timer = 0.0
+	_idle_usando_first = not _idle_usando_first
+	_reproducir_idle_paso()
+
+
+func _reproducir_idle_paso() -> void:
+	if anim == null or anim.sprite_frames == null:
+		return
+
+	# idle_down → down, idle_left → left, etc.
+	var direccion_nombre: String = idle_actual.trim_prefix("idle_")
+	var prefijo: String = "first_step_" if _idle_usando_first else "second_step_"
+	var nombre: String = prefijo + direccion_nombre
+
+	if anim.sprite_frames.has_animation(nombre):
+		anim.play(nombre)
+	elif anim.sprite_frames.has_animation(idle_actual):
+		anim.play(idle_actual)
 
 func _corregir_si_quedo_lejos() -> void:
 	var casilla_follower: Vector2i = _global_a_casilla(global_position)
@@ -132,6 +210,8 @@ func refrescar_desde_party() -> void:
 	mon_actual = null
 	_siguiendo_paso_actual = false
 	_limpiar_anim()
+	if sombra != null:
+		sombra.visible = false
 
 	if jugador == null or anim == null:
 		return
@@ -229,6 +309,9 @@ func _sincronizar_posicion_inicial() -> void:
 	global_position = _casilla_a_global(casilla_detras)
 
 	idle_actual = _obtener_idle(Vector2(direccion_atras))
+	_idle_timer = 0.0
+	_idle_usando_first = true
+	_reproducir_idle_paso()
 	if anim != null and anim.sprite_frames != null:
 		if anim.sprite_frames.has_animation(idle_actual):
 			anim.play(idle_actual)
@@ -303,6 +386,8 @@ func _mirar(direccion: Vector2) -> void:
 	if anim == null or anim.sprite_frames == null:
 		return
 
+	_idle_timer = 0.0
+
 	var direccion_nombre: String = "down"
 
 	# Escaleras / diagonales: priorizar eje horizontal
@@ -329,10 +414,8 @@ func _mirar(direccion: Vector2) -> void:
 
 
 func _reproducir_idle() -> void:
-	if anim == null or anim.sprite_frames == null:
-		return
-	if anim.sprite_frames.has_animation(idle_actual):
-		anim.play(idle_actual)
+	_idle_timer = 0.0
+	_reproducir_idle_paso()
 
 
 ## Llamar tras warp / cambio de mapa / teletransporte.
