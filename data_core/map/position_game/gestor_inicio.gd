@@ -112,6 +112,7 @@ func _dar_party_debug(datos: CharacterPlayer) -> void:
 		PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 5),
 		PokemonInstance.create(Species.SpeciesID.SPECIES_CHARMANDER, 5),
 		PokemonInstance.create(Species.SpeciesID.SPECIES_SQUIRTLE, 5),
+		PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 5),
 	]
 	for mon: PokemonInstance in equipo:
 		if mon == null:

@@ -23,7 +23,8 @@ var idle_actual: String = "idle_down"
 var _frames_propios: bool = false
 ## Evita lanzar el mismo paso dos veces mientras el jugador sigue is_moving.
 var _siguiendo_paso_actual: bool = false
-
+## true mientras salta rampa o se desliza por escalera
+var en_secuencia_especial: bool = false
 
 func _ready() -> void:
 	# Independiente del transform del Player.
@@ -50,7 +51,9 @@ func _process(_delta: float) -> void:
 
 	z_index = int(global_position.y) - 1
 
-	# Paso normal: moverse en paralelo
+	if en_secuencia_especial:
+		return
+
 	if jugador.is_moving:
 		if not _siguiendo_paso_actual:
 			_siguiendo_paso_actual = true
@@ -58,10 +61,6 @@ func _process(_delta: float) -> void:
 			_mover_a_casilla(jugador.casilla_actual, velocidad)
 	else:
 		_siguiendo_paso_actual = false
-
-	# Rampa / escalera / warp: el jugador se movió sin is_moving
-	if not jugador.is_moving and not jugador.ejecutando_evento:
-		_corregir_si_quedo_lejos()
 
 
 func _corregir_si_quedo_lejos() -> void:
@@ -275,14 +274,17 @@ func _mirar(direccion: Vector2) -> void:
 		return
 
 	var direccion_nombre: String = "down"
-	if direccion.y < 0.0:
+
+	# Escaleras / diagonales: priorizar eje horizontal
+	if absf(direccion.x) > 0.0:
+		if direccion.x < 0.0:
+			direccion_nombre = "left"
+		else:
+			direccion_nombre = "right"
+	elif direccion.y < 0.0:
 		direccion_nombre = "up"
 	elif direccion.y > 0.0:
 		direccion_nombre = "down"
-	elif direccion.x < 0.0:
-		direccion_nombre = "left"
-	elif direccion.x > 0.0:
-		direccion_nombre = "right"
 
 	idle_actual = "idle_" + direccion_nombre
 
@@ -307,5 +309,80 @@ func _reproducir_idle() -> void:
 func resetear_seguimiento() -> void:
 	if tween_mov != null and tween_mov.is_valid():
 		tween_mov.kill()
+	en_secuencia_especial = false
 	_siguiendo_paso_actual = false
+	if anim != null:
+		anim.offset = sprite_offset
 	_sincronizar_posicion_inicial()
+
+## Misma parábola que el jugador (2 casillas en `direccion`).
+func saltar_rampa(direccion: Vector2) -> void:
+	if not activo or anim == null:
+		return
+
+	en_secuencia_especial = true
+	_siguiendo_paso_actual = false
+
+	if tween_mov != null and tween_mov.is_valid():
+		tween_mov.kill()
+
+	_mirar(direccion)
+
+	var inicio: Vector2 = global_position
+	var distancia: float = float(CharacterController.TILE_SIZE) * 2.0
+	var final: Vector2 = inicio + direccion * distancia
+	var duracion: float = 0.4
+	var altura: float = -16.0
+	var offset_base: Vector2 = anim.offset
+
+	tween_mov = create_tween()
+	tween_mov.tween_method(
+		func(t: float) -> void:
+			var pos: Vector2 = inicio.lerp(final, t)
+			var arco: float = sin(t * PI) * altura
+			global_position = pos
+			anim.offset = offset_base + Vector2(0.0, arco),
+		0.0,
+		1.0,
+		duracion
+	)
+	tween_mov.finished.connect(
+		func() -> void:
+			global_position = _casilla_a_global(_global_a_casilla(final))
+			anim.offset = offset_base
+			en_secuencia_especial = false
+			_reproducir_idle(),
+		CONNECT_ONE_SHOT
+	)
+
+
+## Mismo desliz diagonal que el jugador (`desplazamiento` en casillas, p.ej. Vector2(1, -1)).
+func deslizar_escalera(desplazamiento: Vector2) -> void:
+	if not activo:
+		return
+
+	en_secuencia_especial = true
+	_siguiendo_paso_actual = false
+
+	if tween_mov != null and tween_mov.is_valid():
+		tween_mov.kill()
+
+	# Escaleras laterales: siempre mirar izq/der, nunca arriba/abajo
+	var mirar_dir: Vector2 = Vector2(signf(desplazamiento.x), 0.0)
+	if mirar_dir == Vector2.ZERO:
+		mirar_dir = desplazamiento
+	_mirar(mirar_dir)
+
+	var inicio: Vector2 = global_position
+	var destino: Vector2 = inicio + desplazamiento * float(CharacterController.TILE_SIZE)
+	var duracion: float = 0.30
+
+	tween_mov = create_tween()
+	tween_mov.tween_property(self, "global_position", destino, duracion).set_trans(Tween.TRANS_LINEAR)
+	tween_mov.finished.connect(
+		func() -> void:
+			global_position = _casilla_a_global(_global_a_casilla(destino))
+			en_secuencia_especial = false
+			_reproducir_idle(),
+		CONNECT_ONE_SHOT
+	)

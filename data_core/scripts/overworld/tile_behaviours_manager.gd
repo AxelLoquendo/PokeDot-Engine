@@ -112,6 +112,10 @@ func salto_rampa(personaje: CharacterController, direccion: Vector2) -> void:
 	if reproductor_salto:
 		reproductor_salto.play()
 
+	var follower: FollowerPokemon = _obtener_follower(personaje)
+	if follower != null:
+		follower.saltar_rampa(direccion)
+
 	var inicio: Vector2 = personaje.position
 	var distancia: float = personaje.TILE_SIZE * 2
 
@@ -191,8 +195,11 @@ func comportamiento_escalera_bajada_right(direccion: Vector2) -> Vector2:
 	
 
 func mover_escalera_right(personaje: CharacterController, desplazamiento: Vector2) -> void:
-
 	personaje.ejecutando_evento = true
+
+	var follower: FollowerPokemon = _obtener_follower(personaje)
+	if follower != null:
+		follower.deslizar_escalera(desplazamiento)
 
 	var inicio: Vector2 = personaje.global_position
 	var destino: Vector2 = inicio + desplazamiento * personaje.TILE_SIZE
@@ -242,8 +249,11 @@ func mover_escalera_right(personaje: CharacterController, desplazamiento: Vector
 	)
 
 func mover_escalera_left(personaje: CharacterController, desplazamiento: Vector2) -> void:
-
 	personaje.ejecutando_evento = true
+
+	var follower: FollowerPokemon = _obtener_follower(personaje)
+	if follower != null:
+		follower.deslizar_escalera(desplazamiento)
 
 	var inicio: Vector2 = personaje.global_position
 	var destino: Vector2 = inicio + desplazamiento * personaje.TILE_SIZE
@@ -297,3 +307,9 @@ func obtener_stairs_right(casilla: Vector2i) -> Vector2i:
 
 func obtener_stairs_left(casilla: Vector2i) -> Vector2i:
 	return casilla + Vector2i(1, 1)
+
+func _obtener_follower(personaje: CharacterController) -> FollowerPokemon:
+	var nodo: Node = personaje.get_node_or_null("FollowerMon")
+	if nodo is FollowerPokemon:
+		return nodo as FollowerPokemon
+	return null
