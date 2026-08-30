@@ -228,7 +228,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_echo() or not event.is_pressed():
 		return
 
-	# Summary abierto: no procesar party
 	if summary_abierto != null:
 		return
 
@@ -241,20 +240,12 @@ func _input(event: InputEvent) -> void:
 			MenuMode.CONTEXT, MenuMode.SWAP_POKEMON, MenuMode.SWAP_ITEM:
 				_cerrar_contextos()
 			MenuMode.ITEM_CONTEXT:
-				_abrir_menu_contexto()  # vuelve al menú anterior
+				_abrir_menu_contexto()
 			MenuMode.BATTLE_SELECT:
 				if battle_force_switch:
-					return  # no se puede cancelar
+					return
 				battle_cancelled.emit()
 				close()
-			MenuMode.BATTLE_SELECT:
-				if seleccion_cancel:
-					if battle_force_switch:
-						return
-					battle_cancelled.emit()
-					close()
-				else:
-					_confirmar_seleccion_batalla()
 		return
 
 	# ---------- A ----------
@@ -272,6 +263,14 @@ func _input(event: InputEvent) -> void:
 				_confirmar_item_contexto()
 			MenuMode.SWAP_POKEMON, MenuMode.SWAP_ITEM:
 				_confirmar_swap()
+			MenuMode.BATTLE_SELECT:
+				if seleccion_cancel:
+					if battle_force_switch:
+						return
+					battle_cancelled.emit()
+					close()
+				else:
+					_confirmar_seleccion_batalla()
 		return
 
 	# ---------- D-pad ----------
@@ -290,17 +289,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Right"):
 		_navegar(1, false)
 		get_viewport().set_input_as_handled()
-		return
-
-	# ========================================================
-	# A
-	# ========================================================
-	if event.is_action_pressed("buttonA"):
-		get_viewport().set_input_as_handled()
-		if seleccion_cancel:
-			close()
-			return
-		_abrir_summary()
 		return
 
 func _confirmar_seleccion_batalla() -> void:
@@ -323,7 +311,7 @@ func _confirmar_seleccion_batalla() -> void:
 
 func _navegar(direccion: int, vertical: bool) -> void:
 	match menu_mode:
-		MenuMode.SLOTS, MenuMode.SWAP_POKEMON, MenuMode.SWAP_ITEM:
+		MenuMode.SLOTS, MenuMode.SWAP_POKEMON, MenuMode.SWAP_ITEM, MenuMode.BATTLE_SELECT:
 			if vertical:
 				_mover_vertical(direccion)
 			else:

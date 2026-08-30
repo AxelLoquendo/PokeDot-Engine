@@ -489,12 +489,18 @@ func _abrir_party_batalla(forzar: bool) -> void:
 		return
 
 	_party_ui = PARTY_SCENE.instantiate() as PartyMenu
-	add_child(_party_ui)
+	# Encima del overlay de batalla (layer 100)
+	_party_ui.layer = 120
+	_party_ui.visible = true
+
+	# Mejor como hijo del root/tree para no heredar rarezas del Node2D de batalla
+	var host: Node = get_tree().root
+	host.add_child(_party_ui)
+
 	_party_ui.battle_pokemon_selected.connect(_on_party_pokemon_selected)
 	_party_ui.battle_cancelled.connect(_on_party_cancelled)
 	_party_ui.party_closed.connect(_on_party_closed)
 	_party_ui.setup_battle(datos, player_pokemon, forzar)
-
 
 func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	var free_switch: bool = _force_switch_pending
