@@ -160,6 +160,8 @@ func comportamiento_hierba(personaje: CharacterController) -> void:
 		return
 	if not (personaje.character_data is CharacterPlayer):
 		return
+	if BattleSession.is_active:
+		return
 
 	var mapa: MapAttributes = personaje.mapa_raiz as MapAttributes
 	if mapa == null or mapa.grass_encounters == null:
@@ -169,15 +171,45 @@ func comportamiento_hierba(personaje: CharacterController) -> void:
 	if salvaje == null:
 		return
 
-	_iniciar_encuentro_salvaje(personaje, salvaje)
+	var data: CharacterPlayer = personaje.character_data as CharacterPlayer
+	var lead: PokemonInstance = _primer_pokemon_apto(data.party)
+	if lead == null:
+		return
+
+	_iniciar_encuentro_salvaje(personaje, lead, salvaje)
 
 
-func _iniciar_encuentro_salvaje(personaje: CharacterController, salvaje: PokemonInstance) -> void:
-	# De momento: log + bloquear input. Luego: transición a batalla.
+func _primer_pokemon_apto(party: Array[PokemonInstance]) -> PokemonInstance:
+	for mon: PokemonInstance in party:
+		if mon != null and not mon.is_fainted():
+			return mon
+	return null
+
+
+func _iniciar_encuentro_salvaje(
+	personaje: CharacterController,
+	lead: PokemonInstance,
+	salvaje: PokemonInstance
+) -> void:
 	print("¡Encuentro salvaje! ", salvaje.species_id, " Nv.", salvaje.level)
+	BattleSession.preparar_salvaje(personaje, lead, salvaje)
+	_correr_transicion_batalla(personaje)
+
+
+func _correr_transicion_batalla(personaje: CharacterController) -> void:
 	personaje.ejecutando_evento = true
-	# TODO: BattleManager.start_wild_battle(personaje, salvaje)
-	# Al volver de batalla: personaje.ejecutando_evento = false
+
+	if TransicionManager != null:
+		await TransicionManager.fade_out(0.25)
+
+	var parent: Node = personaje.get_tree().current_scene
+	if parent == null:
+		parent = personaje.get_tree().root
+
+	BattleSession.iniciar_como_overlay(parent)
+
+	if TransicionManager != null:
+		await TransicionManager.fade_in(0.25)
 
 # Escaleras Laterales
 func comportamiento_escalera_subida_left(direccion: Vector2) -> Vector2:

@@ -64,6 +64,8 @@ var _move_focused: Array[Texture2D] = []
 var _current_move_normals: Array[Texture2D] = []
 var _current_move_focused: Array[Texture2D] = []
 
+var _ended_by_run: bool = false
+var _battle_closing: bool = false
 
 func _ready() -> void:
 	player_sprite_base_pos = player_sprite.position
@@ -104,30 +106,37 @@ func _ready() -> void:
 		b.focus_mode = Control.FOCUS_NONE
 		b.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	player_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 5)
-	enemy_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 8)
-	
+	_ended_by_run = false
+	_battle_closing = false
+
+	if BattleSession.tiene_datos():
+		player_pokemon = BattleSession.player_pokemon
+		enemy_pokemon = BattleSession.enemy_pokemon
+	else:
+		# Fallback si abres la escena sola (debug)
+		player_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 5)
+		enemy_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 8)
+
 	battle = BattleManager.new()
 	battle.message.connect(_on_battle_message)
 	battle.hp_changed.connect(_on_hp_changed)
 	battle.battle_ended.connect(_on_battle_ended)
 	battle.turn_ended.connect(_on_turn_ended)
 	battle.start_battle(player_pokemon, enemy_pokemon)
-	
+
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
-	
+
 	_update_ui()
 	player_hp_bar.size.x = player_hp_bar_target
 	enemy_hp_bar.size.x = enemy_hp_bar_target
-	
+
 	fight_menu.visible = false
 	action_menu.visible = true
 	current_menu = MenuState.ACTIONS
 	selected_action = 0
 	_update_action_focus()
 	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
-
 
 func _process(delta: float) -> void:
 	if absf(player_hp_bar.size.x - player_hp_bar_target) > 0.5:
@@ -436,11 +445,35 @@ func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
 	_update_hp_bars()
 
 
-func _on_battle_ended(_player_won: bool) -> void:
+func _on_battle_ended(player_won: bool) -> void:
+	if _battle_closing:
+		return
+	_battle_closing = true
+
 	current_menu = MenuState.BUSY
 	action_menu.visible = false
 	fight_menu.visible = false
 
+	var result: int = BattleSession.BattleResult.LOSE
+	if _ended_by_run:
+		result = BattleSession.BattleResult.RUN
+		_show_message_box("¡Escapaste sin problemas!")
+	elif player_won:
+		result = BattleSession.BattleResult.WIN
+		_show_message_box("¡Has ganado!")
+	else:
+		_show_message_box("...")
+
+	# Pequeña pausa para leer el mensaje
+	await get_tree().create_timer(1.0).timeout
+
+	if TransicionManager != null:
+		await TransicionManager.fade_out(0.25)
+
+	BattleSession.finalizar(result)
+
+	if TransicionManager != null:
+		await TransicionManager.fade_in(0.25)
 
 func _on_turn_ended() -> void:
 	action_menu.visible = true
@@ -473,8 +506,8 @@ func _on_pkmn_pressed() -> void:
 
 func _on_run_pressed() -> void:
 	current_menu = MenuState.BUSY
+	_ended_by_run = true
 	battle.player_choose_run()
-
 
 func _fill_move_buttons() -> void:
 	var moves: Array[PokemonMoveSlot] = player_pokemon.moves

@@ -34,18 +34,12 @@ func _elegir_pokemon() -> PokemonInstance:
 			continue
 		acumulado += maxi(e.weight, 0)
 		if roll <= acumulado:
-			var nivel: int = randi_range(mini(e.min_level, e.max_level), maxi(e.min_level, e.max_level))
+			var nivel_min: int = mini(e.min_level, e.max_level)
+			var nivel_max: int = maxi(e.min_level, e.max_level)
+			var nivel: int = randi_range(nivel_min, nivel_max)
 			return _crear_instancia(e.species_id, nivel)
 	return null
 
 
 func _crear_instancia(species_id: Species.SpeciesID, nivel: int) -> PokemonInstance:
-	var mon: PokemonInstance = PokemonInstance.new()
-	mon.species_id = species_id
-	mon.level = nivel
-	# Si tienes un factory (from_species, generate, etc.), úsalo aquí.
-	if mon.has_method("initialize_from_species"):
-		mon.initialize_from_species()
-	elif mon.has_method("recalculate_stats"):
-		mon.recalculate_stats()
-	return mon
+	return PokemonInstance.create(species_id, nivel)

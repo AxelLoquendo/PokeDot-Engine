@@ -32,6 +32,7 @@ SpeciesDatabase="*uid://bxv2bmtajvjci"
 ItemDatabase="*res://data_core/items/items_database.gd"
 DebugMenu="*res://data_core/scripts/debug_menu.gd"
 TypeIconsDb="*uid://j0dn4latidhk"
+BattleSession="*uid://dy7sdv606yu6b"
 
 [debug]
 
