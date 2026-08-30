@@ -14,22 +14,25 @@ var is_active: bool = false
 var is_wild: bool = true
 var player_pokemon: PokemonInstance = null
 var enemy_pokemon: PokemonInstance = null
+var enemy_party: Array[PokemonInstance] = []
 var player_controller: CharacterController = null
 
 var _battle_layer: CanvasLayer = null
 const BATTLE_SCENE: PackedScene = preload("res://scenes/ui_battle/battle.tscn")
 
 
-func preparar_salvaje(
-	jugador: CharacterController,
-	lead: PokemonInstance,
-	salvaje: PokemonInstance
-) -> void:
+func preparar_salvaje(jugador: CharacterController, lead: PokemonInstance, salvaje: PokemonInstance) -> void:
 	player_controller = jugador
 	player_pokemon = lead
 	enemy_pokemon = salvaje
 	is_wild = true
 
+func preparar_entrenador(jugador: CharacterController, lead: PokemonInstance, party_rival: Array[PokemonInstance]) -> void:
+	player_controller = jugador
+	player_pokemon = lead
+	enemy_party = party_rival
+	enemy_pokemon = party_rival[0] if not party_rival.is_empty() else null
+	is_wild = false
 
 func iniciar_como_overlay(parent: Node) -> void:
 	if is_active:
@@ -66,6 +69,7 @@ func finalizar(result: int) -> void:
 
 	player_pokemon = null
 	enemy_pokemon = null
+	enemy_party = []
 	player_controller = null
 
 	battle_finished.emit(result)

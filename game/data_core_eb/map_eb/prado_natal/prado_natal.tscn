@@ -2347,7 +2347,7 @@ script = ExtResource("9_cxnhx")
 script_file_path = "res://game/data_core_eb/map_eb/prado_natal/npc_basico.txt"
 metadata/_custom_type_script = "uid://bwbh47vc5fymn"
 
-[sub_resource type="Resource" id="Resource_yd4tm"]
+[sub_resource type="Resource" id="Resource_58jqm"]
 resource_local_to_scene = true
 script = ExtResource("7_y0fca")
 nombre = "Kaida"
@@ -2419,4 +2419,4 @@ tile_set = SubResource("TileSet_hprgv")
 
 [node name="Npc" parent="EventObject" unique_id=1270542304 instance=ExtResource("4_d8013")]
 position = Vector2(152, 177)
-character_data = SubResource("Resource_yd4tm")
+character_data = SubResource("Resource_58jqm")

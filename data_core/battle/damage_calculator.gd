@@ -30,8 +30,8 @@ static func calculate(attacker: BattleBattler, defender: BattleBattler, move: Mo
 		return result
 	
 	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
-		result.hit = true
 		result.is_status = true
+		result.hit = check_hit(move, attacker, defender)
 		result.damage = 0
 		return result
 	
@@ -49,6 +49,8 @@ static func calculate(attacker: BattleBattler, defender: BattleBattler, move: Mo
 	if move.category == MoveStruct.DamageCategory.PHYSICAL:
 		atk = attacker.get_effective_stat(PokemonInstance.Stat.ATTACK)
 		def = defender.get_effective_stat(PokemonInstance.Stat.DEFENSE)
+		if attacker.pokemon.status == PokemonInstance.Status.BURN:
+			atk = maxi(1, atk / 2)
 	else:
 		atk = attacker.get_effective_stat(PokemonInstance.Stat.SP_ATTACK)
 		def = defender.get_effective_stat(PokemonInstance.Stat.SP_DEFENSE)

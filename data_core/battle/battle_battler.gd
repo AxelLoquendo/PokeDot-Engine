@@ -12,6 +12,8 @@ var stage_speed: int = 0
 var stage_accuracy: int = 0
 var stage_evasion: int = 0
 
+var confusion_turns: int = 0
+var flinched: bool = false
 
 func setup(p: PokemonInstance, player_side: bool) -> void:
 	pokemon = p
@@ -27,7 +29,8 @@ func _reset_stages() -> void:
 	stage_speed = 0
 	stage_accuracy = 0
 	stage_evasion = 0
-
+	confusion_turns = 0
+	flinched = false
 
 func is_fainted() -> bool:
 	return pokemon == null or pokemon.current_hp <= 0
@@ -91,3 +94,38 @@ func consume_pp(slot_index: int) -> bool:
 
 func get_display_name() -> String:
 	return pokemon.get_display_name() if pokemon else "???"
+
+func is_confused() -> bool:
+	return confusion_turns > 0
+
+
+## Aplica un cambio de stage. Devuelve el cambio REAL (puede ser 0 si ya estaba al tope).
+func modify_stage(stat: PokemonInstance.Stat, amount: int) -> int:
+	var before: int
+	match stat:
+		PokemonInstance.Stat.ATTACK: before = stage_attack
+		PokemonInstance.Stat.DEFENSE: before = stage_defense
+		PokemonInstance.Stat.SP_ATTACK: before = stage_sp_attack
+		PokemonInstance.Stat.SP_DEFENSE: before = stage_sp_defense
+		PokemonInstance.Stat.SPEED: before = stage_speed
+		_: before = 0
+	var after: int = clampi(before + amount, -6, 6)
+	match stat:
+		PokemonInstance.Stat.ATTACK: stage_attack = after
+		PokemonInstance.Stat.DEFENSE: stage_defense = after
+		PokemonInstance.Stat.SP_ATTACK: stage_sp_attack = after
+		PokemonInstance.Stat.SP_DEFENSE: stage_sp_defense = after
+		PokemonInstance.Stat.SPEED: stage_speed = after
+	return after - before
+
+
+func modify_accuracy_stage(amount: int) -> int:
+	var before: int = stage_accuracy
+	stage_accuracy = clampi(before + amount, -6, 6)
+	return stage_accuracy - before
+
+
+func modify_evasion_stage(amount: int) -> int:
+	var before: int = stage_evasion
+	stage_evasion = clampi(before + amount, -6, 6)
+	return stage_evasion - before

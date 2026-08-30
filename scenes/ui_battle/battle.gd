@@ -118,7 +118,7 @@ func _ready() -> void:
 	battle.battle_ended.connect(_on_battle_ended)
 	battle.turn_ended.connect(_on_turn_ended)
 	battle.player_must_switch.connect(_on_player_must_switch)
-	battle.start_battle(player_pokemon, enemy_pokemon, party)
+	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp

@@ -13,6 +13,16 @@ enum Stat {
 	SP_DEFENSE = 5,
 }
 
+enum Status {
+	NONE,
+	POISON,
+	TOXIC,
+	BURN,
+	PARALYSIS,
+	SLEEP,
+	FREEZE,
+}
+
 const STAT_COUNT: int = 6
 
 # ------------------------------------------------------------
@@ -29,6 +39,9 @@ const STAT_COUNT: int = 6
 # Combate / estado
 # ------------------------------------------------------------
 @export var current_hp: int = 0
+@export var status: Status = Status.NONE
+## Turnos de sueño restantes, o contador creciente de daño en Tóxico.
+@export var status_counter: int = 0
 @export var max_hp: int = 0
 @export var ability_id: AbilityId.Id = AbilityId.Id.NONE
 @export var held_item: Items.ItemId = Items.ItemId.ITEM_NONE
@@ -175,6 +188,69 @@ func apply_heal(amount: int) -> void:
 		return
 	current_hp = mini(max_hp, current_hp + amount)
 
+func has_status() -> bool:
+	return status != Status.NONE
+
+
+func cure_status() -> void:
+	status = Status.NONE
+	status_counter = 0
+
+
+func is_immune_to_status(new_status: Status) -> bool:
+	var t1: PokemonData.Type = get_type_1()
+	var t2: PokemonData.Type = get_type_2()
+	match new_status:
+		Status.BURN:
+			return t1 == PokemonData.Type.TYPE_FIRE or t2 == PokemonData.Type.TYPE_FIRE
+		Status.POISON, Status.TOXIC:
+			return t1 == PokemonData.Type.TYPE_POISON or t2 == PokemonData.Type.TYPE_POISON \
+				or t1 == PokemonData.Type.TYPE_STEEL or t2 == PokemonData.Type.TYPE_STEEL
+		Status.FREEZE:
+			return t1 == PokemonData.Type.TYPE_ICE or t2 == PokemonData.Type.TYPE_ICE
+		Status.PARALYSIS:
+			return t1 == PokemonData.Type.TYPE_ELECTRIC or t2 == PokemonData.Type.TYPE_ELECTRIC
+		_:
+			return false
+
+
+## Devuelve true si el estado se aplicó (false si ya tenía otro estado o es inmune).
+func apply_status(new_status: Status) -> bool:
+	if has_status() or is_immune_to_status(new_status):
+		return false
+	status = new_status
+	match new_status:
+		Status.SLEEP:
+			status_counter = randi_range(1, 3)
+		Status.TOXIC:
+			status_counter = 1
+		_:
+			status_counter = 0
+	return true
+
+## Añade experiencia, sube de nivel las veces necesarias, recalcula stats
+## y aprende movimientos nuevos de nivel. No maneja evoluciones todavía.
+func gain_exp(amount: int) -> Dictionary:
+	var result: Dictionary = {"levels_gained": 0, "learned_moves": []}
+	var species: PokemonDataStruct = get_species()
+	if species == null or amount <= 0 or level >= ExperienceSystem.MAX_LEVEL:
+		return result
+
+	experience += amount
+
+	while level < ExperienceSystem.MAX_LEVEL:
+		var needed: int = ExperienceSystem.get_total_exp_for_level(level + 1, species.growth_rate)
+		if experience < needed:
+			break
+		level += 1
+		result["levels_gained"] += 1
+		recalculate_stats()
+		for entry: LevelUpMove in species.level_up_moves:
+			if entry and entry.level == level:
+				if learn_move(entry.move):
+					result["learned_moves"].append(entry.move)
+
+	return result
 
 # ============================================================
 # STATS
