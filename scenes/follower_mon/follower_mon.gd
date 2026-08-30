@@ -5,9 +5,9 @@ class_name FollowerPokemon
 ## Carga dinámicamente overworld_scene (o graphics/pokemon/follower/<NOMBRE>.png).
 
 const FOLLOWER_FOLDER: String = "res://graphics/pokemon/follower/"
-const FRAME_SIZE: int = 64
-## 64px de sheet → 32px en pantalla (mismo tamaño que el jugador).
-const DISPLAY_SCALE: float = 0.5
+const FRAMES_SMALL: SpriteFrames = preload("res://data_core/pokemon/follower_mon_small.tres")
+const FRAMES_LARGE: SpriteFrames = preload("res://data_core/pokemon/follower_mon_large.tres")
+const SHEET_LARGE_MIN: int = 256
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -27,12 +27,65 @@ var _siguiendo_paso_actual: bool = false
 var en_secuencia_especial: bool = false
 
 func _ready() -> void:
-	# Independiente del transform del Player.
 	top_level = true
 	visible = false
 	if anim != null:
 		anim.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		anim.scale = Vector2(DISPLAY_SCALE, DISPLAY_SCALE)
+		anim.scale = Vector2.ONE  # sin 0.5
+
+
+func _aplicar_textura(textura: Texture2D) -> bool:
+	if anim == null:
+		return false
+
+	var plantilla: SpriteFrames = _elegir_plantilla(textura)
+	if plantilla == null:
+		return false
+
+	var copia: SpriteFrames = plantilla.duplicate(true) as SpriteFrames
+	if copia == null:
+		return false
+
+	anim.sprite_frames = copia
+	_frames_propios = true
+
+	var frames: SpriteFrames = anim.sprite_frames
+	var nombres: PackedStringArray = frames.get_animation_names()
+	for anim_nombre: String in nombres:
+		var frame_count: int = frames.get_frame_count(anim_nombre)
+		for i: int in range(frame_count):
+			var original: Texture2D = frames.get_frame_texture(anim_nombre, i)
+			var duracion: float = frames.get_frame_duration(anim_nombre, i)
+			if original is AtlasTexture:
+				var atlas: AtlasTexture = (original as AtlasTexture).duplicate() as AtlasTexture
+				atlas.atlas = textura
+				frames.set_frame(anim_nombre, i, atlas, duracion)
+			else:
+				frames.set_frame(anim_nombre, i, textura, duracion)
+
+	anim.sprite_frames = frames
+	anim.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	anim.scale = Vector2.ONE
+	anim.centered = true
+
+	# Alinear pies con la línea base de un frame de 32px
+	var celda: int = _tamano_celda(textura)
+	var extra_y: float = -float(celda - 32) * 0.5
+	anim.offset = sprite_offset + Vector2(0.0, extra_y)
+	return true
+
+
+func _tamano_celda(textura: Texture2D) -> int:
+	# Sheet 256 → celdas 64; sheet 128 → celdas 32
+	if textura.get_width() >= SHEET_LARGE_MIN:
+		return 64
+	return 32
+
+func _elegir_plantilla(textura: Texture2D) -> SpriteFrames:
+	var ancho: int = textura.get_width()
+	if ancho >= SHEET_LARGE_MIN:
+		return FRAMES_LARGE
+	return FRAMES_SMALL
 
 
 func setup(p_jugador: CharacterController) -> void:
@@ -61,6 +114,7 @@ func _process(_delta: float) -> void:
 			_mover_a_casilla(jugador.casilla_actual, velocidad)
 	else:
 		_siguiendo_paso_actual = false
+		_corregir_si_quedo_lejos()
 
 
 func _corregir_si_quedo_lejos() -> void:
@@ -99,11 +153,19 @@ func refrescar_desde_party() -> void:
 		return
 
 	mon_actual = mon
-	anim.offset = sprite_offset
 	activo = true
 	visible = true
 	_sincronizar_posicion_inicial()
 
+func _offset_actual() -> Vector2:
+	if mon_actual == null:
+		return sprite_offset
+	var tex: Texture2D = _resolver_textura(mon_actual)
+	if tex == null:
+		return sprite_offset
+	var celda: int = _tamano_celda(tex)
+	var extra_y: float = -float(celda - 32) * 0.5
+	return sprite_offset + Vector2(0.0, extra_y)
 
 func _elegir_mon(party: Array[PokemonInstance]) -> PokemonInstance:
 	for mon: PokemonInstance in party:
@@ -146,38 +208,6 @@ func _nombre_archivo_especie(sp: PokemonDataStruct) -> String:
 	if key.begins_with("SPECIES_"):
 		return key.substr(8)
 	return key
-
-
-func _aplicar_textura(textura: Texture2D) -> bool:
-	if anim == null or anim.sprite_frames == null:
-		return false
-
-	if not _frames_propios:
-		var copia: SpriteFrames = anim.sprite_frames.duplicate(true) as SpriteFrames
-		if copia == null:
-			return false
-		anim.sprite_frames = copia
-		_frames_propios = true
-
-	var frames: SpriteFrames = anim.sprite_frames
-	var nombres: PackedStringArray = frames.get_animation_names()
-	for anim_nombre: String in nombres:
-		var frame_count: int = frames.get_frame_count(anim_nombre)
-		for i: int in range(frame_count):
-			var original: Texture2D = frames.get_frame_texture(anim_nombre, i)
-			var duracion: float = frames.get_frame_duration(anim_nombre, i)
-			if original is AtlasTexture:
-				var atlas: AtlasTexture = (original as AtlasTexture).duplicate() as AtlasTexture
-				atlas.atlas = textura
-				frames.set_frame(anim_nombre, i, atlas, duracion)
-			else:
-				frames.set_frame(anim_nombre, i, textura, duracion)
-
-	anim.sprite_frames = frames
-	anim.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	anim.scale = Vector2(DISPLAY_SCALE, DISPLAY_SCALE)
-	return true
-
 
 func _limpiar_anim() -> void:
 	if anim == null:
@@ -312,7 +342,7 @@ func resetear_seguimiento() -> void:
 	en_secuencia_especial = false
 	_siguiendo_paso_actual = false
 	if anim != null:
-		anim.offset = sprite_offset
+		anim.offset = _offset_actual()
 	_sincronizar_posicion_inicial()
 
 ## Misma parábola que el jugador (2 casillas en `direccion`).
@@ -333,7 +363,7 @@ func saltar_rampa(direccion: Vector2) -> void:
 	var final: Vector2 = inicio + direccion * distancia
 	var duracion: float = 0.4
 	var altura: float = -16.0
-	var offset_base: Vector2 = anim.offset
+	var offset_base: Vector2 = _offset_actual()
 
 	tween_mov = create_tween()
 	tween_mov.tween_method(
