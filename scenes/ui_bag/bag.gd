@@ -2,7 +2,14 @@ extends CanvasLayer
 class_name BagUI
 
 signal bag_closed
+signal item_chosen(item_id: Items.ItemId)
 
+enum BagMode {
+	NORMAL,
+	GIVE_HELD,
+}
+
+var bag_mode: BagMode = BagMode.NORMAL
 
 # ============================================================
 # CONFIGURACIÓN
@@ -130,7 +137,6 @@ var items_actuales: Array[Items.ItemId] = []
 # ============================================================
 
 var pockets: Array[ItemConstants.Pocket] = []
-
 
 # ============================================================
 # READY
@@ -548,20 +554,24 @@ func _actualizar_selected() -> void:
 # SETUP
 # ============================================================
 
-func setup(datos_jugador: CharacterPlayer) -> void:
-
+func setup(datos_jugador: CharacterPlayer, mode: BagMode = BagMode.NORMAL) -> void:
 	player_data = datos_jugador
+	bag_mode = mode
 
 	indice_seleccion = 0
 	scroll_offset = 0
 
-	pocket_actual = (
-		ItemConstants.Pocket.POCKET_ITEMS
-	)
+	pocket_actual = ItemConstants.Pocket.POCKET_ITEMS
 
 	_update_bag_graphics()
 	_update_ui()
 
+func _get_selected_item_id() -> Items.ItemId:
+	if _esta_seleccionado_salir():
+		return Items.ItemId.ITEM_NONE
+	if indice_seleccion < 0 or indice_seleccion >= items_actuales.size():
+		return Items.ItemId.ITEM_NONE
+	return items_actuales[indice_seleccion]
 
 # ============================================================
 # ACTUALIZAR GRÁFICOS DEL JUGADOR
@@ -1398,27 +1408,21 @@ func _input(event: InputEvent) -> void:
 	# --------------------------------------------------------
 
 	if event.is_action_pressed("buttonA"):
-
-		# ----------------------------------------------------
-		# Si estamos sobre "Salir", cerramos la mochila.
-		# ----------------------------------------------------
-
 		if _esta_seleccionado_salir():
-
 			close_bag()
-
 			get_viewport().set_input_as_handled()
-
 			return
 
+		if bag_mode == BagMode.GIVE_HELD:
+			var item_id: Items.ItemId = _get_selected_item_id()
+			if item_id != Items.ItemId.ITEM_NONE:
+				item_chosen.emit(item_id)
+				close_bag()
+			get_viewport().set_input_as_handled()
+			return
 
-		# ----------------------------------------------------
-		# TODO:
-		# Usar / seleccionar objeto.
-		# ----------------------------------------------------
-
+		# NORMAL: usar ítem en campo (más adelante)
 		get_viewport().set_input_as_handled()
-
 		return
 
 

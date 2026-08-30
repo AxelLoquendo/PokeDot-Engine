@@ -22,6 +22,8 @@ var player_data: CharacterPlayer = null
 @export var context_cursor_base: Vector2 = Vector2(19, 24)
 @export var context_line_height: float = 32.0  # altura de una línea de tu fuente
 
+var bag_ui_dar: BagUI = null
+
 # ============================================================
 # SLOTS
 # ============================================================
@@ -469,8 +471,8 @@ func _confirmar_contexto() -> void:
 func _confirmar_item_contexto() -> void:
 	match item_context_index:
 		0:  # Dar
-			push_warning("Dar objeto: pendiente de mochila")
-			_cerrar_contextos()
+			_ocultar_ui_contexto()
+			_abrir_bag_para_dar()
 		1:  # Quitar
 			_quitar_held(swap_from_index)
 			_cerrar_contextos()
@@ -573,6 +575,50 @@ func _actualizar_cursor_contexto(index: int) -> void:
 		return
 	context_cursor.visible = true
 	context_cursor.position = context_cursor_base + Vector2(0, context_line_height * float(index))
+
+func _abrir_bag_para_dar() -> void:
+	if player_data == null:
+		return
+	if is_instance_valid(bag_ui_dar):
+		return
+
+	var bag_scene: PackedScene = preload("res://scenes/ui_bag/bag.tscn")
+	bag_ui_dar = bag_scene.instantiate() as BagUI
+	if bag_ui_dar == null:
+		return
+
+	add_child(bag_ui_dar)
+	set_process_input(false)
+
+	bag_ui_dar.setup(player_data, BagUI.BagMode.GIVE_HELD)
+	bag_ui_dar.item_chosen.connect(_on_item_chosen_for_held)
+	bag_ui_dar.bag_closed.connect(_on_give_bag_closed)
+
+
+func _on_item_chosen_for_held(item_id: Items.ItemId) -> void:
+	if swap_from_index < 0 or swap_from_index >= party_actual.size():
+		return
+	var mon: PokemonInstance = party_actual[swap_from_index]
+	if mon == null or player_data == null or player_data.bag == null:
+		return
+	if item_id == Items.ItemId.ITEM_NONE:
+		return
+
+	# Devolver el held anterior a la mochila
+	if mon.held_item != Items.ItemId.ITEM_NONE:
+		player_data.bag.add_item(mon.held_item, 1)
+
+	if not player_data.bag.remove_item(item_id, 1):
+		return
+
+	mon.held_item = item_id
+	set_party(party_actual)
+
+
+func _on_give_bag_closed() -> void:
+	bag_ui_dar = null
+	set_process_input(true)
+	_cerrar_contextos()
 
 # ============================================================
 # CERRAR

@@ -5,7 +5,7 @@ class_name PartySlot
 # ============================================================
 # REFERENCIAS
 # ============================================================
-
+@export var held_marker: Texture2D
 @onready var sprite_icon: Sprite2D = $Icon
 @onready var label_genero: Label = $Genero
 
@@ -146,6 +146,9 @@ func _limpiar() -> void:
 
 		sprite_icon.texture = null
 
+	if sprite_objeto != null:
+		sprite_objeto.visible = false
+		sprite_objeto.texture = null
 
 	if label_genero != null:
 
@@ -191,6 +194,7 @@ func _actualizar_ui() -> void:
 	_actualizar_hp()
 	_actualizar_icono()
 	_actualizar_genero()
+	_actualizar_held()
 
 
 # ============================================================
@@ -310,6 +314,17 @@ func _actualizar_genero() -> void:
 	label_genero.self_modulate = Color.WHITE
 
 	print(pokemon.get_display_name(), " gender=", pokemon.gender, " color=", color)
+
+func _actualizar_held() -> void:
+	if sprite_objeto == null:
+		return
+	var tiene: bool = (
+		pokemon != null
+		and pokemon.held_item != Items.ItemId.ITEM_NONE
+	)
+	sprite_objeto.visible = tiene
+	if tiene and held_marker:
+		sprite_objeto.texture = held_marker
 
 func clear() -> void:
 
