@@ -34,6 +34,7 @@ extends Node2D
 	$Overlay_Fight/Moves/GridContainer/Move3,
 	$Overlay_Fight/Moves/GridContainer/Move4
 ]
+@onready var player_exp_bar: ColorRect = $PlayerHPBox/ExpBar
 
 const PARTY_SCENE: PackedScene = preload("res://scenes/ui_party_menu/party_menu.tscn")
 
@@ -47,6 +48,9 @@ var battle: BattleManager
 const PLAYER_HP_BAR_MAX_WIDTH: float = 48.0
 const ENEMY_HP_BAR_MAX_WIDTH: float = 48.0
 const HP_ANIM_SPEED: float = 40.0
+
+const PLAYER_EXP_BAR_MAX_WIDTH: float = 63.5
+var player_exp_bar_target: float = 0.0
 
 enum MenuState { ACTIONS, MOVES, BUSY }
 var current_menu: MenuState = MenuState.ACTIONS
@@ -115,11 +119,13 @@ func _ready() -> void:
 	battle = BattleManager.new()
 	battle.message.connect(_on_battle_message)
 	battle.hp_changed.connect(_on_hp_changed)
+	battle.player_progress_changed.connect(_on_player_progress_changed)
 	battle.battle_ended.connect(_on_battle_ended)
 	battle.turn_ended.connect(_on_turn_ended)
 	battle.player_must_switch.connect(_on_player_must_switch)
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 
+	player_exp_bar.size.x = player_exp_bar_target
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
 
@@ -134,20 +140,27 @@ func _ready() -> void:
 	_update_action_focus()
 	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 
+func _on_player_progress_changed() -> void:
+	player_level_label.text = str(player_pokemon.level)
+	_update_exp_bar()
 
 func _process(delta: float) -> void:
 	if absf(player_hp_bar.size.x - player_hp_bar_target) > 0.5:
 		player_hp_bar.size.x = move_toward(player_hp_bar.size.x, player_hp_bar_target, HP_ANIM_SPEED * delta)
-		player_hp_bar.color = _hp_color(player_hp_bar.size.x / PLAYER_HP_BAR_MAX_WIDTH)
 	else:
 		player_hp_bar.size.x = player_hp_bar_target
+	player_hp_bar.color = _hp_color(player_hp_bar.size.x / PLAYER_HP_BAR_MAX_WIDTH)
 
 	if absf(enemy_hp_bar.size.x - enemy_hp_bar_target) > 0.5:
 		enemy_hp_bar.size.x = move_toward(enemy_hp_bar.size.x, enemy_hp_bar_target, HP_ANIM_SPEED * delta)
-		enemy_hp_bar.color = _hp_color(enemy_hp_bar.size.x / ENEMY_HP_BAR_MAX_WIDTH)
 	else:
 		enemy_hp_bar.size.x = enemy_hp_bar_target
+	enemy_hp_bar.color = _hp_color(enemy_hp_bar.size.x / ENEMY_HP_BAR_MAX_WIDTH)
 
+	if absf(player_exp_bar.size.x - player_exp_bar_target) > 0.5:
+		player_exp_bar.size.x = move_toward(player_exp_bar.size.x, player_exp_bar_target, HP_ANIM_SPEED * delta)
+	else:
+		player_exp_bar.size.x = player_exp_bar_target
 
 func _input(event: InputEvent) -> void:
 	if current_menu == MenuState.BUSY:
@@ -329,7 +342,7 @@ func _update_ui() -> void:
 	_set_gender(player_gender, player_pokemon.gender)
 	_set_gender(enemy_gender, enemy_pokemon.gender)
 	_update_hp_bars()
-
+	_update_exp_bar()
 
 func _set_gender(label: Label, gender: PokemonData.Gender) -> void:
 	if label.label_settings == null:
@@ -365,6 +378,19 @@ func _hp_color(ratio: float) -> Color:
 		return Color(0.95, 0.85, 0.2)
 	return Color(0.9, 0.2, 0.2)
 
+func _update_exp_bar() -> void:
+	var species: PokemonDataStruct = player_pokemon.get_species()
+	if species == null:
+		player_exp_bar_target = 0.0
+		return
+	if player_pokemon.level >= ExperienceSystem.MAX_LEVEL:
+		player_exp_bar_target = PLAYER_EXP_BAR_MAX_WIDTH
+		return
+	var exp_this_level: int = ExperienceSystem.get_total_exp_for_level(player_pokemon.level, species.growth_rate)
+	var exp_next_level: int = ExperienceSystem.get_total_exp_for_level(player_pokemon.level + 1, species.growth_rate)
+	var span: int = maxi(exp_next_level - exp_this_level, 1)
+	var progress: float = float(player_pokemon.experience - exp_this_level) / float(span)
+	player_exp_bar_target = PLAYER_EXP_BAR_MAX_WIDTH * clampf(progress, 0.0, 1.0)
 
 func _get_back_offset_px(pokemon: PokemonInstance) -> Vector2:
 	var species: PokemonDataStruct = pokemon.get_species()

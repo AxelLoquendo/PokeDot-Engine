@@ -3,6 +3,7 @@ class_name BattleManager
 
 signal message(text: String)
 signal hp_changed(is_player: bool, current_hp: int, max_hp: int)
+signal player_progress_changed
 signal battle_ended(player_won: bool)
 signal turn_ended
 ## El mon activo se debilitó y hay reemplazo en el party.
@@ -144,6 +145,7 @@ func _award_experience() -> void:
 				move_data.move_name if move_data else "un movimiento"
 			])
 			await _wait(0.9)
+	player_progress_changed.emit()
 
 func tiene_reemplazo() -> bool:
 	for mon: PokemonInstance in player_party:
