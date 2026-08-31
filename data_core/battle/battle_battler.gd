@@ -15,6 +15,14 @@ var stage_evasion: int = 0
 var confusion_turns: int = 0
 var flinched: bool = false
 
+## ─── Habilidades (ver ability_runtime.gd) ────────────────
+## Si es false, la habilidad de este Pokémon no tiene ningún efecto
+## en combate (p. ej. tras Gas Neutralizante / Mold Breaker, a futuro).
+var ability_active: bool = true
+## Se activa cuando Flash Fire absorbe un movimiento de Fuego; potencia
+## un 50% sus propios movimientos de Fuego mientras siga en combate.
+var flash_fire_boosted: bool = false
+
 func setup(p: PokemonInstance, player_side: bool) -> void:
 	pokemon = p
 	is_player_side = player_side
@@ -31,6 +39,8 @@ func _reset_stages() -> void:
 	stage_evasion = 0
 	confusion_turns = 0
 	flinched = false
+	ability_active = true
+	flash_fire_boosted = false
 
 func is_fainted() -> bool:
 	return pokemon == null or pokemon.current_hp <= 0

@@ -16,6 +16,12 @@ var player_party: Array[PokemonInstance] = []
 var enemy_party: Array[PokemonInstance] = []
 var is_trainer_battle: bool = false
 
+## ─── Clima (ver ability_runtime.gd para las habilidades que lo activan) ──
+var weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+## -1 = indefinido (activado por habilidad, hasta que otro clima lo reemplace).
+## En el futuro, los movimientos de clima pueden usar un valor positivo (p.ej. 5).
+var weather_turns: int = -1
+
 func start_battle(player_pokemon: PokemonInstance, enemy_pokemon: PokemonInstance, party: Array[PokemonInstance] = [], enemy_trainer_party: Array[PokemonInstance] = []) -> void:
 	player = BattleBattler.new()
 	player.setup(player_pokemon, true)
@@ -25,8 +31,13 @@ func start_battle(player_pokemon: PokemonInstance, enemy_pokemon: PokemonInstanc
 	enemy_party = enemy_trainer_party
 	is_trainer_battle = not enemy_party.is_empty()
 	is_running = true
+	weather = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+	weather_turns = -1
 	_emit_hp(true)
 	_emit_hp(false)
+
+	AbilityRuntime.on_switch_in(player, enemy, self)
+	AbilityRuntime.on_switch_in(enemy, player, self)
 
 
 func _emit_hp(is_player_side: bool) -> void:
@@ -69,6 +80,7 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 	_emit_hp(true)
 	message.emit("¡Adelante, %s!" % player.get_display_name())
 	await _wait(0.8)
+	AbilityRuntime.on_switch_in(player, enemy, self)
 
 	if free_switch:
 		turn_ended.emit()
@@ -109,6 +121,7 @@ func _handle_enemy_faint() -> void:
 		await _wait(0.8)
 		enemy.setup(nuevo, false)
 		_emit_hp(false)
+		AbilityRuntime.on_switch_in(enemy, player, self)
 		turn_ended.emit()
 		return
 
@@ -253,6 +266,9 @@ func _resolve_turn(player_action: BattleAction, enemy_action: BattleAction) -> v
 	turn_ended.emit()
 
 func _process_end_of_turn() -> void:
+	if weather != AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
+		await _apply_weather_damage()
+
 	for battler: BattleBattler in [player, enemy]:
 		if battler.is_fainted():
 			continue
@@ -266,6 +282,36 @@ func _process_end_of_turn() -> void:
 			if battler.is_fainted():
 				message.emit("¡%s se debilitó!" % battler.get_display_name())
 				await _wait(0.8)
+
+	for battler: BattleBattler in [player, enemy]:
+		if not battler.is_fainted():
+			AbilityRuntime.end_of_turn(battler, weather, self)
+
+
+func _apply_weather_damage() -> void:
+	match weather:
+		AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM:
+			message.emit("¡La tormenta de arena azota el campo!")
+		AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
+			message.emit("¡Sigue granizando!")
+		_:
+			return
+	await _wait(0.6)
+
+	for battler: BattleBattler in [player, enemy]:
+		if battler.is_fainted():
+			continue
+		if AbilityRuntime.is_immune_to_weather_damage(battler, weather):
+			continue
+		var dmg: int = maxi(1, battler.get_max_hp() / 16)
+		battler.apply_damage(dmg)
+		_emit_hp(battler.is_player_side)
+		message.emit("%s es azotado por el clima." % battler.get_display_name())
+		await _wait(0.5)
+		if battler.is_fainted():
+			message.emit("¡%s se debilitó!" % battler.get_display_name())
+			await _wait(0.8)
+
 
 func _manejar_debilitacion_jugador() -> void:
 	message.emit("¡%s se debilitó!" % player.get_display_name())
@@ -349,8 +395,13 @@ func _execute_move(action: BattleAction) -> void:
 		if target.is_fainted() or actor.is_fainted():
 			break
 
-		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move)
+		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, weather)
 		last_result = result
+
+		if result.ability_immunity != "":
+			if i == 0:
+				await _handle_ability_immunity(target, move, result)
+			break
 
 		if result.effectiveness <= 0.0:
 			if i == 0:
@@ -367,6 +418,10 @@ func _execute_move(action: BattleAction) -> void:
 			message.emit("¡Un golpe crítico!")
 			await _wait(0.5)
 
+		if result.sturdy_activated:
+			message.emit("¡%s aguantó el golpe gracias a Sturdy!" % target.get_display_name())
+			await _wait(0.5)
+
 		# Retroceso: se aplica por cada golpe individual (moves multi-hit con
 		# retroceso son rarísimos, pero así queda correcto si aparece alguno).
 		if move.recoil_percent > 0 and not actor.is_fainted():
@@ -378,7 +433,12 @@ func _execute_move(action: BattleAction) -> void:
 		if move.drain_percent > 0:
 			await _apply_drain(actor, dealt, move.drain_percent)
 
-	if last_result == null or last_result.effectiveness <= 0.0:
+		# Habilidades de contacto del defensor (Static, Rough Skin...)
+		AbilityRuntime.on_contact_hit(actor, target, move, self)
+		if actor.is_fainted():
+			break
+
+	if last_result == null or last_result.ability_immunity != "" or last_result.effectiveness <= 0.0:
 		return
 
 	if hits_landed > 1:
@@ -404,8 +464,41 @@ func _execute_move(action: BattleAction) -> void:
 		return
 
 	if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE:
-		if randi_range(1, 100) <= move.secondary_chance:
+		var chance: int = move.secondary_chance
+		if AbilityRuntime.has(actor, AbilityId.Id.SERENE_GRACE):
+			chance = mini(100, chance * 2)
+		if randi_range(1, 100) <= chance:
 			await _apply_secondary_effect(actor, target, move)
+
+
+## Mensaje + efecto cuando una habilidad del objetivo neutraliza el golpe
+## (inmunidad de tipo, absorción de PS, o subida de estadística).
+func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: DamageCalculator.HitResult) -> void:
+	var ability_display: String = AbilityRuntime.ability_name(target)
+	match result.ability_immunity:
+		"immune":
+			message.emit("¡No afecta a %s por %s!" % [target.get_display_name(), ability_display])
+			await _wait(0.8)
+		"heal":
+			message.emit("¡%s absorbió el ataque gracias a %s!" % [target.get_display_name(), ability_display])
+			await _wait(0.6)
+			ability_heal(target, maxi(1, target.get_max_hp() / 4))
+		"spatk_up":
+			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
+			await _wait(0.6)
+			ability_change_stat(target, PokemonInstance.Stat.SP_ATTACK, 1)
+		"atk_up":
+			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
+			await _wait(0.6)
+			ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
+		"spe_up":
+			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
+			await _wait(0.6)
+			ability_change_stat(target, PokemonInstance.Stat.SPEED, 1)
+		"flash_fire":
+			target.flash_fire_boosted = true
+			message.emit("¡%s de %s se activó! Sus movimientos de Fuego se potencian." % [ability_display, target.get_display_name()])
+			await _wait(0.8)
 
 
 ## Retroceso: el atacante pierde un % del daño que ACABA de infligir.
@@ -441,7 +534,8 @@ func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: 
 		return
 
 	if MoveEffectResolver.is_flinch_effect(move.secondary_effect):
-		target.flinched = true
+		if not AbilityRuntime.blocks_flinch(target):
+			target.flinched = true
 		return
 
 	if MoveEffectResolver.is_confuse_effect(move.effect, move.secondary_effect):
@@ -502,6 +596,10 @@ func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stag
 
 
 func _apply_status(battler: BattleBattler, status: PokemonInstance.Status) -> void:
+	if AbilityRuntime.blocks_status(battler, status):
+		message.emit("¡La habilidad de %s lo protegió!" % battler.get_display_name())
+		await _wait(0.6)
+		return
 	if battler.pokemon.apply_status(status):
 		message.emit("¡%s quedó %s!" % [battler.get_display_name(), StatusConditions.status_name(status)])
 	else:
@@ -510,6 +608,10 @@ func _apply_status(battler: BattleBattler, status: PokemonInstance.Status) -> vo
 
 
 func _apply_confusion(battler: BattleBattler) -> void:
+	if AbilityRuntime.blocks_confusion(battler):
+		message.emit("¡La habilidad de %s evita que se confunda!" % battler.get_display_name())
+		await _wait(0.6)
+		return
 	if battler.is_confused():
 		message.emit("¡No tuvo efecto!")
 	else:
@@ -533,3 +635,87 @@ func _wait(seconds: float) -> void:
 		await tree.create_timer(seconds).timeout
 	else:
 		await Engine.get_main_loop().process_frame
+
+
+## ════════════════════════════════════════════════════════
+## API pública usada por AbilityRuntime (data_core/battle/ability_runtime.gd).
+## Son versiones SIN pausas (síncronas) para no forzar a todo el sistema de
+## habilidades a ser una cadena de corutinas. Si más adelante quieres que
+## se vean con el mismo ritmo que el resto de mensajes, estas son el sitio
+## para añadir `await _wait(...)`.
+## ════════════════════════════════════════════════════════
+
+func ability_announce(battler: BattleBattler) -> void:
+	var name: String = AbilityRuntime.ability_name(battler)
+	if name.is_empty():
+		return
+	message.emit("¡Se activó %s de %s!" % [name, battler.get_display_name()])
+
+
+func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int) -> void:
+	var actual: int = battler.modify_stage(stat, stages)
+	if actual == 0:
+		return
+	var name: String = _stat_display_name(stat)
+	if actual > 0:
+		message.emit("¡%s de %s subió!" % [name, battler.get_display_name()])
+	else:
+		message.emit("¡%s de %s bajó!" % [name, battler.get_display_name()])
+
+
+func ability_apply_status(battler: BattleBattler, status: PokemonInstance.Status, source: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null or battler.is_fainted():
+		return
+	if AbilityRuntime.blocks_status(battler, status):
+		return
+	if not battler.pokemon.apply_status(status):
+		return
+	message.emit("¡%s de %s afectó a %s: quedó %s!" % [
+		AbilityRuntime.ability_name(source),
+		source.get_display_name(),
+		battler.get_display_name(),
+		StatusConditions.status_name(status)
+	])
+
+
+func ability_deal_damage(battler: BattleBattler, amount: int, cause: BattleBattler) -> void:
+	var dealt: int = battler.apply_damage(amount)
+	if dealt <= 0:
+		return
+	_emit_hp(battler.is_player_side)
+	message.emit("%s recibió daño por %s." % [battler.get_display_name(), AbilityRuntime.ability_name(cause)])
+	if battler.is_fainted():
+		message.emit("¡%s se debilitó!" % battler.get_display_name())
+
+
+func ability_heal(battler: BattleBattler, amount: int) -> void:
+	if battler == null or battler.pokemon == null or battler.is_fainted():
+		return
+	battler.pokemon.apply_heal(amount)
+	_emit_hp(battler.is_player_side)
+	message.emit("¡%s se recuperó un poco gracias a su habilidad!" % battler.get_display_name())
+
+
+func ability_cure_status(battler: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null or not battler.pokemon.has_status():
+		return
+	battler.pokemon.cure_status()
+	message.emit("¡%s se curó gracias a su habilidad!" % battler.get_display_name())
+
+
+func set_weather(new_weather: int, turns: int) -> void:
+	if weather == new_weather:
+		return
+	weather = new_weather
+	weather_turns = turns
+	match new_weather:
+		AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
+			message.emit("¡Empezó a llover!")
+		AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
+			message.emit("¡El sol brilla con fuerza!")
+		AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM:
+			message.emit("¡Se levantó una tormenta de arena!")
+		AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
+			message.emit("¡Empezó a granizar!")
+		_:
+			pass
