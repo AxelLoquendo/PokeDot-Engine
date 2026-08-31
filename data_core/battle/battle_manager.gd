@@ -325,45 +325,112 @@ func _execute_move(action: BattleAction) -> void:
 	message.emit("%s usó %s!" % [actor.get_display_name(), move.move_name])
 	await _wait(0.9)
 
-	var result: DamageCalculator.HitResult = DamageCalculator.calculate(actor, target, move)
+	# Movimientos de estado: sin cambios respecto a antes.
+	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
+		if not DamageCalculator.check_hit(move, actor, target):
+			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+		await _apply_status_move_effect(actor, target, move)
+		return
 
-	if not result.hit:
+	# --- Movimientos que dañan: comprobamos accuracy UNA vez ---
+	if not DamageCalculator.check_hit(move, actor, target):
 		message.emit("¡El ataque de %s falló!" % actor.get_display_name())
 		await _wait(0.8)
 		return
 
-	if result.is_status:
-		await _apply_status_move_effect(actor, target, move)
+	var hit_count: int = DamageCalculator.roll_hit_count(move)
+	var total_dealt: int = 0
+	var last_result: DamageCalculator.HitResult = null
+	var hits_landed: int = 0
+
+	for i: int in hit_count:
+		if target.is_fainted() or actor.is_fainted():
+			break
+
+		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move)
+		last_result = result
+
+		if result.effectiveness <= 0.0:
+			if i == 0:
+				message.emit("No afecta a %s..." % target.get_display_name())
+				await _wait(0.8)
+			break
+
+		var dealt: int = target.apply_damage(result.damage)
+		total_dealt += dealt
+		hits_landed += 1
+		_emit_hp(target.is_player_side)
+
+		if result.critical:
+			message.emit("¡Un golpe crítico!")
+			await _wait(0.5)
+
+		# Retroceso: se aplica por cada golpe individual (moves multi-hit con
+		# retroceso son rarísimos, pero así queda correcto si aparece alguno).
+		if move.recoil_percent > 0 and not actor.is_fainted():
+			await _apply_recoil(actor, dealt, move.recoil_percent)
+			if actor.is_fainted():
+				break
+
+		# Drenaje (Absorb, Giga Drain, Drain Punch...)
+		if move.drain_percent > 0:
+			await _apply_drain(actor, dealt, move.drain_percent)
+
+	if last_result == null or last_result.effectiveness <= 0.0:
 		return
 
-	if result.effectiveness <= 0.0:
-		message.emit("No afecta a %s..." % target.get_display_name())
-		await _wait(0.8)
-		return
+	if hits_landed > 1:
+		message.emit("¡Golpeó %d veces!" % hits_landed)
+		await _wait(0.5)
 
-	var dealt: int = target.apply_damage(result.damage)
-	_emit_hp(target.is_player_side)
-
-	if result.critical:
-		message.emit("¡Un golpe crítico!")
-		await _wait(0.6)
-
-	if result.effectiveness > 1.0:
+	if last_result.effectiveness > 1.0:
 		message.emit("¡Es muy efectivo!")
 		await _wait(0.6)
-	elif result.effectiveness < 1.0:
+	elif last_result.effectiveness < 1.0:
 		message.emit("No es muy efectivo...")
 		await _wait(0.6)
 
-	message.emit("Hizo %d PS de daño." % dealt)
+	message.emit("Hizo %d PS de daño." % total_dealt)
 	await _wait(0.7)
 
 	if target.is_fainted():
+		if actor.is_fainted():
+			return
+		return
+
+	if actor.is_fainted():
 		return
 
 	if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE:
 		if randi_range(1, 100) <= move.secondary_chance:
 			await _apply_secondary_effect(actor, target, move)
+
+
+## Retroceso: el atacante pierde un % del daño que ACABA de infligir.
+func _apply_recoil(actor: BattleBattler, damage_dealt: int, percent: int) -> void:
+	if damage_dealt <= 0:
+		return
+	var recoil: int = maxi(1, int(floor(float(damage_dealt) * float(percent) / 100.0)))
+	var taken: int = actor.apply_damage(recoil)
+	_emit_hp(actor.is_player_side)
+	message.emit("%s recibió daño por el retroceso." % actor.get_display_name())
+	await _wait(0.6)
+	if taken > 0 and actor.is_fainted():
+		message.emit("¡%s se debilitó!" % actor.get_display_name())
+		await _wait(0.8)
+
+
+## Drenaje: el atacante recupera un % del daño infligido (Absorb, Giga Drain...).
+func _apply_drain(actor: BattleBattler, damage_dealt: int, percent: int) -> void:
+	if damage_dealt <= 0 or actor.pokemon == null:
+		return
+	var heal: int = maxi(1, int(floor(float(damage_dealt) * float(percent) / 100.0)))
+	actor.pokemon.apply_heal(heal)
+	_emit_hp(actor.is_player_side)
+	message.emit("¡%s absorbió energía!" % actor.get_display_name())
+	await _wait(0.6)
 
 
 func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: MoveData) -> void:
