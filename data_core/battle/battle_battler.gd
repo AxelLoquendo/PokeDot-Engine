@@ -19,6 +19,11 @@ var protect_active: bool = false
 var protect_kind: int = ProtectResolver.Kind.NONE
 var endure_active: bool = false
 var protect_counter: int = 0
+var charging_move: MoveData = null
+var charging_target: BattleBattler = null
+var charging_slot_index: int = -1
+var semi_invulnerable: bool = false
+var must_recharge: bool = false
 
 ## ─── Habilidades (ver ability_runtime.gd) ────────────────
 ## Si es false, la habilidad de este Pokémon no tiene ningún efecto
@@ -50,6 +55,11 @@ func _reset_stages() -> void:
 	protect_kind = ProtectResolver.Kind.NONE
 	endure_active = false
 	protect_counter = 0
+	charging_move = null
+	charging_target = null
+	charging_slot_index = -1
+	semi_invulnerable = false
+	must_recharge = false
 
 func is_fainted() -> bool:
 	return pokemon == null or pokemon.current_hp <= 0

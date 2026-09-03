@@ -48,7 +48,19 @@ func player_choose_move(slot_index: int) -> void:
 	if player.is_fainted() or enemy.is_fainted():
 		return
 
-	var player_action: BattleAction = _build_move_action(player, enemy, slot_index)
+	if player.must_recharge:
+		player.must_recharge = false
+		message.emit("¡%s debe recargar energías!" % player.get_display_name())
+		await _wait(0.8)
+		var recharge_enemy_action: BattleAction = _enemy_choose_move()
+		await _resolve_turn(null, recharge_enemy_action)
+		return
+
+	var player_action: BattleAction
+	if player.charging_move != null:
+		player_action = _build_charge_release_action(player)
+	else:
+		player_action = _build_move_action(player, enemy, slot_index)
 	if player_action == null:
 		message.emit("¡No se puede usar ese movimiento!")
 		return
@@ -196,8 +208,20 @@ func _build_move_action(actor: BattleBattler, target: BattleBattler, slot_index:
 		return null
 	return BattleAction.make_move(actor, target, move_data, slot_index)
 
+func _build_charge_release_action(actor: BattleBattler) -> BattleAction:
+	var move: MoveData = actor.charging_move
+	var slot_index: int = actor.charging_slot_index
+	var target: BattleBattler = actor.charging_target
+	if target == null:
+		target = enemy if actor == player else player
+	return BattleAction.make_move(actor, target, move, slot_index)
 
 func _enemy_choose_move() -> BattleAction:
+	if enemy.must_recharge:
+		enemy.must_recharge = false
+		return null
+	if enemy.charging_move != null:
+		return _build_charge_release_action(enemy)
 	var valid_indices: Array[int] = []
 	for i: int in enemy.pokemon.moves.size():
 		if _build_move_action(enemy, player, i) != null:
@@ -350,13 +374,17 @@ func _execute_move(action: BattleAction) -> void:
 	var target: BattleBattler = action.target
 	var move: MoveData = action.move
 
-	if not actor.consume_pp(action.move_slot_index):
-		message.emit("%s no tiene PP para usar %s!" % [actor.get_display_name(), move.move_name])
-		await _wait(0.8)
-		return
+	var is_charge_release: bool = actor.charging_move != null
+	if is_charge_release:
+		actor.charging_move = null
+		actor.charging_target = null
+		actor.semi_invulnerable = false
 
-	if AbilityRuntime.has(target, AbilityId.Id.PRESSURE):
-		actor.consume_pp(action.move_slot_index)
+	if not is_charge_release:
+		if not actor.consume_pp(action.move_slot_index):
+			message.emit("%s no tiene PP para usar %s!" % [actor.get_display_name(), move.move_name])
+			await _wait(0.8)
+			return
 
 	var check: StatusConditions.ActionCheck = StatusConditions.check_can_act(actor)
 	actor.flinched = false
@@ -376,11 +404,30 @@ func _execute_move(action: BattleAction) -> void:
 				await _wait(0.8)
 		return
 
+	if not is_charge_release and TwoTurnResolver.is_charge_move(move) \
+			and not TwoTurnResolver.skips_charge_in_weather(move, weather):
+		message.emit(TwoTurnResolver.charge_message(move, actor.get_display_name()))
+		await _wait(0.9)
+		actor.charging_move = move
+		actor.charging_target = target
+		actor.charging_slot_index = action.move_slot_index
+		if TwoTurnResolver.grants_invulnerability(move):
+			actor.semi_invulnerable = true
+		return
+
 	message.emit("%s usó %s!" % [actor.get_display_name(), move.move_name])
 	await _wait(0.9)
 
+	if TwoTurnResolver.is_recharge_move(move):
+		actor.must_recharge = true
+
 	if ProtectResolver.is_protect_move(move):
 		await _resolve_protect_move(actor, move)
+		return
+
+	if target.semi_invulnerable:
+		message.emit("¡%s esquivó el ataque!" % target.get_display_name())
+		await _wait(0.8)
 		return
 
 	if target.protect_active and ProtectResolver.blocks_move(target.protect_kind, move):
@@ -389,6 +436,13 @@ func _execute_move(action: BattleAction) -> void:
 		await _resolve_protect_contact(actor, target, move)
 		return
 
+	if move.effect == MoveStruct.MoveEffect.EFFECT_GEOMANCY and is_charge_release:
+		await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 2)
+		await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 2)
+		await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 2)
+		return
+
+	# Movimientos de estado:
 	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
 		if not DamageCalculator.check_hit(move, actor, target):
 			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
