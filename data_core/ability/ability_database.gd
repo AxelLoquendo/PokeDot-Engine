@@ -17,7 +17,7 @@ var _enum_names: Array[String] = []  # cache de AbilityId.Id.keys()
 
 ## ─── Señales ────────────────────────────────────────────
 signal database_loaded(count: int)
-signal database_error(message: String)
+#signal database_error(message: String)
 
 ## ─── Ciclo de vida ──────────────────────────────────────
 func _ready() -> void:
@@ -96,25 +96,7 @@ func reload_database() -> void:
 
 ## ─── Carga interna ──────────────────────────────────────
 func load_database() -> void:
-	var dir: DirAccess = DirAccess.open(ABILITIES_PATH)
-
-	if not dir:
-		var msg: String = "AbilityDB: No se pudo abrir '%s'" % ABILITIES_PATH
-		_errors.append(msg)
-		database_error.emit(msg)
-		push_error(msg)
-		return
-
-	dir.list_dir_begin()
-	var entry: String = dir.get_next()
-
-	while entry != "":
-		if dir.current_is_dir():
-			var ruta_completa: String = ABILITIES_PATH.path_join(entry)
-			_load_from_subfolder(ruta_completa)
-		entry = dir.get_next()
-
-	dir.list_dir_end()
+	_load_from_subfolder(ABILITIES_PATH)
 
 	_loaded = true
 	database_loaded.emit(_cache.size())
@@ -133,24 +115,12 @@ func load_database() -> void:
 
 
 func _load_from_subfolder(path: String) -> void:
-	var dir: DirAccess = DirAccess.open(path)
-	if not dir:
-		return
-
-	dir.list_dir_begin()
-	var file_name: String = dir.get_next()
-
-	while file_name != "":
-		if dir.current_is_dir():
-			# soporta subcarpetas anidadas (ej. resources/gen1/status/)
-			_load_from_subfolder(path.path_join(file_name))
-		elif file_name.ends_with(FILE_EXTENSION):
-			var ruta_archivo: String = path.path_join(file_name)
-			_load_ability_file(ruta_archivo)
-		file_name = dir.get_next()
-
-	dir.list_dir_end()
-
+	for entry: String in ResourceLoader.list_directory(path):
+		var full_path: String = path.path_join(entry)
+		if entry.ends_with("/"):
+			_load_from_subfolder(full_path)
+		elif entry.ends_with(FILE_EXTENSION):
+			_load_ability_file(full_path)
 
 func _load_ability_file(path: String) -> void:
 	var recurso_cargado: Resource = load(path)

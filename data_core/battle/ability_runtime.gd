@@ -1,24 +1,10 @@
 extends RefCounted
 class_name AbilityRuntime
 
-## ─────────────────────────────────────────────────────────
-## Capa central que conecta AbilityData/AbilityEffect con el
-## combate real. Todo aquí es "best effort": si una habilidad
-## no está contemplada en las tablas de abajo, simplemente no
-## hace nada (no rompe el combate).
-##
-## NOTA sobre nombres heredados: el enum weatherAbilityID
-## (en ability_battle_effect.gd) usa WEATHER_DROUGHT para
-## representar el clima "sol" y WEATHER_SNOW para "granizo".
-## Se mantienen esos nombres para no romper el editor de
-## habilidades ya existente.
-## ─────────────────────────────────────────────────────────
-
 const WeatherId = AbilityBattleEffect.weatherAbilityID
 
 
 ## ─── Acceso básico ──────────────────────────────────────
-
 static func get_id(battler: BattleBattler) -> AbilityId.Id:
 	if battler == null or battler.pokemon == null:
 		return AbilityId.Id.NONE
@@ -26,10 +12,8 @@ static func get_id(battler: BattleBattler) -> AbilityId.Id:
 		return AbilityId.Id.NONE
 	return battler.pokemon.ability_id
 
-
 static func has(battler: BattleBattler, id: AbilityId.Id) -> bool:
 	return get_id(battler) == id
-
 
 static func ability_name(battler: BattleBattler) -> String:
 	var id: AbilityId.Id = get_id(battler)
@@ -39,10 +23,7 @@ static func ability_name(battler: BattleBattler) -> String:
 		return AbilityDatabase.get_ability_name(id)
 	return ""
 
-
-## ─── Inmunidades de tipo por habilidad (Levitate, absorciones...) ─
-## Devuelve una "reacción" o "" si no hay inmunidad por habilidad:
-## "immune", "heal", "spatk_up", "atk_up", "spe_up", "flash_fire"
+## ─── Inmunidades de tipo por habilidad───────────────────
 static func type_immunity_reaction(defender: BattleBattler, move: MoveData) -> String:
 	if move == null or move.category == MoveStruct.DamageCategory.STATUS:
 		return ""
@@ -74,14 +55,10 @@ static func type_immunity_reaction(defender: BattleBattler, move: MoveData) -> S
 				return "flash_fire"
 	return ""
 
-
-## Wonder Guard: solo pasan movimientos súper efectivos.
 static func blocks_unless_super_effective(defender: BattleBattler) -> bool:
 	return has(defender, AbilityId.Id.WONDER_GUARD)
 
-
 ## ─── Multiplicadores de daño ────────────────────────────
-
 static func attack_stat_multiplier(attacker: BattleBattler, category: MoveStruct.DamageCategory) -> float:
 	if category != MoveStruct.DamageCategory.PHYSICAL:
 		return 1.0
@@ -95,9 +72,6 @@ static func attack_stat_multiplier(attacker: BattleBattler, category: MoveStruct
 				return 1.5
 	return 1.0
 
-
-## Multiplicador de POTENCIA del movimiento (Blaze/Torrent/Overgrow/Swarm,
-## y el boost de Flash Fire una vez activado).
 static func power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
 	if move == null or attacker.pokemon == null:
 		return 1.0
@@ -128,8 +102,6 @@ static func power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
 				return 1.5
 	return 1.0
 
-
-## Reduce el daño recibido (Thick Fat, Solid Rock/Filter/Prism Armor).
 static func damage_taken_multiplier(defender: BattleBattler, move: MoveData, effectiveness: float) -> float:
 	if move == null:
 		return 1.0
@@ -141,8 +113,13 @@ static func damage_taken_multiplier(defender: BattleBattler, move: MoveData, eff
 		AbilityId.Id.SOLID_ROCK, AbilityId.Id.FILTER, AbilityId.Id.PRISM_ARMOR:
 			if effectiveness > 1.0:
 				mult *= 0.75
+		AbilityId.Id.SOLID_ROCK, AbilityId.Id.FILTER, AbilityId.Id.PRISM_ARMOR:
+			if effectiveness > 1.0:
+				mult *= 0.75
+		AbilityId.Id.MULTISCALE:
+			if defender.pokemon.current_hp == defender.pokemon.max_hp:
+				mult *= 0.5
 	return mult
-
 
 ## ─── Sturdy: sobrevive con 1 PS si estaba al máximo ─────
 static func should_survive_with_sturdy(defender: BattleBattler, incoming_damage: int) -> bool:
@@ -155,7 +132,6 @@ static func should_survive_with_sturdy(defender: BattleBattler, incoming_damage:
 
 
 ## ─── Inmunidades a estados / confusión / retroceso ──────
-
 static func blocks_status(battler: BattleBattler, status: PokemonInstance.Status) -> bool:
 	var id: AbilityId.Id = get_id(battler)
 	match status:
@@ -171,14 +147,11 @@ static func blocks_status(battler: BattleBattler, status: PokemonInstance.Status
 			return id == AbilityId.Id.MAGMA_ARMOR
 	return false
 
-
 static func blocks_confusion(battler: BattleBattler) -> bool:
 	return has(battler, AbilityId.Id.OWN_TEMPO)
 
-
 static func blocks_flinch(battler: BattleBattler) -> bool:
 	return has(battler, AbilityId.Id.INNER_FOCUS)
-
 
 ## ─── Entrada en combate: Intimidate y las habilidades de clima ──
 static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
@@ -189,7 +162,7 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 		AbilityId.Id.INTIMIDATE:
 			if opponent != null and not opponent.is_fainted():
 				battle.ability_announce(battler)
-				battle.ability_change_stat(opponent, PokemonInstance.Stat.ATTACK, -1)
+				battle.ability_change_stat(opponent, PokemonInstance.Stat.ATTACK, -1, true)
 		AbilityId.Id.DRIZZLE:
 			battle.ability_announce(battler)
 			battle.set_weather(WeatherId.WEATHER_RAIN, -1)
@@ -203,9 +176,7 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 			battle.ability_announce(battler)
 			battle.set_weather(WeatherId.WEATHER_SNOW, -1)
 
-
 ## ─── Contacto: Static / Poison Point / Flame Body / Rough Skin / Iron Barbs ─
-## Llamar tras un golpe CON CONTACTO que impactó.
 static func on_contact_hit(attacker: BattleBattler, defender: BattleBattler, move: MoveData, battle: BattleManager) -> void:
 	if move == null or not move.makes_contact:
 		return
@@ -226,7 +197,14 @@ static func on_contact_hit(attacker: BattleBattler, defender: BattleBattler, mov
 			@warning_ignore("integer_division")
 			var dmg: int = maxi(1, attacker.get_max_hp() / 8)
 			battle.ability_deal_damage(attacker, dmg, defender)
-
+		AbilityId.Id.ROUGH_SKIN, AbilityId.Id.IRON_BARBS:
+			@warning_ignore("integer_division")
+			var dmg: int = maxi(1, attacker.get_max_hp() / 8)
+			battle.ability_deal_damage(attacker, dmg, defender)
+		AbilityId.Id.EFFECT_SPORE:
+			if randf() < 0.3:
+				var statuses: Array = [PokemonInstance.Status.SLEEP, PokemonInstance.Status.POISON, PokemonInstance.Status.PARALYSIS]
+				battle.ability_apply_status(attacker, statuses[randi() % statuses.size()], defender)
 
 ## ─── Fin de turno: Speed Boost / Shed Skin / Rain Dish / Ice Body ───
 static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
@@ -246,9 +224,14 @@ static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleMana
 			if weather == WeatherId.WEATHER_SNOW:
 				@warning_ignore("integer_division")
 				battle.ability_heal(battler, maxi(1, battler.get_max_hp() / 16))
+		AbilityId.Id.ICE_BODY:
+			if weather == WeatherId.WEATHER_SNOW:
+				@warning_ignore("integer_division")
+				battle.ability_heal(battler, maxi(1, battler.get_max_hp() / 16))
+		AbilityId.Id.HYDRATION:
+			if weather == WeatherId.WEATHER_RAIN and battler.pokemon.has_status():
+				battle.ability_cure_status(battler)
 
-
-## ¿Este Pokémon NO recibe daño de la tormenta de arena / granizo?
 static func is_immune_to_weather_damage(battler: BattleBattler, weather: int) -> bool:
 	if battler == null or battler.pokemon == null:
 		return true
@@ -277,3 +260,73 @@ static func is_immune_to_weather_damage(battler: BattleBattler, weather: int) ->
 			return false
 		_:
 			return true
+
+## ─── Bloqueo de bajadas de stat causadas por el rival ───
+
+static func blocks_foe_stat_drop(battler: BattleBattler, stat: PokemonInstance.Stat) -> bool:
+	var id: AbilityId.Id = get_id(battler)
+	if id == AbilityId.Id.CLEAR_BODY or id == AbilityId.Id.WHITE_SMOKE or id == AbilityId.Id.FULL_METAL_BODY:
+		return true
+	if id == AbilityId.Id.HYPER_CUTTER and stat == PokemonInstance.Stat.ATTACK:
+		return true
+	return false
+
+
+static func blocks_foe_accuracy_drop(battler: BattleBattler) -> bool:
+	var id: AbilityId.Id = get_id(battler)
+	return id == AbilityId.Id.CLEAR_BODY or id == AbilityId.Id.WHITE_SMOKE \
+		or id == AbilityId.Id.FULL_METAL_BODY or id == AbilityId.Id.KEEN_EYE
+
+
+## Simple dobla, Contrary invierte, cualquier otra habilidad no cambia nada.
+## Aplica sin importar quién causó el cambio (propio o del rival).
+static func adjust_own_stage_change(battler: BattleBattler, amount: int) -> int:
+	match get_id(battler):
+		AbilityId.Id.SIMPLE:
+			return amount * 2
+		AbilityId.Id.CONTRARY:
+			return -amount
+	return amount
+
+
+## ─── Multiplicadores ofensivos ──────────────────────────
+static func technician_multiplier(attacker: BattleBattler, move: MoveData) -> float:
+	if move != null and has(attacker, AbilityId.Id.TECHNICIAN) and move.power > 0 and move.power <= 60:
+		return 1.5
+	return 1.0
+
+static func stab_multiplier(attacker: BattleBattler) -> float:
+	return 2.0 if has(attacker, AbilityId.Id.ADAPTABILITY) else 1.5
+
+static func always_max_hits(attacker: BattleBattler) -> bool:
+	return has(attacker, AbilityId.Id.SKILL_LINK)
+
+static func attacker_damage_multiplier(attacker: BattleBattler, effectiveness: float, _is_critical: bool) -> float:
+	if has(attacker, AbilityId.Id.TINTED_LENS) and effectiveness > 0.0 and effectiveness < 1.0:
+		return 2.0
+	return 1.0
+
+static func crit_damage_multiplier(attacker: BattleBattler) -> float:
+	return 2.25 if has(attacker, AbilityId.Id.SNIPER) else 1.5
+
+static func rivalry_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
+	if not has(attacker, AbilityId.Id.RIVALRY):
+		return 1.0
+	var a: PokemonData.Gender = attacker.pokemon.gender
+	var d: PokemonData.Gender = defender.pokemon.gender
+	if a == PokemonData.Gender.GENDERLESS or d == PokemonData.Gender.GENDERLESS:
+		return 1.0
+	return 1.25 if a == d else 0.75
+
+static func ignores_defender_ability(attacker: BattleBattler) -> bool:
+	var id: AbilityId.Id = get_id(attacker)
+	return id == AbilityId.Id.MOLD_BREAKER or id == AbilityId.Id.TERAVOLT or id == AbilityId.Id.TURBOBLAZE
+
+static func bypasses_ghost_immunity(attacker: BattleBattler, move: MoveData) -> bool:
+	if move == null or not has(attacker, AbilityId.Id.SCRAPPY):
+		return false
+	return move.type == PokemonData.Type.TYPE_NORMAL or move.type == PokemonData.Type.TYPE_FIGHTING
+
+## ─── Daño indirecto (Magic Guard) ────────────────────────
+static func blocks_indirect_damage(battler: BattleBattler) -> bool:
+	return has(battler, AbilityId.Id.MAGIC_GUARD)

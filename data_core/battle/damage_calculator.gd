@@ -57,10 +57,6 @@ static func roll_hit_count(move: MoveData) -> int:
 			return 5
 	return randi_range(move.min_hits, move.max_hits)
 
-
-## Calcula el daño de UN golpe, asumiendo que ya se comprobó que acierta.
-## Independiente de accuracy: útil para golpes sucesivos de un multi-hit.
-## `weather` es un valor de AbilityBattleEffect.weatherAbilityID (0 = ninguno).
 static func compute_hit(
 	attacker: BattleBattler,
 	defender: BattleBattler,
@@ -74,13 +70,16 @@ static func compute_hit(
 	result.hit = true
 	result.contact = move.makes_contact
 
+	var ignore_defender_ability: bool = AbilityRuntime.ignores_defender_ability(attacker)
+
 	# ── Inmunidades/absorciones por habilidad del defensor ──
-	var immunity: String = AbilityRuntime.type_immunity_reaction(defender, move)
-	if immunity != "":
-		result.ability_immunity = immunity
-		result.effectiveness = 0.0
-		result.damage = 0
-		return result
+	if not ignore_defender_ability:
+		var immunity: String = AbilityRuntime.type_immunity_reaction(defender, move)
+		if immunity != "":
+			result.ability_immunity = immunity
+			result.effectiveness = 0.0
+			result.damage = 0
+			return result
 
 	var level: int = attacker.pokemon.level
 	var power: int = maxi(move.power, 1)
@@ -103,8 +102,9 @@ static func compute_hit(
 
 	var base: float = ((2.0 * float(level) / 5.0 + 2.0) * float(power) * float(atk) / float(def)) / 50.0 + 2.0
 
-	# ── Potencia extra por habilidad (Blaze/Torrent/Overgrow/Swarm, Flash Fire) ──
+	# ── Potencia extra por habilidad (Blaze/Torrent/Overgrow/Swarm, Flash Fire, Technician) ──
 	base *= AbilityRuntime.power_multiplier(attacker, move)
+	base *= AbilityRuntime.technician_multiplier(attacker, move)
 
 	# ── Clima ──
 	match weather:
@@ -123,7 +123,7 @@ static func compute_hit(
 	var t1: PokemonData.Type = attacker.pokemon.get_type_1()
 	var t2: PokemonData.Type = attacker.pokemon.get_type_2()
 	if move.type == t1 or (t2 != PokemonData.Type.TYPE_NONE and move.type == t2):
-		stab = 1.5
+		stab = AbilityRuntime.stab_multiplier(attacker)
 
 	var eff: float = TypeChart.get_effectiveness(
 		move.type,
@@ -131,8 +131,14 @@ static func compute_hit(
 		defender.pokemon.get_type_2()
 	)
 
+	# Scrappy: Normal/Lucha ya no fallan contra Fantasma.
+	if eff <= 0.0 and AbilityRuntime.bypasses_ghost_immunity(attacker, move) \
+			and (defender.pokemon.get_type_1() == PokemonData.Type.TYPE_GHOST \
+				or defender.pokemon.get_type_2() == PokemonData.Type.TYPE_GHOST):
+		eff = 1.0
+
 	# Wonder Guard: solo pasan los golpes súper efectivos.
-	if eff > 0.0 and eff <= 1.0 and AbilityRuntime.blocks_unless_super_effective(defender):
+	if not ignore_defender_ability and eff > 0.0 and eff <= 1.0 and AbilityRuntime.blocks_unless_super_effective(defender):
 		eff = 0.0
 
 	result.effectiveness = eff
@@ -141,32 +147,39 @@ static func compute_hit(
 		result.damage = 0
 		return result
 
+	var crit_stage: int = move.crit_stage
+	if AbilityRuntime.has(attacker, AbilityId.Id.SUPER_LUCK):
+		crit_stage += 1
+
 	var crit_rate: float = 1.0 / 16.0
-	# crit_stage del movimiento sube la probabilidad (tabla clásica: 1/24, 1/8, 1/2, 1/1 para stage 0-3+)
-	match clampi(move.crit_stage, 0, 3):
+	match clampi(crit_stage, 0, 3):
 		1: crit_rate = 1.0 / 8.0
 		2: crit_rate = 1.0 / 2.0
 		3: crit_rate = 1.0
 	if move.always_critical:
 		crit_rate = 1.0
 	result.critical = randf() < crit_rate
-	var crit_mult: float = 1.5 if result.critical else 1.0
+	var crit_mult: float = AbilityRuntime.crit_damage_multiplier(attacker) if result.critical else 1.0
 
 	var random: float = randf_range(0.85, 1.0)
 	var damage: int = int(floor(base * stab * eff * crit_mult * random))
 
+	# ── Multiplicadores ofensivos extra (Tinted Lens, Rivalidad) ──
+	damage = int(round(float(damage) * AbilityRuntime.attacker_damage_multiplier(attacker, eff, result.critical)))
+	damage = int(round(float(damage) * AbilityRuntime.rivalry_multiplier(attacker, defender)))
+
 	# ── Reducción de daño por habilidad del defensor ──
-	damage = int(round(float(damage) * AbilityRuntime.damage_taken_multiplier(defender, move, eff)))
+	if not ignore_defender_ability:
+		damage = int(round(float(damage) * AbilityRuntime.damage_taken_multiplier(defender, move, eff)))
 
 	result.damage = maxi(damage, 1)
 
 	# ── Sturdy: sobrevive con 1 PS si estaba a full HP ──
-	if AbilityRuntime.should_survive_with_sturdy(defender, result.damage):
+	if not ignore_defender_ability and AbilityRuntime.should_survive_with_sturdy(defender, result.damage):
 		result.damage = defender.pokemon.current_hp - 1
 		result.sturdy_activated = true
 
 	return result
-
 
 ## Mantiene compatibilidad: comprueba accuracy Y calcula el primer golpe.
 static func calculate(

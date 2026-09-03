@@ -21,7 +21,8 @@ static func check_can_act(battler: BattleBattler) -> ActionCheck:
 
 	match mon.status:
 		PokemonInstance.Status.SLEEP:
-			mon.status_counter -= 1
+			var decrement: int = 2 if AbilityRuntime.has(battler, AbilityId.Id.EARLY_BIRD) else 1
+			mon.status_counter -= decrement
 			if mon.status_counter <= 0:
 				mon.cure_status()
 				check.message = "¡%s se despertó!" % battler.get_display_name()

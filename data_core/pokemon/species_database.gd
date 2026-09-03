@@ -21,7 +21,7 @@ var _errors: Array[String] = []
 var _warnings: Array[String] = []
 
 signal database_loaded(count: int)
-signal database_error(message: String)
+#signal database_error(message: String)
 
 func _ready() -> void:
 	load_database()
@@ -110,26 +110,7 @@ func load_database() -> void:
 	_errors.clear()
 	_warnings.clear()
 
-	var directory: DirAccess = DirAccess.open(SPECIES_PATH)
-	if directory == null:
-		var message: String = "SpeciesDB: No se pudo abrir '%s'." % SPECIES_PATH
-		_errors.append(message)
-		database_error.emit(message)
-		push_error(message)
-		_loading = false
-		return
-
-	directory.list_dir_begin()
-	var entry: String = directory.get_next()
-	while not entry.is_empty():
-		if not entry.begins_with("."):
-			var full_path: String = SPECIES_PATH.path_join(entry)
-			if directory.current_is_dir():
-				_load_from_subfolder(full_path)
-			elif entry.ends_with(FILE_EXTENSION):
-				_load_species_file(full_path)
-		entry = directory.get_next()
-	directory.list_dir_end()
+	_load_from_subfolder(SPECIES_PATH)
 
 	_loaded = true
 	_loading = false
@@ -141,23 +122,16 @@ func load_database() -> void:
 		for message: String in _errors:
 			push_error("  ✖ %s" % message)
 
-func _load_from_subfolder(path: String) -> void:
-	var directory: DirAccess = DirAccess.open(path)
-	if directory == null:
-		_errors.append("No se pudo abrir la carpeta '%s'." % path)
-		return
 
-	directory.list_dir_begin()
-	var entry: String = directory.get_next()
-	while not entry.is_empty():
-		if not entry.begins_with("."):
-			var full_path: String = path.path_join(entry)
-			if directory.current_is_dir():
-				_load_from_subfolder(full_path)
-			elif entry.ends_with(FILE_EXTENSION):
-				_load_species_file(full_path)
-		entry = directory.get_next()
-	directory.list_dir_end()
+func _load_from_subfolder(path: String) -> void:
+	for entry: String in ResourceLoader.list_directory(path):
+		if entry.begins_with("."):
+			continue
+		var full_path: String = path.path_join(entry)
+		if entry.ends_with("/"):
+			_load_from_subfolder(full_path)
+		elif entry.ends_with(FILE_EXTENSION):
+			_load_species_file(full_path)
 
 func _load_species_file(path: String) -> void:
 	var resource: Resource = ResourceLoader.load(path)

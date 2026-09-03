@@ -10,7 +10,7 @@ var _errors: Array[String] = []
 var _warnings: Array[String] = []
 
 signal database_loaded(count: int)
-signal database_error(message: String)
+#signal database_error(message: String)
 
 
 func _ready() -> void:
@@ -67,26 +67,7 @@ func reload_database() -> void:
 
 
 func load_database() -> void:
-	var dir: DirAccess = DirAccess.open(MOVE_PATH)
-
-	if not dir:
-		var msg: String = "MoveDB: No se pudo abrir '%s'" % MOVE_PATH
-		_errors.append(msg)
-		database_error.emit(msg)
-		push_error(msg)
-		return
-
-	dir.list_dir_begin()
-
-	var entry: String = dir.get_next()
-
-	while entry != "":
-		if dir.current_is_dir():
-			_load_from_subfolder(MOVE_PATH.path_join(entry))
-
-		entry = dir.get_next()
-
-	dir.list_dir_end()
+	_load_from_subfolder(MOVE_PATH)
 
 	_loaded = true
 	database_loaded.emit(_cache.size())
@@ -95,32 +76,17 @@ func load_database() -> void:
 
 	if not _errors.is_empty():
 		print("MoveDB: %d errores:" % _errors.size())
-
 		for error: String in _errors:
 			push_error("  ✖ %s" % error)
 
 
 func _load_from_subfolder(path: String) -> void:
-	var dir: DirAccess = DirAccess.open(path)
-
-	if not dir:
-		return
-
-	dir.list_dir_begin()
-
-	var file_name: String = dir.get_next()
-
-	while file_name != "":
-		if dir.current_is_dir():
-			_load_from_subfolder(path.path_join(file_name))
-
-		elif file_name.ends_with(FILE_EXTENSION):
-			_load_move_file(path.path_join(file_name))
-
-		file_name = dir.get_next()
-
-	dir.list_dir_end()
-
+	for entry: String in ResourceLoader.list_directory(path):
+		var full_path: String = path.path_join(entry)
+		if entry.ends_with("/"):
+			_load_from_subfolder(full_path)
+		elif entry.ends_with(FILE_EXTENSION):
+			_load_move_file(full_path)
 
 func _load_move_file(path: String) -> void:
 	var recurso_cargado: Resource = load(path)

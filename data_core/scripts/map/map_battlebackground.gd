@@ -1,0 +1,45 @@
+extends Node2D
+class_name BattleBackground
+
+enum Background {
+	BG_GRASS,
+	BG_LONG_GRASS,
+	BG_SAND,
+	BG_UNDERWATER,
+	BG_WATER,
+	BG_POND,
+	BG_MOUNTAIN,
+	BG_CAVE,
+	BG_BUILDING,
+	BG_PLAIN,
+#    BG_FRONTIER,
+	BG_GYM,
+	BG_LEADER,
+#    BG_MAGMA,
+#    BG_AQUA,
+#    BG_SIDNEY,
+#    BG_PHOEBE,
+#    BG_GLACIA,
+#    BG_DRAKE,
+	BG_CHAMPION,
+#    BG_GROUDON,
+#    BG_KYOGRE,
+#    BG_RAYQUAZA,
+#    BG_SOARING,
+#    BG_SKY_PILLAR,
+#    BG_BURIAL_GROUND,
+	BG_PUDDLE,
+#    BG_MARSH,
+#    BG_SWAMP,
+	BG_SNOW,
+	BG_ICE,
+	BG_VOLCANO,
+	BG_DISTORTION_WORLD,
+	BG_SPACE,
+	BG_ULTRA_SPACE,
+}
+
+const BG_SPRITES: Dictionary = {
+	Background.BG_GRASS: ".",
+	Background.BG_LONG_GRASS:"res://graphics/battle_ground/BG_LongGrass.png",
+}

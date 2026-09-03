@@ -50,8 +50,7 @@ func reload_database() -> void:
 
 
 func load_database() -> void:
-	var directory: DirAccess = DirAccess.open(ITEMS_PATH)
-	if directory == null:
+	if not DirAccess.dir_exists_absolute(ITEMS_PATH) and ResourceLoader.list_directory(ITEMS_PATH).is_empty():
 		var message: String = "ItemDB: no existe '%s'; aún no hay ItemData que cargar." % ITEMS_PATH
 		_warnings.append(message)
 		database_error.emit(message)
@@ -66,20 +65,12 @@ func load_database() -> void:
 
 
 func _load_folder(path: String) -> void:
-	var directory: DirAccess = DirAccess.open(path)
-	if directory == null:
-		return
-	directory.list_dir_begin()
-	var entry: String = directory.get_next()
-	while not entry.is_empty():
+	for entry: String in ResourceLoader.list_directory(path):
 		var full_path: String = path.path_join(entry)
-		if directory.current_is_dir():
+		if entry.ends_with("/"):
 			_load_folder(full_path)
 		elif entry.ends_with(FILE_EXTENSION):
 			_load_item_file(full_path)
-		entry = directory.get_next()
-	directory.list_dir_end()
-
 
 func _load_item_file(path: String) -> void:
 	var resource: Resource = load(path)

@@ -15,6 +15,11 @@ var stage_evasion: int = 0
 var confusion_turns: int = 0
 var flinched: bool = false
 
+var protect_active: bool = false
+var protect_kind: int = ProtectResolver.Kind.NONE
+var endure_active: bool = false
+var protect_counter: int = 0
+
 ## ─── Habilidades (ver ability_runtime.gd) ────────────────
 ## Si es false, la habilidad de este Pokémon no tiene ningún efecto
 ## en combate (p. ej. tras Gas Neutralizante / Mold Breaker, a futuro).
@@ -41,6 +46,10 @@ func _reset_stages() -> void:
 	flinched = false
 	ability_active = true
 	flash_fire_boosted = false
+	protect_active = false
+	protect_kind = ProtectResolver.Kind.NONE
+	endure_active = false
+	protect_counter = 0
 
 func is_fainted() -> bool:
 	return pokemon == null or pokemon.current_hp <= 0

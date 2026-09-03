@@ -25,7 +25,7 @@ enum ConnectionDirection {
 	set(new_val):
 		map_size = new_val
 		queue_redraw()
-@export var battle_scene: Array #Proximamente tipo de escena de batalla
+@export var battle_scene: BattleBackground.Background = BattleBackground.Background.BG_GRASS
 @export_group("Editor")
 @export var color_borde: Color = Color(0, 1, 1, 1.0)
 @export var tile_size: int = 16
@@ -73,8 +73,7 @@ signal usar_nubes_cambiado(estado: bool)
 @export var south_map: MapConnection
 @export var west_map: MapConnection
 @export_group("Music")
-@export_file("*.ogg", "*.wav", "*.mp3") var music_path: String = ""
-@export var silence_end: float = 0.0
+@export var map_music: SFXGame.MapMusicID = SFXGame.MapMusicID.BGM_NONE
 @export_group("Weather")
 @export var weather: WeatherEffect.WeatherID = WeatherEffect.WeatherID.WEATHER_NONE
 @export_group("Map Script")
@@ -150,13 +149,7 @@ func _run_script_file(path: String) -> void:
 	runner.start_script([script_file], null, player, self)
 
 func activar_musica() -> void:
-	if music_path.is_empty():
-		return
-
-	MusicManager.reproducir(
-		music_path,
-		silence_end
-	)
+	MusicManager.reproducir_mapa(map_music)
 
 func conectar_actualizaciones() -> void:
 
