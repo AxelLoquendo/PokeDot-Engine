@@ -1,8 +1,25 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cvooh25cexkkn"]
 
+[ext_resource type="Texture2D" uid="uid://bb5r8vq2fo0ra" path="res://graphics/pokemon/back/GRENINJA.png" id="1_51668"]
+[ext_resource type="Texture2D" uid="uid://bm8vusctgkc2x" path="res://graphics/pokemon/back_shiny/GRENINJA.png" id="2_eb7cm"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_njvpt"]
+[ext_resource type="AudioStream" uid="uid://b72101v6d2ui5" path="res://sfx/se/cries/GRENINJA.ogg" id="3_pymgi"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://d76o7jbtlsc2" path="res://graphics/pokemon/back/GRENINJA_ASH.png" id="7_1vjnd"]
+[ext_resource type="Texture2D" uid="uid://dxyet4smnhuwd" path="res://graphics/pokemon/back_shiny/GRENINJA_ASH.png" id="8_kp8mw"]
+[ext_resource type="Texture2D" uid="uid://7id372t87h7j" path="res://graphics/pokemon/front/GRENINJA_ASH.png" id="9_5c7ly"]
+[ext_resource type="Texture2D" uid="uid://bqdvl6pviunwn" path="res://graphics/pokemon/front_shiny/GRENINJA_ASH.png" id="10_nfl1x"]
+[ext_resource type="Texture2D" uid="uid://cbpvxnae1vglt" path="res://graphics/pokemon/icons/GRENINJA_2.png" id="11_fi1pl"]
+[ext_resource type="Texture2D" uid="uid://cg6yc84m33wys" path="res://graphics/pokemon/back/MEGA_GRENINJA.png" id="12_yflow"]
+[ext_resource type="Texture2D" uid="uid://dv6pes35e7tga" path="res://graphics/pokemon/back_shiny/MEGA_GRENINJA.png" id="13_4pw2e"]
+[ext_resource type="Texture2D" uid="uid://ciy5ah47ip372" path="res://graphics/pokemon/front/MEGA_GRENINJA.png" id="14_7yijp"]
+[ext_resource type="Texture2D" uid="uid://46cgie4pgckg" path="res://graphics/pokemon/front_shiny/MEGA_GRENINJA.png" id="15_7ggiw"]
+[ext_resource type="Texture2D" uid="uid://ccgmmi1nlv5se" path="res://graphics/pokemon/icons/GRENINJA_3.png" id="16_na1ns"]
+[ext_resource type="Texture2D" uid="uid://weaxx8hyhwh3" path="res://graphics/pokemon/front/GRENINJA.png" id="17_47gx1"]
+[ext_resource type="Texture2D" uid="uid://chxqafbij4awf" path="res://graphics/pokemon/front_shiny/GRENINJA.png" id="18_dtmq6"]
+[ext_resource type="Texture2D" uid="uid://bf8rve0hskcan" path="res://graphics/pokemon/icons/GRENINJA.png" id="19_7hl43"]
+[ext_resource type="Texture2D" uid="uid://ddthbl3qr0xbe" path="res://graphics/pokemon/follower/GRENINJA.png" id="20_in5oy"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -19,6 +36,13 @@ species_id = 1113
 form_id = &"greninja_ash"
 display_name = "Greninja Ash"
 base_species_id = 658
+front_sprite = ExtResource("9_5c7ly")
+front_sprite_shiny = ExtResource("10_nfl1x")
+back_sprite = ExtResource("7_1vjnd")
+back_sprite_shiny = ExtResource("8_kp8mw")
+icon_sprite = ExtResource("11_fi1pl")
+cry = ExtResource("3_pymgi")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +51,13 @@ species_id = 1540
 form_id = &"greninja_mega"
 display_name = "Greninja Mega"
 base_species_id = 658
+front_sprite = ExtResource("14_7yijp")
+front_sprite_shiny = ExtResource("15_7ggiw")
+back_sprite = ExtResource("12_yflow")
+back_sprite_shiny = ExtResource("13_4pw2e")
+icon_sprite = ExtResource("16_na1ns")
+cry = ExtResource("3_pymgi")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -147,6 +178,12 @@ description = "Comprime el agua y crea estrellas ninja con las que ataca al enem
 height = 15
 weight = 400
 body_color = 1
+front_sprite = ExtResource("17_47gx1")
+front_sprite_shiny = ExtResource("18_dtmq6")
+back_sprite = ExtResource("1_51668")
+back_sprite_shiny = ExtResource("2_eb7cm")
+icon_sprite = ExtResource("19_7hl43")
+overworld_scene = ExtResource("20_in5oy")
 forms = Array[ExtResource("2_njvpt")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([8, 14, 15, 36, 56, 57, 58, 59, 63, 67, 70, 91, 92, 104, 114, 127, 129, 156, 157, 164, 168, 173, 180, 182, 189, 191, 196, 203, 206, 207, 213, 214, 216, 218, 237, 240, 249, 263, 269, 270, 272, 280, 289, 290, 291, 308, 311, 317, 332, 340, 341, 352, 369, 374, 390, 399, 416, 441, 447, 479, 482, 490, 496, 497, 503, 512, 518, 526, 590, 612, 656, 664, 779, 809, 811, 812, 846])
@@ -157,3 +194,4 @@ egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 658
 gender_ratio = 5
+cry = ExtResource("3_pymgi")

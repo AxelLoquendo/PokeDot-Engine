@@ -1,9 +1,27 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cs1jp6w2bpks"]
 
+[ext_resource type="Texture2D" uid="uid://dwo73opckw04w" path="res://graphics/pokemon/back/BLASTOISE.png" id="1_ma1nm"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_8gu3i"]
+[ext_resource type="Texture2D" uid="uid://ceis5mrwhiksi" path="res://graphics/pokemon/back_shiny/BLASTOISE.png" id="2_b001s"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Texture2D" uid="uid://c8nwk31c0wqa2" path="res://graphics/pokemon/icons/BLASTOISE.png" id="3_iyviq"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="AudioStream" uid="uid://1buyolmnid5q" path="res://sfx/se/cries/BLASTOISE.ogg" id="3_xf7t8"]
+[ext_resource type="Texture2D" uid="uid://dfievga3hx2wo" path="res://graphics/pokemon/back/MEGA_BLASTOISE.png" id="6_tsrwg"]
+[ext_resource type="Texture2D" uid="uid://c01eb3hmxxsvn" path="res://graphics/pokemon/back_shiny/MEGA_BLASTOISE.png" id="7_0c6xm"]
+[ext_resource type="AudioStream" uid="uid://xv7nialjmnyt" path="res://sfx/se/cries/BLASTOISE_1.ogg" id="8_co3lh"]
+[ext_resource type="Texture2D" uid="uid://blt6hgs7kqa4y" path="res://graphics/pokemon/front/MEGA_BLASTOISE.png" id="9_0fw2h"]
+[ext_resource type="Texture2D" uid="uid://svrtol7sxxsy" path="res://graphics/pokemon/front_shiny/MEGA_BLASTOISE.png" id="10_1sk1p"]
+[ext_resource type="Texture2D" uid="uid://dj3pjpi4v1g21" path="res://graphics/pokemon/icons/BLASTOISE_1.png" id="11_3hgmw"]
+[ext_resource type="Texture2D" uid="uid://y26dvs756aok" path="res://graphics/pokemon/back/BLASTOISE_GMAX.png" id="13_bu2ia"]
+[ext_resource type="Texture2D" uid="uid://biqigvfy2gmno" path="res://graphics/pokemon/back_shiny/BLASTOISE_GMAX.png" id="14_i82en"]
+[ext_resource type="AudioStream" uid="uid://ct3u5kmn2iecv" path="res://sfx/se/cries/BLASTOISE_2.ogg" id="15_604rn"]
+[ext_resource type="Texture2D" uid="uid://cgnmnybyw64gi" path="res://graphics/pokemon/front/BLASTOISE_GMAX.png" id="16_tfokb"]
+[ext_resource type="Texture2D" uid="uid://b7uirtiv750ux" path="res://graphics/pokemon/front_shiny/BLASTOISE_GMAX.png" id="17_whc3q"]
+[ext_resource type="Texture2D" uid="uid://ctknut14wc04v" path="res://graphics/pokemon/icons/BLASTOISE_2.png" id="18_jpgxr"]
+[ext_resource type="Texture2D" uid="uid://ccsybs2x68s5u" path="res://graphics/pokemon/front/BLASTOISE.png" id="19_tjc2v"]
+[ext_resource type="Texture2D" uid="uid://cjao6e4eusimx" path="res://graphics/pokemon/front_shiny/BLASTOISE.png" id="20_jpwp0"]
+[ext_resource type="Texture2D" uid="uid://bxijvvk1ekf1v" path="res://graphics/pokemon/follower/BLASTOISE.png" id="22_4y0h2"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -12,6 +30,13 @@ species_id = 909
 form_id = &"blastoise_mega"
 display_name = "Blastoise Mega"
 base_species_id = 9
+front_sprite = ExtResource("9_0fw2h")
+front_sprite_shiny = ExtResource("10_1sk1p")
+back_sprite = ExtResource("6_tsrwg")
+back_sprite_shiny = ExtResource("7_0c6xm")
+icon_sprite = ExtResource("11_3hgmw")
+cry = ExtResource("8_co3lh")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -20,6 +45,13 @@ species_id = 1490
 form_id = &"blastoise_gmax"
 display_name = "Blastoise Gmax"
 base_species_id = 9
+front_sprite = ExtResource("16_tfokb")
+front_sprite_shiny = ExtResource("17_whc3q")
+back_sprite = ExtResource("13_bu2ia")
+back_sprite_shiny = ExtResource("14_i82en")
+icon_sprite = ExtResource("18_jpgxr")
+cry = ExtResource("15_604rn")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -124,7 +156,12 @@ description = "Para acabar con su enemigo, lo aplasta con el peso de su cuerpo. 
 height = 16
 weight = 855
 body_color = 1
+front_sprite = ExtResource("19_tjc2v")
+front_sprite_shiny = ExtResource("20_jpwp0")
+back_sprite = ExtResource("1_ma1nm")
+back_sprite_shiny = ExtResource("2_b001s")
 icon_sprite = ExtResource("3_iyviq")
+overworld_scene = ExtResource("22_4y0h2")
 forms = Array[ExtResource("2_8gu3i")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 8, 25, 29, 34, 36, 38, 46, 55, 56, 57, 58, 59, 61, 63, 66, 68, 69, 70, 89, 90, 91, 92, 99, 102, 104, 111, 114, 115, 117, 127, 130, 156, 157, 164, 173, 174, 182, 184, 189, 196, 200, 203, 205, 206, 207, 213, 214, 216, 218, 223, 231, 237, 240, 242, 249, 250, 258, 263, 264, 270, 280, 290, 291, 308, 311, 317, 324, 330, 334, 341, 352, 360, 362, 363, 374, 396, 399, 401, 406, 411, 416, 419, 428, 430, 431, 445, 479, 496, 503, 518, 523, 525, 526, 590, 612, 664, 704, 733, 740, 779, 789, 812])
@@ -136,3 +173,4 @@ egg_group_2 = 2
 egg_cycles = 20
 hatch_species = 9
 gender_ratio = 5
+cry = ExtResource("3_xf7t8")

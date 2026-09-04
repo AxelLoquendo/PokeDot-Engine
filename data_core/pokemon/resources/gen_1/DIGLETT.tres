@@ -1,9 +1,21 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cyen6kmnb82gn"]
 
+[ext_resource type="Texture2D" uid="uid://bv5o50b16e028" path="res://graphics/pokemon/back/DIGLETT.png" id="1_c87gt"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_nn2rf"]
+[ext_resource type="Texture2D" uid="uid://b6yqrk7trapdy" path="res://graphics/pokemon/back_shiny/DIGLETT.png" id="2_p4e3g"]
+[ext_resource type="AudioStream" uid="uid://cwl5qiu2dh67i" path="res://sfx/se/cries/DIGLETT.ogg" id="3_obkb8"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_30o6g"]
+[ext_resource type="Texture2D" uid="uid://orrbsgsp5tum" path="res://graphics/pokemon/back/DIGLETT_ALOLA.png" id="8_7vcsu"]
+[ext_resource type="Texture2D" uid="uid://bjqnmumpe2n8h" path="res://graphics/pokemon/back_shiny/DIGLETT_ALOLA.png" id="9_3uqpf"]
+[ext_resource type="Texture2D" uid="uid://5ofuohlx8f52" path="res://graphics/pokemon/front/DIGLETT_ALOLA.png" id="10_ms014"]
+[ext_resource type="Texture2D" uid="uid://bitngafqrlmlw" path="res://graphics/pokemon/front_shiny/DIGLETT_ALOLA.png" id="11_sryy1"]
+[ext_resource type="Texture2D" uid="uid://b742g24xgimbs" path="res://graphics/pokemon/icons/DIGLETT_1.png" id="12_e6x2n"]
+[ext_resource type="Texture2D" uid="uid://5j7hbu6uqwyy" path="res://graphics/pokemon/front/DIGLETT.png" id="14_gawfx"]
+[ext_resource type="Texture2D" uid="uid://c205tr456mc1c" path="res://graphics/pokemon/front_shiny/DIGLETT.png" id="15_xr4f8"]
+[ext_resource type="Texture2D" uid="uid://ck41pxqxjaalf" path="res://graphics/pokemon/icons/DIGLETT.png" id="16_qioft"]
+[ext_resource type="Texture2D" uid="uid://cbmay0s435c7" path="res://graphics/pokemon/follower/DIGLETT.png" id="17_rgbyn"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -23,6 +35,13 @@ species_id = 963
 form_id = &"diglett_alola"
 display_name = "Diglett Alola"
 base_species_id = 50
+front_sprite = ExtResource("10_ms014")
+front_sprite_shiny = ExtResource("11_sryy1")
+back_sprite = ExtResource("8_7vcsu")
+back_sprite_shiny = ExtResource("9_3uqpf")
+icon_sprite = ExtResource("12_e6x2n")
+cry = ExtResource("3_obkb8")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -124,6 +143,12 @@ description = "Vive un metro por debajo del suelo, donde se alimenta de raíces.
 height = 2
 weight = 8
 body_color = 5
+front_sprite = ExtResource("14_gawfx")
+front_sprite_shiny = ExtResource("15_xr4f8")
+back_sprite = ExtResource("1_c87gt")
+back_sprite_shiny = ExtResource("2_p4e3g")
+icon_sprite = ExtResource("16_qioft")
+overworld_scene = ExtResource("17_rgbyn")
 forms = Array[ExtResource("4_30o6g")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 89, 90, 91, 92, 97, 99, 102, 103, 104, 117, 156, 157, 164, 168, 173, 174, 179, 182, 188, 189, 201, 203, 204, 207, 213, 214, 216, 218, 237, 241, 249, 251, 253, 263, 270, 283, 290, 317, 328, 332, 341, 350, 363, 372, 389, 414, 421, 444, 445, 446, 468, 479, 492, 496, 497, 502, 523, 526, 590, 638, 661, 743, 779])
@@ -136,3 +161,4 @@ egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 50
 gender_ratio = 3
+cry = ExtResource("3_obkb8")

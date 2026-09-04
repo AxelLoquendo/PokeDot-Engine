@@ -1,8 +1,15 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cgakkpyww2fnm"]
 
+[ext_resource type="Texture2D" uid="uid://diwc618tjsbvp" path="res://graphics/pokemon/back/CLOYSTER.png" id="1_mw01t"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_18iyl"]
+[ext_resource type="Texture2D" uid="uid://dalku53himc8v" path="res://graphics/pokemon/back_shiny/CLOYSTER.png" id="2_ggucn"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="AudioStream" uid="uid://ci8aarwoavdmj" path="res://sfx/se/cries/CLOYSTER.ogg" id="3_ic3bn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://dh8l7pfogg7ji" path="res://graphics/pokemon/front/CLOYSTER.png" id="6_ty4m3"]
+[ext_resource type="Texture2D" uid="uid://7q0irvo0strv" path="res://graphics/pokemon/front_shiny/CLOYSTER.png" id="7_e3nwl"]
+[ext_resource type="Texture2D" uid="uid://c8g8v64yqw1o5" path="res://graphics/pokemon/icons/CLOYSTER.png" id="8_u5pep"]
+[ext_resource type="Texture2D" uid="uid://co1pugnj1bhw" path="res://graphics/pokemon/follower/CLOYSTER.png" id="10_ga4o6"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -110,6 +117,12 @@ description = "A los Cloyster que viven en las fuertes corrientes marinas les cr
 height = 15
 weight = 1325
 body_color = 6
+front_sprite = ExtResource("6_ty4m3")
+front_sprite_shiny = ExtResource("7_e3nwl")
+back_sprite = ExtResource("1_mw01t")
+back_sprite_shiny = ExtResource("2_ggucn")
+icon_sprite = ExtResource("8_u5pep")
+overworld_scene = ExtResource("10_ga4o6")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([29, 34, 36, 38, 42, 55, 56, 57, 58, 59, 61, 63, 92, 99, 100, 102, 103, 104, 113, 115, 117, 120, 127, 129, 153, 156, 161, 164, 173, 174, 182, 184, 191, 196, 203, 207, 213, 214, 216, 218, 237, 240, 250, 258, 259, 263, 270, 290, 291, 311, 324, 333, 334, 341, 350, 352, 362, 363, 371, 390, 398, 416, 419, 445, 496, 524, 529, 534, 590, 647, 664, 726, 779, 789, 809, 812])
 ability_1 = 75
@@ -119,3 +132,4 @@ egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 91
 gender_ratio = 3
+cry = ExtResource("3_ic3bn")

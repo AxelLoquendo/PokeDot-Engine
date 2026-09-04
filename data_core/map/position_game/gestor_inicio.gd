@@ -112,8 +112,9 @@ func _dar_party_debug(datos: CharacterPlayer) -> void:
 		PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 5),
 		PokemonInstance.create(Species.SpeciesID.SPECIES_CHARMANDER, 5),
 		PokemonInstance.create(Species.SpeciesID.SPECIES_SQUIRTLE, 5),
-		PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 5),
-		PokemonInstance.create(Species.SpeciesID.SPECIES_TREECKO, 5),
+		PokemonInstance.create(Species.SpeciesID.SPECIES_GRENINJA_BOND, 36),
+		PokemonInstance.create(Species.SpeciesID.SPECIES_GRENINJA_MEGA, 36),
+		PokemonInstance.create(Species.SpeciesID.SPECIES_GRENINJA_ASH, 36),
 	]
 	for mon: PokemonInstance in equipo:
 		if mon == null:

@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://t8pwqn3vmrp1"]
 
+[ext_resource type="Texture2D" uid="uid://s1c5e7m4kqy4" path="res://graphics/pokemon/back/CATERPIE.png" id="1_imt2w"]
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_6f1y1"]
+[ext_resource type="Texture2D" uid="uid://60orwgqtflmo" path="res://graphics/pokemon/back_shiny/CATERPIE.png" id="2_jcwif"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="AudioStream" uid="uid://02hevo3sle6b" path="res://sfx/se/cries/CATERPIE.ogg" id="3_vnmgu"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_lmi6r"]
+[ext_resource type="Texture2D" uid="uid://cf5bwbi30mhf3" path="res://graphics/pokemon/front/CATERPIE.png" id="8_ul544"]
+[ext_resource type="Texture2D" uid="uid://p5r1ll5qqt7v" path="res://graphics/pokemon/front_shiny/CATERPIE.png" id="9_ac3w4"]
+[ext_resource type="Texture2D" uid="uid://cf4ag4l26j1tp" path="res://graphics/pokemon/icons/CATERPIE.png" id="10_jli7n"]
+[ext_resource type="Texture2D" uid="uid://bsjh1hcrlc6te" path="res://graphics/pokemon/follower/CATERPIE.png" id="12_r1mha"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -51,6 +58,12 @@ description = "Para protegerse despide un hedor horrible de sus antenas, con el 
 height = 3
 weight = 29
 body_color = 3
+front_sprite = ExtResource("8_ul544")
+front_sprite_shiny = ExtResource("9_ac3w4")
+back_sprite = ExtResource("1_imt2w")
+back_sprite_shiny = ExtResource("2_jcwif")
+icon_sprite = ExtResource("10_jli7n")
+overworld_scene = ExtResource("12_r1mha")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2")])
 teachable_moves = Array[int]([81, 173, 450, 527])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -60,3 +73,4 @@ egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 10
 gender_ratio = 3
+cry = ExtResource("3_vnmgu")

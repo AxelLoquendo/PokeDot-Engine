@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dxxaahphjsf8b"]
 
+[ext_resource type="Texture2D" uid="uid://cwhsepdlw4dha" path="res://graphics/pokemon/back/DODUO.png" id="1_x15v2"]
+[ext_resource type="Texture2D" uid="uid://bntsqkqn1rkp3" path="res://graphics/pokemon/back_shiny/DODUO.png" id="2_2gavu"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_ysuvg"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="AudioStream" uid="uid://bvot80a3lh70u" path="res://sfx/se/cries/DODUO.ogg" id="3_yfjhq"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_3e2io"]
+[ext_resource type="Texture2D" uid="uid://c2xgdttfh655d" path="res://graphics/pokemon/front/DODUO.png" id="8_u3q3r"]
+[ext_resource type="Texture2D" uid="uid://b6ohhkrc46ps2" path="res://graphics/pokemon/front_shiny/DODUO.png" id="9_6ro8e"]
+[ext_resource type="Texture2D" uid="uid://dt68rricjekki" path="res://graphics/pokemon/icons/DODUO.png" id="10_c7oek"]
+[ext_resource type="Texture2D" uid="uid://cslywy3lu3pu1" path="res://graphics/pokemon/follower/DODUO.png" id="12_k1d63"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -122,6 +129,12 @@ description = "Este Pokémon de dos cabezas es el resultado de una mutación. Cu
 height = 14
 weight = 392
 body_color = 5
+front_sprite = ExtResource("8_u3q3r")
+front_sprite_shiny = ExtResource("9_6ro8e")
+back_sprite = ExtResource("1_x15v2")
+back_sprite_shiny = ExtResource("2_2gavu")
+icon_sprite = ExtResource("10_c7oek")
+overworld_scene = ExtResource("12_k1d63")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 18, 19, 29, 34, 36, 38, 67, 92, 97, 99, 102, 104, 115, 117, 129, 130, 143, 156, 161, 164, 168, 173, 174, 182, 189, 203, 207, 211, 213, 214, 216, 218, 226, 237, 240, 241, 253, 263, 270, 282, 283, 290, 297, 314, 332, 355, 363, 365, 366, 413, 445, 496, 497, 512, 526, 590, 638, 642, 779])
 egg_moves = Array[int]([18, 48, 98, 114, 119, 143, 175, 185, 283, 363, 372, 413])
@@ -133,3 +146,4 @@ egg_group_1 = 4
 egg_cycles = 20
 hatch_species = 84
 gender_ratio = 3
+cry = ExtResource("3_yfjhq")

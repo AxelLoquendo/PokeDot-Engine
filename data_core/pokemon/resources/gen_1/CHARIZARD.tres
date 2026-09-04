@@ -1,9 +1,33 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://drtq04alelcpg"]
 
+[ext_resource type="Texture2D" uid="uid://bi6rs6khnf5l7" path="res://graphics/pokemon/back/CHARIZARD.png" id="1_wokbl"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ra4md"]
+[ext_resource type="Texture2D" uid="uid://cnyceh63t0fbe" path="res://graphics/pokemon/back_shiny/CHARIZARD.png" id="2_ygcc4"]
+[ext_resource type="AudioStream" uid="uid://di423pkqdlv02" path="res://sfx/se/cries/CHARIZARD.ogg" id="3_8bghp"]
 [ext_resource type="Texture2D" uid="uid://bs2cwy45k0q4q" path="res://graphics/pokemon/icons/CHARIZARD.png" id="3_078g8"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://bxhc6yfxqmkv" path="res://graphics/pokemon/back/MEGA_CHARIZARD_X.png" id="6_tv5aa"]
+[ext_resource type="Texture2D" uid="uid://dqf2y7gjsjtfn" path="res://graphics/pokemon/back_shiny/MEGA_CHARIZARD_X.png" id="7_1csk0"]
+[ext_resource type="AudioStream" uid="uid://64irufw808fk" path="res://sfx/se/cries/CHARIZARD_1.ogg" id="8_gsimq"]
+[ext_resource type="Texture2D" uid="uid://dutfxs4t1vm2u" path="res://graphics/pokemon/front/MEGA_CHARIZARD_X.png" id="9_qt1go"]
+[ext_resource type="Texture2D" uid="uid://dsamdl0qrtptr" path="res://graphics/pokemon/front_shiny/MEGA_CHARIZARD_X.png" id="10_8e2sk"]
+[ext_resource type="Texture2D" uid="uid://1h8m6nog2goe" path="res://graphics/pokemon/icons/CHARIZARD_1.png" id="11_twuvt"]
+[ext_resource type="Texture2D" uid="uid://c3pxsqe7snf1y" path="res://graphics/pokemon/back/MEGA_CHARIZARD_Y.png" id="13_fm4u0"]
+[ext_resource type="Texture2D" uid="uid://drkt3d7lwvcaw" path="res://graphics/pokemon/back_shiny/MEGA_CHARIZARD_Y.png" id="14_tqlxw"]
+[ext_resource type="AudioStream" uid="uid://bjm85kd2co2ag" path="res://sfx/se/cries/CHARIZARD_2.ogg" id="15_emb8r"]
+[ext_resource type="Texture2D" uid="uid://5ud3dvq01nr3" path="res://graphics/pokemon/front/MEGA_CHARIZARD_Y.png" id="16_hxlh5"]
+[ext_resource type="Texture2D" uid="uid://b6oh3ux3j3dsy" path="res://graphics/pokemon/front_shiny/MEGA_CHARIZARD_Y.png" id="17_qimfk"]
+[ext_resource type="Texture2D" uid="uid://bnqa664lwbvbf" path="res://graphics/pokemon/icons/CHARIZARD_2.png" id="18_7hwdc"]
+[ext_resource type="Texture2D" uid="uid://tlnhtrx1ri52" path="res://graphics/pokemon/back/CHARIZARD_GMAX.png" id="19_nacpx"]
+[ext_resource type="Texture2D" uid="uid://bek7ce7gf70jv" path="res://graphics/pokemon/back_shiny/CHARIZARD_GMAX.png" id="20_oc2on"]
+[ext_resource type="AudioStream" uid="uid://d2pjoh4q41a4u" path="res://sfx/se/cries/CHARIZARD_3.ogg" id="21_hvryr"]
+[ext_resource type="Texture2D" uid="uid://18wvlq73kmlt" path="res://graphics/pokemon/front/CHARIZARD_GMAX.png" id="22_3q8kb"]
+[ext_resource type="Texture2D" uid="uid://dgkdwjuurbluo" path="res://graphics/pokemon/front_shiny/CHARIZARD_GMAX.png" id="23_acias"]
+[ext_resource type="Texture2D" uid="uid://kvuqy8an7ksh" path="res://graphics/pokemon/icons/CHARIZARD_3.png" id="24_r1myj"]
+[ext_resource type="Texture2D" uid="uid://dun8mrrr4frll" path="res://graphics/pokemon/front/CHARIZARD.png" id="25_etuu8"]
+[ext_resource type="Texture2D" uid="uid://skqaf285pik1" path="res://graphics/pokemon/front_shiny/CHARIZARD.png" id="26_0e4wx"]
+[ext_resource type="Texture2D" uid="uid://do2cb1mkhxf3j" path="res://graphics/pokemon/follower/CHARIZARD.png" id="28_65ub2"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -12,6 +36,13 @@ species_id = 907
 form_id = &"charizard_mega_x"
 display_name = "Charizard Mega X"
 base_species_id = 6
+front_sprite = ExtResource("9_qt1go")
+front_sprite_shiny = ExtResource("10_8e2sk")
+back_sprite = ExtResource("6_tv5aa")
+back_sprite_shiny = ExtResource("7_1csk0")
+icon_sprite = ExtResource("11_twuvt")
+cry = ExtResource("8_gsimq")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -20,6 +51,13 @@ species_id = 908
 form_id = &"charizard_mega_y"
 display_name = "Charizard Mega Y"
 base_species_id = 6
+front_sprite = ExtResource("16_hxlh5")
+front_sprite_shiny = ExtResource("17_qimfk")
+back_sprite = ExtResource("13_fm4u0")
+back_sprite_shiny = ExtResource("14_tqlxw")
+icon_sprite = ExtResource("18_7hwdc")
+cry = ExtResource("15_emb8r")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -28,6 +66,13 @@ species_id = 1491
 form_id = &"charizard_gmax"
 display_name = "Charizard Gmax"
 base_species_id = 6
+front_sprite = ExtResource("22_3q8kb")
+front_sprite_shiny = ExtResource("23_acias")
+back_sprite = ExtResource("19_nacpx")
+back_sprite_shiny = ExtResource("20_oc2on")
+icon_sprite = ExtResource("24_r1myj")
+cry = ExtResource("21_hvryr")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -151,7 +196,12 @@ category_name = "Llama"
 description = "Cuando lanza una descarga de fuego supercaliente, la roja llama de su cola brilla más intensamente."
 height = 17
 weight = 905
+front_sprite = ExtResource("25_etuu8")
+front_sprite_shiny = ExtResource("26_0e4wx")
+back_sprite = ExtResource("1_wokbl")
+back_sprite_shiny = ExtResource("2_ygcc4")
 icon_sprite = ExtResource("3_078g8")
+overworld_scene = ExtResource("28_65ub2")
 forms = Array[ExtResource("2_ra4md")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
 teachable_moves = Array[int]([5, 7, 9, 14, 15, 19, 25, 29, 34, 36, 38, 46, 53, 63, 66, 68, 69, 70, 76, 82, 83, 89, 90, 91, 92, 99, 102, 104, 111, 115, 117, 126, 129, 130, 156, 157, 164, 173, 174, 182, 184, 189, 200, 201, 203, 206, 207, 210, 211, 213, 214, 216, 218, 223, 225, 231, 237, 239, 241, 242, 249, 251, 257, 261, 263, 264, 270, 280, 290, 299, 307, 311, 314, 315, 317, 332, 337, 349, 355, 363, 366, 374, 394, 403, 406, 411, 416, 421, 424, 432, 445, 466, 468, 488, 496, 497, 507, 510, 512, 519, 523, 525, 526, 535, 542, 590, 595, 612, 656, 712, 727, 742, 743, 779, 841, 843])
@@ -163,3 +213,4 @@ egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 6
 gender_ratio = 5
+cry = ExtResource("3_8bghp")

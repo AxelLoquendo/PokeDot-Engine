@@ -1,8 +1,15 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://mwkufkcg6dls"]
 
+[ext_resource type="Texture2D" uid="uid://c1wlv7p3mfh7s" path="res://graphics/pokemon/back/DITTO.png" id="1_8c01b"]
+[ext_resource type="Texture2D" uid="uid://de2nirb146v8x" path="res://graphics/pokemon/back_shiny/DITTO.png" id="2_ejlcg"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ndaic"]
+[ext_resource type="AudioStream" uid="uid://be4mrtdwl5i4j" path="res://sfx/se/cries/DITTO.ogg" id="3_gpv8j"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://bmj5timww24k4" path="res://graphics/pokemon/front/DITTO.png" id="6_veunj"]
+[ext_resource type="Texture2D" uid="uid://ben0mysh3dveo" path="res://graphics/pokemon/front_shiny/DITTO.png" id="7_6gevg"]
+[ext_resource type="Texture2D" uid="uid://b4i8b3qnsy4jo" path="res://graphics/pokemon/icons/DITTO.png" id="8_2s5dw"]
+[ext_resource type="Texture2D" uid="uid://bultltbti6lk7" path="res://graphics/pokemon/follower/DITTO.png" id="10_af10r"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -30,6 +37,12 @@ description = "Puede alterar por completo su estructura celular para emular cual
 height = 3
 weight = 40
 body_color = 6
+front_sprite = ExtResource("6_veunj")
+front_sprite_shiny = ExtResource("7_6gevg")
+back_sprite = ExtResource("1_8c01b")
+back_sprite_shiny = ExtResource("2_ejlcg")
+icon_sprite = ExtResource("8_2s5dw")
+overworld_scene = ExtResource("10_af10r")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
 ability_1 = 7
 hidden_ability = 150
@@ -37,3 +50,4 @@ egg_group_1 = 13
 egg_cycles = 20
 hatch_species = 132
 gender_ratio = 7
+cry = ExtResource("3_gpv8j")

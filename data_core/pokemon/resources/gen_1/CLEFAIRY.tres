@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dijv6bq23djwg"]
 
+[ext_resource type="Texture2D" uid="uid://btqt3u4lvt0n8" path="res://graphics/pokemon/back/CLEFAIRY.png" id="1_u0b2a"]
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_3aojp"]
+[ext_resource type="Texture2D" uid="uid://dqt86a8rv01bu" path="res://graphics/pokemon/back_shiny/CLEFAIRY.png" id="2_7ty1p"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="AudioStream" uid="uid://ludgy7y84l8h" path="res://sfx/se/cries/CLEFAIRY.ogg" id="3_ivt61"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_mji23"]
+[ext_resource type="Texture2D" uid="uid://cxuwpckrt453c" path="res://graphics/pokemon/front/CLEFAIRY.png" id="8_7twiy"]
+[ext_resource type="Texture2D" uid="uid://b2uqxk2dmurrf" path="res://graphics/pokemon/front_shiny/CLEFAIRY.png" id="9_vhcgb"]
+[ext_resource type="Texture2D" uid="uid://c0q2rvxy7wn63" path="res://graphics/pokemon/icons/CLEFAIRY.png" id="10_vec01"]
+[ext_resource type="Texture2D" uid="uid://eaqghixm4fj1" path="res://graphics/pokemon/follower/CLEFAIRY.png" id="12_8xh7c"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -175,6 +182,12 @@ description = "Se dice que la felicidad llegará a quien vea a un grupo de Clefa
 height = 6
 weight = 75
 body_color = 9
+front_sprite = ExtResource("8_7twiy")
+front_sprite_shiny = ExtResource("9_vhcgb")
+back_sprite = ExtResource("1_u0b2a")
+back_sprite_shiny = ExtResource("2_7ty1p")
+icon_sprite = ExtResource("10_vec01")
+overworld_scene = ExtResource("12_8xh7c")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26"), SubResource("Resource_move27"), SubResource("Resource_move28")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 53, 55, 58, 59, 60, 61, 66, 68, 69, 70, 76, 85, 86, 87, 91, 92, 94, 99, 100, 101, 102, 104, 111, 113, 115, 117, 118, 126, 129, 130, 133, 135, 138, 148, 149, 156, 161, 164, 168, 171, 173, 174, 182, 189, 192, 196, 197, 203, 204, 205, 207, 213, 214, 215, 216, 218, 219, 223, 226, 227, 231, 237, 240, 241, 244, 247, 249, 253, 263, 264, 270, 271, 272, 277, 278, 280, 282, 283, 285, 286, 289, 290, 304, 313, 322, 324, 340, 343, 345, 347, 351, 352, 356, 363, 374, 387, 409, 428, 445, 446, 447, 451, 472, 473, 477, 495, 496, 497, 500, 502, 510, 514, 526, 574, 577, 581, 583, 590, 595, 605, 612, 728, 730, 742, 779, 812, 842])
 egg_moves = Array[int]([217, 273, 321, 505])
@@ -186,3 +199,4 @@ egg_group_1 = 6
 egg_cycles = 10
 hatch_species = 35
 gender_ratio = 2
+cry = ExtResource("3_ivt61")

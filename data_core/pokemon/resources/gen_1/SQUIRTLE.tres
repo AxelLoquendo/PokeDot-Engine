@@ -1,11 +1,16 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://o3oroceayffq"]
 
+[ext_resource type="Texture2D" uid="uid://ct157nl0mi206" path="res://graphics/pokemon/back/SQUIRTLE.png" id="1_7xmq3"]
+[ext_resource type="Texture2D" uid="uid://djwwmc6fhkwfe" path="res://graphics/pokemon/back_shiny/SQUIRTLE.png" id="2_agdbv"]
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_epyqt"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="AudioStream" uid="uid://v8d1fx6heejv" path="res://sfx/se/cries/SQUIRTLE.ogg" id="3_auh32"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_1bug7"]
 [ext_resource type="Texture2D" uid="uid://bhvap7gheo0jf" path="res://graphics/pokemon/icons/SQUIRTLE.png" id="5_7a6mm"]
 [ext_resource type="Texture2D" uid="uid://balckakk7bs7b" path="res://graphics/pokemon/follower/SQUIRTLE.png" id="7_w1epg"]
+[ext_resource type="Texture2D" uid="uid://bs5cgpe8s7jsu" path="res://graphics/pokemon/front/SQUIRTLE.png" id="8_x3qew"]
+[ext_resource type="Texture2D" uid="uid://brf7u5h3jbiu1" path="res://graphics/pokemon/front_shiny/SQUIRTLE.png" id="9_op76y"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -118,6 +123,10 @@ description = "Se protege con su caparazón y luego contraataca lanzando agua a 
 height = 5
 weight = 90
 body_color = 1
+front_sprite = ExtResource("8_x3qew")
+front_sprite_shiny = ExtResource("9_op76y")
+back_sprite = ExtResource("1_7xmq3")
+back_sprite_shiny = ExtResource("2_agdbv")
 icon_sprite = ExtResource("5_7a6mm")
 overworld_scene = ExtResource("7_w1epg")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
@@ -131,3 +140,4 @@ egg_group_2 = 2
 egg_cycles = 20
 hatch_species = 7
 gender_ratio = 5
+cry = ExtResource("3_auh32")
