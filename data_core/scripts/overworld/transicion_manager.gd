@@ -196,7 +196,6 @@ func crear_flash() -> void:
 
 	_flash.color = Color.WHITE
 	_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_flash.z_index = 4097
 	_flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_flash.modulate.a = 0.0
 
@@ -209,9 +208,8 @@ func crear_shatter() -> void:
 		_shatter.name = "Shatter"
 		add_child(_shatter)
 
-	_shatter.color = Color.WHITE # el shader decide el color real
+	_shatter.color = Color.WHITE
 	_shatter.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_shatter.z_index = 4098
 	_shatter.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_shatter.visible = false
 
@@ -220,12 +218,11 @@ func crear_shatter() -> void:
 		shader_material.shader = SHADER_SHATTER
 		_shatter.material = shader_material
 
-
 func transicion_encuentro_salvaje(
 	num_flashes: int = 2,
-	tiempo_flash: float = 0.10,
-	tiempo_shatter: float = 0.7,
-	tamano_bloque: float = 18.0
+	tiempo_flash: float = 0.07,
+	tiempo_shatter: float = 0.5,
+	tamano_bloque: float = 16.0
 ) -> void:
 	if _transicionando:
 		return
