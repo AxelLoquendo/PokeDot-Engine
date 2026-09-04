@@ -73,7 +73,7 @@ var _ended_by_run: bool = false
 var _battle_closing: bool = false
 var _party_ui: PartyMenu = null
 var _force_switch_pending: bool = false
-
+var _battle_canvas_modulate: CanvasModulate = null
 
 func _ready() -> void:
 	player_sprite_base_pos = player_sprite.position
@@ -128,6 +128,11 @@ func _ready() -> void:
 	player_exp_bar.size.x = player_exp_bar_target
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
+
+	_battle_canvas_modulate = CanvasModulate.new()
+	if DnsManager != null and DnsManager.canvas_modulate != null:
+		_battle_canvas_modulate.color = DnsManager.canvas_modulate.color
+	add_child(_battle_canvas_modulate)
 
 	_update_ui()
 	player_hp_bar.size.x = player_hp_bar_target

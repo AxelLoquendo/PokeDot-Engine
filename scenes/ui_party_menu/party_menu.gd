@@ -56,12 +56,16 @@ enum MenuMode {
 	SWAP_POKEMON,
 	SWAP_ITEM,
 	BATTLE_SELECT,
+	BATTLE_CONTEXT,
 }
 
 var menu_mode: MenuMode = MenuMode.SLOTS
 var context_index: int = 0
 var item_context_index: int = 0
 var swap_from_index: int = -1
+
+var battle_context_index: int = 0
+var summary_return_mode: MenuMode = MenuMode.SLOTS
 
 var battle_active: PokemonInstance = null
 var battle_force_switch: bool = false
@@ -79,6 +83,12 @@ const ITEM_HELP: PackedStringArray = [
 	"Dar un objeto de la mochila.",
 	"Quitar el objeto que lleva.",
 	"Mover el objeto.",
+]
+
+const BATTLE_CONTEXT_OPTIONS: PackedStringArray = ["Resumen", "Enviar"]
+const BATTLE_CONTEXT_HELP: PackedStringArray = [
+	"Ver la información.",
+	"Sacar a este Pokémon al combate.",
 ]
 
 # ============================================================
@@ -239,6 +249,8 @@ func _input(event: InputEvent) -> void:
 				close()
 			MenuMode.CONTEXT, MenuMode.SWAP_POKEMON, MenuMode.SWAP_ITEM:
 				_cerrar_contextos()
+			MenuMode.BATTLE_CONTEXT:
+				_cerrar_contexto_batalla()
 			MenuMode.ITEM_CONTEXT:
 				_abrir_menu_contexto()
 			MenuMode.BATTLE_SELECT:
@@ -270,7 +282,9 @@ func _input(event: InputEvent) -> void:
 					battle_cancelled.emit()
 					close()
 				else:
-					_confirmar_seleccion_batalla()
+					_abrir_menu_contexto_batalla()
+			MenuMode.BATTLE_CONTEXT:
+				_confirmar_contexto_batalla()
 		return
 
 	# ---------- D-pad ----------
@@ -326,6 +340,16 @@ func _navegar(direccion: int, vertical: bool) -> void:
 			item_context_index = posmod(item_context_index + direccion, n2)
 			_reproducir_cursor()
 			_actualizar_ui_item_contexto()
+		MenuMode.ITEM_CONTEXT:
+			var n2: int = ITEM_OPTIONS.size()
+			item_context_index = posmod(item_context_index + direccion, n2)
+			_reproducir_cursor()
+			_actualizar_ui_item_contexto()
+		MenuMode.BATTLE_CONTEXT:
+			var n3: int = BATTLE_CONTEXT_OPTIONS.size()
+			battle_context_index = posmod(battle_context_index + direccion, n3)
+			_reproducir_cursor()
+			_actualizar_ui_contexto_batalla()
 
 # ============================================================
 # MOVER VERTICALMENTE
@@ -443,10 +467,14 @@ func _abrir_summary() -> void:
 	var slot: PartySlot = slots[indice_seleccion]
 	if slot == null or slot.pokemon == null:
 		return
-	menu_mode = MenuMode.SLOTS  # por si acaso
+	if menu_mode == MenuMode.BATTLE_SELECT or menu_mode == MenuMode.BATTLE_CONTEXT:
+		summary_return_mode = MenuMode.BATTLE_SELECT
+	else:
+		summary_return_mode = MenuMode.SLOTS
 	set_process_input(false)
 	summary_abierto = summary_scene.instantiate() as SummaryScreen
 	add_child(summary_abierto)
+	summary_abierto.layer = self.layer + 1
 	# party + índice actual
 	summary_abierto.setup_from_party(party_actual, indice_seleccion)
 	summary_abierto.summary_closed.connect(_on_summary_closed)
@@ -459,10 +487,13 @@ func _on_summary_index_changed(nuevo_indice: int) -> void:
 func _on_summary_closed() -> void:
 	summary_abierto = null
 	set_process_input(true)
+	menu_mode = summary_return_mode
 	# Re-enfocar el slot del Pokémon que estabas viendo
 	if not seleccion_cancel and indice_seleccion >= 0 and indice_seleccion < slots.size():
 		if slots[indice_seleccion].visible:
 			_seleccionar_slot(indice_seleccion)
+	if menu_mode == MenuMode.BATTLE_SELECT and context_help != null:
+		context_help.text = "¡Elige un Pokémon!" if battle_force_switch else "¿Qué Pokémon quieres sacar?"
 
 func _abrir_menu_contexto() -> void:
 	if seleccion_cancel:
@@ -478,6 +509,49 @@ func _abrir_menu_contexto() -> void:
 	_reproducir_cursor()
 	_actualizar_ui_contexto()
 
+func _abrir_menu_contexto_batalla() -> void:
+	if seleccion_cancel:
+		return
+	if indice_seleccion < 0 or indice_seleccion >= party_actual.size():
+		return
+	if party_actual[indice_seleccion] == null:
+		return
+
+	menu_mode = MenuMode.BATTLE_CONTEXT
+	battle_context_index = 0
+	swap_from_index = indice_seleccion
+	_reproducir_cursor()
+	_actualizar_ui_contexto_batalla()
+
+
+func _actualizar_ui_contexto_batalla() -> void:
+	if context_panel:
+		context_panel.visible = true
+	if context_label:
+		context_label.visible = true
+		context_label.text = "\n".join(BATTLE_CONTEXT_OPTIONS)
+	_actualizar_cursor_contexto(battle_context_index)
+	_actualizar_texto_ayuda(BATTLE_CONTEXT_HELP, battle_context_index)
+
+
+func _cerrar_contexto_batalla() -> void:
+	menu_mode = MenuMode.BATTLE_SELECT
+	battle_context_index = 0
+	_ocultar_ui_contexto()
+	if not seleccion_cancel and indice_seleccion >= 0:
+		_seleccionar_slot(indice_seleccion)
+	if context_help != null:
+		context_help.text = "¡Elige un Pokémon!" if battle_force_switch else "¿Qué Pokémon quieres sacar?"
+
+
+func _confirmar_contexto_batalla() -> void:
+	match battle_context_index:
+		0:  # Resumen
+			_ocultar_ui_contexto()
+			_abrir_summary()
+		1:  # Enviar al combate
+			indice_seleccion = swap_from_index
+			_confirmar_seleccion_batalla()
 
 func _cerrar_contextos() -> void:
 	menu_mode = MenuMode.SLOTS

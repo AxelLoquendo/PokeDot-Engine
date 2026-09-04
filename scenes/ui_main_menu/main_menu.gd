@@ -126,6 +126,8 @@ func _aplicar_texturas_genero(gender: int) -> void:
 		$Continue/MugshotGirl.visible = true
 
 func ejecutar_accion() -> void:
+	if TransicionManager.esta_transicionando():
+		return
 	if sfx_aceptar:
 		sfx_aceptar.play()
 	match indice_foco:
