@@ -2364,6 +2364,7 @@ map_name = "Prado Natal"
 map_id_section = 1
 map_region = 1
 map_size = Vector2i(50, 41)
+battle_scene = 6
 border_origin = Vector2i(0, 4)
 border_size = 8
 show_location_name = true

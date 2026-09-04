@@ -195,8 +195,10 @@ func _iniciar_encuentro_salvaje(personaje: CharacterController, lead: PokemonIns
 func _correr_transicion_batalla(personaje: CharacterController) -> void:
 	personaje.ejecutando_evento = true
 
+	MusicManager.reproducir_batalla(BattleSession.battle_music)
+
 	if TransicionManager != null:
-		await TransicionManager.fade_out(0.25)
+		await TransicionManager.transicion_encuentro_salvaje()
 
 	var parent: Node = personaje.get_tree().current_scene
 	if parent == null:

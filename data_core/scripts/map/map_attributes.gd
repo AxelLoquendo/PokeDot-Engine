@@ -25,7 +25,7 @@ enum ConnectionDirection {
 	set(new_val):
 		map_size = new_val
 		queue_redraw()
-@export var battle_scene: BattleBackground.Background = BattleBackground.Background.BG_GRASS
+@export var battle_scene: BattleBackground.Background = BattleBackground.Background.BG_LONG_GRASS
 @export_group("Editor")
 @export var color_borde: Color = Color(0, 1, 1, 1.0)
 @export var tile_size: int = 16

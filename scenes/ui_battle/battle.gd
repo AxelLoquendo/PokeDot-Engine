@@ -36,6 +36,8 @@ extends Node2D
 ]
 @onready var player_exp_bar: ColorRect = $PlayerHPBox/ExpBar
 
+@onready var bg_sprite: Sprite2D = $BG
+
 const PARTY_SCENE: PackedScene = preload("res://scenes/ui_party_menu/party_menu.tscn")
 
 var player_pokemon: PokemonInstance
@@ -110,6 +112,8 @@ func _ready() -> void:
 		player_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_HYDRAPPLE, 5)
 		enemy_pokemon = PokemonInstance.create(Species.SpeciesID.SPECIES_BULBASAUR, 8)
 
+	MusicManager.reproducir_batalla(BattleSession.battle_music)
+
 	var party: Array[PokemonInstance] = []
 	if BattleSession.player_controller != null:
 		var pdata: CharacterPlayer = BattleSession.player_controller.character_data as CharacterPlayer
@@ -133,6 +137,10 @@ func _ready() -> void:
 	if DnsManager != null and DnsManager.canvas_modulate != null:
 		_battle_canvas_modulate.color = DnsManager.canvas_modulate.color
 	add_child(_battle_canvas_modulate)
+
+	var textura_fondo: Texture2D = BattleBackground.get_texture(BattleSession.battle_background)
+	if textura_fondo != null:
+		bg_sprite.texture = textura_fondo
 
 	_update_ui()
 	player_hp_bar.size.x = player_hp_bar_target

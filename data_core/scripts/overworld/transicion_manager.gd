@@ -7,6 +7,13 @@ var _pantalla: ColorRect
 var _transicionando: bool = false
 
 
+const SHADER_SHATTER: Shader = preload(
+	"res://data_core/scripts/overworld/battle_shatter.gdshader"
+)
+
+var _flash: ColorRect
+var _shatter: ColorRect
+
 func _ready() -> void:
 
 	layer = 4001
@@ -178,3 +185,91 @@ func _finalizar_transicion() -> void:
 func esta_transicionando() -> bool:
 
 	return _transicionando
+
+func crear_flash() -> void:
+	if has_node("Flash"):
+		_flash = $Flash
+	else:
+		_flash = ColorRect.new()
+		_flash.name = "Flash"
+		add_child(_flash)
+
+	_flash.color = Color.WHITE
+	_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_flash.z_index = 4097
+	_flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_flash.modulate.a = 0.0
+
+
+func crear_shatter() -> void:
+	if has_node("Shatter"):
+		_shatter = $Shatter
+	else:
+		_shatter = ColorRect.new()
+		_shatter.name = "Shatter"
+		add_child(_shatter)
+
+	_shatter.color = Color.WHITE # el shader decide el color real
+	_shatter.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_shatter.z_index = 4098
+	_shatter.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_shatter.visible = false
+
+	if _shatter.material == null:
+		var shader_material: ShaderMaterial = ShaderMaterial.new()
+		shader_material.shader = SHADER_SHATTER
+		_shatter.material = shader_material
+
+
+func transicion_encuentro_salvaje(
+	num_flashes: int = 2,
+	tiempo_flash: float = 0.10,
+	tiempo_shatter: float = 0.7,
+	tamano_bloque: float = 18.0
+) -> void:
+	if _transicionando:
+		return
+
+	_transicionando = true
+	visible = true
+
+	crear_flash()
+	crear_shatter()
+
+	var shader_material: ShaderMaterial = _shatter.material as ShaderMaterial
+	shader_material.set_shader_parameter(
+		"pantalla_size",
+		get_viewport().get_visible_rect().size
+	)
+	shader_material.set_shader_parameter("tamano_bloque", tamano_bloque)
+	shader_material.set_shader_parameter("progress", 0.0)
+
+	# --- Parpadeo ---
+	for i: int in num_flashes:
+		var tween_in: Tween = create_tween()
+		tween_in.tween_property(_flash, "modulate:a", 1.0, tiempo_flash)
+		await tween_in.finished
+
+		var tween_out: Tween = create_tween()
+		tween_out.tween_property(_flash, "modulate:a", 0.0, tiempo_flash)
+		await tween_out.finished
+
+	# --- Desarme en cuadritos desde la esquina inferior derecha ---
+	_shatter.visible = true
+
+	var tween_shatter: Tween = create_tween()
+	tween_shatter.set_ease(Tween.EASE_IN)
+	tween_shatter.set_trans(Tween.TRANS_QUAD)
+	tween_shatter.tween_method(
+		func(valor: float) -> void:
+			shader_material.set_shader_parameter("progress", valor),
+		0.0,
+		1.0,
+		tiempo_shatter
+	)
+	await tween_shatter.finished
+
+	# Dejamos la pantalla negra "de siempre" para poder usar fade_in() después.
+	_pantalla.modulate.a = 1.0
+	_flash.visible = false
+	_shatter.visible = false
