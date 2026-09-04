@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dde67me3gym1a" path="res://scenes/ui_summary_screen/page_2.tscn" id="10_3iqhy"]
 [ext_resource type="Texture2D" uid="uid://dc1lkuq7s04uj" path="res://graphics/ui_summary_screen/info/info_1.png" id="10_5i46e"]
 [ext_resource type="Texture2D" uid="uid://c4cj80ab7f24x" path="res://graphics/items/VENUSAURITE.png" id="11_3iqhy"]
-[ext_resource type="Texture2D" uid="uid://dq3gfx1ce5uik" path="res://graphics/pokemon/front/BULBASAUR.png" id="12_tebq8"]
+[ext_resource type="Texture2D" uid="uid://dvisxyo0lmnvj" path="res://graphics/pokemon/front/BULBASAUR.png" id="12_tebq8"]
 [ext_resource type="Texture2D" uid="uid://dcvy1c0de3ujb" path="res://graphics/ui_summary_screen/page_moves.png" id="13_e1dk8"]
 [ext_resource type="AudioStream" uid="uid://doa0kju83d8hy" path="res://sfx/se/GUI summary change page.ogg" id="15_b4q7a"]
 

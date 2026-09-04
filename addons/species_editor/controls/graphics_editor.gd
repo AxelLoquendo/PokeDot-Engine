@@ -12,12 +12,14 @@ const TEXTURE_FIELDS: Array[String] = [
 	"back_sprite_shiny",
 	"icon_sprite",
 	"overworld_scene",
+	"overworld_scene_shiny",
 	"front_sprite_female",
 	"front_sprite_shiny_female",
 	"back_sprite_female",
 	"back_sprite_shiny_female",
 	"icon_sprite_female",
 	"overworld_scene_female",
+	"overworld_scene_shiny_female",
 ]
 
 const TEXTURE_LABELS: Dictionary = {
@@ -26,13 +28,15 @@ const TEXTURE_LABELS: Dictionary = {
 	"back_sprite": "Trasero",
 	"back_sprite_shiny": "Trasero shiny",
 	"icon_sprite": "Icono",
-	"overworld_scene": "Overworld",
+	"overworld_scene": "Overworld / follower",
+	"overworld_scene_shiny": "Overworld / follower shiny",
 	"front_sprite_female": "Frontal hembra",
 	"front_sprite_shiny_female": "Frontal shiny hembra",
 	"back_sprite_female": "Trasero hembra",
 	"back_sprite_shiny_female": "Trasero shiny hembra",
 	"icon_sprite_female": "Icono hembra",
 	"overworld_scene_female": "Overworld hembra",
+	"overworld_scene_shiny_female": "Overworld shiny hembra",
 }
 
 var current_species: PokemonDataStruct
@@ -82,14 +86,14 @@ func _rebuild() -> void:
 	normal_title.text = "Sprites normales"
 	normal_title.add_theme_font_size_override("font_size", 13)
 	add_child(normal_title)
-	for field_name: String in TEXTURE_FIELDS.slice(0, 6):
+	for field_name: String in TEXTURE_FIELDS.slice(0, 7):
 		_add_texture_row(field_name)
 
 	var female_title: Label = Label.new()
 	female_title.text = "Sprites femeninos (opcionales)"
 	female_title.add_theme_font_size_override("font_size", 13)
 	add_child(female_title)
-	for field_name: String in TEXTURE_FIELDS.slice(6, 12):
+	for field_name: String in TEXTURE_FIELDS.slice(7, 14):
 		_add_texture_row(field_name)
 
 	_add_cry_row()

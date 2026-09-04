@@ -197,6 +197,7 @@ func _populate_form(species: PokemonDataStruct) -> void:
 	forms_editor = FORMS_EDITOR_SCRIPT.new()
 	forms_editor.set_available_species(available_species)
 	forms_editor.set_available_moves(editor_catalog.moves if editor_catalog else [])
+	forms_editor.set_available_abilities(editor_catalog.abilities if editor_catalog else [])
 	forms_editor.set_species(species)
 	forms_editor.custom_minimum_size = Vector2(0, 220)
 	forms_editor.changed.connect(_on_field_changed)

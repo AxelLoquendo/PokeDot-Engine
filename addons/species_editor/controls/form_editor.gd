@@ -8,10 +8,12 @@ signal changed
 const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/evolution_table.gd")
 const LEARNSET_TABLE_SCRIPT := preload("res://addons/species_editor/controls/learnset_table.gd")
 const MOVE_LIST_SCRIPT := preload("res://addons/species_editor/controls/move_id_list_table.gd")
+const ABILITY_SELECTOR_SCRIPT := preload("res://addons/species_editor/controls/ability_selector.gd")
 
 var current_form: PokemonFormData
 var available_species: Array[PokemonDataStruct] = []
 var available_moves: Array[MoveData] = []
+var available_abilities: Array[AbilityData] = []
 var form_species_id_input: SpinBox
 var form_id_input: LineEdit
 var name_input: LineEdit
@@ -36,6 +38,14 @@ var inherit_moves: CheckBox
 var form_level_up_moves: LearnsetTable
 var form_teachable_moves: MoveIdListTable
 var form_egg_moves: MoveIdListTable
+var override_abilities: CheckBox
+var ability_1_selector: AbilitySelector
+var ability_2_selector: AbilitySelector
+var hidden_ability_selector: AbilitySelector
+var overworld_picker: EditorResourcePicker
+var overworld_shiny_picker: EditorResourcePicker
+var overworld_female_picker: EditorResourcePicker
+var overworld_shiny_female_picker: EditorResourcePicker
 var override_pokedex: CheckBox
 var pokedex_category_input: LineEdit
 var pokedex_description_input: TextEdit
@@ -47,6 +57,9 @@ func set_available_species(values: Array[PokemonDataStruct]) -> void:
 
 func set_available_moves(values: Array[MoveData]) -> void:
 	available_moves = values
+
+func set_available_abilities(values: Array[AbilityData]) -> void:
+	available_abilities = values
 
 func load_form(form: PokemonFormData) -> void:
 	current_form = form
@@ -83,6 +96,18 @@ func _rebuild() -> void:
 	type_2 = _make_type_selector(current_form.type_2)
 	_add_labeled_control("Tipo 1 (NONE = heredar)", type_1)
 	_add_labeled_control("Tipo 2 (NONE = heredar)", type_2)
+
+	override_abilities = CheckBox.new()
+	override_abilities.text = "Usar habilidades propias de esta forma"
+	override_abilities.button_pressed = current_form.override_abilities
+	override_abilities.toggled.connect(_on_changed)
+	add_child(override_abilities)
+	ability_1_selector = _make_ability_selector(current_form.ability_1)
+	ability_2_selector = _make_ability_selector(current_form.ability_2)
+	hidden_ability_selector = _make_ability_selector(current_form.hidden_ability)
+	_add_labeled_control("Habilidad 1", ability_1_selector)
+	_add_labeled_control("Habilidad 2", ability_2_selector)
+	_add_labeled_control("Habilidad oculta", hidden_ability_selector)
 
 	_add_form_pokedex_editor()
 
@@ -131,6 +156,10 @@ func _rebuild() -> void:
 	back_picker = _add_resource_picker("Trasero", current_form.back_sprite, "Texture2D")
 	back_shiny_picker = _add_resource_picker("Trasero shiny", current_form.back_sprite_shiny, "Texture2D")
 	icon_picker = _add_resource_picker("Icono", current_form.icon_sprite, "Texture2D")
+	overworld_picker = _add_resource_picker("Overworld / follower", current_form.overworld_scene, "Texture2D")
+	overworld_shiny_picker = _add_resource_picker("Overworld / follower shiny", current_form.overworld_scene_shiny, "Texture2D")
+	overworld_female_picker = _add_resource_picker("Overworld hembra", current_form.overworld_scene_female, "Texture2D")
+	overworld_shiny_female_picker = _add_resource_picker("Overworld shiny hembra", current_form.overworld_scene_shiny_female, "Texture2D")
 	cry_picker = _add_resource_picker("Cry", current_form.cry, "AudioStream")
 
 	front_x = _add_offset("Frontal X", current_form.front_sprite_offset.x)
@@ -171,6 +200,10 @@ func apply_to_form(form: PokemonFormData) -> void:
 	form.override_types = override_types.button_pressed
 	form.type_1 = type_1.selected_type
 	form.type_2 = type_2.selected_type
+	form.override_abilities = override_abilities.button_pressed
+	form.ability_1 = ability_1_selector.selected_ability
+	form.ability_2 = ability_2_selector.selected_ability
+	form.hidden_ability = hidden_ability_selector.selected_ability
 	form.override_pokedex = override_pokedex.button_pressed
 	form.category_name = pokedex_category_input.text.strip_edges()
 	form.description = pokedex_description_input.text
@@ -188,6 +221,10 @@ func apply_to_form(form: PokemonFormData) -> void:
 	form.back_sprite = back_picker.edited_resource as Texture2D
 	form.back_sprite_shiny = back_shiny_picker.edited_resource as Texture2D
 	form.icon_sprite = icon_picker.edited_resource as Texture2D
+	form.overworld_scene = overworld_picker.edited_resource as Texture2D
+	form.overworld_scene_shiny = overworld_shiny_picker.edited_resource as Texture2D
+	form.overworld_scene_female = overworld_female_picker.edited_resource as Texture2D
+	form.overworld_scene_shiny_female = overworld_shiny_female_picker.edited_resource as Texture2D
 	form.cry = cry_picker.edited_resource as AudioStream
 	form.front_sprite_offset = Vector2(front_x.value, front_y.value)
 	form.back_sprite_offset = Vector2(back_x.value, back_y.value)
@@ -255,6 +292,13 @@ func _add_labeled_control(label_text: String, control: Control) -> void:
 	control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(control)
 	add_child(row)
+
+func _make_ability_selector(value: AbilityId.Id) -> AbilitySelector:
+	var selector: AbilitySelector = ABILITY_SELECTOR_SCRIPT.new()
+	selector.available_abilities = available_abilities
+	selector.selected_ability = value
+	selector.ability_changed.connect(_on_changed)
+	return selector
 
 func _make_type_selector(value: PokemonData.Type) -> TypeSelector:
 	var selector: TypeSelector = preload("res://addons/species_editor/controls/type_selector.gd").new()

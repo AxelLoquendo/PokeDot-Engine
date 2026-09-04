@@ -46,6 +46,10 @@ func validate(species: PokemonDataStruct) -> Array[String]:
 		form_ids[form_id] = true
 		if form.base_species_id != Species.SpeciesID.SPECIES_NONE and int(form.base_species_id) != int(species.species_id):
 			errors.append("La forma %d apunta a otra especie base (%d)." % [form_id, int(form.base_species_id)])
+		if form.override_abilities:
+			for ability: AbilityId.Id in [form.ability_1, form.ability_2, form.hidden_ability]:
+				if ability != AbilityId.Id.NONE and not int(ability) in AbilityId.Id.values():
+					errors.append("La forma %d tiene una habilidad inválida: %d." % [form_id, int(ability)])
 		if not _species_enum_id_exists(form_id):
 			errors.append("La forma %d no está declarada en species.gd." % form_id)
 		if form.override_pokedex:

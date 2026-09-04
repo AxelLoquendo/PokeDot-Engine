@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dq5enxdrwj3xy"]
 
+[ext_resource type="Texture2D" uid="uid://b8pfgt54783of" path="res://graphics/pokemon/back/DROWZEE.png" id="1_ncqr1"]
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_17k1l"]
+[ext_resource type="Texture2D" uid="uid://b1d0inx83ug42" path="res://graphics/pokemon/back_shiny/DROWZEE.png" id="2_77u06"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
+[ext_resource type="AudioStream" uid="uid://ckcqmhone4ssn" path="res://sfx/se/cries/DROWZEE.ogg" id="3_0te75"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_mnc5c"]
+[ext_resource type="Texture2D" uid="uid://cqaahtiklnjvy" path="res://graphics/pokemon/front/DROWZEE.png" id="8_ph3gq"]
+[ext_resource type="Texture2D" uid="uid://vkkig4nv6aj6" path="res://graphics/pokemon/front_shiny/DROWZEE.png" id="9_vqqvi"]
+[ext_resource type="Texture2D" uid="uid://dhppn62jee8tr" path="res://graphics/pokemon/icons/DROWZEE.png" id="10_55f8s"]
+[ext_resource type="Texture2D" uid="uid://d1p1jk4wf8ip8" path="res://graphics/pokemon/follower/DROWZEE.png" id="12_1eg3t"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -121,6 +128,12 @@ description = "Adormece a sus enemigos y se come sus sueños. A veces se pone en
 height = 10
 weight = 324
 body_color = 2
+front_sprite = ExtResource("8_ph3gq")
+front_sprite_shiny = ExtResource("9_vqqvi")
+back_sprite = ExtResource("1_ncqr1")
+back_sprite_shiny = ExtResource("2_77u06")
+icon_sprite = ExtResource("10_55f8s")
+overworld_scene = ExtResource("12_1eg3t")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 60, 66, 67, 68, 69, 86, 92, 94, 99, 100, 101, 102, 104, 113, 114, 115, 117, 118, 129, 130, 138, 148, 149, 156, 161, 164, 168, 171, 173, 174, 182, 192, 203, 207, 213, 214, 216, 218, 219, 223, 227, 237, 240, 241, 244, 247, 248, 259, 263, 264, 269, 270, 271, 272, 277, 278, 280, 282, 283, 285, 286, 289, 290, 324, 347, 363, 374, 409, 411, 417, 428, 433, 445, 447, 473, 477, 478, 490, 492, 496, 500, 502, 577, 590, 605, 612, 641, 725, 779, 811, 845])
 egg_moves = Array[int]([7, 8, 9, 112, 113, 260, 272, 274, 285, 290, 385, 417, 427, 471, 641])
@@ -132,3 +145,4 @@ egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 96
 gender_ratio = 3
+cry = ExtResource("3_0te75")

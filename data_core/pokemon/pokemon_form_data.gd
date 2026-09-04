@@ -32,10 +32,20 @@ class_name PokemonFormData
 @export var back_sprite: Texture2D
 @export var back_sprite_shiny: Texture2D
 @export var icon_sprite: Texture2D
+@export var overworld_scene: Texture2D
+@export var overworld_scene_shiny: Texture2D
+@export var overworld_scene_female: Texture2D
+@export var overworld_scene_shiny_female: Texture2D
 @export var cry: AudioStream
 @export var front_sprite_offset: Vector2 = Vector2.ZERO
 @export var back_sprite_offset: Vector2 = Vector2.ZERO
 @export var override_graphics: bool = false
+
+@export_group("Habilidades")
+@export var override_abilities: bool = false
+@export var ability_1: AbilityId.Id = AbilityId.Id.NONE
+@export var ability_2: AbilityId.Id = AbilityId.Id.NONE
+@export var hidden_ability: AbilityId.Id = AbilityId.Id.NONE
 
 @export_group("Movimientos")
 @export var inherit_base_moves: bool = true

@@ -54,6 +54,7 @@ class_name PokemonDataStruct
 @export var back_sprite_shiny: Texture2D
 @export var icon_sprite: Texture2D
 @export var overworld_scene: Texture2D
+@export var overworld_scene_shiny: Texture2D
 
 @export var front_sprite_female: Texture2D
 @export var front_sprite_shiny_female: Texture2D
@@ -61,6 +62,7 @@ class_name PokemonDataStruct
 @export var back_sprite_shiny_female: Texture2D
 @export var icon_sprite_female: Texture2D
 @export var overworld_scene_female: Texture2D
+@export var overworld_scene_shiny_female: Texture2D
 
 # Formas y variantes
 @export_group("Forms")

@@ -43,6 +43,27 @@ static func get_form_species_id(pokemon: PokemonInstance) -> Species.SpeciesID:
 	var form: PokemonFormData = get_form(pokemon)
 	return form.species_id if form != null else Species.SpeciesID.SPECIES_NONE
 
+static func get_ability_1(pokemon: PokemonInstance) -> AbilityId.Id:
+	var species: PokemonDataStruct = get_species_data(pokemon)
+	var form: PokemonFormData = get_form(pokemon)
+	if form != null and form.override_abilities:
+		return form.ability_1
+	return species.ability_1 if species != null else AbilityId.Id.NONE
+
+static func get_ability_2(pokemon: PokemonInstance) -> AbilityId.Id:
+	var species: PokemonDataStruct = get_species_data(pokemon)
+	var form: PokemonFormData = get_form(pokemon)
+	if form != null and form.override_abilities:
+		return form.ability_2
+	return species.ability_2 if species != null else AbilityId.Id.NONE
+
+static func get_hidden_ability(pokemon: PokemonInstance) -> AbilityId.Id:
+	var species: PokemonDataStruct = get_species_data(pokemon)
+	var form: PokemonFormData = get_form(pokemon)
+	if form != null and form.override_abilities:
+		return form.hidden_ability
+	return species.hidden_ability if species != null else AbilityId.Id.NONE
+
 static func get_type_1(pokemon: PokemonInstance) -> PokemonData.Type:
 	var species: PokemonDataStruct = get_species_data(pokemon)
 	var form: PokemonFormData = get_form(pokemon)
@@ -85,6 +106,23 @@ static func get_icon_sprite(pokemon: PokemonInstance) -> Texture2D:
 	if form != null and form.override_graphics and form.icon_sprite != null:
 		return form.icon_sprite
 	return species.icon_sprite if species != null else null
+
+static func get_overworld_scene(pokemon: PokemonInstance, shiny: bool = false, female: bool = false) -> Texture2D:
+	var species: PokemonDataStruct = get_species_data(pokemon)
+	var form: PokemonFormData = get_form(pokemon)
+	if form != null and form.override_graphics:
+		var form_sprite: Texture2D
+		if female:
+			form_sprite = form.overworld_scene_shiny_female if shiny else form.overworld_scene_female
+		else:
+			form_sprite = form.overworld_scene_shiny if shiny else form.overworld_scene
+		if form_sprite != null:
+			return form_sprite
+	if species == null:
+		return null
+	if female:
+		return species.overworld_scene_shiny_female if shiny else species.overworld_scene_female
+	return species.overworld_scene_shiny if shiny else species.overworld_scene
 
 static func get_cry(pokemon: PokemonInstance) -> AudioStream:
 	var species: PokemonDataStruct = get_species_data(pokemon)

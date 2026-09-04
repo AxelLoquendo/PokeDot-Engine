@@ -205,6 +205,11 @@ func _build_resolved_species(base_species: PokemonDataStruct, form: PokemonFormD
 		resolved.base_sp_attack = form.base_sp_attack
 		resolved.base_sp_defense = form.base_sp_defense
 
+	if form.override_abilities:
+		resolved.ability_1 = form.ability_1
+		resolved.ability_2 = form.ability_2
+		resolved.hidden_ability = form.hidden_ability
+
 	if form.inherit_base_moves:
 		resolved.level_up_moves = _merge_level_up_moves(base_species.level_up_moves, form.level_up_moves)
 		resolved.teachable_moves = _merge_move_ids(base_species.teachable_moves, form.teachable_moves)
@@ -231,6 +236,14 @@ func _build_resolved_species(base_species: PokemonDataStruct, form: PokemonFormD
 			resolved.back_sprite_shiny = form.back_sprite_shiny
 		if form.icon_sprite != null:
 			resolved.icon_sprite = form.icon_sprite
+		if form.overworld_scene != null:
+			resolved.overworld_scene = form.overworld_scene
+		if form.overworld_scene_shiny != null:
+			resolved.overworld_scene_shiny = form.overworld_scene_shiny
+		if form.overworld_scene_female != null:
+			resolved.overworld_scene_female = form.overworld_scene_female
+		if form.overworld_scene_shiny_female != null:
+			resolved.overworld_scene_shiny_female = form.overworld_scene_shiny_female
 		if form.cry != null:
 			resolved.cry = form.cry
 		resolved.front_sprite_offset = form.front_sprite_offset
