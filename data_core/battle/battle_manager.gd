@@ -14,6 +14,8 @@ var enemy: BattleBattler
 var is_running: bool = false
 var player_party: Array[PokemonInstance] = []
 var enemy_party: Array[PokemonInstance] = []
+var player_side: FieldSide = FieldSide.new()
+var enemy_side: FieldSide = FieldSide.new()
 var is_trainer_battle: bool = false
 
 var weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
@@ -88,6 +90,7 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 	message.emit("¡Adelante, %s!" % player.get_display_name())
 	await _wait(0.8)
 	AbilityRuntime.on_switch_in(player, enemy, self)
+	await _apply_hazards_on_switch_in(player)
 
 	if free_switch:
 		turn_ended.emit()
@@ -128,6 +131,7 @@ func _handle_enemy_faint() -> void:
 		enemy.setup(nuevo, false)
 		_emit_hp(false)
 		AbilityRuntime.on_switch_in(enemy, player, self)
+		await _apply_hazards_on_switch_in(enemy)
 		turn_ended.emit()
 		return
 
@@ -315,6 +319,8 @@ func _process_end_of_turn() -> void:
 		if not battler.is_fainted():
 			AbilityRuntime.end_of_turn(battler, weather, self)
 
+	player_side.tick_down()
+	enemy_side.tick_down()
 
 func _apply_weather_damage() -> void:
 	match weather:
@@ -467,7 +473,9 @@ func _execute_move(action: BattleAction) -> void:
 		if target.is_fainted() or actor.is_fainted():
 			break
 
-		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, weather)
+		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(
+			actor, target, move, weather, _side_for(target).has_screen(move.category == MoveStruct.DamageCategory.PHYSICAL)
+		)
 		last_result = result
 
 		if result.ability_immunity != "":
@@ -527,6 +535,9 @@ func _execute_move(action: BattleAction) -> void:
 			ability_deal_damage(actor, aftermath_dmg, target)
 			if actor.is_fainted():
 				break
+
+		if move.effect == MoveStruct.MoveEffect.EFFECT_RAPID_SPIN and dealt > 0:
+			_side_for(actor).clear_hazards()
 
 	if last_result == null or last_result.ability_immunity != "" or last_result.effectiveness <= 0.0:
 		return
@@ -748,6 +759,94 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			await _apply_status(receiver, status_value as PokemonInstance.Status)
 			return
 
+	match move.effect:
+		MoveStruct.MoveEffect.EFFECT_REFLECT:
+			var own_side: FieldSide = _side_for(actor)
+			if own_side.reflect_turns > 0:
+				message.emit("¡Pero falló!")
+			else:
+				own_side.reflect_turns = 5
+				message.emit("¡Se alzó un muro de reflejos alrededor del equipo de %s!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_LIGHT_SCREEN:
+			var own_side2: FieldSide = _side_for(actor)
+			if own_side2.light_screen_turns > 0:
+				message.emit("¡Pero falló!")
+			else:
+				own_side2.light_screen_turns = 5
+				message.emit("¡Se alzó una pantalla de luz alrededor del equipo de %s!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_AURORA_VEIL:
+			if weather != AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
+				message.emit("¡Pero falló!")
+				await _wait(0.8)
+				return
+			var own_side3: FieldSide = _side_for(actor)
+			if own_side3.aurora_veil_turns > 0:
+				message.emit("¡Pero falló!")
+			else:
+				own_side3.aurora_veil_turns = 5
+				message.emit("¡Se alzó un velo aurora alrededor del equipo de %s!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SPIKES:
+			var opp_side: FieldSide = _side_for(target)
+			if opp_side.spikes_layers >= 3:
+				message.emit("¡Pero falló!")
+			else:
+				opp_side.spikes_layers += 1
+				message.emit("¡Se esparcieron púas alrededor del equipo rival!")
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TOXIC_SPIKES:
+			var opp_side2: FieldSide = _side_for(target)
+			if opp_side2.toxic_spikes_layers >= 2:
+				message.emit("¡Pero falló!")
+			else:
+				opp_side2.toxic_spikes_layers += 1
+				message.emit("¡Se esparcieron púas tóxicas alrededor del equipo rival!")
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_STEALTH_ROCK:
+			var opp_side3: FieldSide = _side_for(target)
+			if opp_side3.stealth_rock:
+				message.emit("¡Pero falló!")
+			else:
+				opp_side3.stealth_rock = true
+				message.emit("¡Aparecieron rocas puntiagudas alrededor del equipo rival!")
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_STICKY_WEB:
+			var opp_side4: FieldSide = _side_for(target)
+			if opp_side4.sticky_web:
+				message.emit("¡Pero falló!")
+			else:
+				opp_side4.sticky_web = true
+				message.emit("¡Se tejió una red pegajosa bajo los pies del equipo rival!")
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_DEFOG:
+			var actual: int = target.modify_evasion_stage(-1)
+			if actual < 0:
+				message.emit("¡La Evasión de %s bajó!" % target.get_display_name())
+				await _wait(0.6)
+			player_side.clear_hazards()
+			player_side.clear_screens()
+			enemy_side.clear_hazards()
+			enemy_side.clear_screens()
+			message.emit("¡Los efectos del terreno se disiparon!")
+			await _wait(0.8)
+			return
+
 	message.emit("¡Pero no tuvo ningún efecto todavía!")
 	await _wait(0.8)
 
@@ -801,6 +900,60 @@ func _stat_display_name(stat: PokemonInstance.Stat) -> String:
 		PokemonInstance.Stat.SP_DEFENSE: return "Defensa Especial"
 		PokemonInstance.Stat.SPEED: return "Velocidad"
 		_: return "Estadística"
+
+func _side_for(battler: BattleBattler) -> FieldSide:
+	return player_side if battler.is_player_side else enemy_side
+
+func _apply_hazards_on_switch_in(battler: BattleBattler) -> void:
+	if battler.pokemon == null or battler.is_fainted():
+		return
+	var side: FieldSide = _side_for(battler)
+	var is_flying: bool = battler.pokemon.get_type_1() == PokemonData.Type.TYPE_FLYING \
+		or battler.pokemon.get_type_2() == PokemonData.Type.TYPE_FLYING
+	var is_grounded: bool = not is_flying and not AbilityRuntime.has(battler, AbilityId.Id.LEVITATE)
+
+	if side.stealth_rock:
+		var eff: float = TypeChart.get_effectiveness(
+			PokemonData.Type.TYPE_ROCK, battler.pokemon.get_type_1(), battler.pokemon.get_type_2()
+		)
+		var dmg: int = maxi(1, int(float(battler.get_max_hp()) * 0.125 * eff))
+		var taken: int = battler.apply_damage(dmg)
+		_emit_hp(battler.is_player_side)
+		message.emit("¡A %s le dañaron las Rocas Afiladas!" % battler.get_display_name())
+		await _wait(0.6)
+		if taken > 0 and battler.is_fainted():
+			message.emit("¡%s se debilitó!" % battler.get_display_name())
+			await _wait(0.8)
+			return
+
+	if side.sticky_web and is_grounded:
+		message.emit("¡%s quedó atrapado en la Red Viscosa!" % battler.get_display_name())
+		await _apply_stat_change(battler, PokemonInstance.Stat.SPEED, -1, true)
+
+	if side.spikes_layers > 0 and is_grounded:
+		var fraction: float = [0.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0][side.spikes_layers]
+		var dmg2: int = maxi(1, int(float(battler.get_max_hp()) * fraction))
+		var taken2: int = battler.apply_damage(dmg2)
+		_emit_hp(battler.is_player_side)
+		message.emit("¡A %s le dañaron las Púas!" % battler.get_display_name())
+		await _wait(0.6)
+		if taken2 > 0 and battler.is_fainted():
+			message.emit("¡%s se debilitó!" % battler.get_display_name())
+			await _wait(0.8)
+			return
+
+	if side.toxic_spikes_layers > 0 and is_grounded:
+		var is_poison: bool = battler.pokemon.get_type_1() == PokemonData.Type.TYPE_POISON \
+			or battler.pokemon.get_type_2() == PokemonData.Type.TYPE_POISON
+		var is_steel: bool = battler.pokemon.get_type_1() == PokemonData.Type.TYPE_STEEL \
+			or battler.pokemon.get_type_2() == PokemonData.Type.TYPE_STEEL
+		if is_poison:
+			side.toxic_spikes_layers = 0
+			message.emit("¡%s absorbió las Púas Tóxicas!" % battler.get_display_name())
+			await _wait(0.6)
+		elif not is_steel:
+			var status: PokemonInstance.Status = PokemonInstance.Status.TOXIC if side.toxic_spikes_layers >= 2 else PokemonInstance.Status.POISON
+			await _apply_status(battler, status)
 
 func _wait(seconds: float) -> void:
 	var tree: SceneTree = Engine.get_main_loop() as SceneTree

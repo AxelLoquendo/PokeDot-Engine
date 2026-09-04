@@ -63,7 +63,7 @@ func _load_script_file() -> bool:
 		push_warning("ScriptCmdTextFile: Archivo vacío o sin comandos válidos: %s" % script_file_path)
 		return false
 	
-	print("ScriptCmdTextFile: Script cargado exitosamente: %s (%d comandos)" % [script_file_path, loaded_commands.size()])
+#	print("ScriptCmdTextFile: Script cargado exitosamente: %s (%d comandos)" % [script_file_path, loaded_commands.size()])
 	return true
 
 

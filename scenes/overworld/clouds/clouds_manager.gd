@@ -46,7 +46,7 @@ func _ready() -> void:
 	temporizador_nubes.autostart = true
 	add_child(temporizador_nubes)
 
-	print("Sistema de nubes INICIALIZADO (global)")
+#	print("Sistema de nubes INICIALIZADO (global)")
 
 
 func hay_superposicion(nueva_x: float, nueva_y: float) -> bool:

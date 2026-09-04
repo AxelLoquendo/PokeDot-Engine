@@ -467,6 +467,13 @@ func _on_battle_ended(player_won: bool) -> void:
 
 
 func _on_turn_ended() -> void:
+	if battle.player.charging_move != null or battle.player.must_recharge:
+		current_menu = MenuState.BUSY
+		action_menu.visible = false
+		fight_menu.visible = false
+		await battle.player_choose_move(0)
+		return
+
 	action_menu.visible = true
 	current_menu = MenuState.ACTIONS
 	selected_action = 0

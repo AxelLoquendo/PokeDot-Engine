@@ -112,7 +112,7 @@ func _ready() -> void:
 
 
 func _on_character_data_changed() -> void:
-	print("CAMBIO DETECTADO")
+#	print("CAMBIO DETECTADO")
 	_actualizar_sprite()
 
 

@@ -99,7 +99,7 @@ func comportamiento_rampa(personaje: CharacterController, tile_data: TileData, d
 		return false
 
 
-	print("Salto rampa hacia: ", direccion_rampa)
+#	print("Salto rampa hacia: ", direccion_rampa)
 
 
 	salto_rampa(personaje, direccion_rampa)
@@ -186,12 +186,8 @@ func _primer_pokemon_apto(party: Array[PokemonInstance]) -> PokemonInstance:
 	return null
 
 
-func _iniciar_encuentro_salvaje(
-	personaje: CharacterController,
-	lead: PokemonInstance,
-	salvaje: PokemonInstance
-) -> void:
-	print("¡Encuentro salvaje! ", salvaje.species_id, " Nv.", salvaje.level)
+func _iniciar_encuentro_salvaje(personaje: CharacterController, lead: PokemonInstance, salvaje: PokemonInstance) -> void:
+#<	print("¡Encuentro salvaje! ", salvaje.species_id, " Nv.", salvaje.level)
 	BattleSession.preparar_salvaje(personaje, lead, salvaje)
 	_correr_transicion_batalla(personaje)
 

@@ -26,7 +26,7 @@ func _ready() -> void:
 	canvas_modulate.z_index = 4096
 	raiz.call_deferred("add_child", canvas_modulate)
 	
-	print("Filtro creado en raíz")
+#	print("Filtro creado en raíz")
 	desactivar()
 
 
@@ -42,7 +42,7 @@ func _leer_configuracion_mapa() -> bool:
 	var gestor: Node = get_tree().root.get_node_or_null("Gestor_Inicio")
 
 	if gestor == null:
-		print("No se encontró Gestor_Inicio")
+#		print("No se encontró Gestor_Inicio")
 		return false
 
 	var manager: MapManager = null
@@ -53,13 +53,13 @@ func _leer_configuracion_mapa() -> bool:
 			break
 
 	if manager == null:
-		print("No se encontró MapManager")
+#		print("No se encontró MapManager")
 		return false
 
 	var mapa: MapAttributes = manager.current_map
 
 	if mapa == null:
-		print("MapManager no tiene mapa actual")
+#		print("MapManager no tiene mapa actual")
 		return false
 
 	#print("Mapa: ", mapa.map_name, " | Interior: ", mapa.is_indoor)
@@ -73,7 +73,7 @@ func _read_system_time() -> void:
 	var new_state: int = _get_state(current_hour)
 	if new_state != current_time_state:
 		current_time_state = new_state
-		print("Cambio horario → ", TimeOfDay.keys()[int(current_time_state)])
+#		print("Cambio horario → ", TimeOfDay.keys()[int(current_time_state)])
 
 
 func _get_state(h: int) -> int:
@@ -124,10 +124,10 @@ func _apply_state(_instant: bool = false) -> void:
 func activar() -> void:
 	_activo = true
 	_apply_state(true)
-	print("Sistema día/noche ACTIVADO")
+#	print("Sistema día/noche ACTIVADO")
 
 
 func desactivar() -> void:
 	_activo = false
 	canvas_modulate.color = COLOR_DAY
-	print("Sistema día/noche DESACTIVADO")
+#	print("Sistema día/noche DESACTIVADO")

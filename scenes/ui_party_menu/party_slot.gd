@@ -313,7 +313,7 @@ func _actualizar_genero() -> void:
 	label_genero.modulate = Color.WHITE
 	label_genero.self_modulate = Color.WHITE
 
-	print(pokemon.get_display_name(), " gender=", pokemon.gender, " color=", color)
+#	print(pokemon.get_display_name(), " gender=", pokemon.gender, " color=", color)
 
 func _actualizar_held() -> void:
 	if sprite_objeto == null:

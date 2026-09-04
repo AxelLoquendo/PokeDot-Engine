@@ -42,7 +42,7 @@ const MAX_OPCIONES: int = 4
 
 
 func _ready() -> void:
-	print("DialogueBox cargado")
+#	print("DialogueBox cargado")
 	visible = false
 	texto.text = ""
 	nombre.text = ""

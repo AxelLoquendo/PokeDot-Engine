@@ -57,12 +57,7 @@ static func roll_hit_count(move: MoveData) -> int:
 			return 5
 	return randi_range(move.min_hits, move.max_hits)
 
-static func compute_hit(
-	attacker: BattleBattler,
-	defender: BattleBattler,
-	move: MoveData,
-	weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
-) -> HitResult:
+static func compute_hit(attacker: BattleBattler, defender: BattleBattler, move: MoveData, weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE, screen_active: bool = false) -> HitResult:
 	var result: HitResult = HitResult.new()
 	if move == null or attacker == null or defender == null:
 		return result
@@ -164,6 +159,9 @@ static func compute_hit(
 	var random: float = randf_range(0.85, 1.0)
 	var damage: int = int(floor(base * stab * eff * crit_mult * random))
 
+	if screen_active and not result.critical:
+		damage = int(round(float(damage) * 0.5))
+
 	# ── Multiplicadores ofensivos extra (Tinted Lens, Rivalidad) ──
 	damage = int(round(float(damage) * AbilityRuntime.attacker_damage_multiplier(attacker, eff, result.critical)))
 	damage = int(round(float(damage) * AbilityRuntime.rivalry_multiplier(attacker, defender)))
@@ -186,7 +184,8 @@ static func calculate(
 	attacker: BattleBattler,
 	defender: BattleBattler,
 	move: MoveData,
-	weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+	weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE,
+	screen_active: bool = false
 ) -> HitResult:
 	var result: HitResult = HitResult.new()
 	if move == null or attacker == null or defender == null:
@@ -202,4 +201,4 @@ static func calculate(
 		result.hit = false
 		return result
 
-	return compute_hit(attacker, defender, move, weather)
+	return compute_hit(attacker, defender, move, weather, screen_active)

@@ -177,7 +177,7 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 	if nuevo == current_map:
 		return
 
-	print("Entrando a:", nuevo.map_name)
+#	print("Entrando a:", nuevo.map_name)
 
 
 	var jugador_global: Vector2 = jugador.global_position
@@ -198,10 +198,7 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 	jugador.position = jugador_local
 
 
-	print(
-		"Jugador local nuevo mapa:",
-		jugador_local
-	)
+#	print("Jugador local nuevo mapa:", jugador_local)
 
 
 	jugador.mapa_raiz = current_map
@@ -309,12 +306,7 @@ func colocar_vecino(
 	# Los vecinos nunca tienen contenido activo
 	desactivar_contenido_mapa(mapa)
 
-	print(
-		"Vecino colocado:",
-		mapa.map_name,
-		" pos:",
-		mapa.position
-	)
+#	print("Vecino colocado:", mapa.map_name, " pos:", mapa.position)
 
 func activar_contenido_mapa(mapa: MapAttributes) -> void:
 
