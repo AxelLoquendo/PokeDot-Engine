@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_n5go7"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bjdcx1a6nrk88" path="res://graphics/pokemon/front/REGICE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b3ploblnvjr22" path="res://graphics/pokemon/front_shiny/REGICE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b5dylkhpt846v" path="res://graphics/pokemon/back/REGICE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://kewb6wpdaekx" path="res://graphics/pokemon/back_shiny/REGICE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bk67v02xuvip4" path="res://graphics/pokemon/icons/REGICE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dxpo10spb3qyb" path="res://graphics/pokemon/follower/REGICE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bb8eiyo1dgesx" path="res://sfx/se/cries/REGICE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -100,6 +107,12 @@ description = "Dicen que ha yacido durmiendo en un glaciar durante milenios. Ni 
 height = 18
 weight = 1750
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([5, 8, 9, 25, 29, 34, 38, 58, 59, 63, 68, 69, 70, 85, 86, 87, 89, 92, 102, 104, 111, 120, 133, 153, 156, 157, 164, 173, 174, 182, 189, 196, 203, 205, 207, 214, 216, 218, 219, 223, 237, 240, 244, 246, 249, 258, 263, 264, 276, 280, 290, 317, 324, 333, 335, 351, 356, 363, 374, 397, 411, 416, 419, 430, 431, 442, 451, 484, 496, 523, 524, 590, 612, 657, 661, 704, 779, 789, 809])
 ability_1 = 29
@@ -108,4 +121,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 80
 hatch_species = 378
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 7
+cry = ExtResource("gfx106")

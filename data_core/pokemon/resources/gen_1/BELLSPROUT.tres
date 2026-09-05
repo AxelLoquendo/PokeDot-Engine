@@ -136,5 +136,7 @@ hidden_ability = 82
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 69
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
 cry = ExtResource("3_tpg7c")

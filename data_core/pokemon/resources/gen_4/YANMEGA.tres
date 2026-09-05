@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cvj2rga8d4vsg" path="res://graphics/pokemon/front/YANMEGA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cxx48x60undl" path="res://graphics/pokemon/front_shiny/YANMEGA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bx7fy5fubuv0x" path="res://graphics/pokemon/back/YANMEGA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dfdb3yed351w0" path="res://graphics/pokemon/back_shiny/YANMEGA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bbojldsji32wn" path="res://graphics/pokemon/icons/YANMEGA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b0yjk30ws8bdh" path="res://graphics/pokemon/follower/YANMEGA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bsuxvpy010wcc" path="res://sfx/se/cries/YANMEGA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -111,6 +118,12 @@ description = "Su técnica favorita consiste en volar a gran velocidad y despeda
 height = 19
 weight = 515
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([14, 29, 36, 38, 63, 76, 81, 92, 94, 104, 129, 138, 141, 148, 156, 164, 168, 173, 179, 182, 184, 189, 202, 203, 207, 211, 213, 214, 216, 218, 237, 241, 242, 244, 246, 247, 253, 263, 290, 314, 318, 324, 332, 355, 363, 366, 369, 403, 405, 416, 432, 445, 450, 466, 496, 522, 590, 636, 642, 734, 742, 779, 810, 845])
 egg_moves = Array[int]([18, 38, 364])
@@ -120,4 +133,7 @@ hidden_ability = 119
 egg_group_1 = 3
 egg_cycles = 20
 hatch_species = 469
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://btw6foo27n82b" path="res://graphics/pokemon/front/SWOOBAT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dsccc436dxfft" path="res://graphics/pokemon/front_shiny/SWOOBAT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ds7pnx4t8njwb" path="res://graphics/pokemon/back/SWOOBAT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b4ntdpagw8m6g" path="res://graphics/pokemon/back_shiny/SWOOBAT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bvye281yvhakt" path="res://graphics/pokemon/icons/SWOOBAT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c6whpeo8kpvra" path="res://graphics/pokemon/follower/SWOOBAT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://hfn2h6n1i6hf" path="res://sfx/se/cries/SWOOBAT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -97,6 +104,12 @@ description = "Cuando emite ondas ultrasónicas, que incluso pueden reventar el 
 height = 9
 weight = 105
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([19, 63, 86, 92, 94, 104, 113, 115, 129, 133, 138, 143, 148, 156, 162, 164, 168, 173, 182, 202, 203, 204, 207, 211, 213, 214, 216, 218, 219, 226, 237, 240, 244, 247, 248, 253, 257, 259, 263, 269, 270, 271, 277, 282, 283, 285, 286, 290, 313, 324, 332, 347, 351, 355, 360, 365, 366, 369, 372, 373, 403, 412, 416, 417, 427, 428, 432, 433, 451, 473, 477, 495, 496, 500, 502, 512, 590, 599, 636, 646, 660, 725, 742])
 ability_1 = 109
@@ -106,4 +119,7 @@ egg_group_1 = 4
 egg_group_2 = 5
 egg_cycles = 15
 hatch_species = 528
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

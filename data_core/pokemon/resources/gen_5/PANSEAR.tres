@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_op8br"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bai7i65fno3tr" path="res://graphics/pokemon/front/PANSEAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ct702befpotxp" path="res://graphics/pokemon/front_shiny/PANSEAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dlen01bt0keno" path="res://graphics/pokemon/back/PANSEAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c813or0wcvj10" path="res://graphics/pokemon/back_shiny/PANSEAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://duigyq44jo181" path="res://graphics/pokemon/icons/PANSEAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://6y6e7idx2qii" path="res://graphics/pokemon/follower/PANSEAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://skvasci1vjei" path="res://sfx/se/cries/PANSEAR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -116,6 +123,12 @@ category_name = "Ardiente"
 description = "Pokémon muy inteligente que tiene la costumbre de tostar las bayas antes de comérselas. Ayuda mucho a los humanos."
 height = 6
 weight = 110
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([7, 15, 53, 67, 76, 91, 92, 104, 126, 156, 164, 168, 173, 182, 207, 213, 214, 216, 218, 231, 237, 241, 249, 253, 257, 259, 261, 263, 264, 269, 270, 272, 278, 282, 283, 290, 315, 317, 343, 371, 374, 380, 421, 441, 447, 468, 488, 490, 496, 510, 512, 519, 526, 590])
 egg_moves = Array[int]([7, 67, 83, 214, 257, 272, 310, 321, 343, 394, 417, 562, 574])
@@ -125,4 +138,7 @@ hidden_ability = 66
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 513
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 5
+cry = ExtResource("gfx106")

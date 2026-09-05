@@ -7,6 +7,13 @@
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://dw8etgxvpjpdt" path="res://data_core/pokemon/conditions/condition_stat_relation.gd" id="ext_cond_stat"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://brly13y662kj7" path="res://graphics/pokemon/front/TYROGUE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bq1uo0mlpxpbj" path="res://graphics/pokemon/front_shiny/TYROGUE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://br7ap7m0ilv0b" path="res://graphics/pokemon/back/TYROGUE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://beu16acx5k1ma" path="res://graphics/pokemon/back_shiny/TYROGUE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://1pwtm5byj40" path="res://graphics/pokemon/icons/TYROGUE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ltbwyd17piwe" path="res://graphics/pokemon/follower/TYROGUE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ndg4xjdtsnld" path="res://sfx/se/cries/TYROGUE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -90,6 +97,12 @@ description = "Ataca siempre con mucha energía. Para fortalecerse a sí mismo, 
 height = 7
 weight = 210
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4")])
 teachable_moves = Array[int]([5, 25, 29, 34, 36, 38, 67, 68, 69, 70, 89, 92, 102, 104, 116, 129, 156, 157, 164, 168, 173, 174, 182, 189, 197, 203, 207, 213, 214, 216, 218, 237, 240, 241, 249, 253, 263, 270, 272, 280, 290, 339, 343, 363, 410, 445, 490, 496, 514, 523, 526, 590, 636, 779, 846])
 egg_moves = Array[int]([68, 136, 170, 183, 203, 228, 229, 270, 364, 410, 418, 502])
@@ -100,4 +113,7 @@ hidden_ability = 72
 egg_group_1 = 15
 egg_cycles = 25
 hatch_species = 236
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 6
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_xryte"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://daneuevyp1xxu" path="res://graphics/pokemon/front/BELLOSSOM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ccfc3wti3klqv" path="res://graphics/pokemon/front_shiny/BELLOSSOM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b2ccrj1pmwprp" path="res://graphics/pokemon/back/BELLOSSOM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bg17lh2yotlhd" path="res://graphics/pokemon/back_shiny/BELLOSSOM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dlj7d7jmqtk4q" path="res://graphics/pokemon/icons/BELLOSSOM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bv4pabf6dofv2" path="res://graphics/pokemon/follower/BELLOSSOM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://2xjfbyog73wr" path="res://sfx/se/cries/BELLOSSOM.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -112,6 +119,12 @@ description = "Los Bellossom suelen reunirse para bailar. Dicen que sus danzas s
 height = 4
 weight = 58
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([14, 15, 38, 63, 76, 92, 102, 104, 148, 156, 164, 173, 174, 182, 188, 202, 203, 204, 207, 213, 214, 216, 218, 219, 226, 227, 230, 235, 237, 241, 253, 263, 267, 270, 283, 290, 311, 331, 345, 348, 363, 374, 380, 388, 402, 409, 412, 416, 437, 445, 447, 474, 491, 495, 496, 572, 580, 583, 590, 605, 611, 632, 636, 639, 731, 741, 779, 811])
 egg_moves = Array[int]([73, 75, 175, 235, 275, 298, 321, 495, 631])
@@ -120,4 +133,7 @@ hidden_ability = 131
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 182
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

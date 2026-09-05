@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_2a06j"]
 [ext_resource type="Script" uid="uid://ubphmg8l4a62" path="res://data_core/pokemon/conditions/condition_friendship.gd" id="ext_cond_friend"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://m6qabs406237" path="res://graphics/pokemon/front/PICHU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c7l62v5p26143" path="res://graphics/pokemon/front_shiny/PICHU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://draprydofcu1e" path="res://graphics/pokemon/back/PICHU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dxhjq0lpo4fme" path="res://graphics/pokemon/back_shiny/PICHU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bxv8wu4j8gg4a" path="res://graphics/pokemon/icons/PICHU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cymywj2jpottg" path="res://graphics/pokemon/follower/PICHU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://d2l61ph3pam3h" path="res://sfx/se/cries/PICHU.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_friend")
@@ -76,6 +83,12 @@ description = "Cuando juegan, se tocan las colas y emiten chispas. Al parecer, e
 height = 3
 weight = 20
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7")])
 teachable_moves = Array[int]([5, 9, 25, 29, 34, 36, 38, 57, 68, 69, 85, 86, 87, 92, 102, 104, 111, 113, 115, 129, 148, 156, 164, 173, 174, 179, 182, 189, 192, 197, 203, 204, 205, 207, 213, 214, 216, 218, 227, 231, 237, 240, 253, 263, 268, 270, 290, 324, 343, 351, 363, 374, 393, 417, 445, 447, 451, 486, 496, 497, 521, 527, 528, 574, 583, 590, 604, 779, 811])
 egg_moves = Array[int]([3, 9, 117, 175, 179, 203, 217, 227, 252, 268, 273, 321, 381, 516, 574, 604])
@@ -85,4 +98,7 @@ hidden_ability = 31
 egg_group_1 = 15
 egg_cycles = 10
 hatch_species = 172
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

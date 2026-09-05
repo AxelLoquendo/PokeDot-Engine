@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d14nju41hjb4b" path="res://graphics/pokemon/front/EMOLGA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c4w1jiau0e61k" path="res://graphics/pokemon/front_shiny/EMOLGA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://jqawor5fusvu" path="res://graphics/pokemon/back/EMOLGA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://d05dwl736squ2" path="res://graphics/pokemon/back_shiny/EMOLGA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://deoc2eoxtfqwg" path="res://graphics/pokemon/icons/EMOLGA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bt8jhxgv1nuns" path="res://graphics/pokemon/follower/EMOLGA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dit5ikriqki5r" path="res://sfx/se/cries/EMOLGA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -105,6 +112,12 @@ description = "Vive en la copa de los árboles. Produce descargas mientras vuela
 height = 4
 weight = 50
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([15, 76, 85, 86, 87, 92, 97, 104, 113, 129, 148, 156, 164, 173, 182, 203, 204, 207, 213, 214, 216, 218, 226, 227, 231, 237, 240, 263, 269, 270, 282, 290, 324, 332, 343, 351, 355, 366, 369, 374, 387, 403, 412, 432, 451, 486, 496, 512, 521, 527, 528, 590, 598, 646, 732, 742])
 egg_moves = Array[int]([204, 226, 231, 310, 321, 343, 351, 355, 403, 432, 569, 646])
@@ -113,4 +126,7 @@ hidden_ability = 78
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 587
+front_sprite_offset = Vector2(0, 17)
+back_sprite_offset = Vector2(0, 16)
 gender_ratio = 3
+cry = ExtResource("gfx106")

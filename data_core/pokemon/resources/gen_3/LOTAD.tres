@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_6bew2"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://3l6hbbhiqr17" path="res://graphics/pokemon/front/LOTAD.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bn421qko6ujsn" path="res://graphics/pokemon/front_shiny/LOTAD.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cmpvai7oe27wx" path="res://graphics/pokemon/back/LOTAD.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://wlbgals6ssnj" path="res://graphics/pokemon/back_shiny/LOTAD.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c21fehyfftrx8" path="res://graphics/pokemon/icons/LOTAD.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ckocrjuavuhxb" path="res://graphics/pokemon/follower/LOTAD.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c8esw6x28v2qs" path="res://sfx/se/cries/LOTAD.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -118,6 +125,12 @@ description = "Parece una planta acuática. Hace de ferry para los Pokémon que 
 height = 5
 weight = 26
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 29, 34, 36, 38, 57, 58, 59, 76, 92, 102, 104, 148, 156, 164, 168, 173, 182, 196, 202, 203, 207, 213, 214, 216, 218, 235, 237, 240, 241, 250, 253, 258, 263, 267, 290, 311, 330, 331, 345, 352, 363, 402, 412, 428, 445, 447, 496, 497, 503, 574, 580, 590, 731, 779, 811, 812])
 egg_moves = Array[int]([55, 68, 73, 75, 175, 202, 230, 235, 298, 321])
@@ -129,4 +142,7 @@ egg_group_1 = 2
 egg_group_2 = 7
 egg_cycles = 15
 hatch_species = 270
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

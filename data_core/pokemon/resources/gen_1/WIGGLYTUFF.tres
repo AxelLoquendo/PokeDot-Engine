@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sxlpt"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dr74qh5h2mynq" path="res://graphics/pokemon/front/WIGGLYTUFF.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://gu3bqnyts82t" path="res://graphics/pokemon/front_shiny/WIGGLYTUFF.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ciyejfnolqgcl" path="res://graphics/pokemon/back/WIGGLYTUFF.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://oag2cb4nbod6" path="res://graphics/pokemon/back_shiny/WIGGLYTUFF.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://pcdrnx6a1sir" path="res://graphics/pokemon/icons/WIGGLYTUFF.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://biq0u1kbqbpr8" path="res://graphics/pokemon/follower/WIGGLYTUFF.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c4y2hoys07pdh" path="res://sfx/se/cries/WIGGLYTUFF.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -117,6 +124,12 @@ description = "Su piel es tan suave que si dos de ellos se acurrucan juntos, no 
 height = 10
 weight = 120
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 53, 55, 58, 59, 61, 63, 66, 68, 69, 70, 76, 85, 86, 87, 91, 92, 94, 99, 100, 102, 103, 104, 111, 113, 115, 117, 118, 120, 126, 129, 130, 133, 138, 148, 149, 156, 161, 164, 168, 171, 173, 174, 182, 189, 192, 196, 197, 201, 203, 204, 205, 207, 213, 214, 215, 216, 218, 219, 220, 223, 226, 227, 237, 240, 241, 244, 247, 253, 263, 264, 269, 270, 272, 277, 278, 280, 282, 283, 285, 289, 290, 304, 313, 340, 343, 345, 347, 351, 352, 356, 360, 363, 374, 387, 399, 409, 411, 412, 416, 417, 428, 445, 446, 447, 451, 473, 477, 478, 496, 497, 500, 502, 510, 514, 526, 528, 574, 577, 581, 583, 590, 605, 612, 636, 704, 725, 726, 730, 779, 789, 811, 812, 842, 845])
 ability_1 = 56
@@ -125,4 +138,6 @@ hidden_ability = 119
 egg_group_1 = 6
 egg_cycles = 10
 hatch_species = 40
+front_sprite_offset = Vector2(0, 4)
 gender_ratio = 2
+cry = ExtResource("gfx106")

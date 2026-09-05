@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_s50yn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c01am70avjd38" path="res://graphics/pokemon/front/GARDEVOIR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c4ecqdol2r7vu" path="res://graphics/pokemon/front_shiny/GARDEVOIR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://sog2amushdx2" path="res://graphics/pokemon/back/GARDEVOIR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://xjpfk3rtgv2e" path="res://graphics/pokemon/back_shiny/GARDEVOIR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cp8ckvfd4ujtv" path="res://graphics/pokemon/icons/GARDEVOIR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cr4rg1sqd10l3" path="res://graphics/pokemon/follower/GARDEVOIR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dx1au6b1tk4xu" path="res://sfx/se/cries/GARDEVOIR.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cvyaedtvxd54x" path="res://graphics/pokemon/front/MEGA_GARDEVOIR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://ckbaw2lo5py7" path="res://graphics/pokemon/front_shiny/MEGA_GARDEVOIR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://hu2j4w186x7a" path="res://graphics/pokemon/back/MEGA_GARDEVOIR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cgjac8co8dgq7" path="res://graphics/pokemon/back_shiny/MEGA_GARDEVOIR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://oohfqc1c1p0d" path="res://graphics/pokemon/icons/GARDEVOIR_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://b2w7oilnxdscj" path="res://sfx/se/cries/GARDEVOIR_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_s50yn")
@@ -11,6 +24,15 @@ species_id = 930
 form_id = &"gardevoir_mega"
 display_name = "Gardevoir Mega"
 base_species_id = 282
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -151,6 +173,12 @@ description = "Para proteger a su Entrenador, emplea todo su poder psíquico en 
 height = 16
 weight = 484
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_s50yn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 38, 60, 63, 85, 86, 92, 94, 101, 102, 104, 109, 111, 113, 115, 118, 129, 138, 148, 156, 164, 168, 171, 173, 182, 189, 196, 203, 204, 207, 213, 214, 215, 216, 218, 219, 220, 227, 237, 240, 241, 244, 247, 248, 259, 261, 263, 269, 270, 271, 277, 278, 282, 285, 286, 289, 290, 304, 324, 345, 347, 351, 356, 363, 374, 384, 385, 396, 410, 411, 412, 416, 428, 433, 445, 447, 451, 472, 473, 477, 478, 496, 497, 500, 502, 574, 577, 581, 590, 595, 605, 636, 641, 725, 730, 741, 779, 842, 845])
@@ -161,4 +189,6 @@ egg_group_1 = 8
 egg_group_2 = 11
 egg_cycles = 20
 hatch_species = 282
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

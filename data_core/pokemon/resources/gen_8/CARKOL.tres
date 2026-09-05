@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_e7y0q"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://nwknciqwp54" path="res://graphics/pokemon/front/CARKOL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bbtglrqso5lag" path="res://graphics/pokemon/front_shiny/CARKOL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ccycg5bl1xe2s" path="res://graphics/pokemon/back/CARKOL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dbnyqypagnhc6" path="res://graphics/pokemon/back_shiny/CARKOL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://gwx2wt0dife" path="res://graphics/pokemon/icons/CARKOL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dwsc88vgevpki" path="res://graphics/pokemon/follower/CARKOL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bjaf6yufkp1wq" path="res://sfx/se/cries/CARKOL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -100,6 +107,12 @@ description = "Forma carbón en el interior de su cuerpo. Los antiguos habitante
 height = 11
 weight = 780
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([34, 36, 53, 83, 91, 115, 120, 126, 156, 157, 164, 173, 174, 182, 189, 191, 201, 203, 213, 214, 241, 257, 261, 263, 315, 317, 328, 334, 350, 360, 394, 408, 442, 444, 446, 479, 484, 488, 496, 503, 523, 535, 630, 704, 728, 743, 779, 843])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -109,4 +122,7 @@ hidden_ability = 18
 egg_group_1 = 10
 egg_cycles = 15
 hatch_species = 838
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

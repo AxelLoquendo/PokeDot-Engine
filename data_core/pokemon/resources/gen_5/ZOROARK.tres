@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ba6u6h4nb080y" path="res://graphics/pokemon/front/ZOROARK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bmgsi74ir7e8l" path="res://graphics/pokemon/front_shiny/ZOROARK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://sqcinxp0fpy" path="res://graphics/pokemon/back/ZOROARK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c14bmm0bq6qll" path="res://graphics/pokemon/back_shiny/ZOROARK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://k2jp51qtbmso" path="res://graphics/pokemon/icons/ZOROARK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bnhbyfioldmwf" path="res://graphics/pokemon/follower/ZOROARK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://4hu5tkqnyb56" path="res://sfx/se/cries/ZOROARK.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dj43hd1gc0gu8" path="res://graphics/pokemon/front/ZOROARK_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dpcrdeyosdp5m" path="res://graphics/pokemon/front_shiny/ZOROARK_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://oss4capuf1mx" path="res://graphics/pokemon/back/ZOROARK_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://0alj8jwuw87" path="res://graphics/pokemon/back_shiny/ZOROARK_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://b00jtpijyaqhw" path="res://graphics/pokemon/icons/ZOROARK_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bfqqsmnwob5yk" path="res://graphics/pokemon/follower/ZOROARK_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_hr1hi")
@@ -11,6 +24,15 @@ species_id = 1003
 form_id = &"zoroark_hisui"
 display_name = "Zoroark Hisui"
 base_species_id = 571
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 1)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -129,6 +151,12 @@ description = "Tiene la facultad de confundir a muchos humanos a la vez. Protege
 height = 16
 weight = 811
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_hr1hi")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([5, 14, 15, 25, 34, 36, 46, 53, 63, 67, 91, 92, 94, 97, 101, 104, 109, 129, 156, 164, 168, 173, 180, 182, 184, 188, 203, 207, 213, 214, 216, 218, 220, 227, 237, 240, 241, 242, 244, 247, 249, 253, 259, 263, 269, 270, 271, 279, 280, 282, 286, 289, 290, 304, 313, 332, 340, 343, 347, 369, 371, 372, 373, 374, 399, 411, 416, 417, 421, 447, 468, 490, 492, 496, 506, 510, 514, 555, 590, 636, 638, 734, 735, 736, 779])
@@ -136,4 +164,7 @@ ability_1 = 149
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 571
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 5
+cry = ExtResource("gfx106")

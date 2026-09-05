@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cnssy6fsdhp8k" path="res://graphics/pokemon/front/GRAFAIAI.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://nj0mvkyfa3fr" path="res://graphics/pokemon/front_shiny/GRAFAIAI.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dfe715xf38woq" path="res://graphics/pokemon/back/GRAFAIAI.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://buvblei4c8h7t" path="res://graphics/pokemon/back_shiny/GRAFAIAI.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dnt1xggtbh2rq" path="res://graphics/pokemon/icons/GRAFAIAI.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bysjbjuk45l1t" path="res://graphics/pokemon/follower/GRAFAIAI.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://0wixcnogmy3o" path="res://sfx/se/cries/GRAFAIAI.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -100,6 +107,12 @@ description = "The color of the poisonous saliva depends on what the Pokémon ea
 height = 7
 weight = 272
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 36, 38, 67, 91, 92, 118, 156, 162, 164, 168, 182, 184, 188, 189, 203, 214, 226, 227, 240, 241, 244, 263, 269, 270, 282, 283, 341, 342, 369, 374, 398, 404, 416, 417, 421, 441, 474, 482, 490, 491, 492, 512, 638, 734, 779, 810, 811])
 ability_1 = 84
@@ -108,4 +121,7 @@ hidden_ability = 158
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 1333
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

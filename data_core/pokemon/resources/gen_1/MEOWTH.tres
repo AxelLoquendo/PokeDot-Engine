@@ -7,6 +7,29 @@
 [ext_resource type="Script" uid="uid://ubphmg8l4a62" path="res://data_core/pokemon/conditions/condition_friendship.gd" id="ext_cond_friend"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ddh12fk0k7ndj" path="res://graphics/pokemon/front/MEOWTH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://6vlfntuppmmn" path="res://graphics/pokemon/front_shiny/MEOWTH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dehrlt6ykp3le" path="res://graphics/pokemon/back/MEOWTH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bl28tdjo66d2v" path="res://graphics/pokemon/back_shiny/MEOWTH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://0ckfjfgnjom6" path="res://graphics/pokemon/icons/MEOWTH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://hkcq8few3n2r" path="res://graphics/pokemon/follower/MEOWTH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://df6o26x02due7" path="res://sfx/se/cries/MEOWTH.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://b6ll8hl3fr37k" path="res://graphics/pokemon/front/MEOWTH_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://fixgu0qtwwg5" path="res://graphics/pokemon/front_shiny/MEOWTH_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b1qto8qn5ofhr" path="res://graphics/pokemon/back/MEOWTH_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cspb7ke3fdryu" path="res://graphics/pokemon/back_shiny/MEOWTH_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://d0g1rerjoqaw8" path="res://graphics/pokemon/icons/MEOWTH_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dnprtagj08x6k" path="res://graphics/pokemon/follower/MEOWTH_1.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://nyxta1i1gfls" path="res://graphics/pokemon/front/MEOWTH_GALAR.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://cuu2nfvkaaojv" path="res://graphics/pokemon/front_shiny/MEOWTH_GALAR.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://5xo4876vpuo3" path="res://graphics/pokemon/back/MEOWTH_GALAR.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://b6bog28xusy06" path="res://graphics/pokemon/back_shiny/MEOWTH_GALAR.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://c6af3mw26mkb5" path="res://graphics/pokemon/front/MEOWTH_GMAX.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://c8fxbq6wd7lvn" path="res://graphics/pokemon/front_shiny/MEOWTH_GMAX.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://cva3b3hcitbng" path="res://graphics/pokemon/back/MEOWTH_GMAX.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://bvil43j62ty18" path="res://graphics/pokemon/back_shiny/MEOWTH_GMAX.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://blrfpmooygv57" path="res://graphics/pokemon/icons/MEOWTH_gmax.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://l77edo5l0efk" path="res://graphics/pokemon/follower/MEOWTH_2.png" id="gfx122"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_friend")
@@ -43,6 +66,16 @@ species_id = 965
 form_id = &"meowth_alola"
 display_name = "Meowth Alola"
 base_species_id = 52
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 7)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -51,6 +84,16 @@ species_id = 974
 form_id = &"meowth_galar"
 display_name = "Meowth Galar"
 base_species_id = 52
+front_sprite = ExtResource("gfx113")
+front_sprite_shiny = ExtResource("gfx114")
+back_sprite = ExtResource("gfx115")
+back_sprite_shiny = ExtResource("gfx116")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -59,6 +102,16 @@ species_id = 1494
 form_id = &"meowth_gmax"
 display_name = "Meowth Gmax"
 base_species_id = 52
+front_sprite = ExtResource("gfx117")
+front_sprite_shiny = ExtResource("gfx118")
+back_sprite = ExtResource("gfx119")
+back_sprite_shiny = ExtResource("gfx120")
+icon_sprite = ExtResource("gfx121")
+overworld_scene = ExtResource("gfx122")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 5)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -165,6 +218,12 @@ description = "Es de naturaleza nocturna. Le atraen los objetos brillantes."
 height = 4
 weight = 42
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_2hckk")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([6, 15, 29, 34, 36, 38, 55, 61, 85, 86, 87, 91, 92, 97, 99, 102, 103, 104, 111, 117, 129, 130, 133, 138, 148, 156, 164, 168, 171, 173, 174, 180, 182, 189, 192, 196, 197, 203, 204, 206, 207, 213, 214, 216, 218, 220, 231, 232, 237, 240, 241, 244, 247, 253, 259, 263, 269, 270, 282, 283, 289, 290, 304, 313, 332, 343, 351, 352, 363, 369, 371, 372, 387, 399, 402, 408, 417, 421, 441, 445, 468, 492, 496, 497, 514, 526, 555, 583, 590, 638, 736, 779, 811, 812])
@@ -176,4 +235,7 @@ hidden_ability = 127
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 52
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

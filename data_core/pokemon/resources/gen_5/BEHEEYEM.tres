@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_r4a7d"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c1bxuiep3ql86" path="res://graphics/pokemon/front/BEHEEYEM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://83r50g8jxx8y" path="res://graphics/pokemon/front_shiny/BEHEEYEM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dq5ppcx2ila15" path="res://graphics/pokemon/back/BEHEEYEM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ilbn3y1k8o1n" path="res://graphics/pokemon/back_shiny/BEHEEYEM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://pkuhwijxwqth" path="res://graphics/pokemon/icons/BEHEEYEM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dbvm15ytxns71" path="res://graphics/pokemon/follower/BEHEEYEM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://l1xfucrgun3i" path="res://sfx/se/cries/BEHEEYEM.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -121,6 +128,12 @@ description = "Parece que se comunica haciendo brillar sus dedos tricolores, per
 height = 10
 weight = 345
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([63, 85, 86, 92, 94, 97, 103, 104, 113, 115, 138, 148, 156, 157, 161, 164, 168, 173, 182, 203, 207, 211, 213, 214, 216, 218, 219, 220, 237, 240, 244, 247, 248, 253, 263, 271, 272, 277, 278, 285, 286, 289, 290, 317, 322, 324, 347, 351, 356, 373, 384, 385, 399, 412, 416, 417, 428, 430, 433, 451, 472, 473, 477, 495, 496, 497, 500, 502, 590, 641, 725, 728])
 ability_1 = 140
@@ -129,4 +142,6 @@ hidden_ability = 148
 egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 606
+front_sprite_offset = Vector2(0, 4)
 gender_ratio = 3
+cry = ExtResource("gfx106")

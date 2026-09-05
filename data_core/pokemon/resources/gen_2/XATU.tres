@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d2dls266elvyj" path="res://graphics/pokemon/front/XATU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bs6h6ckx5xyo0" path="res://graphics/pokemon/front_shiny/XATU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cby0urat7whi7" path="res://graphics/pokemon/back/XATU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cpe4lxo4u0ox5" path="res://graphics/pokemon/back_shiny/XATU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://buxpohc5yjtwi" path="res://graphics/pokemon/icons/XATU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b4wxh3sd07hik" path="res://graphics/pokemon/follower/XATU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bo56yuywi15fg" path="res://sfx/se/cries/XATU.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -112,6 +119,12 @@ description = "Cuando se pone a meditar al amanecer, pierde la noción del tiemp
 height = 15
 weight = 150
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([19, 38, 63, 76, 86, 92, 94, 102, 104, 113, 115, 129, 138, 143, 148, 156, 164, 168, 171, 173, 174, 182, 197, 202, 203, 207, 211, 213, 214, 216, 218, 220, 226, 237, 239, 240, 241, 244, 247, 248, 257, 263, 271, 277, 285, 286, 290, 314, 318, 322, 324, 332, 347, 355, 363, 365, 366, 369, 384, 385, 389, 403, 416, 428, 432, 433, 445, 447, 466, 473, 477, 478, 492, 496, 500, 502, 590, 605, 636, 725, 742])
 ability_1 = 28
@@ -120,4 +133,7 @@ hidden_ability = 156
 egg_group_1 = 4
 egg_cycles = 20
 hatch_species = 178
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

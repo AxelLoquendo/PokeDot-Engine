@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d028358mwovl3" path="res://graphics/pokemon/front/FLUTTER_MANE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cju22jpoaa0nu" path="res://graphics/pokemon/front_shiny/FLUTTER_MANE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://8sj40kpaikae" path="res://graphics/pokemon/back/FLUTTER_MANE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cy4m2e2d3ji5f" path="res://graphics/pokemon/back_shiny/FLUTTER_MANE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://qgmbsxe4j5lv" path="res://graphics/pokemon/icons/FLUTTERMANE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cydyffd83oe4e" path="res://graphics/pokemon/follower/FLUTTERMANE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://uiabfg17j8x2" path="res://sfx/se/cries/FLUTTERMANE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -106,6 +113,12 @@ description = "This Pokémon has characteristics similar to those of Flutter Man
 height = 14
 weight = 40
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([60, 63, 85, 86, 87, 101, 109, 129, 156, 164, 180, 182, 196, 203, 204, 214, 220, 241, 247, 269, 270, 286, 304, 313, 345, 347, 399, 408, 412, 416, 433, 451, 473, 500, 506, 566, 574, 577, 581, 605, 737, 779])
 egg_moves = Array[int]([241])
@@ -113,4 +126,7 @@ ability_1 = 281
 egg_group_1 = 15
 egg_cycles = 50
 hatch_species = 1379
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 1)
 gender_ratio = 7
+cry = ExtResource("gfx106")

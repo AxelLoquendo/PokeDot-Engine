@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_s6fpw"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d16g5lpgxapdw" path="res://graphics/pokemon/front/HOUNDOOM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://0aa40y3gcne8" path="res://graphics/pokemon/front_shiny/HOUNDOOM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://vintmodt0r3m" path="res://graphics/pokemon/back/HOUNDOOM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cr532cy2haett" path="res://graphics/pokemon/back_shiny/HOUNDOOM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cp25svr74d4sq" path="res://graphics/pokemon/icons/HOUNDOOM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ct458ugw5oh40" path="res://graphics/pokemon/follower/HOUNDOOM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cktrxfwgsburg" path="res://sfx/se/cries/HOUNDOOM.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://debctxdgpxhe6" path="res://graphics/pokemon/front/MEGA_HOUNDOOM.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bw22biumqo7xa" path="res://graphics/pokemon/front_shiny/MEGA_HOUNDOOM.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://ckvkxscuog5am" path="res://graphics/pokemon/back/MEGA_HOUNDOOM.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dmc6y8w13qj5g" path="res://graphics/pokemon/back_shiny/MEGA_HOUNDOOM.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://u7qg5d238mnu" path="res://graphics/pokemon/icons/HOUNDOOM_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://efvyswwhauqj" path="res://sfx/se/cries/HOUNDOOM_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_s6fpw")
@@ -11,6 +24,14 @@ species_id = 925
 form_id = &"houndoom_mega"
 display_name = "Houndoom Mega"
 base_species_id = 229
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -130,6 +151,12 @@ description = "Hace mucho, la gente creía que sus horripilantes aullidos eran d
 height = 14
 weight = 350
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_s6fpw")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 53, 63, 68, 70, 76, 83, 92, 102, 104, 126, 129, 138, 156, 162, 164, 168, 171, 173, 174, 179, 180, 182, 184, 188, 189, 197, 203, 207, 213, 214, 216, 218, 220, 231, 237, 240, 241, 242, 247, 249, 253, 257, 259, 261, 263, 269, 270, 272, 283, 289, 290, 304, 315, 341, 363, 371, 373, 389, 394, 399, 416, 417, 422, 424, 445, 488, 492, 496, 510, 514, 555, 590, 636, 638, 660, 735, 736, 779, 811, 843])
@@ -139,4 +166,6 @@ hidden_ability = 127
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 229
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

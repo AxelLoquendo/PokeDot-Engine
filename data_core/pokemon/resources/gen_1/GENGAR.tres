@@ -4,6 +4,25 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d2bvycd77g74c" path="res://graphics/pokemon/front/GENGAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://0mfcet4i0nn1" path="res://graphics/pokemon/front_shiny/GENGAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://fajmdq6ra33r" path="res://graphics/pokemon/back/GENGAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b70l4m8fgccy" path="res://graphics/pokemon/back_shiny/GENGAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bn2smqta64dke" path="res://graphics/pokemon/icons/GENGAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://boef062sb4vgj" path="res://graphics/pokemon/follower/GENGAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cfftrpnl1jo36" path="res://sfx/se/cries/GENGAR.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://7g012m4taa68" path="res://graphics/pokemon/front/MEGA_GENGAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://b02yltl2scary" path="res://graphics/pokemon/front_shiny/MEGA_GENGAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dhoa32ygh4hmi" path="res://graphics/pokemon/back/MEGA_GENGAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bnu48lj7e0a67" path="res://graphics/pokemon/back_shiny/MEGA_GENGAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://b5lqmf7wbr7dx" path="res://graphics/pokemon/icons/GENGAR_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://cbdxnvc2ofjro" path="res://sfx/se/cries/GENGAR_1.ogg" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://bqhqfks2mvva2" path="res://graphics/pokemon/front/GENGAR_GMAX.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://cml35r8ds6q06" path="res://graphics/pokemon/front_shiny/GENGAR_GMAX.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://ce73nocnhh04y" path="res://graphics/pokemon/back/GENGAR_GMAX.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://67kdlj6uteal" path="res://graphics/pokemon/back_shiny/GENGAR_GMAX.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://cfoofd77ckejl" path="res://graphics/pokemon/icons/GENGAR_gmax.png" id="gfx117"]
+[ext_resource type="AudioStream" uid="uid://bfsdrd42g3qas" path="res://sfx/se/cries/GENGAR_2.ogg" id="gfx118"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_eqpp3")
@@ -11,6 +30,15 @@ species_id = 914
 form_id = &"gengar_mega"
 display_name = "Gengar Mega"
 base_species_id = 94
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+front_sprite_offset = Vector2(0, 7)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +47,16 @@ species_id = 1496
 form_id = &"gengar_gmax"
 display_name = "Gengar Gmax"
 base_species_id = 94
+front_sprite = ExtResource("gfx113")
+front_sprite_shiny = ExtResource("gfx114")
+back_sprite = ExtResource("gfx115")
+back_sprite_shiny = ExtResource("gfx116")
+icon_sprite = ExtResource("gfx117")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx118")
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -127,6 +165,12 @@ description = "Se esconde entre las sombras. Se dice que donde Gengar acecha, la
 height = 15
 weight = 405
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_eqpp3")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 63, 66, 68, 69, 70, 72, 85, 86, 87, 92, 94, 99, 101, 102, 104, 109, 114, 117, 118, 120, 130, 138, 149, 153, 156, 164, 168, 171, 173, 174, 180, 182, 184, 188, 192, 196, 202, 203, 207, 213, 214, 216, 218, 220, 223, 227, 237, 240, 241, 244, 247, 249, 253, 259, 261, 263, 264, 269, 271, 272, 280, 282, 285, 286, 289, 290, 363, 371, 373, 374, 389, 390, 398, 399, 409, 411, 412, 416, 417, 421, 433, 441, 445, 466, 472, 474, 477, 482, 491, 492, 496, 502, 506, 566, 590, 605, 611, 612, 636, 734, 737, 738, 779, 845])
@@ -134,4 +178,7 @@ ability_1 = 130
 egg_group_1 = 11
 egg_cycles = 20
 hatch_species = 94
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

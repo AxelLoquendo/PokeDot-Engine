@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_7v63e"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://gvcg32oudxvl" path="res://graphics/pokemon/front/TOEDSCOOL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bg3mhuo6sd4kq" path="res://graphics/pokemon/front_shiny/TOEDSCOOL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bdn7j1b8w2co4" path="res://graphics/pokemon/back/TOEDSCOOL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bkt7rqcm2dfso" path="res://graphics/pokemon/back_shiny/TOEDSCOOL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cwmu1bavsdbkv" path="res://graphics/pokemon/icons/TOEDSCOOL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cs70fi0ggpil8" path="res://graphics/pokemon/follower/TOEDSCOOL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cdv71oa6py0oe" path="res://sfx/se/cries/TOEDSCOOL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -123,6 +130,12 @@ description = "Toedscool lives in muggy forests. The flaps that fall from its bo
 height = 9
 weight = 330
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([76, 92, 109, 113, 115, 129, 156, 164, 182, 184, 188, 189, 191, 202, 203, 214, 220, 240, 269, 282, 331, 341, 345, 390, 402, 412, 414, 430, 433, 437, 447, 474, 491, 492, 506, 580, 605, 642, 731, 779, 811])
 egg_moves = Array[int]([73, 92, 229, 243, 282, 321, 367, 476])
@@ -131,4 +144,7 @@ ability_1 = 298
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 1336
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

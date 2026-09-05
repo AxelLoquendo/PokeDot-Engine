@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_gg7d7"]
 [ext_resource type="Script" uid="uid://ubphmg8l4a62" path="res://data_core/pokemon/conditions/condition_friendship.gd" id="ext_cond_friend"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://csklu18vln8ni" path="res://graphics/pokemon/front/BUDEW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dxtclhr0alroh" path="res://graphics/pokemon/front_shiny/BUDEW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://3d5q62eeoq0k" path="res://graphics/pokemon/back/BUDEW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cefkh3tiejym3" path="res://graphics/pokemon/back_shiny/BUDEW.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c8yawxg3tv4n0" path="res://graphics/pokemon/icons/BUDEW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d5rwkufb5oat" path="res://graphics/pokemon/follower/BUDEW.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dfe8altuxct50" path="res://sfx/se/cries/BUDEW.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_friend")
@@ -66,6 +73,12 @@ description = "Vive cerca de aguas cristalinas. Su cabello se abre y esparce pol
 height = 2
 weight = 12
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5")])
 teachable_moves = Array[int]([14, 15, 42, 76, 92, 104, 129, 148, 156, 164, 173, 182, 188, 189, 191, 202, 203, 207, 213, 214, 216, 218, 235, 237, 240, 241, 244, 247, 253, 263, 267, 290, 311, 331, 343, 363, 388, 402, 412, 437, 445, 447, 474, 496, 590, 605, 731])
 egg_moves = Array[int]([42, 75, 79, 170, 178, 191, 202, 235, 320, 326, 363, 402, 437, 719])
@@ -76,4 +89,7 @@ hidden_ability = 102
 egg_group_1 = 15
 egg_cycles = 20
 hatch_species = 406
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

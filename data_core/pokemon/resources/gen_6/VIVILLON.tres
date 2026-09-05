@@ -4,6 +4,85 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_qjdsg"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cvgyuc2cwrlk5" path="res://graphics/pokemon/front/VIVILLON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cfa6h0g4ms5v6" path="res://graphics/pokemon/front_shiny/VIVILLON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://8jqoy0mu3jnw" path="res://graphics/pokemon/back/VIVILLON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bynwenx5i88nx" path="res://graphics/pokemon/back_shiny/VIVILLON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ca0daiglcrsdl" path="res://graphics/pokemon/icons/VIVILLON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b6o5fknfv3gkw" path="res://graphics/pokemon/follower/VIVILLON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://tuhv6d7nmgkm" path="res://sfx/se/cries/VIVILLON.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dgao31mhscpaj" path="res://graphics/pokemon/front/VIVILLON_POLAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c2aqg0hs7jgf6" path="res://graphics/pokemon/front_shiny/VIVILLON_POLAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c3x5su4j1vkt1" path="res://graphics/pokemon/back/VIVILLON_POLAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c7ng54po57sn4" path="res://graphics/pokemon/back_shiny/VIVILLON_POLAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://brkxg7tcm7y7d" path="res://graphics/pokemon/front/VIVILLON_TUNDRA.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cmsgqyqn8mb2g" path="res://graphics/pokemon/front_shiny/VIVILLON_TUNDRA.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://dnnlc7jc72yd2" path="res://graphics/pokemon/back/VIVILLON_TUNDRA.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://b2v20vo3argej" path="res://graphics/pokemon/back_shiny/VIVILLON_TUNDRA.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://dua27ho3niax2" path="res://graphics/pokemon/front/VIVILLON_CONTINENTAL.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://brsd20p05jbsn" path="res://graphics/pokemon/front_shiny/VIVILLON_CONTINENTAL.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://c8p37l6jk1gq7" path="res://graphics/pokemon/back/VIVILLON_CONTINENTAL.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://cixf5beekvjqe" path="res://graphics/pokemon/back_shiny/VIVILLON_CONTINENTAL.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://c0xffy5leewx7" path="res://graphics/pokemon/front/VIVILLON_GARDEN.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://s4r3l1hd3mrq" path="res://graphics/pokemon/front_shiny/VIVILLON_GARDEN.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://ctocbhgbg5uho" path="res://graphics/pokemon/back/VIVILLON_GARDEN.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://6706hahmyhmc" path="res://graphics/pokemon/back_shiny/VIVILLON_GARDEN.png" id="gfx122"]
+[ext_resource type="Texture2D" uid="uid://nj6ehk56maca" path="res://graphics/pokemon/front/VIVILLON_ELEGANT.png" id="gfx123"]
+[ext_resource type="Texture2D" uid="uid://bu1dwbo1d6kh1" path="res://graphics/pokemon/front_shiny/VIVILLON_ELEGANT.png" id="gfx124"]
+[ext_resource type="Texture2D" uid="uid://b87j63ve5y6sp" path="res://graphics/pokemon/back/VIVILLON_ELEGANT.png" id="gfx125"]
+[ext_resource type="Texture2D" uid="uid://ci8a0u44mj3a1" path="res://graphics/pokemon/back_shiny/VIVILLON_ELEGANT.png" id="gfx126"]
+[ext_resource type="Texture2D" uid="uid://qhbbvfkkl2th" path="res://graphics/pokemon/front/VIVILLON_MEADOW.png" id="gfx127"]
+[ext_resource type="Texture2D" uid="uid://bih0ansv1oi7h" path="res://graphics/pokemon/front_shiny/VIVILLON_MEADOW.png" id="gfx128"]
+[ext_resource type="Texture2D" uid="uid://bg73buetcgw8f" path="res://graphics/pokemon/back/VIVILLON_MEADOW.png" id="gfx129"]
+[ext_resource type="Texture2D" uid="uid://bq2q65n05wdtn" path="res://graphics/pokemon/back_shiny/VIVILLON_MEADOW.png" id="gfx130"]
+[ext_resource type="Texture2D" uid="uid://b0el2ub261t5k" path="res://graphics/pokemon/front/VIVILLON_MODERN.png" id="gfx131"]
+[ext_resource type="Texture2D" uid="uid://by1mmxaqgv5hi" path="res://graphics/pokemon/front_shiny/VIVILLON_MODERN.png" id="gfx132"]
+[ext_resource type="Texture2D" uid="uid://cgb71hwbba5t" path="res://graphics/pokemon/back/VIVILLON_MODERN.png" id="gfx133"]
+[ext_resource type="Texture2D" uid="uid://cnoreuetfjvd3" path="res://graphics/pokemon/back_shiny/VIVILLON_MODERN.png" id="gfx134"]
+[ext_resource type="Texture2D" uid="uid://bgjr1vfq6oppw" path="res://graphics/pokemon/front/VIVILLON_MARINE.png" id="gfx135"]
+[ext_resource type="Texture2D" uid="uid://c07hmiaglsso2" path="res://graphics/pokemon/front_shiny/VIVILLON_MARINE.png" id="gfx136"]
+[ext_resource type="Texture2D" uid="uid://hguist6axm6g" path="res://graphics/pokemon/back/VIVILLON_MARINE.png" id="gfx137"]
+[ext_resource type="Texture2D" uid="uid://c8csnbjtg12n3" path="res://graphics/pokemon/back_shiny/VIVILLON_MARINE.png" id="gfx138"]
+[ext_resource type="Texture2D" uid="uid://b0me3k7i1gf2t" path="res://graphics/pokemon/front/VIVILLON_ARCHIPELAGO.png" id="gfx139"]
+[ext_resource type="Texture2D" uid="uid://b2m1g6v1h4s3h" path="res://graphics/pokemon/front_shiny/VIVILLON_ARCHIPELAGO.png" id="gfx140"]
+[ext_resource type="Texture2D" uid="uid://d0gh1f6xhcjeu" path="res://graphics/pokemon/back/VIVILLON_ARCHIPELAGO.png" id="gfx141"]
+[ext_resource type="Texture2D" uid="uid://d320iupykusph" path="res://graphics/pokemon/back_shiny/VIVILLON_ARCHIPELAGO.png" id="gfx142"]
+[ext_resource type="Texture2D" uid="uid://bys58era73tfs" path="res://graphics/pokemon/front/VIVILLON_HIGH_PLAINS.png" id="gfx143"]
+[ext_resource type="Texture2D" uid="uid://bj7to841an0xw" path="res://graphics/pokemon/front_shiny/VIVILLON_HIGH_PLAINS.png" id="gfx144"]
+[ext_resource type="Texture2D" uid="uid://bl8h6hhtgnxbk" path="res://graphics/pokemon/back/VIVILLON_HIGH_PLAINS.png" id="gfx145"]
+[ext_resource type="Texture2D" uid="uid://b0kfdsq38hirt" path="res://graphics/pokemon/back_shiny/VIVILLON_HIGH_PLAINS.png" id="gfx146"]
+[ext_resource type="Texture2D" uid="uid://bacnwlw24pu0s" path="res://graphics/pokemon/front/VIVILLON_SANDSTORM.png" id="gfx147"]
+[ext_resource type="Texture2D" uid="uid://kasystxp7oqg" path="res://graphics/pokemon/front_shiny/VIVILLON_SANDSTORM.png" id="gfx148"]
+[ext_resource type="Texture2D" uid="uid://bi6qgbfo1tgsk" path="res://graphics/pokemon/back/VIVILLON_SANDSTORM.png" id="gfx149"]
+[ext_resource type="Texture2D" uid="uid://cyol1548683y8" path="res://graphics/pokemon/back_shiny/VIVILLON_SANDSTORM.png" id="gfx150"]
+[ext_resource type="Texture2D" uid="uid://d6kckyqjw3w3" path="res://graphics/pokemon/front/VIVILLON_RIVER.png" id="gfx151"]
+[ext_resource type="Texture2D" uid="uid://d1hm1mvfg7dtt" path="res://graphics/pokemon/front_shiny/VIVILLON_RIVER.png" id="gfx152"]
+[ext_resource type="Texture2D" uid="uid://f22q07j65kxd" path="res://graphics/pokemon/back/VIVILLON_RIVER.png" id="gfx153"]
+[ext_resource type="Texture2D" uid="uid://nt2l1bghjhf5" path="res://graphics/pokemon/back_shiny/VIVILLON_RIVER.png" id="gfx154"]
+[ext_resource type="Texture2D" uid="uid://ch6j1k3ayypge" path="res://graphics/pokemon/front/VIVILLON_MONSOON.png" id="gfx155"]
+[ext_resource type="Texture2D" uid="uid://5h3txn3udjss" path="res://graphics/pokemon/front_shiny/VIVILLON_MONSOON.png" id="gfx156"]
+[ext_resource type="Texture2D" uid="uid://d32poywwuhaem" path="res://graphics/pokemon/back/VIVILLON_MONSOON.png" id="gfx157"]
+[ext_resource type="Texture2D" uid="uid://dhu18ny0hcxpe" path="res://graphics/pokemon/back_shiny/VIVILLON_MONSOON.png" id="gfx158"]
+[ext_resource type="Texture2D" uid="uid://dvemj2mqr5rb" path="res://graphics/pokemon/front/VIVILLON_SAVANNA.png" id="gfx159"]
+[ext_resource type="Texture2D" uid="uid://e8jv3gm2a4df" path="res://graphics/pokemon/front_shiny/VIVILLON_SAVANNA.png" id="gfx160"]
+[ext_resource type="Texture2D" uid="uid://byrl4wqdh70x5" path="res://graphics/pokemon/back/VIVILLON_SAVANNA.png" id="gfx161"]
+[ext_resource type="Texture2D" uid="uid://dky3ickt43r42" path="res://graphics/pokemon/back_shiny/VIVILLON_SAVANNA.png" id="gfx162"]
+[ext_resource type="Texture2D" uid="uid://bdulnexxgdwwo" path="res://graphics/pokemon/front/VIVILLON_SUN.png" id="gfx163"]
+[ext_resource type="Texture2D" uid="uid://dlawj0b771feo" path="res://graphics/pokemon/front_shiny/VIVILLON_SUN.png" id="gfx164"]
+[ext_resource type="Texture2D" uid="uid://dw7oapkq45scu" path="res://graphics/pokemon/back/VIVILLON_SUN.png" id="gfx165"]
+[ext_resource type="Texture2D" uid="uid://dcwecr057luog" path="res://graphics/pokemon/back_shiny/VIVILLON_SUN.png" id="gfx166"]
+[ext_resource type="Texture2D" uid="uid://2q3d1yc7qyfq" path="res://graphics/pokemon/front/VIVILLON_OCEAN.png" id="gfx167"]
+[ext_resource type="Texture2D" uid="uid://dbs3fjij5s2ph" path="res://graphics/pokemon/front_shiny/VIVILLON_OCEAN.png" id="gfx168"]
+[ext_resource type="Texture2D" uid="uid://b38t1ccryqp3w" path="res://graphics/pokemon/back/VIVILLON_OCEAN.png" id="gfx169"]
+[ext_resource type="Texture2D" uid="uid://dfifujcy18hrr" path="res://graphics/pokemon/back_shiny/VIVILLON_OCEAN.png" id="gfx170"]
+[ext_resource type="Texture2D" uid="uid://bsev42fsdrkvv" path="res://graphics/pokemon/front/VIVILLON_JUNGLE.png" id="gfx171"]
+[ext_resource type="Texture2D" uid="uid://byt121srj6eas" path="res://graphics/pokemon/front_shiny/VIVILLON_JUNGLE.png" id="gfx172"]
+[ext_resource type="Texture2D" uid="uid://ufye0wy243fn" path="res://graphics/pokemon/back/VIVILLON_JUNGLE.png" id="gfx173"]
+[ext_resource type="Texture2D" uid="uid://cul62ee3g04qj" path="res://graphics/pokemon/back_shiny/VIVILLON_JUNGLE.png" id="gfx174"]
+[ext_resource type="Texture2D" uid="uid://dideys7xaik42" path="res://graphics/pokemon/front/VIVILLON_FANCY.png" id="gfx175"]
+[ext_resource type="Texture2D" uid="uid://cel07cl6n6x1" path="res://graphics/pokemon/front_shiny/VIVILLON_FANCY.png" id="gfx176"]
+[ext_resource type="Texture2D" uid="uid://bcig4akvxblbe" path="res://graphics/pokemon/back/VIVILLON_FANCY.png" id="gfx177"]
+[ext_resource type="Texture2D" uid="uid://fqwbot7uunvc" path="res://graphics/pokemon/back_shiny/VIVILLON_FANCY.png" id="gfx178"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_qjdsg")
@@ -11,6 +90,12 @@ species_id = 1114
 form_id = &"vivillon_polar"
 display_name = "Vivillon Polar"
 base_species_id = 666
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +104,12 @@ species_id = 1115
 form_id = &"vivillon_tundra"
 display_name = "Vivillon Tundra"
 base_species_id = 666
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +118,12 @@ species_id = 1116
 form_id = &"vivillon_continental"
 display_name = "Vivillon Continental"
 base_species_id = 666
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +132,12 @@ species_id = 1117
 form_id = &"vivillon_garden"
 display_name = "Vivillon Garden"
 base_species_id = 666
+front_sprite = ExtResource("gfx119")
+front_sprite_shiny = ExtResource("gfx120")
+back_sprite = ExtResource("gfx121")
+back_sprite_shiny = ExtResource("gfx122")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +146,12 @@ species_id = 1118
 form_id = &"vivillon_elegant"
 display_name = "Vivillon Elegant"
 base_species_id = 666
+front_sprite = ExtResource("gfx123")
+front_sprite_shiny = ExtResource("gfx124")
+back_sprite = ExtResource("gfx125")
+back_sprite_shiny = ExtResource("gfx126")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +160,12 @@ species_id = 1119
 form_id = &"vivillon_meadow"
 display_name = "Vivillon Meadow"
 base_species_id = 666
+front_sprite = ExtResource("gfx127")
+front_sprite_shiny = ExtResource("gfx128")
+back_sprite = ExtResource("gfx129")
+back_sprite_shiny = ExtResource("gfx130")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -59,6 +174,12 @@ species_id = 1120
 form_id = &"vivillon_modern"
 display_name = "Vivillon Modern"
 base_species_id = 666
+front_sprite = ExtResource("gfx131")
+front_sprite_shiny = ExtResource("gfx132")
+back_sprite = ExtResource("gfx133")
+back_sprite_shiny = ExtResource("gfx134")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -67,6 +188,12 @@ species_id = 1121
 form_id = &"vivillon_marine"
 display_name = "Vivillon Marine"
 base_species_id = 666
+front_sprite = ExtResource("gfx135")
+front_sprite_shiny = ExtResource("gfx136")
+back_sprite = ExtResource("gfx137")
+back_sprite_shiny = ExtResource("gfx138")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -75,6 +202,12 @@ species_id = 1122
 form_id = &"vivillon_archipelago"
 display_name = "Vivillon Archipelago"
 base_species_id = 666
+front_sprite = ExtResource("gfx139")
+front_sprite_shiny = ExtResource("gfx140")
+back_sprite = ExtResource("gfx141")
+back_sprite_shiny = ExtResource("gfx142")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -83,6 +216,12 @@ species_id = 1123
 form_id = &"vivillon_high_plains"
 display_name = "Vivillon High Plains"
 base_species_id = 666
+front_sprite = ExtResource("gfx143")
+front_sprite_shiny = ExtResource("gfx144")
+back_sprite = ExtResource("gfx145")
+back_sprite_shiny = ExtResource("gfx146")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -91,6 +230,12 @@ species_id = 1124
 form_id = &"vivillon_sandstorm"
 display_name = "Vivillon Sandstorm"
 base_species_id = 666
+front_sprite = ExtResource("gfx147")
+front_sprite_shiny = ExtResource("gfx148")
+back_sprite = ExtResource("gfx149")
+back_sprite_shiny = ExtResource("gfx150")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -99,6 +244,12 @@ species_id = 1125
 form_id = &"vivillon_river"
 display_name = "Vivillon River"
 base_species_id = 666
+front_sprite = ExtResource("gfx151")
+front_sprite_shiny = ExtResource("gfx152")
+back_sprite = ExtResource("gfx153")
+back_sprite_shiny = ExtResource("gfx154")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -107,6 +258,12 @@ species_id = 1126
 form_id = &"vivillon_monsoon"
 display_name = "Vivillon Monsoon"
 base_species_id = 666
+front_sprite = ExtResource("gfx155")
+front_sprite_shiny = ExtResource("gfx156")
+back_sprite = ExtResource("gfx157")
+back_sprite_shiny = ExtResource("gfx158")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
@@ -115,6 +272,12 @@ species_id = 1127
 form_id = &"vivillon_savanna"
 display_name = "Vivillon Savanna"
 base_species_id = 666
+front_sprite = ExtResource("gfx159")
+front_sprite_shiny = ExtResource("gfx160")
+back_sprite = ExtResource("gfx161")
+back_sprite_shiny = ExtResource("gfx162")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
@@ -123,6 +286,12 @@ species_id = 1128
 form_id = &"vivillon_sun"
 display_name = "Vivillon Sun"
 base_species_id = 666
+front_sprite = ExtResource("gfx163")
+front_sprite_shiny = ExtResource("gfx164")
+back_sprite = ExtResource("gfx165")
+back_sprite_shiny = ExtResource("gfx166")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
@@ -131,6 +300,12 @@ species_id = 1129
 form_id = &"vivillon_ocean"
 display_name = "Vivillon Ocean"
 base_species_id = 666
+front_sprite = ExtResource("gfx167")
+front_sprite_shiny = ExtResource("gfx168")
+back_sprite = ExtResource("gfx169")
+back_sprite_shiny = ExtResource("gfx170")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
@@ -139,6 +314,12 @@ species_id = 1130
 form_id = &"vivillon_jungle"
 display_name = "Vivillon Jungle"
 base_species_id = 666
+front_sprite = ExtResource("gfx171")
+front_sprite_shiny = ExtResource("gfx172")
+back_sprite = ExtResource("gfx173")
+back_sprite_shiny = ExtResource("gfx174")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
@@ -147,6 +328,12 @@ species_id = 1131
 form_id = &"vivillon_fancy"
 display_name = "Vivillon Fancy"
 base_species_id = 666
+front_sprite = ExtResource("gfx175")
+front_sprite_shiny = ExtResource("gfx176")
+back_sprite = ExtResource("gfx177")
+back_sprite_shiny = ExtResource("gfx178")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
@@ -155,6 +342,8 @@ species_id = 1132
 form_id = &"vivillon_pokeball"
 display_name = "Vivillon Pokeball"
 base_species_id = 666
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -250,6 +439,12 @@ description = "En el mundo existen Vivillon con diferentes motivos en sus alas. 
 height = 12
 weight = 170
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_qjdsg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([60, 63, 76, 92, 94, 104, 109, 113, 129, 138, 148, 156, 164, 168, 173, 182, 202, 203, 207, 213, 214, 216, 218, 219, 237, 240, 241, 244, 263, 283, 290, 311, 314, 324, 332, 334, 347, 355, 366, 369, 403, 405, 412, 416, 432, 450, 496, 512, 522, 527, 542, 577, 590, 611, 636, 639, 734, 779, 810])
@@ -260,3 +455,4 @@ egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 666
 gender_ratio = 3
+cry = ExtResource("gfx106")

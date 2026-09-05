@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b7jtsur8bimfr" path="res://graphics/pokemon/front/CHIMECHO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://snpv66xn7f4q" path="res://graphics/pokemon/front_shiny/CHIMECHO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d4fm3bc1boils" path="res://graphics/pokemon/back/CHIMECHO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://fweqi03kdj2" path="res://graphics/pokemon/back_shiny/CHIMECHO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bcd1djx2upk2u" path="res://graphics/pokemon/icons/CHIMECHO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cr1gj7g2ravkv" path="res://graphics/pokemon/follower/CHIMECHO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dtp6u1dcstuam" path="res://sfx/se/cries/CHIMECHO.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://6djn40sqri84" path="res://graphics/pokemon/front/MEGA_CHIMECHO.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bi75g74054hc" path="res://graphics/pokemon/front_shiny/MEGA_CHIMECHO.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://y5kn0y7dvxvs" path="res://graphics/pokemon/back/MEGA_CHIMECHO.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cbmkctkifjim8" path="res://graphics/pokemon/back_shiny/MEGA_CHIMECHO.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://sv11bkw43q32" path="res://graphics/pokemon/icons/CHIMECHO_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_hsbj1")
@@ -11,6 +23,14 @@ species_id = 1555
 form_id = &"chimecho_mega"
 display_name = "Chimecho Mega"
 base_species_id = 358
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -115,6 +135,12 @@ description = "Se cuelga de ramas y aleros con la ventosa de su cabeza. Tiene si
 height = 6
 weight = 10
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_hsbj1")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([20, 36, 38, 60, 86, 92, 94, 102, 104, 111, 113, 115, 129, 138, 148, 156, 164, 171, 173, 174, 182, 196, 203, 204, 205, 207, 213, 214, 215, 216, 218, 219, 226, 227, 237, 240, 241, 244, 247, 248, 253, 259, 263, 269, 270, 271, 277, 278, 282, 285, 286, 289, 290, 304, 313, 324, 347, 351, 356, 363, 387, 412, 428, 432, 433, 445, 447, 451, 473, 477, 496, 497, 500, 502, 555, 574, 577, 590, 605, 636, 725, 779, 845])
@@ -123,4 +149,7 @@ ability_1 = 26
 egg_group_1 = 11
 egg_cycles = 25
 hatch_species = 358
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

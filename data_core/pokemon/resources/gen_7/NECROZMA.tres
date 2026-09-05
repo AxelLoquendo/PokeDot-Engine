@@ -4,6 +4,25 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://chggpm4whu3wc" path="res://graphics/pokemon/front/NECROZMA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://0n3y61bdk2ph" path="res://graphics/pokemon/front_shiny/NECROZMA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d1hn43nq36qmr" path="res://graphics/pokemon/back/NECROZMA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ds7te8ov5gdjb" path="res://graphics/pokemon/back_shiny/NECROZMA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b0ywg0lkktqeq" path="res://graphics/pokemon/icons/NECROZMA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bsfdq4sqgl1hd" path="res://graphics/pokemon/follower/NECROZMA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c3gwaspfsm3vl" path="res://sfx/se/cries/NECROZMA.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bdxs035gn5s01" path="res://graphics/pokemon/front/NECROZMA_DUSK_MANE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://efjftvcxd5ql" path="res://graphics/pokemon/front_shiny/NECROZMA_DUSK_MANE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dv21aus4yvph7" path="res://graphics/pokemon/back/NECROZMA_DUSK_MANE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://csk5uwb1r1myj" path="res://graphics/pokemon/back_shiny/NECROZMA_DUSK_MANE.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://lrbnhjpno3qw" path="res://graphics/pokemon/front/NECROZMA_DAWN_WINGS.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dj8ssy8puhec3" path="res://graphics/pokemon/front_shiny/NECROZMA_DAWN_WINGS.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://bq8k3lbwymyfg" path="res://graphics/pokemon/back/NECROZMA_DAWN_WINGS.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://dxi6r50p378cl" path="res://graphics/pokemon/back_shiny/NECROZMA_DAWN_WINGS.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://cap25chmx5kh" path="res://graphics/pokemon/front/NECROZMA_ULTRA.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://b3mxvga2pfcno" path="res://graphics/pokemon/front_shiny/NECROZMA_ULTRA.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://dbs6chqou1gwu" path="res://graphics/pokemon/back/NECROZMA_ULTRA.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://bfmuq7ectk20q" path="res://graphics/pokemon/back_shiny/NECROZMA_ULTRA.png" id="gfx118"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3mhkb")
@@ -21,6 +40,13 @@ base_defense = 127
 base_speed = 77
 base_sp_attack = 113
 base_sp_defense = 109
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 1)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -39,6 +65,13 @@ base_defense = 109
 base_speed = 77
 base_sp_attack = 157
 base_sp_defense = 127
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -57,6 +90,13 @@ base_defense = 97
 base_speed = 129
 base_sp_attack = 167
 base_sp_defense = 97
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 3)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -170,6 +210,12 @@ description = "Se dice que yacía en el interior de la tierra. Se cree que esta 
 height = 24
 weight = 2300
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_3mhkb")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 34, 63, 76, 86, 89, 92, 94, 104, 113, 115, 129, 156, 157, 164, 168, 173, 182, 184, 200, 201, 203, 207, 214, 216, 218, 232, 237, 241, 248, 257, 263, 278, 280, 282, 286, 304, 317, 322, 324, 332, 334, 347, 349, 350, 351, 356, 360, 373, 374, 393, 397, 399, 404, 406, 408, 414, 416, 421, 427, 430, 433, 442, 444, 446, 451, 473, 477, 496, 500, 502, 523, 590, 647, 656, 660, 712, 725, 728, 779])
@@ -178,4 +224,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 800
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 7
+cry = ExtResource("gfx106")

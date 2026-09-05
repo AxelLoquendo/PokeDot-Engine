@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dmgmeduatpep8" path="res://graphics/pokemon/front/SEISMITOAD.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://yurshwvudx8a" path="res://graphics/pokemon/front_shiny/SEISMITOAD.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://5c2553s3n3uf" path="res://graphics/pokemon/back/SEISMITOAD.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://clx8a4pptckj0" path="res://graphics/pokemon/back_shiny/SEISMITOAD.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cf7gfjx77583m" path="res://graphics/pokemon/icons/SEISMITOAD.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dimbka2phr23p" path="res://graphics/pokemon/follower/SEISMITOAD.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dbjnylheertlx" path="res://sfx/se/cries/SEISMITOAD.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -106,6 +113,12 @@ description = "Aumenta la potencia de sus puñetazos haciendo vibrar sus puños.
 height = 15
 weight = 620
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 8, 25, 56, 57, 63, 67, 70, 89, 91, 92, 103, 104, 156, 157, 164, 173, 182, 188, 196, 203, 207, 213, 214, 216, 218, 237, 240, 249, 253, 258, 263, 264, 280, 282, 283, 290, 291, 304, 311, 317, 330, 340, 341, 352, 371, 374, 380, 398, 409, 411, 414, 416, 438, 446, 447, 474, 482, 495, 496, 497, 503, 523, 590, 599, 611, 612, 661, 664])
 ability_1 = 33
@@ -114,4 +127,7 @@ hidden_ability = 11
 egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 537
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_okmre"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dvmhgcgd1o0pn" path="res://graphics/pokemon/front/LARVITAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://l0fdo6laxwu1" path="res://graphics/pokemon/front_shiny/LARVITAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cxey2xj81akm3" path="res://graphics/pokemon/back/LARVITAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://j657qe1kg04s" path="res://graphics/pokemon/back_shiny/LARVITAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cf77p6ne6v0c0" path="res://graphics/pokemon/icons/LARVITAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dk6thyfmht77s" path="res://graphics/pokemon/follower/LARVITAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cjw60x7bs8rsm" path="res://sfx/se/cries/LARVITAR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -128,6 +135,12 @@ description = "Se alimenta de tierra. Después de comer una gran montaña, se du
 height = 6
 weight = 720
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([29, 34, 36, 38, 63, 89, 91, 92, 102, 103, 104, 116, 156, 157, 164, 173, 174, 180, 182, 184, 189, 197, 200, 201, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 246, 249, 253, 259, 263, 269, 270, 276, 280, 290, 317, 328, 330, 334, 341, 349, 350, 363, 371, 372, 397, 399, 414, 416, 442, 444, 445, 446, 479, 496, 514, 523, 555, 590, 612, 661, 779])
 egg_moves = Array[int]([23, 116, 174, 200, 228, 231, 246, 334, 349, 372, 442, 446])
@@ -137,4 +150,7 @@ hidden_ability = 8
 egg_group_1 = 1
 egg_cycles = 40
 hatch_species = 246
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

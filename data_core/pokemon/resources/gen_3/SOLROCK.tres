@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dhh8sjxs6nbwd" path="res://graphics/pokemon/front/SOLROCK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://da7xhokcuwuo3" path="res://graphics/pokemon/front_shiny/SOLROCK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cntxtqlrfru3i" path="res://graphics/pokemon/back/SOLROCK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bmjarx54wro60" path="res://graphics/pokemon/back_shiny/SOLROCK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://shv2xoua73iy" path="res://graphics/pokemon/icons/SOLROCK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dgndvekexibv1" path="res://graphics/pokemon/follower/SOLROCK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://chol2clldfles" path="res://sfx/se/cries/SOLROCK.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -121,10 +128,18 @@ category_name = "Meteorito"
 description = "Usa el sol como fuente de energía, por lo que es más poderoso de día. Brilla al rotar."
 height = 12
 weight = 1540
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([14, 34, 38, 53, 63, 76, 83, 89, 92, 94, 102, 104, 111, 113, 115, 120, 126, 129, 138, 148, 153, 156, 157, 164, 173, 182, 201, 203, 205, 207, 214, 216, 218, 219, 220, 226, 237, 240, 241, 244, 246, 247, 257, 261, 263, 270, 277, 278, 285, 290, 311, 315, 317, 322, 324, 328, 334, 347, 350, 356, 360, 363, 373, 384, 394, 397, 414, 416, 428, 433, 442, 444, 446, 447, 451, 472, 473, 477, 479, 496, 500, 502, 510, 512, 523, 590, 636, 641, 661, 728])
 ability_1 = 26
 egg_group_1 = 10
 egg_cycles = 25
 hatch_species = 338
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 7
+cry = ExtResource("gfx106")

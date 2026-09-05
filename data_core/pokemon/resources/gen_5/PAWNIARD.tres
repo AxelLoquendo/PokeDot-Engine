@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ka4fy"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://2ovcagg1iae1" path="res://graphics/pokemon/front/PAWNIARD.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cldmxeee5eb2i" path="res://graphics/pokemon/front_shiny/PAWNIARD.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://5ngit01xycwa" path="res://graphics/pokemon/back/PAWNIARD.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cxc6a4wwolt0s" path="res://graphics/pokemon/back_shiny/PAWNIARD.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cxmvtqkxmmol7" path="res://graphics/pokemon/icons/PAWNIARD.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b5qnf80umuqvt" path="res://graphics/pokemon/follower/PAWNIARD.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c6s132ydkn1d3" path="res://sfx/se/cries/PAWNIARD.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -126,6 +133,12 @@ category_name = "Tajo"
 description = "Su cuerpo está provisto de hojas afiladas. Cuando se desgastan, las afila con cantos rodados a la orilla del río."
 height = 5
 weight = 102
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([14, 15, 36, 67, 86, 91, 92, 103, 104, 156, 164, 168, 173, 180, 182, 184, 201, 203, 206, 207, 213, 214, 216, 218, 232, 237, 240, 249, 251, 259, 263, 269, 272, 279, 280, 282, 289, 290, 317, 319, 332, 334, 371, 372, 373, 374, 393, 397, 398, 399, 403, 404, 421, 427, 430, 442, 444, 446, 447, 468, 490, 492, 496, 514, 530, 555, 590, 612, 724, 736, 779])
 egg_moves = Array[int]([29, 212, 228, 279, 389, 427, 446, 501])
@@ -136,4 +149,7 @@ hidden_ability = 46
 egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 624
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

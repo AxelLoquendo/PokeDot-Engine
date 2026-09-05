@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_oaas5"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bbhh6jql4xiqf" path="res://graphics/pokemon/front/SCATTERBUG.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bdf363wlnuegw" path="res://graphics/pokemon/front_shiny/SCATTERBUG.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bbo28ml8u8bhk" path="res://graphics/pokemon/back/SCATTERBUG.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bhly4fd8b8ai7" path="res://graphics/pokemon/back_shiny/SCATTERBUG.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c0foink2s6n50" path="res://graphics/pokemon/icons/SCATTERBUG.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cwe5jt221lqjk" path="res://graphics/pokemon/follower/SCATTERBUG.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://clm1n13wwge37" path="res://sfx/se/cries/SCATTERBUG.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_oaas5")
@@ -11,6 +18,8 @@ species_id = 1438
 form_id = &"scatterbug_polar"
 display_name = "Scatterbug Polar"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +28,8 @@ species_id = 1439
 form_id = &"scatterbug_tundra"
 display_name = "Scatterbug Tundra"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +38,8 @@ species_id = 1440
 form_id = &"scatterbug_continental"
 display_name = "Scatterbug Continental"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +48,8 @@ species_id = 1441
 form_id = &"scatterbug_garden"
 display_name = "Scatterbug Garden"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +58,8 @@ species_id = 1442
 form_id = &"scatterbug_elegant"
 display_name = "Scatterbug Elegant"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +68,8 @@ species_id = 1443
 form_id = &"scatterbug_meadow"
 display_name = "Scatterbug Meadow"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -59,6 +78,8 @@ species_id = 1444
 form_id = &"scatterbug_modern"
 display_name = "Scatterbug Modern"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -67,6 +88,8 @@ species_id = 1445
 form_id = &"scatterbug_marine"
 display_name = "Scatterbug Marine"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -75,6 +98,8 @@ species_id = 1446
 form_id = &"scatterbug_archipelago"
 display_name = "Scatterbug Archipelago"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -83,6 +108,8 @@ species_id = 1447
 form_id = &"scatterbug_high_plains"
 display_name = "Scatterbug High Plains"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -91,6 +118,8 @@ species_id = 1448
 form_id = &"scatterbug_sandstorm"
 display_name = "Scatterbug Sandstorm"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -99,6 +128,8 @@ species_id = 1449
 form_id = &"scatterbug_river"
 display_name = "Scatterbug River"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -107,6 +138,8 @@ species_id = 1450
 form_id = &"scatterbug_monsoon"
 display_name = "Scatterbug Monsoon"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
@@ -115,6 +148,8 @@ species_id = 1451
 form_id = &"scatterbug_savanna"
 display_name = "Scatterbug Savanna"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
@@ -123,6 +158,8 @@ species_id = 1452
 form_id = &"scatterbug_sun"
 display_name = "Scatterbug Sun"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
@@ -131,6 +168,8 @@ species_id = 1453
 form_id = &"scatterbug_ocean"
 display_name = "Scatterbug Ocean"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
@@ -139,6 +178,8 @@ species_id = 1454
 form_id = &"scatterbug_jungle"
 display_name = "Scatterbug Jungle"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
@@ -147,6 +188,8 @@ species_id = 1455
 form_id = &"scatterbug_fancy"
 display_name = "Scatterbug Fancy"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
@@ -155,6 +198,8 @@ species_id = 1456
 form_id = &"scatterbug_pokeball"
 display_name = "Scatterbug Pokeball"
 base_species_id = 664
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -196,6 +241,12 @@ description = "Cuando recibe el ataque de un Pokémon pájaro, expulsa unas esca
 height = 3
 weight = 25
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_oaas5")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([450, 522, 779, 810])
@@ -206,4 +257,7 @@ hidden_ability = 132
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 664
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

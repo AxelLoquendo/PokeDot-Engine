@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bolyq64hhikc2" path="res://graphics/pokemon/front/ACCELGOR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://f8m85hf2osqu" path="res://graphics/pokemon/front_shiny/ACCELGOR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://drbj0arjvc83t" path="res://graphics/pokemon/back/ACCELGOR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bvrg7qq4sgnnf" path="res://graphics/pokemon/back_shiny/ACCELGOR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cyou1kwmskjss" path="res://graphics/pokemon/icons/ACCELGOR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cx0qnpefh17gf" path="res://graphics/pokemon/follower/ACCELGOR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://oj4t5dfsvoar" path="res://sfx/se/cries/ACCELGOR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -133,6 +140,12 @@ category_name = "Sincaparazón"
 description = "Se siente ligero una vez liberado de su caparazón. Lucha y se mueve como un ninja."
 height = 8
 weight = 253
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23")])
 teachable_moves = Array[int]([34, 63, 92, 97, 104, 129, 141, 156, 164, 173, 179, 182, 188, 191, 201, 202, 203, 207, 213, 214, 216, 218, 226, 227, 237, 240, 263, 282, 290, 324, 341, 369, 380, 384, 385, 390, 405, 409, 411, 412, 416, 450, 474, 496, 522, 590, 599, 611, 636, 734])
 ability_1 = 93
@@ -141,4 +154,7 @@ hidden_ability = 84
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 617
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

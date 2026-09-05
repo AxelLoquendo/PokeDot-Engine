@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://31ef3xyjqlh5" path="res://graphics/pokemon/front/RELICANTH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ce5d4pkjs0ajw" path="res://graphics/pokemon/front_shiny/RELICANTH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://binymkl6ivyvk" path="res://graphics/pokemon/back/RELICANTH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cykp7rbdvnd3b" path="res://graphics/pokemon/back_shiny/RELICANTH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dccn8yt85bq0i" path="res://graphics/pokemon/icons/RELICANTH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bw5fvvwwyn51c" path="res://graphics/pokemon/follower/RELICANTH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c85qyxyruitw6" path="res://sfx/se/cries/RELICANTH.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -101,6 +108,12 @@ description = "No ha sufrido ningún cambio desde hace 100 millones de años. Fu
 height = 10
 weight = 234
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([29, 34, 38, 56, 57, 58, 59, 63, 89, 92, 102, 104, 127, 133, 156, 157, 164, 173, 182, 189, 196, 201, 203, 207, 213, 214, 216, 218, 219, 237, 240, 244, 246, 249, 250, 258, 263, 290, 291, 317, 330, 334, 340, 341, 347, 350, 352, 362, 363, 397, 401, 414, 416, 428, 444, 445, 446, 479, 496, 503, 523, 590, 661, 664, 704, 727, 728])
 egg_moves = Array[int]([130, 133, 157, 173, 189, 214, 222, 330, 341, 346, 362, 401, 428])
@@ -111,4 +124,7 @@ egg_group_1 = 2
 egg_group_2 = 12
 egg_cycles = 40
 hatch_species = 369
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 5
+cry = ExtResource("gfx106")

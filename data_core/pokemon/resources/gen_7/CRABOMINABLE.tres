@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d2k8tnvnvmju1" path="res://graphics/pokemon/front/CRABOMINABLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dab4uro8atolb" path="res://graphics/pokemon/front_shiny/CRABOMINABLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bg6qvhwd3jabl" path="res://graphics/pokemon/back/CRABOMINABLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dbnxrpkigxy8k" path="res://graphics/pokemon/back_shiny/CRABOMINABLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://1cvkqbjdac0x" path="res://graphics/pokemon/icons/CRABOMINABLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dlstns6yuer7w" path="res://graphics/pokemon/follower/CRABOMINABLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://8hkbrmddvahl" path="res://sfx/se/cries/CRABOMINABLE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bx3ufe00lobmd" path="res://graphics/pokemon/front/MEGA_CRABOMINABLE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://snjbhnvmcmjs" path="res://graphics/pokemon/front_shiny/MEGA_CRABOMINABLE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://ogvrj7ue5g0r" path="res://graphics/pokemon/back/MEGA_CRABOMINABLE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://3ruocalkfwc7" path="res://graphics/pokemon/back_shiny/MEGA_CRABOMINABLE.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://srfe2brngkmr" path="res://graphics/pokemon/icons/CRABOMINABLE_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_l7kid")
@@ -11,6 +23,15 @@ species_id = 1563
 form_id = &"crabominable_mega"
 display_name = "Crabominable Mega"
 base_species_id = 740
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 3)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -114,6 +135,12 @@ description = "Tras perderse intentando coronar una alta montaña, desarrolló u
 height = 17
 weight = 1800
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_l7kid")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([8, 9, 34, 36, 58, 59, 63, 89, 91, 92, 104, 129, 133, 156, 157, 164, 168, 173, 179, 182, 184, 189, 196, 203, 207, 213, 214, 216, 218, 237, 240, 241, 258, 263, 264, 270, 276, 280, 282, 283, 317, 334, 335, 339, 341, 370, 371, 374, 409, 411, 416, 419, 428, 441, 442, 444, 496, 503, 523, 524, 526, 530, 590, 656, 661, 664, 704, 739, 779, 789, 809, 812, 840, 846])
@@ -123,4 +150,6 @@ hidden_ability = 83
 egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 740
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_md1uh"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bvnh34hidp5kl" path="res://graphics/pokemon/front/ENAMORUS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cnvuhaxnts8am" path="res://graphics/pokemon/front_shiny/ENAMORUS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dt3x1mss1sat3" path="res://graphics/pokemon/back/ENAMORUS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cshnlkqft1uwr" path="res://graphics/pokemon/back_shiny/ENAMORUS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dtcgfym4vw68g" path="res://graphics/pokemon/icons/ENAMORUS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dfcdk0bajyd4d" path="res://graphics/pokemon/follower/ENAMORUS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cte3ldiq5wlvn" path="res://sfx/se/cries/ENAMORUS.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bstpml5bff71g" path="res://graphics/pokemon/front/ENAMORUS_THERIAN.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://5fhjht3csy0k" path="res://graphics/pokemon/front_shiny/ENAMORUS_THERIAN.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cpbkpt3lxpmnf" path="res://graphics/pokemon/back/ENAMORUS_THERIAN.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c3xt1xm70c3hf" path="res://graphics/pokemon/back_shiny/ENAMORUS_THERIAN.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_md1uh")
@@ -11,6 +22,16 @@ species_id = 1103
 form_id = &"enamorus_therian"
 display_name = "Enamorus Therian"
 base_species_id = 905
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -119,6 +140,12 @@ description = "When it flies to this land from across the sea, the bitter winter
 height = 16
 weight = 480
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_md1uh")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([19, 34, 36, 63, 94, 97, 156, 164, 182, 184, 188, 200, 203, 214, 240, 241, 244, 253, 263, 269, 286, 311, 334, 347, 366, 411, 414, 416, 428, 442, 447, 574, 577, 580, 581, 583, 605, 730, 779, 842])
@@ -128,3 +155,4 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 20
 hatch_species = 905
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cvrioq50ng37w" path="res://graphics/pokemon/front/SWELLOW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bfic8roksrpt" path="res://graphics/pokemon/front_shiny/SWELLOW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://diibco2w2v2d0" path="res://graphics/pokemon/back/SWELLOW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ivtyxo8sheo" path="res://graphics/pokemon/back_shiny/SWELLOW.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b6t3jtynmqxw5" path="res://graphics/pokemon/icons/SWELLOW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://fkmf7x7spq44" path="res://graphics/pokemon/follower/SWELLOW.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cgcjltym1hfir" path="res://sfx/se/cries/SWELLOW.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -91,6 +98,12 @@ description = "Cuando se encuentra bien, pone firmes las plumas de la cola doble
 height = 7
 weight = 198
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([19, 38, 63, 68, 92, 102, 104, 129, 143, 156, 164, 168, 173, 182, 189, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 257, 263, 283, 290, 314, 332, 355, 363, 365, 366, 369, 416, 432, 445, 466, 496, 497, 526, 590, 636])
 ability_1 = 62
@@ -98,4 +111,7 @@ hidden_ability = 113
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 277
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bb7arj0y5l7a4" path="res://graphics/pokemon/front/SIMIPOUR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dicrnl8jhu0uc" path="res://graphics/pokemon/front_shiny/SIMIPOUR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bjmiwx7qndyvx" path="res://graphics/pokemon/back/SIMIPOUR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cf5gx3103xjvx" path="res://graphics/pokemon/back_shiny/SIMIPOUR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c0s4gso8abvjx" path="res://graphics/pokemon/icons/SIMIPOUR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bxj0j23w1mw2d" path="res://graphics/pokemon/follower/SIMIPOUR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dat3stgtad44s" path="res://sfx/se/cries/SIMIPOUR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -42,6 +49,12 @@ description = "Cuando lanza agua a alta presión con su cola, puede incluso resq
 height = 10
 weight = 290
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([8, 15, 57, 58, 59, 63, 67, 91, 92, 104, 127, 156, 157, 164, 168, 173, 182, 196, 207, 213, 214, 216, 218, 231, 237, 240, 249, 253, 258, 259, 263, 264, 269, 270, 272, 276, 278, 280, 282, 283, 290, 291, 317, 343, 352, 371, 374, 380, 401, 411, 416, 421, 441, 447, 468, 490, 496, 503, 512, 518, 526, 590, 612, 638])
 ability_1 = 82
@@ -49,4 +62,7 @@ hidden_ability = 67
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 516
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 5
+cry = ExtResource("gfx106")

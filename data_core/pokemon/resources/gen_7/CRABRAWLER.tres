@@ -7,6 +7,13 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cnkpksib16p3p" path="res://graphics/pokemon/front/CRABRAWLER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dtoht3xdlkyqp" path="res://graphics/pokemon/front_shiny/CRABRAWLER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://2e5uieuaq6hf" path="res://graphics/pokemon/back/CRABRAWLER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bgku6gb0ulkaa" path="res://graphics/pokemon/back_shiny/CRABRAWLER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://y2n30u26idy5" path="res://graphics/pokemon/icons/CRABRAWLER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d2t27fuipevcl" path="res://graphics/pokemon/follower/CRABRAWLER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cx33bgnfg8hc6" path="res://sfx/se/cries/CRABRAWLER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -129,6 +136,12 @@ description = "Protege sus puntos débiles con las pinzas y propina puñetazos e
 height = 6
 weight = 70
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([8, 9, 34, 36, 89, 91, 92, 104, 129, 133, 156, 157, 164, 168, 173, 179, 182, 189, 203, 207, 213, 214, 216, 218, 237, 240, 241, 263, 264, 270, 276, 280, 282, 283, 317, 334, 339, 341, 370, 371, 374, 409, 411, 428, 441, 442, 444, 496, 503, 523, 524, 526, 530, 590, 656, 661, 664, 739, 779, 812, 846])
 egg_moves = Array[int]([133, 264, 276, 283, 469])
@@ -139,4 +152,7 @@ hidden_ability = 83
 egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 739
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

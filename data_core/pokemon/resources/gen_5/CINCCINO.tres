@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dwmla5y0tcr6x" path="res://graphics/pokemon/front/CINCCINO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dtolnedcykkb4" path="res://graphics/pokemon/front_shiny/CINCCINO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bamj2y8pp40ep" path="res://graphics/pokemon/back/CINCCINO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dlhq0eyydft7c" path="res://graphics/pokemon/back_shiny/CINCCINO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dktfmlr0iph5h" path="res://graphics/pokemon/icons/CINCCINO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bxb13njd57ywv" path="res://graphics/pokemon/follower/CINCCINO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dd54w0tmysfqh" path="res://sfx/se/cries/CINCCINO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -91,6 +98,12 @@ description = "El pelo que cubre su cuerpo proporciona una agradable sensación 
 height = 5
 weight = 75
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([36, 38, 63, 85, 86, 87, 91, 92, 104, 113, 129, 156, 162, 164, 168, 173, 182, 189, 203, 204, 207, 213, 214, 216, 218, 219, 226, 227, 231, 237, 240, 241, 253, 263, 270, 282, 283, 290, 304, 313, 331, 343, 347, 350, 351, 369, 374, 387, 401, 402, 411, 416, 441, 447, 495, 496, 497, 514, 526, 541, 583, 590, 605, 636, 741, 779, 789, 811, 812, 842])
 egg_moves = Array[int]([21, 39, 129, 175, 227, 270, 282, 304, 321, 350, 387, 401, 495, 497, 608, 808])
@@ -100,4 +113,7 @@ hidden_ability = 92
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 573
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 2
+cry = ExtResource("gfx106")

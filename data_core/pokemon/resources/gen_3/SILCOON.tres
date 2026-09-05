@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_qsbu7"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://jeacd8kr7ax3" path="res://graphics/pokemon/front/SILCOON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d08bf5d0s7e1x" path="res://graphics/pokemon/front_shiny/SILCOON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://emfpgaiki5ps" path="res://graphics/pokemon/back/SILCOON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://mujgdio6fhhr" path="res://graphics/pokemon/back_shiny/SILCOON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c21poo32r7544" path="res://graphics/pokemon/icons/SILCOON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cycywp44l3523" path="res://graphics/pokemon/follower/SILCOON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b5j7c54wjvgdk" path="res://sfx/se/cries/SILCOON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -42,6 +49,12 @@ description = "Se agarra con su seda a las ramas de un árbol y espera su evoluc
 height = 6
 weight = 100
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
 teachable_moves = Array[int]([81, 334, 450, 527])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -49,4 +62,7 @@ ability_1 = 61
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 266
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

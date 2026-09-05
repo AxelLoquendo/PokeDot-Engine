@@ -4,6 +4,25 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://6qtagtifkta0" path="res://graphics/pokemon/front/TAUROS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://deryl4bl025km" path="res://graphics/pokemon/front_shiny/TAUROS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bgifp5ihl654v" path="res://graphics/pokemon/back/TAUROS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b0cai8w2soxai" path="res://graphics/pokemon/back_shiny/TAUROS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://brg8rblw3c423" path="res://graphics/pokemon/icons/TAUROS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cjxcbfaanw303" path="res://graphics/pokemon/follower/TAUROS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dvbbnk0b7cm5q" path="res://sfx/se/cries/TAUROS.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cfgmg4e282jab" path="res://graphics/pokemon/front/TAUROS_PALDEA_COMBAT.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dfnhlo8bmswhn" path="res://graphics/pokemon/front_shiny/TAUROS_PALDEA_COMBAT.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b1rugqh4r6pty" path="res://graphics/pokemon/back/TAUROS_PALDEA_COMBAT.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bg4cxlu5idtjl" path="res://graphics/pokemon/back_shiny/TAUROS_PALDEA_COMBAT.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://d16jvlekuanmw" path="res://graphics/pokemon/front/TAUROS_PALDEA_BLAZE.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://55y6esluecn7" path="res://graphics/pokemon/front_shiny/TAUROS_PALDEA_BLAZE.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://bgbs0csb5wu3e" path="res://graphics/pokemon/back/TAUROS_PALDEA_BLAZE.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://3r2x0rvvedyx" path="res://graphics/pokemon/back_shiny/TAUROS_PALDEA_BLAZE.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://vnxmhy6y6xgt" path="res://graphics/pokemon/front/TAUROS_PALDEA_AQUA.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://cgj8ip3vlum56" path="res://graphics/pokemon/front_shiny/TAUROS_PALDEA_AQUA.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://cfrovrc043yk0" path="res://graphics/pokemon/back/TAUROS_PALDEA_AQUA.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://ch25w31y2vw8a" path="res://graphics/pokemon/back_shiny/TAUROS_PALDEA_AQUA.png" id="gfx118"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_hmrr8")
@@ -11,6 +30,16 @@ species_id = 1402
 form_id = &"tauros_paldea_combat"
 display_name = "Tauros Paldea Combat"
 base_species_id = 128
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 9)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +48,16 @@ species_id = 1403
 form_id = &"tauros_paldea_blaze"
 display_name = "Tauros Paldea Blaze"
 base_species_id = 128
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 9)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +66,16 @@ species_id = 1404
 form_id = &"tauros_paldea_aqua"
 display_name = "Tauros Paldea Aqua"
 base_species_id = 128
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 9)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -145,6 +194,12 @@ description = "Después de animarse a luchar fustigándose con sus tres colas, c
 height = 14
 weight = 884
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_hmrr8")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([29, 32, 34, 36, 38, 53, 57, 58, 59, 63, 70, 76, 85, 87, 89, 90, 91, 92, 99, 102, 104, 117, 126, 130, 156, 157, 164, 168, 173, 174, 179, 180, 182, 184, 192, 196, 200, 201, 203, 207, 213, 214, 216, 218, 224, 231, 237, 240, 241, 247, 249, 250, 253, 263, 270, 272, 279, 283, 290, 317, 351, 352, 363, 370, 371, 372, 416, 428, 431, 442, 444, 445, 496, 510, 514, 523, 526, 528, 590, 630, 638, 647, 661, 736, 779, 811])
@@ -155,4 +210,7 @@ hidden_ability = 125
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 128
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 6
+cry = ExtResource("gfx106")

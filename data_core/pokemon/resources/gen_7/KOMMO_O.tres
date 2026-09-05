@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_onylk"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://biis2f6g71o0h" path="res://graphics/pokemon/front/KOMMO_O.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ivkq0u0vhjoa" path="res://graphics/pokemon/front_shiny/KOMMO_O.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://iwrdnennhsuk" path="res://graphics/pokemon/back/KOMMO_O.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dal6v35fxdh4b" path="res://graphics/pokemon/back_shiny/KOMMO_O.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cbrh5yxns1g1g" path="res://graphics/pokemon/icons/KOMMOO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c5phtil65mr5m" path="res://graphics/pokemon/follower/KOMMOO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://jpp8d35ib6d" path="res://sfx/se/cries/KOMMOO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -124,6 +131,12 @@ description = "Al avistar a su enemigo, lo intimida con el tintineo que producen
 height = 16
 weight = 782
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 8, 9, 14, 25, 34, 36, 38, 46, 53, 63, 67, 89, 92, 103, 104, 156, 157, 164, 173, 179, 182, 184, 200, 201, 203, 206, 207, 213, 214, 216, 218, 219, 231, 232, 237, 240, 241, 253, 263, 264, 269, 270, 276, 279, 280, 283, 304, 317, 319, 332, 334, 337, 339, 349, 351, 352, 370, 371, 374, 396, 397, 398, 401, 404, 406, 409, 410, 411, 416, 421, 430, 434, 442, 446, 496, 497, 523, 525, 526, 530, 590, 636, 638, 656, 661, 704, 712, 727, 739, 779, 841, 846])
 egg_moves = Array[int]([68, 187, 225, 264])
@@ -133,4 +146,6 @@ hidden_ability = 142
 egg_group_1 = 14
 egg_cycles = 40
 hatch_species = 784
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cam5j5rs60qdn" path="res://graphics/pokemon/front/CRAWDAUNT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dmvq4qko4tq48" path="res://graphics/pokemon/front_shiny/CRAWDAUNT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://coyf2r0ol1yhq" path="res://graphics/pokemon/back/CRAWDAUNT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://jnx7dtnqmicu" path="res://graphics/pokemon/back_shiny/CRAWDAUNT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://coxhq72faqjo5" path="res://graphics/pokemon/icons/CRAWDAUNT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://by8aq5rinntar" path="res://graphics/pokemon/follower/CRAWDAUNT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bd7uj1w44cpbd" path="res://sfx/se/cries/CRAWDAUNT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -105,6 +112,12 @@ category_name = "Granuja"
 description = "Este malandrín usa sus pinzas para atosigar y expulsar a los otros Pokémon que viven en su estanque."
 height = 11
 weight = 328
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 56, 57, 58, 59, 63, 68, 70, 91, 92, 102, 104, 127, 129, 156, 157, 164, 168, 173, 180, 182, 184, 188, 189, 196, 203, 206, 207, 210, 213, 214, 216, 218, 232, 237, 240, 242, 246, 249, 250, 258, 263, 267, 269, 276, 279, 280, 282, 283, 290, 291, 317, 330, 332, 334, 341, 349, 352, 363, 370, 371, 374, 399, 404, 416, 417, 419, 445, 468, 482, 496, 503, 514, 534, 555, 590, 664, 736, 779, 812, 840])
 egg_moves = Array[int]([38, 163, 232, 246, 415, 453])
@@ -115,4 +128,7 @@ egg_group_1 = 2
 egg_group_2 = 9
 egg_cycles = 15
 hatch_species = 342
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_mo03c"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bmjy1gsveb06b" path="res://graphics/pokemon/front/OCTILLERY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://vkfxosjvg584" path="res://graphics/pokemon/front_shiny/OCTILLERY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bvf6ype5f0kwe" path="res://graphics/pokemon/back/OCTILLERY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://d0ahv6nfrvmdj" path="res://graphics/pokemon/back_shiny/OCTILLERY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d15wa7df7gfd7" path="res://graphics/pokemon/icons/OCTILLERY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b7hup0eothycw" path="res://graphics/pokemon/follower/OCTILLERY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b4eawbd4uxkf7" path="res://sfx/se/cries/OCTILLERY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -117,6 +124,12 @@ category_name = "Reactor"
 description = "Tiene querencia por los agujeros. Ataca escupiendo tinta metido en las grietas de rocas o en recipientes."
 height = 9
 weight = 285
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([20, 38, 53, 56, 57, 58, 59, 63, 69, 81, 86, 92, 94, 102, 103, 104, 111, 116, 126, 127, 129, 156, 164, 168, 173, 174, 182, 188, 189, 196, 203, 207, 213, 214, 216, 218, 237, 240, 241, 250, 263, 270, 290, 291, 324, 331, 340, 341, 350, 352, 362, 363, 371, 372, 402, 412, 416, 430, 441, 445, 451, 479, 482, 496, 503, 510, 590, 664, 734])
 ability_1 = 21
@@ -126,4 +139,7 @@ egg_group_1 = 2
 egg_group_2 = 12
 egg_cycles = 20
 hatch_species = 224
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

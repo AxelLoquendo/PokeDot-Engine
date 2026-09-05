@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_sl01s"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://xkp0ijern20j" path="res://graphics/pokemon/front/ELEKID.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cqc2shuhnrscf" path="res://graphics/pokemon/front_shiny/ELEKID.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://gejkp7maudxr" path="res://graphics/pokemon/back/ELEKID.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b37pk2n4fvmdi" path="res://graphics/pokemon/back_shiny/ELEKID.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://82d3ra7c6t51" path="res://graphics/pokemon/icons/ELEKID.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c2jepnug3wxhh" path="res://graphics/pokemon/follower/ELEKID.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://mo3vsqk80psn" path="res://sfx/se/cries/ELEKID.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -111,6 +118,12 @@ description = "Genera electricidad girando los brazos. No obstante, es incapaz d
 height = 6
 weight = 235
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 67, 68, 69, 85, 86, 87, 92, 94, 102, 103, 104, 113, 129, 148, 156, 164, 168, 173, 174, 182, 189, 192, 197, 203, 207, 213, 214, 216, 218, 223, 237, 240, 249, 253, 263, 264, 268, 269, 270, 280, 282, 290, 319, 324, 343, 351, 363, 374, 393, 411, 445, 451, 486, 496, 521, 527, 528, 530, 590, 598, 604, 612, 779, 811, 844])
 egg_moves = Array[int]([2, 7, 8, 27, 96, 112, 223, 238, 264, 266, 359, 364])
@@ -120,4 +133,7 @@ hidden_ability = 72
 egg_group_1 = 15
 egg_cycles = 25
 hatch_species = 239
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 4
+cry = ExtResource("gfx106")

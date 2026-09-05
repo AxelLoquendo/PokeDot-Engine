@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_fp0j8"]
 [ext_resource type="Script" uid="uid://bwkdjkkqojxp5" path="res://data_core/pokemon/conditions/condition_knows_move.gd" id="ext_cond_move"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://fdtt4n0cqp2w" path="res://graphics/pokemon/front/YANMA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cfo7r47fx22fv" path="res://graphics/pokemon/front_shiny/YANMA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b3lcmiral4nc3" path="res://graphics/pokemon/back/YANMA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b8i77i7d8wjni" path="res://graphics/pokemon/back_shiny/YANMA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://2fu00kg8pcay" path="res://graphics/pokemon/icons/YANMA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b3qfne8jxyc16" path="res://graphics/pokemon/follower/YANMA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dsd0ltpriq15x" path="res://sfx/se/cries/YANMA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_move")
@@ -131,6 +138,12 @@ category_name = "Ala Clara"
 description = "Su campo visual es de 360° sin girar la cabeza. Detecta hasta las presas que están a su espalda."
 height = 12
 weight = 380
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 29, 36, 38, 76, 81, 92, 94, 102, 104, 129, 138, 141, 148, 156, 164, 168, 173, 174, 179, 182, 197, 202, 203, 207, 211, 213, 214, 216, 218, 237, 241, 244, 246, 247, 253, 263, 290, 314, 318, 324, 332, 355, 363, 366, 369, 403, 405, 432, 445, 450, 466, 496, 522, 590, 642, 734, 779, 810, 845])
 egg_moves = Array[int]([18, 38, 141, 179, 185, 228, 290, 318, 324, 364])
@@ -141,4 +154,6 @@ hidden_ability = 119
 egg_group_1 = 3
 egg_cycles = 20
 hatch_species = 193
+front_sprite_offset = Vector2(0, 14)
 gender_ratio = 3
+cry = ExtResource("gfx106")

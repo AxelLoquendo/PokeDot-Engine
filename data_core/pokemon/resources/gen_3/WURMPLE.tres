@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_njkiv"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c0haw6ehhn7tu" path="res://graphics/pokemon/front/WURMPLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://copqi02wpv0jb" path="res://graphics/pokemon/front_shiny/WURMPLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cjbk2nu6ngoo3" path="res://graphics/pokemon/back/WURMPLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://g232gf28nnoq" path="res://graphics/pokemon/back_shiny/WURMPLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cmslcgbhuumsl" path="res://graphics/pokemon/icons/WURMPLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ds4s2iwpxnyfg" path="res://graphics/pokemon/follower/WURMPLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b25sm8w04ajr5" path="res://sfx/se/cries/WURMPLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -65,6 +72,12 @@ category_name = "Gusano"
 description = "Le encanta comer hojas. Si le ataca un Starly, se defenderá con sus púas."
 height = 3
 weight = 36
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([81, 173, 450, 527])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0"), SubResource("Resource_evo1")])
@@ -73,4 +86,7 @@ hidden_ability = 50
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 265
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_66a70"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bm8rd5hpo6ibs" path="res://graphics/pokemon/front/ZIGZAGOON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b1mnx2f8s73py" path="res://graphics/pokemon/front_shiny/ZIGZAGOON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://coearse844lc1" path="res://graphics/pokemon/back/ZIGZAGOON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://s065jf4mqbgv" path="res://graphics/pokemon/back_shiny/ZIGZAGOON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://do7r6tx66nahr" path="res://graphics/pokemon/icons/ZIGZAGOON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c41rq3v40d43v" path="res://graphics/pokemon/follower/ZIGZAGOON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://d0scr7hj2y3wt" path="res://sfx/se/cries/ZIGZAGOON.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cjvq0jxqooomd" path="res://graphics/pokemon/front/ZIGZAGOON_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c32o0ey8w31jy" path="res://graphics/pokemon/front_shiny/ZIGZAGOON_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cjuj324ytabfy" path="res://graphics/pokemon/back/ZIGZAGOON_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c2x5afi2x1rgj" path="res://graphics/pokemon/back_shiny/ZIGZAGOON_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://q2yktit6mxth" path="res://graphics/pokemon/icons/ZIGZAGOON_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cel86y35l8hcb" path="res://graphics/pokemon/follower/ZIGZAGOON_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -23,6 +36,16 @@ species_id = 987
 form_id = &"zigzagoon_galar"
 display_name = "Zigzagoon Galar"
 base_species_id = 263
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 12)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -129,6 +152,12 @@ description = "Se mueve en zigzag. Se le da bien encontrar objetos ocultos en la
 height = 4
 weight = 175
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_66a70")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([15, 29, 34, 38, 42, 57, 58, 59, 85, 86, 87, 91, 92, 102, 104, 111, 129, 156, 162, 164, 168, 173, 182, 189, 196, 203, 204, 205, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 247, 249, 250, 263, 270, 271, 290, 304, 341, 343, 351, 352, 363, 374, 387, 402, 441, 445, 447, 451, 468, 496, 497, 514, 526, 541, 590])
@@ -140,4 +169,7 @@ hidden_ability = 95
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 263
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

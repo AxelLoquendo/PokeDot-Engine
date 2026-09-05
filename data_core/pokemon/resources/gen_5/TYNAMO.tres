@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_u8ln6"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b8bynj6g4dt41" path="res://graphics/pokemon/front/TYNAMO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ko12uaupwsge" path="res://graphics/pokemon/front_shiny/TYNAMO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b8b6lkegqxnj4" path="res://graphics/pokemon/back/TYNAMO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bqimgqbac6prm" path="res://graphics/pokemon/back_shiny/TYNAMO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://rv1iqfjjx1th" path="res://graphics/pokemon/icons/TYNAMO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cytwg3jd71bxn" path="res://graphics/pokemon/follower/TYNAMO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://6r50h16d8eig" path="res://sfx/se/cries/TYNAMO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -55,6 +62,12 @@ description = "La electricidad de uno solo es diminuta, pero, si multitud de Tyn
 height = 2
 weight = 3
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([86, 268, 282, 393, 451, 779])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -62,4 +75,7 @@ ability_1 = 26
 egg_group_1 = 11
 egg_cycles = 20
 hatch_species = 602
+front_sprite_offset = Vector2(0, 22)
+back_sprite_offset = Vector2(0, 21)
 gender_ratio = 3
+cry = ExtResource("gfx106")

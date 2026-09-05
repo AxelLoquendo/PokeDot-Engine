@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_owwul"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dxvmi4m6cgw3g" path="res://graphics/pokemon/front/SEVIPER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cx7awsjlx3qps" path="res://graphics/pokemon/front_shiny/SEVIPER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bdceedj08kk7a" path="res://graphics/pokemon/back/SEVIPER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://2iovtmp0m3vs" path="res://graphics/pokemon/back_shiny/SEVIPER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cqrhidkvyo1w8" path="res://graphics/pokemon/icons/SEVIPER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c73r7ibvbyuom" path="res://graphics/pokemon/follower/SEVIPER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://80ordus24ce" path="res://sfx/se/cries/SEVIPER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -130,6 +137,12 @@ description = "Hace frente a Zangoose con su agilidad y su afilada cola, que est
 height = 27
 weight = 525
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([14, 20, 29, 34, 36, 38, 53, 63, 70, 89, 91, 92, 102, 104, 114, 129, 156, 164, 168, 173, 174, 179, 182, 184, 188, 189, 202, 203, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 242, 249, 263, 269, 270, 280, 282, 283, 289, 290, 342, 363, 371, 380, 389, 398, 399, 401, 402, 404, 416, 422, 423, 424, 428, 441, 442, 445, 474, 482, 491, 496, 514, 523, 525, 555, 590, 611, 638, 656, 660, 712, 734, 736, 779, 810, 811])
 egg_moves = Array[int]([34, 184, 231, 254, 255, 256, 372, 378, 386, 400, 415, 515])
@@ -139,4 +152,7 @@ egg_group_1 = 5
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 336
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 1)
 gender_ratio = 3
+cry = ExtResource("gfx106")

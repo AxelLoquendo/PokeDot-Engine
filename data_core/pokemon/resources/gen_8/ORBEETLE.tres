@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sjs0q"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dpiqdc7skp1c7" path="res://graphics/pokemon/front/ORBEETLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://oil15m85q4q7" path="res://graphics/pokemon/front_shiny/ORBEETLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d1phkfwjuebfa" path="res://graphics/pokemon/back/ORBEETLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bmw8wnsrwsspn" path="res://graphics/pokemon/back_shiny/ORBEETLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://r1tidy8oivwt" path="res://graphics/pokemon/icons/ORBEETLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://djguegar23p64" path="res://graphics/pokemon/follower/ORBEETLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dr4wvhodady14" path="res://sfx/se/cries/ORBEETLE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c4bml2pusifj0" path="res://graphics/pokemon/front/ORBEETLE_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dm0bf22ematxs" path="res://graphics/pokemon/front_shiny/ORBEETLE_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://0yssx6yqecj4" path="res://graphics/pokemon/back/ORBEETLE_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://ddbmp8b6etqvp" path="res://graphics/pokemon/back_shiny/ORBEETLE_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://jw14dl2gmf7m" path="res://graphics/pokemon/icons/ORBEETLE_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_sjs0q")
@@ -11,6 +23,16 @@ species_id = 1507
 form_id = &"orbeetle_gmax"
 display_name = "Orbeetle Gmax"
 base_species_id = 826
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -110,6 +132,12 @@ category_name = "Siete Puntos"
 description = "Este Pokémon es conocido por su inteligencia. El gran tamaño de su cerebro es un indicio de la magnitud de sus poderes psíquicos."
 height = 4
 weight = 408
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_sjs0q")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([63, 76, 94, 97, 113, 115, 141, 156, 164, 173, 182, 202, 203, 213, 214, 219, 226, 247, 248, 263, 270, 271, 285, 286, 334, 347, 369, 371, 384, 385, 405, 412, 416, 427, 428, 433, 472, 473, 478, 496, 500, 502, 641, 704, 725])
@@ -119,4 +147,7 @@ hidden_ability = 140
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 826
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

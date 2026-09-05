@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_wdaqy"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://0dbil77djqt2" path="res://graphics/pokemon/front/OMANYTE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c41tuf4jqxxxw" path="res://graphics/pokemon/front_shiny/OMANYTE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bxj2tirw4riag" path="res://graphics/pokemon/back/OMANYTE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dvc37wkif0ogt" path="res://graphics/pokemon/back_shiny/OMANYTE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://pffr0xsgf7cb" path="res://graphics/pokemon/icons/OMANYTE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d14pjghtcnxfa" path="res://graphics/pokemon/follower/OMANYTE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bkh3hi8yvsq1g" path="res://sfx/se/cries/OMANYTE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -131,6 +138,12 @@ description = "Pokémon prehistórico que vivió en el océano primordial. Para 
 height = 4
 weight = 75
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([20, 29, 34, 36, 38, 55, 56, 57, 58, 59, 61, 92, 99, 102, 104, 115, 117, 127, 156, 157, 164, 168, 173, 174, 182, 191, 196, 201, 203, 205, 207, 213, 214, 216, 218, 237, 240, 246, 249, 250, 258, 263, 282, 290, 291, 317, 330, 334, 341, 350, 352, 360, 362, 363, 390, 397, 414, 445, 446, 479, 496, 503, 590, 728])
 egg_moves = Array[int]([21, 44, 48, 61, 62, 114, 117, 157, 191, 250, 282, 321, 330, 352, 378, 390, 513])
@@ -142,4 +155,7 @@ egg_group_1 = 2
 egg_group_2 = 9
 egg_cycles = 30
 hatch_species = 138
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 5
+cry = ExtResource("gfx106")

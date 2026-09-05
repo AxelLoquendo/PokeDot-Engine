@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_85i6i"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bjkn1fmwv57tx" path="res://graphics/pokemon/front/CLAUNCHER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dpl7um2lfptlj" path="res://graphics/pokemon/front_shiny/CLAUNCHER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bn206vfo1hshh" path="res://graphics/pokemon/back/CLAUNCHER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bltvpo3pr2a1d" path="res://graphics/pokemon/back_shiny/CLAUNCHER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://csn43m3e6lrjq" path="res://graphics/pokemon/icons/CLAUNCHER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://13km6otataqi" path="res://graphics/pokemon/follower/CLAUNCHER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://f2vl8ii70mj8" path="res://sfx/se/cries/CLAUNCHER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -112,6 +119,12 @@ description = "Abate a enemigos voladores disparando agua a presión con su enor
 height = 5
 weight = 83
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 36, 56, 57, 58, 59, 92, 104, 127, 156, 157, 164, 168, 173, 182, 188, 189, 196, 203, 207, 213, 214, 216, 218, 231, 237, 240, 263, 270, 290, 291, 311, 330, 340, 341, 352, 369, 396, 399, 401, 406, 430, 474, 479, 482, 496, 503, 590, 664, 733, 740, 779, 810, 812])
 egg_moves = Array[int]([61, 152, 203, 270, 401, 453, 494])
@@ -121,4 +134,7 @@ egg_group_1 = 2
 egg_group_2 = 9
 egg_cycles = 15
 hatch_species = 692
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

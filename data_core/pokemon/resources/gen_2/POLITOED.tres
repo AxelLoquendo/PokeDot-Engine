@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cgejt6ywbve2h" path="res://graphics/pokemon/front/POLITOED.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c5bkbcflj8h6l" path="res://graphics/pokemon/front_shiny/POLITOED.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cdwc5355d2hkb" path="res://graphics/pokemon/back/POLITOED.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bp4ipevkc301q" path="res://graphics/pokemon/back_shiny/POLITOED.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cl4iq4jubmp3g" path="res://graphics/pokemon/icons/POLITOED.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dmggfrimd51pk" path="res://graphics/pokemon/follower/POLITOED.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bvy2dgx6e6pd6" path="res://sfx/se/cries/POLITOED.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -91,6 +98,12 @@ description = "Cuando tres o más de estos se juntan, emiten un sonido muy fuert
 height = 11
 weight = 339
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([5, 8, 25, 29, 34, 36, 38, 56, 57, 58, 59, 63, 67, 68, 69, 70, 89, 91, 92, 94, 102, 103, 104, 111, 114, 118, 127, 129, 133, 156, 164, 168, 173, 174, 182, 189, 196, 197, 203, 207, 213, 214, 216, 218, 223, 227, 237, 240, 244, 249, 250, 253, 258, 263, 264, 270, 280, 283, 290, 291, 304, 311, 330, 340, 341, 352, 363, 371, 374, 411, 414, 416, 445, 490, 496, 497, 503, 523, 590, 612, 664, 779, 812])
 egg_moves = Array[int]([34, 38, 54, 55, 61, 95, 150, 195, 207, 283, 304, 330, 341, 352, 414])
@@ -100,4 +113,7 @@ hidden_ability = 2
 egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 186
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

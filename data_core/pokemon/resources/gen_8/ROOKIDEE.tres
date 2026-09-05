@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_3m70j"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://074ti5l06dk1" path="res://graphics/pokemon/front/ROOKIDEE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d10lmipiwrokx" path="res://graphics/pokemon/front_shiny/ROOKIDEE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bpdkk5utdcjvx" path="res://graphics/pokemon/back/ROOKIDEE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://d2o85pjsn2vtq" path="res://graphics/pokemon/back_shiny/ROOKIDEE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cdhlfcndair7b" path="res://graphics/pokemon/icons/ROOKIDEE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://k0ray5pyljux" path="res://graphics/pokemon/follower/ROOKIDEE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dedik7mco6rf" path="res://sfx/se/cries/ROOKIDEE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -92,6 +99,12 @@ description = "De naturaleza valiente, planta cara a cualquier rival, por muy fu
 height = 2
 weight = 18
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10")])
 teachable_moves = Array[int]([19, 36, 97, 116, 129, 156, 164, 168, 173, 179, 180, 182, 184, 203, 213, 214, 263, 269, 279, 313, 314, 332, 366, 369, 371, 372, 403, 413, 417, 496, 514, 526, 742, 779])
 egg_moves = Array[int]([28, 143, 180, 249, 355, 366, 432])
@@ -102,4 +115,7 @@ hidden_ability = 145
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 821
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 17)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -8,6 +8,19 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c6l17rpbxh4mv" path="res://graphics/pokemon/front/EEVEE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dh783yeo21466" path="res://graphics/pokemon/front_shiny/EEVEE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bnlpedohpj15n" path="res://graphics/pokemon/back/EEVEE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://p2eplb6qbqs6" path="res://graphics/pokemon/back_shiny/EEVEE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://11850m2omrao" path="res://graphics/pokemon/icons/EEVEE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bw625rtx0krnf" path="res://graphics/pokemon/follower/EEVEE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cf8v044wrhtuo" path="res://sfx/se/cries/EEVEE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://baekypcts0f14" path="res://graphics/pokemon/front/EEVEE_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dtxdswe8cg8se" path="res://graphics/pokemon/front_shiny/EEVEE_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bukwqdni6n8nj" path="res://graphics/pokemon/back/EEVEE_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dms1wtayr3qw0" path="res://graphics/pokemon/back_shiny/EEVEE_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://brfucpwsh8g58" path="res://graphics/pokemon/icons/EEVEE_gmax.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://dw2g7mamb3hun" path="res://sfx/se/cries/EEVEE_2.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -129,6 +142,16 @@ species_id = 1499
 form_id = &"eevee_gmax"
 display_name = "Eevee Gmax"
 base_species_id = 133
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -242,6 +265,12 @@ description = "Un extraño Pokémon que se adapta a los entornos más hostiles g
 height = 3
 weight = 65
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("6_bqjdw")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([6, 29, 34, 36, 38, 46, 91, 92, 99, 102, 104, 115, 116, 117, 129, 130, 156, 164, 173, 174, 182, 189, 197, 203, 204, 207, 213, 214, 215, 216, 218, 226, 231, 237, 240, 241, 247, 263, 270, 290, 304, 311, 313, 343, 347, 363, 387, 445, 496, 497, 500, 514, 526, 590, 636, 779, 811, 842])
@@ -253,4 +282,7 @@ hidden_ability = 107
 egg_group_1 = 5
 egg_cycles = 35
 hatch_species = 133
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 5
+cry = ExtResource("gfx106")

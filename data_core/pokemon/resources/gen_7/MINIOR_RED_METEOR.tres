@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bn5qay3todvuv" path="res://graphics/pokemon/front/MINIOR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b74smdasa34tl" path="res://graphics/pokemon/front_shiny/MINIOR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dxu035at413xc" path="res://graphics/pokemon/back/MINIOR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bcmgsi1ct0jk8" path="res://graphics/pokemon/back_shiny/MINIOR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d1f5hmlt502q4" path="res://graphics/pokemon/icons/MINIOR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dt53tbpc8pvp0" path="res://graphics/pokemon/follower/MINIOR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cen16lyibcs13" path="res://sfx/se/cries/MINIOR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ccj7l")
@@ -11,6 +18,8 @@ species_id = 1193
 form_id = &"minior_meteor_orange"
 display_name = "Minior Meteor Orange"
 base_species_id = 774
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +28,8 @@ species_id = 1194
 form_id = &"minior_meteor_yellow"
 display_name = "Minior Meteor Yellow"
 base_species_id = 774
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +38,8 @@ species_id = 1195
 form_id = &"minior_meteor_green"
 display_name = "Minior Meteor Green"
 base_species_id = 774
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +48,8 @@ species_id = 1196
 form_id = &"minior_meteor_blue"
 display_name = "Minior Meteor Blue"
 base_species_id = 774
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +58,8 @@ species_id = 1197
 form_id = &"minior_meteor_indigo"
 display_name = "Minior Meteor Indigo"
 base_species_id = 774
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +68,8 @@ species_id = 1198
 form_id = &"minior_meteor_violet"
 display_name = "Minior Meteor Violet"
 base_species_id = 774
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -66,6 +85,8 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -81,6 +102,8 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -96,6 +119,8 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -111,6 +136,8 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -126,6 +153,8 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -141,6 +170,8 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -156,6 +187,8 @@ base_defense = 60
 base_speed = 120
 base_sp_attack = 100
 base_sp_defense = 60
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -261,6 +294,12 @@ description = "Vive en la capa de ozono hasta que su caparazón se hace demasiad
 height = 3
 weight = 400
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_ccj7l")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([36, 38, 63, 76, 89, 92, 94, 104, 109, 113, 115, 129, 153, 156, 157, 164, 173, 182, 201, 203, 207, 213, 214, 216, 218, 219, 237, 244, 263, 283, 317, 347, 350, 356, 360, 369, 387, 393, 397, 408, 414, 416, 428, 442, 444, 446, 451, 477, 496, 512, 523, 590, 605, 728, 743, 779])
@@ -268,4 +307,7 @@ ability_1 = 197
 egg_group_1 = 10
 egg_cycles = 25
 hatch_species = 774
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 7
+cry = ExtResource("gfx106")

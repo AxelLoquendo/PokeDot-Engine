@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_undqq"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://3i41pgbgj570" path="res://graphics/pokemon/front/ODDISH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dgith3i0rrvso" path="res://graphics/pokemon/front_shiny/ODDISH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c2qo84qdxhgfn" path="res://graphics/pokemon/back/ODDISH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bvji3gnnl3eve" path="res://graphics/pokemon/back_shiny/ODDISH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://vnwho08rugi4" path="res://graphics/pokemon/icons/ODDISH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://2j0qibmduo6y" path="res://graphics/pokemon/follower/ODDISH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ctjsmaip858fo" path="res://sfx/se/cries/ODDISH.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -123,6 +130,12 @@ description = "Durante el día, se agazapa en el frío subsuelo huyendo del sol.
 height = 5
 weight = 54
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 29, 36, 38, 72, 76, 92, 99, 102, 104, 115, 117, 148, 156, 164, 173, 174, 182, 188, 202, 203, 204, 207, 213, 214, 216, 218, 230, 235, 237, 241, 263, 267, 270, 290, 331, 345, 363, 380, 388, 402, 412, 437, 445, 447, 474, 491, 495, 496, 580, 590, 605, 611, 731, 779, 811])
 egg_moves = Array[int]([14, 73, 75, 175, 204, 235, 267, 275, 290, 298, 321, 495, 631])
@@ -132,4 +145,7 @@ hidden_ability = 50
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 43
+front_sprite_offset = Vector2(0, 15)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

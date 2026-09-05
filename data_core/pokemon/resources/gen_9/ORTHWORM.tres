@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cc8rglcae7hd2" path="res://graphics/pokemon/front/ORTHWORM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c335ejsutip0q" path="res://graphics/pokemon/front_shiny/ORTHWORM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d0rq85atu05tu" path="res://graphics/pokemon/back/ORTHWORM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dtqyj4pwox6ft" path="res://graphics/pokemon/back_shiny/ORTHWORM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ckuw2yfq6felo" path="res://graphics/pokemon/icons/ORTHWORM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d2sq6yscknf77" path="res://graphics/pokemon/follower/ORTHWORM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bkub3ho48n1n2" path="res://sfx/se/cries/ORTHWORM.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -94,6 +101,12 @@ description = "When attacked, this Pokémon will wield the tendrils on its body 
 height = 25
 weight = 3100
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([34, 36, 38, 63, 89, 91, 156, 157, 164, 174, 182, 189, 191, 201, 203, 214, 263, 270, 317, 319, 328, 334, 341, 350, 414, 416, 430, 442, 446, 479, 484, 523, 630, 661, 704, 724, 779])
 egg_moves = Array[int]([174, 368, 489])
@@ -102,4 +115,6 @@ hidden_ability = 8
 egg_group_1 = 5
 egg_cycles = 35
 hatch_species = 1357
+front_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

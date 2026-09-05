@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_wrtm2"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dyohnocvp014b" path="res://graphics/pokemon/front/VIRIZION.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://k70ixqfydcmn" path="res://graphics/pokemon/front_shiny/VIRIZION.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bqauj22se4kxd" path="res://graphics/pokemon/back/VIRIZION.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://oh6krfjos55y" path="res://graphics/pokemon/back_shiny/VIRIZION.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bwnaby64hi7uv" path="res://graphics/pokemon/icons/VIRIZION.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dx0nmm66qauoq" path="res://graphics/pokemon/follower/VIRIZION.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ywooyq2fxxdw" path="res://sfx/se/cries/VIRIZION.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -99,6 +106,12 @@ description = "Sus cuernos son hojas afiladas. Sacude a sus enemigos con sus rel
 height = 20
 weight = 2000
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 46, 63, 70, 76, 92, 104, 113, 115, 129, 148, 156, 164, 173, 179, 182, 184, 202, 203, 206, 207, 214, 216, 218, 219, 224, 235, 237, 241, 244, 249, 263, 267, 269, 270, 276, 279, 280, 290, 331, 332, 335, 340, 345, 347, 348, 370, 388, 396, 402, 403, 404, 410, 411, 412, 416, 428, 437, 444, 447, 496, 514, 526, 590, 632, 636, 647, 731, 739, 779, 811, 846])
 egg_moves = Array[int]([36])
@@ -107,4 +120,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 80
 hatch_species = 640
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 7
+cry = ExtResource("gfx106")

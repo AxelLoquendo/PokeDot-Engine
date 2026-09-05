@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dq0vudkkp6f38" path="res://graphics/pokemon/front/CHERRIM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dsnttagh1ruhi" path="res://graphics/pokemon/front_shiny/CHERRIM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://e2hpxa62n03e" path="res://graphics/pokemon/back/CHERRIM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://rn481s4cildd" path="res://graphics/pokemon/back_shiny/CHERRIM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cghjioqhp5bvu" path="res://graphics/pokemon/icons/CHERRIM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ca6uf80quy7b5" path="res://graphics/pokemon/follower/CHERRIM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b6efroni03ls3" path="res://sfx/se/cries/CHERRIM.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cans08wsjukxb" path="res://graphics/pokemon/front/CHERRIM_SUNSHINE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c8qnsbd6sr2xp" path="res://graphics/pokemon/front_shiny/CHERRIM_SUNSHINE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cxix0edhkuhva" path="res://graphics/pokemon/back/CHERRIM_SUNSHINE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bqh3vlxoht50h" path="res://graphics/pokemon/back_shiny/CHERRIM_SUNSHINE.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_db0vr")
@@ -11,6 +22,14 @@ species_id = 1061
 form_id = &"cherrim_sunshine"
 display_name = "Cherrim Sunshine"
 base_species_id = 421
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -103,6 +122,12 @@ description = "Cuando los rayos de sol inundan su capullo, abre de par en par su
 height = 5
 weight = 93
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_db0vr")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 63, 76, 92, 104, 148, 156, 164, 173, 182, 202, 203, 205, 207, 213, 214, 216, 218, 219, 235, 237, 241, 263, 267, 270, 290, 311, 331, 345, 363, 388, 402, 412, 416, 445, 447, 496, 577, 580, 583, 590, 605, 632, 636, 639, 731])
@@ -112,3 +137,4 @@ egg_group_2 = 7
 egg_cycles = 20
 hatch_species = 421
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_s5406"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b6i0r5vdxvcl3" path="res://graphics/pokemon/front/CLAMPERL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b6206lmi1setd" path="res://graphics/pokemon/front_shiny/CLAMPERL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ddvb4mbu0dghf" path="res://graphics/pokemon/back/CLAMPERL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cbn4oopig8wt4" path="res://graphics/pokemon/back_shiny/CLAMPERL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://f7w2n6f088vo" path="res://graphics/pokemon/icons/CLAMPERL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cnnidd54s8er1" path="res://graphics/pokemon/follower/CLAMPERL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cl6dsppiyfu5" path="res://sfx/se/cries/CLAMPERL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -73,6 +80,12 @@ description = "Produce durante su vida una sola perla que aumenta los poderes ps
 height = 4
 weight = 525
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4")])
 teachable_moves = Array[int]([34, 38, 57, 58, 59, 92, 102, 104, 127, 156, 164, 173, 182, 196, 203, 207, 213, 214, 216, 218, 237, 240, 250, 258, 263, 290, 291, 334, 352, 362, 363, 445, 496, 503, 590])
 egg_moves = Array[int]([34, 48, 109, 112, 203, 287, 300, 330, 352, 362, 392])
@@ -82,4 +95,7 @@ hidden_ability = 155
 egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 366
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

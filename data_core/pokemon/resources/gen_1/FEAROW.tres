@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bfduq8tfs0nq0" path="res://graphics/pokemon/front/FEAROW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://camqqm8rsjuvt" path="res://graphics/pokemon/front_shiny/FEAROW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://3kfvvglmhad5" path="res://graphics/pokemon/back/FEAROW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cfyumbdee8dx4" path="res://graphics/pokemon/back_shiny/FEAROW.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dfol4sbc0m2ti" path="res://graphics/pokemon/icons/FEAROW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bl5l67s2nf60f" path="res://graphics/pokemon/follower/FEAROW.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b1vvm1oljkbh4" path="res://sfx/se/cries/FEAROW.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -93,6 +100,12 @@ description = "Con sus enormes y magníficas alas, puede seguir volando sin tene
 height = 12
 weight = 380
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([13, 18, 19, 29, 36, 38, 63, 92, 99, 102, 104, 117, 129, 143, 156, 161, 164, 168, 173, 174, 182, 189, 197, 203, 206, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 253, 257, 263, 290, 314, 332, 355, 363, 365, 366, 369, 416, 432, 445, 466, 496, 497, 526, 529, 590, 636, 638])
 ability_1 = 51
@@ -100,4 +113,6 @@ hidden_ability = 97
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 22
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bhha8tin8rvt2" path="res://graphics/pokemon/front/SUICUNE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b1n2uhhaukqyk" path="res://graphics/pokemon/front_shiny/SUICUNE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dmfs3762455g6" path="res://graphics/pokemon/back/SUICUNE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://1weorg44j0u4" path="res://graphics/pokemon/back_shiny/SUICUNE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://hggtjvcaj1rr" path="res://graphics/pokemon/icons/SUICUNE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cf3rgdfpyuujo" path="res://graphics/pokemon/follower/SUICUNE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bws573au7savg" path="res://sfx/se/cries/SUICUNE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -126,6 +133,12 @@ description = "Recorre el mundo para purificar agua contaminada. Corre veloz con
 height = 20
 weight = 1870
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([15, 29, 34, 36, 38, 46, 56, 57, 58, 59, 63, 91, 92, 97, 102, 104, 115, 127, 129, 156, 164, 173, 174, 182, 189, 196, 197, 201, 203, 207, 214, 216, 218, 231, 237, 240, 241, 242, 244, 247, 249, 250, 258, 263, 270, 290, 291, 311, 324, 347, 352, 362, 363, 366, 403, 416, 419, 423, 431, 442, 466, 496, 503, 511, 523, 555, 590, 636, 664, 779, 809, 811, 812])
 egg_moves = Array[int]([245, 329])
@@ -135,4 +148,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 80
 hatch_species = 245
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 7
+cry = ExtResource("gfx106")

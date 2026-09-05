@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://co6blvwhm45ea" path="res://graphics/pokemon/front/PINCURCHIN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bpk24yslgf8qs" path="res://graphics/pokemon/front_shiny/PINCURCHIN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b05nnn7xuvaeq" path="res://graphics/pokemon/back/PINCURCHIN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://chu3k32ujsby1" path="res://graphics/pokemon/back_shiny/PINCURCHIN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bp50yf2j0mkiu" path="res://graphics/pokemon/icons/PINCURCHIN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dxdxc3wlm5hfg" path="res://graphics/pokemon/follower/PINCURCHIN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://o0gij154jcf3" path="res://sfx/se/cries/PINCURCHIN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -94,6 +101,12 @@ description = "Libera electricidad por la punta de las púas. Con sus afilados d
 height = 3
 weight = 10
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([34, 36, 42, 56, 57, 63, 85, 86, 87, 120, 129, 156, 164, 173, 174, 179, 182, 191, 203, 213, 214, 220, 240, 263, 268, 330, 362, 371, 372, 390, 398, 416, 451, 474, 486, 496, 503, 506, 527, 528, 599, 604, 638, 664, 732, 779, 812, 844])
 egg_moves = Array[int]([262, 389])
@@ -103,4 +116,7 @@ egg_group_1 = 2
 egg_group_2 = 11
 egg_cycles = 20
 hatch_species = 871
+front_sprite_offset = Vector2(0, 15)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_kxf8i"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dkbrqa8miidsa" path="res://graphics/pokemon/front/ROSELIA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dm7t8kqaw608u" path="res://graphics/pokemon/front_shiny/ROSELIA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bscktgu4eyfsy" path="res://graphics/pokemon/back/ROSELIA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bxjkl8fr35pe5" path="res://graphics/pokemon/back_shiny/ROSELIA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://qswv4ady2uuv" path="res://graphics/pokemon/icons/ROSELIA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://degcd8uscd2hn" path="res://graphics/pokemon/follower/ROSELIA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c5hn3hms60an7" path="res://sfx/se/cries/ROSELIA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -126,6 +133,12 @@ description = "Ataca con sus manos, en las que tiene un tipo de veneno diferente
 height = 3
 weight = 20
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([14, 15, 34, 38, 42, 76, 92, 102, 104, 129, 148, 156, 164, 171, 173, 182, 188, 189, 191, 202, 203, 207, 210, 213, 214, 216, 218, 235, 237, 240, 241, 244, 247, 253, 263, 267, 290, 311, 331, 343, 345, 363, 388, 390, 398, 402, 412, 437, 438, 445, 447, 474, 496, 590, 605, 731])
 egg_moves = Array[int]([42, 75, 79, 170, 178, 191, 202, 235, 320, 326, 331, 363, 402, 437, 438, 719])
@@ -137,4 +150,7 @@ egg_group_1 = 6
 egg_group_2 = 7
 egg_cycles = 20
 hatch_species = 315
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

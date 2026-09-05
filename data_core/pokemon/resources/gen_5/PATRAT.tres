@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_uiquf"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://tgncybo21dgw" path="res://graphics/pokemon/front/PATRAT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://6pncdk2wcah5" path="res://graphics/pokemon/front_shiny/PATRAT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dvt8h2wlc6jcq" path="res://graphics/pokemon/back/PATRAT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b7ktxby45t5pa" path="res://graphics/pokemon/back_shiny/PATRAT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://kr8uemd4ugsj" path="res://graphics/pokemon/icons/PATRAT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b47dmqcroyw5m" path="res://graphics/pokemon/follower/PATRAT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://yb37gbi0aija" path="res://sfx/se/cries/PATRAT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -122,6 +129,12 @@ description = "Almacena víveres en unas bolsas en sus mofletes y vigila durante
 height = 5
 weight = 116
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 67, 85, 91, 92, 104, 156, 162, 164, 173, 182, 207, 213, 214, 216, 218, 231, 237, 240, 241, 247, 263, 270, 283, 290, 343, 351, 374, 387, 401, 402, 428, 441, 447, 495, 496, 514, 526, 590, 636])
 egg_moves = Array[int]([103, 175, 193, 228, 231, 279, 331, 372, 669])
@@ -132,4 +145,7 @@ hidden_ability = 148
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 504
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

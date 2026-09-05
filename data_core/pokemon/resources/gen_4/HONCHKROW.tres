@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://byrcknrs48t8k" path="res://graphics/pokemon/front/HONCHKROW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b8lkrna32ngxo" path="res://graphics/pokemon/front_shiny/HONCHKROW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d4kquyc0euqin" path="res://graphics/pokemon/back/HONCHKROW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://8cdr8nf3mnqo" path="res://graphics/pokemon/back_shiny/HONCHKROW.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b0p2lgf2m550u" path="res://graphics/pokemon/icons/HONCHKROW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cfmam0abnhysi" path="res://graphics/pokemon/follower/HONCHKROW.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://5kf5v000goie" path="res://sfx/se/cries/HONCHKROW.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -79,6 +86,12 @@ category_name = "Pokémon Gran Jefe"
 description = "Si uno lanza un grito profundo, los demás acuden. Por eso se le llama también Invocador de la Noche."
 height = 9
 weight = 273
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([19, 36, 38, 63, 86, 92, 94, 101, 104, 109, 114, 129, 138, 143, 156, 164, 168, 173, 180, 182, 184, 189, 196, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 244, 247, 253, 257, 259, 263, 269, 270, 276, 283, 289, 290, 297, 314, 332, 347, 355, 363, 365, 366, 369, 371, 373, 389, 399, 403, 413, 416, 417, 432, 445, 466, 492, 496, 506, 510, 511, 512, 514, 542, 555, 590, 736, 742, 779, 812, 845])
 ability_1 = 15
@@ -86,4 +99,7 @@ ability_2 = 105
 hidden_ability = 153
 egg_cycles = 20
 hatch_species = 430
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

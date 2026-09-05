@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ppn1l"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dhhpdbfm4nb5n" path="res://graphics/pokemon/front/COBALION.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://7mqbbruvirvi" path="res://graphics/pokemon/front_shiny/COBALION.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://6bxl0wlb74fa" path="res://graphics/pokemon/back/COBALION.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dt60jnw6aq1ut" path="res://graphics/pokemon/back_shiny/COBALION.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dr4n2b66o7lw4" path="res://graphics/pokemon/icons/COBALION.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c3imwb7tik4c6" path="res://graphics/pokemon/follower/COBALION.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cive0av60as3g" path="res://sfx/se/cries/COBALION.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -94,6 +101,12 @@ description = "Posee un cuerpo y un corazón de acero. Basta una mirada suya par
 height = 21
 weight = 2500
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 46, 63, 70, 86, 92, 104, 115, 129, 156, 164, 173, 179, 182, 184, 201, 203, 206, 207, 214, 216, 218, 219, 224, 232, 237, 240, 241, 244, 249, 263, 269, 270, 276, 279, 280, 290, 319, 332, 334, 335, 340, 347, 370, 393, 396, 397, 398, 403, 404, 410, 411, 416, 428, 430, 442, 444, 446, 468, 484, 496, 514, 521, 526, 590, 636, 647, 704, 724, 739, 779, 846])
 ability_1 = 154
@@ -101,4 +114,6 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 80
 hatch_species = 638
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 7
+cry = ExtResource("gfx106")

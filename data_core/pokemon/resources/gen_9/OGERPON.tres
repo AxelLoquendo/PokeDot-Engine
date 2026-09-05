@@ -4,6 +4,41 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://betqtu6v14x1h" path="res://graphics/pokemon/front/OGERPON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cxyswnypm3jpx" path="res://graphics/pokemon/front_shiny/OGERPON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://deurylos2bxts" path="res://graphics/pokemon/back/OGERPON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bps47oypsxl24" path="res://graphics/pokemon/back_shiny/OGERPON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b13pdsbg05edl" path="res://graphics/pokemon/icons/OGERPON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ck3mdbhl5i8mw" path="res://graphics/pokemon/follower/OGERPON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dr36ovctdsumw" path="res://sfx/se/cries/OGERPON.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://culq0vflu67eh" path="res://graphics/pokemon/front/OGERPON_WELLSPRING.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://remw8fcfb8u0" path="res://graphics/pokemon/front_shiny/OGERPON_WELLSPRING.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bxs4chjvct2ib" path="res://graphics/pokemon/back/OGERPON_WELLSPRING.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bhosc2s2tfmni" path="res://graphics/pokemon/back_shiny/OGERPON_WELLSPRING.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bk7bupuc2cfep" path="res://graphics/pokemon/front/OGERPON_HEARTHFLAME.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://uruq75wxxb56" path="res://graphics/pokemon/front_shiny/OGERPON_HEARTHFLAME.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://i6qyaqbybkq6" path="res://graphics/pokemon/back/OGERPON_HEARTHFLAME.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://6npqj6opeg61" path="res://graphics/pokemon/back_shiny/OGERPON_HEARTHFLAME.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://bn70lgmcmm51" path="res://graphics/pokemon/front/OGERPON_CORNERSTONE.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://bsvxr8ygb1st3" path="res://graphics/pokemon/front_shiny/OGERPON_CORNERSTONE.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://c2w2deqi8lgjf" path="res://graphics/pokemon/back/OGERPON_CORNERSTONE.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://cmhfun36o0x6w" path="res://graphics/pokemon/back_shiny/OGERPON_CORNERSTONE.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://dextd45eyl3t1" path="res://graphics/pokemon/front/OGERPON_TEAL_TERA.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://7grrmamtrnt5" path="res://graphics/pokemon/front_shiny/OGERPON_TEAL_TERA.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://du2ngua6wo4rf" path="res://graphics/pokemon/back/OGERPON_TEAL_TERA.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://cwvx7km7jf5ov" path="res://graphics/pokemon/back_shiny/OGERPON_TEAL_TERA.png" id="gfx122"]
+[ext_resource type="Texture2D" uid="uid://c5pgrkyhy887d" path="res://graphics/pokemon/front/OGERPON_WELLSPRING_TERA.png" id="gfx123"]
+[ext_resource type="Texture2D" uid="uid://wmaa421xl6pk" path="res://graphics/pokemon/front_shiny/OGERPON_WELLSPRING_TERA.png" id="gfx124"]
+[ext_resource type="Texture2D" uid="uid://hhj328ws4t0l" path="res://graphics/pokemon/back/OGERPON_WELLSPRING_TERA.png" id="gfx125"]
+[ext_resource type="Texture2D" uid="uid://d1boq161f8o28" path="res://graphics/pokemon/back_shiny/OGERPON_WELLSPRING_TERA.png" id="gfx126"]
+[ext_resource type="Texture2D" uid="uid://cxpv4tr86g8ah" path="res://graphics/pokemon/front/OGERPON_HEARTHFLAME_TERA.png" id="gfx127"]
+[ext_resource type="Texture2D" uid="uid://cpoit82d2f4rk" path="res://graphics/pokemon/front_shiny/OGERPON_HEARTHFLAME_TERA.png" id="gfx128"]
+[ext_resource type="Texture2D" uid="uid://be2psdte4naj5" path="res://graphics/pokemon/back/OGERPON_HEARTHFLAME_TERA.png" id="gfx129"]
+[ext_resource type="Texture2D" uid="uid://c6pp63u7pw7jb" path="res://graphics/pokemon/back_shiny/OGERPON_HEARTHFLAME_TERA.png" id="gfx130"]
+[ext_resource type="Texture2D" uid="uid://busb1n81fjjqr" path="res://graphics/pokemon/front/OGERPON_CORNERSTONE_TERA.png" id="gfx131"]
+[ext_resource type="Texture2D" uid="uid://dddvsfjipyxwp" path="res://graphics/pokemon/front_shiny/OGERPON_CORNERSTONE_TERA.png" id="gfx132"]
+[ext_resource type="Texture2D" uid="uid://d2ypjym4demu6" path="res://graphics/pokemon/back/OGERPON_CORNERSTONE_TERA.png" id="gfx133"]
+[ext_resource type="Texture2D" uid="uid://br8aj3dj73uqk" path="res://graphics/pokemon/back_shiny/OGERPON_CORNERSTONE_TERA.png" id="gfx134"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_75p64")
@@ -13,6 +48,12 @@ display_name = "Ogerpon Wellspring"
 base_species_id = 1416
 override_types = true
 type_1 = 12
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -23,6 +64,12 @@ display_name = "Ogerpon Hearthflame"
 base_species_id = 1416
 override_types = true
 type_1 = 11
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -33,6 +80,12 @@ display_name = "Ogerpon Cornerstone"
 base_species_id = 1416
 override_types = true
 type_1 = 6
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -41,6 +94,12 @@ species_id = 1420
 form_id = &"ogerpon_teal_tera"
 display_name = "Ogerpon Teal Tera"
 base_species_id = 1416
+front_sprite = ExtResource("gfx119")
+front_sprite_shiny = ExtResource("gfx120")
+back_sprite = ExtResource("gfx121")
+back_sprite_shiny = ExtResource("gfx122")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -49,6 +108,12 @@ species_id = 1421
 form_id = &"ogerpon_wellspring_tera"
 display_name = "Ogerpon Wellspring Tera"
 base_species_id = 1416
+front_sprite = ExtResource("gfx123")
+front_sprite_shiny = ExtResource("gfx124")
+back_sprite = ExtResource("gfx125")
+back_sprite_shiny = ExtResource("gfx126")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -57,6 +122,12 @@ species_id = 1422
 form_id = &"ogerpon_hearthflame_tera"
 display_name = "Ogerpon Hearthflame Tera"
 base_species_id = 1416
+front_sprite = ExtResource("gfx127")
+front_sprite_shiny = ExtResource("gfx128")
+back_sprite = ExtResource("gfx129")
+back_sprite_shiny = ExtResource("gfx130")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -65,6 +136,12 @@ species_id = 1423
 form_id = &"ogerpon_cornerstone_tera"
 display_name = "Ogerpon Cornerstone Tera"
 base_species_id = 1416
+front_sprite = ExtResource("gfx131")
+front_sprite_shiny = ExtResource("gfx132")
+back_sprite = ExtResource("gfx133")
+back_sprite_shiny = ExtResource("gfx134")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -160,6 +237,12 @@ description = "This Pokémon's type changes based on which mask it's wearing. It
 height = 12
 weight = 398
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_75p64")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 36, 67, 76, 156, 164, 179, 182, 184, 191, 201, 202, 203, 204, 206, 214, 227, 240, 241, 263, 269, 270, 280, 282, 317, 331, 345, 369, 374, 402, 412, 416, 428, 437, 447, 490, 580, 583, 632, 638, 661, 731, 736, 779, 811])
@@ -169,3 +252,5 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 50
 hatch_species = 1416
+front_sprite_offset = Vector2(0, 2)
+cry = ExtResource("gfx106")

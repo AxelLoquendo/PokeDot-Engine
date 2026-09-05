@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_xf557"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d13q3ypdroa5h" path="res://graphics/pokemon/front/LAPRAS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://q6wkixrhvroa" path="res://graphics/pokemon/front_shiny/LAPRAS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://vssdieubeyrv" path="res://graphics/pokemon/back/LAPRAS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bsdf25af40unv" path="res://graphics/pokemon/back_shiny/LAPRAS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bmkjnpqstl3t7" path="res://graphics/pokemon/icons/LAPRAS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://sx5mhdt1rj2a" path="res://graphics/pokemon/follower/LAPRAS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b4o4va0g416ne" path="res://sfx/se/cries/LAPRAS.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c57jnfw1cql8h" path="res://graphics/pokemon/front/LAPRAS_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bscmb32yes2tt" path="res://graphics/pokemon/front_shiny/LAPRAS_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://d4b8gt5hsucgl" path="res://graphics/pokemon/back/LAPRAS_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://ci7i4jhrktu4w" path="res://graphics/pokemon/back_shiny/LAPRAS_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://ccd71ept4bgtp" path="res://graphics/pokemon/icons/LAPRAS_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_xf557")
@@ -11,6 +23,15 @@ species_id = 1498
 form_id = &"lapras_gmax"
 display_name = "Lapras Gmax"
 base_species_id = 131
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 1)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -114,6 +135,12 @@ description = "Son buenos de coraz√≥n. Muchos fueron capturados por ser tan pac√
 height = 25
 weight = 2200
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_xf557")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([29, 32, 34, 36, 38, 46, 55, 56, 57, 58, 59, 61, 63, 70, 76, 82, 85, 87, 89, 92, 94, 99, 102, 104, 109, 114, 115, 117, 127, 130, 138, 149, 156, 164, 171, 173, 174, 182, 192, 196, 200, 203, 204, 207, 213, 214, 215, 216, 218, 219, 224, 225, 231, 237, 240, 246, 248, 249, 250, 258, 263, 270, 290, 291, 304, 311, 324, 330, 333, 335, 349, 351, 352, 362, 363, 401, 406, 416, 419, 428, 442, 445, 496, 497, 523, 524, 529, 574, 590, 647, 664, 704, 779, 809, 812, 841, 842, 845])
@@ -125,4 +152,7 @@ egg_group_1 = 1
 egg_group_2 = 2
 egg_cycles = 40
 hatch_species = 131
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

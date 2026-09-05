@@ -4,6 +4,243 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dpf6siq35h6uw" path="res://graphics/pokemon/front/ALCREMIE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://yuvfbi0mujxm" path="res://graphics/pokemon/front_shiny/ALCREMIE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ybk5qa1rdt7w" path="res://graphics/pokemon/back/ALCREMIE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ibuh7oqawla6" path="res://graphics/pokemon/back_shiny/ALCREMIE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://yotteh17nvoh" path="res://graphics/pokemon/icons/ALCREMIE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://celc5q0y1vais" path="res://graphics/pokemon/follower/ALCREMIE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bx4tq13htujur" path="res://sfx/se/cries/ALCREMIE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dlv33g66eivbf" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_RUBY_CREAM.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c1exdnfpve6is" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_RUBY_CREAM.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dpu64pbikrecn" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_RUBY_CREAM.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cfdvugwqx7ipa" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_RUBY_CREAM.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://crumb2fcvys1t" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_MATCHA_CREAM.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dw80g2v2bi2qk" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_MATCHA_CREAM.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://bnjr0ekko46lr" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_MATCHA_CREAM.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://c3olxumdjad4v" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_MATCHA_CREAM.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://dv2h8i8i4y51s" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_MINT_CREAM.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://bhr76lsq0ruch" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_MINT_CREAM.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://dwc6tmoce0or0" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_MINT_CREAM.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://uxkl7hcsbi01" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_MINT_CREAM.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://bcvir5u4g8v0c" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_LEMON_CREAM.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://bvqk706mmka6o" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_LEMON_CREAM.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://bx2p3tni4g5d5" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_LEMON_CREAM.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://dqdi1ealuy24w" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_LEMON_CREAM.png" id="gfx122"]
+[ext_resource type="Texture2D" uid="uid://bvdcuol8pmv6g" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_SALTED_CREAM.png" id="gfx123"]
+[ext_resource type="Texture2D" uid="uid://bt7n7wfyu20wv" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_SALTED_CREAM.png" id="gfx124"]
+[ext_resource type="Texture2D" uid="uid://cbdk6kn36rcr6" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_SALTED_CREAM.png" id="gfx125"]
+[ext_resource type="Texture2D" uid="uid://cawwnbrxrtnh6" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_SALTED_CREAM.png" id="gfx126"]
+[ext_resource type="Texture2D" uid="uid://bh6gajbq2hqnc" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_RUBY_SWIRL.png" id="gfx127"]
+[ext_resource type="Texture2D" uid="uid://b2vjjiij727w6" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_RUBY_SWIRL.png" id="gfx128"]
+[ext_resource type="Texture2D" uid="uid://ubgu2gcafmm2" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_RUBY_SWIRL.png" id="gfx129"]
+[ext_resource type="Texture2D" uid="uid://ccme42xeoqxsb" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_RUBY_SWIRL.png" id="gfx130"]
+[ext_resource type="Texture2D" uid="uid://daau84nrb34d0" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_CARAMEL_SWIRL.png" id="gfx131"]
+[ext_resource type="Texture2D" uid="uid://rx60y4jgfbgy" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_CARAMEL_SWIRL.png" id="gfx132"]
+[ext_resource type="Texture2D" uid="uid://d2mkrpkbd5y41" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_CARAMEL_SWIRL.png" id="gfx133"]
+[ext_resource type="Texture2D" uid="uid://b22i1xlbmycbm" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_CARAMEL_SWIRL.png" id="gfx134"]
+[ext_resource type="Texture2D" uid="uid://v6vl3kgg3phe" path="res://graphics/pokemon/front/ALCREMIE_STRAWBERRY_RAINBOW_SWIRL.png" id="gfx135"]
+[ext_resource type="Texture2D" uid="uid://blds4hh4yie02" path="res://graphics/pokemon/front_shiny/ALCREMIE_STRAWBERRY_RAINBOW_SWIRL.png" id="gfx136"]
+[ext_resource type="Texture2D" uid="uid://dunseyyt6awgn" path="res://graphics/pokemon/back/ALCREMIE_STRAWBERRY_RAINBOW_SWIRL.png" id="gfx137"]
+[ext_resource type="Texture2D" uid="uid://x6keis21swfh" path="res://graphics/pokemon/back_shiny/ALCREMIE_STRAWBERRY_RAINBOW_SWIRL.png" id="gfx138"]
+[ext_resource type="Texture2D" uid="uid://0n3h7ruraim1" path="res://graphics/pokemon/front/ALCREMIE_BERRY_RUBY_CREAM.png" id="gfx139"]
+[ext_resource type="Texture2D" uid="uid://vrxs6bfy0woo" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_RUBY_CREAM.png" id="gfx140"]
+[ext_resource type="Texture2D" uid="uid://mn5qcbwkv2gc" path="res://graphics/pokemon/back/ALCREMIE_BERRY_RUBY_CREAM.png" id="gfx141"]
+[ext_resource type="Texture2D" uid="uid://bv225nwfuinoh" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_RUBY_CREAM.png" id="gfx142"]
+[ext_resource type="Texture2D" uid="uid://fo55h6ybe53s" path="res://graphics/pokemon/front/ALCREMIE_BERRY_MATCHA_CREAM.png" id="gfx143"]
+[ext_resource type="Texture2D" uid="uid://bn4poqbpq4ckm" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_MATCHA_CREAM.png" id="gfx144"]
+[ext_resource type="Texture2D" uid="uid://cdjwa1mfvrvwo" path="res://graphics/pokemon/back/ALCREMIE_BERRY_MATCHA_CREAM.png" id="gfx145"]
+[ext_resource type="Texture2D" uid="uid://cs8j0n53xi7yq" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_MATCHA_CREAM.png" id="gfx146"]
+[ext_resource type="Texture2D" uid="uid://ccety6o7p4dnc" path="res://graphics/pokemon/front/ALCREMIE_BERRY_MINT_CREAM.png" id="gfx147"]
+[ext_resource type="Texture2D" uid="uid://da5vup6k6xd3y" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_MINT_CREAM.png" id="gfx148"]
+[ext_resource type="Texture2D" uid="uid://cyphjk3vrav3f" path="res://graphics/pokemon/back/ALCREMIE_BERRY_MINT_CREAM.png" id="gfx149"]
+[ext_resource type="Texture2D" uid="uid://keqtl5w0scmw" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_MINT_CREAM.png" id="gfx150"]
+[ext_resource type="Texture2D" uid="uid://q8ygdjnqn7sm" path="res://graphics/pokemon/front/ALCREMIE_BERRY_LEMON_CREAM.png" id="gfx151"]
+[ext_resource type="Texture2D" uid="uid://dbxrf47oysa47" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_LEMON_CREAM.png" id="gfx152"]
+[ext_resource type="Texture2D" uid="uid://c3tpyvv4spgpa" path="res://graphics/pokemon/back/ALCREMIE_BERRY_LEMON_CREAM.png" id="gfx153"]
+[ext_resource type="Texture2D" uid="uid://cf1112xx0o5ip" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_LEMON_CREAM.png" id="gfx154"]
+[ext_resource type="Texture2D" uid="uid://dhn44k5li6y52" path="res://graphics/pokemon/front/ALCREMIE_BERRY_SALTED_CREAM.png" id="gfx155"]
+[ext_resource type="Texture2D" uid="uid://ch0xir5ljpkax" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_SALTED_CREAM.png" id="gfx156"]
+[ext_resource type="Texture2D" uid="uid://d4bup1ta436i3" path="res://graphics/pokemon/back/ALCREMIE_BERRY_SALTED_CREAM.png" id="gfx157"]
+[ext_resource type="Texture2D" uid="uid://cjsrvi2r7wtsm" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_SALTED_CREAM.png" id="gfx158"]
+[ext_resource type="Texture2D" uid="uid://ctnnwxtb2vcso" path="res://graphics/pokemon/front/ALCREMIE_BERRY_RUBY_SWIRL.png" id="gfx159"]
+[ext_resource type="Texture2D" uid="uid://dkr5mqrthq4sd" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_RUBY_SWIRL.png" id="gfx160"]
+[ext_resource type="Texture2D" uid="uid://b2fk0otgowpab" path="res://graphics/pokemon/back/ALCREMIE_BERRY_RUBY_SWIRL.png" id="gfx161"]
+[ext_resource type="Texture2D" uid="uid://dq7h36vdra7j2" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_RUBY_SWIRL.png" id="gfx162"]
+[ext_resource type="Texture2D" uid="uid://7etcvahdb76c" path="res://graphics/pokemon/front/ALCREMIE_BERRY_CARAMEL_SWIRL.png" id="gfx163"]
+[ext_resource type="Texture2D" uid="uid://cf242vnr1gpn4" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_CARAMEL_SWIRL.png" id="gfx164"]
+[ext_resource type="Texture2D" uid="uid://droxepaem2c7q" path="res://graphics/pokemon/back/ALCREMIE_BERRY_CARAMEL_SWIRL.png" id="gfx165"]
+[ext_resource type="Texture2D" uid="uid://b5hfckcpmja6m" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_CARAMEL_SWIRL.png" id="gfx166"]
+[ext_resource type="Texture2D" uid="uid://db5dijx17evvr" path="res://graphics/pokemon/front/ALCREMIE_BERRY_RAINBOW_SWIRL.png" id="gfx167"]
+[ext_resource type="Texture2D" uid="uid://c04i4c0igl4jy" path="res://graphics/pokemon/front_shiny/ALCREMIE_BERRY_RAINBOW_SWIRL.png" id="gfx168"]
+[ext_resource type="Texture2D" uid="uid://if57u8svxg1" path="res://graphics/pokemon/back/ALCREMIE_BERRY_RAINBOW_SWIRL.png" id="gfx169"]
+[ext_resource type="Texture2D" uid="uid://b2glqudnfsax8" path="res://graphics/pokemon/back_shiny/ALCREMIE_BERRY_RAINBOW_SWIRL.png" id="gfx170"]
+[ext_resource type="Texture2D" uid="uid://daem7wf0rkj81" path="res://graphics/pokemon/front/ALCREMIE_LOVE_RUBY_CREAM.png" id="gfx171"]
+[ext_resource type="Texture2D" uid="uid://doyr6v64j8t81" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_RUBY_CREAM.png" id="gfx172"]
+[ext_resource type="Texture2D" uid="uid://de4m7f8ov7g7g" path="res://graphics/pokemon/back/ALCREMIE_LOVE_RUBY_CREAM.png" id="gfx173"]
+[ext_resource type="Texture2D" uid="uid://b0qq7q2gnq6ja" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_RUBY_CREAM.png" id="gfx174"]
+[ext_resource type="Texture2D" uid="uid://cg2nmvl0y183b" path="res://graphics/pokemon/front/ALCREMIE_LOVE_MATCHA_CREAM.png" id="gfx175"]
+[ext_resource type="Texture2D" uid="uid://bpoyi58by2vud" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_MATCHA_CREAM.png" id="gfx176"]
+[ext_resource type="Texture2D" uid="uid://6indk4am7mpo" path="res://graphics/pokemon/back/ALCREMIE_LOVE_MATCHA_CREAM.png" id="gfx177"]
+[ext_resource type="Texture2D" uid="uid://tyssi1q0g2um" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_MATCHA_CREAM.png" id="gfx178"]
+[ext_resource type="Texture2D" uid="uid://blq2anc52swe7" path="res://graphics/pokemon/front/ALCREMIE_LOVE_MINT_CREAM.png" id="gfx179"]
+[ext_resource type="Texture2D" uid="uid://cnnng0yi5xhye" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_MINT_CREAM.png" id="gfx180"]
+[ext_resource type="Texture2D" uid="uid://dd38jdbiv8d60" path="res://graphics/pokemon/back/ALCREMIE_LOVE_MINT_CREAM.png" id="gfx181"]
+[ext_resource type="Texture2D" uid="uid://cyrm7xsnbdv02" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_MINT_CREAM.png" id="gfx182"]
+[ext_resource type="Texture2D" uid="uid://b35dchr4ifax5" path="res://graphics/pokemon/front/ALCREMIE_LOVE_LEMON_CREAM.png" id="gfx183"]
+[ext_resource type="Texture2D" uid="uid://ccsq75bic337d" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_LEMON_CREAM.png" id="gfx184"]
+[ext_resource type="Texture2D" uid="uid://boms121li8gia" path="res://graphics/pokemon/back/ALCREMIE_LOVE_LEMON_CREAM.png" id="gfx185"]
+[ext_resource type="Texture2D" uid="uid://bcpmb61x8wo" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_LEMON_CREAM.png" id="gfx186"]
+[ext_resource type="Texture2D" uid="uid://cq3snf3skhp1y" path="res://graphics/pokemon/front/ALCREMIE_LOVE_SALTED_CREAM.png" id="gfx187"]
+[ext_resource type="Texture2D" uid="uid://cu3ohfqbvvd7x" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_SALTED_CREAM.png" id="gfx188"]
+[ext_resource type="Texture2D" uid="uid://bb55vwa71jr3k" path="res://graphics/pokemon/back/ALCREMIE_LOVE_SALTED_CREAM.png" id="gfx189"]
+[ext_resource type="Texture2D" uid="uid://bccxia1g8jxhx" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_SALTED_CREAM.png" id="gfx190"]
+[ext_resource type="Texture2D" uid="uid://c6s66fac3v5s2" path="res://graphics/pokemon/front/ALCREMIE_LOVE_RUBY_SWIRL.png" id="gfx191"]
+[ext_resource type="Texture2D" uid="uid://eart0elm4g2m" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_RUBY_SWIRL.png" id="gfx192"]
+[ext_resource type="Texture2D" uid="uid://d1gihcw1pf62p" path="res://graphics/pokemon/back/ALCREMIE_LOVE_RUBY_SWIRL.png" id="gfx193"]
+[ext_resource type="Texture2D" uid="uid://bw0xa8s03mt0p" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_RUBY_SWIRL.png" id="gfx194"]
+[ext_resource type="Texture2D" uid="uid://btrgjjrdxcl6y" path="res://graphics/pokemon/front/ALCREMIE_LOVE_CARAMEL_SWIRL.png" id="gfx195"]
+[ext_resource type="Texture2D" uid="uid://ddojmaqo7ox4v" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_CARAMEL_SWIRL.png" id="gfx196"]
+[ext_resource type="Texture2D" uid="uid://0e3hyhq26kpk" path="res://graphics/pokemon/back/ALCREMIE_LOVE_CARAMEL_SWIRL.png" id="gfx197"]
+[ext_resource type="Texture2D" uid="uid://b26wmdblsnma4" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_CARAMEL_SWIRL.png" id="gfx198"]
+[ext_resource type="Texture2D" uid="uid://b2tcq8as8o5i4" path="res://graphics/pokemon/front/ALCREMIE_LOVE_RAINBOW_SWIRL.png" id="gfx199"]
+[ext_resource type="Texture2D" uid="uid://ds2ixq7abhxiv" path="res://graphics/pokemon/front_shiny/ALCREMIE_LOVE_RAINBOW_SWIRL.png" id="gfx200"]
+[ext_resource type="Texture2D" uid="uid://nh0yoqq65hkh" path="res://graphics/pokemon/back/ALCREMIE_LOVE_RAINBOW_SWIRL.png" id="gfx201"]
+[ext_resource type="Texture2D" uid="uid://cnkdihatieaw7" path="res://graphics/pokemon/back_shiny/ALCREMIE_LOVE_RAINBOW_SWIRL.png" id="gfx202"]
+[ext_resource type="Texture2D" uid="uid://b5t4xwmso04dx" path="res://graphics/pokemon/front/ALCREMIE_STAR_RUBY_CREAM.png" id="gfx203"]
+[ext_resource type="Texture2D" uid="uid://b42cahilmx311" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_RUBY_CREAM.png" id="gfx204"]
+[ext_resource type="Texture2D" uid="uid://bqp3wbfigninv" path="res://graphics/pokemon/back/ALCREMIE_STAR_RUBY_CREAM.png" id="gfx205"]
+[ext_resource type="Texture2D" uid="uid://d2wsgrop6mv3r" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_RUBY_CREAM.png" id="gfx206"]
+[ext_resource type="Texture2D" uid="uid://byd1p8tshqu2f" path="res://graphics/pokemon/front/ALCREMIE_STAR_MATCHA_CREAM.png" id="gfx207"]
+[ext_resource type="Texture2D" uid="uid://bu04fnwijbryi" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_MATCHA_CREAM.png" id="gfx208"]
+[ext_resource type="Texture2D" uid="uid://dcq7w2qw7fiww" path="res://graphics/pokemon/back/ALCREMIE_STAR_MATCHA_CREAM.png" id="gfx209"]
+[ext_resource type="Texture2D" uid="uid://bffvq2q6yg6qe" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_MATCHA_CREAM.png" id="gfx210"]
+[ext_resource type="Texture2D" uid="uid://bdjvlcuoka41m" path="res://graphics/pokemon/front/ALCREMIE_STAR_MINT_CREAM.png" id="gfx211"]
+[ext_resource type="Texture2D" uid="uid://etwg50mu7a6m" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_MINT_CREAM.png" id="gfx212"]
+[ext_resource type="Texture2D" uid="uid://dnlbv7do6wbnt" path="res://graphics/pokemon/back/ALCREMIE_STAR_MINT_CREAM.png" id="gfx213"]
+[ext_resource type="Texture2D" uid="uid://c6nafncvrmv2c" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_MINT_CREAM.png" id="gfx214"]
+[ext_resource type="Texture2D" uid="uid://bfetd38suu0sw" path="res://graphics/pokemon/front/ALCREMIE_STAR_LEMON_CREAM.png" id="gfx215"]
+[ext_resource type="Texture2D" uid="uid://65q6k7dns4hu" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_LEMON_CREAM.png" id="gfx216"]
+[ext_resource type="Texture2D" uid="uid://dxrxqjsop6ow3" path="res://graphics/pokemon/back/ALCREMIE_STAR_LEMON_CREAM.png" id="gfx217"]
+[ext_resource type="Texture2D" uid="uid://c2fcxqfbrne8d" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_LEMON_CREAM.png" id="gfx218"]
+[ext_resource type="Texture2D" uid="uid://712ujpcpsu3y" path="res://graphics/pokemon/front/ALCREMIE_STAR_SALTED_CREAM.png" id="gfx219"]
+[ext_resource type="Texture2D" uid="uid://djikg4ssqjbc4" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_SALTED_CREAM.png" id="gfx220"]
+[ext_resource type="Texture2D" uid="uid://da3ciwbjb0ukd" path="res://graphics/pokemon/back/ALCREMIE_STAR_SALTED_CREAM.png" id="gfx221"]
+[ext_resource type="Texture2D" uid="uid://bpt60lmpg7ggh" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_SALTED_CREAM.png" id="gfx222"]
+[ext_resource type="Texture2D" uid="uid://cc1cma1e8w3ig" path="res://graphics/pokemon/front/ALCREMIE_STAR_RUBY_SWIRL.png" id="gfx223"]
+[ext_resource type="Texture2D" uid="uid://jomprrbaik8h" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_RUBY_SWIRL.png" id="gfx224"]
+[ext_resource type="Texture2D" uid="uid://ddewbad6oeslq" path="res://graphics/pokemon/back/ALCREMIE_STAR_RUBY_SWIRL.png" id="gfx225"]
+[ext_resource type="Texture2D" uid="uid://dqwm1sbe57u07" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_RUBY_SWIRL.png" id="gfx226"]
+[ext_resource type="Texture2D" uid="uid://c2jsgkardefw" path="res://graphics/pokemon/front/ALCREMIE_STAR_CARAMEL_SWIRL.png" id="gfx227"]
+[ext_resource type="Texture2D" uid="uid://b7a6au1ndi3g5" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_CARAMEL_SWIRL.png" id="gfx228"]
+[ext_resource type="Texture2D" uid="uid://c7gcdcw3pkeik" path="res://graphics/pokemon/back/ALCREMIE_STAR_CARAMEL_SWIRL.png" id="gfx229"]
+[ext_resource type="Texture2D" uid="uid://b4c6p1kem2oro" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_CARAMEL_SWIRL.png" id="gfx230"]
+[ext_resource type="Texture2D" uid="uid://dkw2nw0i6561i" path="res://graphics/pokemon/front/ALCREMIE_STAR_RAINBOW_SWIRL.png" id="gfx231"]
+[ext_resource type="Texture2D" uid="uid://jybrd02hl1py" path="res://graphics/pokemon/front_shiny/ALCREMIE_STAR_RAINBOW_SWIRL.png" id="gfx232"]
+[ext_resource type="Texture2D" uid="uid://de6h8yhx2o5lj" path="res://graphics/pokemon/back/ALCREMIE_STAR_RAINBOW_SWIRL.png" id="gfx233"]
+[ext_resource type="Texture2D" uid="uid://b0pixmmrce7lg" path="res://graphics/pokemon/back_shiny/ALCREMIE_STAR_RAINBOW_SWIRL.png" id="gfx234"]
+[ext_resource type="Texture2D" uid="uid://dr44eo45el77j" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_RUBY_CREAM.png" id="gfx235"]
+[ext_resource type="Texture2D" uid="uid://c7ya6g6ng41mj" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_RUBY_CREAM.png" id="gfx236"]
+[ext_resource type="Texture2D" uid="uid://bkniyx1s3cjcd" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_RUBY_CREAM.png" id="gfx237"]
+[ext_resource type="Texture2D" uid="uid://twp811uftki0" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_RUBY_CREAM.png" id="gfx238"]
+[ext_resource type="Texture2D" uid="uid://bwesdfoc1o7wq" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_MATCHA_CREAM.png" id="gfx239"]
+[ext_resource type="Texture2D" uid="uid://bgkedhp01rsgx" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_MATCHA_CREAM.png" id="gfx240"]
+[ext_resource type="Texture2D" uid="uid://dwufa4n0lytpf" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_MATCHA_CREAM.png" id="gfx241"]
+[ext_resource type="Texture2D" uid="uid://qrgluv0kq5n6" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_MATCHA_CREAM.png" id="gfx242"]
+[ext_resource type="Texture2D" uid="uid://cko45bls8pvnu" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_MINT_CREAM.png" id="gfx243"]
+[ext_resource type="Texture2D" uid="uid://c522pe1gtofs8" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_MINT_CREAM.png" id="gfx244"]
+[ext_resource type="Texture2D" uid="uid://frwhxg2gebco" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_MINT_CREAM.png" id="gfx245"]
+[ext_resource type="Texture2D" uid="uid://bv5kes6q7dscq" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_MINT_CREAM.png" id="gfx246"]
+[ext_resource type="Texture2D" uid="uid://ceylunv7idsrh" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_LEMON_CREAM.png" id="gfx247"]
+[ext_resource type="Texture2D" uid="uid://c653jlvw010p" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_LEMON_CREAM.png" id="gfx248"]
+[ext_resource type="Texture2D" uid="uid://vu15jyec1tia" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_LEMON_CREAM.png" id="gfx249"]
+[ext_resource type="Texture2D" uid="uid://by4woto8e3uqb" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_LEMON_CREAM.png" id="gfx250"]
+[ext_resource type="Texture2D" uid="uid://c228grluqpptd" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_SALTED_CREAM.png" id="gfx251"]
+[ext_resource type="Texture2D" uid="uid://vhi6l8ulu6gd" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_SALTED_CREAM.png" id="gfx252"]
+[ext_resource type="Texture2D" uid="uid://qcdf1417hbd3" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_SALTED_CREAM.png" id="gfx253"]
+[ext_resource type="Texture2D" uid="uid://cnv6plylqyrk0" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_SALTED_CREAM.png" id="gfx254"]
+[ext_resource type="Texture2D" uid="uid://m22p5rxgf4s5" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_RUBY_SWIRL.png" id="gfx255"]
+[ext_resource type="Texture2D" uid="uid://cd503lhmg8uds" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_RUBY_SWIRL.png" id="gfx256"]
+[ext_resource type="Texture2D" uid="uid://l70k2wilhy7j" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_RUBY_SWIRL.png" id="gfx257"]
+[ext_resource type="Texture2D" uid="uid://c5ockyn0uonis" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_RUBY_SWIRL.png" id="gfx258"]
+[ext_resource type="Texture2D" uid="uid://djpnx4rba8abb" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_CARAMEL_SWIRL.png" id="gfx259"]
+[ext_resource type="Texture2D" uid="uid://dc6b856vaopod" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_CARAMEL_SWIRL.png" id="gfx260"]
+[ext_resource type="Texture2D" uid="uid://buyeamtod5pa1" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_CARAMEL_SWIRL.png" id="gfx261"]
+[ext_resource type="Texture2D" uid="uid://d702kcy61kyr" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_CARAMEL_SWIRL.png" id="gfx262"]
+[ext_resource type="Texture2D" uid="uid://brpuj5jv7mxq2" path="res://graphics/pokemon/front/ALCREMIE_CLOVER_RAINBOW_SWIRL.png" id="gfx263"]
+[ext_resource type="Texture2D" uid="uid://op7r05iuhhw0" path="res://graphics/pokemon/front_shiny/ALCREMIE_CLOVER_RAINBOW_SWIRL.png" id="gfx264"]
+[ext_resource type="Texture2D" uid="uid://g4q6qtl512cw" path="res://graphics/pokemon/back/ALCREMIE_CLOVER_RAINBOW_SWIRL.png" id="gfx265"]
+[ext_resource type="Texture2D" uid="uid://b8eh64ldxn51q" path="res://graphics/pokemon/back_shiny/ALCREMIE_CLOVER_RAINBOW_SWIRL.png" id="gfx266"]
+[ext_resource type="Texture2D" uid="uid://b1xo1v7uqagcv" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_RUBY_CREAM.png" id="gfx267"]
+[ext_resource type="Texture2D" uid="uid://cykstuh6ro1ac" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_RUBY_CREAM.png" id="gfx268"]
+[ext_resource type="Texture2D" uid="uid://4rye3f03wr21" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_RUBY_CREAM.png" id="gfx269"]
+[ext_resource type="Texture2D" uid="uid://dtp0l20ofoce" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_RUBY_CREAM.png" id="gfx270"]
+[ext_resource type="Texture2D" uid="uid://1u5wjdohry7j" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_MATCHA_CREAM.png" id="gfx271"]
+[ext_resource type="Texture2D" uid="uid://b7fm5md0ohc48" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_MATCHA_CREAM.png" id="gfx272"]
+[ext_resource type="Texture2D" uid="uid://bxs1xne5yebu8" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_MATCHA_CREAM.png" id="gfx273"]
+[ext_resource type="Texture2D" uid="uid://bhd7wjbwft57r" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_MATCHA_CREAM.png" id="gfx274"]
+[ext_resource type="Texture2D" uid="uid://drrd2qua2f44f" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_MINT_CREAM.png" id="gfx275"]
+[ext_resource type="Texture2D" uid="uid://cmbqnkq1l0eb2" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_MINT_CREAM.png" id="gfx276"]
+[ext_resource type="Texture2D" uid="uid://5sxrj4804lfn" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_MINT_CREAM.png" id="gfx277"]
+[ext_resource type="Texture2D" uid="uid://cdraq2db5ibjq" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_MINT_CREAM.png" id="gfx278"]
+[ext_resource type="Texture2D" uid="uid://c1kx5y7j7fgyh" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_LEMON_CREAM.png" id="gfx279"]
+[ext_resource type="Texture2D" uid="uid://d35l42iadio5w" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_LEMON_CREAM.png" id="gfx280"]
+[ext_resource type="Texture2D" uid="uid://8yunhhnuix47" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_LEMON_CREAM.png" id="gfx281"]
+[ext_resource type="Texture2D" uid="uid://b2c8pnbvehmlj" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_LEMON_CREAM.png" id="gfx282"]
+[ext_resource type="Texture2D" uid="uid://doriuwano3353" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_SALTED_CREAM.png" id="gfx283"]
+[ext_resource type="Texture2D" uid="uid://cpknqaj63opj" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_SALTED_CREAM.png" id="gfx284"]
+[ext_resource type="Texture2D" uid="uid://bwl7687ypy34t" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_SALTED_CREAM.png" id="gfx285"]
+[ext_resource type="Texture2D" uid="uid://d1uyw4ntq6nox" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_SALTED_CREAM.png" id="gfx286"]
+[ext_resource type="Texture2D" uid="uid://crrajns6y6krh" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_RUBY_SWIRL.png" id="gfx287"]
+[ext_resource type="Texture2D" uid="uid://b50dpth273axj" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_RUBY_SWIRL.png" id="gfx288"]
+[ext_resource type="Texture2D" uid="uid://br761ijtg4y6q" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_RUBY_SWIRL.png" id="gfx289"]
+[ext_resource type="Texture2D" uid="uid://bklk3mvsk2kmw" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_RUBY_SWIRL.png" id="gfx290"]
+[ext_resource type="Texture2D" uid="uid://01x81d2hmc64" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_CARAMEL_SWIRL.png" id="gfx291"]
+[ext_resource type="Texture2D" uid="uid://bq7ucnk6lv4cm" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_CARAMEL_SWIRL.png" id="gfx292"]
+[ext_resource type="Texture2D" uid="uid://ddltx70sfp57o" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_CARAMEL_SWIRL.png" id="gfx293"]
+[ext_resource type="Texture2D" uid="uid://b5trtnmxg6wnw" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_CARAMEL_SWIRL.png" id="gfx294"]
+[ext_resource type="Texture2D" uid="uid://cubtw0fplbyxo" path="res://graphics/pokemon/front/ALCREMIE_FLOWER_RAINBOW_SWIRL.png" id="gfx295"]
+[ext_resource type="Texture2D" uid="uid://by14a45y0f7fh" path="res://graphics/pokemon/front_shiny/ALCREMIE_FLOWER_RAINBOW_SWIRL.png" id="gfx296"]
+[ext_resource type="Texture2D" uid="uid://dyd5v5a4xewxa" path="res://graphics/pokemon/back/ALCREMIE_FLOWER_RAINBOW_SWIRL.png" id="gfx297"]
+[ext_resource type="Texture2D" uid="uid://5kkbu2ngtxvf" path="res://graphics/pokemon/back_shiny/ALCREMIE_FLOWER_RAINBOW_SWIRL.png" id="gfx298"]
+[ext_resource type="Texture2D" uid="uid://2cnidjwuhy7n" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_RUBY_CREAM.png" id="gfx299"]
+[ext_resource type="Texture2D" uid="uid://c11er3qlny8u8" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_RUBY_CREAM.png" id="gfx300"]
+[ext_resource type="Texture2D" uid="uid://bo5x20wu1081b" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_RUBY_CREAM.png" id="gfx301"]
+[ext_resource type="Texture2D" uid="uid://dpj2yape7ucpu" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_RUBY_CREAM.png" id="gfx302"]
+[ext_resource type="Texture2D" uid="uid://44bnam8eg88v" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_MATCHA_CREAM.png" id="gfx303"]
+[ext_resource type="Texture2D" uid="uid://dx6rgt1expwbd" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_MATCHA_CREAM.png" id="gfx304"]
+[ext_resource type="Texture2D" uid="uid://f5ko7hkpu35d" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_MATCHA_CREAM.png" id="gfx305"]
+[ext_resource type="Texture2D" uid="uid://cll43e25x3ax0" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_MATCHA_CREAM.png" id="gfx306"]
+[ext_resource type="Texture2D" uid="uid://c0htmwafjm5dy" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_MINT_CREAM.png" id="gfx307"]
+[ext_resource type="Texture2D" uid="uid://8giglxw28ja3" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_MINT_CREAM.png" id="gfx308"]
+[ext_resource type="Texture2D" uid="uid://dyinkqclthbl5" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_MINT_CREAM.png" id="gfx309"]
+[ext_resource type="Texture2D" uid="uid://fo8j37nsnph5" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_MINT_CREAM.png" id="gfx310"]
+[ext_resource type="Texture2D" uid="uid://c2n1rqdtwvx78" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_LEMON_CREAM.png" id="gfx311"]
+[ext_resource type="Texture2D" uid="uid://weu6bh0htvoh" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_LEMON_CREAM.png" id="gfx312"]
+[ext_resource type="Texture2D" uid="uid://8my141q3krjk" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_LEMON_CREAM.png" id="gfx313"]
+[ext_resource type="Texture2D" uid="uid://bq0781w8enun" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_LEMON_CREAM.png" id="gfx314"]
+[ext_resource type="Texture2D" uid="uid://b73llvd3wbj88" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_SALTED_CREAM.png" id="gfx315"]
+[ext_resource type="Texture2D" uid="uid://diy5xcn76ey5u" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_SALTED_CREAM.png" id="gfx316"]
+[ext_resource type="Texture2D" uid="uid://y64o42wtywsg" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_SALTED_CREAM.png" id="gfx317"]
+[ext_resource type="Texture2D" uid="uid://bx8wvdqsxmq0i" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_SALTED_CREAM.png" id="gfx318"]
+[ext_resource type="Texture2D" uid="uid://cq0dbjmegfkey" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_RUBY_SWIRL.png" id="gfx319"]
+[ext_resource type="Texture2D" uid="uid://c2xxptt3ylsu4" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_RUBY_SWIRL.png" id="gfx320"]
+[ext_resource type="Texture2D" uid="uid://btlno2ewlpm0u" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_RUBY_SWIRL.png" id="gfx321"]
+[ext_resource type="Texture2D" uid="uid://bqo582b7dh67f" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_RUBY_SWIRL.png" id="gfx322"]
+[ext_resource type="Texture2D" uid="uid://wbw78c37e4tn" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_CARAMEL_SWIRL.png" id="gfx323"]
+[ext_resource type="Texture2D" uid="uid://crcg2s5b3wn4f" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_CARAMEL_SWIRL.png" id="gfx324"]
+[ext_resource type="Texture2D" uid="uid://bmliej4jbqnu8" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_CARAMEL_SWIRL.png" id="gfx325"]
+[ext_resource type="Texture2D" uid="uid://h7bph0x38mpk" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_CARAMEL_SWIRL.png" id="gfx326"]
+[ext_resource type="Texture2D" uid="uid://bvypvcbe5eyhj" path="res://graphics/pokemon/front/ALCREMIE_RIBBON_RAINBOW_SWIRL.png" id="gfx327"]
+[ext_resource type="Texture2D" uid="uid://b4qd6540jwk0n" path="res://graphics/pokemon/front_shiny/ALCREMIE_RIBBON_RAINBOW_SWIRL.png" id="gfx328"]
+[ext_resource type="Texture2D" uid="uid://df7rpdr8nl85t" path="res://graphics/pokemon/back/ALCREMIE_RIBBON_RAINBOW_SWIRL.png" id="gfx329"]
+[ext_resource type="Texture2D" uid="uid://bfhm7gxkedpbl" path="res://graphics/pokemon/back_shiny/ALCREMIE_RIBBON_RAINBOW_SWIRL.png" id="gfx330"]
+[ext_resource type="Texture2D" uid="uid://bbq75i4ma08ok" path="res://graphics/pokemon/front/ALCREMIE_GMAX.png" id="gfx331"]
+[ext_resource type="Texture2D" uid="uid://cjaavixvrdpfr" path="res://graphics/pokemon/front_shiny/ALCREMIE_GMAX.png" id="gfx332"]
+[ext_resource type="Texture2D" uid="uid://demw4xc66l4og" path="res://graphics/pokemon/back/ALCREMIE_GMAX.png" id="gfx333"]
+[ext_resource type="Texture2D" uid="uid://f36rwp52sbox" path="res://graphics/pokemon/back_shiny/ALCREMIE_GMAX.png" id="gfx334"]
+[ext_resource type="Texture2D" uid="uid://bujghda3q0kps" path="res://graphics/pokemon/icons/ALCREMIE_gmax.png" id="gfx335"]
+[ext_resource type="Texture2D" uid="uid://c6go425l2btbk" path="res://graphics/pokemon/follower/ALCREMIE_2.png" id="gfx336"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_i7fqg")
@@ -11,6 +248,12 @@ species_id = 1216
 form_id = &"alcremie_strawberry_ruby_cream"
 display_name = "Alcremie Strawberry Ruby Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +262,12 @@ species_id = 1217
 form_id = &"alcremie_strawberry_matcha_cream"
 display_name = "Alcremie Strawberry Matcha Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +276,12 @@ species_id = 1218
 form_id = &"alcremie_strawberry_mint_cream"
 display_name = "Alcremie Strawberry Mint Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +290,12 @@ species_id = 1219
 form_id = &"alcremie_strawberry_lemon_cream"
 display_name = "Alcremie Strawberry Lemon Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx119")
+front_sprite_shiny = ExtResource("gfx120")
+back_sprite = ExtResource("gfx121")
+back_sprite_shiny = ExtResource("gfx122")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +304,12 @@ species_id = 1220
 form_id = &"alcremie_strawberry_salted_cream"
 display_name = "Alcremie Strawberry Salted Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx123")
+front_sprite_shiny = ExtResource("gfx124")
+back_sprite = ExtResource("gfx125")
+back_sprite_shiny = ExtResource("gfx126")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +318,12 @@ species_id = 1221
 form_id = &"alcremie_strawberry_ruby_swirl"
 display_name = "Alcremie Strawberry Ruby Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx127")
+front_sprite_shiny = ExtResource("gfx128")
+back_sprite = ExtResource("gfx129")
+back_sprite_shiny = ExtResource("gfx130")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -59,6 +332,12 @@ species_id = 1222
 form_id = &"alcremie_strawberry_caramel_swirl"
 display_name = "Alcremie Strawberry Caramel Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx131")
+front_sprite_shiny = ExtResource("gfx132")
+back_sprite = ExtResource("gfx133")
+back_sprite_shiny = ExtResource("gfx134")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -67,6 +346,12 @@ species_id = 1223
 form_id = &"alcremie_strawberry_rainbow_swirl"
 display_name = "Alcremie Strawberry Rainbow Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx135")
+front_sprite_shiny = ExtResource("gfx136")
+back_sprite = ExtResource("gfx137")
+back_sprite_shiny = ExtResource("gfx138")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -75,6 +360,8 @@ species_id = 1235
 form_id = &"alcremie_berry_vanilla_cream"
 display_name = "Alcremie Berry Vanilla Cream"
 base_species_id = 869
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -83,6 +370,12 @@ species_id = 1236
 form_id = &"alcremie_berry_ruby_cream"
 display_name = "Alcremie Berry Ruby Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx139")
+front_sprite_shiny = ExtResource("gfx140")
+back_sprite = ExtResource("gfx141")
+back_sprite_shiny = ExtResource("gfx142")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -91,6 +384,12 @@ species_id = 1237
 form_id = &"alcremie_berry_matcha_cream"
 display_name = "Alcremie Berry Matcha Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx143")
+front_sprite_shiny = ExtResource("gfx144")
+back_sprite = ExtResource("gfx145")
+back_sprite_shiny = ExtResource("gfx146")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -99,6 +398,12 @@ species_id = 1238
 form_id = &"alcremie_berry_mint_cream"
 display_name = "Alcremie Berry Mint Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx147")
+front_sprite_shiny = ExtResource("gfx148")
+back_sprite = ExtResource("gfx149")
+back_sprite_shiny = ExtResource("gfx150")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -107,6 +412,12 @@ species_id = 1239
 form_id = &"alcremie_berry_lemon_cream"
 display_name = "Alcremie Berry Lemon Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx151")
+front_sprite_shiny = ExtResource("gfx152")
+back_sprite = ExtResource("gfx153")
+back_sprite_shiny = ExtResource("gfx154")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
@@ -115,6 +426,12 @@ species_id = 1240
 form_id = &"alcremie_berry_salted_cream"
 display_name = "Alcremie Berry Salted Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx155")
+front_sprite_shiny = ExtResource("gfx156")
+back_sprite = ExtResource("gfx157")
+back_sprite_shiny = ExtResource("gfx158")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
@@ -123,6 +440,12 @@ species_id = 1241
 form_id = &"alcremie_berry_ruby_swirl"
 display_name = "Alcremie Berry Ruby Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx159")
+front_sprite_shiny = ExtResource("gfx160")
+back_sprite = ExtResource("gfx161")
+back_sprite_shiny = ExtResource("gfx162")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
@@ -131,6 +454,12 @@ species_id = 1242
 form_id = &"alcremie_berry_caramel_swirl"
 display_name = "Alcremie Berry Caramel Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx163")
+front_sprite_shiny = ExtResource("gfx164")
+back_sprite = ExtResource("gfx165")
+back_sprite_shiny = ExtResource("gfx166")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
@@ -139,6 +468,12 @@ species_id = 1243
 form_id = &"alcremie_berry_rainbow_swirl"
 display_name = "Alcremie Berry Rainbow Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx167")
+front_sprite_shiny = ExtResource("gfx168")
+back_sprite = ExtResource("gfx169")
+back_sprite_shiny = ExtResource("gfx170")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
@@ -147,6 +482,8 @@ species_id = 1244
 form_id = &"alcremie_love_vanilla_cream"
 display_name = "Alcremie Love Vanilla Cream"
 base_species_id = 869
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
@@ -155,6 +492,12 @@ species_id = 1245
 form_id = &"alcremie_love_ruby_cream"
 display_name = "Alcremie Love Ruby Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx171")
+front_sprite_shiny = ExtResource("gfx172")
+back_sprite = ExtResource("gfx173")
+back_sprite_shiny = ExtResource("gfx174")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_19"]
@@ -163,6 +506,12 @@ species_id = 1246
 form_id = &"alcremie_love_matcha_cream"
 display_name = "Alcremie Love Matcha Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx175")
+front_sprite_shiny = ExtResource("gfx176")
+back_sprite = ExtResource("gfx177")
+back_sprite_shiny = ExtResource("gfx178")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_20"]
@@ -171,6 +520,12 @@ species_id = 1247
 form_id = &"alcremie_love_mint_cream"
 display_name = "Alcremie Love Mint Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx179")
+front_sprite_shiny = ExtResource("gfx180")
+back_sprite = ExtResource("gfx181")
+back_sprite_shiny = ExtResource("gfx182")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_21"]
@@ -179,6 +534,12 @@ species_id = 1248
 form_id = &"alcremie_love_lemon_cream"
 display_name = "Alcremie Love Lemon Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx183")
+front_sprite_shiny = ExtResource("gfx184")
+back_sprite = ExtResource("gfx185")
+back_sprite_shiny = ExtResource("gfx186")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_22"]
@@ -187,6 +548,12 @@ species_id = 1249
 form_id = &"alcremie_love_salted_cream"
 display_name = "Alcremie Love Salted Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx187")
+front_sprite_shiny = ExtResource("gfx188")
+back_sprite = ExtResource("gfx189")
+back_sprite_shiny = ExtResource("gfx190")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_23"]
@@ -195,6 +562,12 @@ species_id = 1250
 form_id = &"alcremie_love_ruby_swirl"
 display_name = "Alcremie Love Ruby Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx191")
+front_sprite_shiny = ExtResource("gfx192")
+back_sprite = ExtResource("gfx193")
+back_sprite_shiny = ExtResource("gfx194")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_24"]
@@ -203,6 +576,12 @@ species_id = 1251
 form_id = &"alcremie_love_caramel_swirl"
 display_name = "Alcremie Love Caramel Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx195")
+front_sprite_shiny = ExtResource("gfx196")
+back_sprite = ExtResource("gfx197")
+back_sprite_shiny = ExtResource("gfx198")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_25"]
@@ -211,6 +590,12 @@ species_id = 1252
 form_id = &"alcremie_love_rainbow_swirl"
 display_name = "Alcremie Love Rainbow Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx199")
+front_sprite_shiny = ExtResource("gfx200")
+back_sprite = ExtResource("gfx201")
+back_sprite_shiny = ExtResource("gfx202")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_26"]
@@ -219,6 +604,8 @@ species_id = 1253
 form_id = &"alcremie_star_vanilla_cream"
 display_name = "Alcremie Star Vanilla Cream"
 base_species_id = 869
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_27"]
@@ -227,6 +614,12 @@ species_id = 1254
 form_id = &"alcremie_star_ruby_cream"
 display_name = "Alcremie Star Ruby Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx203")
+front_sprite_shiny = ExtResource("gfx204")
+back_sprite = ExtResource("gfx205")
+back_sprite_shiny = ExtResource("gfx206")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_28"]
@@ -235,6 +628,12 @@ species_id = 1255
 form_id = &"alcremie_star_matcha_cream"
 display_name = "Alcremie Star Matcha Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx207")
+front_sprite_shiny = ExtResource("gfx208")
+back_sprite = ExtResource("gfx209")
+back_sprite_shiny = ExtResource("gfx210")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_29"]
@@ -243,6 +642,12 @@ species_id = 1256
 form_id = &"alcremie_star_mint_cream"
 display_name = "Alcremie Star Mint Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx211")
+front_sprite_shiny = ExtResource("gfx212")
+back_sprite = ExtResource("gfx213")
+back_sprite_shiny = ExtResource("gfx214")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_30"]
@@ -251,6 +656,12 @@ species_id = 1257
 form_id = &"alcremie_star_lemon_cream"
 display_name = "Alcremie Star Lemon Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx215")
+front_sprite_shiny = ExtResource("gfx216")
+back_sprite = ExtResource("gfx217")
+back_sprite_shiny = ExtResource("gfx218")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_31"]
@@ -259,6 +670,12 @@ species_id = 1258
 form_id = &"alcremie_star_salted_cream"
 display_name = "Alcremie Star Salted Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx219")
+front_sprite_shiny = ExtResource("gfx220")
+back_sprite = ExtResource("gfx221")
+back_sprite_shiny = ExtResource("gfx222")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_32"]
@@ -267,6 +684,12 @@ species_id = 1259
 form_id = &"alcremie_star_ruby_swirl"
 display_name = "Alcremie Star Ruby Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx223")
+front_sprite_shiny = ExtResource("gfx224")
+back_sprite = ExtResource("gfx225")
+back_sprite_shiny = ExtResource("gfx226")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_33"]
@@ -275,6 +698,12 @@ species_id = 1260
 form_id = &"alcremie_star_caramel_swirl"
 display_name = "Alcremie Star Caramel Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx227")
+front_sprite_shiny = ExtResource("gfx228")
+back_sprite = ExtResource("gfx229")
+back_sprite_shiny = ExtResource("gfx230")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_34"]
@@ -283,6 +712,12 @@ species_id = 1261
 form_id = &"alcremie_star_rainbow_swirl"
 display_name = "Alcremie Star Rainbow Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx231")
+front_sprite_shiny = ExtResource("gfx232")
+back_sprite = ExtResource("gfx233")
+back_sprite_shiny = ExtResource("gfx234")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_35"]
@@ -291,6 +726,8 @@ species_id = 1262
 form_id = &"alcremie_clover_vanilla_cream"
 display_name = "Alcremie Clover Vanilla Cream"
 base_species_id = 869
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_36"]
@@ -299,6 +736,12 @@ species_id = 1263
 form_id = &"alcremie_clover_ruby_cream"
 display_name = "Alcremie Clover Ruby Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx235")
+front_sprite_shiny = ExtResource("gfx236")
+back_sprite = ExtResource("gfx237")
+back_sprite_shiny = ExtResource("gfx238")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_37"]
@@ -307,6 +750,12 @@ species_id = 1264
 form_id = &"alcremie_clover_matcha_cream"
 display_name = "Alcremie Clover Matcha Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx239")
+front_sprite_shiny = ExtResource("gfx240")
+back_sprite = ExtResource("gfx241")
+back_sprite_shiny = ExtResource("gfx242")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_38"]
@@ -315,6 +764,12 @@ species_id = 1265
 form_id = &"alcremie_clover_mint_cream"
 display_name = "Alcremie Clover Mint Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx243")
+front_sprite_shiny = ExtResource("gfx244")
+back_sprite = ExtResource("gfx245")
+back_sprite_shiny = ExtResource("gfx246")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_39"]
@@ -323,6 +778,12 @@ species_id = 1266
 form_id = &"alcremie_clover_lemon_cream"
 display_name = "Alcremie Clover Lemon Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx247")
+front_sprite_shiny = ExtResource("gfx248")
+back_sprite = ExtResource("gfx249")
+back_sprite_shiny = ExtResource("gfx250")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_40"]
@@ -331,6 +792,12 @@ species_id = 1267
 form_id = &"alcremie_clover_salted_cream"
 display_name = "Alcremie Clover Salted Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx251")
+front_sprite_shiny = ExtResource("gfx252")
+back_sprite = ExtResource("gfx253")
+back_sprite_shiny = ExtResource("gfx254")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_41"]
@@ -339,6 +806,12 @@ species_id = 1268
 form_id = &"alcremie_clover_ruby_swirl"
 display_name = "Alcremie Clover Ruby Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx255")
+front_sprite_shiny = ExtResource("gfx256")
+back_sprite = ExtResource("gfx257")
+back_sprite_shiny = ExtResource("gfx258")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_42"]
@@ -347,6 +820,12 @@ species_id = 1269
 form_id = &"alcremie_clover_caramel_swirl"
 display_name = "Alcremie Clover Caramel Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx259")
+front_sprite_shiny = ExtResource("gfx260")
+back_sprite = ExtResource("gfx261")
+back_sprite_shiny = ExtResource("gfx262")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_43"]
@@ -355,6 +834,12 @@ species_id = 1270
 form_id = &"alcremie_clover_rainbow_swirl"
 display_name = "Alcremie Clover Rainbow Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx263")
+front_sprite_shiny = ExtResource("gfx264")
+back_sprite = ExtResource("gfx265")
+back_sprite_shiny = ExtResource("gfx266")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_44"]
@@ -363,6 +848,8 @@ species_id = 1271
 form_id = &"alcremie_flower_vanilla_cream"
 display_name = "Alcremie Flower Vanilla Cream"
 base_species_id = 869
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_45"]
@@ -371,6 +858,12 @@ species_id = 1272
 form_id = &"alcremie_flower_ruby_cream"
 display_name = "Alcremie Flower Ruby Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx267")
+front_sprite_shiny = ExtResource("gfx268")
+back_sprite = ExtResource("gfx269")
+back_sprite_shiny = ExtResource("gfx270")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_46"]
@@ -379,6 +872,12 @@ species_id = 1273
 form_id = &"alcremie_flower_matcha_cream"
 display_name = "Alcremie Flower Matcha Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx271")
+front_sprite_shiny = ExtResource("gfx272")
+back_sprite = ExtResource("gfx273")
+back_sprite_shiny = ExtResource("gfx274")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_47"]
@@ -387,6 +886,12 @@ species_id = 1274
 form_id = &"alcremie_flower_mint_cream"
 display_name = "Alcremie Flower Mint Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx275")
+front_sprite_shiny = ExtResource("gfx276")
+back_sprite = ExtResource("gfx277")
+back_sprite_shiny = ExtResource("gfx278")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_48"]
@@ -395,6 +900,12 @@ species_id = 1275
 form_id = &"alcremie_flower_lemon_cream"
 display_name = "Alcremie Flower Lemon Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx279")
+front_sprite_shiny = ExtResource("gfx280")
+back_sprite = ExtResource("gfx281")
+back_sprite_shiny = ExtResource("gfx282")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_49"]
@@ -403,6 +914,12 @@ species_id = 1276
 form_id = &"alcremie_flower_salted_cream"
 display_name = "Alcremie Flower Salted Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx283")
+front_sprite_shiny = ExtResource("gfx284")
+back_sprite = ExtResource("gfx285")
+back_sprite_shiny = ExtResource("gfx286")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_50"]
@@ -411,6 +928,12 @@ species_id = 1277
 form_id = &"alcremie_flower_ruby_swirl"
 display_name = "Alcremie Flower Ruby Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx287")
+front_sprite_shiny = ExtResource("gfx288")
+back_sprite = ExtResource("gfx289")
+back_sprite_shiny = ExtResource("gfx290")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_51"]
@@ -419,6 +942,12 @@ species_id = 1278
 form_id = &"alcremie_flower_caramel_swirl"
 display_name = "Alcremie Flower Caramel Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx291")
+front_sprite_shiny = ExtResource("gfx292")
+back_sprite = ExtResource("gfx293")
+back_sprite_shiny = ExtResource("gfx294")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_52"]
@@ -427,6 +956,12 @@ species_id = 1279
 form_id = &"alcremie_flower_rainbow_swirl"
 display_name = "Alcremie Flower Rainbow Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx295")
+front_sprite_shiny = ExtResource("gfx296")
+back_sprite = ExtResource("gfx297")
+back_sprite_shiny = ExtResource("gfx298")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_53"]
@@ -435,6 +970,8 @@ species_id = 1280
 form_id = &"alcremie_ribbon_vanilla_cream"
 display_name = "Alcremie Ribbon Vanilla Cream"
 base_species_id = 869
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_54"]
@@ -443,6 +980,12 @@ species_id = 1281
 form_id = &"alcremie_ribbon_ruby_cream"
 display_name = "Alcremie Ribbon Ruby Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx299")
+front_sprite_shiny = ExtResource("gfx300")
+back_sprite = ExtResource("gfx301")
+back_sprite_shiny = ExtResource("gfx302")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_55"]
@@ -451,6 +994,12 @@ species_id = 1282
 form_id = &"alcremie_ribbon_matcha_cream"
 display_name = "Alcremie Ribbon Matcha Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx303")
+front_sprite_shiny = ExtResource("gfx304")
+back_sprite = ExtResource("gfx305")
+back_sprite_shiny = ExtResource("gfx306")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_56"]
@@ -459,6 +1008,12 @@ species_id = 1283
 form_id = &"alcremie_ribbon_mint_cream"
 display_name = "Alcremie Ribbon Mint Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx307")
+front_sprite_shiny = ExtResource("gfx308")
+back_sprite = ExtResource("gfx309")
+back_sprite_shiny = ExtResource("gfx310")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_57"]
@@ -467,6 +1022,12 @@ species_id = 1284
 form_id = &"alcremie_ribbon_lemon_cream"
 display_name = "Alcremie Ribbon Lemon Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx311")
+front_sprite_shiny = ExtResource("gfx312")
+back_sprite = ExtResource("gfx313")
+back_sprite_shiny = ExtResource("gfx314")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_58"]
@@ -475,6 +1036,12 @@ species_id = 1285
 form_id = &"alcremie_ribbon_salted_cream"
 display_name = "Alcremie Ribbon Salted Cream"
 base_species_id = 869
+front_sprite = ExtResource("gfx315")
+front_sprite_shiny = ExtResource("gfx316")
+back_sprite = ExtResource("gfx317")
+back_sprite_shiny = ExtResource("gfx318")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_59"]
@@ -483,6 +1050,12 @@ species_id = 1286
 form_id = &"alcremie_ribbon_ruby_swirl"
 display_name = "Alcremie Ribbon Ruby Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx319")
+front_sprite_shiny = ExtResource("gfx320")
+back_sprite = ExtResource("gfx321")
+back_sprite_shiny = ExtResource("gfx322")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_60"]
@@ -491,6 +1064,12 @@ species_id = 1287
 form_id = &"alcremie_ribbon_caramel_swirl"
 display_name = "Alcremie Ribbon Caramel Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx323")
+front_sprite_shiny = ExtResource("gfx324")
+back_sprite = ExtResource("gfx325")
+back_sprite_shiny = ExtResource("gfx326")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_61"]
@@ -499,6 +1078,12 @@ species_id = 1288
 form_id = &"alcremie_ribbon_rainbow_swirl"
 display_name = "Alcremie Ribbon Rainbow Swirl"
 base_species_id = 869
+front_sprite = ExtResource("gfx327")
+front_sprite_shiny = ExtResource("gfx328")
+back_sprite = ExtResource("gfx329")
+back_sprite_shiny = ExtResource("gfx330")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_62"]
@@ -507,6 +1092,15 @@ species_id = 1518
 form_id = &"alcremie_gmax"
 display_name = "Alcremie Gmax"
 base_species_id = 869
+front_sprite = ExtResource("gfx331")
+front_sprite_shiny = ExtResource("gfx332")
+back_sprite = ExtResource("gfx333")
+back_sprite_shiny = ExtResource("gfx334")
+icon_sprite = ExtResource("gfx335")
+overworld_scene = ExtResource("gfx336")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -595,6 +1189,12 @@ description = "Obsequia bayas decoradas con nata a aquellos Entrenadores en los 
 height = 3
 weight = 5
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_i7fqg")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26"), SubResource("Resource_form_27"), SubResource("Resource_form_28"), SubResource("Resource_form_29"), SubResource("Resource_form_30"), SubResource("Resource_form_31"), SubResource("Resource_form_32"), SubResource("Resource_form_33"), SubResource("Resource_form_34"), SubResource("Resource_form_35"), SubResource("Resource_form_36"), SubResource("Resource_form_37"), SubResource("Resource_form_38"), SubResource("Resource_form_39"), SubResource("Resource_form_40"), SubResource("Resource_form_41"), SubResource("Resource_form_42"), SubResource("Resource_form_43"), SubResource("Resource_form_44"), SubResource("Resource_form_45"), SubResource("Resource_form_46"), SubResource("Resource_form_47"), SubResource("Resource_form_48"), SubResource("Resource_form_49"), SubResource("Resource_form_50"), SubResource("Resource_form_51"), SubResource("Resource_form_52"), SubResource("Resource_form_53"), SubResource("Resource_form_54"), SubResource("Resource_form_55"), SubResource("Resource_form_56"), SubResource("Resource_form_57"), SubResource("Resource_form_58"), SubResource("Resource_form_59"), SubResource("Resource_form_60"), SubResource("Resource_form_61"), SubResource("Resource_form_62")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([63, 76, 94, 113, 118, 156, 161, 164, 173, 182, 202, 203, 204, 213, 214, 219, 220, 227, 244, 263, 270, 283, 286, 313, 345, 347, 374, 409, 412, 416, 472, 473, 478, 496, 500, 574, 577, 581, 583, 595, 605, 730, 779, 842])
@@ -605,3 +1205,4 @@ egg_group_1 = 6
 egg_group_2 = 11
 egg_cycles = 20
 hatch_species = 869
+cry = ExtResource("gfx106")

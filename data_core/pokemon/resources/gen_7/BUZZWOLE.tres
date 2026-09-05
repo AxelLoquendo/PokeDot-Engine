@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_mxye2"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c33nqtdqgo7f7" path="res://graphics/pokemon/front/BUZZWOLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cyatkglqiy5f7" path="res://graphics/pokemon/front_shiny/BUZZWOLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dyjd423nt4ieq" path="res://graphics/pokemon/back/BUZZWOLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://04gabmckjay0" path="res://graphics/pokemon/back_shiny/BUZZWOLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bvby3mp66all4" path="res://graphics/pokemon/icons/BUZZWOLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c35tx07afqoux" path="res://graphics/pokemon/follower/BUZZWOLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://o14gb8544681" path="res://sfx/se/cries/BUZZWOLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -123,10 +130,18 @@ category_name = "Hinchado"
 description = "Un Ultraente procedente de otro mundo. Se desconoce si exhibe su robusto cuerpo a modo de amenaza o para que lo admiren."
 height = 24
 weight = 3336
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([5, 8, 9, 34, 89, 92, 104, 116, 141, 156, 157, 164, 173, 179, 182, 200, 203, 206, 207, 214, 216, 218, 237, 263, 264, 269, 276, 279, 280, 283, 317, 339, 340, 355, 360, 370, 371, 374, 398, 409, 416, 442, 444, 450, 479, 490, 496, 523, 526, 530, 590, 626, 630, 661, 739, 742])
 ability_1 = 224
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 794
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 7
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c8bt17ngovhxj" path="res://graphics/pokemon/front/CLAYDOL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dl4qquqa061vn" path="res://graphics/pokemon/front_shiny/CLAYDOL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://by5fl2gh1vqhl" path="res://graphics/pokemon/back/CLAYDOL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dsqkal0je2nt1" path="res://graphics/pokemon/back_shiny/CLAYDOL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://da8qrmxsuu17u" path="res://graphics/pokemon/icons/CLAYDOL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://xmbkia2sh3s7" path="res://graphics/pokemon/follower/CLAYDOL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://brlgsmj2tmtt6" path="res://sfx/se/cries/CLAYDOL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -121,10 +128,19 @@ description = "Este Pokémon es una vieja figurilla de barro que cobró vida med
 height = 15
 weight = 1080
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([29, 38, 58, 63, 70, 76, 89, 91, 92, 94, 102, 104, 113, 115, 120, 138, 148, 153, 156, 157, 164, 173, 182, 189, 201, 203, 207, 214, 216, 218, 219, 237, 240, 241, 244, 246, 247, 248, 249, 263, 271, 277, 278, 285, 286, 290, 317, 322, 324, 328, 334, 347, 356, 360, 363, 384, 385, 397, 414, 416, 417, 428, 433, 444, 446, 447, 451, 472, 473, 477, 479, 496, 500, 502, 506, 523, 529, 590, 598, 605, 641, 704, 725, 743])
 ability_1 = 26
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 344
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 7
+cry = ExtResource("gfx106")

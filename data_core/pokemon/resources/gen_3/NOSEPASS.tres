@@ -7,6 +7,13 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cx448mkga8372" path="res://graphics/pokemon/front/NOSEPASS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://m3y5wemhtusm" path="res://graphics/pokemon/front_shiny/NOSEPASS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dgk3ti4i17y4g" path="res://graphics/pokemon/back/NOSEPASS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dtlt46v75w44n" path="res://graphics/pokemon/back_shiny/NOSEPASS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://3ouj16r4ggi1" path="res://graphics/pokemon/icons/NOSEPASS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cujehbqm25u2n" path="res://graphics/pokemon/follower/NOSEPASS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cfh8acuitx010" path="res://sfx/se/cries/NOSEPASS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -129,6 +136,12 @@ description = "Siempre apunta al norte con su nariz imantada. Con ella reviste s
 height = 10
 weight = 970
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([7, 8, 9, 29, 34, 36, 38, 70, 85, 86, 87, 89, 92, 102, 104, 111, 120, 153, 156, 157, 164, 173, 174, 182, 189, 201, 203, 205, 207, 213, 214, 216, 218, 220, 223, 237, 241, 246, 249, 259, 263, 269, 270, 277, 290, 317, 328, 334, 335, 350, 351, 356, 363, 393, 397, 408, 414, 430, 444, 445, 446, 479, 484, 496, 521, 523, 590, 605, 630, 661, 704, 724, 728, 779])
 egg_moves = Array[int]([38, 153, 203, 205, 222, 335, 446, 457, 469])
@@ -139,4 +152,7 @@ hidden_ability = 159
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 299
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

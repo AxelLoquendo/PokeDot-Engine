@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_fcvma"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cdyicyg6m57v3" path="res://graphics/pokemon/front/NYMBLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cd5d2yxy8ac5x" path="res://graphics/pokemon/front_shiny/NYMBLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cgkgg4k4x7mf7" path="res://graphics/pokemon/back/NYMBLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bitf5u1na4ovq" path="res://graphics/pokemon/back_shiny/NYMBLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://wsw62ixkcahh" path="res://graphics/pokemon/icons/NYMBLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://del4i4aljleq" path="res://graphics/pokemon/follower/NYMBLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dru84sf8uwwj1" path="res://sfx/se/cries/NYMBLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -101,6 +108,12 @@ description = "It has its third set of legs folded up. When it’s in a tough sp
 height = 2
 weight = 10
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([36, 97, 141, 156, 164, 168, 182, 203, 214, 240, 241, 263, 369, 404, 405, 450, 522, 734, 779, 810, 811])
 egg_moves = Array[int]([68, 734])
@@ -110,4 +123,7 @@ hidden_ability = 110
 egg_group_1 = 3
 egg_cycles = 20
 hatch_species = 1303
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 3
+cry = ExtResource("gfx106")

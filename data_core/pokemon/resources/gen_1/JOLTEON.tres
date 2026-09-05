@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://5ilnfqtniw44" path="res://graphics/pokemon/front/JOLTEON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d4buy3vr0d4lk" path="res://graphics/pokemon/front_shiny/JOLTEON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b27yrq0y4vwo7" path="res://graphics/pokemon/back/JOLTEON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dd1pgygasmgot" path="res://graphics/pokemon/back_shiny/JOLTEON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dklrncg4ibwco" path="res://graphics/pokemon/icons/JOLTEON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://hxid18kjnb5r" path="res://graphics/pokemon/follower/JOLTEON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://xlf63lds5o7m" path="res://sfx/se/cries/JOLTEON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -133,6 +140,12 @@ description = "Todos los pelos de su cuerpo se ponen de punta si empieza a carga
 height = 8
 weight = 245
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23")])
 teachable_moves = Array[int]([6, 29, 34, 36, 38, 42, 46, 63, 70, 85, 86, 87, 91, 92, 97, 99, 102, 104, 113, 115, 116, 117, 129, 130, 148, 156, 164, 173, 174, 182, 189, 192, 197, 203, 204, 206, 207, 213, 214, 215, 216, 218, 226, 231, 237, 240, 241, 247, 249, 263, 268, 270, 290, 304, 311, 313, 319, 324, 343, 347, 351, 363, 387, 393, 416, 422, 445, 451, 486, 496, 497, 500, 514, 521, 526, 527, 528, 590, 598, 604, 636, 732, 779, 811, 842])
 ability_1 = 10
@@ -140,4 +153,7 @@ hidden_ability = 95
 egg_group_1 = 5
 egg_cycles = 35
 hatch_species = 135
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 5
+cry = ExtResource("gfx106")

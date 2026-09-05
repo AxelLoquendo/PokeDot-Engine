@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://8i08ibjvlbs8" path="res://graphics/pokemon/front/DIGGERSBY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://mt7rky20scbh" path="res://graphics/pokemon/front_shiny/DIGGERSBY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://sgi6vkiqkpu3" path="res://graphics/pokemon/back/DIGGERSBY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://wp53ishcdbg8" path="res://graphics/pokemon/back_shiny/DIGGERSBY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dt43vnlfalm14" path="res://graphics/pokemon/icons/DIGGERSBY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d271civd00oc7" path="res://graphics/pokemon/follower/DIGGERSBY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cj5bd01esbmqx" path="res://sfx/se/cries/DIGGERSBY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -126,6 +133,12 @@ description = "Sus grandes orejas tienen tal fuerza que con ellas puede levantar
 height = 10
 weight = 424
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 8, 9, 14, 15, 25, 34, 57, 63, 67, 70, 89, 91, 92, 97, 104, 156, 157, 162, 164, 168, 173, 182, 188, 191, 201, 203, 207, 213, 214, 216, 218, 231, 237, 249, 253, 259, 263, 264, 267, 276, 278, 280, 282, 283, 289, 290, 317, 328, 339, 340, 341, 369, 371, 374, 380, 387, 414, 416, 441, 442, 444, 447, 479, 492, 496, 523, 526, 528, 590, 612, 630, 656, 661, 743])
 ability_1 = 53
@@ -134,4 +147,7 @@ hidden_ability = 37
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 660
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

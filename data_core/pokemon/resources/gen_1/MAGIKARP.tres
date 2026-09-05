@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_gj2ey"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b0e1fgy8s7mue" path="res://graphics/pokemon/front/MAGIKARP.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b5pryv4873vcd" path="res://graphics/pokemon/front_shiny/MAGIKARP.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cohxagyj2ffq8" path="res://graphics/pokemon/back/MAGIKARP.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cg27asrqvpa4y" path="res://graphics/pokemon/back_shiny/MAGIKARP.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b6vgjj35ck20v" path="res://graphics/pokemon/icons/MAGIKARP.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bpbw5f38viupi" path="res://graphics/pokemon/follower/MAGIKARP.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dymhysj85o8cl" path="res://sfx/se/cries/MAGIKARP.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -52,6 +59,12 @@ category_name = "Pez"
 description = "No es precisamente rápido ni fuerte. Es el Pokémon más debilucho y simplón de todos los que hay."
 height = 9
 weight = 100
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2")])
 teachable_moves = Array[int]([56, 340])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -61,4 +74,7 @@ egg_group_1 = 12
 egg_group_2 = 14
 egg_cycles = 5
 hatch_species = 129
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

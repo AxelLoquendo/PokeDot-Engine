@@ -6,6 +6,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_qlt37"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://yds4eb135sxo" path="res://graphics/pokemon/front/GEODUDE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://yboe30md60nn" path="res://graphics/pokemon/front_shiny/GEODUDE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://hf0fh0xxvaxv" path="res://graphics/pokemon/back/GEODUDE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dpvt5uur8upt4" path="res://graphics/pokemon/back_shiny/GEODUDE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bh6gf6e5jn18a" path="res://graphics/pokemon/icons/GEODUDE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d1t1yk3pbvwpm" path="res://graphics/pokemon/follower/GEODUDE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dwcv3c7w6pbyf" path="res://sfx/se/cries/GEODUDE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dv0ycxe84tx1p" path="res://graphics/pokemon/front/GEODUDE_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dbgm3xk34p8v7" path="res://graphics/pokemon/front_shiny/GEODUDE_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bjuwx5ew2fcjc" path="res://graphics/pokemon/back/GEODUDE_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bogwfle31y0iy" path="res://graphics/pokemon/back_shiny/GEODUDE_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bm2slevyc45ne" path="res://graphics/pokemon/icons/GEODUDE_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://wtntcw1unj1h" path="res://graphics/pokemon/follower/GEODUDE_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -23,6 +36,16 @@ species_id = 967
 form_id = &"geodude_alola"
 display_name = "Geodude Alola"
 base_species_id = 74
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 17)
+back_sprite_offset = Vector2(0, 13)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -131,6 +154,12 @@ description = "Aparecen en llanos y montañas. Como parecen rocas, la gente se t
 height = 4
 weight = 200
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_qlt37")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 9, 29, 34, 36, 38, 53, 66, 68, 69, 70, 89, 90, 91, 92, 99, 102, 104, 111, 117, 118, 120, 126, 153, 156, 157, 164, 173, 174, 182, 184, 189, 201, 203, 205, 207, 213, 214, 216, 218, 223, 237, 241, 246, 249, 263, 264, 267, 276, 280, 290, 317, 334, 335, 341, 350, 360, 363, 374, 389, 397, 414, 431, 444, 445, 446, 479, 496, 510, 523, 590, 612, 630, 661, 779])
@@ -142,4 +171,7 @@ hidden_ability = 8
 egg_group_1 = 10
 egg_cycles = 15
 hatch_species = 74
+front_sprite_offset = Vector2(0, 19)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

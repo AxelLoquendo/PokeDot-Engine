@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_rwgx6"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://xj1pwh1km3gc" path="res://graphics/pokemon/front/SQUAWKABILLY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c88518oe5ngdd" path="res://graphics/pokemon/front_shiny/SQUAWKABILLY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b66bxu1reiwjh" path="res://graphics/pokemon/back/SQUAWKABILLY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cc2raupxfas1r" path="res://graphics/pokemon/back_shiny/SQUAWKABILLY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://2gcljydtii5l" path="res://graphics/pokemon/icons/SQUAWKABILLY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bam8uoi13vehv" path="res://graphics/pokemon/follower/SQUAWKABILLY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://d3xohwfrd7fjr" path="res://sfx/se/cries/SQUAWKABILLY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_rwgx6")
@@ -11,6 +18,16 @@ species_id = 1317
 form_id = &"squawkabilly_blue"
 display_name = "Squawkabilly Blue"
 base_species_id = 1316
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +36,16 @@ species_id = 1318
 form_id = &"squawkabilly_yellow"
 display_name = "Squawkabilly Yellow"
 base_species_id = 1316
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +54,16 @@ species_id = 1319
 form_id = &"squawkabilly_white"
 display_name = "Squawkabilly White"
 base_species_id = 1316
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -128,6 +165,12 @@ description = "These Pokémon prefer to live in cities. They form flocks based o
 height = 6
 weight = 24
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_rwgx6")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([19, 36, 38, 63, 156, 164, 168, 179, 182, 184, 203, 214, 241, 253, 257, 263, 269, 270, 283, 297, 304, 313, 314, 332, 366, 369, 403, 413, 416, 492, 542, 736, 742, 779, 810])
@@ -138,4 +181,7 @@ hidden_ability = 62
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 1316
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 3
+cry = ExtResource("gfx106")

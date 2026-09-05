@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_21hgw"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bfkdwoxy26qb7" path="res://graphics/pokemon/front/GRUBBIN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://chr1m6l2ecyvl" path="res://graphics/pokemon/front_shiny/GRUBBIN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cxe551qxqh1vm" path="res://graphics/pokemon/back/GRUBBIN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c1ycrt4h60b5v" path="res://graphics/pokemon/back_shiny/GRUBBIN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bnv436r14rbaf" path="res://graphics/pokemon/icons/GRUBBIN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bbrglvg4m5jyn" path="res://graphics/pokemon/follower/GRUBBIN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b8eia0w1mrel6" path="res://sfx/se/cries/GRUBBIN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -87,6 +94,12 @@ description = "Con sus duras mandíbulas arranca la corteza de los árboles y so
 height = 4
 weight = 44
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9")])
 teachable_moves = Array[int]([36, 85, 86, 91, 92, 103, 104, 113, 156, 164, 173, 182, 189, 203, 207, 213, 214, 216, 218, 226, 237, 240, 242, 263, 268, 341, 351, 393, 398, 404, 450, 451, 496, 512, 521, 522, 527, 528, 590, 604, 642, 732, 734, 779, 810])
 egg_moves = Array[int]([106, 203, 341, 435, 527])
@@ -95,4 +108,7 @@ ability_1 = 68
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 736
+front_sprite_offset = Vector2(0, 17)
+back_sprite_offset = Vector2(0, 16)
 gender_ratio = 3
+cry = ExtResource("gfx106")

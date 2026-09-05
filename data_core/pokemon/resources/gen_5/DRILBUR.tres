@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_hsqb4"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dc8jap0mgtqaq" path="res://graphics/pokemon/front/DRILBUR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bexlenosp2acj" path="res://graphics/pokemon/front_shiny/DRILBUR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cjehkq6y81q4l" path="res://graphics/pokemon/back/DRILBUR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://jmc13c8ttoud" path="res://graphics/pokemon/back_shiny/DRILBUR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://fmpfffsr4edj" path="res://graphics/pokemon/icons/DRILBUR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bxm6fjlthkst6" path="res://graphics/pokemon/follower/DRILBUR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://1pgdsynhqnad" path="res://sfx/se/cries/DRILBUR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -115,6 +122,12 @@ description = "Cuando junta las garras y comienza a dar vueltas frenéticas, ava
 height = 3
 weight = 85
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 15, 36, 38, 70, 89, 91, 92, 104, 156, 157, 164, 173, 174, 182, 188, 189, 201, 203, 207, 213, 214, 216, 218, 232, 237, 241, 249, 263, 270, 280, 290, 317, 319, 328, 332, 334, 341, 374, 398, 404, 414, 421, 446, 468, 496, 523, 529, 590, 630, 661, 743, 779])
 egg_moves = Array[int]([66, 130, 163, 229, 306, 319, 334, 414, 431])
@@ -125,4 +138,7 @@ hidden_ability = 104
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 529
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_xgglp"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dmwjse3l4rgnj" path="res://graphics/pokemon/front/GRAPPLOCT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dq6rv1vmxbve7" path="res://graphics/pokemon/front_shiny/GRAPPLOCT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d3mapug673h1m" path="res://graphics/pokemon/back/GRAPPLOCT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://djncfy8e4jqmn" path="res://graphics/pokemon/back_shiny/GRAPPLOCT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://br3qxddrp1qxc" path="res://graphics/pokemon/icons/GRAPPLOCT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b7qsa0ft2k8rj" path="res://graphics/pokemon/follower/GRAPPLOCT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ri5fa75fu522" path="res://sfx/se/cries/GRAPPLOCT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -91,6 +98,12 @@ description = "Todo su cuerpo es una mole de puro músculo. Utiliza los tentácu
 height = 16
 weight = 390
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([5, 8, 34, 56, 57, 63, 91, 127, 156, 164, 173, 179, 182, 184, 203, 213, 214, 250, 263, 269, 276, 279, 280, 291, 330, 339, 341, 362, 370, 371, 409, 411, 416, 496, 514, 526, 656, 661, 664, 734, 739])
 ability_1 = 7
@@ -99,4 +112,7 @@ egg_group_1 = 2
 egg_group_2 = 8
 egg_cycles = 25
 hatch_species = 853
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

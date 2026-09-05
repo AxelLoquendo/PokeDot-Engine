@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_x1sc6"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://s5iu55obqhso" path="res://graphics/pokemon/front/MANECTRIC.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://crjq31kixbsqo" path="res://graphics/pokemon/front_shiny/MANECTRIC.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cc5yhxwhhb7l8" path="res://graphics/pokemon/back/MANECTRIC.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://gawu8qhiffdu" path="res://graphics/pokemon/back_shiny/MANECTRIC.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://jfieebigooc6" path="res://graphics/pokemon/icons/MANECTRIC.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://breo7q3piqcn5" path="res://graphics/pokemon/follower/MANECTRIC.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c44mbkjf3advm" path="res://sfx/se/cries/MANECTRIC.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dahp2bmq2o8in" path="res://graphics/pokemon/front/MEGA_MANECTRIC.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dr1jyl4ahwpx1" path="res://graphics/pokemon/front_shiny/MEGA_MANECTRIC.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dhje6wu81tx6o" path="res://graphics/pokemon/back/MEGA_MANECTRIC.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dr4g8ooo53uql" path="res://graphics/pokemon/back_shiny/MEGA_MANECTRIC.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dufjogywxn4g1" path="res://graphics/pokemon/icons/MANECTRIC_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://d1xmjl66cho5s" path="res://sfx/se/cries/MANECTRIC_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_x1sc6")
@@ -11,6 +24,15 @@ species_id = 935
 form_id = &"manectric_mega"
 display_name = "Manectric Mega"
 base_species_id = 310
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+front_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -115,6 +137,12 @@ description = "No suele aparecer ante la gente. Dicen que suele colocar su nido 
 height = 15
 weight = 402
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_x1sc6")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([29, 34, 38, 46, 53, 63, 70, 85, 86, 87, 92, 97, 102, 104, 113, 129, 148, 156, 164, 168, 173, 182, 184, 189, 203, 207, 213, 214, 216, 218, 231, 237, 240, 242, 253, 263, 290, 304, 315, 324, 351, 363, 393, 416, 422, 423, 424, 445, 451, 486, 496, 521, 528, 555, 590, 598, 604, 636, 660, 732])
@@ -124,4 +152,6 @@ hidden_ability = 58
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 310
+front_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

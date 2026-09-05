@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ixor53mfmkbo" path="res://graphics/pokemon/front/HOOPA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bkchffx7o4gf" path="res://graphics/pokemon/front_shiny/HOOPA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cw4c35wddtaem" path="res://graphics/pokemon/back/HOOPA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://k0g8f1fv5v4x" path="res://graphics/pokemon/back_shiny/HOOPA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dkywe138tef7s" path="res://graphics/pokemon/icons/HOOPA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dk1da8weafdur" path="res://graphics/pokemon/follower/HOOPA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://laxlxblu0s6m" path="res://sfx/se/cries/HOOPA.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://6vckbowrwm8q" path="res://graphics/pokemon/front/HOOPA_UNBOUND.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://v2scfxjdk38l" path="res://graphics/pokemon/front_shiny/HOOPA_UNBOUND.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c1mp2d0gjm1ba" path="res://graphics/pokemon/back/HOOPA_UNBOUND.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://ksngwff3q073" path="res://graphics/pokemon/back_shiny/HOOPA_UNBOUND.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_0uxke")
@@ -21,6 +32,12 @@ base_defense = 60
 base_speed = 80
 base_sp_attack = 170
 base_sp_defense = 130
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -138,6 +155,12 @@ description = "Este problemático Pokémon envía cualquier objeto a lugares rem
 height = 5
 weight = 90
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_0uxke")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([7, 8, 9, 36, 60, 63, 85, 86, 92, 94, 104, 113, 115, 129, 138, 148, 156, 164, 168, 173, 182, 184, 201, 203, 207, 214, 216, 218, 219, 237, 240, 241, 244, 247, 248, 253, 259, 263, 264, 269, 271, 272, 277, 278, 280, 282, 285, 289, 290, 317, 324, 335, 343, 347, 351, 356, 373, 374, 387, 399, 409, 411, 412, 416, 417, 428, 433, 441, 447, 451, 472, 473, 477, 478, 492, 496, 502, 511, 530, 566, 590, 612, 636, 638, 641, 725, 734, 736, 779, 845])
@@ -147,3 +170,4 @@ egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 720
 gender_ratio = 7
+cry = ExtResource("gfx106")

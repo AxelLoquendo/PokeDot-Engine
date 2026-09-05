@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c7tkxi6ad2v3m" path="res://graphics/pokemon/front/EXCADRILL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://7vbe84plr6pq" path="res://graphics/pokemon/front_shiny/EXCADRILL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dn7714k3uyn27" path="res://graphics/pokemon/back/EXCADRILL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://di22og3i4tdh5" path="res://graphics/pokemon/back_shiny/EXCADRILL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b5a0w10er076w" path="res://graphics/pokemon/icons/EXCADRILL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bxo4gvugljdef" path="res://graphics/pokemon/follower/EXCADRILL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dnxnl8are4jhe" path="res://sfx/se/cries/EXCADRILL.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dgbt8yrudkds8" path="res://graphics/pokemon/front/MEGA_EXCADRILL.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://clh5ao5gvi6a7" path="res://graphics/pokemon/front_shiny/MEGA_EXCADRILL.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://gu620ubse3n6" path="res://graphics/pokemon/back/MEGA_EXCADRILL.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c4dkv6pwiasl0" path="res://graphics/pokemon/back_shiny/MEGA_EXCADRILL.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dmqfbgvxl8sdb" path="res://graphics/pokemon/icons/EXCADRILL_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_df5vp")
@@ -11,6 +23,14 @@ species_id = 1533
 form_id = &"excadrill_mega"
 display_name = "Excadrill Mega"
 base_species_id = 530
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -118,6 +138,12 @@ description = "Su taladro ha evolucionado y es capaz de atravesar una lámina de
 height = 7
 weight = 404
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_df5vp")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 63, 70, 89, 91, 92, 104, 156, 157, 164, 173, 174, 182, 184, 188, 189, 201, 203, 207, 213, 214, 216, 218, 232, 237, 241, 249, 263, 270, 280, 290, 317, 319, 328, 332, 334, 341, 350, 374, 393, 398, 404, 411, 414, 416, 421, 442, 446, 468, 496, 523, 529, 590, 630, 638, 647, 656, 661, 724, 743, 779])
@@ -128,4 +154,7 @@ hidden_ability = 104
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 530
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_yiphf"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dhajw4glotils" path="res://graphics/pokemon/front/SOBBLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b6ov1yneypwxu" path="res://graphics/pokemon/front_shiny/SOBBLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c2o10f5hhicle" path="res://graphics/pokemon/back/SOBBLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bqa5vpnm7l10f" path="res://graphics/pokemon/back_shiny/SOBBLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d1gxrk6maw5e5" path="res://graphics/pokemon/icons/SOBBLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cmo4gnkkdpl03" path="res://graphics/pokemon/follower/SOBBLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ciquieusl6wsg" path="res://sfx/se/cries/SOBBLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -92,6 +99,12 @@ description = "Cuando se espanta, libera unas lágrimas con un factor lacrimóge
 height = 3
 weight = 40
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10")])
 teachable_moves = Array[int]([36, 56, 57, 113, 114, 115, 127, 129, 156, 164, 173, 182, 203, 213, 214, 219, 226, 240, 250, 263, 291, 311, 330, 340, 341, 352, 369, 496, 518, 526, 664, 779, 812])
 egg_moves = Array[int]([54, 104, 114, 392, 420, 453, 565])
@@ -102,4 +115,7 @@ egg_group_1 = 2
 egg_group_2 = 5
 egg_cycles = 20
 hatch_species = 816
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 5
+cry = ExtResource("gfx106")

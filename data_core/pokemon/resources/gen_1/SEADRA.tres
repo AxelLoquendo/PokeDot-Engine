@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_1q57w"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://blnpq7b6jltvs" path="res://graphics/pokemon/front/SEADRA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b21btkscfcecf" path="res://graphics/pokemon/front_shiny/SEADRA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bdke32g1n3vbo" path="res://graphics/pokemon/back/SEADRA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cniwc3ep2dmsb" path="res://graphics/pokemon/back_shiny/SEADRA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://n14l20qtq3wf" path="res://graphics/pokemon/icons/SEADRA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://yje355qmm016" path="res://graphics/pokemon/follower/SEADRA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cbyjl3tlv53ag" path="res://sfx/se/cries/SEADRA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -116,6 +123,12 @@ description = "Las afiladas púas que le recubren el cuerpo se le erizan y puede
 height = 12
 weight = 250
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([29, 36, 38, 55, 56, 57, 58, 59, 61, 63, 92, 97, 99, 102, 104, 116, 117, 127, 129, 130, 156, 164, 173, 174, 182, 184, 196, 200, 203, 207, 213, 214, 216, 218, 225, 237, 239, 240, 250, 258, 263, 290, 291, 311, 324, 330, 340, 349, 352, 362, 363, 406, 416, 430, 445, 496, 503, 590, 636, 664, 727, 740, 779, 809, 812])
 egg_moves = Array[int]([50, 62, 150, 175, 499])
@@ -127,4 +140,7 @@ egg_group_1 = 2
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 117
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

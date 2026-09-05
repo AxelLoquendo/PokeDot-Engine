@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_yri3p"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://qhcbydpu66wy" path="res://graphics/pokemon/front/OMASTAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dg4alcua7h2xb" path="res://graphics/pokemon/front_shiny/OMASTAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dhpsxro8x8gmy" path="res://graphics/pokemon/back/OMASTAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b645se2ntrea" path="res://graphics/pokemon/back_shiny/OMASTAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://boa7as6yovvxi" path="res://graphics/pokemon/icons/OMASTAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dg8eo3fj1pufp" path="res://graphics/pokemon/follower/OMASTAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cgynpww3scijw" path="res://sfx/se/cries/OMASTAR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -119,6 +126,12 @@ description = "Tiene los tentáculos tan desarrollados que le sirven de manos y 
 height = 10
 weight = 350
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([20, 29, 32, 34, 36, 38, 42, 55, 56, 57, 58, 59, 61, 63, 66, 69, 92, 99, 102, 104, 115, 117, 127, 130, 156, 157, 164, 168, 173, 174, 182, 191, 196, 201, 203, 205, 207, 213, 214, 216, 218, 237, 240, 242, 246, 249, 250, 258, 263, 282, 290, 291, 317, 330, 334, 341, 350, 352, 360, 362, 363, 390, 397, 414, 416, 431, 444, 445, 446, 479, 496, 503, 590, 664, 728])
 ability_1 = 33
@@ -128,4 +141,7 @@ egg_group_1 = 2
 egg_group_2 = 9
 egg_cycles = 30
 hatch_species = 139
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 5
+cry = ExtResource("gfx106")

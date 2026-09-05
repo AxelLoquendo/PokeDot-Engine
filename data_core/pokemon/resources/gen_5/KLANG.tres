@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_dd0p5"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://phtqq8aocbor" path="res://graphics/pokemon/front/KLANG.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cub8nw3g4ib50" path="res://graphics/pokemon/front_shiny/KLANG.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cdva5rnhk3s0u" path="res://graphics/pokemon/back/KLANG.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dmn1ewys20wtk" path="res://graphics/pokemon/back_shiny/KLANG.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://kolhvwetbdh0" path="res://graphics/pokemon/icons/KLANG.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ceahkb5r45i3a" path="res://graphics/pokemon/follower/KLANG.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cfehfo1sf1wht" path="res://sfx/se/cries/KLANG.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -106,6 +113,12 @@ description = "Muestra sus sentimientos cambiando la dirección de su giro. Cuan
 height = 6
 weight = 510
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([20, 63, 85, 86, 92, 103, 104, 156, 164, 173, 182, 201, 203, 207, 214, 216, 218, 237, 249, 253, 263, 277, 278, 290, 324, 334, 351, 356, 372, 393, 397, 408, 430, 451, 477, 496, 502, 521, 528, 590, 724, 726, 732])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -115,4 +128,7 @@ hidden_ability = 29
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 600
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 7
+cry = ExtResource("gfx106")

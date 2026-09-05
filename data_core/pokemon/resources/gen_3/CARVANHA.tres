@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_1murl"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://clu11ku5oy5u" path="res://graphics/pokemon/front/CARVANHA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://rdfsoj2pd60t" path="res://graphics/pokemon/front_shiny/CARVANHA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://y24ly51eqtfv" path="res://graphics/pokemon/back/CARVANHA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b3wu7s12x10vc" path="res://graphics/pokemon/back_shiny/CARVANHA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bsl6vl1hkjfs3" path="res://graphics/pokemon/icons/CARVANHA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://biccdrbr6x4rn" path="res://graphics/pokemon/follower/CARVANHA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ckbkwd6hxebum" path="res://sfx/se/cries/CARVANHA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -112,6 +119,12 @@ category_name = "Feroz"
 description = "Atacan en grupo a los barcos y los hunden a base de bocados. Habitan en los ríos de la jungla."
 height = 8
 weight = 208
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([38, 56, 57, 58, 59, 92, 97, 102, 103, 104, 116, 127, 129, 156, 162, 164, 168, 173, 180, 182, 184, 189, 196, 203, 207, 210, 213, 214, 216, 218, 237, 240, 242, 246, 250, 253, 258, 259, 263, 269, 290, 291, 340, 352, 362, 363, 371, 372, 399, 423, 428, 445, 496, 503, 514, 555, 590, 660, 664, 727, 740])
 egg_moves = Array[int]([37, 38, 56, 129, 194, 246, 352, 362, 660])
@@ -121,4 +134,7 @@ hidden_ability = 3
 egg_group_1 = 12
 egg_cycles = 20
 hatch_species = 318
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

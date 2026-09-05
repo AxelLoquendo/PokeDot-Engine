@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_x8wi1"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bonru2pc8k81g" path="res://graphics/pokemon/front/SIMISEAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b5kej2mtxjxjs" path="res://graphics/pokemon/front_shiny/SIMISEAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://lsc3502x5ed1" path="res://graphics/pokemon/back/SIMISEAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bxw8onhubv7bp" path="res://graphics/pokemon/back_shiny/SIMISEAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bvhyoxihsjl6l" path="res://graphics/pokemon/icons/SIMISEAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://di4yc8e7mmqxb" path="res://graphics/pokemon/follower/SIMISEAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://coajq4c70no66" path="res://sfx/se/cries/SIMISEAR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -41,6 +48,12 @@ category_name = "Lumbre"
 description = "Achicharra a sus enemigos desprendiendo llamas por la cola y la cabeza, fruto de su desmesurado calor interno."
 height = 10
 weight = 280
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([7, 15, 53, 63, 67, 76, 91, 92, 104, 126, 156, 157, 164, 168, 173, 182, 207, 213, 214, 216, 218, 231, 237, 241, 249, 253, 257, 259, 261, 263, 264, 269, 270, 272, 276, 278, 280, 282, 283, 290, 315, 317, 343, 371, 374, 380, 411, 416, 421, 441, 447, 468, 488, 490, 496, 510, 512, 519, 526, 590, 612, 638])
 ability_1 = 82
@@ -48,4 +61,7 @@ hidden_ability = 66
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 514
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 5
+cry = ExtResource("gfx106")

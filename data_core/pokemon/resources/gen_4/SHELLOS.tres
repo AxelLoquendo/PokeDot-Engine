@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_uvvlh"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://mltias38e2qf" path="res://graphics/pokemon/front/SHELLOS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://6jcvgrf1vh4q" path="res://graphics/pokemon/front_shiny/SHELLOS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dl33iqw8hif6l" path="res://graphics/pokemon/back/SHELLOS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c3ekyjxr4wb6d" path="res://graphics/pokemon/back_shiny/SHELLOS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://clgehnbmc3kto" path="res://graphics/pokemon/icons/SHELLOS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ckyjepaut1yn1" path="res://graphics/pokemon/follower/SHELLOS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bc12pcc33xwe" path="res://sfx/se/cries/SHELLOS.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dqia142gmyxed" path="res://graphics/pokemon/front/SHELLOS_EAST.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://b0qyjx8o3ir30" path="res://graphics/pokemon/front_shiny/SHELLOS_EAST.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dd0ofom6x5ynm" path="res://graphics/pokemon/back/SHELLOS_EAST.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c4an2eeopw86d" path="res://graphics/pokemon/back_shiny/SHELLOS_EAST.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_uvvlh")
@@ -11,6 +22,14 @@ species_id = 1062
 form_id = &"shellos_east"
 display_name = "Shellos East"
 base_species_id = 422
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -102,6 +121,12 @@ description = "No hay que apretarle muy fuerte, ya que, si lo haces, secreta un 
 height = 3
 weight = 63
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_uvvlh")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([29, 34, 36, 56, 57, 58, 59, 81, 92, 104, 127, 133, 156, 157, 164, 173, 174, 182, 189, 196, 201, 203, 207, 213, 214, 216, 218, 220, 237, 240, 246, 250, 258, 263, 270, 290, 291, 317, 330, 341, 352, 362, 363, 414, 444, 445, 446, 496, 503, 523, 590, 611, 664, 734, 779, 809, 812])
@@ -114,3 +139,4 @@ egg_group_2 = 11
 egg_cycles = 20
 hatch_species = 422
 gender_ratio = 3
+cry = ExtResource("gfx106")

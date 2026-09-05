@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://3f105cblspov" path="res://graphics/pokemon/front/SCOVILLAIN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c0sqbqx4ud2l0" path="res://graphics/pokemon/front_shiny/SCOVILLAIN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ckcfyy3dt8c4f" path="res://graphics/pokemon/back/SCOVILLAIN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cyup5wdpdym40" path="res://graphics/pokemon/back_shiny/SCOVILLAIN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://neb6jgrcgbdq" path="res://graphics/pokemon/icons/SCOVILLAIN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dogmysokbjo1d" path="res://graphics/pokemon/follower/SCOVILLAIN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://nv4km8m2gdrw" path="res://sfx/se/cries/SCOVILLAIN.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://1xa4vftmferr" path="res://graphics/pokemon/front/MEGA_SCOVILLAIN.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://d4sii6anjnhw" path="res://graphics/pokemon/front_shiny/MEGA_SCOVILLAIN.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bry0tp4p467qc" path="res://graphics/pokemon/back/MEGA_SCOVILLAIN.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://crbyyuvcy8xox" path="res://graphics/pokemon/back_shiny/MEGA_SCOVILLAIN.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bpum5fvb2172u" path="res://graphics/pokemon/icons/SCOVILLAIN_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_2tmwn")
@@ -11,6 +23,15 @@ species_id = 1567
 form_id = &"scovillain_mega"
 display_name = "Scovillain Mega"
 base_species_id = 1340
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -115,6 +136,12 @@ description = "The red head converts spicy chemicals into fire energy and blasts
 height = 9
 weight = 150
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_2tmwn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([36, 53, 63, 76, 126, 156, 162, 164, 168, 182, 184, 201, 202, 203, 214, 241, 242, 261, 263, 270, 283, 315, 331, 345, 402, 412, 416, 424, 428, 437, 447, 580, 661, 731, 735, 736, 779, 811, 843])
@@ -124,4 +151,7 @@ hidden_ability = 141
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 1340
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

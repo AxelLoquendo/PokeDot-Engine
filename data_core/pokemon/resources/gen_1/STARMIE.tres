@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_wyerr"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://1u00k7ltg0hp" path="res://graphics/pokemon/front/STARMIE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ddbhf88aavfr7" path="res://graphics/pokemon/front_shiny/STARMIE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bt3h0ab4khd2o" path="res://graphics/pokemon/back/STARMIE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://l2vpyplur4cx" path="res://graphics/pokemon/back_shiny/STARMIE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://lt1hv7q2wp13" path="res://graphics/pokemon/icons/STARMIE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cb4cfn0lna0yy" path="res://graphics/pokemon/follower/STARMIE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b837hs2m0b45u" path="res://sfx/se/cries/STARMIE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://h40yqw4cjj87" path="res://graphics/pokemon/front/MEGA_STARMIE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://6pke2v7gvqhh" path="res://graphics/pokemon/front_shiny/MEGA_STARMIE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://lvo4q4u8s1v6" path="res://graphics/pokemon/back/MEGA_STARMIE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dgptkfk5w3mmt" path="res://graphics/pokemon/back_shiny/MEGA_STARMIE.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bavqrkkru6plk" path="res://graphics/pokemon/icons/STARMIE_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_wyerr")
@@ -11,6 +23,14 @@ species_id = 1526
 form_id = &"starmie_mega"
 display_name = "Starmie Mega"
 base_species_id = 121
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -108,6 +128,12 @@ description = "Su núcleo central brilla con los colores del arcoíris. Para alg
 height = 11
 weight = 800
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_wyerr")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([29, 36, 38, 55, 56, 57, 58, 59, 61, 63, 85, 86, 87, 92, 94, 97, 99, 100, 102, 104, 113, 115, 117, 127, 129, 130, 138, 148, 149, 156, 161, 164, 171, 173, 174, 182, 192, 196, 203, 205, 207, 213, 214, 216, 218, 220, 237, 239, 240, 244, 250, 258, 263, 271, 277, 278, 285, 290, 291, 322, 324, 352, 356, 360, 362, 363, 408, 416, 419, 427, 430, 433, 447, 472, 473, 477, 496, 502, 503, 590, 605, 725, 728, 740])
@@ -117,4 +143,7 @@ hidden_ability = 148
 egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 121
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 7
+cry = ExtResource("gfx106")

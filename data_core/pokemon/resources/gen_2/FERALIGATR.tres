@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_yf6cn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bdjrmo3wa1dv6" path="res://graphics/pokemon/front/FERALIGATR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bq4aufqbdk6e2" path="res://graphics/pokemon/front_shiny/FERALIGATR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://do3kqt63l78ga" path="res://graphics/pokemon/back/FERALIGATR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dthdfdkiw8nl4" path="res://graphics/pokemon/back_shiny/FERALIGATR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://8bcavdfe4lww" path="res://graphics/pokemon/icons/FERALIGATR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cpchh0nawied4" path="res://graphics/pokemon/follower/FERALIGATR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dxkrun672k7sb" path="res://sfx/se/cries/FERALIGATR.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://n43f1uuy3i7" path="res://graphics/pokemon/front/MEGA_FERALIGATR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://yf605n3o1kdp" path="res://graphics/pokemon/front_shiny/MEGA_FERALIGATR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bohl1tjcpeq3n" path="res://graphics/pokemon/back/MEGA_FERALIGATR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://nm6okls3n1gc" path="res://graphics/pokemon/back_shiny/MEGA_FERALIGATR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://d4eb2vqfqarmc" path="res://graphics/pokemon/icons/FERALIGATR_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_yf6cn")
@@ -11,6 +23,15 @@ species_id = 1529
 form_id = &"feraligatr_mega"
 display_name = "Feraligatr Mega"
 base_species_id = 160
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -116,6 +137,12 @@ description = "Se suele mover lento, pero alcanza velocidades de vértigo al ata
 height = 23
 weight = 888
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_yf6cn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 8, 14, 15, 25, 29, 34, 36, 38, 46, 56, 57, 58, 59, 63, 67, 68, 69, 70, 89, 91, 92, 97, 102, 104, 127, 156, 157, 164, 168, 173, 174, 180, 182, 184, 189, 196, 197, 200, 203, 207, 210, 213, 214, 216, 218, 223, 231, 232, 237, 240, 242, 246, 249, 250, 253, 258, 263, 264, 270, 276, 280, 283, 290, 291, 308, 313, 317, 330, 332, 335, 337, 349, 352, 363, 374, 401, 406, 411, 416, 419, 421, 423, 431, 445, 468, 496, 503, 518, 523, 525, 526, 555, 590, 612, 660, 661, 664, 712, 727, 736, 740, 779, 811, 812])
@@ -126,4 +153,7 @@ egg_group_1 = 1
 egg_group_2 = 2
 egg_cycles = 20
 hatch_species = 160
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 5
+cry = ExtResource("gfx106")

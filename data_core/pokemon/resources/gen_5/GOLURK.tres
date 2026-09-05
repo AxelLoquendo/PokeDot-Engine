@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ceohjxtloexx8" path="res://graphics/pokemon/front/GOLURK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c7sredu8xvyn" path="res://graphics/pokemon/front_shiny/GOLURK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ddvpy2jmj0vow" path="res://graphics/pokemon/back/GOLURK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bc4uk4c6cpynf" path="res://graphics/pokemon/back_shiny/GOLURK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dgg5lo6o5duo2" path="res://graphics/pokemon/icons/GOLURK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d36kag777bgpu" path="res://graphics/pokemon/follower/GOLURK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://t6jafgi7qaj" path="res://sfx/se/cries/GOLURK.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c4uhqlc7u2lfx" path="res://graphics/pokemon/front/MEGA_GOLURK.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dl11ue4qxfhuu" path="res://graphics/pokemon/front_shiny/MEGA_GOLURK.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cgmgeniohm3qn" path="res://graphics/pokemon/back/MEGA_GOLURK.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bdicuddp8xnto" path="res://graphics/pokemon/back_shiny/MEGA_GOLURK.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://mv1qg21adqt" path="res://graphics/pokemon/icons/GOLURK_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_bc7xk")
@@ -11,6 +23,14 @@ species_id = 1560
 form_id = &"golurk_mega"
 display_name = "Golurk Mega"
 base_species_id = 623
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -129,6 +149,12 @@ description = "Al parecer, aquel que antaño lo creó le ordenó proteger a los 
 height = 28
 weight = 3300
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_bc7xk")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([5, 7, 8, 9, 19, 25, 34, 36, 38, 58, 63, 67, 70, 76, 85, 89, 91, 92, 94, 101, 104, 109, 115, 120, 148, 156, 157, 164, 168, 173, 174, 182, 189, 196, 201, 203, 207, 214, 216, 218, 219, 237, 240, 241, 244, 247, 249, 263, 264, 270, 271, 276, 277, 280, 282, 286, 290, 317, 324, 334, 335, 351, 356, 360, 370, 374, 397, 409, 411, 414, 416, 428, 430, 444, 446, 447, 451, 477, 479, 484, 490, 496, 502, 506, 523, 535, 566, 590, 612, 626, 630, 661, 704, 737, 743, 779, 840])
@@ -139,4 +165,6 @@ hidden_ability = 99
 egg_group_1 = 10
 egg_cycles = 25
 hatch_species = 623
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 7
+cry = ExtResource("gfx106")

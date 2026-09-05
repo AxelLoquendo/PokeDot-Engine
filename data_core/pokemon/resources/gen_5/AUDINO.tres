@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b4fc5vpwsng0a" path="res://graphics/pokemon/front/AUDINO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dn2p6vc3ncu3u" path="res://graphics/pokemon/front_shiny/AUDINO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c4rl0bet4cb3x" path="res://graphics/pokemon/back/AUDINO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://7ogcxrmegeov" path="res://graphics/pokemon/back_shiny/AUDINO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c8fwfgyla05bx" path="res://graphics/pokemon/icons/AUDINO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ckjc2b50a5upp" path="res://graphics/pokemon/follower/AUDINO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b4n68tddmmg65" path="res://sfx/se/cries/AUDINO.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dx1je73t0m7lg" path="res://graphics/pokemon/front/MEGA_AUDINO.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dg4qo0lxwswu0" path="res://graphics/pokemon/front_shiny/MEGA_AUDINO.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c475emuh7l2ke" path="res://graphics/pokemon/back/MEGA_AUDINO.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cx0ecnnnag0kb" path="res://graphics/pokemon/back_shiny/MEGA_AUDINO.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dt0l2th3e4wd7" path="res://graphics/pokemon/icons/AUDINO_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://rlbus558yt1b" path="res://sfx/se/cries/AUDINO_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_krcl3")
@@ -11,6 +24,15 @@ species_id = 951
 form_id = &"audino_mega"
 display_name = "Audino Mega"
 base_species_id = 531
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+front_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -138,6 +160,12 @@ description = "Con las antenas de sus oídos, perciben el estado de un rival o p
 height = 11
 weight = 310
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_krcl3")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 34, 53, 57, 58, 59, 63, 67, 76, 85, 86, 87, 91, 92, 94, 104, 113, 115, 126, 133, 138, 148, 156, 164, 173, 182, 196, 203, 207, 213, 214, 215, 216, 218, 219, 220, 227, 231, 237, 240, 241, 244, 247, 253, 263, 264, 270, 272, 277, 282, 285, 289, 290, 304, 324, 343, 347, 356, 374, 387, 409, 416, 428, 433, 447, 451, 473, 477, 495, 496, 497, 502, 510, 514, 526, 528, 577, 581, 590, 605, 612, 636, 638, 661])
@@ -148,4 +176,7 @@ hidden_ability = 103
 egg_group_1 = 6
 egg_cycles = 20
 hatch_species = 531
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

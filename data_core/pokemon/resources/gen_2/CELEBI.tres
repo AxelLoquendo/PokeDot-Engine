@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_w82n7"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ww415vwu0ren" path="res://graphics/pokemon/front/CELEBI.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bml7yer41880w" path="res://graphics/pokemon/front_shiny/CELEBI.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dudeeeo5tf8hs" path="res://graphics/pokemon/back/CELEBI.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://31pj370la3x5" path="res://graphics/pokemon/back_shiny/CELEBI.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c74pprdah566s" path="res://graphics/pokemon/icons/CELEBI.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dvnco5d4w5sx7" path="res://graphics/pokemon/follower/CELEBI.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dmlojaouii6bl" path="res://sfx/se/cries/CELEBI.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -101,6 +108,12 @@ description = "Puede viajar en el tiempo, pero se dice que solo aparece en tiemp
 height = 6
 weight = 50
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 38, 63, 76, 86, 92, 94, 102, 104, 111, 113, 115, 118, 129, 138, 148, 156, 164, 171, 173, 174, 182, 189, 197, 201, 202, 203, 207, 214, 215, 216, 218, 219, 226, 230, 235, 237, 240, 241, 244, 246, 247, 248, 253, 263, 267, 270, 271, 277, 285, 286, 290, 311, 318, 324, 332, 345, 347, 348, 351, 352, 363, 369, 374, 387, 388, 389, 396, 402, 412, 414, 416, 417, 427, 428, 433, 437, 446, 447, 451, 472, 477, 478, 496, 497, 502, 580, 590, 605, 632, 636, 639, 641, 725, 731, 742])
 ability_1 = 30
@@ -108,4 +121,7 @@ is_mythical = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 251
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 7
+cry = ExtResource("gfx106")

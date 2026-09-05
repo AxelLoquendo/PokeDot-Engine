@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bm1dolffsbi31" path="res://graphics/pokemon/front/DIANCIE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://pxo5yoip78fr" path="res://graphics/pokemon/front_shiny/DIANCIE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://7osgorij5qy3" path="res://graphics/pokemon/back/DIANCIE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cn0mkt8n3qyyl" path="res://graphics/pokemon/back_shiny/DIANCIE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c7gcphdeqnqcd" path="res://graphics/pokemon/icons/DIANCIE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bu3wm35svypm7" path="res://graphics/pokemon/follower/DIANCIE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ds0xi5q0knw61" path="res://sfx/se/cries/DIANCIE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://i67rtm3r1t38" path="res://graphics/pokemon/front/MEGA_DIANCIE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dj3yc66p1mfgc" path="res://graphics/pokemon/front_shiny/MEGA_DIANCIE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b7fo4h6p66tnm" path="res://graphics/pokemon/back/MEGA_DIANCIE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c36v037ut8xm7" path="res://graphics/pokemon/back_shiny/MEGA_DIANCIE.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://b416dk0qn238v" path="res://graphics/pokemon/icons/DIANCIE_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://dkykfeevqa2b0" path="res://sfx/se/cries/DIANCIE_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_k7oxt")
@@ -11,6 +24,15 @@ species_id = 952
 form_id = &"diancie_mega"
 display_name = "Diancie Mega"
 base_species_id = 719
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+back_sprite_offset = Vector2(0, 5)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -133,6 +155,12 @@ description = "Es una transformación súbita de Carbink. Se dice que su cuerpo,
 height = 7
 weight = 88
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_k7oxt")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([34, 36, 63, 92, 94, 104, 113, 115, 118, 129, 133, 148, 153, 156, 157, 164, 173, 182, 191, 201, 203, 204, 207, 214, 215, 216, 218, 219, 226, 227, 237, 240, 241, 244, 258, 263, 267, 270, 283, 285, 290, 313, 317, 328, 334, 343, 347, 356, 360, 385, 387, 393, 397, 408, 414, 416, 430, 433, 444, 446, 472, 473, 477, 479, 495, 496, 500, 502, 523, 577, 583, 590, 595, 605, 704, 728, 730, 733, 743, 779, 809])
@@ -141,4 +169,7 @@ is_mythical = true
 egg_group_1 = 15
 egg_cycles = 25
 hatch_species = 719
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 7
+cry = ExtResource("gfx106")

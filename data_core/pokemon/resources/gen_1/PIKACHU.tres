@@ -6,6 +6,76 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_b0o4p"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bo0goc0sgqt2w" path="res://graphics/pokemon/front/PIKACHU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://buwhirgu5r84s" path="res://graphics/pokemon/front_shiny/PIKACHU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://buigjex8q66f6" path="res://graphics/pokemon/back/PIKACHU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://02mumqt7pvq2" path="res://graphics/pokemon/back_shiny/PIKACHU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://xop0leci62qm" path="res://graphics/pokemon/icons/PIKACHU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ir46anmk25oj" path="res://graphics/pokemon/follower/PIKACHU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://daq2kjopno16" path="res://sfx/se/cries/PIKACHU.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://d4bm1cuc0wyy" path="res://graphics/pokemon/front/PIKACHU_COSPLAY.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dhj5fnrsk6vyk" path="res://graphics/pokemon/front_shiny/PIKACHU_COSPLAY.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dglknvc62qlyo" path="res://graphics/pokemon/back/PIKACHU_COSPLAY.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bq0wl4q8g3efx" path="res://graphics/pokemon/back_shiny/PIKACHU_COSPLAY.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bire2eqt7k4pn" path="res://graphics/pokemon/front/PIKACHU_ROCK_STAR.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://c35p57ht11eo1" path="res://graphics/pokemon/front_shiny/PIKACHU_ROCK_STAR.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://bbpgrur70eblj" path="res://graphics/pokemon/back/PIKACHU_ROCK_STAR.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://bdy5yjwawqj3l" path="res://graphics/pokemon/back_shiny/PIKACHU_ROCK_STAR.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://cbwae2d3tgfdb" path="res://graphics/pokemon/front/PIKACHU_BELLE.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://jtihlxdhegxg" path="res://graphics/pokemon/front_shiny/PIKACHU_BELLE.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://bxf7y0o3o0m7u" path="res://graphics/pokemon/back/PIKACHU_BELLE.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://dd8peneo8e54v" path="res://graphics/pokemon/back_shiny/PIKACHU_BELLE.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://5viis8f47qun" path="res://graphics/pokemon/front/PIKACHU_POP_STAR.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://cpxxg35ekbcch" path="res://graphics/pokemon/front_shiny/PIKACHU_POP_STAR.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://5xfgpnjtkj67" path="res://graphics/pokemon/back/PIKACHU_POP_STAR.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://dxrmijflf2q82" path="res://graphics/pokemon/back_shiny/PIKACHU_POP_STAR.png" id="gfx122"]
+[ext_resource type="Texture2D" uid="uid://c4avly33gq6lu" path="res://graphics/pokemon/front/PIKACHU_PHD.png" id="gfx123"]
+[ext_resource type="Texture2D" uid="uid://d3lig7duo1tp4" path="res://graphics/pokemon/front_shiny/PIKACHU_PHD.png" id="gfx124"]
+[ext_resource type="Texture2D" uid="uid://bcnivjwp4fli" path="res://graphics/pokemon/back/PIKACHU_PHD.png" id="gfx125"]
+[ext_resource type="Texture2D" uid="uid://b7vq2nejak1cv" path="res://graphics/pokemon/back_shiny/PIKACHU_PHD.png" id="gfx126"]
+[ext_resource type="Texture2D" uid="uid://tut4l777e6dd" path="res://graphics/pokemon/front/PIKACHU_LIBRE.png" id="gfx127"]
+[ext_resource type="Texture2D" uid="uid://cmsqbh61o4xix" path="res://graphics/pokemon/front_shiny/PIKACHU_LIBRE.png" id="gfx128"]
+[ext_resource type="Texture2D" uid="uid://begxflacqjoo" path="res://graphics/pokemon/back/PIKACHU_LIBRE.png" id="gfx129"]
+[ext_resource type="Texture2D" uid="uid://c4hbbwxii2jck" path="res://graphics/pokemon/back_shiny/PIKACHU_LIBRE.png" id="gfx130"]
+[ext_resource type="Texture2D" uid="uid://dsagn5wyrbpjs" path="res://graphics/pokemon/front/PIKACHU_ORIGINAL.png" id="gfx131"]
+[ext_resource type="Texture2D" uid="uid://dot5txjbmpqk0" path="res://graphics/pokemon/front_shiny/PIKACHU_ORIGINAL.png" id="gfx132"]
+[ext_resource type="Texture2D" uid="uid://cq57m4x082djj" path="res://graphics/pokemon/back/PIKACHU_ORIGINAL.png" id="gfx133"]
+[ext_resource type="Texture2D" uid="uid://duclrw6r3f0yd" path="res://graphics/pokemon/back_shiny/PIKACHU_ORIGINAL.png" id="gfx134"]
+[ext_resource type="Texture2D" uid="uid://ckydo407tm1jd" path="res://graphics/pokemon/front/PIKACHU_HOENN.png" id="gfx135"]
+[ext_resource type="Texture2D" uid="uid://dufm6aywriksi" path="res://graphics/pokemon/front_shiny/PIKACHU_HOENN.png" id="gfx136"]
+[ext_resource type="Texture2D" uid="uid://degmcd215o4qd" path="res://graphics/pokemon/back/PIKACHU_HOENN.png" id="gfx137"]
+[ext_resource type="Texture2D" uid="uid://14vboxu5a5if" path="res://graphics/pokemon/back_shiny/PIKACHU_HOENN.png" id="gfx138"]
+[ext_resource type="Texture2D" uid="uid://migiudsnc7yu" path="res://graphics/pokemon/front/PIKACHU_SINNOH.png" id="gfx139"]
+[ext_resource type="Texture2D" uid="uid://cm8bm1bmcsigd" path="res://graphics/pokemon/front_shiny/PIKACHU_SINNOH.png" id="gfx140"]
+[ext_resource type="Texture2D" uid="uid://bgxra2tags0ut" path="res://graphics/pokemon/back/PIKACHU_SINNOH.png" id="gfx141"]
+[ext_resource type="Texture2D" uid="uid://dl3dmnbocylh6" path="res://graphics/pokemon/back_shiny/PIKACHU_SINNOH.png" id="gfx142"]
+[ext_resource type="Texture2D" uid="uid://c5ai4vw8qrlvr" path="res://graphics/pokemon/front/PIKACHU_UNOVA.png" id="gfx143"]
+[ext_resource type="Texture2D" uid="uid://dfksr7n5qghqe" path="res://graphics/pokemon/front_shiny/PIKACHU_UNOVA.png" id="gfx144"]
+[ext_resource type="Texture2D" uid="uid://p5jl6bht2gde" path="res://graphics/pokemon/back/PIKACHU_UNOVA.png" id="gfx145"]
+[ext_resource type="Texture2D" uid="uid://dck8dhnxu4ovj" path="res://graphics/pokemon/back_shiny/PIKACHU_UNOVA.png" id="gfx146"]
+[ext_resource type="Texture2D" uid="uid://by1xc503q4dcg" path="res://graphics/pokemon/front/PIKACHU_KALOS.png" id="gfx147"]
+[ext_resource type="Texture2D" uid="uid://d6d7i46d0pxv" path="res://graphics/pokemon/front_shiny/PIKACHU_KALOS.png" id="gfx148"]
+[ext_resource type="Texture2D" uid="uid://vegaxlnwsqpo" path="res://graphics/pokemon/back/PIKACHU_KALOS.png" id="gfx149"]
+[ext_resource type="Texture2D" uid="uid://x2wx8gb1cj7p" path="res://graphics/pokemon/back_shiny/PIKACHU_KALOS.png" id="gfx150"]
+[ext_resource type="Texture2D" uid="uid://ckdolqos7hqql" path="res://graphics/pokemon/front/PIKACHU_ALOLA.png" id="gfx151"]
+[ext_resource type="Texture2D" uid="uid://bpgnef6hlyeso" path="res://graphics/pokemon/front_shiny/PIKACHU_ALOLA.png" id="gfx152"]
+[ext_resource type="Texture2D" uid="uid://dtj1hlbq7sgqq" path="res://graphics/pokemon/back/PIKACHU_ALOLA.png" id="gfx153"]
+[ext_resource type="Texture2D" uid="uid://c18fdy2g1ag8w" path="res://graphics/pokemon/back_shiny/PIKACHU_ALOLA.png" id="gfx154"]
+[ext_resource type="Texture2D" uid="uid://mud5uqtwhf4i" path="res://graphics/pokemon/icons/PIKACHU_1.png" id="gfx155"]
+[ext_resource type="Texture2D" uid="uid://b3opgx574g241" path="res://graphics/pokemon/follower/PIKACHU_2.png" id="gfx156"]
+[ext_resource type="Texture2D" uid="uid://lkwycr5wdgru" path="res://graphics/pokemon/front/PIKACHU_PARTNER.png" id="gfx157"]
+[ext_resource type="Texture2D" uid="uid://cjteuxshnj4po" path="res://graphics/pokemon/front_shiny/PIKACHU_PARTNER.png" id="gfx158"]
+[ext_resource type="Texture2D" uid="uid://brhqxiyk23sso" path="res://graphics/pokemon/back/PIKACHU_PARTNER.png" id="gfx159"]
+[ext_resource type="Texture2D" uid="uid://t5tyb47ko43k" path="res://graphics/pokemon/back_shiny/PIKACHU_PARTNER.png" id="gfx160"]
+[ext_resource type="Texture2D" uid="uid://cw4maayvuesi8" path="res://graphics/pokemon/front/PIKACHU_WORLD.png" id="gfx161"]
+[ext_resource type="Texture2D" uid="uid://c7tdy0es7ccad" path="res://graphics/pokemon/front_shiny/PIKACHU_WORLD.png" id="gfx162"]
+[ext_resource type="Texture2D" uid="uid://debc3we4b06g2" path="res://graphics/pokemon/back/PIKACHU_WORLD.png" id="gfx163"]
+[ext_resource type="Texture2D" uid="uid://qrk6y5uj1cw5" path="res://graphics/pokemon/back_shiny/PIKACHU_WORLD.png" id="gfx164"]
+[ext_resource type="Texture2D" uid="uid://ddclri57060tc" path="res://graphics/pokemon/front/PIKACHU_GMAX.png" id="gfx165"]
+[ext_resource type="Texture2D" uid="uid://dy5864c6bmket" path="res://graphics/pokemon/front_shiny/PIKACHU_GMAX.png" id="gfx166"]
+[ext_resource type="Texture2D" uid="uid://c78kmk17fgptj" path="res://graphics/pokemon/back/PIKACHU_GMAX.png" id="gfx167"]
+[ext_resource type="Texture2D" uid="uid://7d3pdnm7etmb" path="res://graphics/pokemon/back_shiny/PIKACHU_GMAX.png" id="gfx168"]
+[ext_resource type="Texture2D" uid="uid://bo0c346310r11" path="res://graphics/pokemon/icons/PIKACHU_gmax.png" id="gfx169"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -24,6 +94,14 @@ species_id = 1009
 form_id = &"pikachu_cosplay"
 display_name = "Pikachu Cosplay"
 base_species_id = 25
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -32,6 +110,14 @@ species_id = 1010
 form_id = &"pikachu_rock_star"
 display_name = "Pikachu Rock Star"
 base_species_id = 25
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -40,6 +126,14 @@ species_id = 1011
 form_id = &"pikachu_belle"
 display_name = "Pikachu Belle"
 base_species_id = 25
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -48,6 +142,14 @@ species_id = 1012
 form_id = &"pikachu_pop_star"
 display_name = "Pikachu Pop Star"
 base_species_id = 25
+front_sprite = ExtResource("gfx119")
+front_sprite_shiny = ExtResource("gfx120")
+back_sprite = ExtResource("gfx121")
+back_sprite_shiny = ExtResource("gfx122")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -56,6 +158,14 @@ species_id = 1013
 form_id = &"pikachu_phd"
 display_name = "Pikachu Phd"
 base_species_id = 25
+front_sprite = ExtResource("gfx123")
+front_sprite_shiny = ExtResource("gfx124")
+back_sprite = ExtResource("gfx125")
+back_sprite_shiny = ExtResource("gfx126")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -64,6 +174,14 @@ species_id = 1014
 form_id = &"pikachu_libre"
 display_name = "Pikachu Libre"
 base_species_id = 25
+front_sprite = ExtResource("gfx127")
+front_sprite_shiny = ExtResource("gfx128")
+back_sprite = ExtResource("gfx129")
+back_sprite_shiny = ExtResource("gfx130")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -72,6 +190,14 @@ species_id = 1015
 form_id = &"pikachu_original"
 display_name = "Pikachu Original"
 base_species_id = 25
+front_sprite = ExtResource("gfx131")
+front_sprite_shiny = ExtResource("gfx132")
+back_sprite = ExtResource("gfx133")
+back_sprite_shiny = ExtResource("gfx134")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -80,6 +206,14 @@ species_id = 1016
 form_id = &"pikachu_hoenn"
 display_name = "Pikachu Hoenn"
 base_species_id = 25
+front_sprite = ExtResource("gfx135")
+front_sprite_shiny = ExtResource("gfx136")
+back_sprite = ExtResource("gfx137")
+back_sprite_shiny = ExtResource("gfx138")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -88,6 +222,14 @@ species_id = 1017
 form_id = &"pikachu_sinnoh"
 display_name = "Pikachu Sinnoh"
 base_species_id = 25
+front_sprite = ExtResource("gfx139")
+front_sprite_shiny = ExtResource("gfx140")
+back_sprite = ExtResource("gfx141")
+back_sprite_shiny = ExtResource("gfx142")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -96,6 +238,14 @@ species_id = 1018
 form_id = &"pikachu_unova"
 display_name = "Pikachu Unova"
 base_species_id = 25
+front_sprite = ExtResource("gfx143")
+front_sprite_shiny = ExtResource("gfx144")
+back_sprite = ExtResource("gfx145")
+back_sprite_shiny = ExtResource("gfx146")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -104,6 +254,14 @@ species_id = 1019
 form_id = &"pikachu_kalos"
 display_name = "Pikachu Kalos"
 base_species_id = 25
+front_sprite = ExtResource("gfx147")
+front_sprite_shiny = ExtResource("gfx148")
+back_sprite = ExtResource("gfx149")
+back_sprite_shiny = ExtResource("gfx150")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -112,6 +270,16 @@ species_id = 1020
 form_id = &"pikachu_alola"
 display_name = "Pikachu Alola"
 base_species_id = 25
+front_sprite = ExtResource("gfx151")
+front_sprite_shiny = ExtResource("gfx152")
+back_sprite = ExtResource("gfx153")
+back_sprite_shiny = ExtResource("gfx154")
+icon_sprite = ExtResource("gfx155")
+overworld_scene = ExtResource("gfx156")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -120,6 +288,14 @@ species_id = 1021
 form_id = &"pikachu_partner"
 display_name = "Pikachu Partner"
 base_species_id = 25
+front_sprite = ExtResource("gfx157")
+front_sprite_shiny = ExtResource("gfx158")
+back_sprite = ExtResource("gfx159")
+back_sprite_shiny = ExtResource("gfx160")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
@@ -128,6 +304,14 @@ species_id = 1022
 form_id = &"pikachu_world"
 display_name = "Pikachu World"
 base_species_id = 25
+front_sprite = ExtResource("gfx161")
+front_sprite_shiny = ExtResource("gfx162")
+back_sprite = ExtResource("gfx163")
+back_sprite_shiny = ExtResource("gfx164")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
@@ -136,6 +320,10 @@ species_id = 1487
 form_id = &"pikachu_starter"
 display_name = "Pikachu Starter"
 base_species_id = 25
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
@@ -144,6 +332,15 @@ species_id = 1493
 form_id = &"pikachu_gmax"
 display_name = "Pikachu Gmax"
 base_species_id = 25
+front_sprite = ExtResource("gfx165")
+front_sprite_shiny = ExtResource("gfx166")
+back_sprite = ExtResource("gfx167")
+back_sprite_shiny = ExtResource("gfx168")
+icon_sprite = ExtResource("gfx169")
+overworld_scene = ExtResource("gfx156")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -273,6 +470,12 @@ description = "Levanta su cola para vigilar los alrededores. A veces, puede ser 
 height = 4
 weight = 60
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_b0o4p")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22")])
 teachable_moves = Array[int]([5, 6, 9, 25, 29, 34, 36, 38, 57, 66, 68, 69, 70, 85, 86, 87, 91, 92, 97, 99, 102, 104, 111, 113, 115, 117, 129, 130, 148, 156, 164, 168, 173, 174, 179, 182, 189, 192, 197, 203, 204, 205, 207, 213, 214, 216, 218, 223, 227, 231, 237, 240, 249, 253, 263, 264, 268, 270, 280, 282, 283, 290, 313, 324, 343, 344, 347, 351, 363, 374, 393, 417, 445, 447, 451, 486, 496, 497, 521, 527, 528, 574, 577, 583, 590, 598, 604, 636, 732, 779, 811, 842, 846])
@@ -283,4 +486,7 @@ egg_group_1 = 5
 egg_group_2 = 6
 egg_cycles = 10
 hatch_species = 25
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 3
+cry = ExtResource("gfx106")

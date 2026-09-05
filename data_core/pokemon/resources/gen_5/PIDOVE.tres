@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_4qswd"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bk8ynbgpr3n20" path="res://graphics/pokemon/front/PIDOVE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cneyv5fhqwa5k" path="res://graphics/pokemon/front_shiny/PIDOVE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://87d1flk4uqr" path="res://graphics/pokemon/back/PIDOVE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c56hbd5bx70b2" path="res://graphics/pokemon/back_shiny/PIDOVE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c3b1l1ld664vy" path="res://graphics/pokemon/icons/PIDOVE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://k37xhoju2oa2" path="res://graphics/pokemon/follower/PIDOVE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ct3xsg76ce4r6" path="res://sfx/se/cries/PIDOVE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -113,6 +120,12 @@ description = "Es un Pokémon muy despistado. Aunque reciba órdenes de su Entre
 height = 3
 weight = 21
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([19, 92, 97, 104, 116, 129, 143, 156, 164, 173, 182, 203, 207, 211, 213, 214, 216, 218, 237, 240, 241, 253, 257, 263, 269, 290, 332, 355, 365, 366, 369, 403, 432, 496, 497, 526, 590, 742])
 egg_moves = Array[int]([95, 211, 234, 253, 273, 381, 400, 432, 516])
@@ -123,4 +136,7 @@ hidden_ability = 79
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 519
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cfkfquigmtm3i" path="res://graphics/pokemon/front/DRAMPA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bt6c32yqlijj" path="res://graphics/pokemon/front_shiny/DRAMPA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cld1470q5gy07" path="res://graphics/pokemon/back/DRAMPA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://iqbgqcd8k2uj" path="res://graphics/pokemon/back_shiny/DRAMPA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://m2xdpwggu03l" path="res://graphics/pokemon/icons/DRAMPA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://byvhnc7ivy07s" path="res://graphics/pokemon/follower/DRAMPA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b70fnu4hrqwds" path="res://sfx/se/cries/DRAMPA.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dpnjgru8veet6" path="res://graphics/pokemon/front/MEGA_DRAMPA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://sj6jxd2vkg7" path="res://graphics/pokemon/front_shiny/MEGA_DRAMPA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://d0cj2q11ikqo7" path="res://graphics/pokemon/back/MEGA_DRAMPA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://6ufueebnvcvi" path="res://graphics/pokemon/back_shiny/MEGA_DRAMPA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://chfr2oan2doyh" path="res://graphics/pokemon/icons/DRAMPA_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_cdcts")
@@ -11,6 +23,14 @@ species_id = 1548
 form_id = &"drampa_mega"
 display_name = "Drampa Mega"
 base_species_id = 780
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -108,6 +128,12 @@ description = "Es de naturaleza mansa, pero si se le provoca y monta en cólera,
 height = 30
 weight = 1850
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_cdcts")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([19, 46, 53, 56, 57, 58, 59, 63, 76, 85, 86, 87, 89, 92, 104, 113, 126, 129, 133, 156, 157, 164, 173, 182, 196, 200, 203, 211, 213, 214, 216, 218, 219, 237, 240, 241, 244, 247, 253, 257, 263, 267, 270, 276, 283, 304, 324, 335, 337, 347, 349, 351, 352, 355, 366, 374, 406, 411, 412, 416, 421, 432, 434, 447, 496, 497, 523, 525, 526, 542, 555, 583, 590, 661, 712, 727, 736])
@@ -119,4 +145,6 @@ egg_group_1 = 1
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 780
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

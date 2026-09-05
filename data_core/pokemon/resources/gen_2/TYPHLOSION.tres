@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bnum4r0k2ufo8" path="res://graphics/pokemon/front/TYPHLOSION.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ha32yy3axn8j" path="res://graphics/pokemon/front_shiny/TYPHLOSION.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b5brgqb6e7pkk" path="res://graphics/pokemon/back/TYPHLOSION.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dkioeeg8xh8mu" path="res://graphics/pokemon/back_shiny/TYPHLOSION.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://byfye63yve2vl" path="res://graphics/pokemon/icons/TYPHLOSION.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cc2w43cc3x8ek" path="res://graphics/pokemon/follower/TYPHLOSION.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dex56yv8o4fe0" path="res://sfx/se/cries/TYPHLOSION.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bvsg2pnrk2m1g" path="res://graphics/pokemon/front/TYPHLOSION_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://colp3vqe5vadx" path="res://graphics/pokemon/front_shiny/TYPHLOSION_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://clxnwo3unp45d" path="res://graphics/pokemon/back/TYPHLOSION_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dyv2ol4epqtiq" path="res://graphics/pokemon/back_shiny/TYPHLOSION_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://ch7i0m7x826gk" path="res://graphics/pokemon/icons/TYPHLOSION_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dsw5bo2bd7wsv" path="res://graphics/pokemon/follower/TYPHLOSION_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_1q3md")
@@ -11,6 +24,15 @@ species_id = 997
 form_id = &"typhlosion_hisui"
 display_name = "Typhlosion Hisui"
 base_species_id = 157
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -118,6 +140,12 @@ description = "Si su furia crece, se calienta tanto que cualquier cosa que toque
 height = 17
 weight = 795
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_1q3md")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([5, 7, 9, 15, 25, 29, 34, 36, 38, 46, 53, 63, 67, 68, 69, 70, 76, 83, 89, 91, 92, 101, 102, 104, 109, 111, 126, 129, 156, 157, 164, 173, 174, 179, 180, 182, 189, 197, 203, 205, 207, 210, 213, 214, 216, 218, 223, 231, 237, 241, 247, 249, 257, 261, 263, 264, 267, 270, 280, 283, 290, 307, 315, 317, 332, 343, 347, 360, 363, 374, 394, 411, 416, 421, 424, 428, 431, 442, 445, 488, 496, 506, 510, 519, 523, 526, 528, 583, 590, 612, 636, 638, 661, 735, 737, 743, 779, 843])
@@ -127,4 +155,6 @@ hidden_ability = 18
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 157
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 5
+cry = ExtResource("gfx106")

@@ -6,6 +6,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_k7577"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bh4e3x8rcc4uf" path="res://graphics/pokemon/front/YAMASK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dp7a1wos0tba1" path="res://graphics/pokemon/front_shiny/YAMASK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://yklkcs5axq3u" path="res://graphics/pokemon/back/YAMASK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://moixgate0yhm" path="res://graphics/pokemon/back_shiny/YAMASK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://blktw88tfdouu" path="res://graphics/pokemon/icons/YAMASK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bjye0hkbmx47e" path="res://graphics/pokemon/follower/YAMASK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://biorpo0l82q0f" path="res://sfx/se/cries/YAMASK.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dmyv5xux7mjw7" path="res://graphics/pokemon/front/YAMASK_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://d0obba4ij140y" path="res://graphics/pokemon/front_shiny/YAMASK_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bdakcwlt4735g" path="res://graphics/pokemon/back/YAMASK_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dclgtyow7e1k5" path="res://graphics/pokemon/back_shiny/YAMASK_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://otm1a0pebv7r" path="res://graphics/pokemon/icons/YAMASK_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://d4jbegsxxy1ly" path="res://graphics/pokemon/follower/YAMASK_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -29,6 +42,16 @@ species_id = 991
 form_id = &"yamask_galar"
 display_name = "Yamask Galar"
 base_species_id = 562
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 13)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -135,6 +158,12 @@ description = "Almas de humanos sepultados en tumbas que han adquirido forma de 
 height = 5
 weight = 15
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_k7577")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([92, 94, 104, 138, 148, 156, 164, 168, 173, 180, 182, 203, 207, 213, 214, 216, 218, 219, 220, 237, 240, 244, 247, 261, 263, 271, 272, 277, 282, 285, 286, 289, 290, 313, 334, 335, 347, 351, 371, 373, 390, 399, 412, 417, 428, 433, 472, 477, 495, 496, 502, 506, 590, 611, 737])
@@ -145,4 +174,7 @@ egg_group_1 = 10
 egg_group_2 = 11
 egg_cycles = 25
 hatch_species = 562
+front_sprite_offset = Vector2(0, 15)
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 3
+cry = ExtResource("gfx106")

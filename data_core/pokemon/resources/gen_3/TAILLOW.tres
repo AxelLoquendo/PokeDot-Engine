@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_d57dk"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dflyjfixi83ao" path="res://graphics/pokemon/front/TAILLOW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://db3crqs2jf6l5" path="res://graphics/pokemon/front_shiny/TAILLOW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bs8v871oiy55u" path="res://graphics/pokemon/back/TAILLOW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://mcxkrh8c02d" path="res://graphics/pokemon/back_shiny/TAILLOW.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cvptwbh58eyx1" path="res://graphics/pokemon/icons/TAILLOW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://1rteha3aj0fj" path="res://graphics/pokemon/follower/TAILLOW.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://hs8a51go2r7b" path="res://sfx/se/cries/TAILLOW.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -103,6 +110,12 @@ description = "Es un Pokémon valiente que no teme a los rivales fuertes. Vuela 
 height = 3
 weight = 23
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([19, 38, 68, 92, 102, 104, 129, 143, 156, 164, 168, 173, 182, 189, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 257, 263, 283, 290, 314, 332, 355, 363, 365, 366, 369, 432, 445, 466, 496, 497, 526, 590])
 egg_moves = Array[int]([18, 48, 99, 119, 143, 211, 228, 287, 355, 413, 432, 542, 586])
@@ -112,4 +125,7 @@ hidden_ability = 113
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 276
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 15)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_7x1jq"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c6p5npw5lvd6n" path="res://graphics/pokemon/front/QUAXWELL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cdiovad6n2amj" path="res://graphics/pokemon/front_shiny/QUAXWELL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://f4ykqwworyoc" path="res://graphics/pokemon/back/QUAXWELL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://clc3kmkpgh528" path="res://graphics/pokemon/back_shiny/QUAXWELL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bsijnrjkpxyym" path="res://graphics/pokemon/icons/QUAXWELL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cpoeegknod4ep" path="res://graphics/pokemon/follower/QUAXWELL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bjc8c0qbm2svm" path="res://sfx/se/cries/QUAXWELL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -110,6 +117,12 @@ description = "These Pokémon constantly run through shallow waters to train the
 height = 12
 weight = 215
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([36, 56, 57, 67, 129, 156, 182, 203, 226, 227, 240, 244, 250, 263, 270, 297, 314, 332, 352, 403, 413, 490, 512, 518, 574, 581, 664, 740, 741, 779, 812])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -119,4 +132,7 @@ egg_group_1 = 2
 egg_group_2 = 4
 egg_cycles = 20
 hatch_species = 1296
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 5
+cry = ExtResource("gfx106")

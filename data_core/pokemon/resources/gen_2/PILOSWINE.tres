@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_kq6a6"]
 [ext_resource type="Script" uid="uid://bwkdjkkqojxp5" path="res://data_core/pokemon/conditions/condition_knows_move.gd" id="ext_cond_move"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://0vw6wljwweht" path="res://graphics/pokemon/front/PILOSWINE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dt63w5ra01gjc" path="res://graphics/pokemon/front_shiny/PILOSWINE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://0jrbr276fik7" path="res://graphics/pokemon/back/PILOSWINE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://brh8r4wdmlw58" path="res://graphics/pokemon/back_shiny/PILOSWINE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cc7cjxeunfqhk" path="res://graphics/pokemon/icons/PILOSWINE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c13kqh08wt7eu" path="res://graphics/pokemon/follower/PILOSWINE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bx7g1xagb3nlf" path="res://sfx/se/cries/PILOSWINE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_move")
@@ -135,6 +142,12 @@ description = "Aunque tiene las patas cortas, las fuertes pezuñas le permiten a
 height = 11
 weight = 558
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 58, 59, 63, 70, 89, 91, 92, 102, 104, 111, 113, 114, 115, 133, 156, 157, 164, 173, 174, 179, 182, 184, 189, 196, 197, 201, 203, 204, 207, 213, 214, 216, 218, 237, 240, 246, 249, 258, 263, 276, 283, 290, 317, 328, 333, 341, 363, 414, 416, 419, 423, 444, 445, 446, 479, 496, 523, 590, 630, 638, 661, 779, 809, 811])
 egg_moves = Array[int]([38, 44, 90, 174, 246, 556, 573])
@@ -145,4 +158,7 @@ hidden_ability = 47
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 221
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

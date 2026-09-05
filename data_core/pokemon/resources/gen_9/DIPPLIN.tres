@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_c8p2u"]
 [ext_resource type="Script" uid="uid://bwkdjkkqojxp5" path="res://data_core/pokemon/conditions/condition_knows_move.gd" id="ext_cond_move"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bjryee7hvjmi5" path="res://graphics/pokemon/front/DIPPLIN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ckyvnvggq73d7" path="res://graphics/pokemon/front_shiny/DIPPLIN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://6lmwg00y4ybw" path="res://graphics/pokemon/back/DIPPLIN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cjfkc2yxorjwc" path="res://graphics/pokemon/back_shiny/DIPPLIN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c7lrntufo0m8v" path="res://graphics/pokemon/icons/DIPPLIN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c0byeesouwdu6" path="res://graphics/pokemon/follower/DIPPLIN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bkd4mss2we8uw" path="res://sfx/se/cries/DIPPLIN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_move")
@@ -110,6 +117,12 @@ description = "Dipplin is two creatures in one Pokémon. Its evolution was trigg
 height = 4
 weight = 97
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([34, 36, 63, 76, 115, 156, 164, 182, 200, 202, 203, 214, 241, 263, 331, 360, 402, 406, 412, 416, 434, 437, 447, 450, 525, 580, 639, 731, 779, 810, 841])
 egg_moves = Array[int]([111, 205, 278, 389, 611])
@@ -121,4 +134,7 @@ egg_group_1 = 7
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 1408
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 1)
 gender_ratio = 3
+cry = ExtResource("gfx106")

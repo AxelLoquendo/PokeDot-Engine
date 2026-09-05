@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b0cdw7dax4mgn" path="res://graphics/pokemon/front/OINKOLOGNE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://o3fms5ssjvrm" path="res://graphics/pokemon/front_shiny/OINKOLOGNE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://t4l6ft4pdrh6" path="res://graphics/pokemon/back/OINKOLOGNE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cbs6u6x8qu2yb" path="res://graphics/pokemon/back_shiny/OINKOLOGNE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bprx6fvl8yham" path="res://graphics/pokemon/icons/OINKOLOGNE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c31pyylixlc0w" path="res://graphics/pokemon/follower/OINKOLOGNE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dit1s3ajetcy" path="res://sfx/se/cries/OINKOLOGNE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://yj7erct38ay6" path="res://graphics/pokemon/front/OINKOLOGNE_F.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://blr2hhgjntren" path="res://graphics/pokemon/front_shiny/OINKOLOGNE_F.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://djrhfa0u0c85h" path="res://graphics/pokemon/back/OINKOLOGNE_F.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://d2tcte6yl2akg" path="res://graphics/pokemon/back_shiny/OINKOLOGNE_F.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_8w4cb")
@@ -11,6 +22,14 @@ species_id = 1300
 form_id = &"oinkologne_f"
 display_name = "Oinkologne F"
 base_species_id = 1299
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 12)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -107,6 +126,12 @@ description = "Oinkologne is proud of its fine, glossy skin. It emits a concentr
 height = 10
 weight = 1200
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_8w4cb")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([34, 36, 38, 63, 91, 156, 162, 164, 168, 174, 182, 189, 203, 214, 240, 241, 253, 263, 270, 283, 304, 331, 341, 402, 412, 414, 416, 428, 442, 523, 574, 583, 0, 624, 658, 683, 707, 739, 740])
@@ -116,4 +141,7 @@ hidden_ability = 47
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 1299
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 6
+cry = ExtResource("gfx106")

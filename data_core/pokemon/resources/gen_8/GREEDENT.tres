@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://beg2ff5gcr4gb" path="res://graphics/pokemon/front/GREEDENT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cc60lkkn1ku51" path="res://graphics/pokemon/front_shiny/GREEDENT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d1aw6tuqxaqbq" path="res://graphics/pokemon/back/GREEDENT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cvcutchuombuu" path="res://graphics/pokemon/back_shiny/GREEDENT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b8mnvewxhifax" path="res://graphics/pokemon/icons/GREEDENT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://chnrktq6pywtf" path="res://graphics/pokemon/follower/GREEDENT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://71uaynfi3cf" path="res://sfx/se/cries/GREEDENT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -91,6 +98,12 @@ description = "Se obceca tanto en acumular bayas en la cola que no se da ni cuen
 height = 6
 weight = 60
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 34, 36, 38, 63, 89, 91, 133, 156, 162, 164, 168, 173, 174, 182, 189, 203, 213, 214, 231, 240, 241, 242, 253, 263, 276, 282, 283, 304, 331, 341, 360, 371, 372, 374, 402, 416, 422, 423, 424, 496, 523, 528, 541, 630, 656, 660, 661, 704, 779])
 ability_1 = 167
@@ -98,4 +111,7 @@ hidden_ability = 82
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 820
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

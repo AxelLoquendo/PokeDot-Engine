@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_m5b7k"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bbws2niebrdug" path="res://graphics/pokemon/front/DEWOTT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dk8fx3qfc4ayg" path="res://graphics/pokemon/front_shiny/DEWOTT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b6heg422d2nn" path="res://graphics/pokemon/back/DEWOTT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bjh5pxr6kn6hb" path="res://graphics/pokemon/back_shiny/DEWOTT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dutgfdu1kjtuf" path="res://graphics/pokemon/icons/DEWOTT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cs12u36gv6ppk" path="res://graphics/pokemon/follower/DEWOTT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://p7g4s05brfhq" path="res://sfx/se/cries/DEWOTT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -119,6 +126,12 @@ description = "Gran espadachín. Utiliza sus dos vieiras con soltura al ejecutar
 height = 8
 weight = 245
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 36, 56, 57, 58, 59, 91, 92, 104, 127, 129, 156, 164, 168, 173, 182, 196, 203, 206, 207, 213, 214, 216, 218, 227, 231, 237, 240, 249, 250, 258, 263, 269, 270, 280, 282, 290, 291, 332, 343, 352, 374, 401, 403, 404, 410, 419, 447, 496, 503, 514, 518, 526, 590, 664, 740, 779, 809, 812])
 egg_moves = Array[int]([103, 197, 282, 383, 400, 403, 533, 821])
@@ -128,4 +141,7 @@ hidden_ability = 75
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 502
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 5
+cry = ExtResource("gfx106")

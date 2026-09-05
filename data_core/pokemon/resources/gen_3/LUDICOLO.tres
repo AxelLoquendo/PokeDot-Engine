@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dyr2bbctg3a4d" path="res://graphics/pokemon/front/LUDICOLO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://e0h7hgt4wb8m" path="res://graphics/pokemon/front_shiny/LUDICOLO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://e657s1aim08i" path="res://graphics/pokemon/back/LUDICOLO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cw3u3oy6tvlgt" path="res://graphics/pokemon/back_shiny/LUDICOLO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ccar8lrmxpm5r" path="res://graphics/pokemon/icons/LUDICOLO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bjdesehg2gtwu" path="res://graphics/pokemon/follower/LUDICOLO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dq3oe88xb16x3" path="res://sfx/se/cries/LUDICOLO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -100,6 +107,12 @@ description = "Cuando oye música alegre, sus músculos se llenan de energía, y
 height = 15
 weight = 550
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([5, 7, 8, 9, 14, 25, 29, 34, 36, 38, 56, 57, 58, 59, 63, 68, 69, 70, 76, 92, 102, 104, 118, 127, 129, 133, 148, 156, 164, 168, 173, 182, 189, 196, 202, 203, 207, 213, 214, 216, 218, 223, 227, 235, 237, 240, 241, 249, 250, 253, 258, 263, 264, 267, 280, 282, 290, 291, 304, 311, 330, 331, 341, 345, 352, 363, 374, 402, 409, 411, 412, 416, 428, 431, 437, 445, 447, 468, 496, 497, 503, 574, 580, 590, 612, 731, 779, 789, 811, 812])
 egg_moves = Array[int]([45, 54, 55, 56, 68, 71, 72, 75, 154, 175, 230, 235, 282, 298, 310, 321, 412, 428])
@@ -110,4 +123,6 @@ egg_group_1 = 2
 egg_group_2 = 7
 egg_cycles = 15
 hatch_species = 272
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

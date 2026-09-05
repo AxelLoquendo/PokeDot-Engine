@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://en876rfh8t2a" path="res://graphics/pokemon/front/APPLETUN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d4dtaxhxcm0ww" path="res://graphics/pokemon/front_shiny/APPLETUN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://1hwi2idlpu5k" path="res://graphics/pokemon/back/APPLETUN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dyk3mckk8u7bm" path="res://graphics/pokemon/back_shiny/APPLETUN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://34o7wky308d8" path="res://graphics/pokemon/icons/APPLETUN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dvkcfxhgmrpjk" path="res://graphics/pokemon/follower/APPLETUN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bhguhif7t4yrv" path="res://sfx/se/cries/APPLETUN.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://oonf8wce8jr2" path="res://graphics/pokemon/front/APPLETUN_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bwthgtapdmit2" path="res://graphics/pokemon/front_shiny/APPLETUN_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dsxyt108pwjre" path="res://graphics/pokemon/back/APPLETUN_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://boe5d2lgbvdx6" path="res://graphics/pokemon/back_shiny/APPLETUN_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cbnknc8f3cb8y" path="res://graphics/pokemon/icons/APPLETUN_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_g7g1j")
@@ -11,6 +23,16 @@ species_id = 1511
 form_id = &"appletun_gmax"
 display_name = "Appletun Gmax"
 base_species_id = 842
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -114,6 +136,12 @@ description = "Ha evolucionado tras ingerir una manzana dulce. De ahí que el ol
 height = 4
 weight = 130
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_g7g1j")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([34, 36, 63, 76, 89, 113, 115, 133, 156, 164, 173, 174, 182, 200, 202, 203, 213, 214, 219, 240, 241, 263, 270, 276, 331, 334, 345, 360, 371, 402, 406, 412, 416, 428, 434, 437, 442, 447, 484, 496, 523, 525, 580, 630, 661, 704, 731, 779, 810, 811])
@@ -124,4 +152,7 @@ egg_group_1 = 7
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 842
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

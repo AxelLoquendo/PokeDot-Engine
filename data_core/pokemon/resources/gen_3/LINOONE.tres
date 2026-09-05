@@ -7,6 +7,19 @@
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://twog3brh60t8" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b77v54iciw7qx" path="res://graphics/pokemon/front/LINOONE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bwdoj2ycx6ncv" path="res://graphics/pokemon/front_shiny/LINOONE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dcrluu877llcp" path="res://graphics/pokemon/back/LINOONE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ddqebn6i4civq" path="res://graphics/pokemon/back_shiny/LINOONE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dyk4bn3r5xb4" path="res://graphics/pokemon/icons/LINOONE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://du1jmya88h18v" path="res://graphics/pokemon/follower/LINOONE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ct1xrleyqb13o" path="res://sfx/se/cries/LINOONE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bhql14b5c104a" path="res://graphics/pokemon/front/LINOONE_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cnidmbnd1gotw" path="res://graphics/pokemon/front_shiny/LINOONE_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bf5xx7gfcnha4" path="res://graphics/pokemon/back/LINOONE_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://chyj3frbtqhv2" path="res://graphics/pokemon/back_shiny/LINOONE_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dh2mvapuajr64" path="res://graphics/pokemon/icons/LINOONE_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://3vs4l347mciw" path="res://graphics/pokemon/follower/LINOONE_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -28,6 +41,16 @@ species_id = 988
 form_id = &"linoone_galar"
 display_name = "Linoone Galar"
 base_species_id = 264
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 13)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -156,6 +179,12 @@ description = "En línea recta corre a algo más de 100 km/h, pero no es tan há
 height = 5
 weight = 325
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_55v04")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22")])
 teachable_moves = Array[int]([15, 29, 34, 38, 42, 46, 57, 58, 59, 63, 70, 85, 86, 87, 91, 92, 102, 104, 111, 129, 156, 162, 164, 168, 173, 182, 189, 196, 203, 204, 205, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 247, 249, 250, 263, 270, 271, 290, 304, 341, 343, 351, 352, 363, 374, 387, 402, 416, 421, 441, 445, 447, 451, 468, 496, 497, 514, 526, 541, 583, 590, 638, 661])
@@ -166,4 +195,7 @@ hidden_ability = 95
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 264
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

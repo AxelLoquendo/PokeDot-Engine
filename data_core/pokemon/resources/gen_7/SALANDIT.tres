@@ -7,6 +7,13 @@
 [ext_resource type="Script" uid="uid://dn0ydqghnsyb2" path="res://data_core/pokemon/conditions/condition_gender.gd" id="ext_cond_gender"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dmxncy0tk0407" path="res://graphics/pokemon/front/SALANDIT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c1bsqyc48ppms" path="res://graphics/pokemon/front_shiny/SALANDIT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dq2bmk03y37vd" path="res://graphics/pokemon/back/SALANDIT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://4v0a1ta8o6fj" path="res://graphics/pokemon/back_shiny/SALANDIT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://djhmvqy6873g8" path="res://graphics/pokemon/icons/SALANDIT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://rgn0i5dfpppq" path="res://graphics/pokemon/follower/SALANDIT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dey0tfqepjogh" path="res://sfx/se/cries/SALANDIT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -127,6 +134,12 @@ description = "Aturde a sus oponentes con un gas venenoso que produce al quemar 
 height = 6
 weight = 48
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([36, 53, 86, 92, 97, 104, 126, 129, 141, 156, 164, 168, 173, 182, 184, 188, 189, 203, 207, 213, 214, 216, 218, 231, 237, 241, 251, 257, 259, 261, 263, 269, 270, 282, 283, 289, 315, 337, 342, 343, 371, 374, 390, 394, 398, 406, 417, 421, 424, 441, 474, 482, 488, 491, 492, 496, 590, 599, 727, 734, 735, 779, 811, 843])
 egg_moves = Array[int]([28, 189, 252, 282, 289, 562])
@@ -137,4 +150,7 @@ egg_group_1 = 1
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 757
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 5
+cry = ExtResource("gfx106")

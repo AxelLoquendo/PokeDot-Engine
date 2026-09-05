@@ -4,6 +4,21 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ri33c"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://1j3i3t838ww3" path="res://graphics/pokemon/front/BASCULIN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ctvvvcojvj4k1" path="res://graphics/pokemon/front_shiny/BASCULIN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b82ld5l34unrk" path="res://graphics/pokemon/back/BASCULIN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://wfjbxch0cdde" path="res://graphics/pokemon/back_shiny/BASCULIN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://3kj6xg2bqn24" path="res://graphics/pokemon/icons/BASCULIN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bojdf1jkgbqk8" path="res://graphics/pokemon/follower/BASCULIN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b81ufkan8suys" path="res://sfx/se/cries/BASCULIN.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://chustiv1qwq8v" path="res://graphics/pokemon/front/BASCULIN_BLUE_STRIPED.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://ccamattyunfl7" path="res://graphics/pokemon/front_shiny/BASCULIN_BLUE_STRIPED.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bedtke2x3l1ia" path="res://graphics/pokemon/back/BASCULIN_BLUE_STRIPED.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://be71cunyc2mky" path="res://graphics/pokemon/back_shiny/BASCULIN_BLUE_STRIPED.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://d36fekwtu3akf" path="res://graphics/pokemon/front/BASCULIN_WHITE_STRIPED.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cmfw4qpo3ql82" path="res://graphics/pokemon/front_shiny/BASCULIN_WHITE_STRIPED.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://beeqgx2ysoyg0" path="res://graphics/pokemon/back/BASCULIN_WHITE_STRIPED.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://cea7fj58g81in" path="res://graphics/pokemon/back_shiny/BASCULIN_WHITE_STRIPED.png" id="gfx114"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ri33c")
@@ -11,6 +26,16 @@ species_id = 1090
 form_id = &"basculin_blue_striped"
 display_name = "Basculin Blue Striped"
 base_species_id = 550
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 16)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +44,16 @@ species_id = 1091
 form_id = &"basculin_white_striped"
 display_name = "Basculin White Striped"
 base_species_id = 550
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 16)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -135,6 +170,12 @@ description = "Los de color azul y los de color rojo siempre se pelean. Son muy 
 height = 10
 weight = 180
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_ri33c")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([15, 36, 38, 56, 57, 58, 59, 63, 92, 97, 104, 127, 129, 156, 164, 173, 179, 182, 184, 196, 203, 207, 213, 214, 216, 218, 237, 240, 242, 250, 253, 258, 263, 269, 276, 279, 283, 290, 291, 330, 340, 341, 352, 362, 372, 401, 416, 423, 428, 496, 503, 590, 660, 664, 727, 740, 779, 809, 812])
@@ -145,4 +186,7 @@ hidden_ability = 104
 egg_group_1 = 12
 egg_cycles = 40
 hatch_species = 550
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 16)
 gender_ratio = 3
+cry = ExtResource("gfx106")

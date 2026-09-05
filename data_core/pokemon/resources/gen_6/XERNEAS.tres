@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_uu8sx"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://7qiuvdqaom1b" path="res://graphics/pokemon/front/XERNEAS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c4nqsyjuaievg" path="res://graphics/pokemon/front_shiny/XERNEAS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bd7b4ggd7u5yi" path="res://graphics/pokemon/back/XERNEAS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://t0kol84e1org" path="res://graphics/pokemon/back_shiny/XERNEAS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://eb0u5xcscsib" path="res://graphics/pokemon/icons/XERNEAS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://detum7f3pqskf" path="res://graphics/pokemon/follower/XERNEAS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://0se6210vk5ka" path="res://sfx/se/cries/XERNEAS.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cwloh378q775f" path="res://graphics/pokemon/front/XERNEAS_ACTIVE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bkcvbf5w6vwhc" path="res://graphics/pokemon/front_shiny/XERNEAS_ACTIVE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bwcsm12c6ysag" path="res://graphics/pokemon/back/XERNEAS_ACTIVE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c3rm8isfxktkt" path="res://graphics/pokemon/back_shiny/XERNEAS_ACTIVE.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_uu8sx")
@@ -11,6 +22,12 @@ species_id = 1163
 form_id = &"xerneas_active"
 display_name = "Xerneas Active"
 base_species_id = 716
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -127,6 +144,12 @@ description = "Según las leyendas, puede compartir el secreto de la vida eterna
 height = 30
 weight = 2150
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_uu8sx")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([15, 34, 46, 63, 85, 86, 87, 92, 94, 104, 113, 115, 129, 148, 156, 157, 164, 173, 182, 200, 203, 207, 214, 216, 218, 224, 237, 240, 241, 244, 258, 263, 267, 283, 290, 304, 335, 347, 356, 370, 411, 416, 428, 430, 432, 447, 472, 473, 496, 497, 577, 581, 583, 590, 605, 636, 647, 730, 733])
@@ -136,3 +159,4 @@ egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 716
 gender_ratio = 7
+cry = ExtResource("gfx106")

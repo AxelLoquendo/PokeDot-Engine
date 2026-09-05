@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://crcuo7xu7gsr7" path="res://graphics/pokemon/front/BLACEPHALON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://k4ltjs1fb8xm" path="res://graphics/pokemon/front_shiny/BLACEPHALON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bij53hg6hpioq" path="res://graphics/pokemon/back/BLACEPHALON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://xuuo5xfxai7p" path="res://graphics/pokemon/back_shiny/BLACEPHALON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bhhls2ix62kg1" path="res://graphics/pokemon/icons/BLACEPHALON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://coqjhddsjf71q" path="res://graphics/pokemon/follower/BLACEPHALON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://4b6p8vwihb2h" path="res://sfx/se/cries/BLACEPHALON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -115,10 +122,19 @@ description = "Parece ser uno de los temibles Ultraentes. Se acerca a la gente c
 height = 18
 weight = 130
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([7, 53, 63, 76, 83, 92, 94, 104, 113, 120, 126, 153, 156, 164, 168, 173, 180, 182, 203, 207, 214, 216, 218, 220, 227, 237, 241, 247, 253, 257, 259, 261, 263, 269, 271, 278, 282, 315, 347, 350, 371, 374, 387, 399, 421, 428, 473, 479, 488, 492, 495, 496, 500, 511, 590, 595, 725])
 ability_1 = 224
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 806
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 7
+cry = ExtResource("gfx106")

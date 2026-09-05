@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_yhf5w"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dvdwhu7jrnfie" path="res://graphics/pokemon/front/HOUNDOUR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cntyudwyintpr" path="res://graphics/pokemon/front_shiny/HOUNDOUR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://5ug5kfnnt3v8" path="res://graphics/pokemon/back/HOUNDOUR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c2abvuwpffqvs" path="res://graphics/pokemon/back_shiny/HOUNDOUR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bl537sjav18n4" path="res://graphics/pokemon/icons/HOUNDOUR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://43lyydfhl3vo" path="res://graphics/pokemon/follower/HOUNDOUR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cqxhosfkki005" path="res://sfx/se/cries/HOUNDOUR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -133,6 +140,12 @@ description = "Al amanecer, resuena por la zona su inquietante aullido para anun
 height = 6
 weight = 108
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 53, 68, 76, 83, 92, 102, 104, 126, 129, 138, 156, 162, 164, 168, 171, 173, 174, 179, 180, 182, 184, 188, 189, 197, 203, 207, 213, 214, 216, 218, 220, 231, 237, 240, 241, 242, 247, 249, 253, 257, 259, 261, 263, 269, 270, 272, 289, 290, 304, 315, 341, 363, 371, 373, 389, 394, 399, 417, 422, 424, 445, 488, 492, 496, 510, 514, 555, 590, 660, 735, 736, 779, 811, 843])
 egg_moves = Array[int]([68, 83, 99, 179, 180, 194, 228, 251, 261, 364, 386, 389, 417, 422, 424])
@@ -143,4 +156,7 @@ hidden_ability = 127
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 228
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_2gkm3"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://da7thyfe5pyhc" path="res://graphics/pokemon/front/WAILMER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b6mu2mk2rrqyt" path="res://graphics/pokemon/front_shiny/WAILMER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dlsc3cskj6s5x" path="res://graphics/pokemon/back/WAILMER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://brxwcchffq2ni" path="res://graphics/pokemon/back_shiny/WAILMER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cygrinldmc766" path="res://graphics/pokemon/icons/WAILMER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dnuq4pmjeluw5" path="res://graphics/pokemon/follower/WAILMER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cgs8r4jcnayel" path="res://sfx/se/cries/WAILMER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -122,6 +129,12 @@ description = "Le gusta botar como una pelota de playa. Cuanta más agua de mar 
 height = 20
 weight = 1300
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([29, 34, 38, 46, 56, 57, 58, 59, 70, 89, 92, 102, 104, 111, 120, 127, 133, 156, 164, 173, 182, 196, 203, 205, 207, 213, 214, 216, 218, 237, 240, 249, 250, 258, 263, 290, 291, 304, 311, 317, 340, 352, 362, 363, 419, 428, 445, 484, 496, 497, 503, 523, 590, 704, 726])
 egg_moves = Array[int]([34, 37, 38, 90, 111, 173, 174, 205, 207, 214, 321, 392, 428, 487, 499])
@@ -133,4 +146,7 @@ egg_group_1 = 5
 egg_group_2 = 12
 egg_cycles = 40
 hatch_species = 320
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

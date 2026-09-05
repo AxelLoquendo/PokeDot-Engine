@@ -8,6 +8,13 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://gxt3ck6qm2gn" path="res://graphics/pokemon/front/KIRLIA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://0b5u4ld4tcdo" path="res://graphics/pokemon/front_shiny/KIRLIA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dhcgy76rhlb7n" path="res://graphics/pokemon/back/KIRLIA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cfb38kh61oxq1" path="res://graphics/pokemon/back_shiny/KIRLIA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cmvtu0qockurc" path="res://graphics/pokemon/icons/KIRLIA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cw47t83ecj4no" path="res://graphics/pokemon/follower/KIRLIA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dstghrjkau5g6" path="res://sfx/se/cries/KIRLIA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -148,6 +155,12 @@ description = "Al percibir la alegría de su Entrenador refuerza sus ataques psi
 height = 8
 weight = 202
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 38, 60, 63, 85, 86, 92, 94, 102, 104, 109, 111, 113, 115, 118, 129, 138, 148, 156, 164, 168, 171, 173, 182, 189, 196, 203, 204, 207, 213, 214, 216, 218, 219, 220, 227, 237, 240, 241, 244, 247, 248, 259, 261, 263, 269, 270, 271, 277, 278, 282, 285, 286, 289, 290, 304, 324, 345, 347, 351, 363, 374, 428, 433, 445, 447, 451, 472, 473, 477, 478, 496, 497, 500, 502, 574, 577, 581, 590, 605, 641, 725, 741, 779, 842])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0"), SubResource("Resource_evo1")])
@@ -158,4 +171,7 @@ egg_group_1 = 8
 egg_group_2 = 11
 egg_cycles = 20
 hatch_species = 281
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

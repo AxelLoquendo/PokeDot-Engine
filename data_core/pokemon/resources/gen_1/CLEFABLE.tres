@@ -28,7 +28,9 @@ front_sprite_shiny = ExtResource("9_cavnf")
 back_sprite = ExtResource("6_n2ofc")
 back_sprite_shiny = ExtResource("7_e76bn")
 icon_sprite = ExtResource("10_y2rbq")
+overworld_scene = ExtResource("15_eg57l")
 cry = ExtResource("3_ersug")
+back_sprite_offset = Vector2(0, 3)
 override_graphics = true
 tags = PackedStringArray()
 
@@ -166,5 +168,7 @@ hidden_ability = 109
 egg_group_1 = 6
 egg_cycles = 10
 hatch_species = 36
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 2
 cry = ExtResource("3_ersug")

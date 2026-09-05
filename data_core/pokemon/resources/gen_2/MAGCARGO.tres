@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_tjwiw"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://xfpkhf5vsbji" path="res://graphics/pokemon/front/MAGCARGO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://rb2cf42vjt5r" path="res://graphics/pokemon/front_shiny/MAGCARGO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bub27a1ds14dt" path="res://graphics/pokemon/back/MAGCARGO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dj2jh2hcbgnft" path="res://graphics/pokemon/back_shiny/MAGCARGO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://k46ws28xjv5x" path="res://graphics/pokemon/icons/MAGCARGO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cua51n5m1j2r4" path="res://graphics/pokemon/follower/MAGCARGO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://v7g1lp44noid" path="res://sfx/se/cries/MAGCARGO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -105,6 +112,12 @@ category_name = "Lava"
 description = "En ocasiones, su resbaladiza concha lanza intensas llamaradas que recorren todo su cuerpo."
 height = 8
 weight = 550
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([34, 36, 38, 53, 63, 70, 76, 83, 89, 92, 102, 104, 111, 113, 115, 120, 126, 133, 153, 156, 157, 164, 173, 174, 182, 189, 201, 203, 205, 207, 213, 214, 216, 218, 220, 237, 241, 246, 249, 257, 261, 263, 267, 290, 315, 317, 328, 334, 341, 350, 360, 363, 394, 397, 408, 414, 416, 444, 445, 446, 479, 488, 495, 496, 510, 523, 535, 590, 611, 661, 735, 743, 779, 843])
 egg_moves = Array[int]([108, 151, 174, 205, 254, 262, 385, 517])
@@ -114,4 +127,7 @@ hidden_ability = 133
 egg_group_1 = 11
 egg_cycles = 20
 hatch_species = 219
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

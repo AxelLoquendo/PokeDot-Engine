@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_wry0e"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://5ujgwi2twea2" path="res://graphics/pokemon/front/ELECTIVIRE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://7u4q0b6vvtob" path="res://graphics/pokemon/front_shiny/ELECTIVIRE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://q7a0rk4ygsmh" path="res://graphics/pokemon/back/ELECTIVIRE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://wo8k7gef6m0d" path="res://graphics/pokemon/back_shiny/ELECTIVIRE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://qy10btgcxoi" path="res://graphics/pokemon/icons/ELECTIVIRE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://7ojrg55h5xvn" path="res://graphics/pokemon/follower/ELECTIVIRE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bwyge2oirur6s" path="res://sfx/se/cries/ELECTIVIRE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -115,6 +122,12 @@ description = "Al almacenar mucha electricidad, desprende chispas de una clarida
 height = 18
 weight = 1386
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 53, 63, 67, 70, 85, 86, 87, 89, 91, 92, 94, 103, 104, 113, 115, 118, 129, 148, 156, 157, 164, 168, 173, 182, 189, 203, 207, 213, 214, 216, 218, 231, 237, 240, 249, 253, 259, 263, 264, 268, 269, 270, 280, 282, 290, 311, 317, 319, 324, 339, 343, 351, 363, 374, 393, 411, 416, 431, 445, 451, 486, 490, 496, 521, 523, 527, 528, 530, 590, 598, 604, 612, 626, 661, 732, 779, 811, 844])
 egg_moves = Array[int]([223, 238, 264, 266, 359, 364])
@@ -123,4 +136,6 @@ hidden_ability = 72
 egg_group_1 = 8
 egg_cycles = 25
 hatch_species = 466
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 4
+cry = ExtResource("gfx106")

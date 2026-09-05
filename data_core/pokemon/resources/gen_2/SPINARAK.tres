@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_v2kpv"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dl4u0l3c8ia5j" path="res://graphics/pokemon/front/SPINARAK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://7palfchc8pn6" path="res://graphics/pokemon/front_shiny/SPINARAK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://n7m7lh2jij2w" path="res://graphics/pokemon/back/SPINARAK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://p6l3pmprpcrk" path="res://graphics/pokemon/back_shiny/SPINARAK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dchtkgiknknn8" path="res://graphics/pokemon/icons/SPINARAK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://26dx38alvbrh" path="res://graphics/pokemon/follower/SPINARAK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cr5xvs3hv2skx" path="res://sfx/se/cries/SPINARAK.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -137,6 +144,12 @@ description = "El veneno de sus colmillos no es demasiado tóxico, pero basta pa
 height = 5
 weight = 85
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([34, 38, 76, 81, 91, 92, 94, 97, 101, 102, 104, 141, 148, 156, 164, 168, 173, 174, 180, 182, 184, 188, 202, 203, 207, 213, 214, 216, 218, 226, 237, 241, 263, 282, 290, 324, 340, 363, 389, 390, 398, 404, 405, 445, 450, 468, 474, 482, 491, 492, 496, 506, 522, 527, 590, 611, 642, 734, 779, 810, 811])
 egg_moves = Array[int]([41, 49, 50, 60, 224, 226, 228, 324, 390, 398, 400, 476, 527, 642])
@@ -147,4 +160,7 @@ hidden_ability = 97
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 167
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 16)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dca2h2fdillgg" path="res://graphics/pokemon/front/HO_OH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dhvykvop2w406" path="res://graphics/pokemon/front_shiny/HO_OH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cu1t0sosrcdap" path="res://graphics/pokemon/back/HO_OH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://co2rbb6e721nn" path="res://graphics/pokemon/back_shiny/HO_OH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c6krglqqp42od" path="res://graphics/pokemon/icons/HOOH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cjyyk7vmxachs" path="res://graphics/pokemon/follower/HOOH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c3pm71tbuh4w8" path="res://sfx/se/cries/HOOH.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -122,6 +129,12 @@ category_name = "Arcoíris"
 description = "Cuenta la leyenda que brilla en siete colores. Dicen que deja un arcoíris tras de sí al volar."
 height = 38
 weight = 1990
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([19, 34, 36, 38, 46, 53, 63, 70, 76, 83, 85, 86, 87, 89, 92, 94, 102, 104, 113, 115, 126, 129, 138, 143, 148, 156, 164, 171, 173, 174, 182, 189, 192, 197, 201, 202, 203, 207, 211, 214, 216, 218, 219, 225, 237, 239, 240, 241, 244, 246, 247, 248, 249, 257, 261, 263, 270, 286, 290, 304, 311, 314, 315, 324, 332, 347, 351, 355, 363, 365, 366, 394, 403, 413, 414, 416, 428, 432, 442, 451, 466, 488, 496, 497, 507, 510, 523, 542, 590, 595, 636, 742, 743, 779])
 ability_1 = 46
@@ -130,4 +143,6 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 250
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 7
+cry = ExtResource("gfx106")

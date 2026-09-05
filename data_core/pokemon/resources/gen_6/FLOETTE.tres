@@ -4,6 +4,23 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://1av88hqjomlg" path="res://graphics/pokemon/front/FLOETTE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c6u12h1ipkghq" path="res://graphics/pokemon/front_shiny/FLOETTE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dctxxfxq0c5aq" path="res://graphics/pokemon/back/FLOETTE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c74wttw6rbkdt" path="res://graphics/pokemon/back_shiny/FLOETTE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bdgaytc72im40" path="res://graphics/pokemon/icons/FLOETTE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c7b1prb5yit43" path="res://graphics/pokemon/follower/FLOETTE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b7n85i1a2x8bs" path="res://sfx/se/cries/FLOETTE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://2yhejslgae3m" path="res://graphics/pokemon/front/FLOETTE_ETERNAL.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://ds1gycy06uq4i" path="res://graphics/pokemon/front_shiny/FLOETTE_ETERNAL.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bwsrrx7p2ybtx" path="res://graphics/pokemon/back/FLOETTE_ETERNAL.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://tcs1d4b55ydx" path="res://graphics/pokemon/back_shiny/FLOETTE_ETERNAL.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://biy613kyou0u0" path="res://graphics/pokemon/front/MEGA_FLOETTE.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bdcjeywumpvgv" path="res://graphics/pokemon/front_shiny/MEGA_FLOETTE.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://cqpxgvcdpnup1" path="res://graphics/pokemon/back/MEGA_FLOETTE.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://bawf3bryu2u4k" path="res://graphics/pokemon/back_shiny/MEGA_FLOETTE.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://b56obufsvmh2v" path="res://graphics/pokemon/icons/FLOETTE_1.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://efk6jbpv68am" path="res://graphics/pokemon/follower/FLOETTE_1.png" id="gfx116"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_dgp63")
@@ -11,6 +28,14 @@ species_id = 1137
 form_id = &"floette_yellow"
 display_name = "Floette Yellow"
 base_species_id = 670
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +44,8 @@ species_id = 1138
 form_id = &"floette_orange"
 display_name = "Floette Orange"
 base_species_id = 670
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +54,14 @@ species_id = 1139
 form_id = &"floette_blue"
 display_name = "Floette Blue"
 base_species_id = 670
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +70,14 @@ species_id = 1140
 form_id = &"floette_white"
 display_name = "Floette White"
 base_species_id = 670
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +86,14 @@ species_id = 1141
 form_id = &"floette_eternal"
 display_name = "Floette Eternal"
 base_species_id = 670
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +102,15 @@ species_id = 1545
 form_id = &"floette_mega"
 display_name = "Floette Mega"
 base_species_id = 670
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("gfx115")
+overworld_scene = ExtResource("gfx116")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -151,6 +211,12 @@ description = "Revolotea alrededor de campos de flores y cuida de aquellas que e
 height = 2
 weight = 9
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_dgp63")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([76, 92, 94, 104, 113, 118, 129, 148, 156, 164, 173, 182, 202, 203, 204, 207, 213, 214, 215, 216, 218, 219, 226, 235, 237, 240, 241, 263, 267, 270, 271, 277, 283, 285, 290, 343, 345, 347, 388, 402, 412, 447, 495, 496, 497, 500, 502, 572, 574, 577, 580, 581, 590, 605, 639, 779, 811, 812, 842])
@@ -159,3 +225,4 @@ hidden_ability = 180
 egg_group_1 = 6
 egg_cycles = 20
 hatch_species = 670
+cry = ExtResource("gfx106")

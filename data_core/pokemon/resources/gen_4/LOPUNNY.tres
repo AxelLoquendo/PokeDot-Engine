@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sria7"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bgf37nfwh1gtm" path="res://graphics/pokemon/front/LOPUNNY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://djfmt0x331174" path="res://graphics/pokemon/front_shiny/LOPUNNY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://8bmqmrgitcya" path="res://graphics/pokemon/back/LOPUNNY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://x6qwryi3skcy" path="res://graphics/pokemon/back_shiny/LOPUNNY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://tm7rl0ku2aau" path="res://graphics/pokemon/icons/LOPUNNY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ngy6coo6w5pk" path="res://graphics/pokemon/follower/LOPUNNY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://og11jasdepb3" path="res://sfx/se/cries/LOPUNNY.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://b48clf1ea0v2p" path="res://graphics/pokemon/front/MEGA_LOPUNNY.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bljyl6quxaop8" path="res://graphics/pokemon/front_shiny/MEGA_LOPUNNY.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dr3s0hnlw87vf" path="res://graphics/pokemon/back/MEGA_LOPUNNY.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c0ciee51csvef" path="res://graphics/pokemon/back_shiny/MEGA_LOPUNNY.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://birujqd0hmpgr" path="res://graphics/pokemon/icons/LOPUNNY_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://x5fc6bqysiu6" path="res://sfx/se/cries/LOPUNNY_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_sria7")
@@ -11,6 +24,16 @@ species_id = 946
 form_id = &"lopunny_mega"
 display_name = "Lopunny Mega"
 base_species_id = 428
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 3)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -145,6 +168,12 @@ description = "Este Pokémon resulta muy precavido. Si siente peligro, escapa co
 height = 12
 weight = 333
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_sria7")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23")])
 teachable_moves = Array[int]([5, 7, 8, 9, 15, 25, 29, 58, 59, 63, 67, 70, 76, 85, 86, 87, 91, 92, 97, 104, 129, 156, 164, 173, 179, 182, 189, 203, 204, 207, 210, 213, 214, 215, 216, 218, 226, 227, 231, 237, 240, 241, 247, 249, 253, 263, 264, 270, 277, 283, 290, 304, 313, 322, 340, 343, 351, 352, 363, 369, 370, 371, 372, 374, 387, 396, 409, 411, 416, 445, 447, 451, 490, 495, 496, 512, 514, 526, 583, 590, 612, 636, 656, 741])
@@ -155,4 +184,7 @@ egg_group_1 = 5
 egg_group_2 = 8
 egg_cycles = 20
 hatch_species = 428
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

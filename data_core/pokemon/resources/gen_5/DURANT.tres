@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_to6cs"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d2rl4emm8o72c" path="res://graphics/pokemon/front/DURANT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://djk3wied7bp8n" path="res://graphics/pokemon/front_shiny/DURANT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bjydrdlhcuypg" path="res://graphics/pokemon/back/DURANT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cf6sqquyy5pqk" path="res://graphics/pokemon/back_shiny/DURANT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bxrwtu5dos1mr" path="res://graphics/pokemon/icons/DURANT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://t0p8hn8s5axm" path="res://graphics/pokemon/follower/DURANT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bd3v0u404f4xr" path="res://sfx/se/cries/DURANT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -100,6 +107,12 @@ description = "Actúan en grupo para expulsar de sus colonias a los Heatmor, sus
 height = 3
 weight = 330
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([15, 70, 86, 91, 92, 97, 103, 104, 156, 157, 164, 173, 182, 201, 203, 207, 213, 214, 216, 218, 226, 237, 242, 249, 251, 263, 270, 276, 283, 290, 317, 332, 334, 397, 404, 412, 416, 421, 422, 430, 442, 444, 450, 468, 496, 514, 522, 590, 661, 724, 734])
 egg_moves = Array[int]([103, 175, 185, 203, 226, 368, 422, 431, 522, 611, 623])
@@ -109,4 +122,7 @@ hidden_ability = 54
 egg_group_1 = 3
 egg_cycles = 20
 hatch_species = 632
+front_sprite_offset = Vector2(0, 17)
+back_sprite_offset = Vector2(0, 17)
 gender_ratio = 3
+cry = ExtResource("gfx106")

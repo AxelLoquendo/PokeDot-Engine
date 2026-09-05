@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ogj88"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ctp6kdql0gfeu" path="res://graphics/pokemon/front/ARMALDO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bmc3dt16comun" path="res://graphics/pokemon/front_shiny/ARMALDO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dgfch48w33pf8" path="res://graphics/pokemon/back/ARMALDO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://8ti2bu40vt25" path="res://graphics/pokemon/back_shiny/ARMALDO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dwjee31dihw7v" path="res://graphics/pokemon/icons/ARMALDO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b06o2boaw3ek5" path="res://graphics/pokemon/follower/ARMALDO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b0jfmgj5nmaf1" path="res://sfx/se/cries/ARMALDO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -97,6 +104,12 @@ description = "Ensarta a sus presas con sus gigantescas garras elásticas. Una f
 height = 15
 weight = 682
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 29, 34, 38, 63, 67, 69, 70, 81, 89, 91, 92, 102, 103, 104, 156, 157, 164, 173, 182, 189, 201, 203, 206, 207, 210, 213, 214, 216, 218, 231, 237, 241, 246, 249, 263, 276, 280, 282, 290, 317, 332, 334, 335, 341, 350, 352, 362, 363, 397, 401, 404, 414, 416, 421, 430, 440, 444, 445, 446, 450, 468, 479, 496, 522, 523, 590, 656, 661, 664, 728])
 ability_1 = 4
@@ -104,4 +117,6 @@ hidden_ability = 33
 egg_group_1 = 9
 egg_cycles = 30
 hatch_species = 348
+front_sprite_offset = Vector2(0, 2)
 gender_ratio = 5
+cry = ExtResource("gfx106")

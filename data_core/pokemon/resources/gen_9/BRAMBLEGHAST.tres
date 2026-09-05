@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_x6lu4"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b8gjpib71s0of" path="res://graphics/pokemon/front/BRAMBLEGHAST.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dsqanydtocjse" path="res://graphics/pokemon/front_shiny/BRAMBLEGHAST.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b2lrr874fvf6p" path="res://graphics/pokemon/back/BRAMBLEGHAST.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://drvglaaou8gr2" path="res://graphics/pokemon/back_shiny/BRAMBLEGHAST.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d22ktb8dek255" path="res://graphics/pokemon/icons/BRAMBLEGHAST.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bdjjqi0hv64fo" path="res://graphics/pokemon/follower/BRAMBLEGHAST.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://docqb2t6adqet" path="res://sfx/se/cries/BRAMBLEGHAST.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -99,6 +106,12 @@ description = "It will open the branches of its head to envelop its prey. Once i
 height = 12
 weight = 60
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([63, 76, 101, 109, 156, 164, 168, 174, 180, 182, 184, 191, 202, 203, 214, 220, 247, 263, 331, 402, 412, 416, 437, 447, 506, 566, 580, 731, 734, 737, 779, 810, 811])
 egg_moves = Array[int]([73, 251, 335, 425, 631])
@@ -107,4 +120,7 @@ hidden_ability = 151
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 1335
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

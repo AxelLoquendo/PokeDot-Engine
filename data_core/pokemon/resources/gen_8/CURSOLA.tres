@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bbhtq4mwn6hsd" path="res://graphics/pokemon/front/CURSOLA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cmnugw5qttdgc" path="res://graphics/pokemon/front_shiny/CURSOLA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dxk3reayj4viw" path="res://graphics/pokemon/back/CURSOLA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c15drnmbyghqt" path="res://graphics/pokemon/back_shiny/CURSOLA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d1ophhjyye1lp" path="res://graphics/pokemon/icons/CURSOLA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://brvro8qd3mq28" path="res://graphics/pokemon/follower/CURSOLA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b6jadc5votd6m" path="res://sfx/se/cries/CURSOLA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -92,6 +99,12 @@ description = "Su energía espiritual ha aumentado hasta hacerlo desprenderse de
 height = 10
 weight = 4
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([34, 42, 56, 57, 58, 59, 63, 89, 91, 94, 103, 113, 115, 120, 133, 141, 156, 157, 164, 173, 182, 196, 201, 202, 203, 213, 214, 219, 240, 241, 247, 250, 258, 261, 263, 279, 317, 333, 334, 347, 350, 362, 408, 414, 416, 444, 446, 496, 503, 506, 523, 638, 661, 664, 728, 735, 737])
 ability_1 = 133
@@ -100,4 +113,6 @@ egg_group_1 = 2
 egg_group_2 = 9
 egg_cycles = 20
 hatch_species = 864
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 2
+cry = ExtResource("gfx106")

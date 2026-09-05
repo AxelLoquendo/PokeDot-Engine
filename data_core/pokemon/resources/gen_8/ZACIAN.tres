@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_p4bgp"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://2vgnowse7sqd" path="res://graphics/pokemon/front/ZACIAN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cbtn5b1uwrfga" path="res://graphics/pokemon/front_shiny/ZACIAN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dqof6m8lfq0i6" path="res://graphics/pokemon/back/ZACIAN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cmtudx4kjiloj" path="res://graphics/pokemon/back_shiny/ZACIAN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bxx0kqvhu6rvh" path="res://graphics/pokemon/icons/ZACIAN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bmftvbkjw12lc" path="res://graphics/pokemon/follower/ZACIAN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://mhiphhg0gq1n" path="res://sfx/se/cries/ZACIAN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_p4bgp")
@@ -21,6 +28,9 @@ base_defense = 115
 base_speed = 148
 base_sp_attack = 80
 base_sp_defense = 115
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -113,6 +123,12 @@ description = "Este Pokémon está considerado como un héroe de leyenda. Absorb
 height = 28
 weight = 1100
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_p4bgp")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 34, 36, 63, 91, 97, 116, 129, 156, 164, 173, 179, 182, 184, 203, 206, 214, 231, 232, 242, 263, 270, 279, 280, 286, 304, 334, 370, 372, 398, 403, 411, 416, 422, 423, 424, 427, 430, 442, 496, 514, 526, 528, 541, 555, 581, 583, 605, 632, 656, 660, 724, 779, 811])
@@ -122,3 +138,4 @@ egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 888
 gender_ratio = 7
+cry = ExtResource("gfx106")

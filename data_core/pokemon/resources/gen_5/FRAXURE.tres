@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_f2p50"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bc84jqrcyqi1v" path="res://graphics/pokemon/front/FRAXURE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ccwbpwyqdaeyv" path="res://graphics/pokemon/front_shiny/FRAXURE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dgvj2d4s4lmpp" path="res://graphics/pokemon/back/FRAXURE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cr6eeqgu0hq5e" path="res://graphics/pokemon/back_shiny/FRAXURE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d0mv56ibo3mvv" path="res://graphics/pokemon/icons/FRAXURE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bk07tjxrnj0oj" path="res://graphics/pokemon/follower/FRAXURE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c11k1eeayjv8o" path="res://sfx/se/cries/FRAXURE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -139,6 +146,12 @@ description = "Sus colmillos pueden hacer añicos rocas inmensas. Las luchas ter
 height = 10
 weight = 360
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([14, 15, 36, 38, 46, 57, 67, 70, 91, 92, 104, 116, 129, 156, 164, 173, 179, 182, 184, 200, 203, 206, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 249, 263, 269, 276, 280, 283, 290, 317, 332, 337, 349, 351, 371, 372, 374, 398, 401, 404, 406, 416, 421, 434, 442, 468, 496, 510, 523, 525, 530, 555, 590, 661, 712, 727, 779, 811, 841])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -149,4 +162,7 @@ egg_group_1 = 1
 egg_group_2 = 14
 egg_cycles = 40
 hatch_species = 611
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

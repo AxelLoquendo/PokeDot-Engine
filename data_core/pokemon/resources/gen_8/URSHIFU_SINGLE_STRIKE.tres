@@ -4,6 +4,25 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cwwfx4wpprcd5" path="res://graphics/pokemon/front/URSHIFU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dcvgh215r44qu" path="res://graphics/pokemon/front_shiny/URSHIFU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dijnue5yvepvk" path="res://graphics/pokemon/back/URSHIFU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dl5xxkwldjp77" path="res://graphics/pokemon/back_shiny/URSHIFU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bpgfo2hb3erk0" path="res://graphics/pokemon/icons/URSHIFU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cuye7yy4mrb6r" path="res://graphics/pokemon/follower/URSHIFU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://baahkecny3cim" path="res://sfx/se/cries/URSHIFU.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bvfn2lmh7drxo" path="res://graphics/pokemon/front/URSHIFU_RAPID_STRIKE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://3uflu6y2y4sk" path="res://graphics/pokemon/front_shiny/URSHIFU_RAPID_STRIKE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b5ahxd4e1bpa2" path="res://graphics/pokemon/back/URSHIFU_RAPID_STRIKE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://d3301cgqu8ig0" path="res://graphics/pokemon/back_shiny/URSHIFU_RAPID_STRIKE.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://co6ml2k5xb6gw" path="res://graphics/pokemon/front/URSHIFU_SINGLE_STRIKE_GMAX.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://b5kqvctgoacs3" path="res://graphics/pokemon/front_shiny/URSHIFU_SINGLE_STRIKE_GMAX.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://bupd8ryxspq7m" path="res://graphics/pokemon/back/URSHIFU_SINGLE_STRIKE_GMAX.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://md5ctduhe47t" path="res://graphics/pokemon/back_shiny/URSHIFU_SINGLE_STRIKE_GMAX.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://bsbbhqn0nja7r" path="res://graphics/pokemon/front/URSHIFU_RAPID_STRIKE_GMAX.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://5i3c3yixq4mm" path="res://graphics/pokemon/front_shiny/URSHIFU_RAPID_STRIKE_GMAX.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://bqxc7p8xr3eoo" path="res://graphics/pokemon/back/URSHIFU_RAPID_STRIKE_GMAX.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://c2ulqiqfy1yap" path="res://graphics/pokemon/back_shiny/URSHIFU_RAPID_STRIKE_GMAX.png" id="gfx118"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_8kby4")
@@ -14,6 +33,15 @@ base_species_id = 892
 override_types = true
 type_1 = 2
 type_2 = 12
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -22,6 +50,13 @@ species_id = 1521
 form_id = &"urshifu_single_strike_gmax"
 display_name = "Urshifu Single Strike Gmax"
 base_species_id = 892
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -30,6 +65,13 @@ species_id = 1522
 form_id = &"urshifu_rapid_strike_gmax"
 display_name = "Urshifu Rapid Strike Gmax"
 base_species_id = 892
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -134,6 +176,12 @@ description = "Su estilo de lucha se basa en abatir a sus rivales de un solo gol
 height = 19
 weight = 1050
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_8kby4")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 8, 9, 14, 25, 34, 36, 38, 46, 67, 91, 116, 129, 156, 157, 164, 173, 179, 182, 184, 203, 206, 213, 214, 232, 242, 251, 263, 264, 269, 270, 276, 279, 280, 317, 332, 334, 339, 369, 370, 371, 372, 374, 396, 398, 399, 409, 411, 416, 428, 442, 444, 490, 492, 496, 512, 514, 526, 555, 626, 638, 704, 736, 739, 779, 811])
@@ -142,4 +190,6 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 892
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 5
+cry = ExtResource("gfx106")

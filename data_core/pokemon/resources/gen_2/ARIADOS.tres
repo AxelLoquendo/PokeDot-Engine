@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dp8nou41vrgj8" path="res://graphics/pokemon/front/ARIADOS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://2f0pnetnk75p" path="res://graphics/pokemon/front_shiny/ARIADOS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d0icy2u8j6e0q" path="res://graphics/pokemon/back/ARIADOS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bvtlrcyxsca3i" path="res://graphics/pokemon/back_shiny/ARIADOS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cotypv67lerf3" path="res://graphics/pokemon/icons/ARIADOS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://tomv75ru8k1g" path="res://graphics/pokemon/follower/ARIADOS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bw141qimtnnxo" path="res://sfx/se/cries/ARIADOS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -143,6 +150,12 @@ category_name = "Pata Larga"
 description = "Teje su telaraña desde atrás y desde su boca. Es muy difícil saber dónde está cada cual."
 height = 11
 weight = 335
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24")])
 teachable_moves = Array[int]([14, 34, 38, 63, 76, 81, 91, 92, 94, 97, 101, 102, 104, 141, 148, 156, 164, 168, 173, 174, 180, 182, 184, 188, 202, 203, 207, 213, 214, 216, 218, 226, 237, 241, 263, 282, 290, 324, 340, 363, 389, 390, 398, 404, 405, 416, 445, 450, 468, 474, 482, 491, 492, 496, 506, 522, 527, 590, 611, 638, 642, 647, 661, 734, 779, 810, 811])
 egg_moves = Array[int]([50, 224, 400, 476, 642])
@@ -152,4 +165,7 @@ hidden_ability = 97
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 168
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

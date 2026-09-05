@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://hrh8yrlu4t15" path="res://graphics/pokemon/front/STONJOURNER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c10ku7remmsc3" path="res://graphics/pokemon/front_shiny/STONJOURNER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dw6vpeb62sfdh" path="res://graphics/pokemon/back/STONJOURNER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cqkb3ves6ji15" path="res://graphics/pokemon/back_shiny/STONJOURNER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://gmp2my4fg3l5" path="res://graphics/pokemon/icons/STONJOURNER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dqlmqo0at1rqo" path="res://graphics/pokemon/follower/STONJOURNER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://butnjpcqkts1i" path="res://sfx/se/cries/STONJOURNER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -88,10 +95,19 @@ category_name = "Pokémon Megalito"
 description = "Pasa el tiempo observando inmóvil el recorrido del sol sobre las extensas praderas que habita. Se especializa en técnicas de ágiles patadas."
 height = 25
 weight = 5200
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([25, 34, 36, 63, 67, 89, 120, 156, 157, 164, 173, 174, 182, 201, 203, 213, 214, 219, 241, 244, 263, 276, 283, 286, 317, 328, 334, 350, 356, 372, 408, 414, 416, 444, 446, 472, 479, 484, 490, 496, 523, 535, 630, 656, 661, 704, 728, 779, 840])
 egg_moves = Array[int]([174, 246])
 ability_1 = 249
 egg_cycles = 25
 hatch_species = 874
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ds2w2"]
 [ext_resource type="Script" uid="uid://bwkdjkkqojxp5" path="res://data_core/pokemon/conditions/condition_knows_move.gd" id="ext_cond_move"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dtd0pnmvagtjn" path="res://graphics/pokemon/front/LICKITUNG.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c26dn22d7k5fp" path="res://graphics/pokemon/front_shiny/LICKITUNG.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://decaxjreqpn67" path="res://graphics/pokemon/back/LICKITUNG.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cxxdq7s6lcu4v" path="res://graphics/pokemon/back_shiny/LICKITUNG.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bmki4xpf0ej4t" path="res://graphics/pokemon/icons/LICKITUNG.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://qrkn40q4k0sl" path="res://graphics/pokemon/follower/LICKITUNG.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://jw6yly20ilbs" path="res://sfx/se/cries/LICKITUNG.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_move")
@@ -116,6 +123,12 @@ description = "Su larga lengua, recubierta de saliva pegajosa, se pega a todo, p
 height = 12
 weight = 655
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([5, 7, 8, 9, 14, 15, 20, 25, 29, 34, 36, 38, 53, 55, 56, 57, 58, 59, 61, 63, 66, 68, 69, 70, 76, 85, 87, 89, 90, 91, 92, 99, 102, 103, 104, 111, 117, 126, 130, 133, 138, 156, 157, 164, 168, 171, 173, 174, 182, 189, 196, 201, 203, 205, 207, 213, 214, 216, 218, 223, 231, 237, 240, 241, 244, 247, 249, 250, 263, 264, 270, 280, 282, 290, 317, 330, 351, 352, 363, 374, 401, 416, 428, 431, 438, 445, 496, 510, 514, 523, 525, 526, 590, 612, 656, 661, 704, 726, 733])
 egg_moves = Array[int]([34, 37, 133, 164, 173, 174, 187, 214, 222, 265, 330, 359, 428, 562])
@@ -126,4 +139,7 @@ hidden_ability = 13
 egg_group_1 = 1
 egg_cycles = 20
 hatch_species = 108
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

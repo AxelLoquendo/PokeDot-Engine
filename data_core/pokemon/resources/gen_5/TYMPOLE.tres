@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_l7vsk"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cbm88nho6hl0t" path="res://graphics/pokemon/front/TYMPOLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bvgycygp2wuei" path="res://graphics/pokemon/front_shiny/TYMPOLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://6ds5wyxuuksq" path="res://graphics/pokemon/back/TYMPOLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://g5ux660k5amu" path="res://graphics/pokemon/back_shiny/TYMPOLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ct4es3j8vig1n" path="res://graphics/pokemon/icons/TYMPOLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://i45wsihklu7m" path="res://graphics/pokemon/follower/TYMPOLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://xq14nbwb6x5e" path="res://sfx/se/cries/TYMPOLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -111,6 +118,12 @@ description = "Emite sonidos imperceptibles para los humanos con la vibración d
 height = 5
 weight = 45
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([56, 57, 92, 103, 104, 156, 164, 173, 182, 188, 196, 203, 207, 213, 214, 216, 218, 237, 240, 253, 258, 263, 283, 290, 304, 311, 330, 340, 341, 352, 414, 482, 495, 496, 497, 503, 590, 599, 611])
 egg_moves = Array[int]([54, 92, 173, 189, 214, 287, 300, 352, 414, 426, 495, 599])
@@ -121,4 +134,7 @@ hidden_ability = 11
 egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 535
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 17)
 gender_ratio = 3
+cry = ExtResource("gfx106")

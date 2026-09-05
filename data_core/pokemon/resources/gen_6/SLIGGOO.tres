@@ -7,6 +7,19 @@
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://lhsrh5wh537s" path="res://data_core/pokemon/conditions/condition_weather.gd" id="ext_cond_weather"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bm3750wlg4sqo" path="res://graphics/pokemon/front/SLIGGOO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c5lkcg27ol8ys" path="res://graphics/pokemon/front_shiny/SLIGGOO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://l3wgdkw57iwk" path="res://graphics/pokemon/back/SLIGGOO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ik2mcthdgjeu" path="res://graphics/pokemon/back_shiny/SLIGGOO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cbxyscjuvhfe1" path="res://graphics/pokemon/icons/SLIGGOO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://iso4f50fcvdc" path="res://graphics/pokemon/follower/SLIGGOO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://2kd68bdqe56w" path="res://sfx/se/cries/SLIGGOO.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c5ebjxm2dsap0" path="res://graphics/pokemon/front/SLIGGOO_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://fc102igrwsew" path="res://graphics/pokemon/front_shiny/SLIGGOO_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://isl1hrmnjim4" path="res://graphics/pokemon/back/SLIGGOO_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://iidcwwimiao6" path="res://graphics/pokemon/back_shiny/SLIGGOO_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cmsqsloeuxmyp" path="res://graphics/pokemon/icons/SLIGGOO_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://c28ouuu0tkcuo" path="res://graphics/pokemon/follower/SLIGGOO_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -28,6 +41,16 @@ species_id = 1005
 form_id = &"sliggoo_hisui"
 display_name = "Sliggoo Hisui"
 base_species_id = 705
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 1)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -125,6 +148,12 @@ description = "Segrega una mucosidad que corroe todo lo que toca y consigue así
 height = 8
 weight = 175
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_3c2hy")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([34, 36, 58, 59, 85, 87, 92, 104, 156, 157, 164, 173, 174, 182, 188, 200, 203, 204, 207, 213, 214, 216, 218, 231, 237, 240, 241, 263, 290, 330, 341, 351, 352, 406, 434, 482, 491, 496, 590, 611, 734, 779, 812])
@@ -135,4 +164,6 @@ hidden_ability = 183
 egg_group_1 = 14
 egg_cycles = 40
 hatch_species = 705
+front_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

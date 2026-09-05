@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_5la3q"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ca8lxu8ig1qod" path="res://graphics/pokemon/front/NATU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://busj4oka30tk0" path="res://graphics/pokemon/front_shiny/NATU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://clgd34jpxlhn8" path="res://graphics/pokemon/back/NATU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dk7mpg5ip4yc6" path="res://graphics/pokemon/back_shiny/NATU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bi3x0xu666uj6" path="res://graphics/pokemon/icons/NATU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bhea4ppeb0te6" path="res://graphics/pokemon/follower/NATU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bvy32y5v6rttg" path="res://sfx/se/cries/NATU.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -117,6 +124,12 @@ description = "Va dando saltitos porque sus alas no han crecido lo suficiente. S
 height = 2
 weight = 20
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([38, 76, 86, 92, 94, 102, 104, 113, 115, 129, 138, 143, 148, 156, 164, 168, 171, 173, 174, 182, 197, 202, 203, 207, 211, 213, 214, 216, 218, 220, 226, 237, 239, 240, 241, 244, 247, 248, 257, 263, 271, 277, 285, 286, 290, 314, 318, 322, 324, 332, 347, 355, 363, 365, 366, 369, 384, 385, 389, 403, 428, 433, 445, 447, 466, 473, 477, 478, 496, 500, 502, 590, 605, 725, 742])
 egg_moves = Array[int]([65, 98, 114, 185, 211, 244, 285, 287, 297, 355, 389, 428, 485, 493, 502])
@@ -127,4 +140,7 @@ hidden_ability = 156
 egg_group_1 = 4
 egg_cycles = 20
 hatch_species = 177
+front_sprite_offset = Vector2(0, 17)
+back_sprite_offset = Vector2(0, 15)
 gender_ratio = 3
+cry = ExtResource("gfx106")

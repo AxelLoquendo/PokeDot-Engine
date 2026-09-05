@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cty41aol7jup0" path="res://graphics/pokemon/front/KINGDRA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ugcp3bx6f5nm" path="res://graphics/pokemon/front_shiny/KINGDRA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bcjguihoirr3j" path="res://graphics/pokemon/back/KINGDRA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://njmb5ia5y3qo" path="res://graphics/pokemon/back_shiny/KINGDRA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bc3177m1gkr66" path="res://graphics/pokemon/icons/KINGDRA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c7b2lebixjqfr" path="res://graphics/pokemon/follower/KINGDRA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://1pw1a3i86hk4" path="res://sfx/se/cries/KINGDRA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -117,6 +124,12 @@ description = "Dicen que suele esconderse en cuevas submarinas. Puede crear torb
 height = 18
 weight = 1520
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([29, 34, 36, 38, 56, 57, 58, 59, 63, 92, 97, 102, 104, 116, 127, 129, 156, 164, 173, 174, 182, 184, 196, 200, 203, 207, 213, 214, 216, 218, 225, 237, 239, 240, 250, 258, 263, 290, 291, 311, 324, 330, 340, 349, 352, 362, 363, 406, 416, 430, 434, 442, 445, 496, 503, 511, 542, 590, 636, 664, 712, 727, 740, 779, 809, 812])
 egg_moves = Array[int]([50, 62, 150, 175, 499])
@@ -127,4 +140,7 @@ egg_group_1 = 2
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 230
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

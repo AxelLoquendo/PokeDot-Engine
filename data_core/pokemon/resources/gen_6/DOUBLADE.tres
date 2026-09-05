@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_kgr6y"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d1a42ee6np4a4" path="res://graphics/pokemon/front/DOUBLADE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://xx01dkqhqpl1" path="res://graphics/pokemon/front_shiny/DOUBLADE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cu3td5a1emm60" path="res://graphics/pokemon/back/DOUBLADE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b0qwwvnd73mwj" path="res://graphics/pokemon/back_shiny/DOUBLADE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://vnmihr67jv1p" path="res://graphics/pokemon/icons/DOUBLADE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b3sfogk5a5vsh" path="res://graphics/pokemon/follower/DOUBLADE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://xod21vcewqu8" path="res://sfx/se/cries/DOUBLADE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -111,6 +118,12 @@ description = "Al evolucionar se divide en dos espadas. Se comunican entre sí m
 height = 8
 weight = 45
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 92, 103, 104, 115, 156, 157, 164, 173, 179, 180, 182, 203, 206, 207, 213, 214, 216, 218, 237, 240, 249, 263, 280, 290, 332, 334, 351, 360, 370, 393, 421, 427, 430, 442, 495, 496, 514, 590, 632, 636, 656, 724])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -118,4 +131,7 @@ ability_1 = 99
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 680
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

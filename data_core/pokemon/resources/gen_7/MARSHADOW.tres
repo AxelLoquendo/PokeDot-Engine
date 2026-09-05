@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://de24yo633bbt6" path="res://graphics/pokemon/front/MARSHADOW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b42fb5e1p0xnt" path="res://graphics/pokemon/front_shiny/MARSHADOW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bjgycny8my0yv" path="res://graphics/pokemon/back/MARSHADOW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dfdljrypn612q" path="res://graphics/pokemon/back_shiny/MARSHADOW.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bau72gk11txb8" path="res://graphics/pokemon/icons/MARSHADOW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c851jcpknb8h" path="res://graphics/pokemon/follower/MARSHADOW.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://t2y4unbvam5x" path="res://sfx/se/cries/MARSHADOW.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -125,6 +132,12 @@ description = "Debido a que siempre se ha ocultado en las sombras y no le gusta 
 height = 7
 weight = 222
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 63, 67, 92, 97, 104, 129, 156, 157, 164, 168, 173, 179, 182, 200, 203, 206, 207, 214, 216, 218, 237, 244, 247, 261, 263, 264, 272, 276, 279, 280, 282, 283, 289, 299, 317, 339, 340, 347, 370, 371, 372, 374, 387, 396, 398, 409, 411, 416, 421, 428, 442, 444, 447, 479, 490, 492, 496, 497, 506, 512, 526, 566, 590, 636, 638, 734, 737, 739])
 ability_1 = 101
@@ -132,4 +145,7 @@ is_mythical = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 802
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 7
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ejda6"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://obqwnb6yeaea" path="res://graphics/pokemon/front/TIMBURR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://0fsewqteieh" path="res://graphics/pokemon/front_shiny/TIMBURR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cm68vbs40425w" path="res://graphics/pokemon/back/TIMBURR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://rx1cw8kpvpe7" path="res://graphics/pokemon/back_shiny/TIMBURR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cx6whhmqq8p1q" path="res://graphics/pokemon/icons/TIMBURR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cbm4xayaw7ht0" path="res://graphics/pokemon/follower/TIMBURR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bh5yhlka04jja" path="res://sfx/se/cries/TIMBURR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -122,6 +129,12 @@ description = "Siempre lleva vigas de madera. Normalmente ayuda en obras de cons
 height = 6
 weight = 125
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 36, 38, 67, 70, 91, 92, 104, 116, 156, 157, 164, 168, 173, 174, 179, 182, 184, 203, 207, 213, 214, 216, 218, 237, 240, 241, 249, 263, 264, 269, 270, 276, 279, 280, 282, 290, 317, 335, 339, 370, 371, 374, 398, 409, 411, 444, 447, 479, 490, 496, 514, 526, 590, 612, 656, 739, 779])
 egg_moves = Array[int]([4, 68, 179, 183, 193, 197, 203, 265, 395, 409, 432, 469, 612])
@@ -132,4 +145,7 @@ hidden_ability = 89
 egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 532
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 15)
 gender_ratio = 4
+cry = ExtResource("gfx106")

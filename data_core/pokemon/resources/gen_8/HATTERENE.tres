@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d2oiwmnfi5o5c" path="res://graphics/pokemon/front/HATTERENE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bo7ftymrrw3b7" path="res://graphics/pokemon/front_shiny/HATTERENE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://do1wvi15lryvx" path="res://graphics/pokemon/back/HATTERENE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b64b8ljoc723y" path="res://graphics/pokemon/back_shiny/HATTERENE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dj6aevrhavjma" path="res://graphics/pokemon/icons/HATTERENE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://crfy6oew32r1l" path="res://graphics/pokemon/follower/HATTERENE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://eg2726405mh7" path="res://sfx/se/cries/HATTERENE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://b0e8psj7e1xot" path="res://graphics/pokemon/front/HATTERENE_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://83km41imnswd" path="res://graphics/pokemon/front_shiny/HATTERENE_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://klj74aj6hq77" path="res://graphics/pokemon/back/HATTERENE_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://4supdcgcrmw8" path="res://graphics/pokemon/back_shiny/HATTERENE_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://c0sxffxf0vgyr" path="res://graphics/pokemon/icons/HATTERENE_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_jnmrc")
@@ -11,6 +23,15 @@ species_id = 1516
 form_id = &"hatterene_gmax"
 display_name = "Hatterene Gmax"
 base_species_id = 858
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 3)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -105,6 +126,12 @@ description = "Para mantener alejados a los demás seres vivos, emana a su alred
 height = 21
 weight = 51
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_jnmrc")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 60, 63, 86, 94, 97, 113, 115, 118, 129, 156, 164, 173, 182, 202, 203, 204, 213, 214, 219, 220, 226, 244, 247, 248, 263, 270, 271, 285, 286, 345, 347, 356, 384, 385, 399, 416, 421, 427, 433, 438, 472, 473, 478, 496, 500, 574, 577, 581, 583, 595, 605, 641, 656, 725, 730, 779, 845])
@@ -114,3 +141,5 @@ hidden_ability = 156
 egg_group_1 = 6
 egg_cycles = 20
 hatch_species = 858
+back_sprite_offset = Vector2(0, 3)
+cry = ExtResource("gfx106")

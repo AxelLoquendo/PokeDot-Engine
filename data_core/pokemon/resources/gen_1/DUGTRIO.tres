@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://ddkugawqddfh3" path="res://graphics/pokemon/icons/DUGTRIO.png" id="9_wn47c"]
 [ext_resource type="Texture2D" uid="uid://cd1vl5fjq2ex8" path="res://graphics/pokemon/follower/DUGTRIO.png" id="10_gog3h"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dvaf8rcqkpky6" path="res://graphics/pokemon/front/DUGTRIO_ALOLA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dbbvkg8difnbj" path="res://graphics/pokemon/front_shiny/DUGTRIO_ALOLA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d4bpqva5qaj6m" path="res://graphics/pokemon/back/DUGTRIO_ALOLA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://3awlv1rv87hq" path="res://graphics/pokemon/back_shiny/DUGTRIO_ALOLA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dh01ri8xba7fd" path="res://graphics/pokemon/icons/DUGTRIO_1.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://tfy3ol6fp1yt" path="res://graphics/pokemon/follower/DUGTRIO_1.png" id="gfx105"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_pl3cm")
@@ -18,6 +24,16 @@ species_id = 964
 form_id = &"dugtrio_alola"
 display_name = "Dugtrio Alola"
 base_species_id = 51
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("3_o2rau")
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 17)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -148,5 +164,7 @@ hidden_ability = 159
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 51
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 17)
 gender_ratio = 3
 cry = ExtResource("3_o2rau")

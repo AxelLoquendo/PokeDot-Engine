@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cgh1hls0q7scq" path="res://graphics/pokemon/front/CHI_YU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cg85adtnu5dgp" path="res://graphics/pokemon/front_shiny/CHI_YU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://f0k1vcjas66e" path="res://graphics/pokemon/back/CHI_YU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://itkttg8l3ukw" path="res://graphics/pokemon/back_shiny/CHI_YU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://egymkqpgjf6q" path="res://graphics/pokemon/icons/CHIYU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bqcecu30bghhv" path="res://graphics/pokemon/follower/CHIYU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://coh4bnq2navol" path="res://sfx/se/cries/CHIYU.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -113,6 +120,12 @@ category_name = "Ruinous"
 description = "It controls flames burning at over 5,400 degrees Fahrenheit. It casually swims through the sea of lava it creates by melting rock and sand."
 height = 4
 weight = 49
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([36, 53, 63, 83, 94, 109, 113, 115, 126, 156, 164, 180, 182, 184, 203, 214, 241, 242, 257, 261, 263, 269, 315, 394, 399, 416, 417, 428, 488, 506, 555, 735, 736, 779, 843])
 ability_1 = 287
@@ -120,4 +133,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 50
 hatch_species = 1397
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 7
+cry = ExtResource("gfx106")

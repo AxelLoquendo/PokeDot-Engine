@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ltfmb"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ckwts3t22iv5g" path="res://graphics/pokemon/front/HUNTAIL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://tghtti4es2o2" path="res://graphics/pokemon/front_shiny/HUNTAIL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dj8m6jkp3d5d6" path="res://graphics/pokemon/back/HUNTAIL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bhjiwbydt5b38" path="res://graphics/pokemon/back_shiny/HUNTAIL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dh2alusxlene4" path="res://graphics/pokemon/icons/HUNTAIL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bahdv6w1cwxwa" path="res://graphics/pokemon/follower/HUNTAIL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bg17m36v7j31w" path="res://sfx/se/cries/HUNTAIL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -100,6 +107,12 @@ description = "Vive en los abismos marinos, donde no se filtra la luz. Tiene una
 height = 17
 weight = 270
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([20, 34, 38, 57, 58, 59, 63, 92, 102, 104, 127, 129, 156, 162, 164, 173, 182, 189, 196, 203, 207, 213, 214, 216, 218, 237, 240, 250, 258, 263, 289, 290, 291, 317, 340, 352, 362, 363, 389, 401, 416, 445, 496, 503, 590, 611])
 ability_1 = 33
@@ -107,4 +120,7 @@ hidden_ability = 41
 egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 367
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 3
+cry = ExtResource("gfx106")

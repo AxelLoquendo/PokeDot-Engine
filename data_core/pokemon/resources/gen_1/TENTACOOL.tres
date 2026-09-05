@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ttfr6"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://mck7a1vr8i" path="res://graphics/pokemon/front/TENTACOOL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dny8rnjaukpre" path="res://graphics/pokemon/front_shiny/TENTACOOL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d32vcjvi2k4jj" path="res://graphics/pokemon/back/TENTACOOL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cuof02ghkqm4j" path="res://graphics/pokemon/back_shiny/TENTACOOL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dallkgggdxa1i" path="res://graphics/pokemon/icons/TENTACOOL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cqofkg5msupe0" path="res://graphics/pokemon/follower/TENTACOOL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://lny5sacq2vh7" path="res://sfx/se/cries/TENTACOOL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -138,6 +145,12 @@ description = "Su cuerpo se compone casi en exclusiva de agua. Lanza extraños r
 height = 9
 weight = 455
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([14, 15, 20, 29, 36, 38, 55, 56, 57, 58, 59, 61, 72, 92, 99, 102, 103, 104, 109, 114, 115, 117, 127, 129, 130, 156, 164, 168, 173, 174, 182, 188, 196, 202, 203, 207, 213, 214, 216, 218, 219, 237, 240, 250, 258, 263, 277, 282, 290, 291, 330, 341, 352, 362, 363, 371, 390, 398, 440, 441, 445, 474, 482, 491, 496, 503, 506, 590, 605, 611, 638, 656, 664, 740, 779, 810, 812])
 egg_moves = Array[int]([62, 109, 114, 145, 219, 229, 243, 282, 321, 330, 367, 392])
@@ -148,4 +161,7 @@ hidden_ability = 44
 egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 72
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

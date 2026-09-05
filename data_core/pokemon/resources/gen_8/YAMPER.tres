@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_hsvn4"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dbmvv0mqeelax" path="res://graphics/pokemon/front/YAMPER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bq4bto0cclihp" path="res://graphics/pokemon/front_shiny/YAMPER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dqlkba1ceqsmo" path="res://graphics/pokemon/back/YAMPER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bv6adnv5opwwo" path="res://graphics/pokemon/back_shiny/YAMPER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cp1hn3m8pvr4w" path="res://graphics/pokemon/icons/YAMPER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bikx7hd84722a" path="res://graphics/pokemon/follower/YAMPER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://wvfpmb4nfqb3" path="res://sfx/se/cries/YAMPER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -92,6 +99,12 @@ description = "Al correr, genera electricidad por la base de la cola. Es muy pop
 height = 3
 weight = 135
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10")])
 teachable_moves = Array[int]([85, 86, 87, 91, 129, 156, 164, 173, 182, 203, 204, 213, 214, 242, 253, 263, 270, 422, 424, 486, 496, 521, 528, 555, 583, 732])
 egg_moves = Array[int]([28, 38, 336, 435, 488])
@@ -101,4 +114,7 @@ hidden_ability = 155
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 835
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

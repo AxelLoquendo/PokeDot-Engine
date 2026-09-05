@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_g4umm"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://brxdprwhhpb3c" path="res://graphics/pokemon/front/LEDYBA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c0vdlw7j6qao" path="res://graphics/pokemon/front_shiny/LEDYBA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bw62ea4qgr643" path="res://graphics/pokemon/back/LEDYBA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cuirr8ykie7yt" path="res://graphics/pokemon/back_shiny/LEDYBA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://birwe2w5u4okc" path="res://graphics/pokemon/icons/LEDYBA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cvpy7uwp04vog" path="res://graphics/pokemon/follower/LEDYBA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bdr5cxivp2reo" path="res://sfx/se/cries/LEDYBA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -108,6 +115,12 @@ category_name = "5 Estrellas"
 description = "Cuando llega el frío, se reúnen muchos Ledyba de todas partes para darse calor."
 height = 10
 weight = 108
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([5, 8, 9, 14, 29, 38, 76, 81, 91, 92, 102, 104, 113, 115, 129, 148, 156, 164, 168, 173, 174, 182, 202, 203, 205, 207, 213, 214, 216, 218, 219, 223, 230, 237, 241, 253, 263, 264, 280, 282, 290, 314, 318, 332, 355, 363, 366, 369, 374, 405, 409, 445, 450, 466, 496, 512, 522, 590, 611, 612])
 egg_moves = Array[int]([60, 68, 103, 113, 117, 146, 203, 227, 264, 282, 318, 366, 405, 409, 450])
@@ -118,4 +131,7 @@ hidden_ability = 155
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 165
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_vplup"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dlegfkur4rktv" path="res://graphics/pokemon/front/SCREAM_TAIL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bouc8rp1b8b0a" path="res://graphics/pokemon/front_shiny/SCREAM_TAIL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bacdmwrnm4hel" path="res://graphics/pokemon/back/SCREAM_TAIL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://buj7cnb1jijj6" path="res://graphics/pokemon/back_shiny/SCREAM_TAIL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ddhytsy5353rj" path="res://graphics/pokemon/icons/SCREAMTAIL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b5jqnk7u7qora" path="res://graphics/pokemon/follower/SCREAMTAIL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bfhapyigf6ssu" path="res://sfx/se/cries/SCREAMTAIL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -104,6 +111,12 @@ description = "There has been only one reported sighting of this Pokémon. It re
 height = 12
 weight = 80
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([7, 8, 9, 34, 36, 38, 46, 53, 58, 59, 60, 63, 85, 86, 87, 91, 94, 113, 115, 118, 126, 133, 156, 164, 182, 184, 201, 203, 214, 226, 227, 240, 241, 242, 244, 253, 263, 270, 271, 286, 304, 313, 317, 339, 347, 352, 360, 374, 409, 411, 416, 422, 423, 424, 428, 433, 446, 447, 473, 500, 581, 583, 605, 641, 660, 661, 725, 730, 779, 809, 845])
 egg_moves = Array[int]([241])
@@ -111,4 +124,7 @@ ability_1 = 281
 egg_group_1 = 15
 egg_cycles = 50
 hatch_species = 1377
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 7
+cry = ExtResource("gfx106")

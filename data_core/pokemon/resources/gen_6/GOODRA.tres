@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b4e1voct2rnan" path="res://graphics/pokemon/front/GOODRA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://blyt5xiaf1vpq" path="res://graphics/pokemon/front_shiny/GOODRA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://63vxucrpgbs6" path="res://graphics/pokemon/back/GOODRA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c7kjxl1tvxfap" path="res://graphics/pokemon/back_shiny/GOODRA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://q8ms5ntyvk0o" path="res://graphics/pokemon/icons/GOODRA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bl8j16xaex3gj" path="res://graphics/pokemon/follower/GOODRA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b6bk3k4hm22ow" path="res://sfx/se/cries/GOODRA.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://drg6m1viv78f2" path="res://graphics/pokemon/front/GOODRA_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://datru0mrtojni" path="res://graphics/pokemon/front_shiny/GOODRA_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c2wu4laxik80t" path="res://graphics/pokemon/back/GOODRA_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bqu2vky7847tb" path="res://graphics/pokemon/back_shiny/GOODRA_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://meky0wiu4l3o" path="res://graphics/pokemon/icons/GOODRA_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://w6fqujr07e60" path="res://graphics/pokemon/follower/GOODRA_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_0xa3j")
@@ -11,6 +24,15 @@ species_id = 1006
 form_id = &"goodra_hisui"
 display_name = "Goodra Hisui"
 base_species_id = 706
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -130,6 +152,12 @@ description = "Pokémon de tipo Dragón muy afable al que le gusta abrazar con e
 height = 20
 weight = 1505
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_0xa3j")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 9, 25, 34, 36, 53, 56, 57, 58, 59, 63, 70, 85, 87, 89, 92, 104, 126, 156, 157, 164, 173, 174, 182, 188, 200, 203, 204, 207, 213, 214, 216, 218, 231, 237, 240, 241, 249, 258, 263, 264, 276, 282, 290, 311, 330, 337, 341, 342, 351, 352, 372, 401, 406, 411, 416, 434, 438, 482, 491, 496, 503, 510, 523, 525, 590, 611, 636, 656, 661, 704, 712, 734, 779, 812, 841])
@@ -140,3 +168,4 @@ egg_group_1 = 14
 egg_cycles = 40
 hatch_species = 706
 gender_ratio = 3
+cry = ExtResource("gfx106")

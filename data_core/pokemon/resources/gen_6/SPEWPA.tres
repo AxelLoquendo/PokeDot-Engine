@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bicybgomdk6qd" path="res://graphics/pokemon/front/SPEWPA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://00j1e0q3oug" path="res://graphics/pokemon/front_shiny/SPEWPA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://pt3mktvvms15" path="res://graphics/pokemon/back/SPEWPA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c10tuk23k3huh" path="res://graphics/pokemon/back_shiny/SPEWPA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c3ei645fr5fgv" path="res://graphics/pokemon/icons/SPEWPA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c7d1js0cmlpar" path="res://graphics/pokemon/follower/SPEWPA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://n3ba3ki58k8f" path="res://sfx/se/cries/SPEWPA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_jnx86")
@@ -11,6 +18,8 @@ species_id = 1457
 form_id = &"spewpa_polar"
 display_name = "Spewpa Polar"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +28,8 @@ species_id = 1458
 form_id = &"spewpa_tundra"
 display_name = "Spewpa Tundra"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +38,8 @@ species_id = 1459
 form_id = &"spewpa_continental"
 display_name = "Spewpa Continental"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +48,8 @@ species_id = 1460
 form_id = &"spewpa_garden"
 display_name = "Spewpa Garden"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +58,8 @@ species_id = 1461
 form_id = &"spewpa_elegant"
 display_name = "Spewpa Elegant"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +68,8 @@ species_id = 1462
 form_id = &"spewpa_meadow"
 display_name = "Spewpa Meadow"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -59,6 +78,8 @@ species_id = 1463
 form_id = &"spewpa_modern"
 display_name = "Spewpa Modern"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -67,6 +88,8 @@ species_id = 1464
 form_id = &"spewpa_marine"
 display_name = "Spewpa Marine"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -75,6 +98,8 @@ species_id = 1465
 form_id = &"spewpa_archipelago"
 display_name = "Spewpa Archipelago"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -83,6 +108,8 @@ species_id = 1466
 form_id = &"spewpa_high_plains"
 display_name = "Spewpa High Plains"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -91,6 +118,8 @@ species_id = 1467
 form_id = &"spewpa_sandstorm"
 display_name = "Spewpa Sandstorm"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -99,6 +128,8 @@ species_id = 1468
 form_id = &"spewpa_river"
 display_name = "Spewpa River"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -107,6 +138,8 @@ species_id = 1469
 form_id = &"spewpa_monsoon"
 display_name = "Spewpa Monsoon"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
@@ -115,6 +148,8 @@ species_id = 1470
 form_id = &"spewpa_savanna"
 display_name = "Spewpa Savanna"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
@@ -123,6 +158,8 @@ species_id = 1471
 form_id = &"spewpa_sun"
 display_name = "Spewpa Sun"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
@@ -131,6 +168,8 @@ species_id = 1472
 form_id = &"spewpa_ocean"
 display_name = "Spewpa Ocean"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
@@ -139,6 +178,8 @@ species_id = 1473
 form_id = &"spewpa_jungle"
 display_name = "Spewpa Jungle"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
@@ -147,6 +188,8 @@ species_id = 1474
 form_id = &"spewpa_fancy"
 display_name = "Spewpa Fancy"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
@@ -155,6 +198,8 @@ species_id = 1475
 form_id = &"spewpa_pokeball"
 display_name = "Spewpa Pokeball"
 base_species_id = 665
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -186,6 +231,12 @@ description = "Habita en la sombra de la espesura. Si percibe alguna amenaza, su
 height = 3
 weight = 84
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_jnx86")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
 teachable_moves = Array[int]([182, 334, 450, 522, 527, 779, 810])
@@ -194,4 +245,7 @@ hidden_ability = 132
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 665
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

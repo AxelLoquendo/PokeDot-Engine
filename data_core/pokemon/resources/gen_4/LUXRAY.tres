@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sffik"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dybl0xf31m1my" path="res://graphics/pokemon/front/LUXRAY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://eb3ftsn3pgnb" path="res://graphics/pokemon/front_shiny/LUXRAY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dv6c5kodk8pdr" path="res://graphics/pokemon/back/LUXRAY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bd2qx7wm0bs7k" path="res://graphics/pokemon/back_shiny/LUXRAY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cbths2xlhvuvp" path="res://graphics/pokemon/icons/LUXRAY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://splduldqotan" path="res://graphics/pokemon/follower/LUXRAY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bpro0vat72ftw" path="res://sfx/se/cries/LUXRAY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -102,6 +109,12 @@ description = "Cuando sus ojos brillan como el oro, puede ver presas escondidas,
 height = 14
 weight = 420
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 63, 70, 85, 86, 87, 92, 97, 104, 109, 113, 129, 148, 156, 164, 168, 173, 182, 184, 189, 203, 207, 210, 213, 214, 216, 218, 231, 237, 240, 241, 242, 263, 268, 270, 276, 290, 313, 324, 351, 363, 393, 416, 422, 423, 424, 445, 451, 486, 496, 521, 527, 528, 555, 583, 590, 598, 604, 636, 638, 660, 732, 779, 811, 844])
 ability_1 = 79
@@ -110,4 +123,6 @@ hidden_ability = 62
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 405
+front_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

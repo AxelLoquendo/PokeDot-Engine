@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_yswam"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dap48snqhq50b" path="res://graphics/pokemon/front/TAPU_FINI.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://uvoos2qhqun0" path="res://graphics/pokemon/front_shiny/TAPU_FINI.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c3m7yhtdrr21l" path="res://graphics/pokemon/back/TAPU_FINI.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://d3mua5dlviphd" path="res://graphics/pokemon/back_shiny/TAPU_FINI.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://blqsxu4qh6foe" path="res://graphics/pokemon/icons/TAPUFINI.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cs318fxfd74bd" path="res://graphics/pokemon/follower/TAPUFINI.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://itdmyx35iv6g" path="res://sfx/se/cries/TAPUFINI.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -126,6 +133,12 @@ description = "Desconcierta al enemigo provocando una espesa niebla que se convi
 height = 13
 weight = 212
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([8, 56, 57, 58, 59, 63, 92, 104, 113, 115, 127, 156, 164, 173, 182, 196, 203, 207, 214, 216, 218, 219, 237, 240, 244, 247, 250, 259, 263, 267, 269, 271, 277, 282, 291, 330, 334, 347, 352, 356, 362, 374, 385, 416, 432, 447, 472, 477, 478, 496, 497, 500, 503, 577, 581, 583, 590, 605, 647])
 ability_1 = 228
@@ -134,4 +147,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 15
 hatch_species = 788
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 7
+cry = ExtResource("gfx106")

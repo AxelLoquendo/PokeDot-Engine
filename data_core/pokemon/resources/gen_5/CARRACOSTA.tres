@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://drylql50xhyk7" path="res://graphics/pokemon/front/CARRACOSTA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bmmx63al6xqkq" path="res://graphics/pokemon/front_shiny/CARRACOSTA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cj8calxth1ye6" path="res://graphics/pokemon/back/CARRACOSTA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://8sdf4emiji2s" path="res://graphics/pokemon/back_shiny/CARRACOSTA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ck4607mt8ws55" path="res://graphics/pokemon/icons/CARRACOSTA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://mvqbtsrpj6en" path="res://graphics/pokemon/follower/CARRACOSTA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://brpqmfx1dn1x8" path="res://sfx/se/cries/CARRACOSTA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -116,6 +123,12 @@ description = "Vive en el mar y en la superficie. Sus garras pueden abrir un agu
 height = 12
 weight = 810
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([34, 56, 57, 58, 59, 63, 67, 70, 89, 91, 92, 104, 127, 156, 157, 164, 173, 182, 196, 201, 203, 207, 213, 214, 216, 218, 231, 237, 240, 242, 249, 250, 263, 276, 282, 290, 291, 317, 330, 334, 335, 341, 350, 352, 362, 385, 397, 401, 411, 414, 416, 428, 442, 444, 446, 479, 496, 503, 523, 534, 590, 664, 728])
 ability_1 = 116
@@ -125,4 +138,7 @@ egg_group_1 = 2
 egg_group_2 = 9
 egg_cycles = 30
 hatch_species = 565
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 5
+cry = ExtResource("gfx106")

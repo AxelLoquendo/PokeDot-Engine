@@ -7,6 +7,13 @@
 [ext_resource type="Script" uid="uid://dn0ydqghnsyb2" path="res://data_core/pokemon/conditions/condition_gender.gd" id="ext_cond_gender"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ca3760tgoahir" path="res://graphics/pokemon/front/COMBEE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://e0p0ejedqfer" path="res://graphics/pokemon/front_shiny/COMBEE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://jcxq5npgbspu" path="res://graphics/pokemon/back/COMBEE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c2pblt5u2jbt1" path="res://graphics/pokemon/back_shiny/COMBEE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b7bplduhnqygp" path="res://graphics/pokemon/icons/COMBEE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ycg62h88uspn" path="res://graphics/pokemon/follower/COMBEE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dacp3ytjt1d73" path="res://sfx/se/cries/COMBEE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -66,6 +73,12 @@ description = "El trío se forma al nacer y se pasa la vida recogiendo miel de l
 height = 3
 weight = 55
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4")])
 teachable_moves = Array[int]([81, 129, 173, 189, 214, 283, 314, 366, 405, 450, 466, 522, 642, 734, 742, 779])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -74,4 +87,7 @@ hidden_ability = 55
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 415
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 22)
 gender_ratio = 5
+cry = ExtResource("gfx106")

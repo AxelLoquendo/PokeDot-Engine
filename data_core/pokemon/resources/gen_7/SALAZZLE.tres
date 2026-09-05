@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sa6cd"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://chsf0cy3rpfhc" path="res://graphics/pokemon/front/SALAZZLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://l8f0oah50fuw" path="res://graphics/pokemon/front_shiny/SALAZZLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://51x3ri3jbp3w" path="res://graphics/pokemon/back/SALAZZLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b2tgtdil8nysf" path="res://graphics/pokemon/back_shiny/SALAZZLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b7e4ium4qdebr" path="res://graphics/pokemon/icons/SALAZZLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://crxx4xi33ypql" path="res://graphics/pokemon/follower/SALAZZLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ctihdxgheh8h7" path="res://sfx/se/cries/SALAZZLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -139,6 +146,12 @@ description = "Por algún motivo desconocido, solo hay hembras. Suele formarse s
 height = 12
 weight = 222
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24")])
 teachable_moves = Array[int]([34, 36, 53, 63, 86, 92, 97, 104, 126, 129, 141, 156, 164, 168, 173, 182, 184, 188, 189, 203, 207, 213, 214, 216, 218, 227, 231, 237, 241, 251, 257, 259, 261, 263, 269, 270, 282, 283, 289, 304, 313, 315, 337, 342, 343, 349, 371, 374, 390, 394, 398, 406, 416, 417, 421, 424, 440, 441, 474, 482, 488, 491, 492, 496, 512, 525, 590, 599, 636, 712, 727, 734, 735, 738, 779, 811, 841, 843])
 ability_1 = 212
@@ -147,3 +160,6 @@ egg_group_1 = 1
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 758
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 3)
+cry = ExtResource("gfx106")

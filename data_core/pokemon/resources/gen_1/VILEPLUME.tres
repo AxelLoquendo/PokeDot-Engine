@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://h68cri6uib3h" path="res://graphics/pokemon/front/VILEPLUME.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dox1767hr8oj1" path="res://graphics/pokemon/front_shiny/VILEPLUME.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bvxnrupcgomet" path="res://graphics/pokemon/back/VILEPLUME.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c5nl4hjvwhgdt" path="res://graphics/pokemon/back_shiny/VILEPLUME.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bqolc0c8vnhej" path="res://graphics/pokemon/icons/VILEPLUME.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://v2ppn1i27qe5" path="res://graphics/pokemon/follower/VILEPLUME.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://gp6rrsi35tfn" path="res://sfx/se/cries/VILEPLUME.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -96,6 +103,12 @@ category_name = "Flor"
 description = "Cuanto mayores son sus pétalos, más tóxico es su polen. Le pesa la cabeza y le cuesta mantenerla erguida."
 height = 12
 weight = 186
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 63, 72, 76, 92, 99, 102, 104, 115, 117, 148, 156, 164, 173, 174, 182, 188, 202, 203, 204, 207, 213, 214, 216, 218, 219, 230, 235, 237, 241, 263, 267, 270, 290, 311, 331, 345, 363, 374, 380, 388, 402, 409, 412, 416, 437, 445, 447, 474, 482, 491, 495, 496, 572, 580, 590, 605, 611, 632, 639, 731, 738, 779, 811])
 egg_moves = Array[int]([73, 75, 175, 235, 275, 298, 321, 495, 631])
@@ -104,4 +117,7 @@ hidden_ability = 27
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 45
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

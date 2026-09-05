@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_rac14"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b01xr8my485fl" path="res://graphics/pokemon/front/WOBBUFFET.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://betw54tuo6d8g" path="res://graphics/pokemon/front_shiny/WOBBUFFET.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cd62i7gx4thfa" path="res://graphics/pokemon/back/WOBBUFFET.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://0nhrboa86gvc" path="res://graphics/pokemon/back_shiny/WOBBUFFET.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://by2y37vq1p7pt" path="res://graphics/pokemon/icons/WOBBUFFET.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d2frlmxmqromh" path="res://graphics/pokemon/follower/WOBBUFFET.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://wmeldextr54y" path="res://sfx/se/cries/WOBBUFFET.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -58,6 +65,12 @@ description = "Odia la luz y las sacudidas. Si le atacan, infla su cuerpo para a
 height = 13
 weight = 285
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7")])
 teachable_moves = Array[int]([133, 204, 219, 227])
 ability_1 = 23
@@ -65,4 +78,7 @@ hidden_ability = 140
 egg_group_1 = 11
 egg_cycles = 20
 hatch_species = 202
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

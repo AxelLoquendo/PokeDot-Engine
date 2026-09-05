@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_xwiar"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b8r4tkfl6iq01" path="res://graphics/pokemon/front/TRUBBISH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://q4b35v2y71q" path="res://graphics/pokemon/front_shiny/TRUBBISH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://djy4mkd1a27jh" path="res://graphics/pokemon/back/TRUBBISH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c08vy8pdt6wep" path="res://graphics/pokemon/back_shiny/TRUBBISH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://da7vhcvuqbj28" path="res://graphics/pokemon/icons/TRUBBISH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b8r84l6tif6hs" path="res://graphics/pokemon/follower/TRUBBISH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://de53f4i3ajf1b" path="res://sfx/se/cries/TRUBBISH.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -126,6 +133,12 @@ description = "Pokémon nacido de la reacción química entre una bolsa de basur
 height = 6
 weight = 310
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([92, 104, 120, 133, 153, 156, 164, 168, 173, 180, 182, 188, 191, 202, 203, 207, 213, 214, 216, 218, 220, 237, 240, 241, 263, 278, 290, 350, 371, 390, 399, 402, 409, 441, 474, 482, 496, 590, 599, 611, 738])
 egg_moves = Array[int]([28, 114, 120, 174, 191, 205, 300, 350, 475])
@@ -136,4 +149,7 @@ hidden_ability = 106
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 568
+front_sprite_offset = Vector2(0, 15)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

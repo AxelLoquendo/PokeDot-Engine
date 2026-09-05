@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sbovq"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dwptcqvyie0xm" path="res://graphics/pokemon/front/FERROTHORN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bx1tr4a7jucot" path="res://graphics/pokemon/front_shiny/FERROTHORN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://kh4lylmqgmts" path="res://graphics/pokemon/back/FERROTHORN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dvgvvunpuktu7" path="res://graphics/pokemon/back_shiny/FERROTHORN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dtlk8n50o7o5w" path="res://graphics/pokemon/icons/FERROTHORN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dj2jfcaboo0va" path="res://graphics/pokemon/follower/FERROTHORN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dextfgcsts4u7" path="res://sfx/se/cries/FERROTHORN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -106,6 +113,12 @@ description = "Azota al enemigo con sus tres tentáculos y después dispara púa
 height = 10
 weight = 1100
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 42, 63, 70, 76, 85, 86, 87, 92, 104, 120, 148, 153, 156, 164, 173, 182, 191, 201, 202, 203, 207, 213, 214, 216, 218, 237, 241, 249, 263, 267, 279, 282, 283, 290, 331, 332, 334, 335, 356, 360, 371, 372, 388, 393, 397, 398, 402, 412, 416, 421, 430, 438, 442, 446, 447, 468, 484, 496, 523, 590, 656, 704, 724, 726])
 ability_1 = 160
@@ -114,4 +127,7 @@ egg_group_1 = 7
 egg_group_2 = 10
 egg_cycles = 20
 hatch_species = 598
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 3
+cry = ExtResource("gfx106")

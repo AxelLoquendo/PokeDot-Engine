@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_bvadv"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://by1q0h84pqyc7" path="res://graphics/pokemon/front/SHELLDER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://8s0k8usd6bs6" path="res://graphics/pokemon/front_shiny/SHELLDER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dnvhf6p8nwlai" path="res://graphics/pokemon/back/SHELLDER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://61kjwjsxd4x5" path="res://graphics/pokemon/back_shiny/SHELLDER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bmj5lca4l54v7" path="res://graphics/pokemon/icons/SHELLDER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://yjxyqx2h247n" path="res://graphics/pokemon/follower/SHELLDER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://jtse7uxpww7d" path="res://sfx/se/cries/SHELLDER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -123,6 +130,12 @@ description = "La concha lo protege de cualquier tipo de ataque. Solo es vulnera
 height = 3
 weight = 40
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([29, 36, 38, 55, 56, 57, 58, 59, 61, 92, 99, 100, 102, 103, 104, 115, 117, 120, 127, 129, 153, 156, 161, 164, 173, 174, 182, 191, 196, 203, 207, 213, 214, 216, 218, 237, 240, 250, 258, 263, 270, 290, 291, 333, 334, 341, 350, 352, 362, 363, 371, 390, 419, 445, 496, 534, 590, 664, 779, 789, 809, 812])
 egg_moves = Array[int]([36, 41, 61, 103, 112, 229, 333, 341, 350, 352, 392, 419, 719])
@@ -133,4 +146,7 @@ hidden_ability = 142
 egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 90
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 21)
 gender_ratio = 3
+cry = ExtResource("gfx106")

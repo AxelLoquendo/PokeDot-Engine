@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_4tmft"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bw2alie348ml" path="res://graphics/pokemon/front/DWEBBLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://rgw023g1201g" path="res://graphics/pokemon/front_shiny/DWEBBLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://33r5kwy4uvec" path="res://graphics/pokemon/back/DWEBBLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cypqo7mikhgxk" path="res://graphics/pokemon/back_shiny/DWEBBLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bsjyfi52xpsti" path="res://graphics/pokemon/icons/DWEBBLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dtwve80ec4koa" path="res://graphics/pokemon/follower/DWEBBLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bj2hukwmo7rhf" path="res://sfx/se/cries/DWEBBLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -111,6 +118,12 @@ category_name = "Casapiedra"
 description = "Abre un agujero en la roca y vive en él. Si la roca se resquebraja, no se queda tranquilo hasta que no encuentra otra."
 height = 3
 weight = 145
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 70, 76, 89, 91, 92, 104, 156, 157, 164, 173, 182, 191, 201, 203, 207, 213, 214, 216, 218, 237, 249, 263, 267, 282, 290, 317, 328, 332, 334, 335, 350, 397, 398, 404, 421, 444, 446, 450, 468, 479, 496, 522, 523, 590, 734])
 egg_moves = Array[int]([68, 174, 191, 203, 282, 328, 334, 335, 400, 469, 563])
@@ -122,4 +135,7 @@ egg_group_1 = 3
 egg_group_2 = 10
 egg_cycles = 20
 hatch_species = 557
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 17)
 gender_ratio = 3
+cry = ExtResource("gfx106")

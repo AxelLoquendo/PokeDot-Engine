@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_3r4er"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://wbvafibvsk7m" path="res://graphics/pokemon/front/PIDGEY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://depb3jm2ucebg" path="res://graphics/pokemon/front_shiny/PIDGEY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://crl5xuyinhixv" path="res://graphics/pokemon/back/PIDGEY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://53pod8orqx7m" path="res://graphics/pokemon/back_shiny/PIDGEY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dmknag4s2dn2l" path="res://graphics/pokemon/icons/PIDGEY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cejesf6xvj08" path="res://graphics/pokemon/follower/PIDGEY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://2kvf4s7ux5v2" path="res://sfx/se/cries/PIDGEY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -109,6 +116,12 @@ description = "Muy común en bosques y selvas. Aletea al nivel del suelo para le
 height = 3
 weight = 18
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([13, 18, 19, 29, 36, 38, 92, 99, 102, 104, 115, 117, 129, 143, 156, 164, 168, 173, 174, 182, 189, 197, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 253, 257, 263, 290, 314, 332, 355, 363, 365, 366, 369, 432, 445, 466, 496, 526, 590])
 egg_moves = Array[int]([185, 193, 211, 228, 253, 314, 403, 413, 432])
@@ -119,4 +132,7 @@ hidden_ability = 145
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 16
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

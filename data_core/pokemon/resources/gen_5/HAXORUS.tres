@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://snju8witmspt" path="res://graphics/pokemon/front/HAXORUS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dp7n2564ps5wn" path="res://graphics/pokemon/front_shiny/HAXORUS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bc1vvfhwwbrcr" path="res://graphics/pokemon/back/HAXORUS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c4gwuo0em8fmg" path="res://graphics/pokemon/back_shiny/HAXORUS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bqxti0ucah3r4" path="res://graphics/pokemon/icons/HAXORUS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dk1o5ygx33wmm" path="res://graphics/pokemon/follower/HAXORUS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bcj1ob3gyhbms" path="res://sfx/se/cries/HAXORUS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -127,6 +134,12 @@ description = "Es gentil, pero no perdona a todo el que ose invadir su territori
 height = 18
 weight = 1055
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 46, 57, 63, 67, 70, 89, 91, 92, 104, 116, 129, 156, 157, 164, 173, 179, 182, 184, 200, 203, 206, 207, 213, 214, 216, 218, 231, 237, 240, 241, 242, 249, 263, 269, 276, 280, 283, 290, 317, 332, 337, 349, 351, 370, 371, 372, 374, 398, 401, 404, 406, 411, 416, 421, 427, 434, 442, 447, 468, 490, 496, 510, 523, 525, 530, 555, 590, 636, 656, 661, 712, 727, 779, 811, 841])
 ability_1 = 79
@@ -136,4 +149,6 @@ egg_group_1 = 1
 egg_group_2 = 14
 egg_cycles = 40
 hatch_species = 612
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

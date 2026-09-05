@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b111qw1ggh2is" path="res://graphics/pokemon/front/FARIGIRAF.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://2adi06k4hljg" path="res://graphics/pokemon/front_shiny/FARIGIRAF.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://csedihun012xj" path="res://graphics/pokemon/back/FARIGIRAF.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://8oq7xqvhhdy7" path="res://graphics/pokemon/back_shiny/FARIGIRAF.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b72tmv6g8ouho" path="res://graphics/pokemon/icons/FARIGIRAF.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cmsmgefpqocyt" path="res://graphics/pokemon/follower/FARIGIRAF.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://wqs58bnkh0qp" path="res://sfx/se/cries/FARIGIRAF.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -102,6 +109,12 @@ description = "Now that the brain waves from the head and tail are synced up, th
 height = 32
 weight = 1600
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([34, 36, 38, 46, 60, 63, 67, 85, 86, 87, 89, 94, 97, 101, 109, 113, 115, 129, 133, 156, 164, 168, 174, 182, 203, 214, 226, 240, 241, 242, 244, 247, 248, 253, 263, 270, 271, 283, 285, 286, 304, 347, 356, 412, 416, 417, 428, 433, 442, 447, 451, 473, 492, 500, 523, 605, 630, 641, 660, 661, 725, 779, 811, 845])
 ability_1 = 291
@@ -111,3 +124,4 @@ egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 1372
 gender_ratio = 3
+cry = ExtResource("gfx106")

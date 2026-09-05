@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b2ff4ejpbpqeu" path="res://graphics/pokemon/front/EMPOLEON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dcthvri3114so" path="res://graphics/pokemon/front_shiny/EMPOLEON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://btudqkd2v23hn" path="res://graphics/pokemon/back/EMPOLEON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://xd35gdn2y8o" path="res://graphics/pokemon/back_shiny/EMPOLEON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cd8ae2h7w2qlt" path="res://graphics/pokemon/icons/EMPOLEON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b2qiw6baj0k2u" path="res://graphics/pokemon/follower/EMPOLEON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bh8w0wfxjm55e" path="res://sfx/se/cries/EMPOLEON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -107,6 +114,12 @@ description = "Nada tan rápido como un fueraborda. Con los afilados bordes de s
 height = 17
 weight = 845
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 46, 56, 57, 58, 59, 63, 70, 89, 91, 92, 97, 104, 114, 127, 129, 156, 157, 164, 173, 182, 184, 189, 196, 203, 204, 206, 207, 210, 211, 213, 214, 216, 218, 232, 237, 240, 244, 249, 250, 253, 258, 263, 270, 280, 282, 290, 291, 297, 308, 311, 314, 317, 319, 324, 332, 334, 343, 352, 362, 363, 365, 374, 403, 410, 416, 419, 421, 430, 431, 432, 445, 446, 447, 468, 496, 497, 503, 511, 518, 523, 526, 574, 590, 636, 638, 664, 724, 736, 740, 741, 742, 779, 789, 809, 812])
 egg_moves = Array[int]([48, 173, 281, 297, 355, 392, 644])
@@ -117,3 +130,4 @@ egg_group_2 = 5
 egg_cycles = 20
 hatch_species = 395
 gender_ratio = 5
+cry = ExtResource("gfx106")

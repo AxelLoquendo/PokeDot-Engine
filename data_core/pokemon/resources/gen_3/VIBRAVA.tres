@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_68yk3"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bwingqoj8uky4" path="res://graphics/pokemon/front/VIBRAVA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b3h3wrenra01j" path="res://graphics/pokemon/front_shiny/VIBRAVA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bn7odiq4rae07" path="res://graphics/pokemon/back/VIBRAVA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://itjff34c8o43" path="res://graphics/pokemon/back_shiny/VIBRAVA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b3jx0vah3u14k" path="res://graphics/pokemon/icons/VIBRAVA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bpj55vq84h4dg" path="res://graphics/pokemon/follower/VIBRAVA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bm1yp02ce0rw4" path="res://sfx/se/cries/VIBRAVA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -162,6 +169,12 @@ description = "Al agitar a gran velocidad ambas alas, emite ondas ultrasónicas 
 height = 11
 weight = 153
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26")])
 teachable_moves = Array[int]([19, 29, 34, 36, 38, 63, 70, 76, 89, 91, 92, 102, 103, 104, 116, 129, 156, 157, 164, 173, 182, 189, 200, 201, 202, 203, 207, 210, 211, 213, 214, 216, 218, 237, 239, 241, 242, 249, 253, 257, 263, 276, 290, 314, 317, 318, 324, 328, 332, 337, 341, 355, 363, 366, 369, 403, 405, 406, 414, 416, 432, 434, 444, 445, 446, 450, 466, 496, 522, 523, 525, 590, 638, 742, 743, 779])
 egg_moves = Array[int]([16, 48, 90, 98, 175, 210, 242, 276, 310, 364, 450, 523, 623])
@@ -171,4 +184,7 @@ egg_group_1 = 3
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 329
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

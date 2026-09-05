@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_o6xv5"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cdk0j14jwtif0" path="res://graphics/pokemon/front/CHARCADET.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cmhvyxisxy52l" path="res://graphics/pokemon/front_shiny/CHARCADET.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://baxdcshtbbnh0" path="res://graphics/pokemon/back/CHARCADET.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dg8kfsud4lcdu" path="res://graphics/pokemon/back_shiny/CHARCADET.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dqgbadf8dauv4" path="res://graphics/pokemon/icons/CHARCADET.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://csvvoo1fxwqtm" path="res://graphics/pokemon/follower/CHARCADET.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b5mnrml0biwu6" path="res://sfx/se/cries/CHARCADET.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -97,6 +104,12 @@ category_name = "Fire Child"
 description = "Burnt charcoal came to life and became a Pokémon. Possessing a fiery fighting spirit, Charcadet will battle even tough opponents."
 height = 6
 weight = 105
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9")])
 teachable_moves = Array[int]([36, 53, 83, 101, 109, 126, 164, 180, 182, 203, 214, 241, 257, 261, 263, 270, 315, 394, 488, 779])
 egg_moves = Array[int]([50, 180, 194])
@@ -106,4 +119,7 @@ hidden_ability = 49
 egg_group_1 = 8
 egg_cycles = 35
 hatch_species = 1323
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

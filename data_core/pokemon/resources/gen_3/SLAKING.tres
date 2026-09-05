@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://5u2eb6y6gcx0" path="res://graphics/pokemon/front/SLAKING.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://joa1g0pyl3ey" path="res://graphics/pokemon/front_shiny/SLAKING.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bt47p56tgrxg2" path="res://graphics/pokemon/back/SLAKING.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bt8i5jf4rh82v" path="res://graphics/pokemon/back_shiny/SLAKING.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://3dd2kunbdc40" path="res://graphics/pokemon/icons/SLAKING.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bptgmuxnaa6ey" path="res://graphics/pokemon/follower/SLAKING.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://d01b6kdtfyqi" path="res://sfx/se/cries/SLAKING.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -106,10 +113,19 @@ description = "El Pokémon más perezoso del mundo. Cambia de lugar para coger l
 height = 20
 weight = 1305
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([5, 7, 8, 9, 15, 25, 29, 34, 36, 38, 46, 53, 58, 59, 63, 67, 68, 69, 70, 76, 85, 86, 87, 89, 91, 92, 102, 104, 118, 126, 133, 156, 157, 164, 168, 173, 174, 179, 182, 184, 189, 196, 200, 203, 206, 207, 210, 213, 214, 216, 218, 223, 227, 232, 237, 240, 241, 247, 249, 253, 263, 264, 269, 270, 280, 282, 283, 290, 304, 317, 332, 335, 339, 341, 343, 351, 352, 363, 374, 389, 398, 402, 404, 409, 411, 416, 421, 428, 431, 441, 445, 468, 479, 484, 490, 495, 496, 510, 511, 514, 523, 526, 528, 583, 590, 612, 630, 638, 661, 704, 736, 779, 810, 811, 812, 840])
 ability_1 = 54
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 289
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

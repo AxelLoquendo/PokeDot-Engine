@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bwyftxb3gpi8l" path="res://graphics/pokemon/front/GARCHOMP.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://68oaqqts03de" path="res://graphics/pokemon/front_shiny/GARCHOMP.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ef3327eooy7" path="res://graphics/pokemon/back/GARCHOMP.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c06rgjlqnctso" path="res://graphics/pokemon/back_shiny/GARCHOMP.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c2bqcu4q53y32" path="res://graphics/pokemon/icons/GARCHOMP.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c1xqrxqyx0wyi" path="res://graphics/pokemon/follower/GARCHOMP.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://63cfhgr6drsr" path="res://sfx/se/cries/GARCHOMP.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://lwttbh56qm7g" path="res://graphics/pokemon/front/MEGA_GARCHOMP.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dem6s4djqvn4l" path="res://graphics/pokemon/front_shiny/MEGA_GARCHOMP.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://0psenlq4o8ql" path="res://graphics/pokemon/back/MEGA_GARCHOMP.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://kugd4t5da7k2" path="res://graphics/pokemon/back_shiny/MEGA_GARCHOMP.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://c2y311yv3ibmy" path="res://graphics/pokemon/icons/GARCHOMP_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://cyo1og8oxx6ky" path="res://sfx/se/cries/GARCHOMP_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_1b7l7")
@@ -11,6 +24,15 @@ species_id = 947
 form_id = &"garchomp_mega"
 display_name = "Garchomp Mega"
 base_species_id = 445
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +41,14 @@ species_id = 1558
 form_id = &"garchomp_mega_z"
 display_name = "Garchomp Mega Z"
 base_species_id = 445
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -116,6 +146,12 @@ description = "Cuando despliega su cuerpo y sus alas, parece un avi√≥n a reacci√
 height = 19
 weight = 950
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_1b7l7")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 46, 53, 57, 63, 70, 89, 91, 92, 104, 126, 129, 156, 157, 164, 173, 182, 184, 189, 191, 200, 201, 203, 206, 207, 210, 213, 214, 216, 218, 231, 232, 237, 239, 240, 241, 242, 249, 250, 263, 270, 280, 290, 317, 328, 332, 337, 341, 363, 374, 398, 401, 406, 408, 414, 416, 421, 422, 424, 431, 434, 442, 444, 445, 446, 468, 496, 510, 523, 525, 530, 590, 636, 656, 661, 664, 712, 727, 743, 779, 841])
@@ -125,4 +161,6 @@ egg_group_1 = 1
 egg_group_2 = 14
 egg_cycles = 40
 hatch_species = 445
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 3
+cry = ExtResource("gfx106")

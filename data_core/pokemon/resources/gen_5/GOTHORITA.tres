@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_4t03w"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bjql5dt7jiy55" path="res://graphics/pokemon/front/GOTHORITA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bcr4mi4egu7i6" path="res://graphics/pokemon/front_shiny/GOTHORITA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://meukvj7e18yu" path="res://graphics/pokemon/back/GOTHORITA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bhcga1b8rgate" path="res://graphics/pokemon/back_shiny/GOTHORITA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c7hrb58pjc4xp" path="res://graphics/pokemon/icons/GOTHORITA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cuxhjkbkysqqo" path="res://graphics/pokemon/follower/GOTHORITA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bdlmst3uuagn5" path="res://sfx/se/cries/GOTHORITA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -130,6 +137,12 @@ description = "La luz de las estrellas origina su poder. De noche, marca su posi
 height = 7
 weight = 180
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([60, 85, 86, 92, 94, 104, 113, 115, 118, 129, 138, 148, 156, 157, 164, 168, 173, 182, 203, 204, 207, 213, 214, 215, 216, 218, 219, 237, 240, 244, 247, 248, 253, 259, 263, 269, 270, 271, 272, 277, 278, 285, 286, 289, 290, 313, 317, 324, 343, 347, 351, 356, 371, 373, 374, 385, 399, 412, 417, 428, 433, 447, 451, 473, 477, 478, 492, 496, 500, 502, 590, 641, 725, 779, 845])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -139,4 +152,7 @@ hidden_ability = 23
 egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 575
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 2
+cry = ExtResource("gfx106")

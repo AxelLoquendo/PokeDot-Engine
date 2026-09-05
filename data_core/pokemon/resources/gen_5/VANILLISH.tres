@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_e5wql"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://be0o8clhgojs3" path="res://graphics/pokemon/front/VANILLISH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cnbm6uch7xj68" path="res://graphics/pokemon/front_shiny/VANILLISH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dt8o5b1vaemot" path="res://graphics/pokemon/back/VANILLISH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://n78abfmbtyp" path="res://graphics/pokemon/back_shiny/VANILLISH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dei8peg8jn6s6" path="res://graphics/pokemon/icons/VANILLISH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://2e0fd8kdo0mr" path="res://graphics/pokemon/follower/VANILLISH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://blycf7hr4ddg1" path="res://sfx/se/cries/VANILLISH.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -110,6 +117,12 @@ description = "Enfrían el aire a su alrededor y crean partículas de hielo medi
 height = 11
 weight = 410
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([58, 59, 92, 104, 113, 120, 153, 156, 164, 173, 182, 196, 203, 207, 213, 214, 216, 218, 237, 240, 253, 258, 263, 269, 277, 286, 290, 304, 324, 333, 334, 352, 393, 419, 430, 496, 502, 524, 590])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -119,4 +132,7 @@ hidden_ability = 133
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 583
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 3
+cry = ExtResource("gfx106")

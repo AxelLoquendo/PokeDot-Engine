@@ -6,6 +6,18 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ck7kp"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://vf5enekpt4n" path="res://graphics/pokemon/front/DURALUDON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://canvecpc4jyo0" path="res://graphics/pokemon/front_shiny/DURALUDON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://v2bpgnyn21mn" path="res://graphics/pokemon/back/DURALUDON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c68pue0gfmbu3" path="res://graphics/pokemon/back_shiny/DURALUDON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bc3tsf1dbcb0p" path="res://graphics/pokemon/icons/DURALUDON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://v7cj8tmi0fi4" path="res://graphics/pokemon/follower/DURALUDON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dsk1by1tfka4y" path="res://sfx/se/cries/DURALUDON.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bwd7oyauk0n3a" path="res://graphics/pokemon/front/DURALUDON_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://ce3ql4rp4vn2a" path="res://graphics/pokemon/front_shiny/DURALUDON_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dppxbovca77fg" path="res://graphics/pokemon/back/DURALUDON_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://d3ehs2kadhu01" path="res://graphics/pokemon/back_shiny/DURALUDON_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://xi3uva7pbpsn" path="res://graphics/pokemon/icons/DURALUDON_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -24,6 +36,14 @@ species_id = 1520
 form_id = &"duraludon_gmax"
 display_name = "Duraludon Gmax"
 base_species_id = 884
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -116,6 +136,12 @@ description = "Su cuerpo, similar a un metal pulido, es tan ligero como robusto.
 height = 18
 weight = 400
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_ck7kp")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 34, 36, 38, 46, 63, 76, 85, 86, 87, 103, 113, 115, 156, 157, 164, 173, 182, 184, 200, 203, 213, 214, 232, 263, 280, 317, 319, 334, 337, 360, 399, 406, 416, 430, 434, 442, 444, 446, 484, 492, 496, 525, 555, 661, 704, 712, 724, 726, 779, 841])
@@ -129,3 +155,4 @@ egg_group_2 = 14
 egg_cycles = 30
 hatch_species = 884
 gender_ratio = 3
+cry = ExtResource("gfx106")

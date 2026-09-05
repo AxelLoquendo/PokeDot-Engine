@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_fuavl"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ciejdn6gky1hc" path="res://graphics/pokemon/front/RABOOT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bwpefva5llviq" path="res://graphics/pokemon/front_shiny/RABOOT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cjc1u10ukkqtc" path="res://graphics/pokemon/back/RABOOT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cter18mt5kfe2" path="res://graphics/pokemon/back_shiny/RABOOT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://nukadqx30rx4" path="res://graphics/pokemon/icons/RABOOT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://be2kaue2lcant" path="res://graphics/pokemon/follower/RABOOT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cyknyk48f6a75" path="res://sfx/se/cries/RABOOT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -90,6 +97,12 @@ description = "Su suave pelaje lo protege del frío y le permite incrementar tod
 height = 6
 weight = 90
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10")])
 teachable_moves = Array[int]([14, 25, 36, 38, 53, 67, 83, 97, 116, 126, 129, 156, 162, 164, 173, 179, 182, 203, 213, 214, 226, 241, 257, 263, 269, 270, 299, 311, 315, 339, 340, 341, 369, 372, 394, 424, 441, 486, 488, 490, 496, 502, 512, 519, 526, 735, 779, 811, 843])
 egg_moves = Array[int]([28, 136, 162, 389])
@@ -100,4 +113,7 @@ egg_group_1 = 5
 egg_group_2 = 8
 egg_cycles = 20
 hatch_species = 814
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 5
+cry = ExtResource("gfx106")

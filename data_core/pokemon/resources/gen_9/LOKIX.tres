@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ccmano58wnfwd" path="res://graphics/pokemon/front/LOKIX.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dgl1fdqqqlq03" path="res://graphics/pokemon/front_shiny/LOKIX.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d2ggapqm4gbxp" path="res://graphics/pokemon/back/LOKIX.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://beutfgo77uv0c" path="res://graphics/pokemon/back_shiny/LOKIX.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://wgp460omg61r" path="res://graphics/pokemon/icons/LOKIX.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cagodqy0ht4el" path="res://graphics/pokemon/follower/LOKIX.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dhtl2seua25t3" path="res://sfx/se/cries/LOKIX.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -116,6 +123,12 @@ description = "When it decides to fight all out, it stands on its previously fol
 height = 10
 weight = 175
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 36, 38, 67, 97, 141, 156, 164, 168, 179, 180, 182, 184, 203, 214, 240, 241, 263, 269, 280, 282, 332, 369, 374, 399, 404, 405, 416, 450, 490, 522, 638, 642, 734, 736, 779, 810, 811])
 ability_1 = 68
@@ -123,4 +136,7 @@ hidden_ability = 110
 egg_group_1 = 3
 egg_cycles = 20
 hatch_species = 1304
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

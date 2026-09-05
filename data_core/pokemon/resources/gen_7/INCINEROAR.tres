@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dyg6rafijol0p" path="res://graphics/pokemon/front/INCINEROAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d36pcd15a0b1q" path="res://graphics/pokemon/front_shiny/INCINEROAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b7e5cdv45mdqk" path="res://graphics/pokemon/back/INCINEROAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cxsg161n8eksu" path="res://graphics/pokemon/back_shiny/INCINEROAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://iu3j8dgvq0ha" path="res://graphics/pokemon/icons/INCINEROAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://8xueugsnncf" path="res://graphics/pokemon/follower/INCINEROAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dvykh4oaxsmt0" path="res://sfx/se/cries/INCINEROAR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -119,6 +126,12 @@ category_name = "Rudo"
 description = "Posee un carácter rudo y egoísta. Si un Entrenador no le cae en gracia, ignora sus órdenes con total impasibilidad."
 height = 18
 weight = 830
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([5, 6, 7, 9, 14, 20, 25, 34, 36, 38, 46, 53, 63, 67, 83, 89, 92, 104, 126, 141, 156, 164, 168, 173, 179, 182, 184, 200, 203, 207, 213, 214, 216, 218, 226, 237, 241, 242, 257, 259, 261, 263, 264, 269, 270, 276, 279, 280, 282, 283, 289, 299, 307, 315, 332, 339, 343, 369, 370, 372, 373, 374, 394, 399, 409, 411, 416, 417, 421, 424, 442, 488, 490, 496, 511, 512, 519, 523, 526, 530, 535, 555, 590, 626, 638, 656, 661, 735, 736, 743, 779, 811, 843])
 egg_moves = Array[int]([10, 45, 252, 575, 638, 644])
@@ -127,4 +140,6 @@ hidden_ability = 22
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 727
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 5
+cry = ExtResource("gfx106")

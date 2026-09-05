@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_hugsy"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://byktuw5a5d57f" path="res://graphics/pokemon/front/CACNEA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cyrji3yvgcn8v" path="res://graphics/pokemon/front_shiny/CACNEA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d3n12qf3w8jek" path="res://graphics/pokemon/back/CACNEA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://3144aks32ynk" path="res://graphics/pokemon/back_shiny/CACNEA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bv3vbl645t7nw" path="res://graphics/pokemon/icons/CACNEA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b18dmd1j6ee01" path="res://graphics/pokemon/follower/CACNEA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bnovlpox367ea" path="res://sfx/se/cries/CACNEA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -132,6 +139,12 @@ description = "Vive en regiones secas y con pocas lluvias. Una vez al año, le b
 height = 4
 weight = 513
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([5, 9, 14, 15, 29, 34, 36, 38, 67, 68, 69, 76, 91, 92, 102, 104, 129, 148, 156, 164, 168, 173, 174, 180, 182, 184, 189, 191, 201, 202, 203, 207, 210, 213, 214, 216, 218, 223, 227, 235, 237, 240, 241, 263, 264, 267, 270, 272, 280, 283, 290, 331, 335, 345, 363, 371, 374, 388, 389, 390, 398, 399, 402, 409, 412, 417, 437, 445, 447, 474, 492, 496, 523, 580, 590, 612, 638, 731, 734, 779, 811])
 egg_moves = Array[int]([50, 51, 67, 68, 223, 265, 298, 320, 335, 345, 388, 402, 415, 417, 562, 563, 565, 612])
@@ -142,4 +155,7 @@ egg_group_1 = 7
 egg_group_2 = 8
 egg_cycles = 20
 hatch_species = 331
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

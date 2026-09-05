@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_chlxr"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c582vvph1qd30" path="res://graphics/pokemon/front/FENNEKIN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bfo63xsi5ft7s" path="res://graphics/pokemon/front_shiny/FENNEKIN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cb28c5ejlyouh" path="res://graphics/pokemon/back/FENNEKIN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ciqq66hb0fbur" path="res://graphics/pokemon/back_shiny/FENNEKIN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://5cgmtmkdu01s" path="res://graphics/pokemon/icons/FENNEKIN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ijy2drfaagyo" path="res://graphics/pokemon/follower/FENNEKIN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dafkh03ix4dod" path="res://sfx/se/cries/FENNEKIN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -115,6 +122,12 @@ category_name = "Zorro"
 description = "Tras masticar e ingerir pequeñas ramas se siente pletórico y expulsa aire caliente por sus grandes orejas a temperaturas superiores a los 200 ºC."
 height = 4
 weight = 94
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([15, 36, 53, 60, 76, 83, 92, 94, 97, 104, 113, 126, 129, 138, 156, 164, 168, 173, 182, 189, 203, 204, 207, 213, 214, 216, 218, 219, 227, 231, 237, 240, 241, 244, 257, 261, 263, 270, 271, 277, 285, 286, 290, 315, 341, 343, 347, 373, 394, 433, 447, 473, 478, 488, 492, 496, 497, 500, 510, 519, 526, 590, 612, 641, 735, 779])
 egg_moves = Array[int]([95, 257, 273, 277, 383, 478, 641])
@@ -124,4 +137,7 @@ hidden_ability = 170
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 653
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 5
+cry = ExtResource("gfx106")

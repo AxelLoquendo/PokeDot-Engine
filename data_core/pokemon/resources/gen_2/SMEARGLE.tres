@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://xl5treeoepof" path="res://graphics/pokemon/front/SMEARGLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c4d1phdrqmbj2" path="res://graphics/pokemon/front_shiny/SMEARGLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://wopqc8i57d3m" path="res://graphics/pokemon/back/SMEARGLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bujyaw1f7hbcv" path="res://graphics/pokemon/back_shiny/SMEARGLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dcdtlkvm4l6hv" path="res://graphics/pokemon/icons/SMEARGLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cqyqt74hldscf" path="res://graphics/pokemon/follower/SMEARGLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bxqpq2050i3mg" path="res://sfx/se/cries/SMEARGLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -31,6 +38,12 @@ description = "Marca su territorio usando su cola a modo de pincel. Ha hecho má
 height = 12
 weight = 580
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
 ability_1 = 20
 ability_2 = 101
@@ -38,4 +51,7 @@ hidden_ability = 141
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 235
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

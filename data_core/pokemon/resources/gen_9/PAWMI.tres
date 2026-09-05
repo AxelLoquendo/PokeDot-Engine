@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_nx75l"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://825epcra2bu" path="res://graphics/pokemon/front/PAWMI.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dl4pxbtwt77om" path="res://graphics/pokemon/front_shiny/PAWMI.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://csydsyiqni6ec" path="res://graphics/pokemon/back/PAWMI.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cb4ntm4fssc1s" path="res://graphics/pokemon/back_shiny/PAWMI.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dscn7vk5u2nyo" path="res://graphics/pokemon/icons/PAWMI.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://djxf3cfa657us" path="res://graphics/pokemon/follower/PAWMI.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://kry2g7itkfne" path="res://sfx/se/cries/PAWMI.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -111,6 +118,12 @@ description = "It has underdeveloped electric sacs on its cheeks. These sacs can
 height = 3
 weight = 25
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([36, 85, 86, 87, 91, 97, 129, 156, 162, 164, 168, 182, 203, 204, 214, 226, 227, 232, 240, 241, 242, 263, 268, 270, 374, 422, 451, 486, 521, 527, 528, 583, 598, 604, 779])
 egg_moves = Array[int]([183, 186, 252, 273])
@@ -121,4 +134,7 @@ hidden_ability = 89
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 1305
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_lum4m"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://gedl6rksu7wx" path="res://graphics/pokemon/front/DUCKLETT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bvttk8utpp6jj" path="res://graphics/pokemon/front_shiny/DUCKLETT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dhd3nwxkm8xnf" path="res://graphics/pokemon/back/DUCKLETT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ds61aesq2r7do" path="res://graphics/pokemon/back_shiny/DUCKLETT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dc53gqh2r0ubm" path="res://graphics/pokemon/icons/DUCKLETT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ba1mdx2im18vr" path="res://graphics/pokemon/follower/DUCKLETT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dh1ohlwm5drav" path="res://sfx/se/cries/DUCKLETT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -113,6 +120,12 @@ description = "Cuando se ve atacado, las plumas que lo recubren despiden ráfaga
 height = 5
 weight = 55
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([19, 38, 57, 58, 92, 104, 129, 156, 164, 173, 182, 196, 203, 207, 211, 213, 214, 216, 218, 237, 240, 250, 253, 258, 263, 270, 283, 290, 291, 297, 314, 332, 352, 355, 365, 366, 403, 413, 432, 496, 503, 542, 574, 590, 664, 779, 811, 812])
 egg_moves = Array[int]([16, 119, 211, 283, 291, 300, 314, 362, 381, 382, 453])
@@ -124,4 +137,7 @@ egg_group_1 = 2
 egg_group_2 = 4
 egg_cycles = 20
 hatch_species = 580
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

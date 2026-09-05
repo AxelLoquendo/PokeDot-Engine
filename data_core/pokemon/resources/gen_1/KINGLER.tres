@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://4col0wovqjc4" path="res://graphics/pokemon/front/KINGLER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://g424gkkfha17" path="res://graphics/pokemon/front_shiny/KINGLER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cttutxwwg768c" path="res://graphics/pokemon/back/KINGLER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://obamdr4nuhi6" path="res://graphics/pokemon/back_shiny/KINGLER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://caxxb35k2mi6b" path="res://graphics/pokemon/icons/KINGLER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bky7r00iwslrq" path="res://graphics/pokemon/follower/KINGLER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bunyuq1jkh7r4" path="res://sfx/se/cries/KINGLER.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://m0qv67vobg3b" path="res://graphics/pokemon/front/KINGLER_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://lf2a8an5wm6h" path="res://graphics/pokemon/front_shiny/KINGLER_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://hs1ig7fucsvh" path="res://graphics/pokemon/back/KINGLER_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://vrc8y5c7yd51" path="res://graphics/pokemon/back_shiny/KINGLER_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bw0i76hn6pwj3" path="res://graphics/pokemon/icons/KINGLER_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_0gkrn")
@@ -11,6 +23,15 @@ species_id = 1497
 form_id = &"kingler_gmax"
 display_name = "Kingler Gmax"
 base_species_id = 99
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 5)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -120,6 +141,12 @@ category_name = "Tenaza"
 description = "La pinza tan grande que tiene posee una fuerza de 10 000 caballos de potencia. Pero, por su gran tamaño, cuesta moverla."
 height = 13
 weight = 600
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_0gkrn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 55, 56, 57, 58, 59, 61, 63, 70, 91, 92, 97, 99, 102, 104, 117, 133, 156, 157, 164, 168, 173, 174, 182, 189, 196, 203, 206, 207, 210, 213, 214, 216, 218, 237, 240, 246, 249, 250, 258, 263, 276, 280, 282, 290, 291, 317, 334, 341, 352, 362, 363, 374, 404, 416, 445, 468, 496, 502, 503, 511, 534, 590, 630, 656, 661, 664])
@@ -129,4 +156,7 @@ hidden_ability = 125
 egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 99
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

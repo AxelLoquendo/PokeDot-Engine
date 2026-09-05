@@ -4,6 +4,21 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bg3gfncd517j5" path="res://graphics/pokemon/front/LYCANROC.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dcmdlpblmsuk" path="res://graphics/pokemon/front_shiny/LYCANROC.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ck4t47hpo0os3" path="res://graphics/pokemon/back/LYCANROC.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dul6j1bpjaeea" path="res://graphics/pokemon/back_shiny/LYCANROC.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bsn86khcciniq" path="res://graphics/pokemon/icons/LYCANROC.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://l2mcbjk6rcdn" path="res://graphics/pokemon/follower/LYCANROC.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b517gmaonfhan" path="res://sfx/se/cries/LYCANROC.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://b7ljf0yv4slrj" path="res://graphics/pokemon/front/LYCANROC_MIDNIGHT.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://b67rc823w72kv" path="res://graphics/pokemon/front_shiny/LYCANROC_MIDNIGHT.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://wmxtne7cojmt" path="res://graphics/pokemon/back/LYCANROC_MIDNIGHT.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cm2eic8rk2xwp" path="res://graphics/pokemon/back_shiny/LYCANROC_MIDNIGHT.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://ds2y3baicnkp7" path="res://graphics/pokemon/front/LYCANROC_DUSK.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://c3oxbin1jbpot" path="res://graphics/pokemon/front_shiny/LYCANROC_DUSK.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://vvyxy325cu0i" path="res://graphics/pokemon/back/LYCANROC_DUSK.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://csqog8jm7l7h8" path="res://graphics/pokemon/back_shiny/LYCANROC_DUSK.png" id="gfx114"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3phqh")
@@ -11,6 +26,15 @@ species_id = 1173
 form_id = &"lycanroc_midnight"
 display_name = "Lycanroc Midnight"
 base_species_id = 745
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 7)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +43,16 @@ species_id = 1174
 form_id = &"lycanroc_dusk"
 display_name = "Lycanroc Dusk"
 base_species_id = 745
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 6)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -134,6 +168,12 @@ description = "Su velocidad desconcierta a sus rivales. Ataca con garras, colmil
 height = 8
 weight = 250
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_3phqh")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([14, 34, 36, 38, 46, 91, 92, 97, 104, 129, 156, 157, 164, 173, 182, 184, 189, 201, 203, 204, 207, 213, 214, 216, 218, 231, 237, 241, 242, 263, 269, 270, 280, 283, 304, 317, 334, 339, 343, 350, 370, 372, 387, 397, 414, 416, 422, 424, 428, 442, 444, 446, 496, 497, 523, 529, 541, 555, 583, 590, 660, 661, 779, 811])
@@ -143,4 +183,7 @@ hidden_ability = 80
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 745
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_wqpyf"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://du7kpabjvbqkf" path="res://graphics/pokemon/front/RUNERIGUS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://3s3lhx8yccs2" path="res://graphics/pokemon/front_shiny/RUNERIGUS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bnu76c5lxi6tt" path="res://graphics/pokemon/back/RUNERIGUS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://x0r1s6lvl1b5" path="res://graphics/pokemon/back_shiny/RUNERIGUS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bd31buol2sky1" path="res://graphics/pokemon/icons/RUNERIGUS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cuib2iu4pdx78" path="res://graphics/pokemon/follower/RUNERIGUS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bfo3lxqhaw05p" path="res://sfx/se/cries/RUNERIGUS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -111,6 +118,12 @@ description = "Una poderosa maldición pesa sobre esta antigua imagen grabada, q
 height = 16
 weight = 666
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([63, 89, 94, 133, 156, 157, 164, 168, 173, 182, 184, 201, 203, 213, 214, 219, 240, 247, 261, 263, 269, 271, 279, 285, 286, 313, 317, 328, 334, 347, 350, 371, 384, 385, 390, 399, 406, 412, 414, 416, 417, 421, 428, 433, 444, 446, 447, 472, 496, 502, 506, 523, 566, 656, 704, 737])
 ability_1 = 254
@@ -118,4 +131,7 @@ egg_group_1 = 10
 egg_group_2 = 11
 egg_cycles = 25
 hatch_species = 867
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

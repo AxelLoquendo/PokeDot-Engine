@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_d2014"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://2rut4u5s6278" path="res://graphics/pokemon/front/ZWEILOUS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://3o883inw2kfo" path="res://graphics/pokemon/front_shiny/ZWEILOUS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dhqtyggq4hh3o" path="res://graphics/pokemon/back/ZWEILOUS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b1vqmmbgs4gxq" path="res://graphics/pokemon/back_shiny/ZWEILOUS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bvmo17g1ymipm" path="res://graphics/pokemon/icons/ZWEILOUS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c0n1i1e60c3pm" path="res://graphics/pokemon/follower/ZWEILOUS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bnwg0rjyfxswg" path="res://sfx/se/cries/ZWEILOUS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -129,6 +136,12 @@ description = "Sus dos cabezas se llevan fatal, y la que consigue comer más que
 height = 14
 weight = 500
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([34, 36, 46, 70, 86, 92, 103, 104, 116, 156, 164, 168, 173, 180, 182, 184, 200, 203, 207, 213, 214, 216, 218, 237, 240, 241, 242, 244, 249, 251, 253, 259, 263, 269, 270, 276, 290, 304, 351, 372, 399, 401, 406, 414, 417, 422, 423, 424, 428, 434, 496, 510, 525, 526, 555, 590, 661, 736, 779, 841])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -136,4 +149,7 @@ ability_1 = 55
 egg_group_1 = 14
 egg_cycles = 40
 hatch_species = 634
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

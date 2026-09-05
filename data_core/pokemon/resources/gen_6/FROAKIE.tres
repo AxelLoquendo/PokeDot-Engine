@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_d2f8d"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ch3q0rwaggv7" path="res://graphics/pokemon/front/FROAKIE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bdrhrr1jj7ji2" path="res://graphics/pokemon/front_shiny/FROAKIE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://csef7vfyp3jr1" path="res://graphics/pokemon/back/FROAKIE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bjh2bgq07y3hq" path="res://graphics/pokemon/back_shiny/FROAKIE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ctikgb8jwdd4x" path="res://graphics/pokemon/icons/FROAKIE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d4k5mnhxve6a6" path="res://graphics/pokemon/follower/FROAKIE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://caqlloha6ru04" path="res://sfx/se/cries/FROAKIE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -111,6 +118,12 @@ description = "Secreta burbujas tanto por la espalda como por el pecho. Gracias 
 height = 3
 weight = 70
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([15, 36, 56, 57, 58, 59, 70, 91, 92, 104, 127, 129, 156, 157, 164, 168, 173, 180, 182, 189, 191, 196, 203, 206, 207, 213, 214, 216, 218, 237, 240, 249, 263, 269, 270, 272, 289, 290, 291, 317, 332, 340, 341, 352, 369, 374, 390, 447, 479, 496, 497, 503, 512, 518, 526, 590, 612, 664, 779, 809, 811, 812])
 egg_moves = Array[int]([68, 170, 191, 293, 300, 346, 390, 415, 514, 516, 612])
@@ -120,4 +133,7 @@ hidden_ability = 168
 egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 656
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 5
+cry = ExtResource("gfx106")

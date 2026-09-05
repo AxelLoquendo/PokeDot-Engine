@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_2rnr1"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://qeots4i5wvqx" path="res://graphics/pokemon/front/CHEWTLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cpmlt0woprdyc" path="res://graphics/pokemon/front_shiny/CHEWTLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d0ea7x8ytmt6d" path="res://graphics/pokemon/back/CHEWTLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b201qsi6wqx01" path="res://graphics/pokemon/back_shiny/CHEWTLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b40qkvca35232" path="res://graphics/pokemon/icons/CHEWTLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://opg5lwb7htw4" path="res://graphics/pokemon/follower/CHEWTLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://blui25qhbvwod" path="res://sfx/se/cries/CHEWTLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -81,6 +88,12 @@ description = "Muerde todo lo que se le ponga por delante. Al parecer, lo hace p
 height = 3
 weight = 85
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8")])
 teachable_moves = Array[int]([34, 36, 56, 57, 127, 156, 164, 173, 182, 184, 203, 206, 213, 214, 240, 242, 250, 263, 279, 291, 341, 352, 371, 372, 398, 423, 496, 525, 661, 664, 727, 734, 779, 812])
 egg_moves = Array[int]([130, 380, 504, 525])
@@ -92,4 +105,7 @@ egg_group_1 = 1
 egg_group_2 = 2
 egg_cycles = 20
 hatch_species = 833
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

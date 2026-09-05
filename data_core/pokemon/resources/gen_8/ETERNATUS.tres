@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://coopua5wqu8bn" path="res://graphics/pokemon/front/ETERNATUS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ctxqn0qt5ft0o" path="res://graphics/pokemon/front_shiny/ETERNATUS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c3rurynqkfikl" path="res://graphics/pokemon/back/ETERNATUS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://745dmuvhsm1" path="res://graphics/pokemon/back_shiny/ETERNATUS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dy243m6o4eip7" path="res://graphics/pokemon/icons/ETERNATUS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://1rh6v4v8iqx5" path="res://graphics/pokemon/follower/ETERNATUS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dhp2o46rr4725" path="res://sfx/se/cries/ETERNATUS.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c4xv7sbsko2d8" path="res://graphics/pokemon/front/ETERNATUS_ETERNAMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://tkfdfvul6vb6" path="res://graphics/pokemon/front_shiny/ETERNATUS_ETERNAMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dr4y5h6h4uyk3" path="res://graphics/pokemon/back/ETERNATUS_ETERNAMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://6sucg68dtthk" path="res://graphics/pokemon/back_shiny/ETERNATUS_ETERNAMAX.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_aqj0r")
@@ -18,6 +29,14 @@ base_defense = 250
 base_speed = 130
 base_sp_attack = 125
 base_sp_defense = 250
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 7)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -118,6 +137,12 @@ description = "Se alimenta de la energía que brota de la tierra de Galar absorb
 height = 200
 weight = 9500
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_aqj0r")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([19, 34, 36, 53, 63, 76, 83, 92, 97, 103, 109, 113, 115, 126, 156, 164, 173, 182, 184, 188, 200, 203, 214, 240, 241, 247, 263, 322, 342, 349, 356, 371, 372, 390, 398, 406, 416, 430, 434, 440, 441, 474, 482, 496, 525, 595, 599, 656, 728, 779])
@@ -126,4 +151,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 890
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 7
+cry = ExtResource("gfx106")

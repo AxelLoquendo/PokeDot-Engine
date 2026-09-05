@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dy5e4a5y1lb8w" path="res://graphics/pokemon/front/DRACOZOLT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bgffm21684dvd" path="res://graphics/pokemon/front_shiny/DRACOZOLT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dqmehyhjnwm32" path="res://graphics/pokemon/back/DRACOZOLT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b0v0ynbmy7xo" path="res://graphics/pokemon/back_shiny/DRACOZOLT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cn4v38ti0vi35" path="res://graphics/pokemon/icons/DRACOZOLT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://pr1rr81eccxf" path="res://graphics/pokemon/follower/DRACOZOLT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://q73atp2na3ns" path="res://sfx/se/cries/DRACOZOLT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -91,6 +98,12 @@ description = "La robustez de su tren inferior lo hac√≠a invencible en la antig√
 height = 18
 weight = 1900
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([5, 9, 25, 34, 53, 63, 67, 83, 85, 86, 87, 89, 126, 156, 157, 164, 173, 182, 200, 203, 214, 231, 240, 241, 263, 269, 317, 337, 350, 406, 414, 416, 422, 424, 434, 444, 486, 496, 523, 528, 630, 656, 661, 712, 728, 732])
 ability_1 = 10
@@ -99,4 +112,7 @@ hidden_ability = 146
 egg_group_1 = 15
 egg_cycles = 35
 hatch_species = 880
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 7
+cry = ExtResource("gfx106")

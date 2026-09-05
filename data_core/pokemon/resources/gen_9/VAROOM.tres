@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_bvdp8"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://boxy6i1c4ierj" path="res://graphics/pokemon/front/VAROOM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://weuduvrqj4v4" path="res://graphics/pokemon/front_shiny/VAROOM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ckhfsi1h034sy" path="res://graphics/pokemon/back/VAROOM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://d2vmncb1sk0wb" path="res://graphics/pokemon/back_shiny/VAROOM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://daxxholsm73y2" path="res://graphics/pokemon/icons/VAROOM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://y4vgt3abd65i" path="res://graphics/pokemon/follower/VAROOM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bbg137cpcr5hy" path="res://sfx/se/cries/VAROOM.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -112,6 +119,12 @@ description = "It is said that this Pokémon was born when an unknown poison Pok
 height = 10
 weight = 350
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([34, 36, 38, 92, 114, 164, 168, 174, 182, 184, 188, 201, 203, 214, 240, 241, 253, 263, 269, 319, 334, 360, 390, 398, 428, 430, 441, 442, 474, 482, 491, 523, 724, 779])
 egg_moves = Array[int]([92, 114, 120, 259, 575])
@@ -121,4 +134,7 @@ hidden_ability = 112
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 1354
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

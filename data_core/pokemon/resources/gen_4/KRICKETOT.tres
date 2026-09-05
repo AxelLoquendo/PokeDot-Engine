@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_1bwrt"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://5eubae8hoo3p" path="res://graphics/pokemon/front/KRICKETOT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dvpl6avyrvjgw" path="res://graphics/pokemon/front_shiny/KRICKETOT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dtbrmrj6g6r1b" path="res://graphics/pokemon/back/KRICKETOT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://65wxtb087e7u" path="res://graphics/pokemon/back_shiny/KRICKETOT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d30yl4t5pbfxn" path="res://graphics/pokemon/icons/KRICKETOT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dweau4d1yk1s0" path="res://graphics/pokemon/follower/KRICKETOT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bgjd803vte3o6" path="res://sfx/se/cries/KRICKETOT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -60,6 +67,12 @@ category_name = "Grillo"
 description = "Hablan entre sí chocando las antenas. Los sonidos producidos son muy característicos."
 height = 3
 weight = 22
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4")])
 teachable_moves = Array[int]([81, 173, 189, 253, 283, 450, 522, 642, 734, 779])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -68,4 +81,7 @@ hidden_ability = 50
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 401
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

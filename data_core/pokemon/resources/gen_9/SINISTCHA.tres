@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_pb2mb"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://nnd7j7p4e2vd" path="res://graphics/pokemon/front/SINISTCHA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cwcmcjqcg7btp" path="res://graphics/pokemon/front_shiny/SINISTCHA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dxwyl6lfeqceh" path="res://graphics/pokemon/back/SINISTCHA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dbl0hqqtwfo32" path="res://graphics/pokemon/back_shiny/SINISTCHA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dkd2viackmavk" path="res://graphics/pokemon/icons/SINISTCHA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://x5aaqjg7aqfg" path="res://graphics/pokemon/follower/SINISTCHA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cndnb6vro3bp1" path="res://sfx/se/cries/SINISTCHA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_pb2mb")
@@ -11,6 +18,10 @@ species_id = 1412
 form_id = &"sinistcha_masterpiece"
 display_name = "Sinistcha Masterpiece"
 base_species_id = 1411
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 5)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -102,6 +113,12 @@ description = "It pretends to be tea, trying to fool people into drinking it so 
 height = 2
 weight = 22
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_pb2mb")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([63, 76, 101, 115, 156, 164, 174, 180, 182, 202, 203, 214, 220, 244, 247, 253, 286, 334, 345, 347, 412, 417, 433, 437, 492, 503, 506, 566, 580, 737, 779])
@@ -112,3 +129,4 @@ egg_group_2 = 11
 egg_cycles = 50
 hatch_species = 1411
 gender_ratio = 7
+cry = ExtResource("gfx106")

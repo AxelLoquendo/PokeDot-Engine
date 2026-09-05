@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_rfnv1"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dk7qsry3eowpy" path="res://graphics/pokemon/front/SEWADDLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dfctw3m763q3o" path="res://graphics/pokemon/front_shiny/SEWADDLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bwfmonlmclwxj" path="res://graphics/pokemon/back/SEWADDLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b4pvgge1w5503" path="res://graphics/pokemon/back_shiny/SEWADDLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bcul805wpi2m1" path="res://graphics/pokemon/icons/SEWADDLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cg68ap6an41k3" path="res://graphics/pokemon/follower/SEWADDLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b4mt72vadafrd" path="res://sfx/se/cries/SEWADDLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -83,6 +90,12 @@ description = "Recorta hojas y las teje con el líquido viscoso que segrega por 
 height = 3
 weight = 25
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8")])
 teachable_moves = Array[int]([15, 36, 76, 92, 104, 113, 138, 148, 156, 164, 173, 182, 202, 203, 204, 207, 213, 214, 216, 218, 219, 226, 235, 237, 240, 241, 263, 267, 277, 290, 324, 334, 345, 347, 371, 388, 402, 405, 412, 447, 450, 496, 522, 527, 580, 590, 642, 731, 734, 779, 810, 811])
 egg_moves = Array[int]([13, 97, 103, 170, 173, 226, 235, 293, 318, 382, 388, 403, 415, 580])
@@ -93,4 +106,7 @@ hidden_ability = 142
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 540
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sceig"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://brdggu3vkuey5" path="res://graphics/pokemon/front/SYLVEON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://pfnulym63h2l" path="res://graphics/pokemon/front_shiny/SYLVEON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dvi817ctfl1rf" path="res://graphics/pokemon/back/SYLVEON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cr7udbx008ciq" path="res://graphics/pokemon/back_shiny/SYLVEON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cjcxx1ocn36k1" path="res://graphics/pokemon/icons/SYLVEON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://2f1ow7kqqu3c" path="res://graphics/pokemon/follower/SYLVEON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bbsnqqx8saw43" path="res://sfx/se/cries/SYLVEON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -133,6 +140,12 @@ description = "A través de sus apéndices sensitivos con forma de cinta, emite 
 height = 10
 weight = 235
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23")])
 teachable_moves = Array[int]([6, 15, 34, 36, 38, 46, 63, 91, 92, 94, 104, 113, 115, 116, 129, 148, 156, 164, 173, 174, 182, 203, 204, 207, 213, 214, 215, 216, 218, 219, 226, 231, 237, 240, 241, 244, 247, 263, 270, 277, 285, 290, 304, 311, 313, 343, 345, 347, 387, 416, 473, 477, 496, 497, 500, 514, 526, 574, 577, 581, 583, 590, 595, 605, 636, 730, 779, 811, 842])
 ability_1 = 56
@@ -140,4 +153,7 @@ hidden_ability = 182
 egg_group_1 = 5
 egg_cycles = 35
 hatch_species = 700
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 5
+cry = ExtResource("gfx106")

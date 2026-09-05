@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_mom5n"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bpmmce1y6pg5p" path="res://graphics/pokemon/front/GOLEM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://55d2n7g8c7sn" path="res://graphics/pokemon/front_shiny/GOLEM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dk4kj4uvqwsb8" path="res://graphics/pokemon/back/GOLEM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ccoodts8p7ni0" path="res://graphics/pokemon/back_shiny/GOLEM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://f87hjkp4al7n" path="res://graphics/pokemon/icons/GOLEM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://hgutttoqhs4l" path="res://graphics/pokemon/follower/GOLEM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://r3awds73i4b2" path="res://sfx/se/cries/GOLEM.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://t2xvi5mjj1lc" path="res://graphics/pokemon/front/GOLEM_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://b5wvr5toq2xn0" path="res://graphics/pokemon/front_shiny/GOLEM_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dsr34haiskr5d" path="res://graphics/pokemon/back/GOLEM_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://kdlyxhwj8kes" path="res://graphics/pokemon/back_shiny/GOLEM_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://reuonxv11ktf" path="res://graphics/pokemon/icons/GOLEM_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dhkb75brcxmws" path="res://graphics/pokemon/follower/GOLEM_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_mom5n")
@@ -11,6 +24,16 @@ species_id = 969
 form_id = &"golem_alola"
 display_name = "Golem Alola"
 base_species_id = 76
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 13)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -127,6 +150,12 @@ description = "Se lanza montaña abajo y deja un surco desde la cima hasta el pi
 height = 14
 weight = 3000
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_mom5n")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([5, 7, 9, 25, 29, 34, 36, 38, 46, 53, 63, 66, 68, 69, 70, 89, 90, 91, 92, 99, 102, 104, 111, 117, 118, 120, 126, 153, 156, 157, 164, 173, 174, 182, 184, 189, 201, 203, 205, 207, 210, 213, 214, 216, 218, 223, 237, 241, 246, 249, 263, 264, 267, 276, 280, 290, 317, 334, 335, 341, 350, 360, 363, 374, 389, 397, 411, 414, 416, 431, 442, 444, 445, 446, 479, 484, 496, 510, 523, 590, 612, 630, 661, 704, 779, 840])
@@ -137,4 +166,7 @@ hidden_ability = 8
 egg_group_1 = 10
 egg_cycles = 15
 hatch_species = 76
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

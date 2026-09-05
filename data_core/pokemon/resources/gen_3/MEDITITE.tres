@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_5xiy3"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ew8w0kgnneul" path="res://graphics/pokemon/front/MEDITITE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dg037wh41hhkr" path="res://graphics/pokemon/front_shiny/MEDITITE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ddpcri5mtknji" path="res://graphics/pokemon/back/MEDITITE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c0a5whqbusat7" path="res://graphics/pokemon/back_shiny/MEDITITE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dxh2qn3kq6ctl" path="res://graphics/pokemon/icons/MEDITITE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cetytnecb3uu7" path="res://graphics/pokemon/follower/MEDITITE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bl38mx5urxpak" path="res://sfx/se/cries/MEDITITE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -141,6 +148,12 @@ description = "Se entrena en la profundidad de las montañas. Cuando aumenta su 
 height = 6
 weight = 112
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 60, 67, 68, 69, 70, 92, 94, 101, 102, 104, 113, 115, 118, 129, 138, 148, 156, 157, 164, 168, 173, 179, 182, 189, 203, 207, 213, 214, 216, 218, 220, 223, 226, 237, 240, 241, 244, 247, 249, 263, 264, 269, 270, 271, 272, 277, 278, 280, 285, 286, 290, 317, 324, 332, 339, 347, 356, 363, 370, 374, 398, 409, 410, 411, 428, 433, 445, 447, 473, 477, 490, 496, 500, 514, 526, 590, 612, 641, 725, 779, 811, 846])
 egg_moves = Array[int]([7, 8, 9, 193, 223, 226, 252, 290, 384, 385, 409, 418, 427, 501])
@@ -150,4 +163,7 @@ hidden_ability = 140
 egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 307
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

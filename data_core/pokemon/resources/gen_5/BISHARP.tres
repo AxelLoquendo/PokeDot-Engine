@@ -5,6 +5,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="3_d6648"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cptjtqv0r560d" path="res://graphics/pokemon/front/BISHARP.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cbpdoas20yrdx" path="res://graphics/pokemon/front_shiny/BISHARP.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://xkiy74piluy7" path="res://graphics/pokemon/back/BISHARP.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://drybb3eu0u7ey" path="res://graphics/pokemon/back_shiny/BISHARP.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://4lqn4a0wcaon" path="res://graphics/pokemon/icons/BISHARP.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dts8njp02c35e" path="res://graphics/pokemon/follower/BISHARP.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bv5iho8r5bj4g" path="res://sfx/se/cries/BISHARP.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_evo0"]
 script = ExtResource("ext_evo")
@@ -123,6 +130,12 @@ category_name = "Filo"
 description = "Un Pokémon temible que remata a su presa una vez que su séquito de Pawniard la ha debilitado e inmovilizado."
 height = 16
 weight = 700
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 15, 36, 63, 67, 86, 91, 92, 103, 104, 156, 164, 168, 173, 179, 180, 182, 184, 201, 203, 206, 207, 213, 214, 216, 218, 232, 237, 240, 249, 251, 259, 263, 269, 272, 279, 280, 282, 289, 290, 317, 319, 332, 334, 371, 372, 373, 374, 393, 397, 398, 399, 403, 404, 411, 416, 421, 427, 430, 442, 444, 446, 447, 468, 490, 492, 496, 514, 530, 555, 590, 612, 636, 638, 724, 736, 779])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -132,4 +145,6 @@ hidden_ability = 46
 egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 625
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

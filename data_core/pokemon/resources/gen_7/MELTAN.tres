@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bpniv5efujamo" path="res://graphics/pokemon/front/MELTAN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d0cvm5u3mvwrp" path="res://graphics/pokemon/front_shiny/MELTAN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dp0qlsfjkmihd" path="res://graphics/pokemon/back/MELTAN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bx87bitb7skiy" path="res://graphics/pokemon/back_shiny/MELTAN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bjaywym63aa5q" path="res://graphics/pokemon/icons/MELTAN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://5brmaam1ihxc" path="res://graphics/pokemon/follower/MELTAN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bg4tt12p1bvv" path="res://sfx/se/cries/MELTAN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -59,6 +66,12 @@ description = "Su cuerpo está compuesto de acero líquido. Funde las partícula
 height = 2
 weight = 80
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6")])
 teachable_moves = Array[int]([29, 85, 86, 92, 156, 164, 173, 182, 203, 214, 263, 334, 360, 430, 496, 724])
 ability_1 = 42
@@ -66,4 +79,7 @@ is_mythical = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 808
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 7
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_2wtkj"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dfwtbueby406b" path="res://graphics/pokemon/front/QUAXLY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ceamlftnoh3uu" path="res://graphics/pokemon/front_shiny/QUAXLY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b64143lohg5iy" path="res://graphics/pokemon/back/QUAXLY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bnkbs5bs6f3hr" path="res://graphics/pokemon/back_shiny/QUAXLY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d4ir7jorjthq8" path="res://graphics/pokemon/icons/QUAXLY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ktwrrwjgv2kt" path="res://graphics/pokemon/follower/QUAXLY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://3ek7qt72inn1" path="res://sfx/se/cries/QUAXLY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -95,6 +102,12 @@ description = "This Pokémon migrated to Paldea from distant lands long ago. The
 height = 5
 weight = 61
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([36, 56, 57, 67, 129, 156, 182, 203, 226, 227, 240, 244, 250, 263, 270, 314, 332, 403, 413, 512, 518, 574, 581, 664, 779, 812])
 egg_moves = Array[int]([197, 229, 355, 387])
@@ -105,4 +118,7 @@ egg_group_1 = 2
 egg_group_2 = 4
 egg_cycles = 20
 hatch_species = 1295
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 5
+cry = ExtResource("gfx106")

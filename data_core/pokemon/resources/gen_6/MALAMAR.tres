@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bvb5cwoqq0vif" path="res://graphics/pokemon/front/MALAMAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dmlk5rcsfes0u" path="res://graphics/pokemon/front_shiny/MALAMAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://0g73phgnc07p" path="res://graphics/pokemon/back/MALAMAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://60khtv17pbn7" path="res://graphics/pokemon/back_shiny/MALAMAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://h0xi81xaodnl" path="res://graphics/pokemon/icons/MALAMAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d353grp184q6r" path="res://graphics/pokemon/follower/MALAMAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bk5i580glpicm" path="res://sfx/se/cries/MALAMAR.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://0gpe6usms7nd" path="res://graphics/pokemon/front/MEGA_MALAMAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://ciq6sfspjkloh" path="res://graphics/pokemon/front_shiny/MEGA_MALAMAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dsx5dagyia0ev" path="res://graphics/pokemon/back/MEGA_MALAMAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://35v5k2jgf0ox" path="res://graphics/pokemon/back_shiny/MEGA_MALAMAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://uaq8fvsmkpk" path="res://graphics/pokemon/icons/MALAMAR_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ja3fs")
@@ -11,6 +23,15 @@ species_id = 1542
 form_id = &"malamar_mega"
 display_name = "Malamar Mega"
 base_species_id = 687
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -128,6 +149,12 @@ description = "Tiene a su disposición los poderes hipnóticos más poderosos de
 height = 15
 weight = 470
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_ja3fs")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([15, 20, 53, 60, 63, 85, 92, 94, 104, 113, 115, 129, 148, 156, 157, 164, 168, 173, 179, 180, 182, 184, 203, 207, 213, 214, 216, 218, 226, 237, 240, 241, 244, 248, 259, 263, 269, 270, 271, 272, 276, 282, 285, 289, 290, 313, 324, 332, 335, 347, 356, 371, 373, 374, 385, 399, 416, 417, 427, 433, 473, 477, 492, 496, 500, 502, 514, 590, 638, 642, 656, 664, 725, 736, 779, 811, 845])
@@ -139,4 +166,6 @@ egg_group_1 = 2
 egg_group_2 = 12
 egg_cycles = 20
 hatch_species = 687
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 3
+cry = ExtResource("gfx106")

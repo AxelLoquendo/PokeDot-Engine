@@ -5,6 +5,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="3_hwhfw"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://7g1g235danar" path="res://graphics/pokemon/front/FARFETCHD.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c37utgeh6g2e8" path="res://graphics/pokemon/front_shiny/FARFETCHD.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://icrrm8yt7son" path="res://graphics/pokemon/back/FARFETCHD.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://d3b3n8ancntqp" path="res://graphics/pokemon/back_shiny/FARFETCHD.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cemm04dicsyb8" path="res://graphics/pokemon/icons/FARFETCHD.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://0gc7pegda10m" path="res://graphics/pokemon/follower/FARFETCHD.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dhx8a8qhujyis" path="res://sfx/se/cries/FARFETCHD.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://vmi4i766w4en" path="res://graphics/pokemon/front/FARFETCHD_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dysgdouq84hhl" path="res://graphics/pokemon/front_shiny/FARFETCHD_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://fum00clnpp13" path="res://graphics/pokemon/back/FARFETCHD_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cyji68fmtj2xt" path="res://graphics/pokemon/back_shiny/FARFETCHD_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://c7q006cyhd6bn" path="res://graphics/pokemon/icons/FARFETCHD_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://d1ymdnbi032s8" path="res://graphics/pokemon/follower/FARFETCHD_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_evo0"]
 script = ExtResource("ext_evo")
@@ -18,6 +31,16 @@ species_id = 979
 form_id = &"farfetchd_galar"
 display_name = "Farfetchd Galar"
 base_species_id = 83
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -139,6 +162,12 @@ description = "El puerro que lleva es su mejor arma. Suele usarlo como espada pa
 height = 8
 weight = 150
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("3_hwhfw")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([13, 14, 15, 18, 19, 29, 34, 36, 38, 92, 97, 99, 102, 104, 115, 116, 117, 129, 130, 143, 156, 164, 168, 173, 174, 182, 189, 197, 203, 206, 207, 210, 211, 213, 214, 216, 218, 226, 231, 237, 239, 241, 244, 253, 257, 263, 270, 279, 282, 290, 314, 332, 343, 348, 355, 363, 365, 366, 369, 370, 387, 398, 403, 413, 432, 445, 466, 496, 512, 514, 526, 590, 632, 636, 638, 656, 742])
@@ -151,4 +180,7 @@ egg_group_1 = 4
 egg_group_2 = 5
 egg_cycles = 20
 hatch_species = 83
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

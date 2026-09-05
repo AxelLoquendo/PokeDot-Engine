@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_stovf"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ciahkva6cwgcb" path="res://graphics/pokemon/front/PAWMOT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c3t2k5lqatkk" path="res://graphics/pokemon/front_shiny/PAWMOT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://fqbye37guler" path="res://graphics/pokemon/back/PAWMOT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bvfe8k48cxcva" path="res://graphics/pokemon/back_shiny/PAWMOT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://g8hb2mikap64" path="res://graphics/pokemon/icons/PAWMOT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://6hulxvcq41ww" path="res://graphics/pokemon/follower/PAWMOT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dghrhupfu3geo" path="res://sfx/se/cries/PAWMOT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -118,6 +125,12 @@ description = "This Pokémon normally is slow to react, but once it enters battl
 height = 9
 weight = 410
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([7, 8, 9, 36, 38, 63, 67, 85, 86, 87, 91, 97, 118, 129, 156, 162, 164, 168, 182, 203, 204, 214, 226, 227, 232, 240, 241, 242, 263, 264, 268, 270, 280, 282, 317, 339, 370, 374, 402, 411, 416, 422, 447, 451, 486, 490, 521, 527, 528, 583, 598, 604, 638, 704, 739, 779, 844, 846])
 ability_1 = 10
@@ -126,4 +139,7 @@ hidden_ability = 89
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 1307
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

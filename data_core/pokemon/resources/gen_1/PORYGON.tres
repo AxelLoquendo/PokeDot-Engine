@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ejvio"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://vphtobw0aku8" path="res://graphics/pokemon/front/PORYGON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bsjk54q845j5f" path="res://graphics/pokemon/front_shiny/PORYGON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dk4s21ci4vcva" path="res://graphics/pokemon/back/PORYGON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://fyeceukr15xe" path="res://graphics/pokemon/back_shiny/PORYGON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ba338p8kdvy5" path="res://graphics/pokemon/icons/PORYGON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://lu4nxmnfdoyt" path="res://graphics/pokemon/follower/PORYGON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://u0ii5h50arno" path="res://sfx/se/cries/PORYGON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -121,6 +128,12 @@ description = "Pokémon creado por el hombre tras muchas investigaciones. Sus ha
 height = 8
 weight = 365
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([29, 36, 38, 58, 59, 60, 63, 76, 85, 86, 87, 92, 94, 97, 99, 100, 102, 104, 115, 117, 129, 130, 138, 148, 149, 156, 161, 164, 168, 171, 173, 174, 182, 192, 196, 203, 207, 214, 216, 218, 220, 231, 237, 240, 241, 244, 247, 263, 268, 271, 277, 278, 290, 324, 332, 351, 356, 363, 384, 385, 387, 393, 416, 428, 433, 451, 472, 473, 477, 492, 496, 502, 527, 590, 598, 646, 779])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -130,4 +143,7 @@ hidden_ability = 148
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 137
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 13)
 gender_ratio = 7
+cry = ExtResource("gfx106")

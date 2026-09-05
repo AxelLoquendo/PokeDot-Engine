@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ccxd8"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b3gt1drbtggny" path="res://graphics/pokemon/front/GLIMMET.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bow0oh5e38xsv" path="res://graphics/pokemon/front_shiny/GLIMMET.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bkdxuxs0jibkd" path="res://graphics/pokemon/back/GLIMMET.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ba1blbsuoyib4" path="res://graphics/pokemon/back_shiny/GLIMMET.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://4moosbb218c4" path="res://graphics/pokemon/icons/GLIMMET.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://m81hyspv53k4" path="res://graphics/pokemon/follower/GLIMMET.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://68tqivnvnd7e" path="res://sfx/se/cries/GLIMMET.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -107,6 +114,12 @@ description = "It absorbs nutrients from cave walls. The petals it wears are mad
 height = 7
 weight = 80
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([92, 109, 113, 115, 156, 157, 164, 182, 188, 191, 201, 203, 214, 240, 241, 263, 317, 328, 334, 341, 350, 390, 408, 441, 444, 446, 474, 479, 482, 491, 605, 728, 779])
 egg_moves = Array[int]([92, 153, 262])
@@ -116,4 +129,7 @@ hidden_ability = 212
 egg_group_1 = 10
 egg_cycles = 30
 hatch_species = 1358
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 3
+cry = ExtResource("gfx106")

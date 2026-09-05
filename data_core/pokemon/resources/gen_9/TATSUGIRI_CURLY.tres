@@ -4,6 +4,21 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bpddy7n2gr3vo" path="res://graphics/pokemon/front/TATSUGIRI.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c3xtey0xybcvx" path="res://graphics/pokemon/front_shiny/TATSUGIRI.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://tjhk762veoxy" path="res://graphics/pokemon/back/TATSUGIRI.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://snb0o78o5vj2" path="res://graphics/pokemon/back_shiny/TATSUGIRI.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b5df1k4ma53c" path="res://graphics/pokemon/icons/TATSUGIRI.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ckm8pgirwto6o" path="res://graphics/pokemon/follower/TATSUGIRI.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://gmn4mirtsrl4" path="res://sfx/se/cries/TATSUGIRI.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c5itppltqns00" path="res://graphics/pokemon/front/TATSUGIRI_DROOPY.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bi1rvod2wk3t7" path="res://graphics/pokemon/front_shiny/TATSUGIRI_DROOPY.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b6f8y5hmwigaa" path="res://graphics/pokemon/back/TATSUGIRI_DROOPY.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://l5px7k24xvtl" path="res://graphics/pokemon/back_shiny/TATSUGIRI_DROOPY.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://d17px8f8tbhip" path="res://graphics/pokemon/front/TATSUGIRI_STRETCHY.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://0evxrkrbqmdv" path="res://graphics/pokemon/front_shiny/TATSUGIRI_STRETCHY.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://rmraxfwnyde6" path="res://graphics/pokemon/back/TATSUGIRI_STRETCHY.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://jx3rx0pdbxqy" path="res://graphics/pokemon/back_shiny/TATSUGIRI_STRETCHY.png" id="gfx114"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3tx01")
@@ -11,6 +26,16 @@ species_id = 1368
 form_id = &"tatsugiri_droopy"
 display_name = "Tatsugiri Droopy"
 base_species_id = 1367
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 17)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +44,16 @@ species_id = 1369
 form_id = &"tatsugiri_stretchy"
 display_name = "Tatsugiri Stretchy"
 base_species_id = 1367
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 17)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +62,10 @@ species_id = 1569
 form_id = &"tatsugiri_curly_mega"
 display_name = "Tatsugiri Curly Mega"
 base_species_id = 1367
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 17)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +74,14 @@ species_id = 1570
 form_id = &"tatsugiri_droopy_mega"
 display_name = "Tatsugiri Droopy Mega"
 base_species_id = 1367
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 17)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +90,14 @@ species_id = 1571
 form_id = &"tatsugiri_stretchy_mega"
 display_name = "Tatsugiri Stretchy Mega"
 base_species_id = 1367
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 17)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -126,6 +181,12 @@ description = "This is a small dragon Pokémon. It lives inside the mouth of Don
 height = 3
 weight = 80
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_3tx01")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([36, 56, 57, 63, 156, 164, 182, 196, 200, 203, 214, 226, 240, 250, 263, 269, 270, 330, 349, 352, 406, 416, 417, 434, 642, 779, 812, 841])
@@ -135,4 +196,7 @@ hidden_ability = 114
 egg_group_1 = 12
 egg_cycles = 35
 hatch_species = 1367
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 17)
 gender_ratio = 3
+cry = ExtResource("gfx106")

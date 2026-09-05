@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_otba4"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dby2htlhl52w4" path="res://graphics/pokemon/front/TORTERRA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c03ihh71ksqth" path="res://graphics/pokemon/front_shiny/TORTERRA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ckwfdhtw2ay5t" path="res://graphics/pokemon/back/TORTERRA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c032fn2qhesuy" path="res://graphics/pokemon/back_shiny/TORTERRA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://oq8qeovdr1rs" path="res://graphics/pokemon/icons/TORTERRA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b6jy8j1rlsgd3" path="res://graphics/pokemon/follower/TORTERRA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://difyl8cxqehmp" path="res://sfx/se/cries/TORTERRA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -98,6 +105,12 @@ description = "Las gentes de antaño creían que el planeta se sustentaba en la 
 height = 22
 weight = 3100
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 46, 63, 70, 76, 89, 92, 104, 113, 115, 133, 148, 156, 157, 164, 173, 174, 182, 184, 189, 200, 201, 202, 203, 207, 213, 214, 216, 218, 219, 231, 235, 237, 241, 242, 249, 263, 267, 276, 290, 304, 317, 328, 331, 334, 335, 338, 341, 345, 350, 363, 388, 397, 402, 412, 414, 416, 428, 431, 437, 442, 444, 445, 446, 447, 479, 484, 496, 520, 523, 526, 580, 590, 630, 661, 704, 731, 743, 779, 811, 840])
 egg_moves = Array[int]([37, 38, 74, 254, 255, 256, 276, 321, 388, 469, 504])
@@ -107,4 +120,6 @@ egg_group_1 = 1
 egg_group_2 = 7
 egg_cycles = 20
 hatch_species = 389
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 5
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_dt7k8"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bodbe2pngfrp0" path="res://graphics/pokemon/front/DUSCLOPS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://6wjsk64g03fd" path="res://graphics/pokemon/front_shiny/DUSCLOPS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c7mc4ovxqnn4f" path="res://graphics/pokemon/back/DUSCLOPS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cf4hfua7esos7" path="res://graphics/pokemon/back_shiny/DUSCLOPS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://y1g0y6jtq3gu" path="res://graphics/pokemon/icons/DUSCLOPS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c0j2yvicxa0wr" path="res://graphics/pokemon/follower/DUSCLOPS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://rgqt1jykfm3i" path="res://sfx/se/cries/DUSCLOPS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -137,6 +144,12 @@ description = "Si alguien mira los fuegos fatuos del interior de Dusclops, perde
 height = 16
 weight = 306
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([5, 7, 8, 9, 20, 25, 29, 34, 38, 58, 59, 63, 68, 69, 70, 89, 92, 94, 101, 102, 104, 109, 114, 118, 138, 141, 148, 156, 157, 164, 168, 171, 173, 174, 180, 182, 189, 196, 203, 207, 213, 214, 216, 218, 220, 223, 237, 240, 241, 244, 247, 248, 249, 259, 261, 263, 264, 269, 270, 271, 279, 280, 285, 286, 289, 290, 317, 347, 356, 363, 371, 373, 374, 389, 399, 416, 433, 445, 451, 466, 472, 477, 496, 502, 506, 523, 566, 590, 611, 612, 734, 737, 779])
 egg_moves = Array[int]([114, 220, 262])
@@ -146,4 +159,7 @@ hidden_ability = 119
 egg_group_1 = 11
 egg_cycles = 25
 hatch_species = 356
+front_sprite_offset = Vector2(0, 3)
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

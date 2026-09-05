@@ -7,6 +7,13 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://twog3brh60t8" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dtnwqv0tfdkhn" path="res://graphics/pokemon/front/GLIGAR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bleb8rfaqc44s" path="res://graphics/pokemon/front_shiny/GLIGAR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dpyaayl8cs24h" path="res://graphics/pokemon/back/GLIGAR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://byhhy72nnvm07" path="res://graphics/pokemon/back_shiny/GLIGAR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b4qtk3w6g6xf7" path="res://graphics/pokemon/icons/GLIGAR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bdtqpu011lnlf" path="res://graphics/pokemon/follower/GLIGAR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bk27q3u5yrfhq" path="res://sfx/se/cries/GLIGAR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_time")
@@ -130,6 +137,12 @@ description = "A veces se sujeta a los precipicios. Cuando divisa una presa, des
 height = 11
 weight = 648
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 29, 36, 38, 68, 70, 89, 91, 92, 97, 102, 104, 129, 138, 156, 157, 164, 168, 173, 174, 182, 184, 188, 189, 191, 197, 201, 203, 206, 207, 210, 211, 213, 214, 216, 218, 226, 231, 232, 237, 240, 241, 242, 249, 259, 263, 269, 280, 282, 290, 317, 328, 332, 341, 342, 355, 363, 366, 369, 371, 374, 390, 397, 398, 399, 401, 404, 414, 422, 423, 424, 432, 441, 444, 445, 446, 450, 468, 474, 496, 512, 522, 523, 590, 630, 638, 642, 660, 712, 727, 734, 742, 779])
 egg_moves = Array[int]([13, 17, 38, 68, 97, 226, 232, 328, 342, 364, 379, 400, 431, 440])
@@ -140,4 +153,7 @@ hidden_ability = 17
 egg_group_1 = 3
 egg_cycles = 20
 hatch_species = 207
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

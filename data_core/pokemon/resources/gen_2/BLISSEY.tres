@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ura8wwcywocq" path="res://graphics/pokemon/front/BLISSEY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cuefoie3wk0wm" path="res://graphics/pokemon/front_shiny/BLISSEY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c4yb0xq3dxcnq" path="res://graphics/pokemon/back/BLISSEY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bbavskahjw44d" path="res://graphics/pokemon/back_shiny/BLISSEY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bkah37jx4jl35" path="res://graphics/pokemon/icons/BLISSEY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c8dwmshuc8rhn" path="res://graphics/pokemon/follower/BLISSEY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dh4lc8bdmb0r3" path="res://sfx/se/cries/BLISSEY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -148,6 +155,12 @@ description = "Los huevos que pone están llenos de felicidad. Solo con probar u
 height = 15
 weight = 468
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 29, 34, 36, 38, 53, 58, 59, 63, 68, 69, 70, 76, 85, 86, 87, 89, 92, 94, 102, 104, 111, 113, 118, 126, 129, 135, 138, 148, 156, 157, 161, 164, 168, 173, 174, 182, 189, 192, 196, 201, 203, 204, 205, 207, 213, 214, 215, 216, 218, 219, 223, 231, 237, 240, 241, 244, 247, 249, 253, 258, 263, 264, 270, 271, 278, 280, 283, 285, 289, 290, 304, 317, 335, 343, 347, 351, 352, 356, 363, 374, 387, 409, 411, 416, 419, 428, 431, 445, 446, 447, 451, 477, 496, 497, 500, 502, 510, 514, 523, 526, 528, 574, 590, 604, 605, 612, 636, 661, 779, 809, 811, 812, 842])
 egg_moves = Array[int]([69, 215, 217, 356])
@@ -157,3 +170,6 @@ hidden_ability = 131
 egg_group_1 = 6
 egg_cycles = 40
 hatch_species = 242
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 16)
+cry = ExtResource("gfx106")

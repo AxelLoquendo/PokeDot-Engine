@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_rtupq"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cy1ded3i13s86" path="res://graphics/pokemon/front/AMOONGUSS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ch40m13neh2ce" path="res://graphics/pokemon/front_shiny/AMOONGUSS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cf7xfipy1nawu" path="res://graphics/pokemon/back/AMOONGUSS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://huvairamrf0p" path="res://graphics/pokemon/back_shiny/AMOONGUSS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bcfngdsa5ruqy" path="res://graphics/pokemon/icons/AMOONGUSS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bk5sknixebqf4" path="res://graphics/pokemon/follower/AMOONGUSS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://iyfr375i7gxp" path="res://sfx/se/cries/AMOONGUSS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -102,6 +109,12 @@ description = "Aunque intenta pasar por parte superior de una Poké Ball para at
 height = 6
 weight = 105
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([34, 63, 76, 92, 104, 148, 156, 164, 173, 182, 184, 188, 202, 203, 207, 213, 214, 216, 218, 235, 237, 240, 241, 263, 267, 290, 331, 345, 371, 380, 388, 402, 412, 416, 437, 447, 474, 492, 495, 496, 506, 580, 590, 639, 661, 779])
 ability_1 = 27
@@ -109,4 +122,7 @@ hidden_ability = 144
 egg_group_1 = 7
 egg_cycles = 20
 hatch_species = 591
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 3
+cry = ExtResource("gfx106")

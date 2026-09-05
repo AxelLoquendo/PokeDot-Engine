@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_lygq2"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ba2n0dbb3eh7y" path="res://graphics/pokemon/front/GOLISOPOD.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://r38am3v5mn6k" path="res://graphics/pokemon/front_shiny/GOLISOPOD.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dgsmw21042trm" path="res://graphics/pokemon/back/GOLISOPOD.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://4fmra06cvrk7" path="res://graphics/pokemon/back_shiny/GOLISOPOD.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://4vcq1ykqxmr6" path="res://graphics/pokemon/icons/GOLISOPOD.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cucpxv4w12w8g" path="res://graphics/pokemon/follower/GOLISOPOD.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://lfdakm50udjg" path="res://sfx/se/cries/GOLISOPOD.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c2buhumrphkkt" path="res://graphics/pokemon/front/MEGA_GOLISOPOD.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://0h2ccovm3s5w" path="res://graphics/pokemon/front_shiny/MEGA_GOLISOPOD.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b64ssajxmnb2v" path="res://graphics/pokemon/back/MEGA_GOLISOPOD.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://ccdcqab1ysn8s" path="res://graphics/pokemon/back_shiny/MEGA_GOLISOPOD.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://d0c8dksmgm3o0" path="res://graphics/pokemon/icons/GOLISOPOD_1.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_lygq2")
@@ -11,6 +23,15 @@ species_id = 1564
 form_id = &"golisopod_mega"
 display_name = "Golisopod Mega"
 base_species_id = 768
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -110,6 +131,12 @@ description = "Gracias a su destreza y sus enormes y afiladas garras, puede cort
 height = 20
 weight = 1080
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_lygq2")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 42, 57, 58, 59, 63, 92, 103, 104, 127, 129, 141, 156, 157, 164, 173, 180, 182, 188, 191, 196, 203, 206, 207, 213, 214, 216, 218, 220, 237, 240, 244, 258, 263, 269, 280, 282, 283, 291, 317, 330, 332, 334, 339, 341, 352, 370, 371, 372, 374, 398, 399, 404, 405, 411, 416, 421, 442, 450, 474, 482, 496, 503, 524, 529, 530, 534, 555, 590, 636, 638, 664, 734])
@@ -118,4 +145,6 @@ egg_group_1 = 3
 egg_group_2 = 9
 egg_cycles = 20
 hatch_species = 768
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,49 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bjyg1fbnnw8l5" path="res://graphics/pokemon/front/FURFROU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dmjy70tq1qtu7" path="res://graphics/pokemon/front_shiny/FURFROU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://jsf5nelawjvb" path="res://graphics/pokemon/back/FURFROU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://25apu678n8wf" path="res://graphics/pokemon/back_shiny/FURFROU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bgpdt67khpn5m" path="res://graphics/pokemon/icons/FURFROU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c13ygd88gq6vj" path="res://graphics/pokemon/follower/FURFROU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://f7ea36vcues2" path="res://sfx/se/cries/FURFROU.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c51npgg53uuh0" path="res://graphics/pokemon/front/FURFROU_HEART.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dfciinq0umrw4" path="res://graphics/pokemon/front_shiny/FURFROU_HEART.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://s6wuigfae8vr" path="res://graphics/pokemon/back/FURFROU_HEART.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bvov70gcjit4d" path="res://graphics/pokemon/back_shiny/FURFROU_HEART.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://byvn55vk3bdf7" path="res://graphics/pokemon/front/FURFROU_STAR.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://b4bv8n8x6msdp" path="res://graphics/pokemon/front_shiny/FURFROU_STAR.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://dgx4tbx1smao7" path="res://graphics/pokemon/back/FURFROU_STAR.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://bohbfn1j7x60k" path="res://graphics/pokemon/back_shiny/FURFROU_STAR.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://dt15q4ne2p8o3" path="res://graphics/pokemon/front/FURFROU_DIAMOND.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://dcbs7h0tgddym" path="res://graphics/pokemon/front_shiny/FURFROU_DIAMOND.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://bwp5f6uei0ol2" path="res://graphics/pokemon/back/FURFROU_DIAMOND.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://dnx5rke1c2iem" path="res://graphics/pokemon/back_shiny/FURFROU_DIAMOND.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://bs676my10tfrn" path="res://graphics/pokemon/front/FURFROU_DEBUTANTE.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://bi1v3tsh700eq" path="res://graphics/pokemon/front_shiny/FURFROU_DEBUTANTE.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://dr2ope7bw33qr" path="res://graphics/pokemon/back/FURFROU_DEBUTANTE.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://cp85plmfluf6x" path="res://graphics/pokemon/back_shiny/FURFROU_DEBUTANTE.png" id="gfx122"]
+[ext_resource type="Texture2D" uid="uid://cwu1jj3bsfuk7" path="res://graphics/pokemon/front/FURFROU_MATRON.png" id="gfx123"]
+[ext_resource type="Texture2D" uid="uid://b4dwtl46o1jib" path="res://graphics/pokemon/front_shiny/FURFROU_MATRON.png" id="gfx124"]
+[ext_resource type="Texture2D" uid="uid://bqogc3fmhl3pm" path="res://graphics/pokemon/back/FURFROU_MATRON.png" id="gfx125"]
+[ext_resource type="Texture2D" uid="uid://bki4snp0rps3w" path="res://graphics/pokemon/back_shiny/FURFROU_MATRON.png" id="gfx126"]
+[ext_resource type="Texture2D" uid="uid://bhmyyuf7opbu6" path="res://graphics/pokemon/front/FURFROU_DANDY.png" id="gfx127"]
+[ext_resource type="Texture2D" uid="uid://ck52q4n1jbcwj" path="res://graphics/pokemon/front_shiny/FURFROU_DANDY.png" id="gfx128"]
+[ext_resource type="Texture2D" uid="uid://bhnw6r68fk1uv" path="res://graphics/pokemon/back/FURFROU_DANDY.png" id="gfx129"]
+[ext_resource type="Texture2D" uid="uid://l52r08nmyc30" path="res://graphics/pokemon/back_shiny/FURFROU_DANDY.png" id="gfx130"]
+[ext_resource type="Texture2D" uid="uid://ddeb2e0bmbsbf" path="res://graphics/pokemon/front/FURFROU_LA_REINE.png" id="gfx131"]
+[ext_resource type="Texture2D" uid="uid://pfrr54kw45s4" path="res://graphics/pokemon/front_shiny/FURFROU_LA_REINE.png" id="gfx132"]
+[ext_resource type="Texture2D" uid="uid://cqjj3304naepo" path="res://graphics/pokemon/back/FURFROU_LA_REINE.png" id="gfx133"]
+[ext_resource type="Texture2D" uid="uid://cyq7mnx6r7hy" path="res://graphics/pokemon/back_shiny/FURFROU_LA_REINE.png" id="gfx134"]
+[ext_resource type="Texture2D" uid="uid://dn1uyrid6ao48" path="res://graphics/pokemon/front/FURFROU_KABUKI.png" id="gfx135"]
+[ext_resource type="Texture2D" uid="uid://dfhcmlk4m4pdx" path="res://graphics/pokemon/front_shiny/FURFROU_KABUKI.png" id="gfx136"]
+[ext_resource type="Texture2D" uid="uid://bl83pvw7svyxn" path="res://graphics/pokemon/back/FURFROU_KABUKI.png" id="gfx137"]
+[ext_resource type="Texture2D" uid="uid://13yp4cydlk88" path="res://graphics/pokemon/back_shiny/FURFROU_KABUKI.png" id="gfx138"]
+[ext_resource type="Texture2D" uid="uid://dhf2f5xgceox6" path="res://graphics/pokemon/front/FURFROU_PHARAOH.png" id="gfx139"]
+[ext_resource type="Texture2D" uid="uid://bhhd7mikwex35" path="res://graphics/pokemon/front_shiny/FURFROU_PHARAOH.png" id="gfx140"]
+[ext_resource type="Texture2D" uid="uid://docs4in6h3lu2" path="res://graphics/pokemon/back/FURFROU_PHARAOH.png" id="gfx141"]
+[ext_resource type="Texture2D" uid="uid://b8e2it6a0lgic" path="res://graphics/pokemon/back_shiny/FURFROU_PHARAOH.png" id="gfx142"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_jrpla")
@@ -11,6 +54,12 @@ species_id = 1146
 form_id = &"furfrou_heart"
 display_name = "Furfrou Heart"
 base_species_id = 676
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +68,12 @@ species_id = 1147
 form_id = &"furfrou_star"
 display_name = "Furfrou Star"
 base_species_id = 676
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +82,12 @@ species_id = 1148
 form_id = &"furfrou_diamond"
 display_name = "Furfrou Diamond"
 base_species_id = 676
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +96,12 @@ species_id = 1149
 form_id = &"furfrou_debutante"
 display_name = "Furfrou Debutante"
 base_species_id = 676
+front_sprite = ExtResource("gfx119")
+front_sprite_shiny = ExtResource("gfx120")
+back_sprite = ExtResource("gfx121")
+back_sprite_shiny = ExtResource("gfx122")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +110,12 @@ species_id = 1150
 form_id = &"furfrou_matron"
 display_name = "Furfrou Matron"
 base_species_id = 676
+front_sprite = ExtResource("gfx123")
+front_sprite_shiny = ExtResource("gfx124")
+back_sprite = ExtResource("gfx125")
+back_sprite_shiny = ExtResource("gfx126")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +124,12 @@ species_id = 1151
 form_id = &"furfrou_dandy"
 display_name = "Furfrou Dandy"
 base_species_id = 676
+front_sprite = ExtResource("gfx127")
+front_sprite_shiny = ExtResource("gfx128")
+back_sprite = ExtResource("gfx129")
+back_sprite_shiny = ExtResource("gfx130")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -59,6 +138,12 @@ species_id = 1152
 form_id = &"furfrou_la_reine"
 display_name = "Furfrou La Reine"
 base_species_id = 676
+front_sprite = ExtResource("gfx131")
+front_sprite_shiny = ExtResource("gfx132")
+back_sprite = ExtResource("gfx133")
+back_sprite_shiny = ExtResource("gfx134")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -67,6 +152,12 @@ species_id = 1153
 form_id = &"furfrou_kabuki"
 display_name = "Furfrou Kabuki"
 base_species_id = 676
+front_sprite = ExtResource("gfx135")
+front_sprite_shiny = ExtResource("gfx136")
+back_sprite = ExtResource("gfx137")
+back_sprite_shiny = ExtResource("gfx138")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -75,6 +166,12 @@ species_id = 1154
 form_id = &"furfrou_pharaoh"
 display_name = "Furfrou Pharaoh"
 base_species_id = 676
+front_sprite = ExtResource("gfx139")
+front_sprite_shiny = ExtResource("gfx140")
+back_sprite = ExtResource("gfx141")
+back_sprite_shiny = ExtResource("gfx142")
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -161,6 +258,12 @@ description = "Cuando le esquilan su mullido pelaje, no solo mejora su aparienci
 height = 12
 weight = 280
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_jrpla")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([46, 57, 86, 91, 92, 104, 148, 156, 164, 173, 182, 207, 213, 214, 216, 218, 231, 237, 240, 241, 249, 253, 263, 270, 272, 283, 290, 304, 369, 387, 399, 416, 428, 447, 451, 496, 497, 514, 526, 528, 555, 590])
@@ -169,4 +272,6 @@ ability_1 = 169
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 676
+front_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

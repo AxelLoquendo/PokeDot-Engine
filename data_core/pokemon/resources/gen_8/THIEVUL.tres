@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://biteamxnkws4f" path="res://graphics/pokemon/front/THIEVUL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://lejkeog5f8gf" path="res://graphics/pokemon/front_shiny/THIEVUL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cbbe7tqfewft2" path="res://graphics/pokemon/back/THIEVUL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://du4g2vkr5sst8" path="res://graphics/pokemon/back_shiny/THIEVUL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dwayop3joj58a" path="res://graphics/pokemon/icons/THIEVUL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://w8m3idao488l" path="res://graphics/pokemon/follower/THIEVUL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bshyok4p1rdmf" path="res://sfx/se/cries/THIEVUL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -87,6 +94,12 @@ description = "Marca a su presa sin ser advertido. Sigue el olor y, cuando el ot
 height = 12
 weight = 199
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([63, 91, 94, 97, 103, 129, 156, 164, 168, 173, 182, 203, 213, 214, 226, 242, 247, 251, 263, 269, 313, 341, 369, 372, 399, 416, 417, 421, 422, 423, 424, 447, 492, 496, 512, 541, 555, 583, 735, 736])
 ability_1 = 50
@@ -95,4 +108,7 @@ hidden_ability = 198
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 828
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ak7df"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ce3kd01bvmksu" path="res://graphics/pokemon/front/KROKOROK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://drn0t1fr0crl0" path="res://graphics/pokemon/front_shiny/KROKOROK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dhnpvv6b71mgt" path="res://graphics/pokemon/back/KROKOROK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c0mnmijcnmwk" path="res://graphics/pokemon/back_shiny/KROKOROK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b3cvhhfpifcbi" path="res://graphics/pokemon/icons/KROKOROK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b7c1lu1j38px2" path="res://graphics/pokemon/follower/KROKOROK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://benvcav1w8nhu" path="res://sfx/se/cries/KROKOROK.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -130,6 +137,12 @@ description = "Viven en manadas. La membrana que cubre sus ojos los protege de l
 height = 10
 weight = 334
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([5, 15, 25, 34, 36, 38, 46, 67, 70, 89, 91, 92, 104, 116, 156, 157, 164, 168, 173, 174, 180, 182, 184, 188, 189, 201, 203, 207, 213, 214, 216, 218, 231, 237, 242, 249, 251, 253, 259, 263, 264, 269, 270, 279, 280, 282, 283, 289, 290, 317, 328, 332, 337, 341, 371, 372, 373, 374, 399, 401, 414, 421, 422, 424, 444, 446, 447, 468, 490, 492, 496, 510, 514, 523, 525, 555, 590, 612, 656, 661, 712, 727, 734, 736, 743, 779])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -139,4 +152,7 @@ hidden_ability = 83
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 552
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

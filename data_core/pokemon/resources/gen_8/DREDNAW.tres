@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cesu748bjdkx5" path="res://graphics/pokemon/front/DREDNAW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://nskquxom54vk" path="res://graphics/pokemon/front_shiny/DREDNAW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bxpch4j07w2xq" path="res://graphics/pokemon/back/DREDNAW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://v4gul4jf1230" path="res://graphics/pokemon/back_shiny/DREDNAW.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://0d84sei52tdl" path="res://graphics/pokemon/icons/DREDNAW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bb7fp5g3mqkk7" path="res://graphics/pokemon/follower/DREDNAW.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://chm3rjmrj4shf" path="res://sfx/se/cries/DREDNAW.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cfpwivahevnhu" path="res://graphics/pokemon/front/DREDNAW_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cxm6vq4qmxkkm" path="res://graphics/pokemon/front_shiny/DREDNAW_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cogjpmq741u7" path="res://graphics/pokemon/back/DREDNAW_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://3f82s7vv5ywe" path="res://graphics/pokemon/back_shiny/DREDNAW_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dlqod02nve61b" path="res://graphics/pokemon/icons/DREDNAW_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_flrqm")
@@ -11,6 +23,15 @@ species_id = 1508
 form_id = &"drednaw_gmax"
 display_name = "Drednaw Gmax"
 base_species_id = 834
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 12)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -97,6 +118,12 @@ description = "Un Pokémon de temperamento feroz que atenaza a su presa con sus 
 height = 10
 weight = 1155
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_flrqm")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 34, 36, 38, 56, 57, 58, 59, 63, 89, 91, 127, 156, 157, 162, 164, 173, 182, 184, 201, 203, 206, 213, 214, 224, 231, 240, 242, 250, 263, 276, 279, 291, 317, 328, 330, 334, 341, 350, 352, 371, 372, 398, 414, 416, 423, 444, 446, 496, 503, 523, 534, 630, 638, 647, 661, 664, 704, 727, 728, 734, 779, 789, 812])
@@ -107,4 +134,7 @@ egg_group_1 = 1
 egg_group_2 = 2
 egg_cycles = 20
 hatch_species = 834
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 18)
 gender_ratio = 3
+cry = ExtResource("gfx106")

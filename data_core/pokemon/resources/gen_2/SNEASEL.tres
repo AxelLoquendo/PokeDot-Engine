@@ -7,6 +7,19 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://twog3brh60t8" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://baaxsagsgyk72" path="res://graphics/pokemon/front/SNEASEL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bsy23jlcp32ah" path="res://graphics/pokemon/front_shiny/SNEASEL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c71i123t5fv7n" path="res://graphics/pokemon/back/SNEASEL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bdtbhh562ikt" path="res://graphics/pokemon/back_shiny/SNEASEL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cmn6osgkothpt" path="res://graphics/pokemon/icons/SNEASEL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c5qspgafkevbv" path="res://graphics/pokemon/follower/SNEASEL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dmnto6leufonm" path="res://sfx/se/cries/SNEASEL.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dubbmdf6nbx6m" path="res://graphics/pokemon/front/SNEASEL_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://21yem2yj87gu" path="res://graphics/pokemon/front_shiny/SNEASEL_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dpynxnsoq2jmk" path="res://graphics/pokemon/back/SNEASEL_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://q7fmegwvesv4" path="res://graphics/pokemon/back_shiny/SNEASEL_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://ddwv3vl12demh" path="res://graphics/pokemon/icons/SNEASEL_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://7hrv6ubecp4v" path="res://graphics/pokemon/follower/SNEASEL_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_time")
@@ -43,6 +56,16 @@ species_id = 999
 form_id = &"sneasel_hisui"
 display_name = "Sneasel Hisui"
 base_species_id = 215
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 3)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -146,6 +169,12 @@ description = "Se alimenta de huevos robados en nidos. Clava sus afiladas garras
 height = 9
 weight = 280
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_g56xn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([5, 8, 14, 15, 25, 29, 36, 38, 57, 58, 59, 67, 68, 70, 91, 92, 97, 102, 103, 104, 111, 115, 129, 138, 156, 164, 168, 171, 173, 174, 179, 180, 182, 184, 189, 196, 197, 203, 206, 207, 210, 213, 214, 216, 218, 223, 231, 232, 237, 240, 241, 244, 247, 249, 250, 251, 258, 259, 263, 264, 269, 270, 280, 282, 289, 290, 313, 332, 333, 347, 352, 363, 371, 373, 374, 398, 399, 404, 416, 417, 419, 421, 427, 445, 468, 490, 492, 496, 514, 555, 590, 612, 636, 638, 736, 741, 779, 809, 811, 846])
@@ -157,4 +186,7 @@ hidden_ability = 124
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 215
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bu8fiyatrsygf" path="res://graphics/pokemon/front/PIDGEOT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://hl2s2yfqc6aw" path="res://graphics/pokemon/front_shiny/PIDGEOT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dkich87g84rqt" path="res://graphics/pokemon/back/PIDGEOT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cb08ipubvjvxq" path="res://graphics/pokemon/back_shiny/PIDGEOT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://btdjcnmpogcy2" path="res://graphics/pokemon/icons/PIDGEOT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://o4uf2q0jfs3r" path="res://graphics/pokemon/follower/PIDGEOT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c8bkyl3656e5v" path="res://sfx/se/cries/PIDGEOT.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bjudju2ln3jdo" path="res://graphics/pokemon/front/MEGA_PIDGEOT.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://biirl5424ypx2" path="res://graphics/pokemon/front_shiny/MEGA_PIDGEOT.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://n5lrx6qp74nj" path="res://graphics/pokemon/back/MEGA_PIDGEOT.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c06d8arcmwrs1" path="res://graphics/pokemon/back_shiny/MEGA_PIDGEOT.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cjlsov6l4vc38" path="res://graphics/pokemon/icons/PIDGEOT_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://bjrq1phqasuh5" path="res://sfx/se/cries/PIDGEOT_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_7jxe6")
@@ -11,6 +24,15 @@ species_id = 911
 form_id = &"pidgeot_mega"
 display_name = "Pidgeot Mega"
 base_species_id = 18
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+back_sprite_offset = Vector2(0, 7)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -101,6 +123,12 @@ description = "Cuando caza, vuela muy deprisa a ras del agua y sorprende a inoce
 height = 15
 weight = 395
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_7jxe6")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([13, 18, 19, 29, 36, 38, 63, 92, 99, 102, 104, 115, 117, 129, 143, 156, 164, 168, 173, 174, 182, 189, 197, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 253, 257, 263, 290, 314, 332, 355, 363, 365, 366, 369, 416, 432, 445, 466, 496, 526, 590, 636])
@@ -110,4 +138,7 @@ hidden_ability = 145
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 18
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_mwmaa"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://d157hmhc4rnjn" path="res://graphics/pokemon/front/GROOKEY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://debtaeqgal61o" path="res://graphics/pokemon/front_shiny/GROOKEY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cn3ir4a0lwr06" path="res://graphics/pokemon/back/GROOKEY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://n4gr3hjdulmq" path="res://graphics/pokemon/back_shiny/GROOKEY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d0ogk4kv5dwfc" path="res://graphics/pokemon/icons/GROOKEY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://8s1swygn241m" path="res://graphics/pokemon/follower/GROOKEY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://donnm32q3mhau" path="res://sfx/se/cries/GROOKEY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -91,6 +98,12 @@ description = "Al marcar el ritmo con su baqueta especial, produce unas ondas so
 height = 3
 weight = 50
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10")])
 teachable_moves = Array[int]([5, 14, 25, 34, 36, 67, 76, 103, 116, 129, 156, 164, 168, 173, 182, 202, 203, 206, 213, 214, 241, 253, 263, 269, 282, 283, 331, 345, 369, 372, 374, 402, 409, 412, 437, 447, 496, 512, 520, 526, 580, 632, 731, 779, 811])
 egg_moves = Array[int]([70, 73, 74, 252, 267, 359, 388])
@@ -101,4 +114,7 @@ egg_group_1 = 5
 egg_group_2 = 7
 egg_cycles = 20
 hatch_species = 810
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 5
+cry = ExtResource("gfx106")

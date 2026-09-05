@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_r271e"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cc3ivoha5o2el" path="res://graphics/pokemon/front/COSMOG.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dj54haha71mrg" path="res://graphics/pokemon/front_shiny/COSMOG.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cuhiuurpoay53" path="res://graphics/pokemon/back/COSMOG.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c4ib64owkfn6j" path="res://graphics/pokemon/back_shiny/COSMOG.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cv2tg0xftn2yk" path="res://graphics/pokemon/icons/COSMOG.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c4q6577rpf1yw" path="res://graphics/pokemon/follower/COSMOG.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://ppqgi24hvth" path="res://sfx/se/cries/COSMOG.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -46,6 +53,12 @@ description = "Su cuerpo se compone de una materia gaseosa inestable. Crece poco
 height = 2
 weight = 1
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1")])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
 ability_1 = 109
@@ -53,4 +66,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 789
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 7
+cry = ExtResource("gfx106")

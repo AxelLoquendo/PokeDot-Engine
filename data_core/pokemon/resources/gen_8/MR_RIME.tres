@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bfqbi5fvch7ar" path="res://graphics/pokemon/front/MR_RIME.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://br535fa3wwwha" path="res://graphics/pokemon/front_shiny/MR_RIME.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://deo1lgnmjdmv5" path="res://graphics/pokemon/back/MR_RIME.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dtkcd5tyv7yss" path="res://graphics/pokemon/back_shiny/MR_RIME.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cxd3yf7omua4n" path="res://graphics/pokemon/icons/MRRIME.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://76nlt66kkouq" path="res://graphics/pokemon/follower/MRRIME.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cot2klyeamijt" path="res://sfx/se/cries/MRRIME.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -158,6 +165,12 @@ description = "Es un bailarín consumado de claqué. Agita su bastón de hielo m
 height = 15
 weight = 582
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26"), SubResource("Resource_move27"), SubResource("Resource_move28"), SubResource("Resource_move29")])
 teachable_moves = Array[int]([5, 8, 25, 34, 58, 59, 63, 76, 85, 86, 87, 94, 103, 113, 115, 118, 156, 164, 168, 173, 182, 196, 203, 204, 213, 214, 219, 226, 227, 240, 241, 247, 248, 253, 258, 263, 269, 270, 271, 280, 285, 313, 333, 334, 347, 371, 374, 384, 385, 409, 411, 412, 416, 417, 419, 428, 433, 447, 472, 473, 478, 492, 496, 500, 502, 581, 605, 641, 661, 725, 741])
 ability_1 = 77
@@ -166,4 +179,7 @@ hidden_ability = 115
 egg_group_1 = 8
 egg_cycles = 25
 hatch_species = 866
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

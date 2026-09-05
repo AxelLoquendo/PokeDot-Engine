@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_rmot4"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://de84epg52ft76" path="res://graphics/pokemon/front/UNOWN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://sbooua6adwqx" path="res://graphics/pokemon/front_shiny/UNOWN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cqkw0fubbljhj" path="res://graphics/pokemon/back/UNOWN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://p1rn07mjt7ci" path="res://graphics/pokemon/back_shiny/UNOWN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dutl4ktxf1jh" path="res://graphics/pokemon/icons/UNOWN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dghwbbk7s1web" path="res://graphics/pokemon/follower/UNOWN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://co2gjl2wjrebb" path="res://sfx/se/cries/UNOWN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_rmot4")
@@ -11,6 +18,8 @@ species_id = 1024
 form_id = &"unown_b"
 display_name = "Unown B"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +28,8 @@ species_id = 1025
 form_id = &"unown_c"
 display_name = "Unown C"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +38,8 @@ species_id = 1026
 form_id = &"unown_d"
 display_name = "Unown D"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +48,8 @@ species_id = 1027
 form_id = &"unown_e"
 display_name = "Unown E"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -43,6 +58,8 @@ species_id = 1028
 form_id = &"unown_f"
 display_name = "Unown F"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -51,6 +68,8 @@ species_id = 1029
 form_id = &"unown_g"
 display_name = "Unown G"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -59,6 +78,8 @@ species_id = 1030
 form_id = &"unown_h"
 display_name = "Unown H"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -67,6 +88,8 @@ species_id = 1031
 form_id = &"unown_i"
 display_name = "Unown I"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -75,6 +98,8 @@ species_id = 1032
 form_id = &"unown_j"
 display_name = "Unown J"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -83,6 +108,8 @@ species_id = 1033
 form_id = &"unown_k"
 display_name = "Unown K"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -91,6 +118,8 @@ species_id = 1034
 form_id = &"unown_l"
 display_name = "Unown L"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -99,6 +128,8 @@ species_id = 1035
 form_id = &"unown_m"
 display_name = "Unown M"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -107,6 +138,8 @@ species_id = 1036
 form_id = &"unown_n"
 display_name = "Unown N"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
@@ -115,6 +148,8 @@ species_id = 1037
 form_id = &"unown_o"
 display_name = "Unown O"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
@@ -123,6 +158,8 @@ species_id = 1038
 form_id = &"unown_p"
 display_name = "Unown P"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
@@ -131,6 +168,8 @@ species_id = 1039
 form_id = &"unown_q"
 display_name = "Unown Q"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
@@ -139,6 +178,8 @@ species_id = 1040
 form_id = &"unown_r"
 display_name = "Unown R"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_17"]
@@ -147,6 +188,8 @@ species_id = 1041
 form_id = &"unown_s"
 display_name = "Unown S"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_18"]
@@ -155,6 +198,8 @@ species_id = 1042
 form_id = &"unown_t"
 display_name = "Unown T"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_19"]
@@ -163,6 +208,8 @@ species_id = 1043
 form_id = &"unown_u"
 display_name = "Unown U"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_20"]
@@ -171,6 +218,8 @@ species_id = 1044
 form_id = &"unown_v"
 display_name = "Unown V"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_21"]
@@ -179,6 +228,8 @@ species_id = 1045
 form_id = &"unown_w"
 display_name = "Unown W"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_22"]
@@ -187,6 +238,8 @@ species_id = 1046
 form_id = &"unown_x"
 display_name = "Unown X"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_23"]
@@ -195,6 +248,8 @@ species_id = 1047
 form_id = &"unown_y"
 display_name = "Unown Y"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_24"]
@@ -203,6 +258,8 @@ species_id = 1048
 form_id = &"unown_z"
 display_name = "Unown Z"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_25"]
@@ -211,6 +268,8 @@ species_id = 1049
 form_id = &"unown_exclamation"
 display_name = "Unown Exclamation"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_26"]
@@ -219,6 +278,8 @@ species_id = 1050
 form_id = &"unown_question"
 display_name = "Unown Question"
 base_species_id = 201
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -247,6 +308,12 @@ description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma par
 height = 5
 weight = 50
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_rmot4")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3"), SubResource("Resource_form_4"), SubResource("Resource_form_5"), SubResource("Resource_form_6"), SubResource("Resource_form_7"), SubResource("Resource_form_8"), SubResource("Resource_form_9"), SubResource("Resource_form_10"), SubResource("Resource_form_11"), SubResource("Resource_form_12"), SubResource("Resource_form_13"), SubResource("Resource_form_14"), SubResource("Resource_form_15"), SubResource("Resource_form_16"), SubResource("Resource_form_17"), SubResource("Resource_form_18"), SubResource("Resource_form_19"), SubResource("Resource_form_20"), SubResource("Resource_form_21"), SubResource("Resource_form_22"), SubResource("Resource_form_23"), SubResource("Resource_form_24"), SubResource("Resource_form_25"), SubResource("Resource_form_26")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0")])
 teachable_moves = Array[int]([237])
@@ -254,4 +321,7 @@ ability_1 = 26
 egg_group_1 = 15
 egg_cycles = 40
 hatch_species = 201
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 7
+cry = ExtResource("gfx106")

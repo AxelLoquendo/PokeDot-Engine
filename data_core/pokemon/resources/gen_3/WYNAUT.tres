@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_uh4ro"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://x0x8eqguyna5" path="res://graphics/pokemon/front/WYNAUT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://biatd70t5i2fu" path="res://graphics/pokemon/front_shiny/WYNAUT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cg264v5vougm0" path="res://graphics/pokemon/back/WYNAUT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cxhme6ehckudk" path="res://graphics/pokemon/back_shiny/WYNAUT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dniyofw4klm62" path="res://graphics/pokemon/icons/WYNAUT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dcx3qghsumgu2" path="res://graphics/pokemon/follower/WYNAUT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b8nitwi31wik1" path="res://sfx/se/cries/WYNAUT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -70,6 +77,12 @@ description = "Suelen ir en grupo y a la hora de dormir se resguardan en una cue
 height = 6
 weight = 140
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7")])
 teachable_moves = Array[int]([133, 204, 219, 227])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -78,4 +91,7 @@ hidden_ability = 140
 egg_group_1 = 15
 egg_cycles = 20
 hatch_species = 360
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

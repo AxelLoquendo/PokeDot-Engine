@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c7ow1rx0hf5uw" path="res://graphics/pokemon/front/KINGAMBIT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://pfc30y226rga" path="res://graphics/pokemon/front_shiny/KINGAMBIT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://0r1fr5brirju" path="res://graphics/pokemon/back/KINGAMBIT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://vh1es2f7ssq5" path="res://graphics/pokemon/back_shiny/KINGAMBIT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dhj5txu4iagqg" path="res://graphics/pokemon/icons/KINGAMBIT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cxl4ffos1xv0t" path="res://graphics/pokemon/follower/KINGAMBIT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://7vn1gtqch7n3" path="res://sfx/se/cries/KINGAMBIT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -106,6 +113,12 @@ description = "Only a Bisharp that stands above all others in its vast army can 
 height = 20
 weight = 1200
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 36, 63, 67, 86, 91, 156, 164, 168, 179, 180, 182, 184, 201, 203, 206, 214, 232, 240, 263, 269, 280, 317, 319, 332, 334, 374, 398, 399, 403, 404, 411, 416, 421, 428, 430, 442, 444, 446, 447, 490, 492, 555, 638, 724, 736, 779])
 ability_1 = 128
@@ -115,3 +128,4 @@ egg_group_1 = 8
 egg_cycles = 20
 hatch_species = 1375
 gender_ratio = 3
+cry = ExtResource("gfx106")

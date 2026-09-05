@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_4gjdk"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://5v8b28jvykra" path="res://graphics/pokemon/front/GROTLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cargj1s3au2wp" path="res://graphics/pokemon/front_shiny/GROTLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://hf7j5qdhgdri" path="res://graphics/pokemon/back/GROTLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://n3rtq0jijqc" path="res://graphics/pokemon/back_shiny/GROTLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cpt5q382hlx0v" path="res://graphics/pokemon/icons/GROTLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cnh0sc8jdjt0b" path="res://graphics/pokemon/follower/GROTLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bhhpejvo0qs12" path="res://sfx/se/cries/GROTLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -97,6 +104,12 @@ description = "Vive en los bosques cerca del agua. Por el día, sale a que les d
 height = 11
 weight = 970
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 46, 70, 76, 92, 104, 113, 115, 133, 148, 156, 164, 173, 174, 182, 189, 202, 203, 207, 213, 214, 216, 218, 219, 231, 235, 237, 241, 242, 249, 263, 267, 276, 290, 328, 331, 341, 345, 363, 388, 402, 412, 414, 428, 431, 437, 442, 445, 446, 447, 479, 484, 496, 520, 523, 526, 580, 590, 731, 779, 811])
 egg_moves = Array[int]([37, 38, 74, 254, 255, 256, 276, 321, 388, 469, 504])
@@ -107,4 +120,7 @@ egg_group_1 = 1
 egg_group_2 = 7
 egg_cycles = 20
 hatch_species = 388
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 5
+cry = ExtResource("gfx106")

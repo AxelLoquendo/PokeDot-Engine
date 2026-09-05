@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_soa73"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cjsn0hr1ygqt1" path="res://graphics/pokemon/front/MELOETTA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://6b25puv8hoac" path="res://graphics/pokemon/front_shiny/MELOETTA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c8semmspfotaa" path="res://graphics/pokemon/back/MELOETTA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bfsroexvmncwy" path="res://graphics/pokemon/back_shiny/MELOETTA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dapwy7vj1317s" path="res://graphics/pokemon/icons/MELOETTA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://80egwr0uca4q" path="res://graphics/pokemon/follower/MELOETTA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b1f0kenjinmpw" path="res://sfx/se/cries/MELOETTA.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://bix8xk4hkigt3" path="res://graphics/pokemon/front/MELOETTA_PIROUETTE.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c5b8hyiwtli0q" path="res://graphics/pokemon/front_shiny/MELOETTA_PIROUETTE.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dugnybgk4572m" path="res://graphics/pokemon/back/MELOETTA_PIROUETTE.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dxwu5p4oj5oy1" path="res://graphics/pokemon/back_shiny/MELOETTA_PIROUETTE.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_soa73")
@@ -21,6 +32,16 @@ base_defense = 90
 base_speed = 128
 base_sp_attack = 77
 base_sp_defense = 77
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -124,6 +145,12 @@ description = "Las melodías que canta Meloetta tienen el poder de hacer sentir 
 height = 6
 weight = 65
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_soa73")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([7, 8, 9, 14, 60, 63, 67, 70, 85, 86, 87, 92, 94, 104, 113, 118, 129, 138, 148, 156, 164, 173, 179, 182, 203, 204, 207, 214, 215, 216, 218, 219, 226, 237, 240, 241, 244, 247, 249, 253, 263, 264, 270, 271, 272, 277, 278, 280, 282, 285, 289, 290, 304, 313, 324, 343, 347, 351, 356, 369, 370, 371, 373, 374, 387, 409, 411, 412, 416, 421, 428, 433, 444, 447, 451, 468, 472, 473, 477, 478, 490, 496, 497, 502, 512, 514, 526, 530, 547, 574, 583, 590, 605, 612, 636, 739, 741, 779, 842])
@@ -132,4 +159,7 @@ is_mythical = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 648
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 7
+cry = ExtResource("gfx106")

@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ujui2"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bm2w022jn5fvh" path="res://graphics/pokemon/front/PERSIAN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://hyjqirjts51" path="res://graphics/pokemon/front_shiny/PERSIAN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://w02ggs367sxv" path="res://graphics/pokemon/back/PERSIAN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dxi0em1uc4s6l" path="res://graphics/pokemon/back_shiny/PERSIAN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dv6dqimxqqwc1" path="res://graphics/pokemon/icons/PERSIAN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://btg7lheaep3p" path="res://graphics/pokemon/follower/PERSIAN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dyq84dlfmwkv0" path="res://sfx/se/cries/PERSIAN.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://djwho8xjhnbbk" path="res://graphics/pokemon/front/PERSIAN_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c0xi4wbpevma3" path="res://graphics/pokemon/front_shiny/PERSIAN_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://11bvav5jxdpl" path="res://graphics/pokemon/back/PERSIAN_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c7hkexvrlxehi" path="res://graphics/pokemon/back_shiny/PERSIAN_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://o8jg0xwp28am" path="res://graphics/pokemon/icons/PERSIAN_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://4u8klx23pf2k" path="res://graphics/pokemon/follower/PERSIAN_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ujui2")
@@ -11,6 +24,15 @@ species_id = 966
 form_id = &"persian_alola"
 display_name = "Persian Alola"
 base_species_id = 53
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -127,6 +149,12 @@ description = "Aunque es muy admirado por el pelo, es difícil de entrenar como 
 height = 10
 weight = 320
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_ujui2")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([6, 15, 29, 34, 36, 38, 46, 55, 61, 63, 85, 86, 87, 91, 92, 97, 99, 102, 103, 104, 111, 117, 129, 130, 133, 138, 148, 156, 164, 168, 171, 173, 174, 180, 182, 189, 192, 196, 197, 203, 204, 206, 207, 213, 214, 216, 218, 220, 231, 232, 237, 240, 241, 244, 247, 253, 259, 263, 269, 270, 282, 283, 289, 290, 304, 313, 332, 343, 351, 352, 363, 369, 371, 372, 373, 387, 399, 402, 408, 416, 417, 421, 441, 445, 468, 492, 496, 497, 514, 526, 555, 583, 590, 638, 734, 736, 779, 811, 812])
@@ -136,4 +164,7 @@ hidden_ability = 127
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 53
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

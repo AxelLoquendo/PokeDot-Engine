@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cgcf5x743bkks" path="res://graphics/pokemon/front/PLUSLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bauqj11ft1j1f" path="res://graphics/pokemon/front_shiny/PLUSLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://uk0s0sp5crt" path="res://graphics/pokemon/back/PLUSLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://7yaof6ux4ehy" path="res://graphics/pokemon/back_shiny/PLUSLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cmvint6nd7yhs" path="res://graphics/pokemon/icons/PLUSLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ban71sfk4gey3" path="res://graphics/pokemon/follower/PLUSLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bxpuevkab6tii" path="res://sfx/se/cries/PLUSLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -136,6 +143,12 @@ description = "Anima a sus compañeros con pompones de chispas. Roba energía de
 height = 4
 weight = 42
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22")])
 teachable_moves = Array[int]([5, 9, 25, 29, 34, 38, 68, 69, 85, 86, 87, 92, 97, 102, 104, 111, 113, 118, 129, 148, 156, 162, 164, 173, 182, 189, 203, 204, 205, 207, 213, 214, 216, 218, 223, 226, 227, 231, 237, 240, 253, 263, 268, 270, 283, 285, 290, 313, 324, 343, 351, 363, 374, 387, 393, 417, 445, 447, 451, 486, 496, 497, 521, 527, 528, 583, 590, 598, 604, 779, 811, 842])
 egg_moves = Array[int]([47, 164, 186, 204, 273, 313, 381, 435, 609, 669])
@@ -144,4 +157,7 @@ hidden_ability = 31
 egg_group_1 = 6
 egg_cycles = 20
 hatch_species = 311
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

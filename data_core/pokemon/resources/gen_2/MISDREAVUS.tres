@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_hlojl"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://du8o4rewdilwc" path="res://graphics/pokemon/front/MISDREAVUS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bhkmdgou58usp" path="res://graphics/pokemon/front_shiny/MISDREAVUS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bqaj2pkvdr0hs" path="res://graphics/pokemon/back/MISDREAVUS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://7f3r6elpc24e" path="res://graphics/pokemon/back_shiny/MISDREAVUS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d1lh30u4s0a6b" path="res://graphics/pokemon/icons/MISDREAVUS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://1ebwiia8k7at" path="res://graphics/pokemon/follower/MISDREAVUS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dr8gfdu1jjauw" path="res://sfx/se/cries/MISDREAVUS.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -112,6 +119,12 @@ description = "Se deleita con el miedo, que absorbe con sus esferas rojas. Por e
 height = 7
 weight = 10
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([29, 38, 60, 63, 85, 86, 87, 92, 94, 101, 102, 104, 109, 111, 129, 138, 148, 156, 164, 168, 171, 173, 174, 180, 182, 184, 192, 196, 203, 204, 207, 213, 214, 215, 216, 218, 220, 237, 240, 241, 244, 247, 248, 253, 259, 261, 263, 269, 270, 271, 277, 285, 286, 289, 290, 304, 313, 332, 345, 347, 351, 363, 371, 373, 389, 399, 408, 412, 416, 417, 433, 445, 447, 451, 466, 472, 473, 477, 478, 492, 496, 497, 500, 502, 506, 566, 577, 590, 605, 735, 737, 779, 809, 845])
 egg_moves = Array[int]([103, 174, 180, 194, 244, 262, 285, 286, 382, 389, 417, 425, 466, 472])
@@ -120,4 +133,7 @@ ability_1 = 26
 egg_group_1 = 11
 egg_cycles = 25
 hatch_species = 200
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

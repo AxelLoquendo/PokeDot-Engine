@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://de132kxfn7v67" path="res://graphics/pokemon/front/INTELEON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c1elrmbq17vaj" path="res://graphics/pokemon/front_shiny/INTELEON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cbu02m2lxbyex" path="res://graphics/pokemon/back/INTELEON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cth22mon21j0a" path="res://graphics/pokemon/back_shiny/INTELEON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cewurpjsbs18x" path="res://graphics/pokemon/icons/INTELEON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dopproqxlp8wb" path="res://graphics/pokemon/follower/INTELEON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://xxqg1o2d0dnp" path="res://sfx/se/cries/INTELEON.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://b6kh8nxiac7im" path="res://graphics/pokemon/front/INTELEON_GMAX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://m10popx5lvot" path="res://graphics/pokemon/front_shiny/INTELEON_GMAX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://buqjwovwqnpmc" path="res://graphics/pokemon/back/INTELEON_GMAX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bd0j4kucebmau" path="res://graphics/pokemon/back_shiny/INTELEON_GMAX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dn1jprvodru61" path="res://graphics/pokemon/icons/INTELEON_gmax.png" id="gfx111"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_g56pn")
@@ -11,6 +23,15 @@ species_id = 1505
 form_id = &"inteleon_gmax"
 display_name = "Inteleon Gmax"
 base_species_id = 818
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 4)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -99,6 +120,12 @@ description = "Esconde algunos trucos bajo la manga: puede disparar agua por los
 height = 19
 weight = 452
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_g56pn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 36, 56, 57, 58, 59, 63, 97, 113, 114, 115, 116, 118, 127, 129, 156, 164, 173, 182, 196, 203, 213, 214, 219, 226, 240, 244, 247, 250, 263, 269, 291, 308, 311, 314, 330, 333, 340, 341, 352, 369, 374, 399, 403, 410, 416, 479, 496, 503, 512, 518, 526, 664, 712, 727, 734, 740, 779, 809, 812])
@@ -109,4 +136,7 @@ egg_group_1 = 2
 egg_group_2 = 5
 egg_cycles = 20
 hatch_species = 818
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 4)
 gender_ratio = 5
+cry = ExtResource("gfx106")

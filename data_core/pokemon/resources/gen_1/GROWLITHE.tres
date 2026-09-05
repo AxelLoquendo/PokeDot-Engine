@@ -6,6 +6,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_5pm2r"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c4dtoexqtg7xv" path="res://graphics/pokemon/front/GROWLITHE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://djbjkyh83v3lm" path="res://graphics/pokemon/front_shiny/GROWLITHE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://crxipgf34fmrr" path="res://graphics/pokemon/back/GROWLITHE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bjvd7xf8c84co" path="res://graphics/pokemon/back_shiny/GROWLITHE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://41fjppjlmvrx" path="res://graphics/pokemon/icons/GROWLITHE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bjoaflc4w7yd8" path="res://graphics/pokemon/follower/GROWLITHE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bn1a77bvi22av" path="res://sfx/se/cries/GROWLITHE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cjce20x4u7mw6" path="res://graphics/pokemon/front/GROWLITHE_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c3w85juahdrlw" path="res://graphics/pokemon/front_shiny/GROWLITHE_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dplpys84oj0cr" path="res://graphics/pokemon/back/GROWLITHE_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://duvajdbtsaer" path="res://graphics/pokemon/back_shiny/GROWLITHE_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://chxdjpgn46c06" path="res://graphics/pokemon/icons/GROWLITHE_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bwrw86jqigm22" path="res://graphics/pokemon/follower/GROWLITHE_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -24,6 +37,16 @@ species_id = 993
 form_id = &"growlithe_hisui"
 display_name = "Growlithe Hisui"
 base_species_id = 58
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -146,6 +169,12 @@ description = "Es muy agradable y leal. Para ahuyentar al enemigo, se pone a lad
 height = 7
 weight = 190
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_5pm2r")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 53, 70, 82, 83, 91, 92, 97, 99, 102, 104, 115, 117, 126, 129, 130, 156, 164, 168, 173, 174, 179, 182, 184, 189, 200, 203, 204, 207, 213, 214, 216, 218, 219, 225, 231, 237, 241, 242, 249, 257, 261, 263, 270, 290, 315, 332, 343, 363, 370, 394, 422, 424, 445, 488, 496, 510, 514, 528, 555, 583, 590, 660, 779, 843])
@@ -157,4 +186,7 @@ hidden_ability = 154
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 58
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 4
+cry = ExtResource("gfx106")

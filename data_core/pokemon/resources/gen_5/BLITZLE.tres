@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_1e2sb"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://btf77rnc3jxgp" path="res://graphics/pokemon/front/BLITZLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://deevm713louy8" path="res://graphics/pokemon/front_shiny/BLITZLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bi7y6u5os654n" path="res://graphics/pokemon/back/BLITZLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bnlicl3ex5m65" path="res://graphics/pokemon/back_shiny/BLITZLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b0tjvxwqew7l1" path="res://graphics/pokemon/icons/BLITZLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://db2s6jelgstjt" path="res://graphics/pokemon/follower/BLITZLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://pur6y78i0gv6" path="res://sfx/se/cries/BLITZLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -102,6 +109,12 @@ description = "Aparece cuando nubes envueltas en rayos encapotan el cielo. Atrap
 height = 8
 weight = 298
 body_color = 4
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([34, 36, 38, 67, 85, 86, 87, 92, 97, 104, 113, 129, 148, 156, 164, 173, 182, 203, 207, 213, 214, 216, 218, 226, 237, 240, 241, 253, 263, 268, 270, 283, 289, 290, 324, 340, 351, 393, 451, 486, 488, 496, 521, 527, 528, 590, 598, 604, 647, 779, 811, 844])
 egg_moves = Array[int]([24, 28, 36, 38, 99, 103, 203, 289, 351, 364, 382])
@@ -112,4 +125,7 @@ hidden_ability = 157
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 522
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

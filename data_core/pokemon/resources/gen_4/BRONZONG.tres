@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_vxnel"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://xqyfv6wgsjb" path="res://graphics/pokemon/front/BRONZONG.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d16btpim38q6j" path="res://graphics/pokemon/front_shiny/BRONZONG.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cw3lqqfwvo6gf" path="res://graphics/pokemon/back/BRONZONG.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://7f8v3dcw2ksw" path="res://graphics/pokemon/back_shiny/BRONZONG.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bk5fif7s2hced" path="res://graphics/pokemon/icons/BRONZONG.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b4ak36gd7uw4l" path="res://graphics/pokemon/follower/BRONZONG.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c7dn1yr5lt0ct" path="res://sfx/se/cries/BRONZONG.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -121,6 +128,12 @@ description = "Desde antaño se adora a este Pokémon para que propicie lluvias 
 height = 13
 weight = 1870
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([34, 36, 60, 63, 70, 76, 89, 92, 94, 101, 104, 109, 113, 115, 138, 148, 153, 156, 157, 164, 173, 182, 201, 203, 205, 207, 214, 216, 218, 219, 237, 240, 241, 244, 246, 247, 248, 249, 263, 270, 271, 278, 285, 286, 290, 311, 317, 319, 324, 334, 335, 347, 350, 356, 360, 363, 371, 384, 385, 397, 408, 416, 428, 430, 433, 442, 446, 447, 451, 472, 473, 477, 484, 496, 500, 502, 506, 523, 590, 641, 646, 661, 704, 724, 725, 726, 728, 779, 789, 840, 845])
 ability_1 = 26
@@ -129,4 +142,7 @@ hidden_ability = 134
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 437
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 7
+cry = ExtResource("gfx106")

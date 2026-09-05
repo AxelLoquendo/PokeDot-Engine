@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bmraguyns2p0j" path="res://graphics/pokemon/front/TERRAKION.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cghsi7m6ixwb6" path="res://graphics/pokemon/front_shiny/TERRAKION.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bc7pcch4ao7yg" path="res://graphics/pokemon/back/TERRAKION.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://rjl73e1o2tcl" path="res://graphics/pokemon/back_shiny/TERRAKION.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dtfkeu6tihbpp" path="res://graphics/pokemon/icons/TERRAKION.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bveurgeh6bgm0" path="res://graphics/pokemon/follower/TERRAKION.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://njwxsoaupvld" path="res://sfx/se/cries/TERRAKION.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -94,6 +101,12 @@ description = "Su potencia al embestir es capaz de derribar las murallas de un c
 height = 19
 weight = 2600
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 46, 63, 70, 89, 92, 104, 115, 129, 156, 157, 164, 173, 179, 182, 184, 201, 203, 206, 207, 214, 216, 218, 219, 224, 237, 244, 249, 263, 269, 270, 276, 279, 280, 290, 317, 332, 335, 347, 350, 370, 396, 397, 398, 403, 404, 411, 414, 416, 428, 442, 444, 446, 479, 496, 514, 523, 526, 590, 630, 636, 647, 661, 739, 779, 846])
 ability_1 = 154
@@ -101,4 +114,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 80
 hatch_species = 639
+front_sprite_offset = Vector2(0, 5)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 7
+cry = ExtResource("gfx106")

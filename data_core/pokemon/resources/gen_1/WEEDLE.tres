@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_hh6ys"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bq7ne5ty2alh6" path="res://graphics/pokemon/front/WEEDLE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c1ho3xgpacani" path="res://graphics/pokemon/front_shiny/WEEDLE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ct7l01mpujajd" path="res://graphics/pokemon/back/WEEDLE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cbcfal4seiocm" path="res://graphics/pokemon/back_shiny/WEEDLE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ofljtx16cuoy" path="res://graphics/pokemon/icons/WEEDLE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://buj6050m03as4" path="res://graphics/pokemon/follower/WEEDLE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://clw26e80ksyfi" path="res://sfx/se/cries/WEEDLE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -52,6 +59,12 @@ description = "Suele habitar bosques y praderas. Tiene un afilado y venenoso agu
 height = 3
 weight = 32
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2")])
 teachable_moves = Array[int]([81, 450, 527])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -60,4 +73,7 @@ hidden_ability = 50
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 13
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

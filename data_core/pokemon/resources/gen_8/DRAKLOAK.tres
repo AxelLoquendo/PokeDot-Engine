@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_4lsxf"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://co35mxvhepvn1" path="res://graphics/pokemon/front/DRAKLOAK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://do211xtye711h" path="res://graphics/pokemon/front_shiny/DRAKLOAK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://1qu7ncv0f72r" path="res://graphics/pokemon/back/DRAKLOAK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://denqumisqfkgl" path="res://graphics/pokemon/back_shiny/DRAKLOAK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://crw5xkwpckj0c" path="res://graphics/pokemon/icons/DRAKLOAK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b58am7mgblsrr" path="res://graphics/pokemon/follower/DRAKLOAK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c1ugim83dam5p" path="res://sfx/se/cries/DRAKLOAK.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -120,6 +127,12 @@ description = "Vuela a una velocidad de 200 km/h. Lucha junto a un Dreepy, al qu
 height = 14
 weight = 110
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([36, 38, 53, 56, 57, 85, 86, 87, 97, 101, 113, 115, 126, 129, 156, 164, 168, 173, 174, 182, 200, 203, 211, 213, 214, 226, 241, 247, 251, 261, 263, 270, 291, 349, 362, 369, 372, 406, 434, 496, 502, 503, 506, 512, 525, 566, 660, 712, 779, 810, 841])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -130,4 +143,7 @@ egg_group_1 = 11
 egg_group_2 = 14
 egg_cycles = 40
 hatch_species = 886
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

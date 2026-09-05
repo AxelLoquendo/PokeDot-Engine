@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_ncwnk"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://2hfoxbioue6h" path="res://graphics/pokemon/front/KRABBY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bqld54w11rys2" path="res://graphics/pokemon/front_shiny/KRABBY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dumxgnebohf76" path="res://graphics/pokemon/back/KRABBY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://doqlwav4uradj" path="res://graphics/pokemon/back_shiny/KRABBY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dfwhew7vlrxvw" path="res://graphics/pokemon/icons/KRABBY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://byamd4xxgntkg" path="res://graphics/pokemon/follower/KRABBY.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://boerb66u8c8my" path="res://sfx/se/cries/KRABBY.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -118,6 +125,12 @@ category_name = "Cangrejo"
 description = "Ante el peligro, se camufla con las burbujas que desprende su boca, para parecer más grande."
 height = 4
 weight = 65
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 55, 57, 58, 59, 61, 70, 91, 92, 97, 99, 102, 104, 117, 133, 156, 157, 164, 168, 173, 174, 182, 189, 196, 203, 206, 207, 210, 213, 214, 216, 218, 237, 240, 246, 249, 250, 258, 263, 276, 280, 282, 290, 291, 317, 334, 341, 352, 362, 363, 374, 404, 445, 468, 496, 502, 503, 534, 590, 664])
 egg_moves = Array[int]([14, 21, 91, 97, 114, 117, 133, 163, 175, 203, 246, 282, 321, 359, 400, 498, 502])
@@ -128,4 +141,7 @@ hidden_ability = 125
 egg_group_1 = 9
 egg_cycles = 20
 hatch_species = 98
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 15)
 gender_ratio = 3
+cry = ExtResource("gfx106")

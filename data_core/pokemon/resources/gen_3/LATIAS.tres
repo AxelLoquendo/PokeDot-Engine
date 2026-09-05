@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cerrrdm34kf42" path="res://graphics/pokemon/front/LATIAS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c2bqc10myvumn" path="res://graphics/pokemon/front_shiny/LATIAS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dpuqgyoe66ysb" path="res://graphics/pokemon/back/LATIAS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dj6dg2bkobt0f" path="res://graphics/pokemon/back_shiny/LATIAS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ds3k65b1lv538" path="res://graphics/pokemon/icons/LATIAS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c6p0u24bwjp4j" path="res://graphics/pokemon/follower/LATIAS.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bt636y3apiva0" path="res://sfx/se/cries/LATIAS.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://chui05u7swjqf" path="res://graphics/pokemon/front/MEGA_LATIAS.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://iq8aulga20xp" path="res://graphics/pokemon/front_shiny/MEGA_LATIAS.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c6h5hyj6qcte" path="res://graphics/pokemon/back/MEGA_LATIAS.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dh6cm2i4f75cb" path="res://graphics/pokemon/back_shiny/MEGA_LATIAS.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://csbwdubtg31ml" path="res://graphics/pokemon/icons/LATIAS_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://jhbl3kydu5lv" path="res://sfx/se/cries/LATIAS_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_d3abc")
@@ -11,6 +24,15 @@ species_id = 944
 form_id = &"latias_mega"
 display_name = "Latias Mega"
 base_species_id = 380
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+back_sprite_offset = Vector2(0, 1)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -136,6 +158,12 @@ category_name = "Eón"
 description = "Se comunica por telepatía. Su plumaje refleja la luz, lo que le permite hacerse invisible."
 height = 14
 weight = 400
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_d3abc")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([15, 19, 34, 36, 38, 46, 57, 58, 63, 76, 85, 86, 87, 89, 92, 94, 97, 102, 104, 113, 115, 127, 129, 138, 148, 156, 161, 164, 173, 182, 189, 196, 200, 201, 203, 204, 207, 210, 211, 213, 214, 216, 218, 219, 226, 237, 239, 240, 241, 244, 247, 248, 250, 263, 270, 271, 272, 277, 290, 291, 311, 314, 332, 337, 343, 347, 349, 351, 352, 355, 363, 366, 387, 389, 396, 403, 406, 412, 416, 421, 427, 428, 432, 434, 445, 447, 451, 468, 473, 477, 478, 496, 500, 502, 514, 523, 574, 577, 590, 595, 636, 664, 712, 727, 742, 779, 812, 841, 842])
@@ -144,3 +172,5 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 380
+front_sprite_offset = Vector2(0, 8)
+cry = ExtResource("gfx106")

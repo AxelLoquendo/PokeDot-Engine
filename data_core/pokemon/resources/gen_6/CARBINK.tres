@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://chtpaav22w0ak" path="res://graphics/pokemon/front/CARBINK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://c13xmty5riwvm" path="res://graphics/pokemon/front_shiny/CARBINK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://gxmfg5jsu4h7" path="res://graphics/pokemon/back/CARBINK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bgdalix0oql2i" path="res://graphics/pokemon/back_shiny/CARBINK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dktka777jdeta" path="res://graphics/pokemon/icons/CARBINK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d3f25vd3pj6t4" path="res://graphics/pokemon/follower/CARBINK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bdm4xmfu2a0ui" path="res://sfx/se/cries/CARBINK.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -117,6 +124,12 @@ description = "Nace en las profundidades subterráneas, a altas temperaturas y a
 height = 3
 weight = 57
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([34, 36, 38, 63, 92, 94, 104, 113, 115, 148, 153, 156, 157, 164, 173, 182, 191, 201, 203, 204, 207, 214, 216, 218, 219, 237, 240, 241, 244, 258, 263, 267, 277, 283, 285, 290, 317, 328, 334, 343, 347, 350, 356, 360, 385, 393, 397, 408, 414, 416, 430, 433, 442, 444, 446, 472, 477, 479, 484, 495, 496, 502, 581, 590, 605, 661, 704, 728, 730, 733, 779])
 ability_1 = 29
@@ -125,4 +138,7 @@ egg_group_1 = 6
 egg_group_2 = 10
 egg_cycles = 25
 hatch_species = 703
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 7
+cry = ExtResource("gfx106")

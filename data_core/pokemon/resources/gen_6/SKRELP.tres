@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_82hyn"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b5v82jxe34mfj" path="res://graphics/pokemon/front/SKRELP.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b0fhu55to83ma" path="res://graphics/pokemon/front_shiny/SKRELP.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b4sbn55c6yyio" path="res://graphics/pokemon/back/SKRELP.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://tqcjqqc47f35" path="res://graphics/pokemon/back_shiny/SKRELP.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dcf8jop31isxt" path="res://graphics/pokemon/icons/SKRELP.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://o3x3hi5854vk" path="res://graphics/pokemon/follower/SKRELP.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://da1dplfllyax" path="res://sfx/se/cries/SKRELP.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -117,6 +124,12 @@ description = "Adopta la apariencia de algas podridas y lanza un líquido veneno
 height = 5
 weight = 73
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([36, 56, 57, 85, 92, 104, 114, 127, 156, 164, 168, 173, 180, 182, 184, 188, 189, 196, 200, 203, 207, 213, 214, 216, 218, 231, 237, 240, 247, 250, 258, 263, 290, 291, 330, 340, 341, 342, 351, 352, 390, 401, 406, 441, 474, 482, 491, 496, 503, 525, 583, 590, 599, 664, 727, 740, 779, 809, 812])
 egg_moves = Array[int]([114, 151, 239, 390, 525, 583, 599])
@@ -128,4 +141,7 @@ egg_group_1 = 2
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 690
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 3
+cry = ExtResource("gfx106")

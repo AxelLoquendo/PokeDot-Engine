@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_87x55"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c2s0f3vjcinkb" path="res://graphics/pokemon/front/SERVINE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://4afvww3j670" path="res://graphics/pokemon/front_shiny/SERVINE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://gs1x8w31h37i" path="res://graphics/pokemon/back/SERVINE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cjkdb78t5hhoj" path="res://graphics/pokemon/back_shiny/SERVINE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://djnat1udga3hm" path="res://graphics/pokemon/icons/SERVINE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dnhn72dagy8ry" path="res://graphics/pokemon/follower/SERVINE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c8duo687mnphb" path="res://sfx/se/cries/SERVINE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -115,6 +122,12 @@ description = "Parece que se desliza al correr. Engaña a sus rivales con su vel
 height = 8
 weight = 160
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 15, 20, 36, 38, 76, 92, 104, 113, 115, 129, 148, 156, 164, 173, 182, 202, 203, 207, 213, 214, 216, 218, 219, 231, 235, 237, 241, 259, 263, 267, 269, 270, 282, 289, 290, 331, 332, 345, 347, 380, 388, 401, 402, 412, 432, 437, 447, 496, 520, 526, 572, 580, 590, 731, 779, 811])
 egg_moves = Array[int]([137, 212, 230, 231, 235, 239, 243])
@@ -125,4 +138,7 @@ egg_group_1 = 5
 egg_group_2 = 7
 egg_cycles = 20
 hatch_species = 496
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 5
+cry = ExtResource("gfx106")

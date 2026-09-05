@@ -4,6 +4,25 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_qtc3u"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b1fii37brpfx7" path="res://graphics/pokemon/front/DARMANITAN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dtv7a8b66wpfc" path="res://graphics/pokemon/front_shiny/DARMANITAN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dciybovuqlmvn" path="res://graphics/pokemon/back/DARMANITAN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://v5m2avw8et8" path="res://graphics/pokemon/back_shiny/DARMANITAN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dd32i5jhbmgfq" path="res://graphics/pokemon/icons/DARMANITAN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b337x78sf0ulf" path="res://graphics/pokemon/follower/DARMANITAN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://87sjdaiaamkx" path="res://sfx/se/cries/DARMANITAN.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://76cvb5qvkpvo" path="res://graphics/pokemon/front/DARMANITAN_GALAR_STANDARD.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://6hhoku40075p" path="res://graphics/pokemon/front_shiny/DARMANITAN_GALAR_STANDARD.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b42b0473jii5y" path="res://graphics/pokemon/back/DARMANITAN_GALAR_STANDARD.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c68vsidmtvyqg" path="res://graphics/pokemon/back_shiny/DARMANITAN_GALAR_STANDARD.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dvy6ak725tsgo" path="res://graphics/pokemon/front/DARMANITAN_ZEN.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://b88nafbjitckn" path="res://graphics/pokemon/front_shiny/DARMANITAN_ZEN.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://b6lx1jv1vbj7h" path="res://graphics/pokemon/back/DARMANITAN_ZEN.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://di6e2ierb8leg" path="res://graphics/pokemon/back_shiny/DARMANITAN_ZEN.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://cmwxwe3yiq21o" path="res://graphics/pokemon/front/DARMANITAN_GALAR_ZEN.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://dq1toogyrkdq6" path="res://graphics/pokemon/front_shiny/DARMANITAN_GALAR_ZEN.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://bi1oeku8ww16" path="res://graphics/pokemon/back/DARMANITAN_GALAR_ZEN.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://c8dv8m3r8q2ko" path="res://graphics/pokemon/back_shiny/DARMANITAN_GALAR_ZEN.png" id="gfx118"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_qtc3u")
@@ -11,6 +30,15 @@ species_id = 990
 form_id = &"darmanitan_galar_standard"
 display_name = "Darmanitan Galar Standard"
 base_species_id = 555
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 2)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +47,16 @@ species_id = 1092
 form_id = &"darmanitan_zen"
 display_name = "Darmanitan Zen"
 base_species_id = 555
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 14)
+back_sprite_offset = Vector2(0, 11)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +65,16 @@ species_id = 1093
 form_id = &"darmanitan_galar_zen"
 display_name = "Darmanitan Galar Zen"
 base_species_id = 555
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 1)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -145,6 +193,12 @@ category_name = "Candente"
 description = "Cuando resulta gravemente herido, se endurece como una piedra y medita para agudizar la mente."
 height = 13
 weight = 929
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_qtc3u")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([5, 7, 25, 34, 46, 53, 63, 70, 76, 83, 89, 91, 92, 94, 104, 116, 126, 156, 157, 164, 168, 173, 179, 182, 203, 207, 213, 214, 216, 218, 227, 237, 241, 248, 249, 253, 257, 259, 261, 263, 264, 269, 271, 276, 280, 283, 289, 290, 315, 317, 334, 339, 360, 369, 371, 374, 384, 385, 394, 411, 416, 424, 428, 442, 444, 447, 479, 488, 496, 510, 523, 526, 590, 595, 612, 636, 704, 725, 735, 736])
@@ -153,4 +207,7 @@ hidden_ability = 161
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 555
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

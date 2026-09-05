@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_gfshh"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://y7sgwuq2kfuo" path="res://graphics/pokemon/front/WOOLOO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bosd6kobe35aw" path="res://graphics/pokemon/front_shiny/WOOLOO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ciop4na8xb67w" path="res://graphics/pokemon/back/WOOLOO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bejd75i3237gr" path="res://graphics/pokemon/back_shiny/WOOLOO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://vnfsp5werpn0" path="res://graphics/pokemon/icons/WOOLOO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://jbyomt5mkm70" path="res://graphics/pokemon/follower/WOOLOO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://n7yexfs5owca" path="res://sfx/se/cries/WOOLOO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -96,6 +103,12 @@ description = "Su lana rizada es tan acolchada que no se hace daño ni aunque se
 height = 6
 weight = 60
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11")])
 teachable_moves = Array[int]([86, 97, 156, 164, 173, 179, 182, 203, 213, 214, 263, 371, 385, 486, 496, 528, 731])
 egg_moves = Array[int]([23, 68, 207])
@@ -106,4 +119,7 @@ hidden_ability = 171
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 831
+front_sprite_offset = Vector2(0, 12)
+back_sprite_offset = Vector2(0, 18)
 gender_ratio = 3
+cry = ExtResource("gfx106")

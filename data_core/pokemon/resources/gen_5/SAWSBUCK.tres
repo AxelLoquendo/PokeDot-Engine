@@ -4,6 +4,25 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c778x17ak3cgu" path="res://graphics/pokemon/front/SAWSBUCK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d045pfnag44bs" path="res://graphics/pokemon/front_shiny/SAWSBUCK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cywyus15yc1rn" path="res://graphics/pokemon/back/SAWSBUCK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cc6ff0mtprljo" path="res://graphics/pokemon/back_shiny/SAWSBUCK.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bulotkqahcrvy" path="res://graphics/pokemon/icons/SAWSBUCK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dx52k737ym4wq" path="res://graphics/pokemon/follower/SAWSBUCK.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dkkk4lw7p261y" path="res://sfx/se/cries/SAWSBUCK.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://d28vvvakdtisg" path="res://graphics/pokemon/front/SAWSBUCK_SUMMER.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cqhf2aivra8k5" path="res://graphics/pokemon/front_shiny/SAWSBUCK_SUMMER.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c25rxox2l7w5i" path="res://graphics/pokemon/back/SAWSBUCK_SUMMER.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://4hyluooc2nuk" path="res://graphics/pokemon/back_shiny/SAWSBUCK_SUMMER.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cwp1kx6ov3hwi" path="res://graphics/pokemon/front/SAWSBUCK_AUTUMN.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cu4qxvs42dbga" path="res://graphics/pokemon/front_shiny/SAWSBUCK_AUTUMN.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://dxukrd8d4u6q7" path="res://graphics/pokemon/back/SAWSBUCK_AUTUMN.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://dpy3adroqm13j" path="res://graphics/pokemon/back_shiny/SAWSBUCK_AUTUMN.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://da22uip2yhel1" path="res://graphics/pokemon/front/SAWSBUCK_WINTER.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://dvxg1w1pnpb1w" path="res://graphics/pokemon/front_shiny/SAWSBUCK_WINTER.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://b7fkxfn7q6l1f" path="res://graphics/pokemon/back/SAWSBUCK_WINTER.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://dbywfvtwcc7sn" path="res://graphics/pokemon/back_shiny/SAWSBUCK_WINTER.png" id="gfx118"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_6n8x8")
@@ -11,6 +30,13 @@ species_id = 1097
 form_id = &"sawsbuck_summer"
 display_name = "Sawsbuck Summer"
 base_species_id = 586
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 5)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +45,13 @@ species_id = 1098
 form_id = &"sawsbuck_autumn"
 display_name = "Sawsbuck Autumn"
 base_species_id = 586
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 5)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +60,13 @@ species_id = 1099
 form_id = &"sawsbuck_winter"
 display_name = "Sawsbuck Winter"
 base_species_id = 586
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+back_sprite_offset = Vector2(0, 5)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -140,6 +180,12 @@ description = "Cambia de morada dependiendo de las estaciones. Observando sus cu
 height = 19
 weight = 925
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_6n8x8")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([14, 15, 34, 36, 38, 63, 76, 86, 91, 92, 97, 104, 113, 148, 156, 164, 173, 174, 182, 202, 203, 204, 207, 213, 214, 216, 218, 219, 226, 235, 237, 240, 241, 247, 249, 263, 267, 270, 283, 290, 313, 331, 340, 345, 387, 388, 402, 412, 416, 428, 437, 447, 496, 497, 514, 523, 526, 528, 572, 580, 583, 590, 630, 638, 647, 661, 731, 779, 811])
@@ -150,3 +196,4 @@ egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 586
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -28,6 +28,16 @@ species_id = 1112
 form_id = &"greninja_bond"
 display_name = "Greninja Bond"
 base_species_id = 658
+front_sprite = ExtResource("17_47gx1")
+front_sprite_shiny = ExtResource("18_dtmq6")
+back_sprite = ExtResource("1_51668")
+back_sprite_shiny = ExtResource("2_eb7cm")
+icon_sprite = ExtResource("19_7hl43")
+overworld_scene = ExtResource("20_in5oy")
+cry = ExtResource("3_pymgi")
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 11)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -41,7 +51,9 @@ front_sprite_shiny = ExtResource("10_nfl1x")
 back_sprite = ExtResource("7_1vjnd")
 back_sprite_shiny = ExtResource("8_kp8mw")
 icon_sprite = ExtResource("11_fi1pl")
+overworld_scene = ExtResource("20_in5oy")
 cry = ExtResource("3_pymgi")
+back_sprite_offset = Vector2(0, 11)
 override_graphics = true
 tags = PackedStringArray()
 
@@ -56,7 +68,9 @@ front_sprite_shiny = ExtResource("15_7ggiw")
 back_sprite = ExtResource("12_yflow")
 back_sprite_shiny = ExtResource("13_4pw2e")
 icon_sprite = ExtResource("16_na1ns")
+overworld_scene = ExtResource("20_in5oy")
 cry = ExtResource("3_pymgi")
+back_sprite_offset = Vector2(0, 11)
 override_graphics = true
 tags = PackedStringArray()
 
@@ -193,5 +207,7 @@ hidden_ability = 168
 egg_group_1 = 2
 egg_cycles = 20
 hatch_species = 658
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 5
 cry = ExtResource("3_pymgi")

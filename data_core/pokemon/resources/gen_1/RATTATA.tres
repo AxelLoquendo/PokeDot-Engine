@@ -7,6 +7,19 @@
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://twog3brh60t8" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cuw87iux7smu1" path="res://graphics/pokemon/front/RATTATA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bf3phn4lshllw" path="res://graphics/pokemon/front_shiny/RATTATA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b0wafac0uuqd6" path="res://graphics/pokemon/back/RATTATA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bkr2cly78t1op" path="res://graphics/pokemon/back_shiny/RATTATA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://uaety1f5yrmn" path="res://graphics/pokemon/icons/RATTATA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://be36aq10g6bcp" path="res://graphics/pokemon/follower/RATTATA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b4rjwrqxqmflj" path="res://sfx/se/cries/RATTATA.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://cejp2lbo2bak8" path="res://graphics/pokemon/front/RATTATA_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://rjcv84ojs23" path="res://graphics/pokemon/front_shiny/RATTATA_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bkkn64gyo1nby" path="res://graphics/pokemon/back/RATTATA_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cbhiy7o6k214q" path="res://graphics/pokemon/back_shiny/RATTATA_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://ccb6y8gjgs4gc" path="res://graphics/pokemon/icons/RATTATA_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dvcv6ysxiqvwu" path="res://graphics/pokemon/follower/RATTATA_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -38,6 +51,16 @@ species_id = 956
 form_id = &"rattata_alola"
 display_name = "Rattata Alola"
 base_species_id = 19
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 7)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -124,6 +147,12 @@ description = "Vive allí donde haya comida disponible. Busca todo el día, sin 
 height = 3
 weight = 35
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_qq2my")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([15, 29, 34, 36, 38, 55, 58, 59, 61, 68, 85, 86, 87, 91, 92, 99, 102, 104, 111, 117, 129, 130, 156, 162, 164, 168, 173, 174, 182, 188, 189, 196, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 247, 249, 253, 263, 269, 283, 290, 343, 351, 363, 365, 369, 387, 389, 428, 445, 447, 451, 496, 514, 526, 528, 590])
@@ -135,4 +164,7 @@ hidden_ability = 55
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 19
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 7)
 gender_ratio = 3
+cry = ExtResource("gfx106")

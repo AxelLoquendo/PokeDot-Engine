@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_pw8ja"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c86gsu7vdvulr" path="res://graphics/pokemon/front/DONPHAN.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://lke46v7eqkal" path="res://graphics/pokemon/front_shiny/DONPHAN.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cf2k0psdrp4yv" path="res://graphics/pokemon/back/DONPHAN.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://02qdevyx17g7" path="res://graphics/pokemon/back_shiny/DONPHAN.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://d3h4fw3e60h" path="res://graphics/pokemon/icons/DONPHAN.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cvfgsj1rn4nbw" path="res://graphics/pokemon/follower/DONPHAN.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b7p37nswnvld1" path="res://sfx/se/cries/DONPHAN.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -113,6 +120,12 @@ description = "Tiene afilados y duros colmillos, y una gruesa piel. Su Placaje e
 height = 11
 weight = 1200
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([29, 34, 36, 38, 46, 63, 68, 70, 89, 91, 92, 102, 104, 111, 156, 157, 164, 168, 173, 174, 182, 184, 189, 201, 203, 204, 205, 207, 213, 214, 216, 218, 227, 231, 237, 240, 241, 246, 249, 263, 270, 276, 282, 283, 290, 304, 317, 328, 334, 335, 340, 341, 360, 363, 387, 397, 398, 402, 414, 416, 422, 423, 424, 441, 442, 444, 445, 446, 479, 484, 496, 497, 523, 583, 590, 630, 638, 647, 656, 661, 704, 779, 789, 811])
 ability_1 = 5
@@ -120,4 +133,7 @@ hidden_ability = 8
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 232
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

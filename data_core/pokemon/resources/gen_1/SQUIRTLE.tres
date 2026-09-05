@@ -139,5 +139,7 @@ egg_group_1 = 1
 egg_group_2 = 2
 egg_cycles = 20
 hatch_species = 7
+front_sprite_offset = Vector2(0, 11)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 5
 cry = ExtResource("3_auh32")

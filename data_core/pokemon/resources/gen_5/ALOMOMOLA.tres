@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_lx36l"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://du7dbnplv3nji" path="res://graphics/pokemon/front/ALOMOMOLA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://co0vsv7ll0ftc" path="res://graphics/pokemon/front_shiny/ALOMOMOLA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dkp5o2ngha1ex" path="res://graphics/pokemon/back/ALOMOMOLA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cm8qpnbjjfvhn" path="res://graphics/pokemon/back_shiny/ALOMOMOLA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dobn8m3ipab45" path="res://graphics/pokemon/icons/ALOMOMOLA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dbp14ebof5am0" path="res://graphics/pokemon/follower/ALOMOMOLA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cs45rhd17n076" path="res://sfx/se/cries/ALOMOMOLA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -119,6 +126,12 @@ description = "Vive flotando a la deriva en mar abierto. Siempre que encuentra u
 height = 12
 weight = 316
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([34, 36, 56, 57, 58, 59, 63, 92, 94, 104, 113, 127, 156, 164, 173, 182, 196, 203, 207, 213, 214, 216, 218, 219, 220, 226, 237, 240, 244, 247, 250, 258, 263, 270, 277, 282, 285, 290, 291, 340, 347, 352, 416, 428, 496, 503, 512, 581, 583, 590, 710, 799, 812, 851, 883, 886, 914])
 egg_moves = Array[int]([54, 203, 220, 243, 287, 321, 340])
@@ -130,3 +143,4 @@ egg_group_2 = 12
 egg_cycles = 40
 hatch_species = 594
 gender_ratio = 3
+cry = ExtResource("gfx106")

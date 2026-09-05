@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ddhqrkqw7ldlr" path="res://graphics/pokemon/front/LUGIA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://brbtdamd2jhw8" path="res://graphics/pokemon/front_shiny/LUGIA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bka82nixvwf8t" path="res://graphics/pokemon/back/LUGIA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://k28tv85pgdkw" path="res://graphics/pokemon/back_shiny/LUGIA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bslbbxp40xou6" path="res://graphics/pokemon/icons/LUGIA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://csx8vuommscxe" path="res://graphics/pokemon/follower/LUGIA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://yj4c8lllaevc" path="res://sfx/se/cries/LUGIA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -112,6 +119,12 @@ description = "Duerme en una dorsal marina. Si bate sus alas, puede causar torme
 height = 52
 weight = 2160
 body_color = 8
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([19, 29, 34, 36, 38, 46, 56, 57, 58, 59, 63, 70, 85, 86, 87, 89, 92, 94, 102, 104, 113, 115, 127, 129, 138, 143, 148, 156, 164, 171, 173, 174, 182, 184, 189, 192, 196, 197, 201, 202, 203, 207, 211, 214, 216, 218, 219, 225, 231, 237, 239, 240, 241, 244, 246, 247, 248, 249, 250, 258, 263, 270, 271, 285, 286, 290, 291, 304, 311, 314, 324, 332, 347, 351, 352, 355, 362, 363, 366, 401, 403, 406, 413, 414, 416, 419, 428, 432, 442, 451, 466, 472, 473, 477, 496, 497, 507, 512, 523, 525, 542, 590, 636, 664, 727, 742, 779, 812, 845])
 egg_moves = Array[int]([407])
@@ -122,3 +135,4 @@ egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 249
 gender_ratio = 7
+cry = ExtResource("gfx106")

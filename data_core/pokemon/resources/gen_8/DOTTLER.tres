@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_y1mg6"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cb6o2ackev2js" path="res://graphics/pokemon/front/DOTTLER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b523fnybgipw1" path="res://graphics/pokemon/front_shiny/DOTTLER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://1o2h300cby4b" path="res://graphics/pokemon/back/DOTTLER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cdhsog8vh4l2n" path="res://graphics/pokemon/back_shiny/DOTTLER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ts7ju0krngxj" path="res://graphics/pokemon/icons/DOTTLER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://brbmb8kct37wo" path="res://graphics/pokemon/follower/DOTTLER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dgjmkq6hy4ipx" path="res://sfx/se/cries/DOTTLER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -55,6 +62,12 @@ description = "Apenas se mueve, pero está vivo. Se cree que adquiere poderes ps
 height = 4
 weight = 195
 body_color = 2
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3")])
 teachable_moves = Array[int]([76, 94, 113, 115, 141, 156, 164, 173, 182, 203, 213, 214, 219, 247, 248, 263, 270, 271, 285, 286, 334, 347, 371, 384, 385, 405, 412, 428, 433, 472, 473, 478, 496, 500, 502, 641, 704, 725])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -64,4 +77,7 @@ hidden_ability = 140
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 825
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 17)
 gender_ratio = 3
+cry = ExtResource("gfx106")

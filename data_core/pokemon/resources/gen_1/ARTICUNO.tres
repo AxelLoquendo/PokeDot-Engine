@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://js33fu2mw3ue" path="res://graphics/pokemon/icons/ARTICUNO.png" id="14_baviv"]
 [ext_resource type="Texture2D" uid="uid://cj4xqkk23nqrv" path="res://graphics/pokemon/follower/ARTICUNO.png" id="15_nkyym"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cufyj5llbxprt" path="res://graphics/pokemon/follower/ARTICUNO_1.png" id="gfx100"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_cx5ac")
@@ -28,7 +29,9 @@ front_sprite_shiny = ExtResource("9_y7jtg")
 back_sprite = ExtResource("6_1jqa8")
 back_sprite_shiny = ExtResource("7_d0ncl")
 icon_sprite = ExtResource("10_ck28p")
+overworld_scene = ExtResource("gfx100")
 cry = ExtResource("3_dlcsp")
+back_sprite_offset = Vector2(0, 5)
 override_graphics = true
 tags = PackedStringArray()
 
@@ -162,5 +165,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 80
 hatch_species = 144
+front_sprite_offset = Vector2(0, 2)
+back_sprite_offset = Vector2(0, 5)
 gender_ratio = 7
 cry = ExtResource("3_dlcsp")

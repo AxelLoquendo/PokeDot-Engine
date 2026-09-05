@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c6fnpxu6b48m0" path="res://graphics/pokemon/front/HYDREIGON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dljqql54eteui" path="res://graphics/pokemon/front_shiny/HYDREIGON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b8nukjabnmt1w" path="res://graphics/pokemon/back/HYDREIGON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ice75hbl33qx" path="res://graphics/pokemon/back_shiny/HYDREIGON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bm8ohi644irqh" path="res://graphics/pokemon/icons/HYDREIGON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cr3hnepkk07au" path="res://graphics/pokemon/follower/HYDREIGON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bjo6gd25e2on5" path="res://sfx/se/cries/HYDREIGON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -126,10 +133,18 @@ description = "Las cabezas de sus dos brazos no tienen cerebro. Con sus tres cab
 height = 18
 weight = 1600
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])
 teachable_moves = Array[int]([19, 34, 36, 46, 53, 56, 57, 63, 70, 83, 86, 89, 92, 103, 104, 115, 116, 126, 156, 157, 161, 164, 168, 173, 180, 182, 184, 200, 203, 207, 211, 213, 214, 216, 218, 231, 237, 240, 241, 242, 244, 249, 251, 253, 257, 259, 263, 269, 270, 276, 290, 304, 317, 324, 349, 351, 355, 366, 369, 371, 372, 399, 401, 406, 411, 414, 416, 417, 422, 423, 424, 428, 430, 432, 434, 444, 446, 451, 496, 497, 510, 512, 523, 525, 526, 555, 590, 638, 656, 661, 712, 727, 736, 742, 779, 841])
 ability_1 = 26
 egg_group_1 = 14
 egg_cycles = 40
 hatch_species = 635
+back_sprite_offset = Vector2(0, 11)
 gender_ratio = 3
+cry = ExtResource("gfx106")

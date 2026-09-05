@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b0kidbymeps7s" path="res://graphics/pokemon/front/MAGNEZONE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bhc2sk7y0000o" path="res://graphics/pokemon/front_shiny/MAGNEZONE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://gi2f02ch5ntj" path="res://graphics/pokemon/back/MAGNEZONE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://p8vj3ot53as1" path="res://graphics/pokemon/back_shiny/MAGNEZONE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://be8f3es47anue" path="res://graphics/pokemon/icons/MAGNEZONE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://y4wgghnytn3w" path="res://graphics/pokemon/follower/MAGNEZONE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bu0c07wllbuhe" path="res://sfx/se/cries/MAGNEZONE.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -133,6 +140,12 @@ description = "Emiten campos magnéticos tan potentes que se atraen entre sí e 
 height = 12
 weight = 1800
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22")])
 teachable_moves = Array[int]([34, 36, 38, 63, 85, 86, 87, 92, 103, 104, 109, 113, 115, 120, 129, 148, 153, 156, 161, 164, 173, 182, 201, 203, 205, 207, 214, 216, 218, 237, 240, 241, 244, 263, 268, 270, 277, 278, 290, 319, 324, 334, 351, 356, 360, 363, 393, 416, 430, 442, 451, 484, 486, 496, 502, 521, 527, 528, 590, 598, 604, 704, 724, 726, 732, 779, 840, 844])
 ability_1 = 42
@@ -141,4 +154,7 @@ hidden_ability = 148
 egg_group_1 = 10
 egg_cycles = 20
 hatch_species = 462
+front_sprite_offset = Vector2(0, 4)
+back_sprite_offset = Vector2(0, 12)
 gender_ratio = 7
+cry = ExtResource("gfx106")

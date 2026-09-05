@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_w80ek"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c830hv18t7dp" path="res://graphics/pokemon/front/JUMPLUFF.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bk7ss8gbkxfw7" path="res://graphics/pokemon/front_shiny/JUMPLUFF.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d083upy1tawxt" path="res://graphics/pokemon/back/JUMPLUFF.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://q10hm0j5ejyn" path="res://graphics/pokemon/back_shiny/JUMPLUFF.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c5d1epqmub48g" path="res://graphics/pokemon/icons/JUMPLUFF.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c3af35a0iu7ce" path="res://graphics/pokemon/follower/JUMPLUFF.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dcmqw7ubhk6mq" path="res://sfx/se/cries/JUMPLUFF.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -124,6 +131,12 @@ description = "Los vientos estacionales lo llevan por todo el mundo, donde va so
 height = 8
 weight = 30
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([14, 29, 36, 38, 63, 76, 92, 102, 104, 111, 113, 115, 148, 156, 164, 168, 173, 174, 182, 202, 203, 204, 207, 213, 214, 216, 218, 226, 227, 230, 235, 237, 240, 241, 244, 263, 270, 283, 290, 318, 331, 332, 340, 345, 363, 366, 369, 374, 388, 402, 412, 416, 437, 445, 447, 496, 512, 580, 590, 605, 611, 639, 642, 779, 811])
 ability_1 = 34
@@ -133,4 +146,7 @@ egg_group_1 = 6
 egg_group_2 = 7
 egg_cycles = 20
 hatch_species = 189
+front_sprite_offset = Vector2(0, 9)
+back_sprite_offset = Vector2(0, 3)
 gender_ratio = 3
+cry = ExtResource("gfx106")

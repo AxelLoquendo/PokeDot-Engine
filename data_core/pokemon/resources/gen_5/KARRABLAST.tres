@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_q3cbq"]
 [ext_resource type="Script" uid="uid://lqpwdr7d06x8" path="res://data_core/pokemon/conditions/condition_party_species.gd" id="ext_cond_party"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://m0ph0it3swt3" path="res://graphics/pokemon/front/KARRABLAST.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bg8rw6sukkjya" path="res://graphics/pokemon/front_shiny/KARRABLAST.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dkahrloeqq7w" path="res://graphics/pokemon/back/KARRABLAST.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c752oe0keqxht" path="res://graphics/pokemon/back_shiny/KARRABLAST.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c1nd8nmsyij47" path="res://graphics/pokemon/icons/KARRABLAST.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://nr0q1g8016uj" path="res://graphics/pokemon/follower/KARRABLAST.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://834tstaipwr1" path="res://sfx/se/cries/KARRABLAST.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_party")
@@ -117,6 +124,12 @@ description = "Si recibe un estímulo eléctrico al estar en contacto con un She
 height = 5
 weight = 59
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([14, 15, 92, 103, 104, 156, 164, 173, 182, 184, 202, 203, 206, 207, 213, 214, 216, 218, 224, 227, 237, 240, 263, 282, 290, 324, 332, 334, 398, 404, 405, 412, 450, 496, 522, 529, 590, 611])
 egg_moves = Array[int]([30, 68, 103, 163, 185, 224, 228, 282, 400, 450, 529])
@@ -127,4 +140,7 @@ hidden_ability = 99
 egg_group_1 = 3
 egg_cycles = 15
 hatch_species = 588
+front_sprite_offset = Vector2(0, 13)
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 3
+cry = ExtResource("gfx106")

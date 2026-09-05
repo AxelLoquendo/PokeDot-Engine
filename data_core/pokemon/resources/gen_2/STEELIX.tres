@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_rjinl"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dy27ditnt11q0" path="res://graphics/pokemon/front/STEELIX.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://7ebxyaboqlj1" path="res://graphics/pokemon/front_shiny/STEELIX.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://by02831h46bp8" path="res://graphics/pokemon/back/STEELIX.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bchd4ta6cgw17" path="res://graphics/pokemon/back_shiny/STEELIX.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cic8w3tf635hs" path="res://graphics/pokemon/icons/STEELIX.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://crix2i730pe5c" path="res://graphics/pokemon/follower/STEELIX.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://b1hi30eq1sf7j" path="res://sfx/se/cries/STEELIX.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://c4886rjfw6i6w" path="res://graphics/pokemon/front/MEGA_STEELIX.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dwwr750eddt20" path="res://graphics/pokemon/front_shiny/MEGA_STEELIX.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://fd7fuannk4w8" path="res://graphics/pokemon/back/MEGA_STEELIX.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://ih7m0y5pksuc" path="res://graphics/pokemon/back_shiny/MEGA_STEELIX.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dmnvoe0u3uspq" path="res://graphics/pokemon/icons/STEELIX_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://blwobhipnuiao" path="res://sfx/se/cries/STEELIX_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_rjinl")
@@ -11,6 +24,14 @@ species_id = 922
 form_id = &"steelix_mega"
 display_name = "Steelix Mega"
 base_species_id = 208
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -165,6 +186,12 @@ description = "Atraviesa rocas a mordisco limpio. Sus ojos pueden ver en la oscu
 height = 92
 weight = 4000
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_rjinl")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24"), SubResource("Resource_move25"), SubResource("Resource_move26"), SubResource("Resource_move27")])
 teachable_moves = Array[int]([15, 20, 29, 34, 38, 46, 63, 70, 89, 91, 92, 102, 103, 104, 111, 120, 153, 156, 157, 164, 173, 174, 182, 184, 189, 201, 203, 205, 207, 213, 214, 216, 218, 225, 231, 237, 239, 241, 242, 244, 246, 249, 259, 263, 267, 269, 290, 317, 328, 334, 335, 349, 350, 360, 363, 371, 393, 397, 399, 401, 406, 414, 416, 422, 423, 424, 430, 431, 442, 444, 445, 446, 479, 484, 496, 523, 525, 529, 590, 630, 656, 660, 661, 704, 712, 724, 726, 728, 743])
@@ -174,4 +201,6 @@ hidden_ability = 125
 egg_group_1 = 10
 egg_cycles = 25
 hatch_species = 208
+back_sprite_offset = Vector2(0, 2)
 gender_ratio = 3
+cry = ExtResource("gfx106")

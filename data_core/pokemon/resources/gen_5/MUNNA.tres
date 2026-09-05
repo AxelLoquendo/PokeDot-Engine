@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_11d81"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dfkvsxs1p6coo" path="res://graphics/pokemon/front/MUNNA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://eov4p4u452xk" path="res://graphics/pokemon/front_shiny/MUNNA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://gl77u4toa66b" path="res://graphics/pokemon/back/MUNNA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://byna772jdnxew" path="res://graphics/pokemon/back_shiny/MUNNA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://brfiwkb0qmkbh" path="res://graphics/pokemon/icons/MUNNA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://544r5k25aoff" path="res://graphics/pokemon/follower/MUNNA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dl4aivpj0if8a" path="res://sfx/se/cries/MUNNA.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -137,6 +144,12 @@ description = "Cuando un humano o un Pokémon sufre una pesadilla, Munna se apar
 height = 6
 weight = 233
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([86, 92, 94, 104, 113, 115, 129, 133, 138, 148, 156, 157, 164, 173, 182, 203, 207, 213, 214, 215, 216, 218, 219, 220, 237, 240, 244, 247, 248, 259, 263, 270, 271, 277, 285, 286, 290, 317, 324, 347, 351, 356, 360, 384, 385, 388, 412, 428, 433, 451, 472, 473, 477, 495, 496, 500, 502, 590, 605, 725])
 egg_moves = Array[int]([49, 112, 129, 174, 214, 226, 270, 277, 290, 361])
@@ -147,4 +160,7 @@ hidden_ability = 140
 egg_group_1 = 5
 egg_cycles = 10
 hatch_species = 517
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 16)
 gender_ratio = 3
+cry = ExtResource("gfx106")

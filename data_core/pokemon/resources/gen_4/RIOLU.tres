@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_7vs27"]
 [ext_resource type="Script" uid="uid://ubphmg8l4a62" path="res://data_core/pokemon/conditions/condition_friendship.gd" id="ext_cond_friend"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ocs1m8g8chwa" path="res://graphics/pokemon/front/RIOLU.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://lyiy7rnya8l0" path="res://graphics/pokemon/front_shiny/RIOLU.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cke2j2dn1ptxv" path="res://graphics/pokemon/back/RIOLU.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cxoajy1q4cgge" path="res://graphics/pokemon/back_shiny/RIOLU.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b0q83k5aoy88" path="res://graphics/pokemon/icons/RIOLU.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cx3ohyukxpov3" path="res://graphics/pokemon/follower/RIOLU.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dhkilikl2ys21" path="res://sfx/se/cries/RIOLU.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_friend")
@@ -126,6 +133,12 @@ description = "Se comunica con los suyos mediante la emisión de unas ondas que 
 height = 7
 weight = 202
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
 teachable_moves = Array[int]([5, 8, 9, 14, 25, 29, 36, 46, 67, 70, 89, 91, 92, 97, 103, 104, 129, 156, 157, 164, 173, 179, 182, 189, 203, 207, 210, 213, 214, 216, 218, 231, 232, 237, 240, 241, 242, 244, 249, 263, 264, 270, 272, 279, 280, 290, 299, 317, 332, 334, 339, 363, 370, 371, 374, 393, 398, 409, 410, 411, 417, 421, 428, 445, 490, 496, 514, 523, 526, 530, 590, 612, 636, 739, 779, 811, 846])
 egg_moves = Array[int]([44, 67, 97, 136, 170, 197, 238, 242, 266, 299, 309, 327, 334, 336, 410, 418, 509])
@@ -136,4 +149,7 @@ hidden_ability = 158
 egg_group_1 = 15
 egg_cycles = 25
 hatch_species = 447
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 5
+cry = ExtResource("gfx106")

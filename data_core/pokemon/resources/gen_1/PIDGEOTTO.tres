@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_hwuv4"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://b71a0o7krhd3r" path="res://graphics/pokemon/front/PIDGEOTTO.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://lux1053m0l45" path="res://graphics/pokemon/front_shiny/PIDGEOTTO.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c0o8sln6a6vu5" path="res://graphics/pokemon/back/PIDGEOTTO.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://s5irb75vb240" path="res://graphics/pokemon/back_shiny/PIDGEOTTO.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://brawmra263vba" path="res://graphics/pokemon/icons/PIDGEOTTO.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b4jcqqwqacjhe" path="res://graphics/pokemon/follower/PIDGEOTTO.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c2xllbf00w2ch" path="res://sfx/se/cries/PIDGEOTTO.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -108,6 +115,12 @@ description = "Tiene unas garras desarrolladas. Puede atrapar un Exeggcute y tra
 height = 11
 weight = 300
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([13, 18, 19, 29, 36, 38, 92, 99, 102, 104, 115, 117, 129, 143, 156, 164, 168, 173, 174, 182, 189, 197, 203, 207, 211, 213, 214, 216, 218, 237, 239, 240, 241, 253, 257, 263, 290, 314, 332, 355, 363, 365, 366, 369, 432, 445, 466, 496, 526, 590])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -117,4 +130,7 @@ hidden_ability = 145
 egg_group_1 = 4
 egg_cycles = 15
 hatch_species = 17
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 6)
 gender_ratio = 3
+cry = ExtResource("gfx106")

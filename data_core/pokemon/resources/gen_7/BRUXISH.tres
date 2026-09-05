@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_w2ell"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cjam6ovygmt6y" path="res://graphics/pokemon/front/BRUXISH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cxnh3arxbgf0y" path="res://graphics/pokemon/front_shiny/BRUXISH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b216kp4kfaj32" path="res://graphics/pokemon/back/BRUXISH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bihg7g6hkjq40" path="res://graphics/pokemon/back_shiny/BRUXISH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dg3qedbu6xev4" path="res://graphics/pokemon/icons/BRUXISH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b4goctr4mo0sl" path="res://graphics/pokemon/follower/BRUXISH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bxx5olgb8t6g0" path="res://sfx/se/cries/BRUXISH.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -96,6 +103,12 @@ description = "Cuando la protuberancia que tiene en la cabeza emite poderes psí
 height = 9
 weight = 190
 body_color = 9
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13")])
 teachable_moves = Array[int]([14, 36, 56, 57, 58, 59, 63, 92, 94, 97, 104, 113, 115, 127, 138, 156, 162, 164, 173, 182, 184, 196, 203, 207, 213, 214, 216, 218, 219, 220, 231, 237, 240, 242, 250, 253, 259, 263, 269, 277, 289, 324, 332, 339, 347, 352, 371, 373, 374, 401, 416, 423, 433, 472, 473, 474, 477, 478, 495, 496, 502, 503, 524, 590, 641, 660, 664, 725, 740, 779, 812, 845])
 egg_moves = Array[int]([99, 162, 305, 352, 423])
@@ -105,4 +118,7 @@ hidden_ability = 147
 egg_group_1 = 12
 egg_cycles = 15
 hatch_species = 779
+front_sprite_offset = Vector2(0, 15)
+back_sprite_offset = Vector2(0, 14)
 gender_ratio = 3
+cry = ExtResource("gfx106")

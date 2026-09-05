@@ -41,7 +41,9 @@ front_sprite_shiny = ExtResource("10_8e2sk")
 back_sprite = ExtResource("6_tv5aa")
 back_sprite_shiny = ExtResource("7_1csk0")
 icon_sprite = ExtResource("11_twuvt")
+overworld_scene = ExtResource("28_65ub2")
 cry = ExtResource("8_gsimq")
+back_sprite_offset = Vector2(0, 1)
 override_graphics = true
 tags = PackedStringArray()
 
@@ -56,7 +58,9 @@ front_sprite_shiny = ExtResource("17_qimfk")
 back_sprite = ExtResource("13_fm4u0")
 back_sprite_shiny = ExtResource("14_tqlxw")
 icon_sprite = ExtResource("18_7hwdc")
+overworld_scene = ExtResource("28_65ub2")
 cry = ExtResource("15_emb8r")
+back_sprite_offset = Vector2(0, 1)
 override_graphics = true
 tags = PackedStringArray()
 
@@ -71,7 +75,9 @@ front_sprite_shiny = ExtResource("23_acias")
 back_sprite = ExtResource("19_nacpx")
 back_sprite_shiny = ExtResource("20_oc2on")
 icon_sprite = ExtResource("24_r1myj")
+overworld_scene = ExtResource("28_65ub2")
 cry = ExtResource("21_hvryr")
+back_sprite_offset = Vector2(0, 1)
 override_graphics = true
 tags = PackedStringArray()
 
@@ -212,5 +218,6 @@ egg_group_1 = 1
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 6
+back_sprite_offset = Vector2(0, 1)
 gender_ratio = 5
 cry = ExtResource("3_8bghp")

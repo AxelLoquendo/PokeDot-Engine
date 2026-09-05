@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_i8j6p"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://ynpv7no006l5" path="res://graphics/pokemon/front/BUIZEL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dl3trgci1a5ex" path="res://graphics/pokemon/front_shiny/BUIZEL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ba01cah2t6dio" path="res://graphics/pokemon/back/BUIZEL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://blpcchaulbmy0" path="res://graphics/pokemon/back_shiny/BUIZEL.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://brw2ykl0wdloc" path="res://graphics/pokemon/icons/BUIZEL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cmtaqqb7nku3v" path="res://graphics/pokemon/follower/BUIZEL.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://d0ahft12i5u8t" path="res://sfx/se/cries/BUIZEL.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -131,6 +138,12 @@ description = "Nada rotando sus dos colas a modo de tornillo. Cuando bucea, el f
 height = 7
 weight = 295
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([8, 29, 36, 46, 56, 57, 58, 59, 67, 70, 91, 92, 97, 104, 127, 129, 156, 164, 168, 173, 182, 189, 196, 203, 207, 213, 214, 216, 218, 226, 231, 237, 240, 242, 249, 250, 258, 263, 264, 269, 270, 280, 290, 291, 317, 339, 352, 362, 363, 374, 401, 423, 445, 490, 496, 497, 503, 590, 612, 664, 740, 779, 789, 812])
 egg_moves = Array[int]([3, 29, 154, 163, 189, 210, 226, 270, 316, 382, 392, 401, 415, 487, 541])
@@ -141,4 +154,7 @@ egg_group_1 = 2
 egg_group_2 = 5
 egg_cycles = 20
 hatch_species = 418
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
+cry = ExtResource("gfx106")

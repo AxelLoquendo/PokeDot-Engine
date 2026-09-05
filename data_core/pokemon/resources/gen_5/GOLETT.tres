@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_o8u3m"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dmg7a077s6l7c" path="res://graphics/pokemon/front/GOLETT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cnu0bqe0mq5fn" path="res://graphics/pokemon/front_shiny/GOLETT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://colbp448qlbhe" path="res://graphics/pokemon/back/GOLETT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dovk5uopip5uv" path="res://graphics/pokemon/back_shiny/GOLETT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://75eekh7u0ex0" path="res://graphics/pokemon/icons/GOLETT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dk835wjh3ijw" path="res://graphics/pokemon/follower/GOLETT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://du376s72x372d" path="res://sfx/se/cries/GOLETT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -132,6 +139,12 @@ description = "Se mueve gracias a la energía que quema dentro de su cuerpo, per
 height = 10
 weight = 920
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])
 teachable_moves = Array[int]([5, 7, 8, 9, 25, 34, 36, 38, 58, 67, 70, 89, 91, 92, 94, 101, 104, 109, 115, 120, 148, 156, 157, 164, 168, 173, 174, 182, 189, 196, 201, 203, 207, 214, 216, 218, 219, 237, 240, 241, 244, 247, 249, 263, 264, 270, 276, 277, 280, 282, 286, 290, 317, 324, 334, 335, 351, 356, 360, 374, 397, 409, 411, 414, 446, 447, 477, 479, 484, 490, 496, 502, 506, 523, 566, 590, 612, 661, 737, 743, 779])
 evolutions = Array[ExtResource("ext_evo")]([SubResource("Resource_evo0")])
@@ -141,4 +154,7 @@ hidden_ability = 99
 egg_group_1 = 10
 egg_cycles = 25
 hatch_species = 622
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 7
+cry = ExtResource("gfx106")

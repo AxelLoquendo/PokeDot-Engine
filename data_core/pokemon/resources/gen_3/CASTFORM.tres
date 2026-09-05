@@ -4,6 +4,25 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_w7rca"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://cchjkn43i05v0" path="res://graphics/pokemon/front/CASTFORM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://mylh5jeibk8b" path="res://graphics/pokemon/front_shiny/CASTFORM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cnky54611wise" path="res://graphics/pokemon/back/CASTFORM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bomv8k2a0f2hn" path="res://graphics/pokemon/back_shiny/CASTFORM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dp3dhsfgxmsar" path="res://graphics/pokemon/icons/CASTFORM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://byybli7yw4nmk" path="res://graphics/pokemon/follower/CASTFORM.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://t5awxfymq3b4" path="res://sfx/se/cries/CASTFORM.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://dnlc48au8uoc1" path="res://graphics/pokemon/front/CASTFORM_SUNNY.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dy7fr0po8h68" path="res://graphics/pokemon/front_shiny/CASTFORM_SUNNY.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cn31k1dj280sb" path="res://graphics/pokemon/back/CASTFORM_SUNNY.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://b8pfl3ud6cq4y" path="res://graphics/pokemon/back_shiny/CASTFORM_SUNNY.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bc33ll0ihn7r3" path="res://graphics/pokemon/front/CASTFORM_RAINY.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://b67dt7suaub00" path="res://graphics/pokemon/front_shiny/CASTFORM_RAINY.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://fs7f58lbj1o6" path="res://graphics/pokemon/back/CASTFORM_RAINY.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://c48k007cqp0gr" path="res://graphics/pokemon/back_shiny/CASTFORM_RAINY.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://bvaj2whspbcro" path="res://graphics/pokemon/front/CASTFORM_SNOWY.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://l72ilqrjfone" path="res://graphics/pokemon/front_shiny/CASTFORM_SNOWY.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://b4a1qnuiiv67x" path="res://graphics/pokemon/back/CASTFORM_SNOWY.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://cscf1u84oxto6" path="res://graphics/pokemon/back_shiny/CASTFORM_SNOWY.png" id="gfx118"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_w7rca")
@@ -13,6 +32,13 @@ display_name = "Castform Sunny"
 base_species_id = 351
 override_types = true
 type_1 = 11
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -23,6 +49,13 @@ display_name = "Castform Rainy"
 base_species_id = 351
 override_types = true
 type_1 = 12
+front_sprite = ExtResource("gfx111")
+front_sprite_shiny = ExtResource("gfx112")
+back_sprite = ExtResource("gfx113")
+back_sprite_shiny = ExtResource("gfx114")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 9)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -33,6 +66,13 @@ display_name = "Castform Snowy"
 base_species_id = 351
 override_types = true
 type_1 = 16
+front_sprite = ExtResource("gfx115")
+front_sprite_shiny = ExtResource("gfx116")
+back_sprite = ExtResource("gfx117")
+back_sprite_shiny = ExtResource("gfx118")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -120,6 +160,12 @@ description = "Sus células son muy sensibles a los cambios de temperatura y hum
 height = 3
 weight = 8
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_w7rca")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])
 teachable_moves = Array[int]([34, 38, 53, 58, 59, 76, 85, 86, 87, 92, 102, 104, 111, 126, 129, 148, 156, 164, 168, 173, 182, 196, 201, 203, 207, 213, 214, 216, 218, 237, 240, 241, 244, 247, 258, 263, 290, 351, 352, 363, 366, 387, 412, 419, 432, 445, 466, 496, 503, 510, 514, 526, 590])
@@ -130,3 +176,4 @@ egg_group_2 = 11
 egg_cycles = 25
 hatch_species = 351
 gender_ratio = 3
+cry = ExtResource("gfx106")

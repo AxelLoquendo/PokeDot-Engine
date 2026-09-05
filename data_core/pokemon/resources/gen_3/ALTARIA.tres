@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_tfrj5"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://wqw7dqtqxn30" path="res://graphics/pokemon/front/ALTARIA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dgl28o5cpdig5" path="res://graphics/pokemon/front_shiny/ALTARIA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://0b82ukd81stf" path="res://graphics/pokemon/back/ALTARIA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cbwm3p8bwcwxv" path="res://graphics/pokemon/back_shiny/ALTARIA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cwk6mxspxti8t" path="res://graphics/pokemon/icons/ALTARIA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://8x2pbupwxqn5" path="res://graphics/pokemon/follower/ALTARIA.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://2e2n11oj1atk" path="res://sfx/se/cries/ALTARIA.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://df3scaa8gnbyc" path="res://graphics/pokemon/front/MEGA_ALTARIA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bgri7rgstxkpx" path="res://graphics/pokemon/front_shiny/MEGA_ALTARIA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://n4f5rkd3cety" path="res://graphics/pokemon/back/MEGA_ALTARIA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://7urtnnp4hlu8" path="res://graphics/pokemon/back_shiny/MEGA_ALTARIA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://4crxs708hla" path="res://graphics/pokemon/icons/ALTARIA_1.png" id="gfx111"]
+[ext_resource type="AudioStream" uid="uid://uls4n0p2d4ba" path="res://sfx/se/cries/ALTARIA_1.ogg" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_tfrj5")
@@ -11,6 +24,15 @@ species_id = 938
 form_id = &"altaria_mega"
 display_name = "Altaria Mega"
 base_species_id = 334
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx112")
+back_sprite_offset = Vector2(0, 10)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -128,6 +150,12 @@ description = "Vuela pausadamente por el cielo azul. Su hermoso trino cautiva a 
 height = 11
 weight = 206
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_tfrj5")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([19, 34, 36, 38, 46, 53, 58, 63, 76, 83, 89, 92, 97, 102, 104, 114, 126, 129, 138, 143, 156, 164, 168, 173, 182, 189, 200, 203, 206, 207, 211, 213, 214, 215, 216, 218, 219, 231, 237, 239, 240, 241, 244, 249, 253, 257, 261, 263, 270, 283, 290, 297, 304, 311, 314, 332, 337, 349, 355, 363, 365, 366, 384, 406, 413, 416, 432, 434, 445, 466, 468, 472, 496, 497, 510, 512, 523, 542, 574, 583, 590, 605, 712, 742, 779, 809, 811, 841, 842])
@@ -137,4 +165,7 @@ egg_group_1 = 4
 egg_group_2 = 14
 egg_cycles = 20
 hatch_species = 334
+front_sprite_offset = Vector2(0, 1)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")

@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_sv0yb"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://34amif40ohxr" path="res://graphics/pokemon/front/PANPOUR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://clq6ygsk1rmml" path="res://graphics/pokemon/front_shiny/PANPOUR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://by0i3ix15llek" path="res://graphics/pokemon/back/PANPOUR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bmaor08cja6i6" path="res://graphics/pokemon/back_shiny/PANPOUR.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://broqfa8t4b4mt" path="res://graphics/pokemon/icons/PANPOUR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b30s5l3kkn3i7" path="res://graphics/pokemon/follower/PANPOUR.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dnfk5u83f7swm" path="res://sfx/se/cries/PANPOUR.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_item")
@@ -117,6 +124,12 @@ description = "El agua acumulada en su mata de pelo es rica en nutrientes. Usa s
 height = 6
 weight = 135
 body_color = 1
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])
 teachable_moves = Array[int]([8, 15, 57, 58, 59, 67, 91, 92, 104, 127, 156, 164, 168, 173, 182, 196, 207, 213, 214, 216, 218, 231, 237, 240, 249, 253, 258, 259, 263, 264, 269, 270, 272, 278, 282, 283, 290, 291, 317, 343, 352, 371, 374, 380, 401, 421, 441, 447, 468, 490, 496, 503, 512, 518, 526, 590])
 egg_moves = Array[int]([56, 67, 272, 300, 310, 321, 343, 392, 401, 417, 574])
@@ -126,4 +139,7 @@ hidden_ability = 67
 egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 515
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 5
+cry = ExtResource("gfx106")

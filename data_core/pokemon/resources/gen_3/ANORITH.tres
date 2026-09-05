@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_afosr"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c3stivmmpvivw" path="res://graphics/pokemon/front/ANORITH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://8quoka3s2sko" path="res://graphics/pokemon/front_shiny/ANORITH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dek6atjwtyjfu" path="res://graphics/pokemon/back/ANORITH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://k4vqwab62i8a" path="res://graphics/pokemon/back_shiny/ANORITH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b072c8uggl4p1" path="res://graphics/pokemon/icons/ANORITH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://crm1bfrp4vm23" path="res://graphics/pokemon/follower/ANORITH.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dsqke02obeoyd" path="res://sfx/se/cries/ANORITH.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
 script = ExtResource("ext_cond_level")
@@ -111,6 +118,12 @@ description = "Es una especie de Pokémon predecesor. Estira las pinzas para caz
 height = 7
 weight = 125
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 29, 34, 38, 81, 91, 92, 102, 103, 104, 156, 157, 164, 173, 182, 189, 201, 203, 206, 207, 210, 213, 214, 216, 218, 237, 241, 246, 249, 263, 280, 282, 290, 317, 332, 334, 341, 350, 352, 362, 363, 397, 404, 414, 440, 445, 446, 450, 468, 479, 496, 522, 590, 728])
 egg_moves = Array[int]([14, 28, 103, 157, 174, 229, 282, 334, 352, 440, 453])
@@ -120,4 +133,7 @@ hidden_ability = 33
 egg_group_1 = 9
 egg_cycles = 30
 hatch_species = 347
+front_sprite_offset = Vector2(0, 7)
+back_sprite_offset = Vector2(0, 19)
 gender_ratio = 5
+cry = ExtResource("gfx106")

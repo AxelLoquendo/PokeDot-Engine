@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://qi42yms6g0dt" path="res://graphics/pokemon/front/WYRDEER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d10wqkhasabvy" path="res://graphics/pokemon/front_shiny/WYRDEER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://betqjjmgkx8nq" path="res://graphics/pokemon/back/WYRDEER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://v405a23o1036" path="res://graphics/pokemon/back_shiny/WYRDEER.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dgdi8j6lmlus" path="res://graphics/pokemon/icons/WYRDEER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://revtgvj6mubk" path="res://graphics/pokemon/follower/WYRDEER.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://bebc5ceitphhp" path="res://sfx/se/cries/WYRDEER.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -102,6 +109,12 @@ description = "The black orbs shine with an uncanny light when the Pokémon is e
 height = 18
 weight = 951
 body_color = 7
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([34, 36, 38, 46, 60, 63, 76, 85, 86, 87, 89, 91, 94, 97, 109, 113, 115, 129, 156, 164, 168, 174, 180, 182, 184, 203, 214, 240, 241, 244, 247, 248, 253, 263, 270, 271, 285, 286, 347, 356, 412, 414, 416, 428, 433, 451, 473, 500, 523, 528, 630, 638, 642, 725, 779, 811, 845])
 ability_1 = 22
@@ -111,3 +124,4 @@ egg_group_1 = 5
 egg_cycles = 20
 hatch_species = 899
 gender_ratio = 3
+cry = ExtResource("gfx106")

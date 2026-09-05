@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://dklewmqq1cdx1" path="res://graphics/pokemon/front/GENESECT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dwwr8snurdh64" path="res://graphics/pokemon/front_shiny/GENESECT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c22le4wcm6vj2" path="res://graphics/pokemon/back/GENESECT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cpp3vkkkswfs1" path="res://graphics/pokemon/back_shiny/GENESECT.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cx54ys2swj7vx" path="res://graphics/pokemon/icons/GENESECT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c7t07bnd5hrpn" path="res://graphics/pokemon/follower/GENESECT.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://cxacimv1c1jr5" path="res://sfx/se/cries/GENESECT.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_0v4sb")
@@ -11,6 +18,8 @@ species_id = 1108
 form_id = &"genesect_douse"
 display_name = "Genesect Douse"
 base_species_id = 649
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +28,8 @@ species_id = 1109
 form_id = &"genesect_shock"
 display_name = "Genesect Shock"
 base_species_id = 649
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -27,6 +38,8 @@ species_id = 1110
 form_id = &"genesect_burn"
 display_name = "Genesect Burn"
 base_species_id = 649
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -35,6 +48,8 @@ species_id = 1111
 form_id = &"genesect_chill"
 display_name = "Genesect Chill"
 base_species_id = 649
+cry = ExtResource("gfx106")
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -159,6 +174,12 @@ description = "Pokémon de tipo Bicho de la antigüedad, modificado por el Equip
 height = 15
 weight = 825
 body_color = 6
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_0v4sb")]([SubResource("Resource_form_0"), SubResource("Resource_form_1"), SubResource("Resource_form_2"), SubResource("Resource_form_3")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])
 teachable_moves = Array[int]([19, 53, 58, 59, 63, 76, 85, 86, 87, 92, 94, 103, 104, 113, 115, 120, 129, 141, 148, 153, 156, 161, 164, 173, 182, 202, 203, 207, 214, 216, 218, 237, 263, 277, 278, 290, 299, 324, 332, 334, 351, 356, 369, 372, 387, 393, 397, 399, 404, 405, 412, 416, 421, 428, 430, 441, 442, 450, 451, 468, 477, 488, 496, 502, 522, 527, 590, 611, 724])
@@ -167,4 +188,6 @@ is_mythical = true
 egg_group_1 = 15
 egg_cycles = 120
 hatch_species = 649
+back_sprite_offset = Vector2(0, 8)
 gender_ratio = 7
+cry = ExtResource("gfx106")

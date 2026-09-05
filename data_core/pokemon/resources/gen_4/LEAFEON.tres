@@ -4,6 +4,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://c4421fno0kt5f" path="res://graphics/pokemon/front/LEAFEON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d3crth8vpjagy" path="res://graphics/pokemon/front_shiny/LEAFEON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://gqgidbi45isd" path="res://graphics/pokemon/back/LEAFEON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dyt3dir5dirxd" path="res://graphics/pokemon/back_shiny/LEAFEON.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://o5af4msedbpq" path="res://graphics/pokemon/icons/LEAFEON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ogjmxf8obr66" path="res://graphics/pokemon/follower/LEAFEON.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://c3dasxsynvvo5" path="res://sfx/se/cries/LEAFEON.ogg" id="gfx106"]
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
@@ -138,6 +145,12 @@ description = "En días soleados duerme y hace la fotosíntesis, emitiendo aire 
 height = 10
 weight = 255
 body_color = 3
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22"), SubResource("Resource_move23"), SubResource("Resource_move24")])
 teachable_moves = Array[int]([6, 14, 29, 34, 36, 38, 46, 63, 70, 76, 91, 92, 104, 116, 129, 148, 156, 164, 173, 174, 182, 189, 202, 203, 204, 207, 210, 213, 214, 215, 216, 218, 226, 231, 235, 237, 240, 241, 247, 249, 263, 267, 270, 282, 290, 304, 311, 313, 331, 332, 341, 343, 345, 347, 348, 363, 387, 388, 402, 404, 412, 416, 437, 445, 447, 496, 497, 500, 514, 526, 590, 632, 636, 731, 779, 811, 842])
 ability_1 = 102
@@ -145,4 +158,6 @@ hidden_ability = 34
 egg_group_1 = 5
 egg_cycles = 35
 hatch_species = 470
+front_sprite_offset = Vector2(0, 9)
 gender_ratio = 5
+cry = ExtResource("gfx106")

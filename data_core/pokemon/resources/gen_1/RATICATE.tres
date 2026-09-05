@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_skdty"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
+[ext_resource type="Texture2D" uid="uid://bi27gx4p632bg" path="res://graphics/pokemon/front/RATICATE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://4nvuyigrmooj" path="res://graphics/pokemon/front_shiny/RATICATE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://26faotwdirj3" path="res://graphics/pokemon/back/RATICATE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cvhpsmh5ck1rc" path="res://graphics/pokemon/back_shiny/RATICATE.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://dkgr6c4hy3vv4" path="res://graphics/pokemon/icons/RATICATE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ca4kinp0fu5s2" path="res://graphics/pokemon/follower/RATICATE.png" id="gfx105"]
+[ext_resource type="AudioStream" uid="uid://dk4d3bdodq5gm" path="res://sfx/se/cries/RATICATE.ogg" id="gfx106"]
+[ext_resource type="Texture2D" uid="uid://n58g54e41xdj" path="res://graphics/pokemon/front/RATICATE_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://b6tvfv85g6tkv" path="res://graphics/pokemon/front_shiny/RATICATE_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://qr3ruaf8vna0" path="res://graphics/pokemon/back/RATICATE_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cc66gq2apcy7v" path="res://graphics/pokemon/back_shiny/RATICATE_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://duclwjvw2603x" path="res://graphics/pokemon/icons/RATICATE_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cxardlbir5n5n" path="res://graphics/pokemon/follower/RATICATE_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_skdty")
@@ -11,6 +24,16 @@ species_id = 957
 form_id = &"raticate_alola"
 display_name = "Raticate Alola"
 base_species_id = 20
+front_sprite = ExtResource("gfx107")
+front_sprite_shiny = ExtResource("gfx108")
+back_sprite = ExtResource("gfx109")
+back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("gfx111")
+overworld_scene = ExtResource("gfx112")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -19,6 +42,16 @@ species_id = 1476
 form_id = &"raticate_alola_totem"
 display_name = "Raticate Alola Totem"
 base_species_id = 20
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
+cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 8)
+back_sprite_offset = Vector2(0, 8)
+override_graphics = true
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]
@@ -113,6 +146,12 @@ description = "Lima sus colmillos royendo objetos duros. Con ellos puede destrui
 height = 7
 weight = 185
 body_color = 5
+front_sprite = ExtResource("gfx100")
+front_sprite_shiny = ExtResource("gfx101")
+back_sprite = ExtResource("gfx102")
+back_sprite_shiny = ExtResource("gfx103")
+icon_sprite = ExtResource("gfx104")
+overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_skdty")]([SubResource("Resource_form_0"), SubResource("Resource_form_1")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])
 teachable_moves = Array[int]([14, 15, 29, 34, 36, 38, 46, 55, 58, 59, 61, 63, 68, 70, 85, 86, 87, 91, 92, 99, 102, 104, 111, 117, 129, 130, 156, 162, 164, 168, 173, 174, 182, 188, 189, 196, 203, 207, 213, 214, 216, 218, 231, 237, 240, 241, 247, 249, 253, 263, 269, 283, 290, 343, 351, 363, 365, 369, 387, 389, 416, 428, 445, 447, 451, 496, 514, 526, 528, 590, 638, 661])
@@ -122,4 +161,7 @@ hidden_ability = 55
 egg_group_1 = 5
 egg_cycles = 15
 hatch_species = 20
+front_sprite_offset = Vector2(0, 6)
+back_sprite_offset = Vector2(0, 10)
 gender_ratio = 3
+cry = ExtResource("gfx106")
