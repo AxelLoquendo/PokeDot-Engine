@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://ub0ontsc1g8o" path="res://graphics/pokemon/front/RAPIDASH.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://byp3anbpytwtu" path="res://graphics/pokemon/front_shiny/RAPIDASH.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://c31qgw0pjc3pj" path="res://graphics/pokemon/back/RAPIDASH.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://crmngnywrhbe7" path="res://graphics/pokemon/back_shiny/RAPIDASH.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://hdcmkibcn2am" path="res://graphics/pokemon/icons/RAPIDASH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://brsdbr5ld2cg" path="res://graphics/pokemon/front/RAPIDASH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cg0e6ucoyfu6q" path="res://graphics/pokemon/front_shiny/RAPIDASH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bhvwg4v61fj1t" path="res://graphics/pokemon/back/RAPIDASH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://sv4t2h7lftp" path="res://graphics/pokemon/back_shiny/RAPIDASH.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://d3x27ehabghs5" path="res://graphics/pokemon/follower/RAPIDASH.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://b30d6yqvs1uks" path="res://sfx/se/cries/RAPIDASH.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://doix4msuitwh8" path="res://graphics/pokemon/front/RAPIDASH_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://3q71vbmcuwuo" path="res://graphics/pokemon/front_shiny/RAPIDASH_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://1eljovo8d4rs" path="res://graphics/pokemon/back/RAPIDASH_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://cbq2xwsofbmxh" path="res://graphics/pokemon/back_shiny/RAPIDASH_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://dy206ejb3vfvm" path="res://graphics/pokemon/icons/RAPIDASH_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://b1uimqth5jnln" path="res://graphics/pokemon/front/RAPIDASH_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cvkpc147wu1xa" path="res://graphics/pokemon/front_shiny/RAPIDASH_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://88p3vo6hxb5a" path="res://graphics/pokemon/back/RAPIDASH_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c78rrb7p5bfc4" path="res://graphics/pokemon/back_shiny/RAPIDASH_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://diktklt7077wj" path="res://graphics/pokemon/icons/RAPIDASH.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://8qf8vt712h27" path="res://graphics/pokemon/follower/RAPIDASH_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -168,7 +167,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_l5vuh")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])

@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://cd6t2x8fxxv3i" path="res://graphics/pokemon/front/NINETALES.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://br0y06wmmavf6" path="res://graphics/pokemon/front_shiny/NINETALES.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://b23qbrrvcm6qb" path="res://graphics/pokemon/back/NINETALES.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://5bdxpeny8drd" path="res://graphics/pokemon/back_shiny/NINETALES.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://ylfwkvweuqkw" path="res://graphics/pokemon/icons/NINETALES.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dsr6wrcqax6op" path="res://graphics/pokemon/front/NINETALES.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://d02emyhaxmnyb" path="res://graphics/pokemon/front_shiny/NINETALES.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://brfectam538os" path="res://graphics/pokemon/back/NINETALES.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dwpfsbmjjy4l2" path="res://graphics/pokemon/back_shiny/NINETALES.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://bl7l43qi5emil" path="res://graphics/pokemon/follower/NINETALES.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://br08bk28dxq4t" path="res://sfx/se/cries/NINETALES.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://c7uyrk4pntep0" path="res://graphics/pokemon/front/NINETALES_ALOLA.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://bf3c5doan61dt" path="res://graphics/pokemon/front_shiny/NINETALES_ALOLA.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://c4kigi77o7nor" path="res://graphics/pokemon/back/NINETALES_ALOLA.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://22iuig0wtidm" path="res://graphics/pokemon/back_shiny/NINETALES_ALOLA.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://c0bvl7a0lp1x5" path="res://graphics/pokemon/icons/NINETALES_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bc0jf7vsifk64" path="res://graphics/pokemon/front/NINETALES_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bxte4ttyy7200" path="res://graphics/pokemon/front_shiny/NINETALES_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dcsov2fh0utak" path="res://graphics/pokemon/back/NINETALES_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://b1ko3e3yprsok" path="res://graphics/pokemon/back_shiny/NINETALES_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cnmr70nmnt8l6" path="res://graphics/pokemon/icons/NINETALES.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://del66n6w3wbv0" path="res://graphics/pokemon/follower/NINETALES_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -155,7 +154,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_c0dcf")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])

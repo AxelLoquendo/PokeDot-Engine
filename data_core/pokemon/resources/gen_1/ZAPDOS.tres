@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://wx6g3q6ip3hd" path="res://graphics/pokemon/front/ZAPDOS.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://bkq1cxrn5skdw" path="res://graphics/pokemon/front_shiny/ZAPDOS.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://ded7xa2gsgmaq" path="res://graphics/pokemon/back/ZAPDOS.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://cpa3ephsdh2d" path="res://graphics/pokemon/back_shiny/ZAPDOS.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://c60pgku2kq4wx" path="res://graphics/pokemon/icons/ZAPDOS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bc5peap77fp0e" path="res://graphics/pokemon/front/ZAPDOS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bue83bt0w0cll" path="res://graphics/pokemon/front_shiny/ZAPDOS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://lhuq7lpgjl00" path="res://graphics/pokemon/back/ZAPDOS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dudt40t5dyu7j" path="res://graphics/pokemon/back_shiny/ZAPDOS.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://c82supi4t46ps" path="res://graphics/pokemon/follower/ZAPDOS.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://cqf07m73ccohj" path="res://sfx/se/cries/ZAPDOS.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://c5shq6027drtv" path="res://graphics/pokemon/front/ZAPDOS_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://dmpvsp13fpnt2" path="res://graphics/pokemon/front_shiny/ZAPDOS_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://bsniaawsjbcjv" path="res://graphics/pokemon/back/ZAPDOS_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://s0k7fv4prf4" path="res://graphics/pokemon/back_shiny/ZAPDOS_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://c6sepo7cytsp7" path="res://graphics/pokemon/icons/ZAPDOS_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://batrq3wc4cs15" path="res://graphics/pokemon/front/ZAPDOS_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cesp2bi27bo7o" path="res://graphics/pokemon/front_shiny/ZAPDOS_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://5q25xy0dcac1" path="res://graphics/pokemon/back/ZAPDOS_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cuy7ofjp7yond" path="res://graphics/pokemon/back_shiny/ZAPDOS_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://u46ofcnbvu3j" path="res://graphics/pokemon/icons/ZAPDOS.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://b73tj640vtb8q" path="res://graphics/pokemon/follower/ZAPDOS_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -160,7 +159,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_8w7al")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])

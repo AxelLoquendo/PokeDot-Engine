@@ -3,20 +3,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_31f2j"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://b6fuksv2q7e6u" path="res://graphics/pokemon/icons/SHAYMIN_1.png" id="10_q5pgm"]
 [ext_resource type="Texture2D" uid="uid://cm2yll2uatyyx" path="res://graphics/pokemon/follower/SHAYMIN_1.png" id="12_5xvuo"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="AudioStream" uid="uid://dwe65xywlsx1t" path="res://sfx/se/cries/SHAYMIN.ogg" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://da3o3jtiot6vc" path="res://graphics/pokemon/front/SHAYMIN_SKY.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://bng7ca5rtcsb7" path="res://graphics/pokemon/front_shiny/SHAYMIN_SKY.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://lif52o67illl" path="res://graphics/pokemon/back/SHAYMIN_SKY.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://bl5026o64n3py" path="res://graphics/pokemon/back_shiny/SHAYMIN_SKY.png" id="gfx104"]
-[ext_resource type="Texture2D" uid="uid://b2s0bu3uoflfo" path="res://graphics/pokemon/icons/SHAYMIN.png" id="gfx105"]
+[ext_resource type="Texture2D" uid="uid://du1tb3tkq67w" path="res://graphics/pokemon/front/SHAYMIN_SKY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bghdcyga63y70" path="res://graphics/pokemon/front_shiny/SHAYMIN_SKY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ccq1la4lbk5r0" path="res://graphics/pokemon/back/SHAYMIN_SKY.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bd4hg23th48yh" path="res://graphics/pokemon/back_shiny/SHAYMIN_SKY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://pnistm8qqn0t" path="res://graphics/pokemon/icons/SHAYMIN.png" id="gfx105"]
 [ext_resource type="Texture2D" uid="uid://cqki23d5vp7xs" path="res://graphics/pokemon/follower/SHAYMIN.png" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://m3pn1ngvim8n" path="res://graphics/pokemon/front/SHAYMIN.png" id="gfx500"]
-[ext_resource type="Texture2D" uid="uid://bio30i0qf6bwb" path="res://graphics/pokemon/back/SHAYMIN.png" id="gfx501"]
-[ext_resource type="Texture2D" uid="uid://bfk7p2m4u2k3w" path="res://graphics/pokemon/front_shiny/SHAYMIN.png" id="gfx502"]
-[ext_resource type="Texture2D" uid="uid://ct5y66la3gmrh" path="res://graphics/pokemon/back_shiny/SHAYMIN.png" id="gfx503"]
+[ext_resource type="Texture2D" uid="uid://yigisar8my8j" path="res://graphics/pokemon/front/SHAYMIN.png" id="gfx500"]
+[ext_resource type="Texture2D" uid="uid://dbplafbu4q3b0" path="res://graphics/pokemon/back/SHAYMIN.png" id="gfx501"]
+[ext_resource type="Texture2D" uid="uid://dh0cltx1o50rc" path="res://graphics/pokemon/front_shiny/SHAYMIN.png" id="gfx502"]
+[ext_resource type="Texture2D" uid="uid://yhol0jybyn8f" path="res://graphics/pokemon/back_shiny/SHAYMIN.png" id="gfx503"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_31f2j")
@@ -38,7 +37,7 @@ front_sprite = ExtResource("gfx101")
 front_sprite_shiny = ExtResource("gfx102")
 back_sprite = ExtResource("gfx103")
 back_sprite_shiny = ExtResource("gfx104")
-icon_sprite = ExtResource("10_q5pgm")
+icon_sprite = ExtResource("gfx105")
 overworld_scene = ExtResource("12_5xvuo")
 cry = ExtResource("gfx100")
 front_sprite_offset = Vector2(0, 7)

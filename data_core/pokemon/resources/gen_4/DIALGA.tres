@@ -3,20 +3,19 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_mn7lm"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://n25v4ubwchiw" path="res://graphics/pokemon/icons/DIALGA_1.png" id="10_v0p1l"]
 [ext_resource type="Texture2D" uid="uid://bj7hrbaxlco46" path="res://graphics/pokemon/follower/DIALGA_1.png" id="12_ecjn8"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://cmpndo4uo6sih" path="res://graphics/pokemon/front/DIALGA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://5x30680g4r2h" path="res://graphics/pokemon/front_shiny/DIALGA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://da138x6kill1a" path="res://graphics/pokemon/back/DIALGA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://cln3tvvt5n2hc" path="res://graphics/pokemon/back_shiny/DIALGA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://cxe3f3g2trm23" path="res://graphics/pokemon/icons/DIALGA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bfqulknvqee2b" path="res://graphics/pokemon/front/DIALGA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dm7c07gixya8p" path="res://graphics/pokemon/front_shiny/DIALGA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://idyv84s0w6td" path="res://graphics/pokemon/back/DIALGA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://o2olwrvxe8sy" path="res://graphics/pokemon/back_shiny/DIALGA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c8scd7yxvwccp" path="res://graphics/pokemon/icons/DIALGA.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://lltc6ar7n65w" path="res://graphics/pokemon/follower/DIALGA.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://xl17xvk4boqm" path="res://sfx/se/cries/DIALGA.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://bxiw1pgl2qata" path="res://graphics/pokemon/front/DIALGA_ORIGIN.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://br0ybkxlc7tpx" path="res://graphics/pokemon/front_shiny/DIALGA_ORIGIN.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://ddb4qb3osj8c" path="res://graphics/pokemon/back/DIALGA_ORIGIN.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://5x4ff8fq43af" path="res://graphics/pokemon/back_shiny/DIALGA_ORIGIN.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://benlf6lmkkaon" path="res://graphics/pokemon/front/DIALGA_ORIGIN.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://d2hugndqjp2tf" path="res://graphics/pokemon/front_shiny/DIALGA_ORIGIN.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b7efq6dsx83qk" path="res://graphics/pokemon/back/DIALGA_ORIGIN.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dmwbhivqdbruy" path="res://graphics/pokemon/back_shiny/DIALGA_ORIGIN.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_mn7lm")
@@ -38,7 +37,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("10_v0p1l")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("12_ecjn8")
 cry = ExtResource("gfx106")
 override_graphics = true

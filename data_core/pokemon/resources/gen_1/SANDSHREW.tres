@@ -7,18 +7,17 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://dmjxyda2f2f2m" path="res://graphics/pokemon/front/SANDSHREW.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://cdq2g8xfaeuq1" path="res://graphics/pokemon/front_shiny/SANDSHREW.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://bpjkhy4i1h8g2" path="res://graphics/pokemon/back/SANDSHREW.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://bk6u0c3rn1o7y" path="res://graphics/pokemon/back_shiny/SANDSHREW.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://bmrmgmayfynfk" path="res://graphics/pokemon/icons/SANDSHREW.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://65f8okcgsjhx" path="res://graphics/pokemon/front/SANDSHREW.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cv3etftb5tt2i" path="res://graphics/pokemon/front_shiny/SANDSHREW.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://c6shxmsmakxsn" path="res://graphics/pokemon/back/SANDSHREW.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c8v31rrohlmst" path="res://graphics/pokemon/back_shiny/SANDSHREW.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://diyj8qqw40tjj" path="res://graphics/pokemon/follower/SANDSHREW.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://bblubpianpc82" path="res://sfx/se/cries/SANDSHREW.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://dd1v08i4eqbuk" path="res://graphics/pokemon/front/SANDSHREW_ALOLA.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://c5hpn4pn7tdph" path="res://graphics/pokemon/front_shiny/SANDSHREW_ALOLA.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://svqk7sq6dlyf" path="res://graphics/pokemon/back/SANDSHREW_ALOLA.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://ctygixqqrrp1w" path="res://graphics/pokemon/back_shiny/SANDSHREW_ALOLA.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://b1e0wguap6r5p" path="res://graphics/pokemon/icons/SANDSHREW_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://d144jgign77s" path="res://graphics/pokemon/front/SANDSHREW_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://brufffsa57hpm" path="res://graphics/pokemon/front_shiny/SANDSHREW_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://d0i3fupqg1cid" path="res://graphics/pokemon/back/SANDSHREW_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://b5ax43g553mjv" path="res://graphics/pokemon/back_shiny/SANDSHREW_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://c57kcbux3gw52" path="res://graphics/pokemon/icons/SANDSHREW.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://cvrmju3odnigq" path="res://graphics/pokemon/follower/SANDSHREW_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -199,7 +198,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_j8uwt")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])

@@ -7,28 +7,27 @@
 [ext_resource type="Script" uid="uid://ubphmg8l4a62" path="res://data_core/pokemon/conditions/condition_friendship.gd" id="ext_cond_friend"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://ddh12fk0k7ndj" path="res://graphics/pokemon/front/MEOWTH.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://6vlfntuppmmn" path="res://graphics/pokemon/front_shiny/MEOWTH.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://dehrlt6ykp3le" path="res://graphics/pokemon/back/MEOWTH.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://bl28tdjo66d2v" path="res://graphics/pokemon/back_shiny/MEOWTH.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://0ckfjfgnjom6" path="res://graphics/pokemon/icons/MEOWTH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dvdn4rpg0tvs3" path="res://graphics/pokemon/front/MEOWTH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cleufwsngcocb" path="res://graphics/pokemon/front_shiny/MEOWTH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://heuiio14ndig" path="res://graphics/pokemon/back/MEOWTH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ckiiy0xa7888q" path="res://graphics/pokemon/back_shiny/MEOWTH.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://v1b4gw8oerg4" path="res://graphics/pokemon/icons/MEOWTH.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://hkcq8few3n2r" path="res://graphics/pokemon/follower/MEOWTH.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://df6o26x02due7" path="res://sfx/se/cries/MEOWTH.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://b6ll8hl3fr37k" path="res://graphics/pokemon/front/MEOWTH_ALOLA.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://fixgu0qtwwg5" path="res://graphics/pokemon/front_shiny/MEOWTH_ALOLA.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://b1qto8qn5ofhr" path="res://graphics/pokemon/back/MEOWTH_ALOLA.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://cspb7ke3fdryu" path="res://graphics/pokemon/back_shiny/MEOWTH_ALOLA.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://d0g1rerjoqaw8" path="res://graphics/pokemon/icons/MEOWTH_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://c3q5q2slnjjf1" path="res://graphics/pokemon/front/MEOWTH_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://f8sqwwu1wx4v" path="res://graphics/pokemon/front_shiny/MEOWTH_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c8pjusbfottmy" path="res://graphics/pokemon/back/MEOWTH_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://5vpll86t3wwe" path="res://graphics/pokemon/back_shiny/MEOWTH_ALOLA.png" id="gfx110"]
 [ext_resource type="Texture2D" uid="uid://dnprtagj08x6k" path="res://graphics/pokemon/follower/MEOWTH_1.png" id="gfx112"]
-[ext_resource type="Texture2D" uid="uid://nyxta1i1gfls" path="res://graphics/pokemon/front/MEOWTH_GALAR.png" id="gfx113"]
-[ext_resource type="Texture2D" uid="uid://cuu2nfvkaaojv" path="res://graphics/pokemon/front_shiny/MEOWTH_GALAR.png" id="gfx114"]
-[ext_resource type="Texture2D" uid="uid://5xo4876vpuo3" path="res://graphics/pokemon/back/MEOWTH_GALAR.png" id="gfx115"]
-[ext_resource type="Texture2D" uid="uid://b6bog28xusy06" path="res://graphics/pokemon/back_shiny/MEOWTH_GALAR.png" id="gfx116"]
-[ext_resource type="Texture2D" uid="uid://c6af3mw26mkb5" path="res://graphics/pokemon/front/MEOWTH_GMAX.png" id="gfx117"]
-[ext_resource type="Texture2D" uid="uid://c8fxbq6wd7lvn" path="res://graphics/pokemon/front_shiny/MEOWTH_GMAX.png" id="gfx118"]
-[ext_resource type="Texture2D" uid="uid://cva3b3hcitbng" path="res://graphics/pokemon/back/MEOWTH_GMAX.png" id="gfx119"]
-[ext_resource type="Texture2D" uid="uid://bvil43j62ty18" path="res://graphics/pokemon/back_shiny/MEOWTH_GMAX.png" id="gfx120"]
-[ext_resource type="Texture2D" uid="uid://blrfpmooygv57" path="res://graphics/pokemon/icons/MEOWTH_gmax.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://bl6a21t1v5p4h" path="res://graphics/pokemon/front/MEOWTH_GALAR.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://cy5a57m7bh2mg" path="res://graphics/pokemon/front_shiny/MEOWTH_GALAR.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://beyt0wskg7iwc" path="res://graphics/pokemon/back/MEOWTH_GALAR.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://di0pwfsev1jq4" path="res://graphics/pokemon/back_shiny/MEOWTH_GALAR.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://fbv0mx0hyvcq" path="res://graphics/pokemon/front/MEOWTH_GMAX.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://bf775w6gmod10" path="res://graphics/pokemon/front_shiny/MEOWTH_GMAX.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://b8ggbxiksbrsv" path="res://graphics/pokemon/back/MEOWTH_GMAX.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://dhj74wg0w1f7r" path="res://graphics/pokemon/back_shiny/MEOWTH_GMAX.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://djypbjl3hiadn" path="res://graphics/pokemon/icons/MEOWTH_GMAX.png" id="gfx121"]
 [ext_resource type="Texture2D" uid="uid://l77edo5l0efk" path="res://graphics/pokemon/follower/MEOWTH_2.png" id="gfx122"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -79,7 +78,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("gfx121")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
@@ -118,7 +117,7 @@ front_sprite = ExtResource("gfx113")
 front_sprite_shiny = ExtResource("gfx114")
 back_sprite = ExtResource("gfx115")
 back_sprite_shiny = ExtResource("gfx116")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("gfx121")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)

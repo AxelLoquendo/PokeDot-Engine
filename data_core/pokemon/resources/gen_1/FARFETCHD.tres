@@ -5,18 +5,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="3_hwhfw"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://7g1g235danar" path="res://graphics/pokemon/front/FARFETCHD.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://c37utgeh6g2e8" path="res://graphics/pokemon/front_shiny/FARFETCHD.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://icrrm8yt7son" path="res://graphics/pokemon/back/FARFETCHD.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://d3b3n8ancntqp" path="res://graphics/pokemon/back_shiny/FARFETCHD.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://cemm04dicsyb8" path="res://graphics/pokemon/icons/FARFETCHD.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b2uje1cyv8qjv" path="res://graphics/pokemon/front/FARFETCHD.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://4ifa3tqw6vx1" path="res://graphics/pokemon/front_shiny/FARFETCHD.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bsb82w7lxw2fe" path="res://graphics/pokemon/back/FARFETCHD.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://8ro7welkybau" path="res://graphics/pokemon/back_shiny/FARFETCHD.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://0gc7pegda10m" path="res://graphics/pokemon/follower/FARFETCHD.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://dhx8a8qhujyis" path="res://sfx/se/cries/FARFETCHD.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://vmi4i766w4en" path="res://graphics/pokemon/front/FARFETCHD_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://dysgdouq84hhl" path="res://graphics/pokemon/front_shiny/FARFETCHD_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://fum00clnpp13" path="res://graphics/pokemon/back/FARFETCHD_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://cyji68fmtj2xt" path="res://graphics/pokemon/back_shiny/FARFETCHD_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://c7q006cyhd6bn" path="res://graphics/pokemon/icons/FARFETCHD_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bi1yfruu5o545" path="res://graphics/pokemon/front/FARFETCHD_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bq4vkcatou2ui" path="res://graphics/pokemon/front_shiny/FARFETCHD_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://beq78vaem85ha" path="res://graphics/pokemon/back/FARFETCHD_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bolhp7vtgfcqg" path="res://graphics/pokemon/back_shiny/FARFETCHD_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bfcl2tkhh7cvf" path="res://graphics/pokemon/icons/FARFETCHD.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://d1ymdnbi032s8" path="res://graphics/pokemon/follower/FARFETCHD_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_evo0"]
@@ -186,7 +185,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("3_hwhfw")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])

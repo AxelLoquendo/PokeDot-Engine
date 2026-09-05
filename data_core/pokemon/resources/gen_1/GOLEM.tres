@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_mom5n"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://bpmmce1y6pg5p" path="res://graphics/pokemon/front/GOLEM.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://55d2n7g8c7sn" path="res://graphics/pokemon/front_shiny/GOLEM.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://dk4kj4uvqwsb8" path="res://graphics/pokemon/back/GOLEM.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://ccoodts8p7ni0" path="res://graphics/pokemon/back_shiny/GOLEM.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://f87hjkp4al7n" path="res://graphics/pokemon/icons/GOLEM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cxfmkr42xepkt" path="res://graphics/pokemon/front/GOLEM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bkrm32utnywlm" path="res://graphics/pokemon/front_shiny/GOLEM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://beqqfij7tnvlx" path="res://graphics/pokemon/back/GOLEM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://y3yy35byj7jd" path="res://graphics/pokemon/back_shiny/GOLEM.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://hgutttoqhs4l" path="res://graphics/pokemon/follower/GOLEM.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://r3awds73i4b2" path="res://sfx/se/cries/GOLEM.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://t2xvi5mjj1lc" path="res://graphics/pokemon/front/GOLEM_ALOLA.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://b5wvr5toq2xn0" path="res://graphics/pokemon/front_shiny/GOLEM_ALOLA.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://dsr34haiskr5d" path="res://graphics/pokemon/back/GOLEM_ALOLA.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://kdlyxhwj8kes" path="res://graphics/pokemon/back_shiny/GOLEM_ALOLA.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://reuonxv11ktf" path="res://graphics/pokemon/icons/GOLEM_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://drblgm3ap6q4a" path="res://graphics/pokemon/front/GOLEM_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bttcf3cu76svr" path="res://graphics/pokemon/front_shiny/GOLEM_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://brhfjimky0erg" path="res://graphics/pokemon/back/GOLEM_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://qu2ts4ub0wn4" path="res://graphics/pokemon/back_shiny/GOLEM_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cgui2enojkrc2" path="res://graphics/pokemon/icons/GOLEM.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://dhkb75brcxmws" path="res://graphics/pokemon/follower/GOLEM_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -176,7 +175,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_mom5n")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])

@@ -6,18 +6,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_amj2h"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://dpcpb5o3gvdd7" path="res://graphics/pokemon/front/ZORUA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://dmn82swygmwua" path="res://graphics/pokemon/front_shiny/ZORUA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://ke7ryaji3awo" path="res://graphics/pokemon/back/ZORUA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://c60k1lo07mqjl" path="res://graphics/pokemon/back_shiny/ZORUA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://6tnxgj231enu" path="res://graphics/pokemon/icons/ZORUA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cpjawxt5p24n2" path="res://graphics/pokemon/front/ZORUA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b0aopokuexlnh" path="res://graphics/pokemon/front_shiny/ZORUA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://druoxmfceldcv" path="res://graphics/pokemon/back/ZORUA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://4qyy38hjrlr7" path="res://graphics/pokemon/back_shiny/ZORUA.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://b0pbw71jfhlrv" path="res://graphics/pokemon/follower/ZORUA.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://1qa1awnppo6n" path="res://sfx/se/cries/ZORUA.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://dck84b0epya44" path="res://graphics/pokemon/front/ZORUA_HISUI.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://cngre5j6ptyvb" path="res://graphics/pokemon/front_shiny/ZORUA_HISUI.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cp1nfdxx8g7ui" path="res://graphics/pokemon/back/ZORUA_HISUI.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://cys86lopbgmih" path="res://graphics/pokemon/back_shiny/ZORUA_HISUI.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://cqhnaw50pm7e7" path="res://graphics/pokemon/icons/ZORUA_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://ddupp4g5ihjpc" path="res://graphics/pokemon/front/ZORUA_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dtkfpiimimhr3" path="res://graphics/pokemon/front_shiny/ZORUA_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cf6ilojh2lcm4" path="res://graphics/pokemon/back/ZORUA_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cmlfteq2vj3ra" path="res://graphics/pokemon/back_shiny/ZORUA_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://b071s5n72xj1a" path="res://graphics/pokemon/icons/ZORUA.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://qbxi2hwr1up" path="res://graphics/pokemon/follower/ZORUA_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -182,7 +181,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_amj2h")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])

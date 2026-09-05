@@ -6,18 +6,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_5mpw0"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://i7stqdgjchd3" path="res://graphics/pokemon/front/WOOPER.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://d0wgcjn0ngau2" path="res://graphics/pokemon/front_shiny/WOOPER.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://35ur1e2yha4v" path="res://graphics/pokemon/back/WOOPER.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://pfyah0q7ahdq" path="res://graphics/pokemon/back_shiny/WOOPER.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://daco6crdcc3e7" path="res://graphics/pokemon/icons/WOOPER.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cy3by2c61fk8q" path="res://graphics/pokemon/front/WOOPER.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://xtub6hw4bfkg" path="res://graphics/pokemon/front_shiny/WOOPER.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ctrm346cs2lmc" path="res://graphics/pokemon/back/WOOPER.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bwu4l4x7kwyug" path="res://graphics/pokemon/back_shiny/WOOPER.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://bqt75gwei77sj" path="res://graphics/pokemon/follower/WOOPER.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://dam1wb70ktpqm" path="res://sfx/se/cries/WOOPER.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://cj2gnb2ttinwm" path="res://graphics/pokemon/front/WOOPER_PALDEA.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://dowsj0sjw1f41" path="res://graphics/pokemon/front_shiny/WOOPER_PALDEA.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cfkfdbgkc7m10" path="res://graphics/pokemon/back/WOOPER_PALDEA.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://do48deiavib8s" path="res://graphics/pokemon/back_shiny/WOOPER_PALDEA.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://c1o4immlq4dii" path="res://graphics/pokemon/icons/WOOPER_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://c1poo7up8llve" path="res://graphics/pokemon/front/WOOPER_PALDEA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://tmy367agtykn" path="res://graphics/pokemon/front_shiny/WOOPER_PALDEA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://caufqayhcn67w" path="res://graphics/pokemon/back/WOOPER_PALDEA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://km1akhfjqn2a" path="res://graphics/pokemon/back_shiny/WOOPER_PALDEA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://nphdy3m3lxte" path="res://graphics/pokemon/icons/WOOPER.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://owew2qeg3x76" path="res://graphics/pokemon/follower/WOOPER_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -179,7 +178,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_5mpw0")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])

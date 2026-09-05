@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://dutq81k3jrmct" path="res://graphics/pokemon/front/MOLTRES.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://cp07y1tbkjtrj" path="res://graphics/pokemon/front_shiny/MOLTRES.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://bgbdvs6qqrb3p" path="res://graphics/pokemon/back/MOLTRES.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://b4yv4b0w37oab" path="res://graphics/pokemon/back_shiny/MOLTRES.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://dk7egs38yj8iw" path="res://graphics/pokemon/icons/MOLTRES.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://7k665p2fa8jb" path="res://graphics/pokemon/front/MOLTRES.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cdgk6o24m42e2" path="res://graphics/pokemon/front_shiny/MOLTRES.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cf0dnk8skp4sg" path="res://graphics/pokemon/back/MOLTRES.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bfy4gou37lieg" path="res://graphics/pokemon/back_shiny/MOLTRES.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://crwd341fjfaja" path="res://graphics/pokemon/follower/MOLTRES.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://cutk4flwdq4e3" path="res://sfx/se/cries/MOLTRES.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://deqyfagms26wh" path="res://graphics/pokemon/front/MOLTRES_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://jh8frbrt5vgm" path="res://graphics/pokemon/front_shiny/MOLTRES_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://dq6efegsdibur" path="res://graphics/pokemon/back/MOLTRES_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://xwtwucesmjf5" path="res://graphics/pokemon/back_shiny/MOLTRES_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://ciyojh5pciy52" path="res://graphics/pokemon/icons/MOLTRES_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://c2enlx5kcxiqe" path="res://graphics/pokemon/front/MOLTRES_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cqirqrb561g54" path="res://graphics/pokemon/front_shiny/MOLTRES_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c5k0nkoqbpjlq" path="res://graphics/pokemon/back/MOLTRES_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://xk8pherrey1l" path="res://graphics/pokemon/back_shiny/MOLTRES_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://vhjg1fft4wls" path="res://graphics/pokemon/icons/MOLTRES.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://dxej2yviyf4yc" path="res://graphics/pokemon/follower/MOLTRES_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -185,7 +184,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_14ugf")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])

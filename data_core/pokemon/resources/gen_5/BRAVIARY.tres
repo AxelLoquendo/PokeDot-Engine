@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://u1ouenbjfbfx" path="res://graphics/pokemon/front/BRAVIARY.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://5weqfb2ion38" path="res://graphics/pokemon/front_shiny/BRAVIARY.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://dr7egplp77bk5" path="res://graphics/pokemon/back/BRAVIARY.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://br26fqeui5kjf" path="res://graphics/pokemon/back_shiny/BRAVIARY.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://djdtlw5y8t4ii" path="res://graphics/pokemon/icons/BRAVIARY.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cg7krykpi0tfl" path="res://graphics/pokemon/front/BRAVIARY.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://3x02pi6ibyp2" path="res://graphics/pokemon/front_shiny/BRAVIARY.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://mbev8u5i0nk1" path="res://graphics/pokemon/back/BRAVIARY.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c70n86es1r4li" path="res://graphics/pokemon/back_shiny/BRAVIARY.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://iedab37wkwfc" path="res://graphics/pokemon/follower/BRAVIARY.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://drg0pgy8s8j3b" path="res://sfx/se/cries/BRAVIARY.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://q0iqy5wm5b6h" path="res://graphics/pokemon/front/BRAVIARY_HISUI.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://7xee38w4whp" path="res://graphics/pokemon/front_shiny/BRAVIARY_HISUI.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://hid8ljnupuuq" path="res://graphics/pokemon/back/BRAVIARY_HISUI.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://dj1oknju27u1g" path="res://graphics/pokemon/back_shiny/BRAVIARY_HISUI.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://442lr5o6k54u" path="res://graphics/pokemon/icons/BRAVIARY_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://b2f3gdqm2dkja" path="res://graphics/pokemon/front/BRAVIARY_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dia0ykxhwjvwu" path="res://graphics/pokemon/front_shiny/BRAVIARY_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b071tws3yq3b6" path="res://graphics/pokemon/back/BRAVIARY_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cjd3buyw0n0ui" path="res://graphics/pokemon/back_shiny/BRAVIARY_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://ct56i7u47kqhk" path="res://graphics/pokemon/icons/BRAVIARY.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://bpolifmmwhtx2" path="res://graphics/pokemon/follower/BRAVIARY_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -166,7 +165,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_fo7mx")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])

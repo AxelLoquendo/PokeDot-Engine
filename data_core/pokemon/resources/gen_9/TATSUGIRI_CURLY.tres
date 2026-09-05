@@ -3,22 +3,33 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_3tx01"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://b45urt1jxxm1u" path="res://graphics/pokemon/icons/TATSUGIRI_DROOPY.png" id="10_enkh5"]
+[ext_resource type="Texture2D" uid="uid://d3roo7cb271ss" path="res://graphics/pokemon/follower/TATSUGIRI_1.png" id="12_hosaf"]
+[ext_resource type="Texture2D" uid="uid://de4d7lt2tlp50" path="res://graphics/pokemon/icons/TATSUGIRI_STRETCHY.png" id="17_76igl"]
+[ext_resource type="Texture2D" uid="uid://ca3xes4k8pyyw" path="res://graphics/pokemon/follower/TATSUGIRI_2.png" id="18_m0h4m"]
+[ext_resource type="Texture2D" uid="uid://bifeg72req0dm" path="res://graphics/pokemon/back/MEGA_TATSUGIRI.png" id="19_nkvpg"]
+[ext_resource type="Texture2D" uid="uid://xpsu8dbx6upe" path="res://graphics/pokemon/back_shiny/MEGA_TATSUGIRI.png" id="20_qg616"]
+[ext_resource type="Texture2D" uid="uid://c7bl8udiq5y7m" path="res://graphics/pokemon/front/MEGA_TATSUGIRI.png" id="21_c7pdi"]
+[ext_resource type="Texture2D" uid="uid://d187jrjktyn1n" path="res://graphics/pokemon/front_shiny/MEGA_TATSUGIRI.png" id="22_rbj1t"]
+[ext_resource type="Texture2D" uid="uid://whli70eykl4c" path="res://graphics/pokemon/icons/MEGA_TATSUGIRI.png" id="23_hhkc1"]
+[ext_resource type="Texture2D" uid="uid://c0jengblb6tqh" path="res://graphics/pokemon/icons/TATSUGIRI_DROOPY_MEGA.png" id="24_qg616"]
+[ext_resource type="Texture2D" uid="uid://bmlvyacc5ydvg" path="res://graphics/pokemon/icons/TATSUGIRI_STRETCHY_MEGA.png" id="25_c7pdi"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://bpddy7n2gr3vo" path="res://graphics/pokemon/front/TATSUGIRI.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://c3xtey0xybcvx" path="res://graphics/pokemon/front_shiny/TATSUGIRI.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://tjhk762veoxy" path="res://graphics/pokemon/back/TATSUGIRI.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://snb0o78o5vj2" path="res://graphics/pokemon/back_shiny/TATSUGIRI.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://b5df1k4ma53c" path="res://graphics/pokemon/icons/TATSUGIRI.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://5wdavgp5p0mf" path="res://graphics/pokemon/front/TATSUGIRI.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bxu80qvj75p2k" path="res://graphics/pokemon/front_shiny/TATSUGIRI.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dhtca1mntxae1" path="res://graphics/pokemon/back/TATSUGIRI.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dq487aaij5hv2" path="res://graphics/pokemon/back_shiny/TATSUGIRI.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://i2wim40hu0hj" path="res://graphics/pokemon/icons/TATSUGIRI.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://ckm8pgirwto6o" path="res://graphics/pokemon/follower/TATSUGIRI.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://gmn4mirtsrl4" path="res://sfx/se/cries/TATSUGIRI.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://c5itppltqns00" path="res://graphics/pokemon/front/TATSUGIRI_DROOPY.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://bi1rvod2wk3t7" path="res://graphics/pokemon/front_shiny/TATSUGIRI_DROOPY.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://b6f8y5hmwigaa" path="res://graphics/pokemon/back/TATSUGIRI_DROOPY.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://l5px7k24xvtl" path="res://graphics/pokemon/back_shiny/TATSUGIRI_DROOPY.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://d17px8f8tbhip" path="res://graphics/pokemon/front/TATSUGIRI_STRETCHY.png" id="gfx111"]
-[ext_resource type="Texture2D" uid="uid://0evxrkrbqmdv" path="res://graphics/pokemon/front_shiny/TATSUGIRI_STRETCHY.png" id="gfx112"]
-[ext_resource type="Texture2D" uid="uid://rmraxfwnyde6" path="res://graphics/pokemon/back/TATSUGIRI_STRETCHY.png" id="gfx113"]
-[ext_resource type="Texture2D" uid="uid://jx3rx0pdbxqy" path="res://graphics/pokemon/back_shiny/TATSUGIRI_STRETCHY.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://cckplm2yr85ek" path="res://graphics/pokemon/front/TATSUGIRI_DROOPY.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c3g4pcu6hjes2" path="res://graphics/pokemon/front_shiny/TATSUGIRI_DROOPY.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://lo0827v7tsgd" path="res://graphics/pokemon/back/TATSUGIRI_DROOPY.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://d1kjo000driir" path="res://graphics/pokemon/back_shiny/TATSUGIRI_DROOPY.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://5rt8urow8aya" path="res://graphics/pokemon/front/TATSUGIRI_STRETCHY.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bblln04r6ks61" path="res://graphics/pokemon/front_shiny/TATSUGIRI_STRETCHY.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://dcpfcmb0ko3bi" path="res://graphics/pokemon/back/TATSUGIRI_STRETCHY.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://cy0cy142rrpe1" path="res://graphics/pokemon/back_shiny/TATSUGIRI_STRETCHY.png" id="gfx114"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3tx01")
@@ -40,8 +51,8 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("10_enkh5")
+overworld_scene = ExtResource("12_hosaf")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 14)
 back_sprite_offset = Vector2(0, 17)
@@ -78,8 +89,8 @@ front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
 back_sprite_shiny = ExtResource("gfx114")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("17_76igl")
+overworld_scene = ExtResource("18_m0h4m")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 14)
 back_sprite_offset = Vector2(0, 17)
@@ -112,6 +123,11 @@ base_defense = 90
 base_speed = 92
 base_sp_attack = 135
 base_sp_defense = 125
+front_sprite = ExtResource("21_c7pdi")
+front_sprite_shiny = ExtResource("22_rbj1t")
+back_sprite = ExtResource("19_nkvpg")
+back_sprite_shiny = ExtResource("20_qg616")
+icon_sprite = ExtResource("23_hhkc1")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 17)
@@ -149,6 +165,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("24_qg616")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 17)
@@ -186,6 +203,7 @@ front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
 back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("25_c7pdi")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 17)

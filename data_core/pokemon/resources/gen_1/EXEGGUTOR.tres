@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://d0j4tcbtl6tcj" path="res://graphics/pokemon/front/EXEGGUTOR.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://dc4eblfvisisa" path="res://graphics/pokemon/front_shiny/EXEGGUTOR.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://det3ehk0wkp2n" path="res://graphics/pokemon/back/EXEGGUTOR.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://cydu8wrd1ij6l" path="res://graphics/pokemon/back_shiny/EXEGGUTOR.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://c6cuke7p6jo4e" path="res://graphics/pokemon/icons/EXEGGUTOR.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b2r5h6huqgyqw" path="res://graphics/pokemon/front/EXEGGUTOR.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ga13shrcvane" path="res://graphics/pokemon/front_shiny/EXEGGUTOR.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dfe3uy4bl3hok" path="res://graphics/pokemon/back/EXEGGUTOR.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bl5sy4wyogtct" path="res://graphics/pokemon/back_shiny/EXEGGUTOR.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://dp8fskm1b5brk" path="res://graphics/pokemon/follower/EXEGGUTOR.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://c24li8i1eut8k" path="res://sfx/se/cries/EXEGGUTOR.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://dd0i2oim4sxfy" path="res://graphics/pokemon/front/EXEGGUTOR_ALOLA.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://dlvs13hqbnd6h" path="res://graphics/pokemon/front_shiny/EXEGGUTOR_ALOLA.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cbyue8y0i1tt" path="res://graphics/pokemon/back/EXEGGUTOR_ALOLA.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://de8i4o07e08ce" path="res://graphics/pokemon/back_shiny/EXEGGUTOR_ALOLA.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://cogbj4jfb6vn5" path="res://graphics/pokemon/icons/EXEGGUTOR_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://b774ogi3dt0au" path="res://graphics/pokemon/front/EXEGGUTOR_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://wcei1it0y6vl" path="res://graphics/pokemon/front_shiny/EXEGGUTOR_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dcucwoliwrjha" path="res://graphics/pokemon/back/EXEGGUTOR_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bu0xc6jbypjcq" path="res://graphics/pokemon/back_shiny/EXEGGUTOR_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://ckj50uxbwx46c" path="res://graphics/pokemon/icons/EXEGGUTOR.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://ckbgikkoj6g1l" path="res://graphics/pokemon/follower/EXEGGUTOR_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -164,7 +163,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_1e7m1")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])

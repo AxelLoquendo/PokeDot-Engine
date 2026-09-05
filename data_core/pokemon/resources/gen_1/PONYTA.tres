@@ -6,18 +6,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_sxxlc"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://chnnvyicvcs1s" path="res://graphics/pokemon/front/PONYTA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://clcl24xh1cry6" path="res://graphics/pokemon/front_shiny/PONYTA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://b2avqr6gp33bp" path="res://graphics/pokemon/back/PONYTA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://bj1j14e1wg3m" path="res://graphics/pokemon/back_shiny/PONYTA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://by73nynifea0l" path="res://graphics/pokemon/icons/PONYTA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://2bev38s82q2m" path="res://graphics/pokemon/front/PONYTA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ea4q2pkpkjp5" path="res://graphics/pokemon/front_shiny/PONYTA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://douat105dkdpc" path="res://graphics/pokemon/back/PONYTA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c7fygdj22xsu4" path="res://graphics/pokemon/back_shiny/PONYTA.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://rjfjwubgj431" path="res://graphics/pokemon/follower/PONYTA.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://dpfynagtwdhkj" path="res://sfx/se/cries/PONYTA.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://ct72jeg4cqd43" path="res://graphics/pokemon/front/PONYTA_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://bnit6f0b1vrge" path="res://graphics/pokemon/front_shiny/PONYTA_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cfxkohb7kut8b" path="res://graphics/pokemon/back/PONYTA_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://ias4b0jeksgv" path="res://graphics/pokemon/back_shiny/PONYTA_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://d2k431qp8m73i" path="res://graphics/pokemon/icons/PONYTA_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://ipcrl3gvde3k" path="res://graphics/pokemon/front/PONYTA_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cdj2apsfnsu5u" path="res://graphics/pokemon/front_shiny/PONYTA_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dvu1xk6m8folx" path="res://graphics/pokemon/back/PONYTA_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://dwbd80v2txpsm" path="res://graphics/pokemon/back_shiny/PONYTA_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://qs1ux42wh1r" path="res://graphics/pokemon/icons/PONYTA.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://b3k33ras6m2i7" path="res://graphics/pokemon/follower/PONYTA_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -166,7 +165,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_sxxlc")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14")])

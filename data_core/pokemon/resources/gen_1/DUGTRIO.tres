@@ -1,21 +1,20 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://dwms12nw45pmv"]
 
-[ext_resource type="Texture2D" uid="uid://blga7np6y5x7" path="res://graphics/pokemon/back/DUGTRIO.png" id="1_bf1xr"]
-[ext_resource type="Texture2D" uid="uid://se1ip3u6w4ji" path="res://graphics/pokemon/back_shiny/DUGTRIO.png" id="2_3arid"]
+[ext_resource type="Texture2D" uid="uid://nvxn84a7ru16" path="res://graphics/pokemon/back/DUGTRIO.png" id="1_bf1xr"]
+[ext_resource type="Texture2D" uid="uid://cqucv3vu45d47" path="res://graphics/pokemon/back_shiny/DUGTRIO.png" id="2_3arid"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_pl3cm"]
 [ext_resource type="AudioStream" uid="uid://fdhot8a0m6lt" path="res://sfx/se/cries/DUGTRIO.ogg" id="3_o2rau"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://bhxhci1qmrs3d" path="res://graphics/pokemon/front/DUGTRIO.png" id="7_pdxvt"]
-[ext_resource type="Texture2D" uid="uid://bqrj47jnhyktm" path="res://graphics/pokemon/front_shiny/DUGTRIO.png" id="8_4oj78"]
-[ext_resource type="Texture2D" uid="uid://ddkugawqddfh3" path="res://graphics/pokemon/icons/DUGTRIO.png" id="9_wn47c"]
+[ext_resource type="Texture2D" uid="uid://42c5aqtghc6x" path="res://graphics/pokemon/front/DUGTRIO.png" id="7_pdxvt"]
+[ext_resource type="Texture2D" uid="uid://b3rntrs1r08xx" path="res://graphics/pokemon/front_shiny/DUGTRIO.png" id="8_4oj78"]
 [ext_resource type="Texture2D" uid="uid://cd1vl5fjq2ex8" path="res://graphics/pokemon/follower/DUGTRIO.png" id="10_gog3h"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://dvaf8rcqkpky6" path="res://graphics/pokemon/front/DUGTRIO_ALOLA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://dbbvkg8difnbj" path="res://graphics/pokemon/front_shiny/DUGTRIO_ALOLA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://d4bpqva5qaj6m" path="res://graphics/pokemon/back/DUGTRIO_ALOLA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://3awlv1rv87hq" path="res://graphics/pokemon/back_shiny/DUGTRIO_ALOLA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://dh01ri8xba7fd" path="res://graphics/pokemon/icons/DUGTRIO_1.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bn5fu8t3tnwbs" path="res://graphics/pokemon/front/DUGTRIO_ALOLA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://doufni1l1p4cl" path="res://graphics/pokemon/front_shiny/DUGTRIO_ALOLA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dmefu3hmly1l3" path="res://graphics/pokemon/back/DUGTRIO_ALOLA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bdu1kl220s8da" path="res://graphics/pokemon/back_shiny/DUGTRIO_ALOLA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b7tlto16s0atg" path="res://graphics/pokemon/icons/DUGTRIO.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://tfy3ol6fp1yt" path="res://graphics/pokemon/follower/DUGTRIO_1.png" id="gfx105"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -175,7 +174,7 @@ front_sprite = ExtResource("7_pdxvt")
 front_sprite_shiny = ExtResource("8_4oj78")
 back_sprite = ExtResource("1_bf1xr")
 back_sprite_shiny = ExtResource("2_3arid")
-icon_sprite = ExtResource("9_wn47c")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("10_gog3h")
 forms = Array[ExtResource("2_pl3cm")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])

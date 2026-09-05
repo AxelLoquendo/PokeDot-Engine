@@ -6,18 +6,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_qx3fv"]
 [ext_resource type="Script" uid="uid://bwkdjkkqojxp5" path="res://data_core/pokemon/conditions/condition_knows_move.gd" id="ext_cond_move"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://ca27t8g2jnmsd" path="res://graphics/pokemon/front/QWILFISH.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://ttqadd6fo5vu" path="res://graphics/pokemon/front_shiny/QWILFISH.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://bqkuh4qf3st64" path="res://graphics/pokemon/back/QWILFISH.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://8ht67m3dk8d3" path="res://graphics/pokemon/back_shiny/QWILFISH.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://dj28ya4dp7kb0" path="res://graphics/pokemon/icons/QWILFISH.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cw5f016adn0wc" path="res://graphics/pokemon/front/QWILFISH.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cbsso8iapu3qh" path="res://graphics/pokemon/front_shiny/QWILFISH.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://6xiwws4ewe8g" path="res://graphics/pokemon/back/QWILFISH.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://b60l52wdggiv7" path="res://graphics/pokemon/back_shiny/QWILFISH.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://c8m3gjd0eulrb" path="res://graphics/pokemon/follower/QWILFISH.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://crg4gmjg4vh2n" path="res://sfx/se/cries/QWILFISH.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://jsbvwkgykhl6" path="res://graphics/pokemon/front/QWILFISH_HISUI.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://cmwr83b3w5pt4" path="res://graphics/pokemon/front_shiny/QWILFISH_HISUI.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://dv6qdta5iea7t" path="res://graphics/pokemon/back/QWILFISH_HISUI.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://bijr5r0hakga5" path="res://graphics/pokemon/back_shiny/QWILFISH_HISUI.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://wwvijtycdcsd" path="res://graphics/pokemon/icons/QWILFISH_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cj88wx6ome2hr" path="res://graphics/pokemon/front/QWILFISH_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://c4kg0oiqqyl38" path="res://graphics/pokemon/front_shiny/QWILFISH_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://2gxypb87ctoe" path="res://graphics/pokemon/back/QWILFISH_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bumi5dawf0fuk" path="res://graphics/pokemon/back_shiny/QWILFISH_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dvyw3fhy1gtbv" path="res://graphics/pokemon/icons/QWILFISH.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://b3fwtcj2s5own" path="res://graphics/pokemon/follower/QWILFISH_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -209,7 +208,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_qx3fv")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21")])

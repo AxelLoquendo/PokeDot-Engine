@@ -1,24 +1,22 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cvooh25cexkkn"]
 
-[ext_resource type="Texture2D" uid="uid://bb5r8vq2fo0ra" path="res://graphics/pokemon/back/GRENINJA.png" id="1_51668"]
-[ext_resource type="Texture2D" uid="uid://bm8vusctgkc2x" path="res://graphics/pokemon/back_shiny/GRENINJA.png" id="2_eb7cm"]
+[ext_resource type="Texture2D" uid="uid://cxjlrg4itype4" path="res://graphics/pokemon/back/GRENINJA.png" id="1_51668"]
+[ext_resource type="Texture2D" uid="uid://dwuvrmch2yaq" path="res://graphics/pokemon/back_shiny/GRENINJA.png" id="2_eb7cm"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_njvpt"]
 [ext_resource type="AudioStream" uid="uid://b72101v6d2ui5" path="res://sfx/se/cries/GRENINJA.ogg" id="3_pymgi"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://d76o7jbtlsc2" path="res://graphics/pokemon/back/GRENINJA_ASH.png" id="7_1vjnd"]
-[ext_resource type="Texture2D" uid="uid://dxyet4smnhuwd" path="res://graphics/pokemon/back_shiny/GRENINJA_ASH.png" id="8_kp8mw"]
-[ext_resource type="Texture2D" uid="uid://7id372t87h7j" path="res://graphics/pokemon/front/GRENINJA_ASH.png" id="9_5c7ly"]
-[ext_resource type="Texture2D" uid="uid://bqdvl6pviunwn" path="res://graphics/pokemon/front_shiny/GRENINJA_ASH.png" id="10_nfl1x"]
-[ext_resource type="Texture2D" uid="uid://cbpvxnae1vglt" path="res://graphics/pokemon/icons/GRENINJA_2.png" id="11_fi1pl"]
-[ext_resource type="Texture2D" uid="uid://cg6yc84m33wys" path="res://graphics/pokemon/back/MEGA_GRENINJA.png" id="12_yflow"]
-[ext_resource type="Texture2D" uid="uid://dv6pes35e7tga" path="res://graphics/pokemon/back_shiny/MEGA_GRENINJA.png" id="13_4pw2e"]
-[ext_resource type="Texture2D" uid="uid://ciy5ah47ip372" path="res://graphics/pokemon/front/MEGA_GRENINJA.png" id="14_7yijp"]
-[ext_resource type="Texture2D" uid="uid://46cgie4pgckg" path="res://graphics/pokemon/front_shiny/MEGA_GRENINJA.png" id="15_7ggiw"]
-[ext_resource type="Texture2D" uid="uid://ccgmmi1nlv5se" path="res://graphics/pokemon/icons/GRENINJA_3.png" id="16_na1ns"]
-[ext_resource type="Texture2D" uid="uid://weaxx8hyhwh3" path="res://graphics/pokemon/front/GRENINJA.png" id="17_47gx1"]
-[ext_resource type="Texture2D" uid="uid://chxqafbij4awf" path="res://graphics/pokemon/front_shiny/GRENINJA.png" id="18_dtmq6"]
-[ext_resource type="Texture2D" uid="uid://bf8rve0hskcan" path="res://graphics/pokemon/icons/GRENINJA.png" id="19_7hl43"]
+[ext_resource type="Texture2D" uid="uid://cpp6ine1hqmbb" path="res://graphics/pokemon/back/GRENINJA_ASH.png" id="7_1vjnd"]
+[ext_resource type="Texture2D" uid="uid://c7lk1em8y0hok" path="res://graphics/pokemon/back_shiny/GRENINJA_ASH.png" id="8_kp8mw"]
+[ext_resource type="Texture2D" uid="uid://5i1wokmc7da1" path="res://graphics/pokemon/front/GRENINJA_ASH.png" id="9_5c7ly"]
+[ext_resource type="Texture2D" uid="uid://decd1q4okjvv1" path="res://graphics/pokemon/front_shiny/GRENINJA_ASH.png" id="10_nfl1x"]
+[ext_resource type="Texture2D" uid="uid://cpqpco4pka7tq" path="res://graphics/pokemon/back/MEGA_GRENINJA.png" id="12_yflow"]
+[ext_resource type="Texture2D" uid="uid://bwt5eqpcykt37" path="res://graphics/pokemon/back_shiny/MEGA_GRENINJA.png" id="13_4pw2e"]
+[ext_resource type="Texture2D" uid="uid://cksx6qklvjxru" path="res://graphics/pokemon/front/MEGA_GRENINJA.png" id="14_7yijp"]
+[ext_resource type="Texture2D" uid="uid://cj77u7ak1s1ai" path="res://graphics/pokemon/front_shiny/MEGA_GRENINJA.png" id="15_7ggiw"]
+[ext_resource type="Texture2D" uid="uid://cx6lcij6iflkj" path="res://graphics/pokemon/front/GRENINJA.png" id="17_47gx1"]
+[ext_resource type="Texture2D" uid="uid://c8edkgnvpa448" path="res://graphics/pokemon/front_shiny/GRENINJA.png" id="18_dtmq6"]
+[ext_resource type="Texture2D" uid="uid://k4t25wxcl2lo" path="res://graphics/pokemon/icons/GRENINJA.png" id="19_7hl43"]
 [ext_resource type="Texture2D" uid="uid://ddthbl3qr0xbe" path="res://graphics/pokemon/follower/GRENINJA.png" id="20_in5oy"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 
@@ -80,7 +78,7 @@ front_sprite = ExtResource("9_5c7ly")
 front_sprite_shiny = ExtResource("10_nfl1x")
 back_sprite = ExtResource("7_1vjnd")
 back_sprite_shiny = ExtResource("8_kp8mw")
-icon_sprite = ExtResource("11_fi1pl")
+icon_sprite = ExtResource("19_7hl43")
 overworld_scene = ExtResource("20_in5oy")
 cry = ExtResource("3_pymgi")
 back_sprite_offset = Vector2(0, 11)
@@ -117,7 +115,7 @@ front_sprite = ExtResource("14_7yijp")
 front_sprite_shiny = ExtResource("15_7ggiw")
 back_sprite = ExtResource("12_yflow")
 back_sprite_shiny = ExtResource("13_4pw2e")
-icon_sprite = ExtResource("16_na1ns")
+icon_sprite = ExtResource("19_7hl43")
 overworld_scene = ExtResource("20_in5oy")
 cry = ExtResource("3_pymgi")
 back_sprite_offset = Vector2(0, 11)

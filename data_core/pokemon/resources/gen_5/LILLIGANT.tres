@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_srdth"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://btfod8ncp0a8g" path="res://graphics/pokemon/front/LILLIGANT.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://d3kg3yc5i4xvy" path="res://graphics/pokemon/front_shiny/LILLIGANT.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://b0j6umvjaokwb" path="res://graphics/pokemon/back/LILLIGANT.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://d1gopo5wjpmim" path="res://graphics/pokemon/back_shiny/LILLIGANT.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://dmx430iy14q3d" path="res://graphics/pokemon/icons/LILLIGANT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://yi3fkmgwm4cp" path="res://graphics/pokemon/front/LILLIGANT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cs2xixcqv6sd3" path="res://graphics/pokemon/front_shiny/LILLIGANT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://b6lfa30n25d7u" path="res://graphics/pokemon/back/LILLIGANT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://pkl255b2b0wy" path="res://graphics/pokemon/back_shiny/LILLIGANT.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://dvf6u656xg42j" path="res://graphics/pokemon/follower/LILLIGANT.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://cgcbjheo8wl0q" path="res://sfx/se/cries/LILLIGANT.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://cbg0bvp1clpeg" path="res://graphics/pokemon/front/LILLIGANT_HISUI.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://drq1aehvxpqws" path="res://graphics/pokemon/front_shiny/LILLIGANT_HISUI.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://duf5dqovwckua" path="res://graphics/pokemon/back/LILLIGANT_HISUI.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://bkfm2x3lh53h2" path="res://graphics/pokemon/back_shiny/LILLIGANT_HISUI.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://dn6w15r1kkejw" path="res://graphics/pokemon/icons/LILLIGANT_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://de0t7f5sd5pj3" path="res://graphics/pokemon/front/LILLIGANT_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dg5bg6w4jew7v" path="res://graphics/pokemon/front_shiny/LILLIGANT_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://b7c2n7p06f2t4" path="res://graphics/pokemon/back/LILLIGANT_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://blkmxt6k4ajxt" path="res://graphics/pokemon/back_shiny/LILLIGANT_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cwxsn0yrybyrp" path="res://graphics/pokemon/icons/LILLIGANT.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://nsgwu0ddqsje" path="res://graphics/pokemon/follower/LILLIGANT_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -167,7 +166,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_srdth")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20")])

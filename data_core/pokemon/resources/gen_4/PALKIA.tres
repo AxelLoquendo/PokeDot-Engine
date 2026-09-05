@@ -3,20 +3,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_2m5wt"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://061ft4viu3ju" path="res://graphics/pokemon/icons/PALKIA_1.png" id="10_rbdbv"]
 [ext_resource type="Texture2D" uid="uid://dah3f27elyljf" path="res://graphics/pokemon/follower/PALKIA_1.png" id="12_7vgby"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://yvnf7ujh2qmn" path="res://graphics/pokemon/front/PALKIA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://cfv0ipyoui1n2" path="res://graphics/pokemon/front_shiny/PALKIA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://omso3ubf6t05" path="res://graphics/pokemon/back/PALKIA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://dmw5qu828ipoh" path="res://graphics/pokemon/back_shiny/PALKIA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://d3eggap58qdh4" path="res://graphics/pokemon/icons/PALKIA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://gqxai56318wa" path="res://graphics/pokemon/front/PALKIA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bca5yws72h7ww" path="res://graphics/pokemon/front_shiny/PALKIA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://cebrt334mdcjb" path="res://graphics/pokemon/back/PALKIA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cds4q6xhbdy11" path="res://graphics/pokemon/back_shiny/PALKIA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://cqhuv0tn45m8t" path="res://graphics/pokemon/icons/PALKIA.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://copolbxqkgwav" path="res://graphics/pokemon/follower/PALKIA.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://c4dh5nogin1ow" path="res://sfx/se/cries/PALKIA.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://desp5oevlxvpc" path="res://graphics/pokemon/front/PALKIA_ORIGIN.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://d3w8w33ry2asl" path="res://graphics/pokemon/front_shiny/PALKIA_ORIGIN.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://bepuge8nq08k8" path="res://graphics/pokemon/back/PALKIA_ORIGIN.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://bmqoiahrj2rmn" path="res://graphics/pokemon/back_shiny/PALKIA_ORIGIN.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://b1g3wfr6auxhx" path="res://graphics/pokemon/front/PALKIA_ORIGIN.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://b325df6anqd03" path="res://graphics/pokemon/front_shiny/PALKIA_ORIGIN.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://um3r5efm4n3p" path="res://graphics/pokemon/back/PALKIA_ORIGIN.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://o3pn1la46x31" path="res://graphics/pokemon/back_shiny/PALKIA_ORIGIN.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_2m5wt")
@@ -38,7 +37,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("10_rbdbv")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("12_7vgby")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)

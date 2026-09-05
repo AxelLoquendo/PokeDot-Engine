@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sh5ew"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://cmxq8q6kf44rh" path="res://graphics/pokemon/icons/ARCEUS_1.png" id="6_vp3i8"]
 [ext_resource type="Texture2D" uid="uid://dw6wix03lx2xn" path="res://graphics/pokemon/follower/ARCEUS_1.png" id="8_vw0da"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://d00rjht2ty2jh" path="res://graphics/pokemon/front/ARCEUS.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://cjs0indi6v8gp" path="res://graphics/pokemon/front_shiny/ARCEUS.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://spo3fvreuwh5" path="res://graphics/pokemon/back/ARCEUS.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://cf4s1ipr1thir" path="res://graphics/pokemon/back_shiny/ARCEUS.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://bdt3l40ylolaa" path="res://graphics/pokemon/icons/ARCEUS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dw3jxrksqgmxf" path="res://graphics/pokemon/front/ARCEUS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bdkkaqgxc7uke" path="res://graphics/pokemon/front_shiny/ARCEUS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dhas3ppbltrr8" path="res://graphics/pokemon/back/ARCEUS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://70pr5flu6i12" path="res://graphics/pokemon/back_shiny/ARCEUS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://bj1gr4sejjh1y" path="res://graphics/pokemon/icons/ARCEUS.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://dwy3wn4c1tgdx" path="res://graphics/pokemon/follower/ARCEUS.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://dp576o052742c" path="res://sfx/se/cries/ARCEUS.ogg" id="gfx106"]
 
@@ -29,7 +28,7 @@ base_defense = 120
 base_speed = 120
 base_sp_attack = 120
 base_sp_defense = 120
-icon_sprite = ExtResource("6_vp3i8")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("8_vw0da")
 cry = ExtResource("gfx106")
 override_graphics = true

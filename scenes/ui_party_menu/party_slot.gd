@@ -2,6 +2,8 @@ extends Control
 class_name PartySlot
 
 
+const ICON_OUTLINE_MATERIAL: Resource = preload("res://scenes/ui_party_menu/icon_outline_material.tres")
+
 # ============================================================
 # REFERENCIAS
 # ============================================================
@@ -80,6 +82,41 @@ func _ready() -> void:
 	if sprite_objeto != null:
 		sprite_objeto.visible = false
 
+	_aplicar_outline_icono()
+
+func _aplicar_outline_icono() -> void:
+	if sprite_icon == null:
+		return
+	sprite_icon.material = ICON_OUTLINE_MATERIAL.duplicate()
+	_actualizar_region_outline()
+
+
+func _actualizar_region_outline() -> void:
+	if sprite_icon == null:
+		return
+	if sprite_icon.material == null:
+		return
+	if sprite_icon.texture == null:
+		return
+
+	var mat : Resource = sprite_icon.material as ShaderMaterial
+	if mat == null:
+		return
+
+	var h: int = maxi(sprite_icon.hframes, 1)
+	var v: int = maxi(sprite_icon.vframes, 1)
+	var frame: int = sprite_icon.frame
+
+	var fx: int = frame % h
+	@warning_ignore("integer_division")
+	var fy: int = int(frame / h)
+
+	var uv_min: Vector2 = Vector2(float(fx) / float(h), float(fy) / float(v))
+	var uv_max: Vector2 = Vector2(float(fx + 1) / float(h), float(fy + 1) / float(v))
+
+	mat.set_shader_parameter("region_uv_min", uv_min)
+	mat.set_shader_parameter("region_uv_max", uv_max)
+
 func configurar_caja_genero(es_chica: bool) -> void:
 	if boton_caja == null:
 		return
@@ -92,18 +129,14 @@ func configurar_caja_genero(es_chica: bool) -> void:
 		boton_caja.texture_focused = caja_chico_focused
 
 func _process(delta: float) -> void:
-	if pokemon == null:
-		return
-
-	if sprite_icon == null:
+	if pokemon == null or sprite_icon == null:
 		return
 
 	icon_frame_timer += delta
-
 	if icon_frame_timer >= icon_frame_time:
 		icon_frame_timer = 0.0
-
 		sprite_icon.frame = 1 - sprite_icon.frame
+		_actualizar_region_outline()  # ← importante
 
 func enfocar() -> void:
 
@@ -266,7 +299,6 @@ func _actualizar_icono() -> void:
 		return
 
 	var species: PokemonDataStruct = pokemon.get_species()
-
 	if species == null:
 		sprite_icon.texture = null
 		return
@@ -276,6 +308,11 @@ func _actualizar_icono() -> void:
 	sprite_icon.vframes = 1
 	sprite_icon.frame = 0
 	icon_frame_timer = 0.0
+
+	if sprite_icon.material == null:
+		_aplicar_outline_icono()
+	else:
+		_actualizar_region_outline()
 
 # ============================================================
 # GÉNERO

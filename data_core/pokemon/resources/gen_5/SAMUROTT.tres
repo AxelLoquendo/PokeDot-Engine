@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_vaov4"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://c51m5e4fkkeky" path="res://graphics/pokemon/front/SAMUROTT.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://b4jfgeih05miu" path="res://graphics/pokemon/front_shiny/SAMUROTT.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://ptily282f42q" path="res://graphics/pokemon/back/SAMUROTT.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://cj3obaeuht3wk" path="res://graphics/pokemon/back_shiny/SAMUROTT.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://b6280wdt51p7s" path="res://graphics/pokemon/icons/SAMUROTT.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://5tsskjyxw1oh" path="res://graphics/pokemon/front/SAMUROTT.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ikb7d5efjjfb" path="res://graphics/pokemon/front_shiny/SAMUROTT.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://crpysuw044gm7" path="res://graphics/pokemon/back/SAMUROTT.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cfo4wxrvm6hlv" path="res://graphics/pokemon/back_shiny/SAMUROTT.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://dahr17qsdwbjp" path="res://graphics/pokemon/follower/SAMUROTT.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://cyg26ix6at356" path="res://sfx/se/cries/SAMUROTT.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://12qt5gjfl2b" path="res://graphics/pokemon/front/SAMUROTT_HISUI.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://ci3o7g4jjedcy" path="res://graphics/pokemon/front_shiny/SAMUROTT_HISUI.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://bl5nhrhvrjxn6" path="res://graphics/pokemon/back/SAMUROTT_HISUI.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://b2q8bp5yp7pu" path="res://graphics/pokemon/back_shiny/SAMUROTT_HISUI.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://b5vwa0eponlnd" path="res://graphics/pokemon/icons/SAMUROTT_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bxt0gtnmdwr1w" path="res://graphics/pokemon/front/SAMUROTT_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cqlyulcv5f57i" path="res://graphics/pokemon/front_shiny/SAMUROTT_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cgqa2oikx77nw" path="res://graphics/pokemon/back/SAMUROTT_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://b1h2m6kwbwxq" path="res://graphics/pokemon/back_shiny/SAMUROTT_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://b3c5cugkyqsfd" path="res://graphics/pokemon/icons/SAMUROTT.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://colbe6ew030wd" path="res://graphics/pokemon/follower/SAMUROTT_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -170,7 +169,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_vaov4")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18")])

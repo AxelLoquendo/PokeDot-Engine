@@ -3,25 +3,24 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_fpkyb"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://b7adveqaj5eqw" path="res://graphics/pokemon/icons/TERAPAGOS_1.png" id="10_ib4qd"]
-[ext_resource type="Texture2D" uid="uid://bm78hfygbs075" path="res://graphics/pokemon/follower/TERAPAGOS_1.png" id="12_14dfr"]
-[ext_resource type="Texture2D" uid="uid://deypjgkwvu1y" path="res://graphics/pokemon/icons/TERAPAGOS_2.png" id="17_1o4vo"]
+[ext_resource type="Texture2D" uid="uid://ddgtglqkt1klm" path="res://graphics/pokemon/icons/TERAPAGOS_TERASTAL.png" id="10_ib4qd"]
+[ext_resource type="Texture2D" uid="uid://dsa3jbr712f3" path="res://graphics/pokemon/icons/TERAPAGOS_STELLAR.png" id="17_1o4vo"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://r3u4jclm0rpc" path="res://graphics/pokemon/front/TERAPAGOS.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://cblhh2r7o0ecb" path="res://graphics/pokemon/front_shiny/TERAPAGOS.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://bmk2f8g60ojnj" path="res://graphics/pokemon/back/TERAPAGOS.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://u0bgi0rbd03r" path="res://graphics/pokemon/back_shiny/TERAPAGOS.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://cg01gd45ovkoy" path="res://graphics/pokemon/icons/TERAPAGOS.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dl8y2adw22oyc" path="res://graphics/pokemon/front/TERAPAGOS.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b15t66t3eaaw0" path="res://graphics/pokemon/front_shiny/TERAPAGOS.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://h7io40x58b5y" path="res://graphics/pokemon/back/TERAPAGOS.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://dapchpx4wpdwv" path="res://graphics/pokemon/back_shiny/TERAPAGOS.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://c3y4gvv0ueed4" path="res://graphics/pokemon/icons/TERAPAGOS.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://dp37iv841mwsn" path="res://graphics/pokemon/follower/TERAPAGOS.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://bhynxdjjmv3to" path="res://sfx/se/cries/TERAPAGOS.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://d1xe4rgubr6u4" path="res://graphics/pokemon/front/TERAPAGOS_TERASTAL.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://ba5bpcaaukikg" path="res://graphics/pokemon/front_shiny/TERAPAGOS_TERASTAL.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cwfr1vyjwlq3f" path="res://graphics/pokemon/back/TERAPAGOS_TERASTAL.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://cnelfhjlslhd3" path="res://graphics/pokemon/back_shiny/TERAPAGOS_TERASTAL.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://d2db15o73tl3l" path="res://graphics/pokemon/front/TERAPAGOS_STELLAR.png" id="gfx111"]
-[ext_resource type="Texture2D" uid="uid://dpum2rrhtj8vp" path="res://graphics/pokemon/front_shiny/TERAPAGOS_STELLAR.png" id="gfx112"]
-[ext_resource type="Texture2D" uid="uid://5ary6m0vcp0m" path="res://graphics/pokemon/back/TERAPAGOS_STELLAR.png" id="gfx113"]
-[ext_resource type="Texture2D" uid="uid://ccnmv0ny7vddd" path="res://graphics/pokemon/back_shiny/TERAPAGOS_STELLAR.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://373o5ldl6it6" path="res://graphics/pokemon/front/TERAPAGOS_TERASTAL.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://do420bsukg84" path="res://graphics/pokemon/front_shiny/TERAPAGOS_TERASTAL.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dx0pdq2edubbh" path="res://graphics/pokemon/back/TERAPAGOS_TERASTAL.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bf07sh2fgdvl4" path="res://graphics/pokemon/back_shiny/TERAPAGOS_TERASTAL.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cs6sqfvgfdnk7" path="res://graphics/pokemon/front/TERAPAGOS_STELLAR.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://fl8flujc8ngo" path="res://graphics/pokemon/front_shiny/TERAPAGOS_STELLAR.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://01ibo1tjwfnc" path="res://graphics/pokemon/back/TERAPAGOS_STELLAR.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://duswqhagi6jk1" path="res://graphics/pokemon/back_shiny/TERAPAGOS_STELLAR.png" id="gfx114"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_fpkyb")
@@ -43,7 +42,7 @@ front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
 icon_sprite = ExtResource("10_ib4qd")
-overworld_scene = ExtResource("12_14dfr")
+overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 back_sprite_offset = Vector2(0, 11)

@@ -3,44 +3,39 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ff5fe"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://bxuelb8yhyyoo" path="res://graphics/pokemon/icons/ROTOM_1.png" id="10_y3rbj"]
 [ext_resource type="Texture2D" uid="uid://cla7h33eonbbp" path="res://graphics/pokemon/follower/ROTOM_1.png" id="12_xvg74"]
-[ext_resource type="Texture2D" uid="uid://crbjastlgne15" path="res://graphics/pokemon/icons/ROTOM_2.png" id="17_dl2u3"]
 [ext_resource type="Texture2D" uid="uid://qj46fab7qmxe" path="res://graphics/pokemon/follower/ROTOM_2.png" id="18_qnwgo"]
-[ext_resource type="Texture2D" uid="uid://fjx2oun0t5cf" path="res://graphics/pokemon/icons/ROTOM_3.png" id="23_h8q2k"]
 [ext_resource type="Texture2D" uid="uid://cmc1b8ufb4mj1" path="res://graphics/pokemon/follower/ROTOM_3.png" id="24_m8hcy"]
-[ext_resource type="Texture2D" uid="uid://c7wik5jb4s4tq" path="res://graphics/pokemon/icons/ROTOM_4.png" id="29_uy31s"]
 [ext_resource type="Texture2D" uid="uid://c8v47rw0cgv5l" path="res://graphics/pokemon/follower/ROTOM_4.png" id="30_yv3il"]
-[ext_resource type="Texture2D" uid="uid://b0115eqh4m5vi" path="res://graphics/pokemon/icons/ROTOM_5.png" id="35_gdn2j"]
 [ext_resource type="Texture2D" uid="uid://phehmfpki3gj" path="res://graphics/pokemon/follower/ROTOM_5.png" id="36_vgljr"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://glc6pytx3ree" path="res://graphics/pokemon/front/ROTOM.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://ckogqmjrvvs3h" path="res://graphics/pokemon/front_shiny/ROTOM.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://b1vom6e2ldm6f" path="res://graphics/pokemon/back/ROTOM.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://bc5hf46s6t36i" path="res://graphics/pokemon/back_shiny/ROTOM.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://cgmo53e8rah7i" path="res://graphics/pokemon/icons/ROTOM.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://dhe4j8j68ynue" path="res://graphics/pokemon/front/ROTOM.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://byoos8ckv4hyo" path="res://graphics/pokemon/front_shiny/ROTOM.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://ckyh5nyjwqeq3" path="res://graphics/pokemon/back/ROTOM.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://2ksq0i7xb7m8" path="res://graphics/pokemon/back_shiny/ROTOM.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://b3cfuksk64330" path="res://graphics/pokemon/icons/ROTOM.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://do2wtmbb0od6w" path="res://graphics/pokemon/follower/ROTOM.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://bvnw01tqlcys0" path="res://sfx/se/cries/ROTOM.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://pu25olijdw66" path="res://graphics/pokemon/front/ROTOM_HEAT.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://b2tkrdsx73ikd" path="res://graphics/pokemon/front_shiny/ROTOM_HEAT.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://bh47s3ugaguks" path="res://graphics/pokemon/back/ROTOM_HEAT.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://dj0io4u4r60yn" path="res://graphics/pokemon/back_shiny/ROTOM_HEAT.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://dayb13gbeagi8" path="res://graphics/pokemon/front/ROTOM_WASH.png" id="gfx111"]
-[ext_resource type="Texture2D" uid="uid://blhskujwg0ctb" path="res://graphics/pokemon/front_shiny/ROTOM_WASH.png" id="gfx112"]
-[ext_resource type="Texture2D" uid="uid://cnflcxuf8qq7p" path="res://graphics/pokemon/back/ROTOM_WASH.png" id="gfx113"]
-[ext_resource type="Texture2D" uid="uid://cv45jq7rju10y" path="res://graphics/pokemon/back_shiny/ROTOM_WASH.png" id="gfx114"]
-[ext_resource type="Texture2D" uid="uid://craviky1ngvk6" path="res://graphics/pokemon/front/ROTOM_FROST.png" id="gfx115"]
-[ext_resource type="Texture2D" uid="uid://cvq73ujnuwag0" path="res://graphics/pokemon/front_shiny/ROTOM_FROST.png" id="gfx116"]
-[ext_resource type="Texture2D" uid="uid://5fpx4vqjexu" path="res://graphics/pokemon/back/ROTOM_FROST.png" id="gfx117"]
-[ext_resource type="Texture2D" uid="uid://demu3b2okwm86" path="res://graphics/pokemon/back_shiny/ROTOM_FROST.png" id="gfx118"]
-[ext_resource type="Texture2D" uid="uid://bkelmgd5m1k54" path="res://graphics/pokemon/front/ROTOM_FAN.png" id="gfx119"]
-[ext_resource type="Texture2D" uid="uid://borcelhm5xqj5" path="res://graphics/pokemon/front_shiny/ROTOM_FAN.png" id="gfx120"]
-[ext_resource type="Texture2D" uid="uid://b8u3763v0xxeh" path="res://graphics/pokemon/back/ROTOM_FAN.png" id="gfx121"]
-[ext_resource type="Texture2D" uid="uid://b64ldkf522hbg" path="res://graphics/pokemon/back_shiny/ROTOM_FAN.png" id="gfx122"]
-[ext_resource type="Texture2D" uid="uid://byonxjbaejb5f" path="res://graphics/pokemon/front/ROTOM_MOW.png" id="gfx123"]
-[ext_resource type="Texture2D" uid="uid://btgrwjs27lwfw" path="res://graphics/pokemon/front_shiny/ROTOM_MOW.png" id="gfx124"]
-[ext_resource type="Texture2D" uid="uid://42shc44108rj" path="res://graphics/pokemon/back/ROTOM_MOW.png" id="gfx125"]
-[ext_resource type="Texture2D" uid="uid://cbj1d42x8isj0" path="res://graphics/pokemon/back_shiny/ROTOM_MOW.png" id="gfx126"]
+[ext_resource type="Texture2D" uid="uid://cnjb3anpsyjfb" path="res://graphics/pokemon/front/ROTOM_HEAT.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://ha4egb76s633" path="res://graphics/pokemon/front_shiny/ROTOM_HEAT.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c7vaidmx1goa1" path="res://graphics/pokemon/back/ROTOM_HEAT.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://c733gfgrxeae7" path="res://graphics/pokemon/back_shiny/ROTOM_HEAT.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://botetpg22kqys" path="res://graphics/pokemon/front/ROTOM_WASH.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dcvy0ynw28nf6" path="res://graphics/pokemon/front_shiny/ROTOM_WASH.png" id="gfx112"]
+[ext_resource type="Texture2D" uid="uid://dr7nofrpw6utl" path="res://graphics/pokemon/back/ROTOM_WASH.png" id="gfx113"]
+[ext_resource type="Texture2D" uid="uid://kx6ugl4sbrir" path="res://graphics/pokemon/back_shiny/ROTOM_WASH.png" id="gfx114"]
+[ext_resource type="Texture2D" uid="uid://2jobx8v3hk31" path="res://graphics/pokemon/front/ROTOM_FROST.png" id="gfx115"]
+[ext_resource type="Texture2D" uid="uid://cvowhscrikrp0" path="res://graphics/pokemon/front_shiny/ROTOM_FROST.png" id="gfx116"]
+[ext_resource type="Texture2D" uid="uid://vewhdco4c2wj" path="res://graphics/pokemon/back/ROTOM_FROST.png" id="gfx117"]
+[ext_resource type="Texture2D" uid="uid://b730dhub8e4gu" path="res://graphics/pokemon/back_shiny/ROTOM_FROST.png" id="gfx118"]
+[ext_resource type="Texture2D" uid="uid://diki2n5l26nt0" path="res://graphics/pokemon/front/ROTOM_FAN.png" id="gfx119"]
+[ext_resource type="Texture2D" uid="uid://v26805d2uvr4" path="res://graphics/pokemon/front_shiny/ROTOM_FAN.png" id="gfx120"]
+[ext_resource type="Texture2D" uid="uid://uv6vdrm1iug8" path="res://graphics/pokemon/back/ROTOM_FAN.png" id="gfx121"]
+[ext_resource type="Texture2D" uid="uid://e2teoqq67t7c" path="res://graphics/pokemon/back_shiny/ROTOM_FAN.png" id="gfx122"]
+[ext_resource type="Texture2D" uid="uid://5688finn7kfm" path="res://graphics/pokemon/front/ROTOM_MOW.png" id="gfx123"]
+[ext_resource type="Texture2D" uid="uid://c1807ltsfwicv" path="res://graphics/pokemon/front_shiny/ROTOM_MOW.png" id="gfx124"]
+[ext_resource type="Texture2D" uid="uid://csitbf5kuk3ye" path="res://graphics/pokemon/back/ROTOM_MOW.png" id="gfx125"]
+[ext_resource type="Texture2D" uid="uid://dcgqnw5fptvlx" path="res://graphics/pokemon/back_shiny/ROTOM_MOW.png" id="gfx126"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ff5fe")
@@ -62,7 +57,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("10_y3rbj")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("12_xvg74")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
@@ -100,7 +95,7 @@ front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
 back_sprite_shiny = ExtResource("gfx114")
-icon_sprite = ExtResource("17_dl2u3")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("18_qnwgo")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 7)
@@ -138,7 +133,7 @@ front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
 back_sprite_shiny = ExtResource("gfx118")
-icon_sprite = ExtResource("23_h8q2k")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("24_m8hcy")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
@@ -176,7 +171,7 @@ front_sprite = ExtResource("gfx119")
 front_sprite_shiny = ExtResource("gfx120")
 back_sprite = ExtResource("gfx121")
 back_sprite_shiny = ExtResource("gfx122")
-icon_sprite = ExtResource("29_uy31s")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("30_yv3il")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
@@ -214,7 +209,7 @@ front_sprite = ExtResource("gfx123")
 front_sprite_shiny = ExtResource("gfx124")
 back_sprite = ExtResource("gfx125")
 back_sprite_shiny = ExtResource("gfx126")
-icon_sprite = ExtResource("35_gdn2j")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("36_vgljr")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)

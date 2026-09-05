@@ -7,18 +7,17 @@
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://twog3brh60t8" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://cuw87iux7smu1" path="res://graphics/pokemon/front/RATTATA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://bf3phn4lshllw" path="res://graphics/pokemon/front_shiny/RATTATA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://b0wafac0uuqd6" path="res://graphics/pokemon/back/RATTATA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://bkr2cly78t1op" path="res://graphics/pokemon/back_shiny/RATTATA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://uaety1f5yrmn" path="res://graphics/pokemon/icons/RATTATA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://b0yuevdaps237" path="res://graphics/pokemon/front/RATTATA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b3c2g6j2gc8y1" path="res://graphics/pokemon/front_shiny/RATTATA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://8f1hcixafly8" path="res://graphics/pokemon/back/RATTATA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://c708jejgxobu7" path="res://graphics/pokemon/back_shiny/RATTATA.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://be36aq10g6bcp" path="res://graphics/pokemon/follower/RATTATA.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://b4rjwrqxqmflj" path="res://sfx/se/cries/RATTATA.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://cejp2lbo2bak8" path="res://graphics/pokemon/front/RATTATA_ALOLA.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://rjcv84ojs23" path="res://graphics/pokemon/front_shiny/RATTATA_ALOLA.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://bkkn64gyo1nby" path="res://graphics/pokemon/back/RATTATA_ALOLA.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://cbhiy7o6k214q" path="res://graphics/pokemon/back_shiny/RATTATA_ALOLA.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://ccb6y8gjgs4gc" path="res://graphics/pokemon/icons/RATTATA_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://lxohiuqmp5a8" path="res://graphics/pokemon/front/RATTATA_ALOLA.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://o54t4h1m4hmy" path="res://graphics/pokemon/front_shiny/RATTATA_ALOLA.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://ccjjrsg817hmi" path="res://graphics/pokemon/back/RATTATA_ALOLA.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://kie5npffngp" path="res://graphics/pokemon/back_shiny/RATTATA_ALOLA.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://brfrmoak7880o" path="res://graphics/pokemon/icons/RATTATA.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://dvcv6ysxiqvwu" path="res://graphics/pokemon/follower/RATTATA_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -173,7 +172,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_qq2my")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12")])

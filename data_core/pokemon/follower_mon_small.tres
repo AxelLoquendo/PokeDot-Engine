@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://dowuk7bjj1cr0"]
 
-[ext_resource type="Texture2D" uid="uid://d1ibn682ropbu" path="res://graphics/pokemon/follower/BULBASAUR.png" id="1_bolhd"]
+[ext_resource type="Texture2D" uid="uid://qiii801gdt28" path="res://graphics/pokemon/follower/BULBASAUR.png" id="1_bolhd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ntnyo"]
 atlas = ExtResource("1_bolhd")

@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://jebfdm1phyob" path="res://graphics/pokemon/front/WEEZING.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://cibnh6u5gww6v" path="res://graphics/pokemon/front_shiny/WEEZING.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://bgikft2ucrxw6" path="res://graphics/pokemon/back/WEEZING.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://d61g6ceelhvw" path="res://graphics/pokemon/back_shiny/WEEZING.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://dejq7e15eg341" path="res://graphics/pokemon/icons/WEEZING.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://cj1r4jmagl1sl" path="res://graphics/pokemon/front/WEEZING.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cplag3fm15q0k" path="res://graphics/pokemon/front_shiny/WEEZING.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dqq2ekt7l4rfk" path="res://graphics/pokemon/back/WEEZING.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cio0xs4cgn2r8" path="res://graphics/pokemon/back_shiny/WEEZING.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://bexis1ta3sic0" path="res://graphics/pokemon/follower/WEEZING.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://c8t56iq0f5br4" path="res://sfx/se/cries/WEEZING.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://d1q0hg3arpyvs" path="res://graphics/pokemon/front/WEEZING_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://bg033iy865doh" path="res://graphics/pokemon/front_shiny/WEEZING_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://byo1qxbyg1x3m" path="res://graphics/pokemon/back/WEEZING_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://b8fy15dhytg1k" path="res://graphics/pokemon/back_shiny/WEEZING_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://cl6vne2co35f6" path="res://graphics/pokemon/icons/WEEZING_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cqpui0imaguc0" path="res://graphics/pokemon/front/WEEZING_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bjwc5a5ghgl75" path="res://graphics/pokemon/front_shiny/WEEZING_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://dpgfwcpscu20l" path="res://graphics/pokemon/back/WEEZING_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bvvj1tuadp36x" path="res://graphics/pokemon/back_shiny/WEEZING_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dudtxkjw6lid3" path="res://graphics/pokemon/icons/WEEZING.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://c8fqv1plyhrig" path="res://graphics/pokemon/follower/WEEZING_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -165,7 +164,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_ejtxg")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])

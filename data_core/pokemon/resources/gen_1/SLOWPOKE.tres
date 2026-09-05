@@ -7,18 +7,17 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://dv7duhaqmige0" path="res://graphics/pokemon/front/SLOWPOKE.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://chudvefdo8jrr" path="res://graphics/pokemon/front_shiny/SLOWPOKE.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://cy8w2rxpnx5hq" path="res://graphics/pokemon/back/SLOWPOKE.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://cs4vssxuo6ua8" path="res://graphics/pokemon/back_shiny/SLOWPOKE.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://c01dogepjq12q" path="res://graphics/pokemon/icons/SLOWPOKE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://d2858csts6yjm" path="res://graphics/pokemon/front/SLOWPOKE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://ciecyxwe7ybpe" path="res://graphics/pokemon/front_shiny/SLOWPOKE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bfnv4tod3ooiu" path="res://graphics/pokemon/back/SLOWPOKE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://d18qg5iw1n23p" path="res://graphics/pokemon/back_shiny/SLOWPOKE.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://c3sstrp6b7ebl" path="res://graphics/pokemon/follower/SLOWPOKE.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://yo7bfx1s4yy5" path="res://sfx/se/cries/SLOWPOKE.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://b1gnysxi3mq3s" path="res://graphics/pokemon/front/SLOWPOKE_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://o0cahinkhld" path="res://graphics/pokemon/front_shiny/SLOWPOKE_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cv58eatxxdip5" path="res://graphics/pokemon/back/SLOWPOKE_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://dqeccjs8hm4ck" path="res://graphics/pokemon/back_shiny/SLOWPOKE_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://c541e5raueivv" path="res://graphics/pokemon/icons/SLOWPOKE_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://e8pf7w8g43pf" path="res://graphics/pokemon/front/SLOWPOKE_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bios1rc53aeda" path="res://graphics/pokemon/front_shiny/SLOWPOKE_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://ux7erk1owtvj" path="res://graphics/pokemon/back/SLOWPOKE_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bno76mxyep2w3" path="res://graphics/pokemon/back_shiny/SLOWPOKE_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://duw4o30ondun6" path="res://graphics/pokemon/icons/SLOWPOKE.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://b1hchx5hcr6r0" path="res://graphics/pokemon/follower/SLOWPOKE_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -213,7 +212,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_8cx8v")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])

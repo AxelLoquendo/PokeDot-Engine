@@ -6,18 +6,17 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_66a70"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://bm8rd5hpo6ibs" path="res://graphics/pokemon/front/ZIGZAGOON.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://b1mnx2f8s73py" path="res://graphics/pokemon/front_shiny/ZIGZAGOON.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://coearse844lc1" path="res://graphics/pokemon/back/ZIGZAGOON.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://s065jf4mqbgv" path="res://graphics/pokemon/back_shiny/ZIGZAGOON.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://do7r6tx66nahr" path="res://graphics/pokemon/icons/ZIGZAGOON.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bjhu8nd1luayd" path="res://graphics/pokemon/front/ZIGZAGOON.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://dstshe8aitvk" path="res://graphics/pokemon/front_shiny/ZIGZAGOON.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bbt8dpfri1ncc" path="res://graphics/pokemon/back/ZIGZAGOON.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cip8equ688ada" path="res://graphics/pokemon/back_shiny/ZIGZAGOON.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://c41rq3v40d43v" path="res://graphics/pokemon/follower/ZIGZAGOON.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://d0scr7hj2y3wt" path="res://sfx/se/cries/ZIGZAGOON.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://cjvq0jxqooomd" path="res://graphics/pokemon/front/ZIGZAGOON_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://c32o0ey8w31jy" path="res://graphics/pokemon/front_shiny/ZIGZAGOON_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cjuj324ytabfy" path="res://graphics/pokemon/back/ZIGZAGOON_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://c2x5afi2x1rgj" path="res://graphics/pokemon/back_shiny/ZIGZAGOON_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://q2yktit6mxth" path="res://graphics/pokemon/icons/ZIGZAGOON_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://bqw54l5sawojo" path="res://graphics/pokemon/front/ZIGZAGOON_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://cse4oh7s3bopa" path="res://graphics/pokemon/front_shiny/ZIGZAGOON_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://coemgsj6ebqgq" path="res://graphics/pokemon/back/ZIGZAGOON_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bxbhv0ptswsyc" path="res://graphics/pokemon/back_shiny/ZIGZAGOON_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://drye3ffmt3uap" path="res://graphics/pokemon/icons/ZIGZAGOON.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://cel86y35l8hcb" path="res://graphics/pokemon/follower/ZIGZAGOON_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -178,7 +177,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("4_66a70")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16")])

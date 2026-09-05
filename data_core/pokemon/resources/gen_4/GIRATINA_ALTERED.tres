@@ -3,20 +3,19 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_30gs1"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://b715vval4vs25" path="res://graphics/pokemon/icons/GIRATINA_1.png" id="10_hnacx"]
 [ext_resource type="Texture2D" uid="uid://su51ox3mpg2n" path="res://graphics/pokemon/follower/GIRATINA_1.png" id="12_s26gp"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://dt2gcjem60k2y" path="res://graphics/pokemon/front/GIRATINA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://by5h0a7s63jaj" path="res://graphics/pokemon/front_shiny/GIRATINA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://tjed3rc4pqy4" path="res://graphics/pokemon/back/GIRATINA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://doe0rctojcc7d" path="res://graphics/pokemon/back_shiny/GIRATINA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://l3l6dnauf136" path="res://graphics/pokemon/icons/GIRATINA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://c60boi8n410hh" path="res://graphics/pokemon/front/GIRATINA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://nq0cgkydwwd2" path="res://graphics/pokemon/front_shiny/GIRATINA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://d0geu2fptips3" path="res://graphics/pokemon/back/GIRATINA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://djvu4t1ec87py" path="res://graphics/pokemon/back_shiny/GIRATINA.png" id="gfx103"]
+[ext_resource type="Texture2D" uid="uid://ci2h5hbmmk6id" path="res://graphics/pokemon/icons/GIRATINA.png" id="gfx104"]
 [ext_resource type="Texture2D" uid="uid://cwpbar1eexqsc" path="res://graphics/pokemon/follower/GIRATINA.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://cic1nxrpxbhln" path="res://sfx/se/cries/GIRATINA.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://cohmpjrpa5lg1" path="res://graphics/pokemon/front/GIRATINA_ORIGIN.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://b3dfvob2pp7b" path="res://graphics/pokemon/front_shiny/GIRATINA_ORIGIN.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://cw30n4gkq7u5c" path="res://graphics/pokemon/back/GIRATINA_ORIGIN.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://c2jx7iyqu1obv" path="res://graphics/pokemon/back_shiny/GIRATINA_ORIGIN.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://d0sq3ucsyffmd" path="res://graphics/pokemon/front/GIRATINA_ORIGIN.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://j1yy02kq0m7d" path="res://graphics/pokemon/front_shiny/GIRATINA_ORIGIN.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://bgiaxx4htdkw2" path="res://graphics/pokemon/back/GIRATINA_ORIGIN.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bxr03ph0yyewt" path="res://graphics/pokemon/back_shiny/GIRATINA_ORIGIN.png" id="gfx110"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_30gs1")
@@ -38,7 +37,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("10_hnacx")
+icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("12_s26gp")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)

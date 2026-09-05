@@ -7,18 +7,17 @@
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://twog3brh60t8" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://b77v54iciw7qx" path="res://graphics/pokemon/front/LINOONE.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://bwdoj2ycx6ncv" path="res://graphics/pokemon/front_shiny/LINOONE.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://dcrluu877llcp" path="res://graphics/pokemon/back/LINOONE.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://ddqebn6i4civq" path="res://graphics/pokemon/back_shiny/LINOONE.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://dyk4bn3r5xb4" path="res://graphics/pokemon/icons/LINOONE.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bxnaedrkil0hs" path="res://graphics/pokemon/front/LINOONE.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://b00i8tmka4vw1" path="res://graphics/pokemon/front_shiny/LINOONE.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bqtoo514s153d" path="res://graphics/pokemon/back/LINOONE.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://ddw4b4iyd7rn1" path="res://graphics/pokemon/back_shiny/LINOONE.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://du1jmya88h18v" path="res://graphics/pokemon/follower/LINOONE.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://ct1xrleyqb13o" path="res://sfx/se/cries/LINOONE.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://bhql14b5c104a" path="res://graphics/pokemon/front/LINOONE_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://cnidmbnd1gotw" path="res://graphics/pokemon/front_shiny/LINOONE_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://bf5xx7gfcnha4" path="res://graphics/pokemon/back/LINOONE_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://chyj3frbtqhv2" path="res://graphics/pokemon/back_shiny/LINOONE_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://dh2mvapuajr64" path="res://graphics/pokemon/icons/LINOONE_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://divbjk4to0nyb" path="res://graphics/pokemon/front/LINOONE_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://vihso1vme7hd" path="res://graphics/pokemon/front_shiny/LINOONE_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://d3vmuwyxaw7bg" path="res://graphics/pokemon/back/LINOONE_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bm5vtktbbsuby" path="res://graphics/pokemon/back_shiny/LINOONE_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bhmq6nd1bofxb" path="res://graphics/pokemon/icons/LINOONE.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://3vs4l347mciw" path="res://graphics/pokemon/follower/LINOONE_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -205,7 +204,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_55v04")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19"), SubResource("Resource_move20"), SubResource("Resource_move21"), SubResource("Resource_move22")])

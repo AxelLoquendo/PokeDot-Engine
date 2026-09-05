@@ -1,20 +1,19 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cyen6kmnb82gn"]
 
-[ext_resource type="Texture2D" uid="uid://bv5o50b16e028" path="res://graphics/pokemon/back/DIGLETT.png" id="1_c87gt"]
+[ext_resource type="Texture2D" uid="uid://cb4nirnr1shuf" path="res://graphics/pokemon/back/DIGLETT.png" id="1_c87gt"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_nn2rf"]
-[ext_resource type="Texture2D" uid="uid://b6yqrk7trapdy" path="res://graphics/pokemon/back_shiny/DIGLETT.png" id="2_p4e3g"]
+[ext_resource type="Texture2D" uid="uid://bv3hpejm00sm5" path="res://graphics/pokemon/back_shiny/DIGLETT.png" id="2_p4e3g"]
 [ext_resource type="AudioStream" uid="uid://cwl5qiu2dh67i" path="res://sfx/se/cries/DIGLETT.ogg" id="3_obkb8"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_30o6g"]
-[ext_resource type="Texture2D" uid="uid://orrbsgsp5tum" path="res://graphics/pokemon/back/DIGLETT_ALOLA.png" id="8_7vcsu"]
-[ext_resource type="Texture2D" uid="uid://bjqnmumpe2n8h" path="res://graphics/pokemon/back_shiny/DIGLETT_ALOLA.png" id="9_3uqpf"]
-[ext_resource type="Texture2D" uid="uid://5ofuohlx8f52" path="res://graphics/pokemon/front/DIGLETT_ALOLA.png" id="10_ms014"]
-[ext_resource type="Texture2D" uid="uid://bitngafqrlmlw" path="res://graphics/pokemon/front_shiny/DIGLETT_ALOLA.png" id="11_sryy1"]
-[ext_resource type="Texture2D" uid="uid://b742g24xgimbs" path="res://graphics/pokemon/icons/DIGLETT_1.png" id="12_e6x2n"]
-[ext_resource type="Texture2D" uid="uid://5j7hbu6uqwyy" path="res://graphics/pokemon/front/DIGLETT.png" id="14_gawfx"]
-[ext_resource type="Texture2D" uid="uid://c205tr456mc1c" path="res://graphics/pokemon/front_shiny/DIGLETT.png" id="15_xr4f8"]
-[ext_resource type="Texture2D" uid="uid://ck41pxqxjaalf" path="res://graphics/pokemon/icons/DIGLETT.png" id="16_qioft"]
+[ext_resource type="Texture2D" uid="uid://xqhy0pduhfvo" path="res://graphics/pokemon/back/DIGLETT_ALOLA.png" id="8_7vcsu"]
+[ext_resource type="Texture2D" uid="uid://djplwq5anstos" path="res://graphics/pokemon/back_shiny/DIGLETT_ALOLA.png" id="9_3uqpf"]
+[ext_resource type="Texture2D" uid="uid://8ii5t4mkgwsl" path="res://graphics/pokemon/front/DIGLETT_ALOLA.png" id="10_ms014"]
+[ext_resource type="Texture2D" uid="uid://fda5b6sj0sg6" path="res://graphics/pokemon/front_shiny/DIGLETT_ALOLA.png" id="11_sryy1"]
+[ext_resource type="Texture2D" uid="uid://c3pchuwunpe7h" path="res://graphics/pokemon/front/DIGLETT.png" id="14_gawfx"]
+[ext_resource type="Texture2D" uid="uid://des3cxg1fjn3t" path="res://graphics/pokemon/front_shiny/DIGLETT.png" id="15_xr4f8"]
+[ext_resource type="Texture2D" uid="uid://bbrndqupj0wei" path="res://graphics/pokemon/icons/DIGLETT.png" id="16_qioft"]
 [ext_resource type="Texture2D" uid="uid://cbmay0s435c7" path="res://graphics/pokemon/follower/DIGLETT.png" id="17_rgbyn"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
@@ -50,7 +49,7 @@ front_sprite = ExtResource("10_ms014")
 front_sprite_shiny = ExtResource("11_sryy1")
 back_sprite = ExtResource("8_7vcsu")
 back_sprite_shiny = ExtResource("9_3uqpf")
-icon_sprite = ExtResource("12_e6x2n")
+icon_sprite = ExtResource("16_qioft")
 overworld_scene = ExtResource("gfx100")
 cry = ExtResource("3_obkb8")
 front_sprite_offset = Vector2(0, 19)

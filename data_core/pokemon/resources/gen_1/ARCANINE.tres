@@ -1,19 +1,18 @@
 [gd_resource type="Resource" script_class="PokemonDataStruct" format=3 uid="uid://cowd67mlp2774"]
 
-[ext_resource type="Texture2D" uid="uid://c0jaiek62w5vw" path="res://graphics/pokemon/back/ARCANINE.png" id="1_hh8s2"]
-[ext_resource type="Texture2D" uid="uid://bl6n5t51cpa08" path="res://graphics/pokemon/back_shiny/ARCANINE.png" id="2_j7fws"]
+[ext_resource type="Texture2D" uid="uid://wj6o6oel4d6h" path="res://graphics/pokemon/back/ARCANINE.png" id="1_hh8s2"]
+[ext_resource type="Texture2D" uid="uid://b2eedw121es00" path="res://graphics/pokemon/back_shiny/ARCANINE.png" id="2_j7fws"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_raojs"]
 [ext_resource type="AudioStream" uid="uid://dsbf3rukdrbdg" path="res://sfx/se/cries/ARCANINE.ogg" id="3_6jksv"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
-[ext_resource type="Texture2D" uid="uid://31e22kx3js4s" path="res://graphics/pokemon/back/ARCANINE_HISUI.png" id="6_l1c7f"]
-[ext_resource type="Texture2D" uid="uid://brgudmnwf4d5x" path="res://graphics/pokemon/back_shiny/ARCANINE_HISUI.png" id="7_12fwa"]
-[ext_resource type="Texture2D" uid="uid://uollx4i801b8" path="res://graphics/pokemon/front/ARCANINE_HISUI.png" id="8_ru0wq"]
-[ext_resource type="Texture2D" uid="uid://ch4kg83euyks0" path="res://graphics/pokemon/front_shiny/ARCANINE_HISUI.png" id="9_gd2ye"]
-[ext_resource type="Texture2D" uid="uid://d2fpueglfj3j2" path="res://graphics/pokemon/icons/ARCANINE_1.png" id="10_a6lut"]
-[ext_resource type="Texture2D" uid="uid://ckwe4xmpa8si3" path="res://graphics/pokemon/front/ARCANINE.png" id="12_lu0wq"]
-[ext_resource type="Texture2D" uid="uid://cdgjr1u6g3dnx" path="res://graphics/pokemon/front_shiny/ARCANINE.png" id="13_x4ant"]
-[ext_resource type="Texture2D" uid="uid://c75hp3ogpe7y7" path="res://graphics/pokemon/icons/ARCANINE.png" id="14_c0idv"]
+[ext_resource type="Texture2D" uid="uid://dkph8xttvqj3" path="res://graphics/pokemon/back/ARCANINE_HISUI.png" id="6_l1c7f"]
+[ext_resource type="Texture2D" uid="uid://2qb0hif2akqs" path="res://graphics/pokemon/back_shiny/ARCANINE_HISUI.png" id="7_12fwa"]
+[ext_resource type="Texture2D" uid="uid://c27lelga46t6v" path="res://graphics/pokemon/front/ARCANINE_HISUI.png" id="8_ru0wq"]
+[ext_resource type="Texture2D" uid="uid://bi6a53pmkwx4i" path="res://graphics/pokemon/front_shiny/ARCANINE_HISUI.png" id="9_gd2ye"]
+[ext_resource type="Texture2D" uid="uid://bqxjes6y0bw7f" path="res://graphics/pokemon/front/ARCANINE.png" id="12_lu0wq"]
+[ext_resource type="Texture2D" uid="uid://dp6h4lotr08ca" path="res://graphics/pokemon/front_shiny/ARCANINE.png" id="13_x4ant"]
+[ext_resource type="Texture2D" uid="uid://b5kwgb6btdd0" path="res://graphics/pokemon/icons/ARCANINE.png" id="14_c0idv"]
 [ext_resource type="Texture2D" uid="uid://cmloo4ehwb3pq" path="res://graphics/pokemon/follower/ARCANINE.png" id="15_xldcm"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://ryywewch23hk" path="res://graphics/pokemon/follower/ARCANINE_1.png" id="gfx100"]
@@ -38,7 +37,7 @@ front_sprite = ExtResource("8_ru0wq")
 front_sprite_shiny = ExtResource("9_gd2ye")
 back_sprite = ExtResource("6_l1c7f")
 back_sprite_shiny = ExtResource("7_12fwa")
-icon_sprite = ExtResource("10_a6lut")
+icon_sprite = ExtResource("14_c0idv")
 overworld_scene = ExtResource("gfx100")
 cry = ExtResource("3_6jksv")
 back_sprite_offset = Vector2(0, 3)

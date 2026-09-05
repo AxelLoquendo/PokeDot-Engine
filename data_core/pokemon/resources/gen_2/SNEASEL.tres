@@ -7,18 +7,17 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://twog3brh60t8" path="res://data_core/pokemon/conditions/condition_time.gd" id="ext_cond_time"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://baaxsagsgyk72" path="res://graphics/pokemon/front/SNEASEL.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://bsy23jlcp32ah" path="res://graphics/pokemon/front_shiny/SNEASEL.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://c71i123t5fv7n" path="res://graphics/pokemon/back/SNEASEL.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://bdtbhh562ikt" path="res://graphics/pokemon/back_shiny/SNEASEL.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://cmn6osgkothpt" path="res://graphics/pokemon/icons/SNEASEL.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://ck3qs2ralwrlc" path="res://graphics/pokemon/front/SNEASEL.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://bi0m2v11qexil" path="res://graphics/pokemon/front_shiny/SNEASEL.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dfgv1765rfpmy" path="res://graphics/pokemon/back/SNEASEL.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://djeruba86v74g" path="res://graphics/pokemon/back_shiny/SNEASEL.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://c5qspgafkevbv" path="res://graphics/pokemon/follower/SNEASEL.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://dmnto6leufonm" path="res://sfx/se/cries/SNEASEL.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://dubbmdf6nbx6m" path="res://graphics/pokemon/front/SNEASEL_HISUI.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://21yem2yj87gu" path="res://graphics/pokemon/front_shiny/SNEASEL_HISUI.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://dpynxnsoq2jmk" path="res://graphics/pokemon/back/SNEASEL_HISUI.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://q7fmegwvesv4" path="res://graphics/pokemon/back_shiny/SNEASEL_HISUI.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://ddwv3vl12demh" path="res://graphics/pokemon/icons/SNEASEL_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dtdknr1u0yxef" path="res://graphics/pokemon/front/SNEASEL_HISUI.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://b2p8et7rodhqg" path="res://graphics/pokemon/front_shiny/SNEASEL_HISUI.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://cuv0c214aj55j" path="res://graphics/pokemon/back/SNEASEL_HISUI.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://k6qi7p225hfl" path="res://graphics/pokemon/back_shiny/SNEASEL_HISUI.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://bb4ex6yvjmsqp" path="res://graphics/pokemon/icons/SNEASEL.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://7hrv6ubecp4v" path="res://graphics/pokemon/follower/SNEASEL_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -195,7 +194,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_g56xn")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15")])

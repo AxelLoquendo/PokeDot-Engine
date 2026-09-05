@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://bbvq01q0kfer1" path="res://graphics/pokemon/front/STUNFISK.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://chyv8eyt107mt" path="res://graphics/pokemon/front_shiny/STUNFISK.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://bljriaybvfidt" path="res://graphics/pokemon/back/STUNFISK.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://dwtc1jmybl2pg" path="res://graphics/pokemon/back_shiny/STUNFISK.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://b8lnoqm4cndle" path="res://graphics/pokemon/icons/STUNFISK.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bc6lc0w88ac3g" path="res://graphics/pokemon/front/STUNFISK.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://cuplsflcf5iji" path="res://graphics/pokemon/front_shiny/STUNFISK.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://bufxbv6j5n3m4" path="res://graphics/pokemon/back/STUNFISK.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://cm64cfeq0v73u" path="res://graphics/pokemon/back_shiny/STUNFISK.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://ypgscb7wbyll" path="res://graphics/pokemon/follower/STUNFISK.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://bjcoyvyl24yuq" path="res://sfx/se/cries/STUNFISK.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://mglmll1ikyok" path="res://graphics/pokemon/front/STUNFISK_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://b7avufb06usmf" path="res://graphics/pokemon/front_shiny/STUNFISK_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://5hflmer8yeji" path="res://graphics/pokemon/back/STUNFISK_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://d0eohqu0jgnhe" path="res://graphics/pokemon/back_shiny/STUNFISK_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://cfwe4bhtg6bgh" path="res://graphics/pokemon/icons/STUNFISK_1.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://cvptvkk0vpaga" path="res://graphics/pokemon/front/STUNFISK_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://dbh60xwmp52qg" path="res://graphics/pokemon/front_shiny/STUNFISK_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://c3o6w0brlorsy" path="res://graphics/pokemon/back/STUNFISK_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://cupkrugs5epar" path="res://graphics/pokemon/back_shiny/STUNFISK_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://cdymh1bbohprk" path="res://graphics/pokemon/icons/STUNFISK.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://b738ty1vnqmcl" path="res://graphics/pokemon/follower/STUNFISK_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_form_0"]
@@ -177,7 +176,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("2_ap7ue")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17"), SubResource("Resource_move18"), SubResource("Resource_move19")])

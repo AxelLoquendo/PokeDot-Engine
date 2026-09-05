@@ -7,18 +7,17 @@
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
-[ext_resource type="Texture2D" uid="uid://smnega10umtd" path="res://graphics/pokemon/front/DARUMAKA.png" id="gfx100"]
-[ext_resource type="Texture2D" uid="uid://s535jny7mokc" path="res://graphics/pokemon/front_shiny/DARUMAKA.png" id="gfx101"]
-[ext_resource type="Texture2D" uid="uid://iq4dn5v1qr4b" path="res://graphics/pokemon/back/DARUMAKA.png" id="gfx102"]
-[ext_resource type="Texture2D" uid="uid://2e8gxm18lth8" path="res://graphics/pokemon/back_shiny/DARUMAKA.png" id="gfx103"]
-[ext_resource type="Texture2D" uid="uid://bn4l47ojviva4" path="res://graphics/pokemon/icons/DARUMAKA.png" id="gfx104"]
+[ext_resource type="Texture2D" uid="uid://bl8np7jm1auen" path="res://graphics/pokemon/front/DARUMAKA.png" id="gfx100"]
+[ext_resource type="Texture2D" uid="uid://doa06ci42jn4k" path="res://graphics/pokemon/front_shiny/DARUMAKA.png" id="gfx101"]
+[ext_resource type="Texture2D" uid="uid://dbfvewxu1ufh8" path="res://graphics/pokemon/back/DARUMAKA.png" id="gfx102"]
+[ext_resource type="Texture2D" uid="uid://bucog2mjmoywo" path="res://graphics/pokemon/back_shiny/DARUMAKA.png" id="gfx103"]
 [ext_resource type="Texture2D" uid="uid://bjkqjqfhgu8je" path="res://graphics/pokemon/follower/DARUMAKA.png" id="gfx105"]
 [ext_resource type="AudioStream" uid="uid://8jprk4f48p4" path="res://sfx/se/cries/DARUMAKA.ogg" id="gfx106"]
-[ext_resource type="Texture2D" uid="uid://cnbyww5f1p0is" path="res://graphics/pokemon/front/DARUMAKA_GALAR.png" id="gfx107"]
-[ext_resource type="Texture2D" uid="uid://rqoxxa38jsnh" path="res://graphics/pokemon/front_shiny/DARUMAKA_GALAR.png" id="gfx108"]
-[ext_resource type="Texture2D" uid="uid://c0jjmahlndxur" path="res://graphics/pokemon/back/DARUMAKA_GALAR.png" id="gfx109"]
-[ext_resource type="Texture2D" uid="uid://dd4b5lqbm783w" path="res://graphics/pokemon/back_shiny/DARUMAKA_GALAR.png" id="gfx110"]
-[ext_resource type="Texture2D" uid="uid://dqiaorry3c2vm" path="res://graphics/pokemon/icons/DARUMAKA_2.png" id="gfx111"]
+[ext_resource type="Texture2D" uid="uid://dj77vkbiilbyl" path="res://graphics/pokemon/front/DARUMAKA_GALAR.png" id="gfx107"]
+[ext_resource type="Texture2D" uid="uid://bommt8828iq84" path="res://graphics/pokemon/front_shiny/DARUMAKA_GALAR.png" id="gfx108"]
+[ext_resource type="Texture2D" uid="uid://degggrgd465qv" path="res://graphics/pokemon/back/DARUMAKA_GALAR.png" id="gfx109"]
+[ext_resource type="Texture2D" uid="uid://bjdb2tufl03hy" path="res://graphics/pokemon/back_shiny/DARUMAKA_GALAR.png" id="gfx110"]
+[ext_resource type="Texture2D" uid="uid://dpas4u80pqlm0" path="res://graphics/pokemon/icons/DARUMAKA.png" id="gfx111"]
 [ext_resource type="Texture2D" uid="uid://r5vpf2f3wire" path="res://graphics/pokemon/follower/DARUMAKA_1.png" id="gfx112"]
 
 [sub_resource type="Resource" id="Resource_cond0"]
@@ -193,7 +192,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 forms = Array[ExtResource("5_j6fhs")]([SubResource("Resource_form_0")])
 level_up_moves = Array[ExtResource("2_learn")]([SubResource("Resource_move0"), SubResource("Resource_move1"), SubResource("Resource_move2"), SubResource("Resource_move3"), SubResource("Resource_move4"), SubResource("Resource_move5"), SubResource("Resource_move6"), SubResource("Resource_move7"), SubResource("Resource_move8"), SubResource("Resource_move9"), SubResource("Resource_move10"), SubResource("Resource_move11"), SubResource("Resource_move12"), SubResource("Resource_move13"), SubResource("Resource_move14"), SubResource("Resource_move15"), SubResource("Resource_move16"), SubResource("Resource_move17")])
