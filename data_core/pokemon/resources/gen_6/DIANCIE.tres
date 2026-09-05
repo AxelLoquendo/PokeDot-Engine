@@ -22,8 +22,18 @@
 script = ExtResource("2_k7oxt")
 species_id = 952
 form_id = &"diancie_mega"
-display_name = "Diancie Mega"
+display_name = "Diancie"
 base_species_id = 719
+override_types = true
+type_1 = 6
+type_2 = 19
+override_stats = true
+base_hp = 50
+base_attack = 160
+base_defense = 110
+base_speed = 110
+base_sp_attack = 160
+base_sp_defense = 110
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 156
+ability_2 = 156
+hidden_ability = 156
+override_pokedex = true
+category_name = "Jewel"
+description = "Las impurezas sobre la superficie de su cuerpo
+han caído, brillando tan brillantemente
+que no se puede observar directamente.
+Se conoce como “la Princesa Rosa Real”."
+height = 11
+weight = 278
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

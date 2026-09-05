@@ -16,12 +16,33 @@
 script = ExtResource("2_pb2mb")
 species_id = 1412
 form_id = &"sinistcha_masterpiece"
-display_name = "Sinistcha Masterpiece"
+display_name = "Sinistcha"
 base_species_id = 1411
+override_types = true
+type_1 = 13
+type_2 = 8
+override_stats = true
+base_hp = 71
+base_attack = 60
+base_defense = 106
+base_speed = 70
+base_sp_attack = 121
+base_sp_defense = 80
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 299
+hidden_ability = 85
+override_pokedex = true
+category_name = "Matcha"
+description = "Cuanto más agitado hace con el
+té batido en la cabeza, más
+energía que se acumula. Hace esto
+prepararse para la batalla."
+height = 2
+weight = 22
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

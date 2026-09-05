@@ -22,8 +22,18 @@
 script = ExtResource("2_7jxe6")
 species_id = 911
 form_id = &"pidgeot_mega"
-display_name = "Pidgeot Mega"
+display_name = "Pidgeot"
 base_species_id = 18
+override_types = true
+type_1 = 1
+type_2 = 3
+override_stats = true
+base_hp = 83
+base_attack = 80
+base_defense = 80
+base_speed = 121
+base_sp_attack = 135
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 99
+ability_2 = 99
+hidden_ability = 99
+override_pokedex = true
+category_name = "Ave"
+description = "Con su fuerza muscular ahora grande
+aumentada, puede volar continuamente
+durante dos semanas sin descansar."
+height = 22
+weight = 505
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -22,8 +22,18 @@
 script = ExtResource("2_na4a4")
 species_id = 960
 form_id = &"sandslash_alola"
-display_name = "Sandslash Alola"
+display_name = "Sandslash"
 base_species_id = 28
+override_types = true
+type_1 = 16
+type_2 = 9
+override_stats = true
+base_hp = 75
+base_attack = 100
+base_defense = 120
+base_speed = 65
+base_sp_attack = 25
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,6 +44,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
+override_abilities = true
+ability_1 = 81
+hidden_ability = 202
+override_pokedex = true
+category_name = "Ratón"
+description = "Utiliza garras grandes y enganchadas para cortar un camino
+a través de la nieve profunda mientras corre.
+En las montañas nevadas, este Sandslash
+es más rápido que cualquier otro Pokémon."
+height = 12
+weight = 550
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

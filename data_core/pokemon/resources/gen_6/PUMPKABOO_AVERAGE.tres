@@ -16,8 +16,18 @@
 script = ExtResource("2_w7hru")
 species_id = 1157
 form_id = &"pumpkaboo_small"
-display_name = "Pumpkaboo Small"
+display_name = "Pumpkaboo"
 base_species_id = 710
+override_types = true
+type_1 = 8
+type_2 = 13
+override_stats = true
+base_hp = 44
+base_attack = 66
+base_defense = 70
+base_speed = 56
+base_sp_attack = 44
+base_sp_defense = 55
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -28,14 +38,35 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 15)
 back_sprite_offset = Vector2(0, 14)
 override_graphics = true
+override_abilities = true
+ability_1 = 53
+ability_2 = 119
+hidden_ability = 15
+override_pokedex = true
+category_name = "Pumpkin"
+description = "Al tomar espíritus a los
+después de la vida, pequeño Pumpkaboo prefiere el
+espíritus de niños a los de adultos."
+height = 3
+weight = 35
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_w7hru")
 species_id = 1158
 form_id = &"pumpkaboo_large"
-display_name = "Pumpkaboo Large"
+display_name = "Pumpkaboo"
 base_species_id = 710
+override_types = true
+type_1 = 8
+type_2 = 13
+override_stats = true
+base_hp = 54
+base_attack = 66
+base_defense = 70
+base_speed = 46
+base_sp_attack = 44
+base_sp_defense = 55
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -46,14 +77,35 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 12)
 back_sprite_offset = Vector2(0, 13)
 override_graphics = true
+override_abilities = true
+ability_1 = 53
+ability_2 = 119
+hidden_ability = 15
+override_pokedex = true
+category_name = "Pumpkin"
+description = "Al tomar espíritus a los
+después de la vida, Pumpkaboo grande prefiere el
+espíritus de adultos a los niños."
+height = 5
+weight = 75
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_w7hru")
 species_id = 1159
 form_id = &"pumpkaboo_super"
-display_name = "Pumpkaboo Super"
+display_name = "Pumpkaboo"
 base_species_id = 710
+override_types = true
+type_1 = 8
+type_2 = 13
+override_stats = true
+base_hp = 59
+base_attack = 66
+base_defense = 70
+base_speed = 41
+base_sp_attack = 44
+base_sp_defense = 55
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -64,6 +116,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
 back_sprite_offset = Vector2(0, 12)
 override_graphics = true
+override_abilities = true
+ability_1 = 53
+ability_2 = 119
+hidden_ability = 15
+override_pokedex = true
+category_name = "Pumpkin"
+description = "Supersized Pumpkaboo son muy
+parcial a los espíritus de las personas que
+eran de proporciones igualmente superiores."
+height = 8
+weight = 150
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

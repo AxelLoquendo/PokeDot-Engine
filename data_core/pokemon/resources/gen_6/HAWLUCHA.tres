@@ -21,8 +21,18 @@
 script = ExtResource("2_7ynvo")
 species_id = 1544
 form_id = &"hawlucha_mega"
-display_name = "Hawlucha Mega"
+display_name = "Hawlucha"
 base_species_id = 701
+override_types = true
+type_1 = 2
+type_2 = 3
+override_stats = true
+base_hp = 78
+base_attack = 137
+base_defense = 100
+base_speed = 118
+base_sp_attack = 74
+base_sp_defense = 93
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 99
+ability_2 = 99
+hidden_ability = 99
+override_pokedex = true
+category_name = "Lucha"
+description = "Megaevolución ha bombeado todo
+sus músculos. Hawlucha flexiones a
+mostrar su fuerza."
+height = 10
+weight = 250
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

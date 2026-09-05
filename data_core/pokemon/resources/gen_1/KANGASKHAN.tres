@@ -22,8 +22,17 @@
 script = ExtResource("2_b200j")
 species_id = 915
 form_id = &"kangaskhan_mega"
-display_name = "Kangaskhan Mega"
+display_name = "Kangaskhan"
 base_species_id = 115
+override_types = true
+type_1 = 1
+override_stats = true
+base_hp = 105
+base_attack = 125
+base_defense = 100
+base_speed = 100
+base_sp_attack = 60
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +42,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 185
+ability_2 = 185
+hidden_ability = 185
+override_pokedex = true
+category_name = "Paternal"
+description = "Cuando la madre ve la espalda
+Hija megaevolucionada, la hace pensar
+del día en que su hijo inevitablemente
+Déjala."
+height = 22
+weight = 1000
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -242,10 +242,10 @@ label_settings = SubResource("LabelSettings_at1y2")
 
 [node name="Ability_Name" type="Label" parent="Skills_1/Ability" unique_id=509202466]
 layout_mode = 0
-offset_left = 120.0
-offset_right = 260.0
+offset_left = 97.0
+offset_right = 259.0
 offset_bottom = 28.0
-text = "---"
+text = "Teraformacion 0"
 label_settings = SubResource("LabelSettings_atom2")
 horizontal_alignment = 1
 

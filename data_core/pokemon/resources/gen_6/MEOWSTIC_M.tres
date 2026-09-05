@@ -20,8 +20,17 @@
 script = ExtResource("2_m3sls")
 species_id = 1155
 form_id = &"meowstic_f"
-display_name = "Meowstic F"
+display_name = "Meowstic"
 base_species_id = 678
+override_types = true
+type_1 = 15
+override_stats = true
+base_hp = 74
+base_attack = 48
+base_defense = 76
+base_speed = 104
+base_sp_attack = 83
+base_sp_defense = 81
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -30,25 +39,67 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
+override_abilities = true
+ability_1 = 51
+ability_2 = 151
+hidden_ability = 172
+override_pokedex = true
+category_name = "Constraint"
+description = "Las hembras son un poco más egoístas
+agresivo que los hombres. Si ellos
+no consiguen lo que quieren, lo harán
+te atormenta con sus habilidades psíquicas."
+height = 6
+weight = 85
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_m3sls")
 species_id = 1561
 form_id = &"meowstic_m_mega"
-display_name = "Meowstic M Mega"
+display_name = "Meowstic"
 base_species_id = 678
+override_types = true
+type_1 = 15
+override_stats = true
+base_hp = 74
+base_attack = 48
+base_defense = 76
+base_speed = 124
+base_sp_attack = 143
+base_sp_defense = 101
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 36
+ability_2 = 36
+hidden_ability = 36
+override_pokedex = true
+category_name = "Constraint"
+description = "Mega Meowstic puede utilizar su poder psíquico
+para comprimir o expandir cualquier cosa. It
+abrumar a los enemigos contorsionando el espacio
+en sí mismo."
+height = 8
+weight = 101
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_m3sls")
 species_id = 1562
 form_id = &"meowstic_f_mega"
-display_name = "Meowstic F Mega"
+display_name = "Meowstic"
 base_species_id = 678
+override_types = true
+type_1 = 15
+override_stats = true
+base_hp = 74
+base_attack = 48
+base_defense = 76
+base_speed = 124
+base_sp_attack = 143
+base_sp_defense = 101
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -56,7 +107,19 @@ back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 36
+ability_2 = 36
+hidden_ability = 36
+override_pokedex = true
+category_name = "Constraint"
+description = "Mega Meowstic puede utilizar su poder psíquico
+para comprimir o expandir cualquier cosa. It
+abrumar a los enemigos contorsionando el espacio
+en sí mismo."
+height = 8
+weight = 101
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

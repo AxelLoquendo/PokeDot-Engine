@@ -24,8 +24,18 @@
 script = ExtResource("2_g2akr")
 species_id = 1211
 form_id = &"cramorant_gulping"
-display_name = "Cramorant Gulping"
+display_name = "Cramorant"
 base_species_id = 845
+override_types = true
+type_1 = 3
+type_2 = 12
+override_stats = true
+base_hp = 70
+base_attack = 85
+base_defense = 55
+base_speed = 85
+base_sp_attack = 85
+base_sp_defense = 95
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,14 +43,34 @@ back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 241
+override_pokedex = true
+category_name = "Gulp"
+description = "La glotonía de Cramorant lo llevó a intentar
+para tragar un todo Arrokuda, que
+a su vez llevó a Cramorant conseguir un
+Arrokuda se atascó en la garganta."
+height = 8
+weight = 180
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_g2akr")
 species_id = 1212
 form_id = &"cramorant_gorging"
-display_name = "Cramorant Gorging"
+display_name = "Cramorant"
 base_species_id = 845
+override_types = true
+type_1 = 3
+type_2 = 12
+override_stats = true
+base_hp = 70
+base_attack = 85
+base_defense = 55
+base_speed = 85
+base_sp_attack = 85
+base_sp_defense = 95
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -48,6 +78,16 @@ back_sprite_shiny = ExtResource("gfx114")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 241
+override_pokedex = true
+category_name = "Gulp"
+description = "Este Cramorant accidentalmente
+conseguir un Pikachu alojado en su gullet.
+Cramorant se ahoga un poco, pero
+no está realmente molesta."
+height = 8
+weight = 180
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

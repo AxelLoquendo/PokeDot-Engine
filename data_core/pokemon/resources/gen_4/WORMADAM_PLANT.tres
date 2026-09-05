@@ -24,8 +24,18 @@
 script = ExtResource("2_q4u5d")
 species_id = 1059
 form_id = &"wormadam_sandy"
-display_name = "Wormadam Sandy"
+display_name = "Wormadam"
 base_species_id = 413
+override_types = true
+type_1 = 7
+type_2 = 5
+override_stats = true
+base_hp = 60
+base_attack = 79
+base_defense = 105
+base_speed = 36
+base_sp_attack = 59
+base_sp_defense = 85
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -36,14 +46,35 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 107
+hidden_ability = 142
+override_pokedex = true
+category_name = "Saco gusano"
+description = "Su piel terrena es razonablemente dura, tiene
+No hay problema de reprender el pico de un Starly.
+Se dice que una Wormadam que evoluciona
+en un día frío tendrá una capa más gruesa."
+height = 5
+weight = 65
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_q4u5d")
 species_id = 1060
 form_id = &"wormadam_trash"
-display_name = "Wormadam Trash"
+display_name = "Wormadam"
 base_species_id = 413
+override_types = true
+type_1 = 7
+type_2 = 9
+override_stats = true
+base_hp = 60
+base_attack = 69
+base_defense = 95
+base_speed = 36
+base_sp_attack = 69
+base_sp_defense = 95
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -54,6 +85,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 107
+hidden_ability = 142
+override_pokedex = true
+category_name = "Saco gusano"
+description = "Su cuerpo, compuesto de basura, se mezcla a
+el paisaje lo suficiente como para ser inconmovible.
+Esta parece ser la manera perfecta para que
+evadir la detección de depredadores."
+height = 5
+weight = 65
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

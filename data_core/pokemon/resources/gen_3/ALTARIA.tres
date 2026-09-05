@@ -22,8 +22,18 @@
 script = ExtResource("2_tfrj5")
 species_id = 938
 form_id = &"altaria_mega"
-display_name = "Altaria Mega"
+display_name = "Altaria"
 base_species_id = 334
+override_types = true
+type_1 = 17
+type_2 = 19
+override_stats = true
+base_hp = 75
+base_attack = 110
+base_defense = 110
+base_speed = 80
+base_sp_attack = 110
+base_sp_defense = 105
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 10)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 182
+ability_2 = 182
+hidden_ability = 182
+override_pokedex = true
+category_name = "Humming"
+description = "Canta con una voz que es aún más
+hermosa que antes Mega Evolved.
+Sus plumas se hicieron más grandes para la protección
+y brillo con un brillo iridiscente."
+height = 15
+weight = 206
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

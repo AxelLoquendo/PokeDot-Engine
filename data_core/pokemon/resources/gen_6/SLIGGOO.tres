@@ -39,8 +39,18 @@ conditions = Array[ExtResource("2_mgxgm")]([SubResource("Resource_cond0"), SubRe
 script = ExtResource("5_3c2hy")
 species_id = 1005
 form_id = &"sliggoo_hisui"
-display_name = "Sliggoo Hisui"
+display_name = "Sliggoo"
 base_species_id = 705
+override_types = true
+type_1 = 17
+type_2 = 9
+override_stats = true
+base_hp = 58
+base_attack = 75
+base_defense = 83
+base_speed = 40
+base_sp_attack = 83
+base_sp_defense = 113
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -51,6 +61,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 7)
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 157
+ability_2 = 75
+hidden_ability = 183
+override_pokedex = true
+category_name = "Snail"
+description = "Una criatura dada a la melancolía.
+Su cáscara metálica se desarrolló como
+resultado del moco en su piel reaccionando
+con el hierro en el agua de Hisui."
+height = 7
+weight = 685
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

@@ -22,8 +22,18 @@
 script = ExtResource("2_mom5n")
 species_id = 969
 form_id = &"golem_alola"
-display_name = "Golem Alola"
+display_name = "Golem"
 base_species_id = 76
+override_types = true
+type_1 = 6
+type_2 = 14
+override_stats = true
+base_hp = 80
+base_attack = 120
+base_defense = 130
+base_speed = 45
+base_sp_attack = 55
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,6 +44,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 13)
 override_graphics = true
+override_abilities = true
+ability_1 = 42
+ability_2 = 5
+hidden_ability = 206
+override_pokedex = true
+category_name = "Megatón"
+description = "Dispara rocas cargadas de electricidad.
+Incluso si la roca no se despide
+con precisión, sólo pastorear a un oponente
+causará entumecimiento y desmayo."
+height = 17
+weight = 3160
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

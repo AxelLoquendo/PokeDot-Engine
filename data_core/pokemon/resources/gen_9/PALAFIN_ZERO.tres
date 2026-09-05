@@ -20,8 +20,10 @@
 script = ExtResource("2_ip2mn")
 species_id = 1353
 form_id = &"palafin_hero"
-display_name = "Palafin Hero"
+display_name = "Palafin"
 base_species_id = 1352
+override_types = true
+type_1 = 12
 override_stats = true
 base_hp = 100
 base_attack = 160
@@ -38,6 +40,16 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 278
+override_pokedex = true
+category_name = "Hero"
+description = "Los antiguos genes de Pokémon tienen
+despierta. Ahora es tan extraordinariamente
+fuerte que puede levantar fácilmente
+crucero con una aleta."
+height = 18
+weight = 974
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

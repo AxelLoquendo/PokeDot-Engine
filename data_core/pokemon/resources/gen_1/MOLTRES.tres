@@ -22,8 +22,18 @@
 script = ExtResource("2_14ugf")
 species_id = 984
 form_id = &"moltres_galar"
-display_name = "Moltres Galar"
+display_name = "Moltres"
 base_species_id = 146
+override_types = true
+type_1 = 18
+type_2 = 3
+override_stats = true
+base_hp = 90
+base_attack = 85
+base_defense = 90
+base_speed = 90
+base_sp_attack = 100
+base_sp_defense = 125
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,6 +44,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 201
+override_pokedex = true
+category_name = "Malevolent"
+description = "Este Pokémon es un aura siniestro, como una llama
+consumirá el espíritu de cualquier criatura
+golpea. Las víctimas se queman.
+sombras de sí mismos."
+height = 20
+weight = 660
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

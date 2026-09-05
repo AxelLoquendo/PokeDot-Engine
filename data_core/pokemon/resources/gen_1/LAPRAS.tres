@@ -21,8 +21,17 @@
 script = ExtResource("2_xf557")
 species_id = 1498
 form_id = &"lapras_gmax"
-display_name = "Lapras Gmax"
+display_name = "Lapras"
 base_species_id = 131
+override_types = true
+type_1 = 12
+type_2 = 16
+override_stats = true
+base_hp = 130
+base_attack = 85
+base_defense = 80
+base_speed = 60
+base_sp_defense = 95
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +41,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 11
+ability_2 = 75
+hidden_ability = 93
+override_pokedex = true
+category_name = "Transporte"
+description = "Más de 5.000 personas pueden montar en su
+Concha a la vez. Y es muy
+cómodo paseo, sin el más mínimo
+temblando o temblando."
+height = 240
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -22,8 +22,16 @@
 script = ExtResource("2_lfkp7")
 species_id = 912
 form_id = &"alakazam_mega"
-display_name = "Alakazam Mega"
+display_name = "Alakazam"
 base_species_id = 65
+override_types = true
+type_1 = 15
+override_stats = true
+base_hp = 55
+base_attack = 50
+base_defense = 65
+base_speed = 150
+base_sp_attack = 175
 front_sprite = ExtResource("9_xmsvq")
 front_sprite_shiny = ExtResource("10_8ih84")
 back_sprite = ExtResource("6_o12xw")
@@ -32,7 +40,18 @@ icon_sprite = ExtResource("11_o4u5g")
 overworld_scene = ExtResource("16_bom1b")
 cry = ExtResource("8_y0i8x")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 36
+ability_2 = 36
+hidden_ability = 36
+override_pokedex = true
+category_name = "Psíquico"
+description = "Habiendo cambiado sus músculos, Alakazam
+el verdadero poder ha sido desatado. Con su
+poderes psíquicos, puede prever todas las cosas."
+height = 12
+weight = 480
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

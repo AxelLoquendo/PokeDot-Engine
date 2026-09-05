@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_30gs1"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://b715vval4vs25" path="res://graphics/pokemon/icons/GIRATINA_1.png" id="10_hnacx"]
+[ext_resource type="Texture2D" uid="uid://su51ox3mpg2n" path="res://graphics/pokemon/follower/GIRATINA_1.png" id="12_s26gp"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://dt2gcjem60k2y" path="res://graphics/pokemon/front/GIRATINA.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://by5h0a7s63jaj" path="res://graphics/pokemon/front_shiny/GIRATINA.png" id="gfx101"]
@@ -20,8 +22,11 @@
 script = ExtResource("2_30gs1")
 species_id = 1071
 form_id = &"giratina_origin"
-display_name = "Giratina Origin"
+display_name = "Giratina"
 base_species_id = 487
+override_types = true
+type_1 = 8
+type_2 = 17
 override_stats = true
 base_hp = 150
 base_attack = 120
@@ -33,11 +38,21 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("10_hnacx")
+overworld_scene = ExtResource("12_s26gp")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 26
+override_pokedex = true
+category_name = "Renegado"
+description = "Giratina pierde sus piernas al cambiarse
+esta forma. Se cree que salve de un
+mundo donde los cielos y la tierra
+son como uno."
+height = 69
+weight = 6500
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

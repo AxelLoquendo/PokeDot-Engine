@@ -24,8 +24,17 @@
 script = ExtResource("2_ri33c")
 species_id = 1090
 form_id = &"basculin_blue_striped"
-display_name = "Basculin Blue Striped"
+display_name = "Basculin"
 base_species_id = 550
+override_types = true
+type_1 = 12
+override_stats = true
+base_hp = 70
+base_attack = 92
+base_defense = 65
+base_speed = 98
+base_sp_attack = 80
+base_sp_defense = 55
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -36,14 +45,35 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 16)
 back_sprite_offset = Vector2(0, 16)
 override_graphics = true
+override_abilities = true
+ability_1 = 69
+ability_2 = 91
+hidden_ability = 104
+override_pokedex = true
+category_name = "Hostile"
+description = "Forman escuelas con otros de la misma
+color. El mayor enemigo de una escuela de azul
+La basculina es una escuela de Basculina roja.
+Su sabor es ligero e inofensivo."
+height = 10
+weight = 180
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_ri33c")
 species_id = 1091
 form_id = &"basculin_white_striped"
-display_name = "Basculin White Striped"
+display_name = "Basculin"
 base_species_id = 550
+override_types = true
+type_1 = 12
+override_stats = true
+base_hp = 70
+base_attack = 92
+base_defense = 65
+base_speed = 98
+base_sp_attack = 80
+base_sp_defense = 55
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -54,6 +84,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 12)
 back_sprite_offset = Vector2(0, 16)
 override_graphics = true
+override_abilities = true
+ability_1 = 155
+ability_2 = 91
+hidden_ability = 104
+override_pokedex = true
+category_name = "Mellow"
+description = "Mientras que esta antigua forma de las acciones de Basculin
+una amplia gama de cualidades con otras formas,
+difiere en varios aspectos, incluyendo
+Demeanor, siendo mucho más suave que otros."
+height = 10
+weight = 180
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

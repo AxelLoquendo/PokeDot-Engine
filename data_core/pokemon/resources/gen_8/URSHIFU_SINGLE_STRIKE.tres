@@ -28,11 +28,18 @@
 script = ExtResource("2_8kby4")
 species_id = 1230
 form_id = &"urshifu_rapid_strike"
-display_name = "Urshifu Rapid Strike"
+display_name = "Urshifu"
 base_species_id = 892
 override_types = true
 type_1 = 2
 type_2 = 12
+override_stats = true
+base_hp = 100
+base_attack = 130
+base_defense = 100
+base_speed = 97
+base_sp_attack = 63
+base_sp_defense = 60
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -42,14 +49,34 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 260
+override_pokedex = true
+category_name = "Wushu"
+description = "Esta forma de Urshifu es fuerte
+creyente en derrotar a los enemigos por la lluvia
+muchos golpes en ellos. Es...
+Las huelgas no paran, fluyendo como un río."
+height = 19
+weight = 1050
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_8kby4")
 species_id = 1521
 form_id = &"urshifu_single_strike_gmax"
-display_name = "Urshifu Single Strike Gmax"
+display_name = "Urshifu"
 base_species_id = 892
+override_types = true
+type_1 = 2
+type_2 = 18
+override_stats = true
+base_hp = 100
+base_attack = 130
+base_defense = 100
+base_speed = 97
+base_sp_attack = 63
+base_sp_defense = 60
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -57,14 +84,34 @@ back_sprite_shiny = ExtResource("gfx114")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 260
+override_pokedex = true
+category_name = "Wushu"
+description = "Esta forma de Urshifu es un creyente fuerte
+en el KO de un solo golpe. Su estrategia es saltar
+cerca de enemigos y tierra un devastador
+golpe con un puño endurecido."
+height = 19
+weight = 1050
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_8kby4")
 species_id = 1522
 form_id = &"urshifu_rapid_strike_gmax"
-display_name = "Urshifu Rapid Strike Gmax"
+display_name = "Urshifu"
 base_species_id = 892
+override_types = true
+type_1 = 2
+type_2 = 18
+override_stats = true
+base_hp = 100
+base_attack = 130
+base_defense = 100
+base_speed = 97
+base_sp_attack = 63
+base_sp_defense = 60
 front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
@@ -72,6 +119,16 @@ back_sprite_shiny = ExtResource("gfx118")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 260
+override_pokedex = true
+category_name = "Wushu"
+description = "Esta forma de Urshifu es un creyente fuerte
+en el KO de un solo golpe. Su estrategia es saltar
+cerca de enemigos y tierra un devastador
+golpe con un puño endurecido."
+height = 19
+weight = 1050
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

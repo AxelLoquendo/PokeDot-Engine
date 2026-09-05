@@ -21,8 +21,17 @@
 script = ExtResource("2_2p07n")
 species_id = 1502
 form_id = &"melmetal_gmax"
-display_name = "Melmetal Gmax"
+display_name = "Melmetal"
 base_species_id = 809
+override_types = true
+type_1 = 9
+override_stats = true
+base_hp = 135
+base_attack = 143
+base_defense = 143
+base_speed = 34
+base_sp_attack = 80
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +42,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 14)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 89
+override_pokedex = true
+category_name = "Hex Nut"
+description = "En una tierra distante, hay
+leyendas sobre un gigante ciclopeo. De hecho,
+el gigante era un Melmetal que era
+inundado con energía Gigantamax."
+height = 250
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

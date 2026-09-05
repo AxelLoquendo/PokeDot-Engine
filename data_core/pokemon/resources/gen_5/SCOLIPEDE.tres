@@ -21,8 +21,18 @@
 script = ExtResource("2_xit28")
 species_id = 1534
 form_id = &"scolipede_mega"
-display_name = "Scolipede Mega"
+display_name = "Scolipede"
 base_species_id = 545
+override_types = true
+type_1 = 7
+type_2 = 4
+override_stats = true
+base_hp = 60
+base_attack = 140
+base_defense = 149
+base_speed = 62
+base_sp_attack = 75
+base_sp_defense = 99
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 75
+ability_2 = 75
+hidden_ability = 75
+override_pokedex = true
+category_name = "Megapede"
+description = "Su veneno mortal da un desmayo
+brillar. El veneno afecta a Scolipede
+mente, perfeccionando su viciosidad."
+height = 32
+weight = 2305
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

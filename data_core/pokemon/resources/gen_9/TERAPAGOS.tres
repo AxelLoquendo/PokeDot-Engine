@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_fpkyb"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://b7adveqaj5eqw" path="res://graphics/pokemon/icons/TERAPAGOS_1.png" id="10_ib4qd"]
+[ext_resource type="Texture2D" uid="uid://bm78hfygbs075" path="res://graphics/pokemon/follower/TERAPAGOS_1.png" id="12_14dfr"]
+[ext_resource type="Texture2D" uid="uid://deypjgkwvu1y" path="res://graphics/pokemon/icons/TERAPAGOS_2.png" id="17_1o4vo"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://r3u4jclm0rpc" path="res://graphics/pokemon/front/TERAPAGOS.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://cblhh2r7o0ecb" path="res://graphics/pokemon/front_shiny/TERAPAGOS.png" id="gfx101"]
@@ -24,30 +27,71 @@
 script = ExtResource("2_fpkyb")
 species_id = 1432
 form_id = &"terapagos_terastal"
-display_name = "Terapagos Terastal"
+display_name = "Terapagos"
 base_species_id = 1431
+override_types = true
+type_1 = 1
+override_stats = true
+base_hp = 95
+base_attack = 95
+base_defense = 110
+base_speed = 85
+base_sp_attack = 105
+base_sp_defense = 110
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("10_ib4qd")
+overworld_scene = ExtResource("12_14dfr")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 back_sprite_offset = Vector2(0, 11)
 override_graphics = true
+override_abilities = true
+ability_1 = 308
+override_pokedex = true
+category_name = "Tera"
+description = "La cáscara está hecha de cristalizado
+Energía terastal. Cuando se golpeó por un movimiento,
+esta concha absorbe la energía del movimiento
+y lo transfiere a Terapagos."
+height = 3
+weight = 160
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_fpkyb")
 species_id = 1433
 form_id = &"terapagos_stellar"
-display_name = "Terapagos Stellar"
+display_name = "Terapagos"
 base_species_id = 1431
+override_types = true
+type_1 = 1
+override_stats = true
+base_hp = 160
+base_attack = 105
+base_defense = 110
+base_speed = 85
+base_sp_attack = 130
+base_sp_defense = 110
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
 back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("17_1o4vo")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 309
+override_pokedex = true
+category_name = "Tera"
+description = "Una vieja revista de expedición describe
+vista de este Pokémon enterrado en el,
+profundidades de la tierra como parecidos a
+planeta flotando en el espacio."
+height = 17
+weight = 770
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

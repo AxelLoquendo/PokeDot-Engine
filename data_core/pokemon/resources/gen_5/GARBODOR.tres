@@ -21,8 +21,17 @@
 script = ExtResource("2_pq18a")
 species_id = 1501
 form_id = &"garbodor_gmax"
-display_name = "Garbodor Gmax"
+display_name = "Garbodor"
 base_species_id = 569
+override_types = true
+type_1 = 4
+override_stats = true
+base_hp = 80
+base_attack = 95
+base_defense = 82
+base_speed = 75
+base_sp_attack = 60
+base_sp_defense = 82
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +42,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 1
+ability_2 = 133
+hidden_ability = 106
+override_pokedex = true
+category_name = "Trash Heap"
+description = "Rocia el gas tóxico de su boca
+y dedos. Si el gas te envuelve,
+las toxinas seep en todo el camino
+hasta los huesos."
+height = 210
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

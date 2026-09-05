@@ -40,8 +40,18 @@ trigger = 6
 script = ExtResource("4_k7577")
 species_id = 991
 form_id = &"yamask_galar"
-display_name = "Yamask Galar"
+display_name = "Yamask"
 base_species_id = 562
+override_types = true
+type_1 = 5
+type_2 = 8
+override_stats = true
+base_hp = 38
+base_attack = 55
+base_defense = 85
+base_speed = 30
+base_sp_attack = 30
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -52,6 +62,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 13)
 back_sprite_offset = Vector2(0, 13)
 override_graphics = true
+override_abilities = true
+ability_1 = 254
+override_pokedex = true
+category_name = "Espíritu"
+description = "Una placa de arcilla con grabados maldecidos
+tomó posesión de un Yamask. El
+se dice que la losa está absorbiendo el
+El poder oscuro de Yamask."
+height = 5
+weight = 15
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

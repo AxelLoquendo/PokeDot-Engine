@@ -21,8 +21,18 @@
 script = ExtResource("2_o8h7h")
 species_id = 1530
 form_id = &"skarmory_mega"
-display_name = "Skarmory Mega"
+display_name = "Skarmory"
 base_species_id = 227
+override_types = true
+type_1 = 9
+type_2 = 3
+override_stats = true
+base_hp = 65
+base_attack = 140
+base_defense = 110
+base_speed = 110
+base_sp_attack = 40
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 242
+ability_2 = 242
+hidden_ability = 242
+override_pokedex = true
+category_name = "Armor Bird"
+description = "Debido a los efectos de Megaevolución,
+sus pinzas han tomado más
+forma diabólica, arrancar cualquier cosa
+perforan a los arbustos."
+height = 17
+weight = 404
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

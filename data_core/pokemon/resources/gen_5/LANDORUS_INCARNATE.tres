@@ -20,8 +20,18 @@
 script = ExtResource("2_t0w0g")
 species_id = 1102
 form_id = &"landorus_therian"
-display_name = "Landorus Therian"
+display_name = "Landorus"
 base_species_id = 645
+override_types = true
+type_1 = 5
+type_2 = 3
+override_stats = true
+base_hp = 89
+base_attack = 145
+base_defense = 90
+base_speed = 91
+base_sp_attack = 105
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -31,6 +41,16 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 22
+override_pokedex = true
+category_name = "Abundancia"
+description = "Landorus se eleva por el cielo en
+esta forma, otorgando abundante
+cosechas en la tierra y ganar la
+La reverencia de la gente."
+height = 13
+weight = 680
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

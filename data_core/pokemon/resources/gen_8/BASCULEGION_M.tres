@@ -20,8 +20,18 @@
 script = ExtResource("2_1w2wx")
 species_id = 1234
 form_id = &"basculegion_f"
-display_name = "Basculegion F"
+display_name = "Basculegion"
 base_species_id = 902
+override_types = true
+type_1 = 12
+type_2 = 8
+override_stats = true
+base_hp = 120
+base_attack = 92
+base_defense = 65
+base_speed = 78
+base_sp_attack = 100
+base_sp_defense = 75
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -29,6 +39,17 @@ back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 33
+ability_2 = 91
+hidden_ability = 104
+override_pokedex = true
+category_name = "Big Fish"
+description = "Las almas de sus camaradas tapan sus
+cuerpo y propulsión sin esfuerzo
+a través de los rápidos de rabia."
+height = 30
+weight = 1100
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

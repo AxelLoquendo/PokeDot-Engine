@@ -28,11 +28,18 @@
 script = ExtResource("2_b37sd")
 species_id = 1169
 form_id = &"oricorio_pom_pom"
-display_name = "Oricorio Pom Pom"
+display_name = "Oricorio"
 base_species_id = 741
 override_types = true
 type_1 = 14
 type_2 = 3
+override_stats = true
+base_hp = 75
+base_attack = 70
+base_defense = 70
+base_speed = 93
+base_sp_attack = 98
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -42,17 +49,34 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 216
+override_pokedex = true
+category_name = "Bailando"
+description = "Esta forma de Oricorio ha cortado
+néctar amarillo. Utiliza pasos ágiles para
+acercarse oponentes, luego golpear
+con golpes eléctricos."
+height = 6
+weight = 34
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_b37sd")
 species_id = 1170
 form_id = &"oricorio_pau"
-display_name = "Oricorio Pau"
+display_name = "Oricorio"
 base_species_id = 741
 override_types = true
 type_1 = 15
 type_2 = 3
+override_stats = true
+base_hp = 75
+base_attack = 70
+base_defense = 70
+base_speed = 93
+base_sp_attack = 98
+base_sp_defense = 70
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -62,17 +86,34 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 override_graphics = true
+override_abilities = true
+ability_1 = 216
+override_pokedex = true
+category_name = "Bailando"
+description = "Esta forma de Oricorio ha cortado
+néctar rosa. eleva su mente con
+los suaves pasos de su baile, entonces
+libera su energía psíquica."
+height = 6
+weight = 34
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_b37sd")
 species_id = 1171
 form_id = &"oricorio_sensu"
-display_name = "Oricorio Sensu"
+display_name = "Oricorio"
 base_species_id = 741
 override_types = true
 type_1 = 8
 type_2 = 3
+override_stats = true
+base_hp = 75
+base_attack = 70
+base_defense = 70
+base_speed = 93
+base_sp_attack = 98
+base_sp_defense = 70
 front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
@@ -82,6 +123,16 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 216
+override_pokedex = true
+category_name = "Bailando"
+description = "Le encanta a sus oponentes con sus
+baile refinado. Cuando los dejan
+guardia abajo, pone una maldición en
+los que traerán su muerte."
+height = 6
+weight = 34
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

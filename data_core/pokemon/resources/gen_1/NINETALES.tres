@@ -22,8 +22,18 @@
 script = ExtResource("2_c0dcf")
 species_id = 962
 form_id = &"ninetales_alola"
-display_name = "Ninetales Alola"
+display_name = "Ninetales"
 base_species_id = 38
+override_types = true
+type_1 = 16
+type_2 = 19
+override_stats = true
+base_hp = 73
+base_attack = 67
+base_defense = 75
+base_speed = 109
+base_sp_attack = 81
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,6 +44,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 81
+hidden_ability = 117
+override_pokedex = true
+category_name = "Zorro"
+description = "Mientras que guiará a los viajeros que se pierden
+en una montaña nevada hasta
+base de montaña, no perdonará a nadie
+que daña la naturaleza."
+height = 11
+weight = 199
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

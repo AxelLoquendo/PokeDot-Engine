@@ -22,8 +22,18 @@
 script = ExtResource("2_krcl3")
 species_id = 951
 form_id = &"audino_mega"
-display_name = "Audino Mega"
+display_name = "Audino"
 base_species_id = 531
+override_types = true
+type_1 = 1
+type_2 = 19
+override_stats = true
+base_hp = 103
+base_attack = 60
+base_defense = 126
+base_speed = 50
+base_sp_attack = 80
+base_sp_defense = 126
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 131
+ability_2 = 131
+hidden_ability = 131
+override_pokedex = true
+category_name = "Audición"
+description = "Mega Audino emite un pulso relajante de
+su cuerpo que reduce la hostilidad en otros.
+Cualquier cosa que entra en contacto con su
+segundo sentir caerá en un sueño profundo."
+height = 15
+weight = 320
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

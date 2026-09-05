@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_sh5ew"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://cmxq8q6kf44rh" path="res://graphics/pokemon/icons/ARCEUS_1.png" id="6_vp3i8"]
+[ext_resource type="Texture2D" uid="uid://dw6wix03lx2xn" path="res://graphics/pokemon/follower/ARCEUS_1.png" id="8_vw0da"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://d00rjht2ty2jh" path="res://graphics/pokemon/front/ARCEUS.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://cjs0indi6v8gp" path="res://graphics/pokemon/front_shiny/ARCEUS.png" id="gfx101"]
@@ -20,8 +22,24 @@ display_name = "Arceus Fighting"
 base_species_id = 493
 override_types = true
 type_1 = 2
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
+icon_sprite = ExtResource("6_vp3i8")
+overworld_scene = ExtResource("8_vw0da")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -32,8 +50,22 @@ display_name = "Arceus Flying"
 base_species_id = 493
 override_types = true
 type_1 = 3
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -44,8 +76,22 @@ display_name = "Arceus Poison"
 base_species_id = 493
 override_types = true
 type_1 = 4
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -56,8 +102,22 @@ display_name = "Arceus Ground"
 base_species_id = 493
 override_types = true
 type_1 = 5
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -68,8 +128,22 @@ display_name = "Arceus Rock"
 base_species_id = 493
 override_types = true
 type_1 = 6
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
@@ -80,8 +154,22 @@ display_name = "Arceus Bug"
 base_species_id = 493
 override_types = true
 type_1 = 7
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
@@ -92,8 +180,22 @@ display_name = "Arceus Ghost"
 base_species_id = 493
 override_types = true
 type_1 = 8
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
@@ -104,8 +206,22 @@ display_name = "Arceus Steel"
 base_species_id = 493
 override_types = true
 type_1 = 9
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
@@ -116,8 +232,22 @@ display_name = "Arceus Fire"
 base_species_id = 493
 override_types = true
 type_1 = 11
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
@@ -128,8 +258,22 @@ display_name = "Arceus Water"
 base_species_id = 493
 override_types = true
 type_1 = 12
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
@@ -140,8 +284,22 @@ display_name = "Arceus Grass"
 base_species_id = 493
 override_types = true
 type_1 = 13
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
@@ -152,8 +310,22 @@ display_name = "Arceus Electric"
 base_species_id = 493
 override_types = true
 type_1 = 14
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
@@ -164,8 +336,22 @@ display_name = "Arceus Psychic"
 base_species_id = 493
 override_types = true
 type_1 = 15
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
@@ -176,6 +362,13 @@ display_name = "Arceus Ice"
 base_species_id = 493
 override_types = true
 type_1 = 16
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -184,6 +377,13 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
@@ -194,8 +394,22 @@ display_name = "Arceus Dragon"
 base_species_id = 493
 override_types = true
 type_1 = 17
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
@@ -206,8 +420,22 @@ display_name = "Arceus Dark"
 base_species_id = 493
 override_types = true
 type_1 = 18
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_16"]
@@ -218,8 +446,22 @@ display_name = "Arceus Fairy"
 base_species_id = 493
 override_types = true
 type_1 = 19
+override_stats = true
+base_hp = 120
+base_attack = 120
+base_defense = 120
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 120
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 121
+override_pokedex = true
+category_name = "Alfa"
+description = "Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo."
+height = 32
+weight = 3200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

@@ -22,8 +22,17 @@
 script = ExtResource("2_n712v")
 species_id = 940
 form_id = &"absol_mega"
-display_name = "Absol Mega"
+display_name = "Absol"
 base_species_id = 359
+override_types = true
+type_1 = 18
+override_stats = true
+base_hp = 65
+base_attack = 150
+base_defense = 60
+base_speed = 115
+base_sp_attack = 115
+base_sp_defense = 60
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,14 +42,36 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 2)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 156
+ability_2 = 156
+hidden_ability = 156
+override_pokedex = true
+category_name = "Desastre"
+description = "Como la energía de Megaevolución lo llena,
+sus cerdas de piel. Lo que ves en su espalda
+no son alas verdaderas, y este Pokémon no es
+capaz de volar."
+height = 12
+weight = 490
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_n712v")
 species_id = 1556
 form_id = &"absol_mega_z"
-display_name = "Absol Mega Z"
+display_name = "Absol"
 base_species_id = 359
+override_types = true
+type_1 = 18
+type_2 = 8
+override_stats = true
+base_hp = 65
+base_attack = 154
+base_defense = 60
+base_speed = 151
+base_sp_attack = 75
+base_sp_defense = 60
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -50,7 +81,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 156
+ability_2 = 156
+hidden_ability = 156
+override_pokedex = true
+category_name = "Desastre"
+description = "Usando la piel que ha hecho afilada,
+formas de garra, corta a los enemigos con
+un solo golpe. Este es un acto de bondad
+para evitar que sufran."
+height = 12
+weight = 490
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

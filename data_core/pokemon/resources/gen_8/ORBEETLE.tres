@@ -21,8 +21,18 @@
 script = ExtResource("2_sjs0q")
 species_id = 1507
 form_id = &"orbeetle_gmax"
-display_name = "Orbeetle Gmax"
+display_name = "Orbeetle"
 base_species_id = 826
+override_types = true
+type_1 = 7
+type_2 = 15
+override_stats = true
+base_hp = 60
+base_attack = 45
+base_defense = 110
+base_speed = 90
+base_sp_attack = 80
+base_sp_defense = 120
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 68
+ability_2 = 119
+hidden_ability = 140
+override_pokedex = true
+category_name = "Seven Spot"
+description = "Su cerebro ha crecido a un gargantuán
+tamaño, al igual que el resto de su cuerpo.
+El intelecto de Pokémon y
+Las habilidades psíquicas están sobrepoderando."
+height = 140
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

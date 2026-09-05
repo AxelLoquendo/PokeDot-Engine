@@ -21,8 +21,18 @@
 script = ExtResource("2_fv4q3")
 species_id = 1517
 form_id = &"grimmsnarl_gmax"
-display_name = "Grimmsnarl Gmax"
+display_name = "Grimmsnarl"
 base_species_id = 861
+override_types = true
+type_1 = 18
+type_2 = 19
+override_stats = true
+base_hp = 95
+base_attack = 120
+base_defense = 65
+base_speed = 60
+base_sp_attack = 95
+base_sp_defense = 75
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 10)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 158
+ability_2 = 119
+hidden_ability = 124
+override_pokedex = true
+category_name = "Bulk Up"
+description = "Gigantamax energía ha causado más
+pelo para brotar por todo el cuerpo.
+Con la fuerza agregada, puede saltar
+sobre el edificio más alto del mundo."
+height = 320
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -21,8 +21,18 @@
 script = ExtResource("2_wbotn")
 species_id = 1535
 form_id = &"scrafty_mega"
-display_name = "Scrafty Mega"
+display_name = "Scrafty"
 base_species_id = 560
+override_types = true
+type_1 = 18
+type_2 = 2
+override_stats = true
+base_hp = 65
+base_attack = 130
+base_defense = 135
+base_speed = 68
+base_sp_attack = 55
+base_sp_defense = 135
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 22
+ability_2 = 22
+hidden_ability = 22
+override_pokedex = true
+category_name = "Hoodlum"
+description = "Megaevolución ha causado Scrafty
+piel de cobertizo para volver blanca, creciendo
+duro y flexible. Por supuesto, esto
+Pokémon sigue siendo tan feo como siempre."
+height = 11
+weight = 310
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

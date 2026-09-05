@@ -26,8 +26,18 @@
 script = ExtResource("2_njvpt")
 species_id = 1112
 form_id = &"greninja_bond"
-display_name = "Greninja Bond"
+display_name = "Greninja"
 base_species_id = 658
+override_types = true
+type_1 = 12
+type_2 = 18
+override_stats = true
+base_hp = 72
+base_attack = 95
+base_defense = 67
+base_speed = 122
+base_sp_attack = 103
+base_sp_defense = 71
 front_sprite = ExtResource("17_47gx1")
 front_sprite_shiny = ExtResource("18_dtmq6")
 back_sprite = ExtResource("1_51668")
@@ -38,14 +48,34 @@ cry = ExtResource("3_pymgi")
 front_sprite_offset = Vector2(0, 7)
 back_sprite_offset = Vector2(0, 11)
 override_graphics = true
+override_abilities = true
+ability_1 = 210
+override_pokedex = true
+category_name = "Ninja"
+description = "Parece y desaparece con un ninja
+gracia. Toys con sus enemigos usando
+movimientos rápidos, mientras los corta con
+lanzando estrellas hechas de agua comprimida."
+height = 15
+weight = 400
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_njvpt")
 species_id = 1113
 form_id = &"greninja_ash"
-display_name = "Greninja Ash"
+display_name = "Greninja"
 base_species_id = 658
+override_types = true
+type_1 = 12
+type_2 = 18
+override_stats = true
+base_hp = 72
+base_attack = 145
+base_defense = 67
+base_speed = 132
+base_sp_attack = 153
+base_sp_defense = 71
 front_sprite = ExtResource("9_5c7ly")
 front_sprite_shiny = ExtResource("10_nfl1x")
 back_sprite = ExtResource("7_1vjnd")
@@ -55,14 +85,34 @@ overworld_scene = ExtResource("20_in5oy")
 cry = ExtResource("3_pymgi")
 back_sprite_offset = Vector2(0, 11)
 override_graphics = true
+override_abilities = true
+ability_1 = 210
+override_pokedex = true
+category_name = "Ninja"
+description = "Parece y desaparece con un ninja
+gracia. Toys con sus enemigos usando
+movimientos rápidos, mientras los corta con
+lanzando estrellas hechas de agua comprimida."
+height = 15
+weight = 400
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_njvpt")
 species_id = 1540
 form_id = &"greninja_mega"
-display_name = "Greninja Mega"
+display_name = "Greninja"
 base_species_id = 658
+override_types = true
+type_1 = 12
+type_2 = 18
+override_stats = true
+base_hp = 72
+base_attack = 125
+base_defense = 77
+base_speed = 142
+base_sp_attack = 133
+base_sp_defense = 81
 front_sprite = ExtResource("14_7yijp")
 front_sprite_shiny = ExtResource("15_7ggiw")
 back_sprite = ExtResource("12_yflow")
@@ -72,7 +122,19 @@ overworld_scene = ExtResource("20_in5oy")
 cry = ExtResource("3_pymgi")
 back_sprite_offset = Vector2(0, 11)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 168
+ability_2 = 168
+hidden_ability = 168
+override_pokedex = true
+category_name = "Ninja"
+description = "Este Pokémon gira un gigante
+shuriken a alta velocidad para hacerlo
+flotar, luego aferrarse a ella
+para atrapar a los oponentes sin saberlo."
+height = 15
+weight = 400
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

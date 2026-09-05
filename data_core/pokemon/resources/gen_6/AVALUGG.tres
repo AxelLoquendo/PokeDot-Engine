@@ -22,8 +22,18 @@
 script = ExtResource("2_pb03m")
 species_id = 1007
 form_id = &"avalugg_hisui"
-display_name = "Avalugg Hisui"
+display_name = "Avalugg"
 base_species_id = 713
+override_types = true
+type_1 = 16
+type_2 = 6
+override_stats = true
+base_hp = 95
+base_attack = 127
+base_defense = 184
+base_speed = 38
+base_sp_attack = 34
+base_sp_defense = 36
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,6 +44,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 6)
 back_sprite_offset = Vector2(0, 16)
 override_graphics = true
+override_abilities = true
+ability_1 = 173
+ability_2 = 115
+hidden_ability = 5
+override_pokedex = true
+category_name = "Iceberg"
+description = "La armadura de hielo cubriendo su parte inferior
+la mandíbula pone el acero a la vergüenza y puede
+romper rocas con facilidad."
+height = 14
+weight = 2624
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

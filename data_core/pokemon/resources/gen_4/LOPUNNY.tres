@@ -22,8 +22,18 @@
 script = ExtResource("2_sria7")
 species_id = 946
 form_id = &"lopunny_mega"
-display_name = "Lopunny Mega"
+display_name = "Lopunny"
 base_species_id = 428
+override_types = true
+type_1 = 1
+type_2 = 2
+override_stats = true
+base_hp = 65
+base_attack = 136
+base_defense = 94
+base_speed = 135
+base_sp_attack = 54
+base_sp_defense = 96
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,7 +44,19 @@ cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 113
+ability_2 = 113
+hidden_ability = 113
+override_pokedex = true
+category_name = "Conejo"
+description = "Megaevolución despierta su combativo
+instintos. Ha derramado cualquier piel que haya entrado
+el camino de sus ataques.
+Crescent."
+height = 13
+weight = 283
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

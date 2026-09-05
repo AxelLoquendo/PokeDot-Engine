@@ -22,8 +22,18 @@
 script = ExtResource("2_e1sd1")
 species_id = 927
 form_id = &"sceptile_mega"
-display_name = "Sceptile Mega"
+display_name = "Sceptile"
 base_species_id = 254
+override_types = true
+type_1 = 13
+type_2 = 17
+override_stats = true
+base_hp = 70
+base_attack = 110
+base_defense = 75
+base_speed = 145
+base_sp_attack = 145
+base_sp_defense = 85
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 31
+ability_2 = 31
+hidden_ability = 31
+override_pokedex = true
+category_name = "Bosque"
+description = "Gracias al poder en sus piernas rápidas,
+Mega Sceptile puede estar en su oponente en un
+flash. Puede cortar una porción de su cola
+para dispararlo como un misil a un oponente."
+height = 19
+weight = 552
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

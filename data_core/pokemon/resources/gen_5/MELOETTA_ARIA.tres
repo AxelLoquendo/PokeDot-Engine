@@ -20,7 +20,7 @@
 script = ExtResource("2_soa73")
 species_id = 1107
 form_id = &"meloetta_pirouette"
-display_name = "Meloetta Pirouette"
+display_name = "Meloetta"
 base_species_id = 648
 override_types = true
 type_1 = 1
@@ -42,6 +42,15 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 32
+override_pokedex = true
+category_name = "Melody"
+description = "Las melodías de Meloetta se cantan con
+un método especial de vocalización que puede
+controla los sentimientos de los que lo oyen."
+height = 6
+weight = 65
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

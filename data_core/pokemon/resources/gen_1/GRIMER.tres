@@ -34,8 +34,18 @@ conditions = Array[ExtResource("2_5rlc0")]([SubResource("Resource_cond0")])
 script = ExtResource("4_0mi50")
 species_id = 970
 form_id = &"grimer_alola"
-display_name = "Grimer Alola"
+display_name = "Grimer"
 base_species_id = 88
+override_types = true
+type_1 = 4
+type_2 = 18
+override_stats = true
+base_hp = 80
+base_attack = 80
+base_defense = 50
+base_speed = 25
+base_sp_attack = 40
+base_sp_defense = 50
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -46,6 +56,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 14)
 override_graphics = true
+override_abilities = true
+ability_1 = 143
+ability_2 = 82
+hidden_ability = 223
+override_pokedex = true
+category_name = "Lodo"
+description = "Hay cientos de ellos viviendo
+en el sitio de residuos de Alola. Son todos
+trabajadores duros que comen mucha basura. Grimer
+Parece saborear todo tipo de basura."
+height = 7
+weight = 420
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

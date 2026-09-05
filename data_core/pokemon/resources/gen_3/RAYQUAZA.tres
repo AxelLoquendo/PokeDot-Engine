@@ -22,8 +22,18 @@
 script = ExtResource("2_37iex")
 species_id = 953
 form_id = &"rayquaza_mega"
-display_name = "Rayquaza Mega"
+display_name = "Rayquaza"
 base_species_id = 384
+override_types = true
+type_1 = 17
+type_2 = 3
+override_stats = true
+base_hp = 105
+base_attack = 180
+base_defense = 100
+base_speed = 115
+base_sp_attack = 180
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 191
+ability_2 = 191
+hidden_ability = 191
+override_pokedex = true
+category_name = "Sky High"
+description = "Las partículas fluyen de los filamentos que
+se extiende desde su mandíbula. Pueden controlar el
+densidad y humedad del aire, permitiendo
+Rayquaza para manipular el clima."
+height = 108
+weight = 3920
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

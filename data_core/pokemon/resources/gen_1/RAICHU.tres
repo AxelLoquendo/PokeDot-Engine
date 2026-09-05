@@ -31,8 +31,18 @@
 script = ExtResource("2_su7xh")
 species_id = 958
 form_id = &"raichu_alola"
-display_name = "Raichu Alola"
+display_name = "Raichu"
 base_species_id = 26
+override_types = true
+type_1 = 14
+type_2 = 15
+override_stats = true
+base_hp = 60
+base_attack = 85
+base_defense = 50
+base_speed = 110
+base_sp_attack = 95
+base_sp_defense = 85
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -42,14 +52,33 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
+override_abilities = true
+ability_1 = 207
+override_pokedex = true
+category_name = "Ratón"
+description = "Usa psicokinesis para controlar
+electricidad. Se centra en la energía psíquica
+en su cola y lo monta como si estuviera surfeando.
+Otro nombre para este Pokémon es 'hodad'."
+height = 7
+weight = 210
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_su7xh")
 species_id = 1553
 form_id = &"raichu_mega_x"
-display_name = "Raichu Mega X"
+display_name = "Raichu"
 base_species_id = 26
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 60
+base_attack = 135
+base_defense = 95
+base_speed = 110
+base_sp_attack = 90
+base_sp_defense = 95
 front_sprite = ExtResource("gfx113")
 front_sprite_shiny = ExtResource("gfx114")
 back_sprite = ExtResource("gfx115")
@@ -60,14 +89,35 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 226
+ability_2 = 226
+hidden_ability = 226
+override_pokedex = true
+category_name = "Ratón"
+description = "Se parece a una X mientras vuela a través de
+el aire con 50 millones de voltios
+electricidad que brota de sus oídos y
+cola forcada."
+height = 12
+weight = 380
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_su7xh")
 species_id = 1554
 form_id = &"raichu_mega_y"
-display_name = "Raichu Mega Y"
+display_name = "Raichu"
 base_species_id = 26
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 55
+base_speed = 130
+base_sp_attack = 160
+base_sp_defense = 80
 front_sprite = ExtResource("gfx117")
 front_sprite_shiny = ExtResource("gfx118")
 back_sprite = ExtResource("gfx119")
@@ -78,7 +128,19 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 99
+ability_2 = 99
+hidden_ability = 99
+override_pokedex = true
+category_name = "Ratón"
+description = "Dispara pernos de electricidad de la
+punta de su cola y de los tufts arrugados
+de piel creciendo fuera de sus templos. Esto
+La electricidad forma la letra Y."
+height = 10
+weight = 260
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -22,8 +22,18 @@
 script = ExtResource("2_pfx3w")
 species_id = 932
 form_id = &"mawile_mega"
-display_name = "Mawile Mega"
+display_name = "Mawile"
 base_species_id = 303
+override_types = true
+type_1 = 9
+type_2 = 19
+override_stats = true
+base_hp = 50
+base_attack = 105
+base_defense = 125
+base_speed = 50
+base_sp_attack = 55
+base_sp_defense = 95
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,7 +44,19 @@ cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 5)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 37
+ability_2 = 37
+hidden_ability = 37
+override_pokedex = true
+category_name = "Deceiver"
+description = "Sus dos conjuntos de mandíbulas
+violentamente como si cada uno tuviera una voluntad
+sus propios. Un mosquito de ellos puede girar un
+a polvo."
+height = 10
+weight = 235
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

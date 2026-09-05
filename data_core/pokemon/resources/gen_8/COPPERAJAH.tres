@@ -21,8 +21,17 @@
 script = ExtResource("2_53gbp")
 species_id = 1519
 form_id = &"copperajah_gmax"
-display_name = "Copperajah Gmax"
+display_name = "Copperajah"
 base_species_id = 879
+override_types = true
+type_1 = 9
+override_stats = true
+base_hp = 122
+base_attack = 130
+base_defense = 69
+base_speed = 30
+base_sp_attack = 80
+base_sp_defense = 69
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +42,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 125
+hidden_ability = 134
+override_pokedex = true
+category_name = "Copperderm"
+description = "Después de este Pokémon tiene Gigantamaxed,
+su nariz masiva puede demoler
+estructuras grandes con una sola
+golpe de choque."
+height = 230
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

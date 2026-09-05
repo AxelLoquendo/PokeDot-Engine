@@ -22,8 +22,18 @@
 script = ExtResource("2_4rfpv")
 species_id = 937
 form_id = &"camerupt_mega"
-display_name = "Camerupt Mega"
+display_name = "Camerupt"
 base_species_id = 323
+override_types = true
+type_1 = 11
+type_2 = 5
+override_stats = true
+base_hp = 70
+base_attack = 120
+base_defense = 100
+base_speed = 20
+base_sp_attack = 145
+base_sp_defense = 105
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,7 +44,19 @@ cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 125
+ability_2 = 125
+hidden_ability = 125
+override_pokedex = true
+category_name = "Erupción"
+description = "Los jorobos en su espalda han transformado
+en un volcán grande y muy activo. It
+tiene un profundo odio al agua o a cualquier humedad
+y tiene una personalidad explosiva."
+height = 25
+weight = 3205
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

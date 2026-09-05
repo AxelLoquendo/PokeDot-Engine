@@ -28,7 +28,7 @@
 script = ExtResource("2_3mhkb")
 species_id = 1207
 form_id = &"necrozma_dusk_mane"
-display_name = "Necrozma Dusk Mane"
+display_name = "Necrozma"
 base_species_id = 800
 override_types = true
 type_1 = 15
@@ -47,13 +47,23 @@ back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 232
+override_pokedex = true
+category_name = "Prism"
+description = "Esta es su forma mientras que está devorando
+la luz de Solgaleo. Se pone encima.
+enemigos y luego los golpea con el
+garras en sus cuatro extremidades y espalda."
+height = 38
+weight = 4600
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_3mhkb")
 species_id = 1208
 form_id = &"necrozma_dawn_wings"
-display_name = "Necrozma Dawn Wings"
+display_name = "Necrozma"
 base_species_id = 800
 override_types = true
 type_1 = 15
@@ -72,13 +82,23 @@ back_sprite_shiny = ExtResource("gfx114")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 232
+override_pokedex = true
+category_name = "Prism"
+description = "Esta es su forma mientras que
+devorando la luz de Lunala. Comprende.
+enemigos en sus garras gigantes y las madura
+aparte con fuerza bruta."
+height = 42
+weight = 3500
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_3mhkb")
 species_id = 1209
 form_id = &"necrozma_ultra"
-display_name = "Necrozma Ultra"
+display_name = "Necrozma"
 base_species_id = 800
 override_types = true
 type_1 = 15
@@ -97,6 +117,16 @@ back_sprite_shiny = ExtResource("gfx118")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
+override_abilities = true
+ability_1 = 233
+override_pokedex = true
+category_name = "Prism"
+description = "La luz derramada de todas partes
+su cuerpo afecta a los seres vivos y
+naturaleza, impacto en varios
+caminos."
+height = 75
+weight = 2300
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

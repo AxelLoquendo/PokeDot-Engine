@@ -22,8 +22,18 @@
 script = ExtResource("2_d3abc")
 species_id = 944
 form_id = &"latias_mega"
-display_name = "Latias Mega"
+display_name = "Latias"
 base_species_id = 380
+override_types = true
+type_1 = 17
+type_2 = 15
+override_stats = true
+base_hp = 80
+base_attack = 100
+base_defense = 120
+base_speed = 110
+base_sp_attack = 140
+base_sp_defense = 150
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 26
+ability_2 = 26
+hidden_ability = 26
+override_pokedex = true
+category_name = "Eon"
+description = "Su cuerpo es más pequeño que el de Mega Latios
+cuerpo. Es más ágil y puede hacer muy
+giros agudos. Cuando Mega gira, su
+La fuerza defensiva crece sustancialmente."
+height = 18
+weight = 520
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

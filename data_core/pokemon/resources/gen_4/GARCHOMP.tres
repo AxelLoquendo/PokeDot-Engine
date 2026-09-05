@@ -22,8 +22,18 @@
 script = ExtResource("2_1b7l7")
 species_id = 947
 form_id = &"garchomp_mega"
-display_name = "Garchomp Mega"
+display_name = "Garchomp"
 base_species_id = 445
+override_types = true
+type_1 = 17
+type_2 = 5
+override_stats = true
+base_hp = 108
+base_attack = 170
+base_defense = 115
+base_speed = 92
+base_sp_attack = 120
+base_sp_defense = 95
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,14 +43,35 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 159
+ability_2 = 159
+hidden_ability = 159
+override_pokedex = true
+category_name = "Mach"
+description = "El exceso de energía fundió sus brazos y alas
+en los helados gigantes, enviándolo loco con
+rabia. Cambia sus garras salvajemente y
+corta el suelo en pedazos."
+height = 19
+weight = 950
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_1b7l7")
 species_id = 1558
 form_id = &"garchomp_mega_z"
-display_name = "Garchomp Mega Z"
+display_name = "Garchomp"
 base_species_id = 445
+override_types = true
+type_1 = 17
+override_stats = true
+base_hp = 108
+base_attack = 130
+base_defense = 85
+base_speed = 151
+base_sp_attack = 141
+base_sp_defense = 85
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -49,7 +80,18 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 8
+hidden_ability = 24
+override_pokedex = true
+category_name = "Mach"
+description = "Garchomp ha ganado un nuevo Mega-Evolved
+forma. vuela alrededor de enemigos a velocidad de Mach
+y los corta para triturar con su siniestro
+garras de ala."
+height = 19
+weight = 990
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

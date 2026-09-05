@@ -24,8 +24,17 @@
 script = ExtResource("2_ysb11")
 species_id = 1057
 form_id = &"burmy_sandy"
-display_name = "Burmy Sandy"
+display_name = "Burmy"
 base_species_id = 412
+override_types = true
+type_1 = 7
+override_stats = true
+base_hp = 40
+base_attack = 29
+base_defense = 45
+base_speed = 36
+base_sp_attack = 29
+base_sp_defense = 45
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -36,14 +45,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 12)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 61
+hidden_ability = 142
+override_pokedex = true
+category_name = "Saco gusano"
+description = "Teje un manto junto con arena, barro,
+y seda escupe. Este manto de la tierra
+está arruinado por el viento y la lluvia, así que el Pokémon
+se esconde en cuevas y otros lugares."
+height = 2
+weight = 34
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_ysb11")
 species_id = 1058
 form_id = &"burmy_trash"
-display_name = "Burmy Trash"
+display_name = "Burmy"
 base_species_id = 412
+override_types = true
+type_1 = 7
+override_stats = true
+base_hp = 40
+base_attack = 29
+base_defense = 45
+base_speed = 36
+base_sp_attack = 29
+base_sp_defense = 45
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -53,6 +82,17 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 61
+hidden_ability = 142
+override_pokedex = true
+category_name = "Saco gusano"
+description = "Cuando se enfrenta a una falta de otros
+materiales, Burmy creará su capa
+usando polvo y basura. El manto parece
+Ser más cómodo de lo que uno pensaría."
+height = 2
+weight = 34
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

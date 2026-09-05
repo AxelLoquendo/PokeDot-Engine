@@ -21,8 +21,18 @@
 script = ExtResource("2_gxv83")
 species_id = 1550
 form_id = &"heatran_mega"
-display_name = "Heatran Mega"
+display_name = "Heatran"
 base_species_id = 485
+override_types = true
+type_1 = 11
+type_2 = 9
+override_stats = true
+base_hp = 91
+base_attack = 120
+base_defense = 106
+base_speed = 67
+base_sp_attack = 175
+base_sp_defense = 141
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 15)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 18
+hidden_ability = 49
+override_pokedex = true
+category_name = "Lava Dome"
+description = "Se dice que si todo sale,
+puede calentar su cuerpo hasta temperaturas
+más de 1,8 millones de grados Fahrenheit.
+Este calor mantiene a los enemigos a raya."
+height = 28
+weight = 5700
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

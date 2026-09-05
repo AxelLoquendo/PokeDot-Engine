@@ -22,8 +22,18 @@
 script = ExtResource("2_tmivj")
 species_id = 996
 form_id = &"electrode_hisui"
-display_name = "Electrode Hisui"
+display_name = "Electrode"
 base_species_id = 101
+override_types = true
+type_1 = 14
+type_2 = 13
+override_stats = true
+base_hp = 60
+base_attack = 50
+base_defense = 70
+base_speed = 150
+base_sp_attack = 80
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,6 +44,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 43
+ability_2 = 9
+hidden_ability = 106
+override_pokedex = true
+category_name = "Sphere"
+description = "El tejido en la superficie de su cuerpo es
+similar en composición a un Apricorn.
+Cuando se irrita, deja soltar un eléctrico
+corriente igual a 20 relámpagos."
+height = 12
+weight = 710
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

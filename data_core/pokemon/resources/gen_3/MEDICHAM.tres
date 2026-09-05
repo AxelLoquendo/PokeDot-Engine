@@ -22,8 +22,18 @@
 script = ExtResource("2_px6i3")
 species_id = 934
 form_id = &"medicham_mega"
-display_name = "Medicham Mega"
+display_name = "Medicham"
 base_species_id = 308
+override_types = true
+type_1 = 2
+type_2 = 15
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 85
+base_speed = 100
+base_sp_attack = 80
+base_sp_defense = 85
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 74
+ability_2 = 74
+hidden_ability = 74
+override_pokedex = true
+category_name = "Meditación"
+description = "Utiliza su fuerza de voluntad para crear
+brazos adicionales para sí mismo. Cuanto más
+ha entrenado su espíritu, el más realista
+y dexterous estos brazos se vuelven."
+height = 13
+weight = 315
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -21,8 +21,18 @@
 script = ExtResource("2_1lnrj")
 species_id = 1557
 form_id = &"staraptor_mega"
-display_name = "Staraptor Mega"
+display_name = "Staraptor"
 base_species_id = 398
+override_types = true
+type_1 = 2
+type_2 = 3
+override_stats = true
+base_hp = 85
+base_attack = 140
+base_defense = 100
+base_speed = 110
+base_sp_attack = 60
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -31,7 +41,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 126
+ability_2 = 126
+hidden_ability = 126
+override_pokedex = true
+category_name = "Predator"
+description = "Mega Staraptor es un volante de primera clase.
+Puede volar fácilmente a través del cielo mientras
+agarrar un Steelix que pesa más que
+880 libras."
+height = 19
+weight = 500
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

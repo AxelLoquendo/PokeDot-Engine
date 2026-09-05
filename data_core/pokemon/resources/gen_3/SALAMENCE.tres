@@ -22,8 +22,18 @@
 script = ExtResource("2_1n1v4")
 species_id = 942
 form_id = &"salamence_mega"
-display_name = "Salamence Mega"
+display_name = "Salamence"
 base_species_id = 373
+override_types = true
+type_1 = 17
+type_2 = 3
+override_stats = true
+base_hp = 95
+base_attack = 145
+base_defense = 130
+base_speed = 120
+base_sp_attack = 120
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,7 +44,19 @@ cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 184
+ability_2 = 184
+hidden_ability = 184
+override_pokedex = true
+category_name = "Dragón"
+description = "Megaevolución alimenta su brutalidad, y ella
+puede incluso encender el Entrenador que lo levantó.
+Se ha apuñalado la sangre empapada.
+Crescent."
+height = 18
+weight = 1126
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

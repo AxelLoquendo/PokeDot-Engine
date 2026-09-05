@@ -21,8 +21,18 @@
 script = ExtResource("2_13a0b")
 species_id = 1538
 form_id = &"chesnaught_mega"
-display_name = "Chesnaught Mega"
+display_name = "Chesnaught"
 base_species_id = 652
+override_types = true
+type_1 = 13
+type_2 = 2
+override_stats = true
+base_hp = 88
+base_attack = 137
+base_defense = 172
+base_speed = 44
+base_sp_attack = 74
+base_sp_defense = 115
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 10)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 171
+ability_2 = 171
+hidden_ability = 171
+override_pokedex = true
+category_name = "Armadura Spiny"
+description = "Tiene armadura fortificada y una
+defenderá a toda costa.
+Ambos son absurdamente fuertes."
+height = 16
+weight = 900
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

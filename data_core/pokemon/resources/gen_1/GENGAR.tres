@@ -28,8 +28,18 @@
 script = ExtResource("2_eqpp3")
 species_id = 914
 form_id = &"gengar_mega"
-display_name = "Gengar Mega"
+display_name = "Gengar"
 base_species_id = 94
+override_types = true
+type_1 = 8
+type_2 = 4
+override_stats = true
+base_hp = 60
+base_attack = 65
+base_defense = 80
+base_speed = 130
+base_sp_attack = 170
+base_sp_defense = 95
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -39,14 +49,35 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 7)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 23
+ability_2 = 23
+hidden_ability = 23
+override_pokedex = true
+category_name = "Sombra"
+description = "Las relaciones de Gengar están en conflicto. It
+trata de llevar la vida de cualquiera y
+Todos. Incluso tratará de maldecir
+Entrenador que es su maestro!"
+height = 14
+weight = 405
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_eqpp3")
 species_id = 1496
 form_id = &"gengar_gmax"
-display_name = "Gengar Gmax"
+display_name = "Gengar"
 base_species_id = 94
+override_types = true
+type_1 = 8
+type_2 = 4
+override_stats = true
+base_hp = 60
+base_attack = 65
+base_defense = 60
+base_speed = 110
+base_sp_attack = 130
 front_sprite = ExtResource("gfx113")
 front_sprite_shiny = ExtResource("gfx114")
 back_sprite = ExtResource("gfx115")
@@ -57,7 +88,14 @@ cry = ExtResource("gfx118")
 front_sprite_offset = Vector2(0, 7)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_pokedex = true
+category_name = "Sombra"
+description = "El rumor tiene que su gigante
+la boca no conduce a su cuerpo, llena
+con energía maldecida, pero en cambio
+directamente a la otra vida."
+height = 200
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

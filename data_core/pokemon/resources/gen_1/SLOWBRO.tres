@@ -27,8 +27,18 @@
 script = ExtResource("2_1smow")
 species_id = 913
 form_id = &"slowbro_mega"
-display_name = "Slowbro Mega"
+display_name = "Slowbro"
 base_species_id = 80
+override_types = true
+type_1 = 12
+type_2 = 15
+override_stats = true
+base_hp = 95
+base_attack = 75
+base_defense = 180
+base_speed = 30
+base_sp_attack = 130
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -38,14 +48,36 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx113")
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 75
+ability_2 = 75
+hidden_ability = 75
+override_pokedex = true
+category_name = "Cangrejo ermitaño"
+description = "Cuando se baña en la energía de Mega
+Evolution, Shellder se convierte en
+armadura inexpugnable. No hay prácticamente ningún
+cambio en Slowpoke."
+height = 20
+weight = 1200
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_1smow")
 species_id = 978
 form_id = &"slowbro_galar"
-display_name = "Slowbro Galar"
+display_name = "Slowbro"
 base_species_id = 80
+override_types = true
+type_1 = 4
+type_2 = 15
+override_stats = true
+base_hp = 95
+base_attack = 100
+base_defense = 95
+base_speed = 30
+base_sp_attack = 100
+base_sp_defense = 70
 front_sprite = ExtResource("gfx114")
 front_sprite_shiny = ExtResource("gfx115")
 back_sprite = ExtResource("gfx116")
@@ -56,6 +88,18 @@ cry = ExtResource("gfx113")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
+override_abilities = true
+ability_1 = 259
+ability_2 = 20
+hidden_ability = 144
+override_pokedex = true
+category_name = "Cangrejo ermitaño"
+description = "Una mordedura de Shellder desactiva una reacción química
+con las especias dentro del cuerpo de Slowbro,
+causando que Slowbro se convierta en
+Pokémon tipo veneno."
+height = 16
+weight = 705
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

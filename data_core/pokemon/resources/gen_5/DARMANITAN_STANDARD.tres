@@ -28,8 +28,17 @@
 script = ExtResource("2_qtc3u")
 species_id = 990
 form_id = &"darmanitan_galar_standard"
-display_name = "Darmanitan Galar Standard"
+display_name = "Darmanitan"
 base_species_id = 555
+override_types = true
+type_1 = 16
+override_stats = true
+base_hp = 105
+base_attack = 140
+base_defense = 55
+base_speed = 95
+base_sp_attack = 30
+base_sp_defense = 55
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -39,14 +48,35 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 255
+hidden_ability = 161
+override_pokedex = true
+category_name = "Zen Charm"
+description = "En los días en que las tormentas soplan
+a través de, se reduce a donde la gente
+vivir. Estalla la comida en la bola de nieve en
+su cabeza, llevándola a casa para después."
+height = 17
+weight = 1200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_qtc3u")
 species_id = 1092
 form_id = &"darmanitan_zen"
-display_name = "Darmanitan Zen"
+display_name = "Darmanitan"
 base_species_id = 555
+override_types = true
+type_1 = 11
+type_2 = 15
+override_stats = true
+base_hp = 105
+base_attack = 30
+base_defense = 105
+base_speed = 55
+base_sp_attack = 140
+base_sp_defense = 105
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -57,14 +87,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 14)
 back_sprite_offset = Vector2(0, 11)
 override_graphics = true
+override_abilities = true
+ability_1 = 125
+hidden_ability = 161
+override_pokedex = true
+category_name = "Blazing"
+description = "Cuando está herido, deja de moverse. It
+sigue como piedra para meditar,
+agudizando su mente y espíritu."
+height = 13
+weight = 929
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_qtc3u")
 species_id = 1093
 form_id = &"darmanitan_galar_zen"
-display_name = "Darmanitan Galar Zen"
+display_name = "Darmanitan"
 base_species_id = 555
+override_types = true
+type_1 = 16
+type_2 = 11
+override_stats = true
+base_hp = 105
+base_attack = 160
+base_defense = 55
+base_speed = 135
+base_sp_attack = 30
+base_sp_defense = 55
 front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
@@ -75,6 +125,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 255
+hidden_ability = 161
+override_pokedex = true
+category_name = "Blazing"
+description = "Darmanitan toma este formulario cuando
+enfurecido. No parará de golpear llamas.
+hasta que su rabia se haya asentado, incluso si
+su cuerpo comienza a derretirse."
+height = 17
+weight = 1200
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

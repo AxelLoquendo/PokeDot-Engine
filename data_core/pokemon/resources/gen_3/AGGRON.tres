@@ -22,8 +22,17 @@
 script = ExtResource("2_paha6")
 species_id = 933
 form_id = &"aggron_mega"
-display_name = "Aggron Mega"
+display_name = "Aggron"
 base_species_id = 306
+override_types = true
+type_1 = 9
+override_stats = true
+base_hp = 70
+base_attack = 140
+base_defense = 230
+base_speed = 50
+base_sp_attack = 60
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +42,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 111
+ability_2 = 111
+hidden_ability = 111
+override_pokedex = true
+category_name = "Armadura de hierro"
+description = "Cuando Aggron Mega gira en
+Mega Aggron, la habilidad destructiva de
+sus cuernos temibles pueden convertir un collar de acero
+tanque en tanto chatarra."
+height = 22
+weight = 3950
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

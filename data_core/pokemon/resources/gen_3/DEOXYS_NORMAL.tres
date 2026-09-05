@@ -28,8 +28,10 @@
 script = ExtResource("2_qlryy")
 species_id = 1054
 form_id = &"deoxys_attack"
-display_name = "Deoxys Attack"
+display_name = "Deoxys"
 base_species_id = 386
+override_types = true
+type_1 = 15
 override_stats = true
 base_hp = 50
 base_attack = 180
@@ -46,14 +48,25 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 46
+override_pokedex = true
+category_name = "ADN"
+description = "Este Deoxys se ha transformado en su
+una forma agresiva. Puede engañar a los enemigos
+alterando su apariencia."
+height = 17
+weight = 608
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_qlryy")
 species_id = 1055
 form_id = &"deoxys_defense"
-display_name = "Deoxys Defense"
+display_name = "Deoxys"
 base_species_id = 386
+override_types = true
+type_1 = 15
 override_stats = true
 base_hp = 50
 base_attack = 70
@@ -70,14 +83,25 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 46
+override_pokedex = true
+category_name = "ADN"
+description = "Cuando cambia de forma, una aurora
+aparece. absorbe ataques por
+alterando su estructura celular."
+height = 17
+weight = 608
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_qlryy")
 species_id = 1056
 form_id = &"deoxys_speed"
-display_name = "Deoxys Speed"
+display_name = "Deoxys"
 base_species_id = 386
+override_types = true
+type_1 = 15
 override_stats = true
 base_hp = 50
 base_attack = 95
@@ -94,6 +118,16 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 46
+override_pokedex = true
+category_name = "ADN"
+description = "Un Pokémon que mutaba de un
+virus extraterrestre expuesto a un láser
+viga. Su cuerpo está configurado para superior
+agilidad y velocidad."
+height = 17
+weight = 608
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

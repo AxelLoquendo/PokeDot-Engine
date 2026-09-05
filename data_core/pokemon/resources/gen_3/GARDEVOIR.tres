@@ -22,8 +22,18 @@
 script = ExtResource("2_s50yn")
 species_id = 930
 form_id = &"gardevoir_mega"
-display_name = "Gardevoir Mega"
+display_name = "Gardevoir"
 base_species_id = 282
+override_types = true
+type_1 = 15
+type_2 = 19
+override_stats = true
+base_hp = 68
+base_attack = 85
+base_defense = 65
+base_speed = 100
+base_sp_attack = 165
+base_sp_defense = 135
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 182
+ability_2 = 182
+hidden_ability = 182
+override_pokedex = true
+category_name = "Abrace"
+description = "Al abrir su corazón, Mega Gardevoir
+se hace capaz de utilizar tremenda psíquica
+Poder. La placa roja en su pecho se dice
+ser una manifestación física de su corazón."
+height = 16
+weight = 484
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

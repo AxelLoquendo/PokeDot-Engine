@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_31f2j"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://b6fuksv2q7e6u" path="res://graphics/pokemon/icons/SHAYMIN_1.png" id="10_q5pgm"]
+[ext_resource type="Texture2D" uid="uid://cm2yll2uatyyx" path="res://graphics/pokemon/follower/SHAYMIN_1.png" id="12_5xvuo"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="AudioStream" uid="uid://dwe65xywlsx1t" path="res://sfx/se/cries/SHAYMIN.ogg" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://da3o3jtiot6vc" path="res://graphics/pokemon/front/SHAYMIN_SKY.png" id="gfx101"]
@@ -20,7 +22,7 @@
 script = ExtResource("2_31f2j")
 species_id = 1072
 form_id = &"shaymin_sky"
-display_name = "Shaymin Sky"
+display_name = "Shaymin"
 base_species_id = 492
 override_types = true
 type_1 = 13
@@ -36,12 +38,22 @@ front_sprite = ExtResource("gfx101")
 front_sprite_shiny = ExtResource("gfx102")
 back_sprite = ExtResource("gfx103")
 back_sprite_shiny = ExtResource("gfx104")
-icon_sprite = ExtResource("gfx105")
-overworld_scene = ExtResource("gfx106")
+icon_sprite = ExtResource("10_q5pgm")
+overworld_scene = ExtResource("12_5xvuo")
 cry = ExtResource("gfx100")
 front_sprite_offset = Vector2(0, 7)
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 32
+override_pokedex = true
+category_name = "Gratitud"
+description = "Al tomar el olor de un particular
+flor rara, Shaymin está envuelta en luz
+y su pequeño cuerpo se transforma, confiriendo
+el poder del vuelo sobre él."
+height = 4
+weight = 52
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

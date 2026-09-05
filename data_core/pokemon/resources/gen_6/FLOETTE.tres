@@ -28,6 +28,15 @@ species_id = 1137
 form_id = &"floette_yellow"
 display_name = "Floette Yellow"
 base_species_id = 670
+override_types = true
+type_1 = 19
+override_stats = true
+base_hp = 54
+base_attack = 45
+base_defense = 47
+base_speed = 52
+base_sp_attack = 75
+base_sp_defense = 98
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -36,6 +45,14 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 166
+hidden_ability = 180
+override_pokedex = true
+category_name = "Monoflor"
+description = "Revolotea alrededor de campos de flores y cuida de aquellas que empiezan a marchitarse. Usa en combate el poder oculto de las flores."
+height = 2
+weight = 9
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
@@ -44,8 +61,25 @@ species_id = 1138
 form_id = &"floette_orange"
 display_name = "Floette Orange"
 base_species_id = 670
+override_types = true
+type_1 = 19
+override_stats = true
+base_hp = 54
+base_attack = 45
+base_defense = 47
+base_speed = 52
+base_sp_attack = 75
+base_sp_defense = 98
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 166
+hidden_ability = 180
+override_pokedex = true
+category_name = "Monoflor"
+description = "Revolotea alrededor de campos de flores y cuida de aquellas que empiezan a marchitarse. Usa en combate el poder oculto de las flores."
+height = 2
+weight = 9
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
@@ -54,6 +88,15 @@ species_id = 1139
 form_id = &"floette_blue"
 display_name = "Floette Blue"
 base_species_id = 670
+override_types = true
+type_1 = 19
+override_stats = true
+base_hp = 54
+base_attack = 45
+base_defense = 47
+base_speed = 52
+base_sp_attack = 75
+base_sp_defense = 98
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -62,6 +105,14 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 166
+hidden_ability = 180
+override_pokedex = true
+category_name = "Monoflor"
+description = "Revolotea alrededor de campos de flores y cuida de aquellas que empiezan a marchitarse. Usa en combate el poder oculto de las flores."
+height = 2
+weight = 9
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
@@ -70,6 +121,15 @@ species_id = 1140
 form_id = &"floette_white"
 display_name = "Floette White"
 base_species_id = 670
+override_types = true
+type_1 = 19
+override_stats = true
+base_hp = 54
+base_attack = 45
+base_defense = 47
+base_speed = 52
+base_sp_attack = 75
+base_sp_defense = 98
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -78,6 +138,14 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 166
+hidden_ability = 180
+override_pokedex = true
+category_name = "Monoflor"
+description = "Revolotea alrededor de campos de flores y cuida de aquellas que empiezan a marchitarse. Usa en combate el poder oculto de las flores."
+height = 2
+weight = 9
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
@@ -86,6 +154,13 @@ species_id = 1141
 form_id = &"floette_eternal"
 display_name = "Floette Eternal"
 base_species_id = 670
+override_stats = true
+base_hp = 74
+base_attack = 65
+base_defense = 67
+base_speed = 92
+base_sp_attack = 125
+base_sp_defense = 128
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -94,14 +169,29 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_pokedex = true
+category_name = "Jardín"
+description = "La flor que sostiene no puede
+más tiempo se encuentra floreciendo en cualquier lugar. Es
+también pensó en contener aterrador
+Poder."
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_dgp63")
 species_id = 1545
 form_id = &"floette_mega"
-display_name = "Floette Mega"
+display_name = "Floette"
 base_species_id = 670
+override_types = true
+type_1 = 19
+override_stats = true
+base_hp = 74
+base_attack = 85
+base_defense = 87
+base_speed = 102
+base_sp_attack = 155
+base_sp_defense = 148
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -111,7 +201,17 @@ overworld_scene = ExtResource("gfx116")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 187
+ability_2 = 187
+hidden_ability = 187
+override_pokedex = true
+category_name = "Single Bloom"
+description = "La Flor Eterna ha absorbido
+toda la energía de Mega
+Evolution. La flor ahora ataca
+enemigos por su cuenta."
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

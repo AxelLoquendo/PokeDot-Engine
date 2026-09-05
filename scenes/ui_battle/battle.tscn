@@ -104,6 +104,16 @@ position = Vector2(256, 112)
 scale = Vector2(2, 2)
 texture = ExtResource("1_c8v4i")
 
+[node name="Pkmn_Player" type="Sprite2D" parent="." unique_id=228095653]
+position = Vector2(128, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("4_wp3na")
+
+[node name="Pkmn_Enemy" type="Sprite2D" parent="." unique_id=1376516171]
+position = Vector2(353, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("5_7gnqx")
+
 [node name="TextBox" type="ColorRect" parent="." unique_id=1853342013]
 offset_top = 224.0
 offset_right = 480.0
@@ -278,16 +288,6 @@ label_settings = SubResource("LabelSettings_j8t3v")
 [node name="Type" type="Sprite2D" parent="Overlay_Fight" unique_id=209018556]
 position = Vector2(176, -11)
 texture = ExtResource("12_w78s2")
-
-[node name="Pkmn_Player" type="Sprite2D" parent="." unique_id=228095653]
-position = Vector2(128, 152)
-scale = Vector2(2, 2)
-texture = ExtResource("4_wp3na")
-
-[node name="Pkmn_Enemy" type="Sprite2D" parent="." unique_id=1376516171]
-position = Vector2(353, 80)
-scale = Vector2(2, 2)
-texture = ExtResource("5_7gnqx")
 
 [node name="PlayerHPBox" type="Sprite2D" parent="." unique_id=191641169]
 position = Vector2(368, 182)

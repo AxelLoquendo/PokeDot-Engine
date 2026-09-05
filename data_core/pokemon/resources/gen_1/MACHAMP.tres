@@ -21,8 +21,16 @@
 script = ExtResource("2_0qnxm")
 species_id = 1495
 form_id = &"machamp_gmax"
-display_name = "Machamp Gmax"
+display_name = "Machamp"
 base_species_id = 68
+override_types = true
+type_1 = 2
+override_stats = true
+base_hp = 90
+base_attack = 130
+base_defense = 80
+base_speed = 55
+base_sp_attack = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +40,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 62
+ability_2 = 99
+hidden_ability = 80
+override_pokedex = true
+category_name = "Superpoder"
+description = "Uno de estos Pokémon usado
+su fuerza inconmensurable para levantar
+nave grande que estaba en problemas. It
+entonces llevó el barco a puerto."
+height = 250
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

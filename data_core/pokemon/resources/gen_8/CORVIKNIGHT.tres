@@ -20,8 +20,18 @@
 script = ExtResource("2_fq20s")
 species_id = 1506
 form_id = &"corviknight_gmax"
-display_name = "Corviknight Gmax"
+display_name = "Corviknight"
 base_species_id = 823
+override_types = true
+type_1 = 3
+type_2 = 9
+override_stats = true
+base_hp = 98
+base_attack = 87
+base_defense = 105
+base_speed = 67
+base_sp_attack = 53
+base_sp_defense = 85
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 46
+ability_2 = 127
+hidden_ability = 240
+override_pokedex = true
+category_name = "Raven"
+description = "Imbued with Gigantamax energy, its
+alas pueden azotar vientos más
+con fuerza que cualquier huracán podría
+mostaza. Las ráfagas lo arruinan todo."
+height = 140
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

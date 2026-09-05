@@ -21,8 +21,17 @@
 script = ExtResource("2_7m8aw")
 species_id = 1512
 form_id = &"sandaconda_gmax"
-display_name = "Sandaconda Gmax"
+display_name = "Sandaconda"
 base_species_id = 844
+override_types = true
+type_1 = 5
+override_stats = true
+base_hp = 72
+base_attack = 107
+base_defense = 125
+base_speed = 71
+base_sp_attack = 65
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +42,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 245
+ability_2 = 61
+hidden_ability = 8
+override_pokedex = true
+category_name = "Sand Snake"
+description = "Su bolsa de arena se ha convertido en tremenda
+proporciones. Más de 1.000.000 toneladas de
+arena ahora gira alrededor de su cuerpo con suficiente
+velocidad y poder para pulverizar un rascacielos."
+height = 220
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

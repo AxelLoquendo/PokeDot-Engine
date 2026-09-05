@@ -46,8 +46,18 @@ conditions = Array[ExtResource("2_31v0y")]([SubResource("Resource_cond1")])
 script = ExtResource("5_4u0qf")
 species_id = 995
 form_id = &"voltorb_hisui"
-display_name = "Voltorb Hisui"
+display_name = "Voltorb"
 base_species_id = 100
+override_types = true
+type_1 = 14
+type_2 = 13
+override_stats = true
+base_hp = 40
+base_attack = 30
+base_defense = 50
+base_speed = 100
+base_sp_attack = 55
+base_sp_defense = 55
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -58,6 +68,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 17)
 back_sprite_offset = Vector2(0, 10)
 override_graphics = true
+override_abilities = true
+ability_1 = 43
+ability_2 = 9
+hidden_ability = 106
+override_pokedex = true
+category_name = "Sphere"
+description = "Se parece a un antiguo diseño Poké Ball.
+Cuando se excita, descarga la electricidad
+corriente que ha almacenado en su vientre, entonces
+deja salir una risa grande y arrogante."
+height = 5
+weight = 130
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

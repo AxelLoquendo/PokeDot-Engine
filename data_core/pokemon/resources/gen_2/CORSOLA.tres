@@ -34,8 +34,17 @@ conditions = Array[ExtResource("2_7lqto")]([SubResource("Resource_cond0")])
 script = ExtResource("4_8isqc")
 species_id = 986
 form_id = &"corsola_galar"
-display_name = "Corsola Galar"
+display_name = "Corsola"
 base_species_id = 222
+override_types = true
+type_1 = 8
+override_stats = true
+base_hp = 60
+base_attack = 55
+base_defense = 100
+base_speed = 30
+base_sp_attack = 65
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -46,6 +55,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 133
+hidden_ability = 130
+override_pokedex = true
+category_name = "Coral"
+description = "Cambio climático repentino borró esto
+antiguo tipo de Corsola. Con sus ramas,
+absorbe la fuerza de vida de otros. Maldiciones
+esos ignorantes que lo patean por accidente."
+height = 6
+weight = 5
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

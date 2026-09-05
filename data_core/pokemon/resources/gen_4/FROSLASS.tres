@@ -21,8 +21,18 @@
 script = ExtResource("2_uys5h")
 species_id = 1531
 form_id = &"froslass_mega"
-display_name = "Froslass Mega"
+display_name = "Froslass"
 base_species_id = 478
+override_types = true
+type_1 = 16
+type_2 = 8
+override_stats = true
+base_hp = 70
+base_attack = 80
+base_defense = 70
+base_speed = 120
+base_sp_attack = 140
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 117
+ability_2 = 117
+hidden_ability = 117
+override_pokedex = true
+category_name = "Snow Land"
+description = "Este Pokémon puede usar frío extraño
+aire impregnado de energía fantasma
+Congelar incluso cosas insustanciales,
+como llamas o viento."
+height = 26
+weight = 296
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

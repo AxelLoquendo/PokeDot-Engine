@@ -22,8 +22,18 @@
 script = ExtResource("2_vaov4")
 species_id = 1000
 form_id = &"samurott_hisui"
-display_name = "Samurott Hisui"
+display_name = "Samurott"
 base_species_id = 503
+override_types = true
+type_1 = 12
+type_2 = 18
+override_stats = true
+base_hp = 90
+base_attack = 108
+base_defense = 80
+base_speed = 85
+base_sp_attack = 100
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +43,17 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 67
+hidden_ability = 292
+override_pokedex = true
+category_name = "Formidable"
+description = "Duro de corazón y despojo de espada,
+esta rara forma de Samurott es una
+producto de la evolución del Pokémon en el
+región de Hisui."
+height = 15
+weight = 582
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

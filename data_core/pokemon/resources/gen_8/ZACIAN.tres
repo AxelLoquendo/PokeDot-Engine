@@ -16,14 +16,13 @@
 script = ExtResource("2_p4bgp")
 species_id = 1227
 form_id = &"zacian_crowned"
-display_name = "Zacian Crowned"
+display_name = "Zacian"
 base_species_id = 888
 override_types = true
 type_1 = 19
 type_2 = 9
 override_stats = true
 base_hp = 92
-base_attack = 150
 base_defense = 115
 base_speed = 148
 base_sp_attack = 80
@@ -31,6 +30,16 @@ base_sp_defense = 115
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
+override_abilities = true
+ability_1 = 234
+override_pokedex = true
+category_name = "Guerrero"
+description = "Capaz de cortar cualquier cosa con una
+huelga única, se convirtió en conocida como
+Espada de Fairy King, e inspirado
+asombro en amigo y enemigo por igual."
+height = 28
+weight = 3550
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

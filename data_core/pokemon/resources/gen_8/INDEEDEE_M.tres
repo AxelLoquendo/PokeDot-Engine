@@ -20,8 +20,18 @@
 script = ExtResource("2_1qshl")
 species_id = 1225
 form_id = &"indeedee_f"
-display_name = "Indeedee F"
+display_name = "Indeedee"
 base_species_id = 876
+override_types = true
+type_1 = 15
+type_2 = 1
+override_stats = true
+base_hp = 70
+base_attack = 55
+base_defense = 65
+base_speed = 85
+base_sp_attack = 95
+base_sp_defense = 105
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -30,6 +40,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 20
+ability_2 = 28
+hidden_ability = 227
+override_pokedex = true
+category_name = "Emoción"
+description = "Ellos sirven diligentemente a la gente y
+Pokémon para que puedan reunir sentimientos
+de gratitud. Las hembras son
+particularmente bueno en la niñera."
+height = 9
+weight = 280
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

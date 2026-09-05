@@ -22,8 +22,18 @@
 script = ExtResource("2_2s8io")
 species_id = 949
 form_id = &"abomasnow_mega"
-display_name = "Abomasnow Mega"
+display_name = "Abomasnow"
 base_species_id = 460
+override_types = true
+type_1 = 13
+type_2 = 16
+override_stats = true
+base_hp = 90
+base_attack = 132
+base_defense = 105
+base_speed = 30
+base_sp_attack = 132
+base_sp_defense = 105
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 117
+ability_2 = 117
+hidden_ability = 117
+override_pokedex = true
+category_name = "Árbol escarcha"
+description = "Los brotes en la espalda de Abomasnow crecen
+grandes ejes de hielo cuando Mega Evolves.
+No le gusta asociarse con otros y
+elige vivir tranquilamente en las montañas."
+height = 27
+weight = 1850
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -16,8 +16,18 @@
 script = ExtResource("2_0ywi5")
 species_id = 1160
 form_id = &"gourgeist_small"
-display_name = "Gourgeist Small"
+display_name = "Gourgeist"
 base_species_id = 711
+override_types = true
+type_1 = 8
+type_2 = 13
+override_stats = true
+base_hp = 55
+base_attack = 85
+base_defense = 122
+base_speed = 99
+base_sp_attack = 58
+base_sp_defense = 75
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -28,14 +38,36 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 5)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 53
+ability_2 = 119
+hidden_ability = 15
+override_pokedex = true
+category_name = "Pumpkin"
+description = "Un pequeño Pumpkaboo evoluciona
+en un pequeño Gourgeist. Es...
+las proporciones corporales también se transmiten
+a sus descendientes."
+height = 7
+weight = 95
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_0ywi5")
 species_id = 1161
 form_id = &"gourgeist_large"
-display_name = "Gourgeist Large"
+display_name = "Gourgeist"
 base_species_id = 711
+override_types = true
+type_1 = 8
+type_2 = 13
+override_stats = true
+base_hp = 75
+base_attack = 95
+base_defense = 122
+base_speed = 69
+base_sp_attack = 58
+base_sp_defense = 75
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -46,14 +78,36 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 53
+ability_2 = 119
+hidden_ability = 15
+override_pokedex = true
+category_name = "Pumpkin"
+description = "Un Pumpkaboo grande evoluciona
+en un gran Gourgeist. Es...
+las proporciones corporales también se transmiten
+a sus descendientes."
+height = 11
+weight = 140
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_0ywi5")
 species_id = 1162
 form_id = &"gourgeist_super"
-display_name = "Gourgeist Super"
+display_name = "Gourgeist"
 base_species_id = 711
+override_types = true
+type_1 = 8
+type_2 = 13
+override_stats = true
+base_hp = 85
+base_attack = 100
+base_defense = 122
+base_speed = 54
+base_sp_attack = 58
+base_sp_defense = 75
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -63,6 +117,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 53
+ability_2 = 119
+hidden_ability = 15
+override_pokedex = true
+category_name = "Pumpkin"
+description = "Un Pumpkaboo super grande evoluciona
+en un supersize Gourgeist. Es...
+las proporciones corporales también pasan a
+sus descendientes."
+height = 17
+weight = 390
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

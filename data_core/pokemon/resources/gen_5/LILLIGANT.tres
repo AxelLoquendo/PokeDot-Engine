@@ -22,8 +22,18 @@
 script = ExtResource("2_srdth")
 species_id = 1001
 form_id = &"lilligant_hisui"
-display_name = "Lilligant Hisui"
+display_name = "Lilligant"
 base_species_id = 549
+override_types = true
+type_1 = 13
+type_2 = 2
+override_stats = true
+base_hp = 70
+base_attack = 105
+base_defense = 75
+base_speed = 105
+base_sp_attack = 50
+base_sp_defense = 75
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +43,18 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 34
+ability_2 = 55
+hidden_ability = 102
+override_pokedex = true
+category_name = "Giro"
+description = "Sus piernas bien desarrolladas son el resultado de
+una vida gastada en montañas cubiertas en profundidad
+nieve. El olor que emana de su flor
+coronan a los que están cerca."
+height = 12
+weight = 192
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

@@ -22,8 +22,18 @@
 script = ExtResource("2_cj0jr")
 species_id = 943
 form_id = &"metagross_mega"
-display_name = "Metagross Mega"
+display_name = "Metagross"
 base_species_id = 376
+override_types = true
+type_1 = 9
+type_2 = 15
+override_stats = true
+base_hp = 80
+base_attack = 145
+base_defense = 150
+base_speed = 110
+base_sp_attack = 105
+base_sp_defense = 110
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 181
+ability_2 = 181
+hidden_ability = 181
+override_pokedex = true
+category_name = "Iron Leg"
+description = "Cuando sabe que no puede ganar, cava el
+garras en sus piernas en su oponente y
+comienza la cuenta atrás a una gran explosión."
+height = 25
+weight = 9429
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

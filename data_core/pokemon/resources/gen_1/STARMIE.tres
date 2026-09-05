@@ -21,8 +21,18 @@
 script = ExtResource("2_wyerr")
 species_id = 1526
 form_id = &"starmie_mega"
-display_name = "Starmie Mega"
+display_name = "Starmie"
 base_species_id = 121
+override_types = true
+type_1 = 12
+type_2 = 15
+override_stats = true
+base_hp = 60
+base_attack = 100
+base_defense = 105
+base_speed = 120
+base_sp_attack = 130
+base_sp_defense = 105
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -31,7 +41,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 37
+ability_2 = 37
+hidden_ability = 37
+override_pokedex = true
+category_name = "Misterioso"
+description = "Sus movimientos se han vuelto más
+humano. Si es simplemente
+tratar de comunicarse o desea
+Suplantar la humanidad no está clara."
+height = 23
+weight = 800
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

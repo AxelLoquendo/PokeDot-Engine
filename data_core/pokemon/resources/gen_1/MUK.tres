@@ -22,8 +22,18 @@
 script = ExtResource("2_ai38f")
 species_id = 971
 form_id = &"muk_alola"
-display_name = "Muk Alola"
+display_name = "Muk"
 base_species_id = 89
+override_types = true
+type_1 = 4
+type_2 = 18
+override_stats = true
+base_hp = 105
+base_attack = 105
+base_defense = 75
+base_speed = 50
+base_sp_attack = 65
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,6 +44,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
+override_abilities = true
+ability_1 = 143
+ability_2 = 82
+hidden_ability = 223
+override_pokedex = true
+category_name = "Lodo"
+description = "Mientras que es inesperadamente tranquilo y amistoso,
+si no se alimenta de basura por un tiempo,
+romperá los muebles de su entrenador,
+y comer los fragmentos."
+height = 10
+weight = 520
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

@@ -16,12 +16,32 @@
 script = ExtResource("2_vjt32")
 species_id = 1214
 form_id = &"sinistea_antique"
-display_name = "Sinistea Antique"
+display_name = "Sinistea"
 base_species_id = 854
+override_types = true
+type_1 = 8
+override_stats = true
+base_hp = 40
+base_attack = 45
+base_defense = 45
+base_speed = 50
+base_sp_attack = 74
+base_sp_defense = 54
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 17)
 back_sprite_offset = Vector2(0, 16)
 override_graphics = true
+override_abilities = true
+ability_1 = 133
+hidden_ability = 130
+override_pokedex = true
+category_name = "Black Tea"
+description = "El patrón de gira en este Pokémon
+el cuerpo es su debilidad. Si se pone
+revuelto, el swirl pierde su forma y
+Sinistea se marea."
+height = 1
+weight = 2
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

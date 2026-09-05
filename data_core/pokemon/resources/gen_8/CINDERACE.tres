@@ -21,8 +21,17 @@
 script = ExtResource("2_j8d8s")
 species_id = 1504
 form_id = &"cinderace_gmax"
-display_name = "Cinderace Gmax"
+display_name = "Cinderace"
 base_species_id = 815
+override_types = true
+type_1 = 11
+override_stats = true
+base_hp = 80
+base_attack = 116
+base_defense = 75
+base_speed = 119
+base_sp_attack = 65
+base_sp_defense = 75
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +41,17 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 66
+hidden_ability = 236
+override_pokedex = true
+category_name = "Striker"
+description = "Infundida con la lucha de Cinderace
+el gigantesco Pyro Ball nunca
+pierde sus objetivos y completamente
+asados oponentes."
+height = 270
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

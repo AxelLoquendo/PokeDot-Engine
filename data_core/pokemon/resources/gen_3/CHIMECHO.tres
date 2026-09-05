@@ -21,8 +21,18 @@
 script = ExtResource("2_hsbj1")
 species_id = 1555
 form_id = &"chimecho_mega"
-display_name = "Chimecho Mega"
+display_name = "Chimecho"
 base_species_id = 358
+override_types = true
+type_1 = 15
+type_2 = 9
+override_stats = true
+base_hp = 75
+base_attack = 50
+base_defense = 110
+base_speed = 65
+base_sp_attack = 135
+base_sp_defense = 120
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -31,7 +41,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 26
+ability_2 = 26
+hidden_ability = 26
+override_pokedex = true
+category_name = "Wind Chime"
+description = "Vibra todo su cuerpo para atacar
+todas las direcciones usando ondas de sonido. Cualquiera
+escuchar las vibraciones se confunden tanto,
+Olvida quiénes son."
+height = 12
+weight = 80
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

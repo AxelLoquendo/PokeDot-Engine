@@ -22,8 +22,18 @@
 script = ExtResource("2_8w7al")
 species_id = 983
 form_id = &"zapdos_galar"
-display_name = "Zapdos Galar"
+display_name = "Zapdos"
 base_species_id = 145
+override_types = true
+type_1 = 2
+type_2 = 3
+override_stats = true
+base_hp = 90
+base_attack = 125
+base_defense = 90
+base_speed = 100
+base_sp_attack = 85
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +43,16 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
+override_abilities = true
+ability_1 = 128
+override_pokedex = true
+category_name = "Poderosas piernas"
+description = "Cuando sus plumas se frotan,
+produce un sonido crujiente como el
+La electricidad. Aparentemente, funciona.
+a través de las montañas a más de 180 mph."
+height = 16
+weight = 582
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

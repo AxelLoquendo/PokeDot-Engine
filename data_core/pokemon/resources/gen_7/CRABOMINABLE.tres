@@ -21,8 +21,18 @@
 script = ExtResource("2_l7kid")
 species_id = 1563
 form_id = &"crabominable_mega"
-display_name = "Crabominable Mega"
+display_name = "Crabominable"
 base_species_id = 740
+override_types = true
+type_1 = 2
+type_2 = 16
+override_stats = true
+base_hp = 97
+base_attack = 157
+base_defense = 122
+base_speed = 33
+base_sp_attack = 62
+base_sp_defense = 107
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 89
+ability_2 = 89
+hidden_ability = 89
+override_pokedex = true
+category_name = "Woolly Crab"
+description = "Puede pulverizar hormigón armado con
+un ligero swing de uno de sus puños, cada uno de
+que está cubierto de una capa gruesa de hielo."
+height = 26
+weight = 2528
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

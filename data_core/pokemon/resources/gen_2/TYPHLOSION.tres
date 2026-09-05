@@ -22,8 +22,18 @@
 script = ExtResource("2_1q3md")
 species_id = 997
 form_id = &"typhlosion_hisui"
-display_name = "Typhlosion Hisui"
+display_name = "Typhlosion"
 base_species_id = 157
+override_types = true
+type_1 = 11
+type_2 = 8
+override_stats = true
+base_hp = 73
+base_attack = 84
+base_defense = 78
+base_speed = 95
+base_sp_attack = 119
+base_sp_defense = 85
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +43,17 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 66
+hidden_ability = 119
+override_pokedex = true
+category_name = "Llama de fantasma"
+description = "Dijo purificar almas perdidas, abandonadas con
+sus llamas y guiarlas a la vida posterior.
+Se cree que su forma fue influenciada por
+la energía del monte Coronet en tiempos antiguos."
+height = 16
+weight = 698
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

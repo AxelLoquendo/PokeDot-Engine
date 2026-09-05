@@ -27,9 +27,19 @@ script = ExtResource("3_cxnhx")
 species_id = 1426
 metadata/_custom_type_script = "uid://bbtorylwxpgih"
 
+[sub_resource type="Resource" id="Resource_bneyt"]
+script = ExtResource("3_cxnhx")
+species_id = 1303
+metadata/_custom_type_script = "uid://bbtorylwxpgih"
+
+[sub_resource type="Resource" id="Resource_q0yxb"]
+script = ExtResource("3_cxnhx")
+species_id = 1323
+metadata/_custom_type_script = "uid://bbtorylwxpgih"
+
 [sub_resource type="Resource" id="Resource_ueygd"]
 script = ExtResource("4_8wtdx")
-entries = Array[ExtResource("3_cxnhx")]([SubResource("Resource_cxnhx"), SubResource("Resource_s65af")])
+entries = Array[ExtResource("3_cxnhx")]([SubResource("Resource_cxnhx"), SubResource("Resource_s65af"), SubResource("Resource_bneyt"), SubResource("Resource_q0yxb")])
 metadata/_custom_type_script = "uid://c2ffqk4spv6ta"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vq3b1"]
@@ -2364,7 +2374,6 @@ map_name = "Prado Natal"
 map_id_section = 1
 map_region = 1
 map_size = Vector2i(50, 41)
-battle_scene = 6
 border_origin = Vector2i(0, 4)
 border_size = 8
 show_location_name = true

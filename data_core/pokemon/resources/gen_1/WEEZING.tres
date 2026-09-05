@@ -22,8 +22,18 @@
 script = ExtResource("2_ejtxg")
 species_id = 980
 form_id = &"weezing_galar"
-display_name = "Weezing Galar"
+display_name = "Weezing"
 base_species_id = 110
+override_types = true
+type_1 = 4
+type_2 = 19
+override_stats = true
+base_hp = 65
+base_attack = 90
+base_defense = 120
+base_speed = 60
+base_sp_attack = 85
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,6 +42,18 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 26
+ability_2 = 256
+hidden_ability = 228
+override_pokedex = true
+category_name = "Gas venenoso"
+description = "Hace mucho tiempo, cuando las unidades de las fábricas son destruidas
+el aire con contaminación, cambió en esto
+formulario por alguna razón. Consumo aire
+partículas contaminantes, expulsando aire limpio."
+height = 30
+weight = 160
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

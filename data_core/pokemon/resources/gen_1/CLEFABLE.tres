@@ -21,8 +21,18 @@
 script = ExtResource("2_brdwp")
 species_id = 1524
 form_id = &"clefable_mega"
-display_name = "Clefable Mega"
+display_name = "Clefable"
 base_species_id = 36
+override_types = true
+type_1 = 19
+type_2 = 3
+override_stats = true
+base_hp = 95
+base_attack = 80
+base_defense = 93
+base_speed = 70
+base_sp_attack = 135
+base_sp_defense = 110
 front_sprite = ExtResource("8_7cl16")
 front_sprite_shiny = ExtResource("9_cavnf")
 back_sprite = ExtResource("6_n2ofc")
@@ -32,7 +42,18 @@ overworld_scene = ExtResource("15_eg57l")
 cry = ExtResource("3_ersug")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 156
+ability_2 = 156
+hidden_ability = 156
+override_pokedex = true
+category_name = "Hada"
+description = "vuela usando el poder de
+luz de luna para controlar la gravedad dentro
+un radio de más de 32 pies alrededor."
+height = 17
+weight = 423
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

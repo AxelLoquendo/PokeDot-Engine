@@ -21,8 +21,17 @@
 script = ExtResource("2_g56pn")
 species_id = 1505
 form_id = &"inteleon_gmax"
-display_name = "Inteleon Gmax"
+display_name = "Inteleon"
 base_species_id = 818
+override_types = true
+type_1 = 12
+override_stats = true
+base_hp = 70
+base_attack = 85
+base_defense = 65
+base_speed = 120
+base_sp_attack = 125
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +41,17 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 67
+hidden_ability = 97
+override_pokedex = true
+category_name = "Agente Secreto"
+description = "Gigantamax pistola de agua de Inteleon
+mueva fuegos en Mach 7. Como el Pokémon
+toma el objetivo, utiliza la cresta en su
+cabeza a calibre viento y temperatura."
+height = 400
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

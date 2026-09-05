@@ -44,8 +44,18 @@ conditions = Array[ExtResource("2_ifwaj")]([SubResource("Resource_cond1")])
 script = ExtResource("4_5mpw0")
 species_id = 1405
 form_id = &"wooper_paldea"
-display_name = "Wooper Paldea"
+display_name = "Wooper"
 base_species_id = 194
+override_types = true
+type_1 = 4
+type_2 = 5
+override_stats = true
+base_hp = 55
+base_attack = 45
+base_defense = 45
+base_speed = 15
+base_sp_attack = 25
+base_sp_defense = 25
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -56,6 +66,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 16)
 back_sprite_offset = Vector2(0, 12)
 override_graphics = true
+override_abilities = true
+ability_1 = 38
+ability_2 = 11
+hidden_ability = 109
+override_pokedex = true
+category_name = "Poison Fish"
+description = "Después de perder una lucha territorial,
+Wooper comenzó a vivir en tierra.
+El Pokémon cambió con el tiempo, desarrollando
+una película venenosa para proteger su cuerpo."
+height = 4
+weight = 110
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

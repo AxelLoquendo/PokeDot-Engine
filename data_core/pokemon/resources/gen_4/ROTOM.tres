@@ -3,6 +3,16 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ff5fe"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://bxuelb8yhyyoo" path="res://graphics/pokemon/icons/ROTOM_1.png" id="10_y3rbj"]
+[ext_resource type="Texture2D" uid="uid://cla7h33eonbbp" path="res://graphics/pokemon/follower/ROTOM_1.png" id="12_xvg74"]
+[ext_resource type="Texture2D" uid="uid://crbjastlgne15" path="res://graphics/pokemon/icons/ROTOM_2.png" id="17_dl2u3"]
+[ext_resource type="Texture2D" uid="uid://qj46fab7qmxe" path="res://graphics/pokemon/follower/ROTOM_2.png" id="18_qnwgo"]
+[ext_resource type="Texture2D" uid="uid://fjx2oun0t5cf" path="res://graphics/pokemon/icons/ROTOM_3.png" id="23_h8q2k"]
+[ext_resource type="Texture2D" uid="uid://cmc1b8ufb4mj1" path="res://graphics/pokemon/follower/ROTOM_3.png" id="24_m8hcy"]
+[ext_resource type="Texture2D" uid="uid://c7wik5jb4s4tq" path="res://graphics/pokemon/icons/ROTOM_4.png" id="29_uy31s"]
+[ext_resource type="Texture2D" uid="uid://c8v47rw0cgv5l" path="res://graphics/pokemon/follower/ROTOM_4.png" id="30_yv3il"]
+[ext_resource type="Texture2D" uid="uid://b0115eqh4m5vi" path="res://graphics/pokemon/icons/ROTOM_5.png" id="35_gdn2j"]
+[ext_resource type="Texture2D" uid="uid://phehmfpki3gj" path="res://graphics/pokemon/follower/ROTOM_5.png" id="36_vgljr"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://glc6pytx3ree" path="res://graphics/pokemon/front/ROTOM.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://ckogqmjrvvs3h" path="res://graphics/pokemon/front_shiny/ROTOM.png" id="gfx101"]
@@ -36,95 +46,190 @@
 script = ExtResource("2_ff5fe")
 species_id = 1064
 form_id = &"rotom_heat"
-display_name = "Rotom Heat"
+display_name = "Rotom"
 base_species_id = 479
 override_types = true
-type_1 = 11
-type_2 = 8
+type_1 = 14
+type_2 = 11
+override_stats = true
+base_hp = 50
+base_attack = 65
+base_defense = 107
+base_speed = 86
+base_sp_attack = 105
+base_sp_defense = 107
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
+icon_sprite = ExtResource("10_y3rbj")
+overworld_scene = ExtResource("12_xvg74")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
 back_sprite_offset = Vector2(0, 12)
 override_graphics = true
+override_abilities = true
+ability_1 = 26
+override_pokedex = true
+category_name = "Plasma"
+description = "Si el horno de microondas de convección es
+no funciona correctamente, entonces el Rotom
+habitar será letárgico. It
+hace la maldad al encender el calor."
+height = 3
+weight = 3
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_ff5fe")
 species_id = 1065
 form_id = &"rotom_wash"
-display_name = "Rotom Wash"
+display_name = "Rotom"
 base_species_id = 479
 override_types = true
-type_1 = 12
-type_2 = 8
+type_1 = 14
+type_2 = 12
+override_stats = true
+base_hp = 50
+base_attack = 65
+base_defense = 107
+base_speed = 86
+base_sp_attack = 105
+base_sp_defense = 107
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
 back_sprite_shiny = ExtResource("gfx114")
+icon_sprite = ExtResource("17_dl2u3")
+overworld_scene = ExtResource("18_qnwgo")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 7)
 back_sprite_offset = Vector2(0, 11)
 override_graphics = true
+override_abilities = true
+ability_1 = 26
+override_pokedex = true
+category_name = "Plasma"
+description = "Disfruta de subir con agua
+bromas. El modelo de lavadora que
+Rotom puede inespíritu ha sido interrumpido,
+así que ahora se comercializan a precios altos."
+height = 3
+weight = 3
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_ff5fe")
 species_id = 1066
 form_id = &"rotom_frost"
-display_name = "Rotom Frost"
+display_name = "Rotom"
 base_species_id = 479
 override_types = true
-type_1 = 16
-type_2 = 8
+type_1 = 14
+type_2 = 16
+override_stats = true
+base_hp = 50
+base_attack = 65
+base_defense = 107
+base_speed = 86
+base_sp_attack = 105
+base_sp_defense = 107
 front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
 back_sprite_shiny = ExtResource("gfx118")
+icon_sprite = ExtResource("23_h8q2k")
+overworld_scene = ExtResource("24_m8hcy")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 26
+override_pokedex = true
+category_name = "Plasma"
+description = "En esta forma, a Rotom le gusta jugar congelamiento
+bromas frías. Usted puede encontrar que se ha convertido en
+¡Te bañas solo con hielo sólido!
+Combate golpeando aire frío."
+height = 3
+weight = 3
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_ff5fe")
 species_id = 1067
 form_id = &"rotom_fan"
-display_name = "Rotom Fan"
+display_name = "Rotom"
 base_species_id = 479
 override_types = true
-type_1 = 3
-type_2 = 8
+type_1 = 14
+type_2 = 3
+override_stats = true
+base_hp = 50
+base_attack = 65
+base_defense = 107
+base_speed = 86
+base_sp_attack = 105
+base_sp_defense = 107
 front_sprite = ExtResource("gfx119")
 front_sprite_shiny = ExtResource("gfx120")
 back_sprite = ExtResource("gfx121")
 back_sprite_shiny = ExtResource("gfx122")
+icon_sprite = ExtResource("29_uy31s")
+overworld_scene = ExtResource("30_yv3il")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 26
+override_pokedex = true
+category_name = "Plasma"
+description = "El primer aparato desarrolló que Rotom
+Coud inspirit era el ventilador eléctrico. Utiliza
+su poder sobre el viento en sus bromas, felizmente
+soplando cualquier documento importante que encuentre."
+height = 3
+weight = 3
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_ff5fe")
 species_id = 1068
 form_id = &"rotom_mow"
-display_name = "Rotom Mow"
+display_name = "Rotom"
 base_species_id = 479
 override_types = true
-type_1 = 13
-type_2 = 8
+type_1 = 14
+type_2 = 13
+override_stats = true
+base_hp = 50
+base_attack = 65
+base_defense = 107
+base_speed = 86
+base_sp_attack = 105
+base_sp_defense = 107
 front_sprite = ExtResource("gfx123")
 front_sprite_shiny = ExtResource("gfx124")
 back_sprite = ExtResource("gfx125")
 back_sprite_shiny = ExtResource("gfx126")
+icon_sprite = ExtResource("35_gdn2j")
+overworld_scene = ExtResource("36_vgljr")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 10)
 override_graphics = true
+override_abilities = true
+ability_1 = 26
+override_pokedex = true
+category_name = "Plasma"
+description = "La cortadora de césped es un aparato que llevó a
+el desarrollo del Dex Rotom. Lo hará.
+fregar la hierba y las flores, luego cambiar
+con orgullo por sus logros."
+height = 3
+weight = 3
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

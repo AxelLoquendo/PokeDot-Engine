@@ -34,8 +34,18 @@ conditions = Array[ExtResource("2_mc4ay")]([SubResource("Resource_cond0")])
 script = ExtResource("4_p2xav")
 species_id = 981
 form_id = &"mr_mime_galar"
-display_name = "Mr Mime Galar"
+display_name = "Mr. Mime"
 base_species_id = 122
+override_types = true
+type_1 = 16
+type_2 = 15
+override_stats = true
+base_hp = 50
+base_attack = 65
+base_defense = 65
+base_speed = 100
+base_sp_attack = 90
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -46,6 +56,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 7)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 72
+ability_2 = 251
+hidden_ability = 115
+override_pokedex = true
+category_name = "Bailando"
+description = "Su talento es bailar. Puede irradiarse
+escalofrío desde el fondo de sus pies hasta
+para crear un piso de hielo, que este
+Pokémon puede empezar a usar como barrera."
+height = 14
+weight = 568
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

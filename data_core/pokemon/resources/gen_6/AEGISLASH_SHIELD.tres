@@ -20,14 +20,15 @@
 script = ExtResource("2_06uvl")
 species_id = 1156
 form_id = &"aegislash_blade"
-display_name = "Aegislash Blade"
+display_name = "Aegislash"
 base_species_id = 681
+override_types = true
+type_1 = 9
+type_2 = 8
 override_stats = true
 base_hp = 60
-base_attack = 140
 base_defense = 50
 base_speed = 60
-base_sp_attack = 140
 base_sp_defense = 50
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
@@ -38,6 +39,16 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
+override_abilities = true
+ability_1 = 176
+override_pokedex = true
+category_name = "Espada real"
+description = "Una vez, un rey con un rey
+Aegislash reinó sobre la tierra. Su
+Pokémon eventualmente lo drenaba de
+la vida, y su reino cayó con él."
+height = 17
+weight = 530
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

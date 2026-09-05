@@ -20,7 +20,7 @@
 script = ExtResource("2_0uxke")
 species_id = 1168
 form_id = &"hoopa_unbound"
-display_name = "Hoopa Unbound"
+display_name = "Hoopa"
 base_species_id = 720
 override_types = true
 type_1 = 15
@@ -38,6 +38,16 @@ back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 170
+override_pokedex = true
+category_name = "Djinn"
+description = "Es la verdadera forma de Hoopa, que ha tenido
+su poder sellado. Los anillos que lleva
+tienen el poder de doblar dimensiones y son
+capaz de aprovechar cualquier cosa en el mundo."
+height = 65
+weight = 490
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

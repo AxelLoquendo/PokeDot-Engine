@@ -28,10 +28,17 @@
 script = ExtResource("2_w7rca")
 species_id = 1051
 form_id = &"castform_sunny"
-display_name = "Castform Sunny"
+display_name = "Castform"
 base_species_id = 351
 override_types = true
 type_1 = 11
+override_stats = true
+base_hp = 70
+base_attack = 70
+base_defense = 70
+base_speed = 70
+base_sp_attack = 70
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -39,16 +46,33 @@ back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 override_graphics = true
+override_abilities = true
+ability_1 = 59
+override_pokedex = true
+category_name = "El tiempo"
+description = "Castform toma esta forma en días brillantes.
+En un experimento donde se coloca
+frente de un calentador, no cambió a esto
+forma. Su cuerpo es cálido y tostado."
+height = 3
+weight = 8
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_w7rca")
 species_id = 1052
 form_id = &"castform_rainy"
-display_name = "Castform Rainy"
+display_name = "Castform"
 base_species_id = 351
 override_types = true
 type_1 = 12
+override_stats = true
+base_hp = 70
+base_attack = 70
+base_defense = 70
+base_speed = 70
+base_sp_attack = 70
+base_sp_defense = 70
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -56,16 +80,33 @@ back_sprite_shiny = ExtResource("gfx114")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 override_graphics = true
+override_abilities = true
+ability_1 = 59
+override_pokedex = true
+category_name = "El tiempo"
+description = "Esta es la forma de Castform mientras llueve.
+En un experimento donde fue colocado en un
+ducha, no cambió a esta forma. Es...
+cuerpo es suave, ligeramente hinchado con agua."
+height = 3
+weight = 8
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_w7rca")
 species_id = 1053
 form_id = &"castform_snowy"
-display_name = "Castform Snowy"
+display_name = "Castform"
 base_species_id = 351
 override_types = true
 type_1 = 16
+override_stats = true
+base_hp = 70
+base_attack = 70
+base_defense = 70
+base_speed = 70
+base_sp_attack = 70
+base_sp_defense = 70
 front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
@@ -73,6 +114,16 @@ back_sprite_shiny = ExtResource("gfx118")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 59
+override_pokedex = true
+category_name = "El tiempo"
+description = "Esta es la forma de Castform en una hailstorm.
+En un experimento donde fue colocado
+en un congelador, no cambió a esta forma.
+Su piel fría es tan suave como el hielo."
+height = 3
+weight = 8
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

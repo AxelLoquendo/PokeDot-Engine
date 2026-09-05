@@ -22,8 +22,18 @@
 script = ExtResource("2_raojs")
 species_id = 994
 form_id = &"arcanine_hisui"
-display_name = "Arcanine Hisui"
+display_name = "Arcanine"
 base_species_id = 59
+override_types = true
+type_1 = 11
+type_2 = 6
+override_stats = true
+base_hp = 95
+base_attack = 115
+base_defense = 80
+base_speed = 90
+base_sp_attack = 95
+base_sp_defense = 80
 front_sprite = ExtResource("8_ru0wq")
 front_sprite_shiny = ExtResource("9_gd2ye")
 back_sprite = ExtResource("6_l1c7f")
@@ -33,6 +43,18 @@ overworld_scene = ExtResource("gfx100")
 cry = ExtResource("3_6jksv")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
+override_abilities = true
+ability_1 = 22
+ability_2 = 18
+hidden_ability = 69
+override_pokedex = true
+category_name = "Legendario"
+description = "Enganchados en sus enemigos con colchones enrollados
+llama ardiente. A pesar de su vracs,
+se une cada cual, oponentes líderes
+en una persecución engañosa."
+height = 20
+weight = 1680
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

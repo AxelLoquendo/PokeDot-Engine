@@ -21,8 +21,17 @@
 script = ExtResource("2_r44nx")
 species_id = 1549
 form_id = &"falinks_mega"
-display_name = "Falinks Mega"
+display_name = "Falinks"
 base_species_id = 870
+override_types = true
+type_1 = 2
+override_stats = true
+base_hp = 65
+base_attack = 135
+base_defense = 135
+base_speed = 100
+base_sp_attack = 70
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +42,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 4
+hidden_ability = 128
+override_pokedex = true
+category_name = "Formación"
+description = "Mega Falinks ha tomado en
+última formación de batalla, que
+sólo se puede lograr si los soldados
+y los metales tienen los vínculos más fuertes."
+height = 16
+weight = 990
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

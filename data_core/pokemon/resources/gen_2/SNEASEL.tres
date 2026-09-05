@@ -54,8 +54,18 @@ conditions = Array[ExtResource("2_08g1g")]([SubResource("Resource_cond2"), SubRe
 script = ExtResource("5_g56xn")
 species_id = 999
 form_id = &"sneasel_hisui"
-display_name = "Sneasel Hisui"
+display_name = "Sneasel"
 base_species_id = 215
+override_types = true
+type_1 = 2
+type_2 = 4
+override_stats = true
+base_hp = 55
+base_attack = 95
+base_defense = 55
+base_speed = 115
+base_sp_attack = 35
+base_sp_defense = 75
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -66,6 +76,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
+override_abilities = true
+ability_1 = 39
+ability_2 = 51
+hidden_ability = 124
+override_pokedex = true
+category_name = "Sharp Claw"
+description = "Sus garras robustas y curvas son ideales para
+atravesar precipitous acantilados. Desde
+puntas de estas garras gotea un veneno que
+infiltra los nervios de cualquier presa atrapada."
+height = 9
+weight = 270
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

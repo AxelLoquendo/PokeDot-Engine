@@ -20,8 +20,18 @@
 script = ExtResource("2_miewt")
 species_id = 1213
 form_id = &"toxtricity_low_key"
-display_name = "Toxtricity Low Key"
+display_name = "Toxtricity"
 base_species_id = 849
+override_types = true
+type_1 = 14
+type_2 = 4
+override_stats = true
+base_hp = 75
+base_attack = 98
+base_defense = 70
+base_speed = 75
+base_sp_attack = 114
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -31,31 +41,84 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 244
+ability_2 = 58
+hidden_ability = 101
+override_pokedex = true
+category_name = "Punk"
+description = "Capacidad de generar 15.000 voltios
+de electricidad, este aspecto Pokémon
+todo lo que lo desafiaría."
+height = 16
+weight = 400
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_miewt")
 species_id = 1513
 form_id = &"toxtricity_amped_gmax"
-display_name = "Toxtricity Amped Gmax"
+display_name = "Toxtricity"
 base_species_id = 849
+override_types = true
+type_1 = 14
+type_2 = 4
+override_stats = true
+base_hp = 75
+base_attack = 98
+base_defense = 70
+base_speed = 75
+base_sp_attack = 114
+base_sp_defense = 70
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 244
+ability_2 = 57
+hidden_ability = 101
+override_pokedex = true
+category_name = "Punk"
+description = "Fuera de control después de su propio
+veneno penetró su cerebro, las lágrimas
+a través de la tierra en una rampa,
+contaminando la tierra con sudor tóxico."
+height = 240
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_miewt")
 species_id = 1514
 form_id = &"toxtricity_low_key_gmax"
-display_name = "Toxtricity Low Key Gmax"
+display_name = "Toxtricity"
 base_species_id = 849
+override_types = true
+type_1 = 14
+type_2 = 4
+override_stats = true
+base_hp = 75
+base_attack = 98
+base_defense = 70
+base_speed = 75
+base_sp_attack = 114
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 244
+ability_2 = 58
+hidden_ability = 101
+override_pokedex = true
+category_name = "Punk"
+description = "Fuera de control después de su propio
+veneno penetró su cerebro, las lágrimas
+a través de la tierra en una rampa,
+contaminando la tierra con sudor tóxico."
+height = 240
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

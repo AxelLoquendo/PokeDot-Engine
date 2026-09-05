@@ -22,8 +22,18 @@
 script = ExtResource("2_5yw40")
 species_id = 973
 form_id = &"marowak_alola"
-display_name = "Marowak Alola"
+display_name = "Marowak"
 base_species_id = 105
+override_types = true
+type_1 = 11
+type_2 = 8
+override_stats = true
+base_hp = 60
+base_attack = 80
+base_defense = 110
+base_speed = 45
+base_sp_attack = 50
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,14 +44,36 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
+override_abilities = true
+ability_1 = 130
+ability_2 = 31
+hidden_ability = 69
+override_pokedex = true
+category_name = "Huesos"
+description = "Las llamas maldecidas que iluminan el hueso
+por este Pokémon se dice
+causar tanto mental como físico
+dolor que nunca se desvanecerá."
+height = 10
+weight = 340
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_5yw40")
 species_id = 1483
 form_id = &"marowak_alola_totem"
-display_name = "Marowak Alola Totem"
+display_name = "Marowak"
 base_species_id = 105
+override_types = true
+type_1 = 11
+type_2 = 8
+override_stats = true
+base_hp = 60
+base_attack = 80
+base_defense = 110
+base_speed = 45
+base_sp_attack = 50
+base_sp_defense = 80
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -52,6 +84,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
+override_abilities = true
+ability_1 = 69
+override_pokedex = true
+category_name = "Huesos"
+description = "Las llamas maldecidas que iluminan el hueso
+por este Pokémon se dice
+causar tanto mental como físico
+dolor que nunca se desvanecerá."
+height = 17
+weight = 980
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

@@ -22,19 +22,49 @@
 script = ExtResource("2_f2ldn")
 species_id = 1210
 form_id = &"magearna_original"
-display_name = "Magearna Original"
+display_name = "Magearna"
 base_species_id = 801
+override_types = true
+type_1 = 9
+type_2 = 19
+override_stats = true
+base_hp = 80
+base_attack = 95
+base_defense = 115
+base_speed = 65
+base_sp_attack = 130
+base_sp_defense = 115
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 220
+override_pokedex = true
+category_name = "Artificial"
+description = "Esta es su forma de casi 500
+hace años. Su cuerpo no es nada más
+que un corazón artificial de contenedores
+es la forma de vida real."
+height = 10
+weight = 805
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_f2ldn")
 species_id = 1565
 form_id = &"magearna_mega"
-display_name = "Magearna Mega"
+display_name = "Magearna"
 base_species_id = 801
+override_types = true
+type_1 = 9
+type_2 = 19
+override_stats = true
+base_hp = 80
+base_attack = 125
+base_defense = 115
+base_speed = 95
+base_sp_attack = 170
+base_sp_defense = 115
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -44,18 +74,48 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 220
+override_pokedex = true
+category_name = "Artificial"
+description = "Esta es Magearna una vez oculta
+El modo activa. Las emociones que Magearna tenía
+comenzó a sentirse ahora escondido mientras cayó
+enemigo tras enemigo."
+height = 13
+weight = 2481
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_f2ldn")
 species_id = 1566
 form_id = &"magearna_original_mega"
-display_name = "Magearna Original Mega"
+display_name = "Magearna"
 base_species_id = 801
+override_types = true
+type_1 = 9
+type_2 = 19
+override_stats = true
+base_hp = 80
+base_attack = 125
+base_defense = 115
+base_speed = 95
+base_sp_attack = 170
+base_sp_defense = 115
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 220
+override_pokedex = true
+category_name = "Artificial"
+description = "Un mecanismo para eliminar el de Magearna
+limitaciones se ha mantenido secretamente dentro
+Magearna durante 500 años. Este mecanismo
+es disparado por un Mega Stone."
+height = 13
+weight = 2481
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

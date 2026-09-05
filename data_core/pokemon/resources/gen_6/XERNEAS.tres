@@ -20,14 +20,33 @@
 script = ExtResource("2_uu8sx")
 species_id = 1163
 form_id = &"xerneas_active"
-display_name = "Xerneas Active"
+display_name = "Xerneas"
 base_species_id = 716
+override_types = true
+type_1 = 19
+override_stats = true
+base_hp = 126
+base_attack = 131
+base_defense = 95
+base_speed = 99
+base_sp_attack = 131
+base_sp_defense = 98
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 187
+override_pokedex = true
+category_name = "Vida"
+description = "Las leyendas dicen que cuando los cuernos en
+su cabeza brilla en siete colores, es
+compartir la vida eterna. Dormió para un
+mil años en forma de árbol"
+height = 30
+weight = 2150
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

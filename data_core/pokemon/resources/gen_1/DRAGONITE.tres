@@ -21,8 +21,18 @@
 script = ExtResource("2_tdkl1")
 species_id = 1527
 form_id = &"dragonite_mega"
-display_name = "Dragonite Mega"
+display_name = "Dragonite"
 base_species_id = 149
+override_types = true
+type_1 = 17
+type_2 = 3
+override_stats = true
+base_hp = 91
+base_attack = 124
+base_defense = 115
+base_speed = 100
+base_sp_attack = 145
+base_sp_defense = 125
 front_sprite = ExtResource("8_evds5")
 front_sprite_shiny = ExtResource("9_0tpli")
 back_sprite = ExtResource("6_drfai")
@@ -33,7 +43,19 @@ cry = ExtResource("3_s0i4b")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 136
+ability_2 = 136
+hidden_ability = 136
+override_pokedex = true
+category_name = "Dragón"
+description = "Megaevolución tiene excesivamente
+alimenta los sentimientos de Pokémon
+de bondad. Termina su
+oponentes con misericordia en su corazón."
+height = 22
+weight = 2900
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

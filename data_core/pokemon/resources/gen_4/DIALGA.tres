@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_mn7lm"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://n25v4ubwchiw" path="res://graphics/pokemon/icons/DIALGA_1.png" id="10_v0p1l"]
+[ext_resource type="Texture2D" uid="uid://bj7hrbaxlco46" path="res://graphics/pokemon/follower/DIALGA_1.png" id="12_ecjn8"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://cmpndo4uo6sih" path="res://graphics/pokemon/front/DIALGA.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://5x30680g4r2h" path="res://graphics/pokemon/front_shiny/DIALGA.png" id="gfx101"]
@@ -20,8 +22,11 @@
 script = ExtResource("2_mn7lm")
 species_id = 1069
 form_id = &"dialga_origin"
-display_name = "Dialga Origin"
+display_name = "Dialga"
 base_species_id = 483
+override_types = true
+type_1 = 9
+type_2 = 17
 override_stats = true
 base_hp = 100
 base_attack = 100
@@ -33,10 +38,21 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("10_v0p1l")
+overworld_scene = ExtResource("12_ecjn8")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 46
+hidden_ability = 140
+override_pokedex = true
+category_name = "Temporal"
+description = "Luz radiante causó que Dialga tomara un
+forma que lleva un parecido llamativo a la
+creador Pokémon. Es un colosal.
+fuerza para que esta sea su verdadera forma."
+height = 70
+weight = 8500
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

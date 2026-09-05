@@ -20,8 +20,18 @@
 script = ExtResource("2_tfodg")
 species_id = 1226
 form_id = &"morpeko_hangry"
-display_name = "Morpeko Hangry"
+display_name = "Morpeko"
 base_species_id = 877
+override_types = true
+type_1 = 14
+type_2 = 18
+override_stats = true
+base_hp = 58
+base_attack = 95
+base_defense = 58
+base_speed = 97
+base_sp_attack = 70
+base_sp_defense = 58
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,6 +42,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 14)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 258
+override_pokedex = true
+category_name = "Dos asiento"
+description = "El hambre intensa lo impulsa a
+extremos de violencia, y la electricidad
+en sus sacos de mejilla se ha convertido en
+una energía de tipo oscuro."
+height = 3
+weight = 30
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

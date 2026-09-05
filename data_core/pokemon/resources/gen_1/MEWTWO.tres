@@ -28,8 +28,18 @@
 script = ExtResource("2_5fjex")
 species_id = 919
 form_id = &"mewtwo_mega_x"
-display_name = "Mewtwo Mega X"
+display_name = "Mewtwo"
 base_species_id = 150
+override_types = true
+type_1 = 15
+type_2 = 2
+override_stats = true
+base_hp = 106
+base_attack = 190
+base_defense = 100
+base_speed = 130
+base_sp_attack = 154
+base_sp_defense = 100
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -39,14 +49,35 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 80
+ability_2 = 80
+hidden_ability = 80
+override_pokedex = true
+category_name = "Genético"
+description = "El poder psíquico ha aumentado sus músculos.
+Tiene una fuerza de agarre de una tonelada y puede
+sprint a cien metros en dos segundos
+¡Hala!"
+height = 23
+weight = 1270
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_5fjex")
 species_id = 920
 form_id = &"mewtwo_mega_y"
-display_name = "Mewtwo Mega Y"
+display_name = "Mewtwo"
 base_species_id = 150
+override_types = true
+type_1 = 15
+override_stats = true
+base_hp = 106
+base_attack = 150
+base_defense = 70
+base_speed = 140
+base_sp_attack = 194
+base_sp_defense = 120
 front_sprite = ExtResource("gfx113")
 front_sprite_shiny = ExtResource("gfx114")
 back_sprite = ExtResource("gfx115")
@@ -56,7 +87,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx118")
 back_sprite_offset = Vector2(0, 2)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 15
+ability_2 = 15
+hidden_ability = 15
+override_pokedex = true
+category_name = "Genético"
+description = "A pesar de su tamaño reducido, su mente
+El poder ha crecido fenomenalmente. Con un mero
+pensar, puede romper un rascacielos
+Herreens."
+height = 15
+weight = 330
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -22,8 +22,17 @@
 script = ExtResource("2_ujui2")
 species_id = 966
 form_id = &"persian_alola"
-display_name = "Persian Alola"
+display_name = "Persian"
 base_species_id = 53
+override_types = true
+type_1 = 18
+override_stats = true
+base_hp = 65
+base_attack = 60
+base_defense = 60
+base_speed = 115
+base_sp_attack = 75
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +42,18 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 169
+ability_2 = 101
+hidden_ability = 155
+override_pokedex = true
+category_name = "Gato refinado"
+description = "Mira hacia abajo a todos los demás
+en sí mismo. En contraste con su hermosa cara,
+es tan brutal que tortura su debilitado
+en lugar de terminarlos."
+height = 11
+weight = 330
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

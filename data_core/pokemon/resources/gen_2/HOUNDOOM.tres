@@ -22,8 +22,18 @@
 script = ExtResource("2_s6fpw")
 species_id = 925
 form_id = &"houndoom_mega"
-display_name = "Houndoom Mega"
+display_name = "Houndoom"
 base_species_id = 229
+override_types = true
+type_1 = 18
+type_2 = 11
+override_stats = true
+base_hp = 75
+base_attack = 90
+base_defense = 90
+base_speed = 115
+base_sp_attack = 140
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 94
+ability_2 = 94
+hidden_ability = 94
+override_pokedex = true
+category_name = "Oscuro"
+description = "Sus garras rojas y las puntas de su cola son
+fusión de altas temperaturas internas
+que son dolorosos para la propia Houndoom.
+"
+height = 19
+weight = 495
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

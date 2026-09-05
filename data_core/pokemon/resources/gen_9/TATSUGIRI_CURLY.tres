@@ -24,8 +24,18 @@
 script = ExtResource("2_3tx01")
 species_id = 1368
 form_id = &"tatsugiri_droopy"
-display_name = "Tatsugiri Droopy"
+display_name = "Tatsugiri"
 base_species_id = 1367
+override_types = true
+type_1 = 17
+type_2 = 12
+override_stats = true
+base_hp = 68
+base_attack = 50
+base_defense = 60
+base_speed = 82
+base_sp_attack = 120
+base_sp_defense = 95
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -36,14 +46,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 14)
 back_sprite_offset = Vector2(0, 17)
 override_graphics = true
+override_abilities = true
+ability_1 = 279
+hidden_ability = 114
+override_pokedex = true
+category_name = "Mimicry"
+description = "Este Pokémon engaña a sus oponentes
+jugando muerto. Es pequeño y
+débil, pero usa sus inteligencias para sobrevivir."
+height = 3
+weight = 80
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_3tx01")
 species_id = 1369
 form_id = &"tatsugiri_stretchy"
-display_name = "Tatsugiri Stretchy"
+display_name = "Tatsugiri"
 base_species_id = 1367
+override_types = true
+type_1 = 17
+type_2 = 12
+override_stats = true
+base_hp = 68
+base_attack = 50
+base_defense = 60
+base_speed = 82
+base_sp_attack = 120
+base_sp_defense = 95
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -54,26 +84,67 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 14)
 back_sprite_offset = Vector2(0, 17)
 override_graphics = true
+override_abilities = true
+ability_1 = 279
+hidden_ability = 114
+override_pokedex = true
+category_name = "Mimicry"
+description = "Es uno de los más inteligentes.
+Dragón Pokémon. Se camufla.
+inflando su saco de garganta."
+height = 3
+weight = 80
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_3tx01")
 species_id = 1569
 form_id = &"tatsugiri_curly_mega"
-display_name = "Tatsugiri Curly Mega"
+display_name = "Tatsugiri"
 base_species_id = 1367
+override_types = true
+type_1 = 17
+type_2 = 12
+override_stats = true
+base_hp = 68
+base_attack = 65
+base_defense = 90
+base_speed = 92
+base_sp_attack = 135
+base_sp_defense = 125
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 17)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 114
+hidden_ability = 114
+override_pokedex = true
+category_name = "Mimicry"
+description = "El cerebro de Tatsugiri ha sido vigorizado
+por Megaevolución, haciéndolo incluso
+Más inteligente. Puede crear y ordenar
+copias de sí misma."
+height = 6
+weight = 240
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_3tx01")
 species_id = 1570
 form_id = &"tatsugiri_droopy_mega"
-display_name = "Tatsugiri Droopy Mega"
+display_name = "Tatsugiri"
 base_species_id = 1367
+override_types = true
+type_1 = 17
+type_2 = 12
+override_stats = true
+base_hp = 68
+base_attack = 65
+base_defense = 90
+base_speed = 92
+base_sp_attack = 135
+base_sp_defense = 125
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -82,14 +153,35 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 17)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 114
+hidden_ability = 114
+override_pokedex = true
+category_name = "Mimicry"
+description = "solidifica la energía de Megaevolución,
+construir una pila desbordante para lanzar
+como proyectiles. Estos proyectiles explotan
+en contacto."
+height = 6
+weight = 240
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_3tx01")
 species_id = 1571
 form_id = &"tatsugiri_stretchy_mega"
-display_name = "Tatsugiri Stretchy Mega"
+display_name = "Tatsugiri"
 base_species_id = 1367
+override_types = true
+type_1 = 17
+type_2 = 12
+override_stats = true
+base_hp = 68
+base_attack = 65
+base_defense = 90
+base_speed = 92
+base_sp_attack = 135
+base_sp_defense = 125
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -98,7 +190,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 17)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 114
+hidden_ability = 114
+override_pokedex = true
+category_name = "Mimicry"
+description = "Usando la energía de Megaevolución, ella
+crea un plato para montar sobre, permitiéndole
+para moverse con total libertad - incluso a través
+el aire."
+height = 6
+weight = 240
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

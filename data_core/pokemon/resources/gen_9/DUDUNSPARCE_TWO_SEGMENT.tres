@@ -16,8 +16,17 @@
 script = ExtResource("2_ijjjp")
 species_id = 1374
 form_id = &"dudunsparce_three_segment"
-display_name = "Dudunsparce Three Segment"
+display_name = "Dudunsparce"
 base_species_id = 1373
+override_types = true
+type_1 = 1
+override_stats = true
+base_hp = 125
+base_attack = 100
+base_defense = 80
+base_speed = 55
+base_sp_attack = 85
+base_sp_defense = 75
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -28,6 +37,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
 back_sprite_offset = Vector2(0, 11)
 override_graphics = true
+override_abilities = true
+ability_1 = 32
+ability_2 = 50
+hidden_ability = 155
+override_pokedex = true
+category_name = "Land Snake"
+description = "Un estudio reciente descubrió que
+número de segmentos de un Dudunsparce
+el cuerpo está determinado por el
+Los genes de Pokémon."
+height = 45
+weight = 474
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

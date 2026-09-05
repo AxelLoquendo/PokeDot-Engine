@@ -22,8 +22,18 @@
 script = ExtResource("2_85e4r")
 species_id = 945
 form_id = &"latios_mega"
-display_name = "Latios Mega"
+display_name = "Latios"
 base_species_id = 381
+override_types = true
+type_1 = 17
+type_2 = 15
+override_stats = true
+base_hp = 80
+base_attack = 130
+base_defense = 100
+base_speed = 110
+base_sp_attack = 160
+base_sp_defense = 120
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 26
+ability_2 = 26
+hidden_ability = 26
+override_pokedex = true
+category_name = "Eon"
+description = "Es más grande que Mega Latias, y puede
+lograr mayores velocidades en vuelo.
+Este Pokémon puede utilizar su velocidad en la batalla
+para desencadenar una serie de ataques."
+height = 23
+weight = 700
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

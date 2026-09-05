@@ -46,8 +46,17 @@ conditions = Array[ExtResource("2_arm0u")]([SubResource("Resource_cond1")])
 script = ExtResource("4_yexxn")
 species_id = 961
 form_id = &"vulpix_alola"
-display_name = "Vulpix Alola"
+display_name = "Vulpix"
 base_species_id = 37
+override_types = true
+type_1 = 16
+override_stats = true
+base_hp = 38
+base_attack = 41
+base_defense = 40
+base_speed = 65
+base_sp_attack = 50
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -58,6 +67,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 81
+hidden_ability = 117
+override_pokedex = true
+category_name = "Zorro"
+description = "Viven juntos en un skulk, ayudando
+uno al otro. En clima caliente, este Pokémon
+hace trizas de hielo con sus seis colas y
+los rocia alrededor para refrescarse."
+height = 6
+weight = 99
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

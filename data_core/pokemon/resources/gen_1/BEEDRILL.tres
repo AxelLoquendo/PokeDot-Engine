@@ -22,8 +22,18 @@
 script = ExtResource("2_c2pnh")
 species_id = 910
 form_id = &"beedrill_mega"
-display_name = "Beedrill Mega"
+display_name = "Beedrill"
 base_species_id = 15
+override_types = true
+type_1 = 7
+type_2 = 4
+override_stats = true
+base_hp = 65
+base_attack = 150
+base_defense = 40
+base_speed = 145
+base_sp_attack = 15
+base_sp_defense = 80
 front_sprite = ExtResource("9_hwmhp")
 front_sprite_shiny = ExtResource("10_fgrx5")
 back_sprite = ExtResource("6_ibu0v")
@@ -34,7 +44,19 @@ cry = ExtResource("8_jphk1")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 91
+ability_2 = 91
+hidden_ability = 91
+override_pokedex = true
+category_name = "Abeja venenosa"
+description = "Sus piernas se han convertido en picadoras venenosas.
+Apuñala su presa repetidamente con el
+picaduras en sus extremidades, tratando la final
+sopla con el picador en la parte trasera."
+height = 14
+weight = 405
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

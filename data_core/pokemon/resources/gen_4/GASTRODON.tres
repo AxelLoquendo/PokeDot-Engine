@@ -20,8 +20,18 @@
 script = ExtResource("2_kov5h")
 species_id = 1063
 form_id = &"gastrodon_east"
-display_name = "Gastrodon East"
+display_name = "Gastrodon"
 base_species_id = 423
+override_types = true
+type_1 = 12
+type_2 = 5
+override_stats = true
+base_hp = 111
+base_attack = 83
+base_defense = 68
+base_speed = 39
+base_sp_attack = 92
+base_sp_defense = 82
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -30,6 +40,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
+override_abilities = true
+ability_1 = 60
+ability_2 = 114
+hidden_ability = 159
+override_pokedex = true
+category_name = "Slug de mar"
+description = "Encontrado más a menudo en tierra que en el mar.
+Normalmente viven en las costas rocosas, pero
+cuando nublados o lluviosos, a veces pueden
+se encuentran en las montañas, lejos del mar."
+height = 9
+weight = 299
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

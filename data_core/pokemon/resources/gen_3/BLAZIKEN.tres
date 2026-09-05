@@ -22,8 +22,18 @@
 script = ExtResource("2_w1yy2")
 species_id = 928
 form_id = &"blaziken_mega"
-display_name = "Blaziken Mega"
+display_name = "Blaziken"
 base_species_id = 257
+override_types = true
+type_1 = 11
+type_2 = 2
+override_stats = true
+base_hp = 80
+base_attack = 160
+base_defense = 80
+base_speed = 100
+base_sp_attack = 130
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 3
+ability_2 = 3
+hidden_ability = 3
+override_pokedex = true
+category_name = "Blaze"
+description = "A medida que desata un rayo de patadas salvajes,
+sus piernas pueden empezar a quemar desde
+fricción de la atmósfera circundante.
+Siempre son una fuente de orgullo."
+height = 19
+weight = 520
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

@@ -24,7 +24,7 @@
 script = ExtResource("2_3idxl")
 species_id = 1232
 form_id = &"calyrex_ice"
-display_name = "Calyrex Ice"
+display_name = "Calyrex"
 base_species_id = 898
 override_types = true
 type_1 = 15
@@ -45,13 +45,23 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 266
+override_pokedex = true
+category_name = "Rey"
+description = "Según Lore, este Pokémon
+no mostró misericordia con los que entraron
+su manera, sin embargo, sanaría su
+heridas de oponentes después de la batalla."
+height = 24
+weight = 8091
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_3idxl")
 species_id = 1233
 form_id = &"calyrex_shadow"
-display_name = "Calyrex Shadow"
+display_name = "Calyrex"
 base_species_id = 898
 override_types = true
 type_1 = 15
@@ -70,6 +80,16 @@ back_sprite_shiny = ExtResource("gfx114")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 267
+override_pokedex = true
+category_name = "Rey"
+description = "Se dice que Calyrex y un
+Pokémon que se había unido con él corrió todo
+a través de la región de Galar para traer verde
+a las tierras desperdiciadas."
+height = 24
+weight = 536
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

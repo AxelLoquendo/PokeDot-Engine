@@ -69,8 +69,17 @@ conditions = Array[ExtResource("2_kexp5")]([SubResource("Resource_cond3")])
 script = ExtResource("5_8cx8v")
 species_id = 977
 form_id = &"slowpoke_galar"
-display_name = "Slowpoke Galar"
+display_name = "Slowpoke"
 base_species_id = 79
+override_types = true
+type_1 = 15
+override_stats = true
+base_hp = 90
+base_attack = 65
+base_defense = 65
+base_speed = 15
+base_sp_attack = 40
+base_sp_defense = 40
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -81,6 +90,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 19)
 back_sprite_offset = Vector2(0, 13)
 override_graphics = true
+override_abilities = true
+ability_1 = 82
+ability_2 = 20
+hidden_ability = 144
+override_pokedex = true
+category_name = "Atontado"
+description = "Aunque es normalmente zonado fuera, su
+la expresión abruptamente agudiza en ocasiones.
+La causa parece estar en la dieta de Slowpoke,
+que también dan sus colas un sabor picante."
+height = 12
+weight = 360
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

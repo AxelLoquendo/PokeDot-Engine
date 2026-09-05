@@ -22,8 +22,18 @@
 script = ExtResource("2_hr1hi")
 species_id = 1003
 form_id = &"zoroark_hisui"
-display_name = "Zoroark Hisui"
+display_name = "Zoroark"
 base_species_id = 571
+override_types = true
+type_1 = 1
+type_2 = 8
+override_stats = true
+base_hp = 55
+base_attack = 100
+base_defense = 60
+base_speed = 110
+base_sp_attack = 125
+base_sp_defense = 60
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +43,16 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
 override_graphics = true
+override_abilities = true
+ability_1 = 149
+override_pokedex = true
+category_name = "Fox impecable"
+description = "Sin cuidado de su propia seguridad,
+Zoroark ataca sus nemeses con un amargo
+energía tan intensa, que lacera
+El propio cuerpo de Zoroark."
+height = 16
+weight = 730
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

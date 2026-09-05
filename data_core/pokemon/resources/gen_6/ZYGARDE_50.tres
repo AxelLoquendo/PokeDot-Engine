@@ -27,8 +27,11 @@
 script = ExtResource("2_a2vvr")
 species_id = 1164
 form_id = &"zygarde_10_aura_break"
-display_name = "Zygarde 10 Aura Break"
+display_name = "Zygarde"
 base_species_id = 718
+override_types = true
+type_1 = 17
+type_2 = 5
 override_stats = true
 base_hp = 54
 base_attack = 100
@@ -40,37 +43,90 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 188
+override_pokedex = true
+category_name = "Orden"
+description = "Este es Zygarde cuando cerca del 10%
+sus piezas han sido montadas. It
+saltos en el pecho de su oponente y
+frega sus agudos colmillos en ellos."
+height = 12
+weight = 335
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_a2vvr")
 species_id = 1165
 form_id = &"zygarde_10_power_construct"
-display_name = "Zygarde 10 Power Construct"
+display_name = "Zygarde"
 base_species_id = 718
+override_types = true
+type_1 = 17
+type_2 = 5
+override_stats = true
+base_hp = 54
+base_attack = 100
+base_defense = 71
+base_speed = 115
+base_sp_attack = 61
+base_sp_defense = 85
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 211
+override_pokedex = true
+category_name = "Orden"
+description = "Este es Zygarde cuando cerca del 10%
+sus piezas han sido montadas. It
+saltos en el pecho de su oponente y
+frega sus agudos colmillos en ellos."
+height = 12
+weight = 335
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_a2vvr")
 species_id = 1166
 form_id = &"zygarde_50_power_construct"
-display_name = "Zygarde 50 Power Construct"
+display_name = "Zygarde"
 base_species_id = 718
+override_types = true
+type_1 = 17
+type_2 = 5
+override_stats = true
+base_hp = 108
+base_attack = 100
+base_defense = 121
+base_speed = 95
+base_sp_attack = 81
+base_sp_defense = 95
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 211
+override_pokedex = true
+category_name = "Orden"
+description = "Se dice que está monitoreando el ecosistema
+desde lo profundo de las cuevas donde vive.
+Hay rumores de que aún mayor poder
+yace escondido dentro de sus células."
+height = 50
+weight = 3050
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_a2vvr")
 species_id = 1167
 form_id = &"zygarde_complete"
-display_name = "Zygarde Complete"
+display_name = "Zygarde"
 base_species_id = 718
+override_types = true
+type_1 = 17
+type_2 = 5
 override_stats = true
 base_hp = 216
 base_attack = 100
@@ -86,14 +142,34 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 211
+override_pokedex = true
+category_name = "Orden"
+description = "Esta es la forma perfecta de Zygarde.
+Del orificio en su pecho,
+irradia energía de alta potencia que
+elimina todo."
+height = 45
+weight = 6100
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_a2vvr")
 species_id = 1547
 form_id = &"zygarde_mega"
-display_name = "Zygarde Mega"
+display_name = "Zygarde"
 base_species_id = 718
+override_types = true
+type_1 = 17
+type_2 = 5
+override_stats = true
+base_hp = 216
+base_attack = 70
+base_defense = 91
+base_speed = 100
+base_sp_attack = 216
+base_sp_defense = 85
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -103,7 +179,17 @@ overworld_scene = ExtResource("gfx116")
 cry = ExtResource("gfx117")
 back_sprite_offset = Vector2(0, 15)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 188
+override_pokedex = true
+category_name = "Orden"
+description = "En respuesta a las emociones de las personas
+durante una crisis sin precedentes,
+Zygarde Mega gira y calma los
+situación con su poder inigualable."
+height = 77
+weight = 6100
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

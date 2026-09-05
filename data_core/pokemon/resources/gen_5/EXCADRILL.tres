@@ -21,8 +21,18 @@
 script = ExtResource("2_df5vp")
 species_id = 1533
 form_id = &"excadrill_mega"
-display_name = "Excadrill Mega"
+display_name = "Excadrill"
 base_species_id = 530
+override_types = true
+type_1 = 5
+type_2 = 9
+override_stats = true
+base_hp = 110
+base_attack = 165
+base_defense = 100
+base_speed = 103
+base_sp_attack = 65
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -31,7 +41,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 311
+ability_2 = 311
+hidden_ability = 311
+override_pokedex = true
+category_name = "Subterreno"
+description = "Si este Pokémon trae sus brazos y
+para formar un sistema simplificado
+forma y giros a altas velocidades,
+puede destruir cualquier cosa."
+height = 9
+weight = 600
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

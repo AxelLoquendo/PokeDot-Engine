@@ -16,8 +16,18 @@
 script = ExtResource("2_rwgx6")
 species_id = 1317
 form_id = &"squawkabilly_blue"
-display_name = "Squawkabilly Blue"
+display_name = "Squawkabilly"
 base_species_id = 1316
+override_types = true
+type_1 = 1
+type_2 = 3
+override_stats = true
+base_hp = 82
+base_attack = 96
+base_defense = 51
+base_speed = 92
+base_sp_attack = 45
+base_sp_defense = 51
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -28,14 +38,36 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 22
+ability_2 = 55
+hidden_ability = 62
+override_pokedex = true
+category_name = "Loro"
+description = "El mayor de sus ovejas puede
+contienen más de 50 individuos. Ellos
+volar alrededor de ciudades y bosques,
+buscar comida y hacer una raqueta."
+height = 6
+weight = 24
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_rwgx6")
 species_id = 1318
 form_id = &"squawkabilly_yellow"
-display_name = "Squawkabilly Yellow"
+display_name = "Squawkabilly"
 base_species_id = 1316
+override_types = true
+type_1 = 1
+type_2 = 3
+override_stats = true
+base_hp = 82
+base_attack = 96
+base_defense = 51
+base_speed = 92
+base_sp_attack = 45
+base_sp_defense = 51
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -46,14 +78,36 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 22
+ability_2 = 55
+hidden_ability = 125
+override_pokedex = true
+category_name = "Loro"
+description = "Estos Squawkabilly son calurosos,
+y su estilo de lucha es vicioso.
+Saldrán al alcance de su
+enemigos para participar en un combate cercano."
+height = 6
+weight = 24
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_rwgx6")
 species_id = 1319
 form_id = &"squawkabilly_white"
-display_name = "Squawkabilly White"
+display_name = "Squawkabilly"
 base_species_id = 1316
+override_types = true
+type_1 = 1
+type_2 = 3
+override_stats = true
+base_hp = 82
+base_attack = 96
+base_defense = 51
+base_speed = 92
+base_sp_attack = 45
+base_sp_defense = 51
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -64,6 +118,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 22
+ability_2 = 55
+hidden_ability = 125
+override_pokedex = true
+category_name = "Loro"
+description = "Aunque estos Squawkabilly son los
+poco en número, no tienen
+problemas para vivir en las ciudades desde que se mezclan
+con los edificios blancos."
+height = 6
+weight = 24
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

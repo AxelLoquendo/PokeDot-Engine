@@ -34,8 +34,18 @@ conditions = Array[ExtResource("2_c82rt")]([SubResource("Resource_cond0")])
 script = ExtResource("4_qlt37")
 species_id = 967
 form_id = &"geodude_alola"
-display_name = "Geodude Alola"
+display_name = "Geodude"
 base_species_id = 74
+override_types = true
+type_1 = 6
+type_2 = 14
+override_stats = true
+base_hp = 40
+base_attack = 80
+base_defense = 100
+base_speed = 20
+base_sp_attack = 30
+base_sp_defense = 30
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -46,6 +56,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 17)
 back_sprite_offset = Vector2(0, 13)
 override_graphics = true
+override_abilities = true
+ability_1 = 42
+ability_2 = 5
+hidden_ability = 206
+override_pokedex = true
+category_name = "Roca"
+description = "Su cuerpo es una piedra magnética. Arena de hierro
+adherir a partes de su cuerpo con más fuerza
+magnetismo. Si pisas descuidadamente a uno,
+te sorprenderá en la ira."
+height = 4
+weight = 203
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

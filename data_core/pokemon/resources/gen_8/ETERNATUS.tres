@@ -20,8 +20,11 @@
 script = ExtResource("2_aqj0r")
 species_id = 1229
 form_id = &"eternatus_eternamax"
-display_name = "Eternatus Eternamax"
+display_name = "Eternatus"
 base_species_id = 890
+override_types = true
+type_1 = 4
+type_2 = 17
 override_stats = true
 base_hp = 255
 base_attack = 115
@@ -37,6 +40,15 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 46
+override_pokedex = true
+category_name = "Gigantic"
+description = "Como resultado de la intromisión de Rose,
+Eternatus absorbió toda la energía en
+la región Galar. Ahora está en un estado
+de sobrecarga de energía."
+height = 1000
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

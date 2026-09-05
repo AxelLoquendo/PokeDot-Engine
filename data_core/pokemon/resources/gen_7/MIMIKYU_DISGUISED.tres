@@ -20,8 +20,18 @@
 script = ExtResource("2_vkwid")
 species_id = 1206
 form_id = &"mimikyu_busted"
-display_name = "Mimikyu Busted"
+display_name = "Mimikyu"
 base_species_id = 778
+override_types = true
+type_1 = 8
+type_2 = 19
+override_stats = true
+base_hp = 55
+base_attack = 90
+base_defense = 80
+base_speed = 96
+base_sp_attack = 50
+base_sp_defense = 105
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,26 +42,66 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 12)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 209
+override_pokedex = true
+category_name = "Disfrase"
+description = "Después de ir a todo el esfuerzo
+disimularse, su cuello era
+roto. Lo que está dentro probablemente
+sin dolor, pero todavía se siente triste."
+height = 2
+weight = 7
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_vkwid")
 species_id = 1481
 form_id = &"mimikyu_totem_disguised"
-display_name = "Mimikyu Totem Disguised"
+display_name = "Mimikyu"
 base_species_id = 778
+override_types = true
+type_1 = 8
+type_2 = 19
+override_stats = true
+base_hp = 55
+base_attack = 90
+base_defense = 80
+base_speed = 96
+base_sp_attack = 50
+base_sp_defense = 105
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 12)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 209
+override_pokedex = true
+category_name = "Disfrase"
+description = "Un Pokémon solitario, esconde su terrorífico
+apariencia bajo un viejo trapo para que pueda
+acercarse a la gente y a otros Pokémon.
+Su apariencia real es desconocida."
+height = 24
+weight = 28
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_vkwid")
 species_id = 1523
 form_id = &"mimikyu_busted_totem"
-display_name = "Mimikyu Busted Totem"
+display_name = "Mimikyu"
 base_species_id = 778
+override_types = true
+type_1 = 8
+type_2 = 19
+override_stats = true
+base_hp = 55
+base_attack = 90
+base_defense = 80
+base_speed = 96
+base_sp_attack = 50
+base_sp_defense = 105
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -60,6 +110,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 12)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 209
+override_pokedex = true
+category_name = "Disfrase"
+description = "Después de ir a todo el esfuerzo
+disimularse, su cuello era
+roto. Lo que está dentro probablemente
+sin dolor, pero todavía se siente triste."
+height = 24
+weight = 28
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

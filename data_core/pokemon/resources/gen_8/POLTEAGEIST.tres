@@ -16,12 +16,32 @@
 script = ExtResource("2_irew7")
 species_id = 1215
 form_id = &"polteageist_antique"
-display_name = "Polteageist Antique"
+display_name = "Polteageist"
 base_species_id = 855
+override_types = true
+type_1 = 8
+override_stats = true
+base_hp = 60
+base_attack = 65
+base_defense = 65
+base_speed = 70
+base_sp_attack = 134
+base_sp_defense = 114
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 13)
 override_graphics = true
+override_abilities = true
+ability_1 = 133
+hidden_ability = 130
+override_pokedex = true
+category_name = "Black Tea"
+description = "Entrenadores Confías Polteageistas serán
+permitido experimentar su
+sabor distintivo y aroma de primera mano por
+muestreando sólo un poco de su té."
+height = 2
+weight = 4
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

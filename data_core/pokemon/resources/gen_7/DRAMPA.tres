@@ -21,8 +21,18 @@
 script = ExtResource("2_cdcts")
 species_id = 1548
 form_id = &"drampa_mega"
-display_name = "Drampa Mega"
+display_name = "Drampa"
 base_species_id = 780
+override_types = true
+type_1 = 1
+type_2 = 17
+override_stats = true
+base_hp = 78
+base_attack = 85
+base_defense = 110
+base_speed = 36
+base_sp_attack = 160
+base_sp_defense = 116
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -31,7 +41,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 201
+ability_2 = 201
+hidden_ability = 201
+override_pokedex = true
+category_name = "Imposible"
+description = "Las células de Drampa han sido
+vigorizado, lo que le permite recuperar
+su juventud. Manipula a los
+atmósfera para convocar tormentas."
+height = 3
+weight = 2405
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

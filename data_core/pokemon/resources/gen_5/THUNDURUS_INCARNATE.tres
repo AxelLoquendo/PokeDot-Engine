@@ -20,8 +20,18 @@
 script = ExtResource("2_ghkmy")
 species_id = 1101
 form_id = &"thundurus_therian"
-display_name = "Thundurus Therian"
+display_name = "Thundurus"
 base_species_id = 642
+override_types = true
+type_1 = 14
+type_2 = 3
+override_stats = true
+base_hp = 79
+base_attack = 105
+base_defense = 70
+base_speed = 101
+base_sp_attack = 145
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,6 +42,17 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 10
+hidden_ability = 10
+override_pokedex = true
+category_name = "Rayo"
+description = "pulveriza a los enemigos en la nada
+con duchas de devastador
+potentes rayos de rayos lanzados
+de la cuerda de orbes en su cola."
+height = 30
+weight = 610
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

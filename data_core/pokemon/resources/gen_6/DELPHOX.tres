@@ -21,8 +21,18 @@
 script = ExtResource("2_4aiun")
 species_id = 1539
 form_id = &"delphox_mega"
-display_name = "Delphox Mega"
+display_name = "Delphox"
 base_species_id = 655
+override_types = true
+type_1 = 11
+type_2 = 15
+override_stats = true
+base_hp = 75
+base_attack = 69
+base_defense = 72
+base_speed = 134
+base_sp_attack = 159
+base_sp_defense = 125
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 26
+ability_2 = 26
+hidden_ability = 26
+override_pokedex = true
+category_name = "Zorro"
+description = "Escudriña ramas en llamas a
+deslumbrar a sus oponentes antes
+incinerarlos con un
+enorme bola de fuego."
+height = 15
+weight = 390
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

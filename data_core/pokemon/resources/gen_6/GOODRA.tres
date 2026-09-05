@@ -22,8 +22,18 @@
 script = ExtResource("2_0xa3j")
 species_id = 1006
 form_id = &"goodra_hisui"
-display_name = "Goodra Hisui"
+display_name = "Goodra"
 base_species_id = 706
+override_types = true
+type_1 = 17
+type_2 = 9
+override_stats = true
+base_hp = 80
+base_attack = 100
+base_defense = 100
+base_speed = 60
+base_sp_attack = 110
+base_sp_defense = 150
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +43,18 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 override_graphics = true
+override_abilities = true
+ability_1 = 157
+ability_2 = 75
+hidden_ability = 183
+override_pokedex = true
+category_name = "Shell Bunker"
+description = "Huele a soledad y es extremadamente
+clingy... se va a fusionar y correr disturbios si
+los más queridos para ella
+Del lado."
+height = 17
+weight = 3341
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

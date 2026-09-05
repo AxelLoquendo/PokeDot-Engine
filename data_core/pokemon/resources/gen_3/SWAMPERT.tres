@@ -22,8 +22,18 @@
 script = ExtResource("2_ui3bf")
 species_id = 929
 form_id = &"swampert_mega"
-display_name = "Swampert Mega"
+display_name = "Swampert"
 base_species_id = 260
+override_types = true
+type_1 = 12
+type_2 = 5
+override_stats = true
+base_hp = 100
+base_attack = 150
+base_defense = 110
+base_speed = 70
+base_sp_attack = 95
+base_sp_defense = 110
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,7 +44,19 @@ cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 6)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 33
+ability_2 = 33
+hidden_ability = 33
+override_pokedex = true
+category_name = "Mud Fish"
+description = "Cuando Mega gira, la fuerza que él
+necesita actuar en el agua se aumenta.
+Puede utilizar su poder tenaz
+tanto en tierra como en el agua."
+height = 19
+weight = 1020
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

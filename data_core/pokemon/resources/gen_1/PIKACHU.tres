@@ -92,8 +92,17 @@ conditions = Array[ExtResource("2_t0ch3")]([SubResource("Resource_cond0")])
 script = ExtResource("4_b0o4p")
 species_id = 1009
 form_id = &"pikachu_cosplay"
-display_name = "Pikachu Cosplay"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -102,14 +111,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Almacena electricidad en los sacos eléctricos
+en sus mejillas. Cuando libera pent-up
+energía en una explosión, la energía eléctrica es
+igual a un rayo."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("4_b0o4p")
 species_id = 1010
 form_id = &"pikachu_rock_star"
-display_name = "Pikachu Rock Star"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -118,14 +147,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Almacena electricidad en los sacos eléctricos
+en sus mejillas. Cuando libera pent-up
+energía en una explosión, la energía eléctrica es
+igual a un rayo."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("4_b0o4p")
 species_id = 1011
 form_id = &"pikachu_belle"
-display_name = "Pikachu Belle"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
@@ -134,14 +183,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Almacena electricidad en los sacos eléctricos
+en sus mejillas. Cuando libera pent-up
+energía en una explosión, la energía eléctrica es
+igual a un rayo."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("4_b0o4p")
 species_id = 1012
 form_id = &"pikachu_pop_star"
-display_name = "Pikachu Pop Star"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx119")
 front_sprite_shiny = ExtResource("gfx120")
 back_sprite = ExtResource("gfx121")
@@ -150,14 +219,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Almacena electricidad en los sacos eléctricos
+en sus mejillas. Cuando libera pent-up
+energía en una explosión, la energía eléctrica es
+igual a un rayo."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("4_b0o4p")
 species_id = 1013
 form_id = &"pikachu_phd"
-display_name = "Pikachu Phd"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx123")
 front_sprite_shiny = ExtResource("gfx124")
 back_sprite = ExtResource("gfx125")
@@ -166,14 +255,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Almacena electricidad en los sacos eléctricos
+en sus mejillas. Cuando libera pent-up
+energía en una explosión, la energía eléctrica es
+igual a un rayo."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("4_b0o4p")
 species_id = 1014
 form_id = &"pikachu_libre"
-display_name = "Pikachu Libre"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx127")
 front_sprite_shiny = ExtResource("gfx128")
 back_sprite = ExtResource("gfx129")
@@ -182,14 +291,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Almacena electricidad en los sacos eléctricos
+en sus mejillas. Cuando libera pent-up
+energía en una explosión, la energía eléctrica es
+igual a un rayo."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("4_b0o4p")
 species_id = 1015
 form_id = &"pikachu_original"
-display_name = "Pikachu Original"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx131")
 front_sprite_shiny = ExtResource("gfx132")
 back_sprite = ExtResource("gfx133")
@@ -198,14 +327,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su socio formado durante las aventuras
+en muchas regiones diferentes."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("4_b0o4p")
 species_id = 1016
 form_id = &"pikachu_hoenn"
-display_name = "Pikachu Hoenn"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx135")
 front_sprite_shiny = ExtResource("gfx136")
 back_sprite = ExtResource("gfx137")
@@ -214,14 +363,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su socio formado durante las aventuras
+a través de la región Hoenn juntos."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("4_b0o4p")
 species_id = 1017
 form_id = &"pikachu_sinnoh"
-display_name = "Pikachu Sinnoh"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx139")
 front_sprite_shiny = ExtResource("gfx140")
 back_sprite = ExtResource("gfx141")
@@ -230,14 +399,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su socio formado durante las aventuras
+a través de la región de Sinnoh juntos."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_9"]
 script = ExtResource("4_b0o4p")
 species_id = 1018
 form_id = &"pikachu_unova"
-display_name = "Pikachu Unova"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx143")
 front_sprite_shiny = ExtResource("gfx144")
 back_sprite = ExtResource("gfx145")
@@ -246,14 +435,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su socio formado durante las aventuras
+a través de la región de Unova juntos."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_10"]
 script = ExtResource("4_b0o4p")
 species_id = 1019
 form_id = &"pikachu_kalos"
-display_name = "Pikachu Kalos"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx147")
 front_sprite_shiny = ExtResource("gfx148")
 back_sprite = ExtResource("gfx149")
@@ -262,14 +471,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su socio formado durante las aventuras
+en la región de Kalos juntos."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_11"]
 script = ExtResource("4_b0o4p")
 species_id = 1020
 form_id = &"pikachu_alola"
-display_name = "Pikachu Alola"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx151")
 front_sprite_shiny = ExtResource("gfx152")
 back_sprite = ExtResource("gfx153")
@@ -280,14 +509,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su socio formado durante las aventuras
+en la región de Alola juntos."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_12"]
 script = ExtResource("4_b0o4p")
 species_id = 1021
 form_id = &"pikachu_partner"
-display_name = "Pikachu Partner"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx157")
 front_sprite_shiny = ExtResource("gfx158")
 back_sprite = ExtResource("gfx159")
@@ -296,14 +545,34 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su pareja se formó como los dos
+muchas dificultades juntas."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_13"]
 script = ExtResource("4_b0o4p")
 species_id = 1022
 form_id = &"pikachu_world"
-display_name = "Pikachu World"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_defense = 40
+base_speed = 90
+base_sp_attack = 50
+base_sp_defense = 50
 front_sprite = ExtResource("gfx161")
 front_sprite_shiny = ExtResource("gfx162")
 back_sprite = ExtResource("gfx163")
@@ -312,26 +581,64 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Este Pikachu lleva la gorra de su compañero, que
+es prueba del fuerte vínculo Pikachu y
+su socio formado durante las aventuras
+en todo el mundo juntos."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_14"]
 script = ExtResource("4_b0o4p")
 species_id = 1487
 form_id = &"pikachu_starter"
-display_name = "Pikachu Starter"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 45
+base_attack = 80
+base_defense = 50
+base_speed = 120
+base_sp_attack = 75
+base_sp_defense = 60
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 4)
 override_graphics = true
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Almacena electricidad en los sacos eléctricos
+en sus mejillas. Cuando libera pent-up
+energía en una explosión, la energía eléctrica es
+igual a un rayo."
+height = 4
+weight = 60
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_15"]
 script = ExtResource("4_b0o4p")
 species_id = 1493
 form_id = &"pikachu_gmax"
-display_name = "Pikachu Gmax"
+display_name = "Pikachu"
 base_species_id = 25
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 35
+base_attack = 55
+base_speed = 90
+base_sp_attack = 50
 front_sprite = ExtResource("gfx165")
 front_sprite_shiny = ExtResource("gfx166")
 back_sprite = ExtResource("gfx167")
@@ -341,7 +648,17 @@ overworld_scene = ExtResource("gfx156")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 2)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 9
+hidden_ability = 31
+override_pokedex = true
+category_name = "Ratón"
+description = "Cuando rompe a sus oponentes con
+su cola en forma de perno, entrega una
+aumento de la electricidad equivalente a
+huelga de rayo."
+height = 210
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

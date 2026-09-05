@@ -20,8 +20,17 @@
 script = ExtResource("2_db0vr")
 species_id = 1061
 form_id = &"cherrim_sunshine"
-display_name = "Cherrim Sunshine"
+display_name = "Cherrim"
 base_species_id = 421
+override_types = true
+type_1 = 13
+override_stats = true
+base_hp = 70
+base_attack = 60
+base_defense = 70
+base_speed = 85
+base_sp_attack = 87
+base_sp_defense = 78
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -30,6 +39,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 12)
 back_sprite_offset = Vector2(0, 6)
 override_graphics = true
+override_abilities = true
+ability_1 = 122
+override_pokedex = true
+category_name = "Blossom"
+description = "Cherrim toma este formulario en días soleados.
+Su olor débil envuelve a Pokémon.
+Cierra inmediatamente sus pétalos y
+se vuelve inmóvil una vez que el sol se esconde."
+height = 5
+weight = 93
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

@@ -22,8 +22,18 @@
 script = ExtResource("2_gs7ai")
 species_id = 916
 form_id = &"pinsir_mega"
-display_name = "Pinsir Mega"
+display_name = "Pinsir"
 base_species_id = 127
+override_types = true
+type_1 = 7
+type_2 = 3
+override_stats = true
+base_hp = 65
+base_attack = 155
+base_defense = 120
+base_speed = 105
+base_sp_attack = 65
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,7 +44,19 @@ cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 184
+ability_2 = 184
+hidden_ability = 184
+override_pokedex = true
+category_name = "Escarabajo"
+description = "La influencia de Megaevolución lo deja
+en un estado de emoción constante.
+Pierde enemigos con sus dos grandes
+cuernos antes de que los trituraran."
+height = 17
+weight = 590
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

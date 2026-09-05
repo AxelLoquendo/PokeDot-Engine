@@ -22,8 +22,18 @@
 script = ExtResource("2_fo7mx")
 species_id = 1004
 form_id = &"braviary_hisui"
-display_name = "Braviary Hisui"
+display_name = "Braviary"
 base_species_id = 628
+override_types = true
+type_1 = 15
+type_2 = 3
+override_stats = true
+base_hp = 110
+base_attack = 83
+base_defense = 70
+base_speed = 65
+base_sp_attack = 112
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,6 +43,17 @@ overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 51
+ability_2 = 125
+hidden_ability = 110
+override_pokedex = true
+category_name = "Battle Cry"
+description = "Gritando una batalla sangrienta
+llanto, este enorme y feroz pájaro
+Pokémon sale a la caza."
+height = 17
+weight = 434
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

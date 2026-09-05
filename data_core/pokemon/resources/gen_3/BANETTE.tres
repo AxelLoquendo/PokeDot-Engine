@@ -22,8 +22,17 @@
 script = ExtResource("2_tapap")
 species_id = 939
 form_id = &"banette_mega"
-display_name = "Banette Mega"
+display_name = "Banette"
 base_species_id = 354
+override_types = true
+type_1 = 8
+override_stats = true
+base_hp = 64
+base_attack = 165
+base_defense = 75
+base_speed = 75
+base_sp_attack = 93
+base_sp_defense = 83
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +41,18 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 158
+ability_2 = 158
+hidden_ability = 158
+override_pokedex = true
+category_name = "Marionette"
+description = "Energía extraordinaria amplifica su
+curando el poder hasta tal punto que
+No puede evitar maldecir a su propio Entrenador."
+height = 12
+weight = 130
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

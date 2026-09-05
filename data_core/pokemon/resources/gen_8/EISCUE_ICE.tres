@@ -16,8 +16,17 @@
 script = ExtResource("2_f6dcv")
 species_id = 1224
 form_id = &"eiscue_noice"
-display_name = "Eiscue Noice"
+display_name = "Eiscue"
 base_species_id = 875
+override_types = true
+type_1 = 16
+override_stats = true
+base_hp = 75
+base_attack = 80
+base_defense = 70
+base_speed = 130
+base_sp_attack = 65
+base_sp_defense = 50
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -26,6 +35,16 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 248
+override_pokedex = true
+category_name = "Pingüino"
+description = "El cabello en su cabeza se conecta a
+la superficie de su cerebro. Cuando esto
+Pokémon tiene algo en su mente,
+su pelo enfria el aire alrededor."
+height = 14
+weight = 890
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

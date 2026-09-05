@@ -20,8 +20,17 @@
 script = ExtResource("2_rva2t")
 species_id = 1100
 form_id = &"tornadus_therian"
-display_name = "Tornadus Therian"
+display_name = "Tornadus"
 base_species_id = 641
+override_types = true
+type_1 = 3
+override_stats = true
+base_hp = 79
+base_attack = 100
+base_defense = 80
+base_speed = 121
+base_sp_attack = 110
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -30,6 +39,17 @@ icon_sprite = ExtResource("gfx104")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
+override_abilities = true
+ability_1 = 144
+hidden_ability = 144
+override_pokedex = true
+category_name = "Ciclone"
+description = "Un ejemplo de lo que se conoce como un
+“forma cambio”. Tornadus ha sido
+avistado cruzando el océano mientras que en este
+forma."
+height = 14
+weight = 630
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

@@ -21,8 +21,18 @@
 script = ExtResource("2_k3j04")
 species_id = 1515
 form_id = &"centiskorch_gmax"
-display_name = "Centiskorch Gmax"
+display_name = "Centiskorch"
 base_species_id = 851
+override_types = true
+type_1 = 11
+type_2 = 7
+override_stats = true
+base_hp = 100
+base_attack = 115
+base_defense = 65
+base_speed = 65
+base_sp_attack = 90
+base_sp_defense = 90
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,18 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 5)
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 18
+ability_2 = 73
+hidden_ability = 49
+override_pokedex = true
+category_name = "Radiador"
+description = "El calor que sale de una
+Gigantamax Centiskorch puede
+desestabilizar las corrientes de aire. A veces.
+Incluso puede causar tormentas."
+height = 750
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

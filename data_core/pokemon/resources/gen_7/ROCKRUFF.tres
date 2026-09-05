@@ -56,12 +56,31 @@ conditions = Array[ExtResource("2_1vgto")]([SubResource("Resource_cond3"), SubRe
 script = ExtResource("5_26uo0")
 species_id = 1172
 form_id = &"rockruff_own_tempo"
-display_name = "Rockruff Own Tempo"
+display_name = "Rockruff"
 base_species_id = 744
+override_types = true
+type_1 = 6
+override_stats = true
+base_hp = 45
+base_attack = 65
+base_defense = 40
+base_speed = 60
+base_sp_attack = 30
+base_sp_defense = 40
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 11)
 back_sprite_offset = Vector2(0, 7)
 override_graphics = true
+override_abilities = true
+ability_1 = 20
+override_pokedex = true
+category_name = "Cachorro"
+description = "Este Pokémon ha vivido con gente desde entonces
+hace mucho tiempo. Puede sentir cuando es
+El entrenador está en los vertederos y se pegará
+cerca del lado del Entrenador."
+height = 5
+weight = 92
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

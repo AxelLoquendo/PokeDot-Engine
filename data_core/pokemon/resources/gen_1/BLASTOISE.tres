@@ -28,8 +28,17 @@
 script = ExtResource("2_8gu3i")
 species_id = 909
 form_id = &"blastoise_mega"
-display_name = "Blastoise Mega"
+display_name = "Blastoise"
 base_species_id = 9
+override_types = true
+type_1 = 12
+override_stats = true
+base_hp = 79
+base_attack = 103
+base_defense = 120
+base_speed = 78
+base_sp_attack = 135
+base_sp_defense = 115
 front_sprite = ExtResource("9_0fw2h")
 front_sprite_shiny = ExtResource("10_1sk1p")
 back_sprite = ExtResource("6_tsrwg")
@@ -38,14 +47,34 @@ icon_sprite = ExtResource("11_3hgmw")
 overworld_scene = ExtResource("22_4y0h2")
 cry = ExtResource("8_co3lh")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 178
+ability_2 = 178
+hidden_ability = 178
+override_pokedex = true
+category_name = "Marisco"
+description = "El cañón en su espalda es tan poderoso
+como arma de tanque. Sus piernas duras y la espalda
+permitir que resista el retroceso desde
+Disparando el cañón."
+height = 16
+weight = 1011
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_8gu3i")
 species_id = 1490
 form_id = &"blastoise_gmax"
-display_name = "Blastoise Gmax"
+display_name = "Blastoise"
 base_species_id = 9
+override_types = true
+type_1 = 12
+override_stats = true
+base_hp = 79
+base_attack = 83
+base_defense = 100
+base_speed = 78
+base_sp_attack = 85
 front_sprite = ExtResource("16_tfokb")
 front_sprite_shiny = ExtResource("17_whc3q")
 back_sprite = ExtResource("13_bu2ia")
@@ -56,7 +85,17 @@ cry = ExtResource("15_604rn")
 front_sprite_offset = Vector2(0, 5)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 67
+hidden_ability = 44
+override_pokedex = true
+category_name = "Marisco"
+description = "No es muy bueno con precisión.
+disparos. Cuando atacan, se dispara.
+sus 31 cañones una y otra vez
+Cambio."
+height = 250
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

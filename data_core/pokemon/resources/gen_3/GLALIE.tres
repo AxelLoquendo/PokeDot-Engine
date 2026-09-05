@@ -22,8 +22,17 @@
 script = ExtResource("2_3sw08")
 species_id = 941
 form_id = &"glalie_mega"
-display_name = "Glalie Mega"
+display_name = "Glalie"
 base_species_id = 362
+override_types = true
+type_1 = 16
+override_stats = true
+base_hp = 80
+base_attack = 120
+base_defense = 80
+base_speed = 100
+base_sp_attack = 120
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,7 +43,18 @@ cry = ExtResource("gfx112")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 10)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 174
+ability_2 = 174
+hidden_ability = 174
+override_pokedex = true
+category_name = "Cara"
+description = "El poder de Megaevolución era tan fuerte
+que rompió la mandíbula de Glalie. Su incapacidad
+comer muy bien hojas Glalie irritado."
+height = 21
+weight = 3502
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

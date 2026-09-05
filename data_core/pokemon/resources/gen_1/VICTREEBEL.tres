@@ -21,8 +21,18 @@
 script = ExtResource("2_jvy2l")
 species_id = 1525
 form_id = &"victreebel_mega"
-display_name = "Victreebel Mega"
+display_name = "Victreebel"
 base_species_id = 71
+override_types = true
+type_1 = 13
+type_2 = 4
+override_stats = true
+base_hp = 80
+base_attack = 125
+base_defense = 85
+base_speed = 70
+base_sp_attack = 135
+base_sp_defense = 95
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 215
+ability_2 = 215
+hidden_ability = 215
+override_pokedex = true
+category_name = "Atrapamoscas"
+description = "El volumen del ácido de Pokémon
+ha aumentado debido a Megaevolución,
+llenando su boca. Si no es cuidadoso,
+el ácido se desbordará y se derramará."
+height = 45
+weight = 1255
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

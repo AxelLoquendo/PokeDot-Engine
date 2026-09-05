@@ -21,8 +21,16 @@
 script = ExtResource("2_5s04e")
 species_id = 1500
 form_id = &"snorlax_gmax"
-display_name = "Snorlax Gmax"
+display_name = "Snorlax"
 base_species_id = 143
+override_types = true
+type_1 = 1
+override_stats = true
+base_hp = 160
+base_attack = 110
+base_defense = 65
+base_speed = 30
+base_sp_attack = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +40,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 17
+ability_2 = 47
+hidden_ability = 82
+override_pokedex = true
+category_name = "Durmiente"
+description = "Gigantamax energía ha afectado
+semillas perdidas e incluso piedras que
+se atascó a Snorlax, haciendo que crezcan
+a un tamaño enorme."
+height = 350
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

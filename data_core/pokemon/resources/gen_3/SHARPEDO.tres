@@ -22,8 +22,18 @@
 script = ExtResource("2_41bnh")
 species_id = 936
 form_id = &"sharpedo_mega"
-display_name = "Sharpedo Mega"
+display_name = "Sharpedo"
 base_species_id = 319
+override_types = true
+type_1 = 12
+type_2 = 18
+override_stats = true
+base_hp = 70
+base_attack = 140
+base_defense = 70
+base_speed = 105
+base_sp_attack = 110
+base_sp_defense = 65
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -33,7 +43,19 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 173
+ability_2 = 173
+hidden_ability = 173
+override_pokedex = true
+category_name = "Brutal"
+description = "Los patrones amarillos que lleva son cicatrices viejas.
+La energía de Megaevolución corre
+a través de ellos, causando dolor agudo y
+sufrimiento."
+height = 25
+weight = 1303
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

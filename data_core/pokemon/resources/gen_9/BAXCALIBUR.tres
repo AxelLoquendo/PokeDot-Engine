@@ -21,8 +21,18 @@
 script = ExtResource("2_upu5s")
 species_id = 1568
 form_id = &"baxcalibur_mega"
-display_name = "Baxcalibur Mega"
+display_name = "Baxcalibur"
 base_species_id = 1390
+override_types = true
+type_1 = 17
+type_2 = 16
+override_stats = true
+base_hp = 115
+base_attack = 175
+base_defense = 117
+base_speed = 87
+base_sp_attack = 105
+base_sp_defense = 101
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,18 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 270
+hidden_ability = 115
+override_pokedex = true
+category_name = "Ice Dragon"
+description = "La espada dorsal de Baxcalibur ha crecido incluso
+más masiva gracias a Megaevolución.
+Este Pokémon dispara vigas de la empuñadura
+en su plexo solar."
+height = 21
+weight = 3150
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

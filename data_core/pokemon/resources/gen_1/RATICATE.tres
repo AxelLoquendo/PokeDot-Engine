@@ -22,8 +22,18 @@
 script = ExtResource("2_skdty")
 species_id = 957
 form_id = &"raticate_alola"
-display_name = "Raticate Alola"
+display_name = "Raticate"
 base_species_id = 20
+override_types = true
+type_1 = 18
+type_2 = 1
+override_stats = true
+base_hp = 75
+base_attack = 71
+base_defense = 70
+base_speed = 77
+base_sp_attack = 40
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -34,14 +44,36 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 82
+ability_2 = 55
+hidden_ability = 47
+override_pokedex = true
+category_name = "Ratón"
+description = "Forma un grupo de Rattata, que es
+asume el mando. Cada grupo
+tiene su propio territorio, y controversias
+sobre la comida ocurre a menudo."
+height = 7
+weight = 255
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_skdty")
 species_id = 1476
 form_id = &"raticate_alola_totem"
-display_name = "Raticate Alola Totem"
+display_name = "Raticate"
 base_species_id = 20
+override_types = true
+type_1 = 18
+type_2 = 1
+override_stats = true
+base_hp = 75
+base_attack = 71
+base_defense = 70
+base_speed = 77
+base_sp_attack = 40
+base_sp_defense = 80
 front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
@@ -52,6 +84,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
 back_sprite_offset = Vector2(0, 8)
 override_graphics = true
+override_abilities = true
+ability_1 = 47
+override_pokedex = true
+category_name = "Ratón"
+description = "Forma un grupo de Rattata, que es
+asume el mando. Cada grupo
+tiene su propio territorio, y controversias
+sobre la comida ocurre a menudo."
+height = 14
+weight = 1050
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

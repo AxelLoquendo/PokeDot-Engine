@@ -22,8 +22,18 @@
 script = ExtResource("2_tvbn6")
 species_id = 926
 form_id = &"tyranitar_mega"
-display_name = "Tyranitar Mega"
+display_name = "Tyranitar"
 base_species_id = 248
+override_types = true
+type_1 = 6
+type_2 = 18
+override_stats = true
+base_hp = 100
+base_attack = 164
+base_defense = 150
+base_speed = 71
+base_sp_attack = 95
+base_sp_defense = 120
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +42,19 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx112")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 45
+ability_2 = 45
+hidden_ability = 45
+override_pokedex = true
+category_name = "Armadura"
+description = "Debido al poder colosal derramado en él,
+Este Pokémon está abierto. Es...
+instintos destructivos son lo único
+manteniéndolo en movimiento."
+height = 25
+weight = 2550
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

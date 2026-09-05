@@ -28,8 +28,18 @@
 script = ExtResource("2_6n8x8")
 species_id = 1097
 form_id = &"sawsbuck_summer"
-display_name = "Sawsbuck Summer"
+display_name = "Sawsbuck"
 base_species_id = 586
+override_types = true
+type_1 = 1
+type_2 = 13
+override_stats = true
+base_hp = 80
+base_attack = 100
+base_defense = 70
+base_speed = 95
+base_sp_attack = 60
+base_sp_defense = 70
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -37,14 +47,36 @@ back_sprite_shiny = ExtResource("gfx110")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 34
+ability_2 = 157
+hidden_ability = 32
+override_pokedex = true
+category_name = "Estación"
+description = "El más grueso y más grande
+ramas y hojas en sus hormigas,
+más majestuoso el Sawsbuck se piensa
+para serlo."
+height = 19
+weight = 925
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_6n8x8")
 species_id = 1098
 form_id = &"sawsbuck_autumn"
-display_name = "Sawsbuck Autumn"
+display_name = "Sawsbuck"
 base_species_id = 586
+override_types = true
+type_1 = 1
+type_2 = 13
+override_stats = true
+base_hp = 80
+base_attack = 100
+base_defense = 70
+base_speed = 95
+base_sp_attack = 60
+base_sp_defense = 70
 front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
@@ -52,14 +84,36 @@ back_sprite_shiny = ExtResource("gfx114")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 34
+ability_2 = 157
+hidden_ability = 32
+override_pokedex = true
+category_name = "Estación"
+description = "Sawsbuck en su forma de otoño son
+conocido por tener muy corto
+temperamentos. Los machos se pelean entre sí
+incesantemente."
+height = 19
+weight = 925
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_6n8x8")
 species_id = 1099
 form_id = &"sawsbuck_winter"
-display_name = "Sawsbuck Winter"
+display_name = "Sawsbuck"
 base_species_id = 586
+override_types = true
+type_1 = 1
+type_2 = 13
+override_stats = true
+base_hp = 80
+base_attack = 100
+base_defense = 70
+base_speed = 95
+base_sp_attack = 60
+base_sp_defense = 70
 front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
@@ -67,6 +121,18 @@ back_sprite_shiny = ExtResource("gfx118")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 34
+ability_2 = 157
+hidden_ability = 32
+override_pokedex = true
+category_name = "Estación"
+description = "Aunque hay muchos entusiastas
+para Sawsbuck como especie, esto
+forma estacional en particular no
+muy popular."
+height = 19
+weight = 925
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

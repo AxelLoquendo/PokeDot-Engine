@@ -34,8 +34,18 @@ conditions = Array[ExtResource("2_bo7rv")]([SubResource("Resource_cond0")])
 script = ExtResource("4_ck7kp")
 species_id = 1520
 form_id = &"duraludon_gmax"
-display_name = "Duraludon Gmax"
+display_name = "Duraludon"
 base_species_id = 884
+override_types = true
+type_1 = 9
+type_2 = 17
+override_stats = true
+base_hp = 70
+base_attack = 95
+base_defense = 115
+base_speed = 85
+base_sp_attack = 120
+base_sp_defense = 50
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -44,7 +54,18 @@ icon_sprite = ExtResource("gfx111")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 135
+ability_2 = 134
+hidden_ability = 242
+override_pokedex = true
+category_name = "Aleación"
+description = "La dureza de sus células es
+excepcional, incluso entre los tipos de acero. It
+también tiene una estructura corporal que
+resistente a terremotos."
+height = 430
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

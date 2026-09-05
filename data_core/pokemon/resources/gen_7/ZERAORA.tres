@@ -21,8 +21,17 @@
 script = ExtResource("2_cveon")
 species_id = 1552
 form_id = &"zeraora_mega"
-display_name = "Zeraora Mega"
+display_name = "Zeraora"
 base_species_id = 807
+override_types = true
+type_1 = 14
+override_stats = true
+base_hp = 88
+base_attack = 157
+base_defense = 75
+base_speed = 153
+base_sp_attack = 147
+base_sp_defense = 80
 front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
@@ -32,7 +41,17 @@ overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 10
+override_pokedex = true
+category_name = "Thunderclap"
+description = "Almacena 10 relámpagos vale la pena
+de electricidad. Cuando deja de limitarse
+en sí mismo, está en la clase más fuerte
+Pokémon eléctrico."
+height = 15
+weight = 445
+tags = PackedStringArray("mega")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")

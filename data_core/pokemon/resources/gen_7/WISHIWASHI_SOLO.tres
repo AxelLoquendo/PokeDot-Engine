@@ -20,8 +20,10 @@
 script = ExtResource("2_4ejq5")
 species_id = 1175
 form_id = &"wishiwashi_school"
-display_name = "Wishiwashi School"
+display_name = "Wishiwashi"
 base_species_id = 746
+override_types = true
+type_1 = 12
 override_stats = true
 base_hp = 45
 base_attack = 140
@@ -39,6 +41,16 @@ cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 4)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
+override_abilities = true
+ability_1 = 208
+override_pokedex = true
+category_name = "Fry pequeño"
+description = "Cuando enfrentan oponentes duros,
+Entra en formación. Pero si consiguen
+heridos en la batalla, se dispersarán
+y volver a ser solitario."
+height = 82
+weight = 786
 tags = PackedStringArray()
 
 [sub_resource type="Resource" id="Resource_move0"]

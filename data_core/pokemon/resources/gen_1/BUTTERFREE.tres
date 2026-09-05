@@ -22,8 +22,17 @@
 script = ExtResource("2_aognd")
 species_id = 1492
 form_id = &"butterfree_gmax"
-display_name = "Butterfree Gmax"
+display_name = "Butterfree"
 base_species_id = 12
+override_types = true
+type_1 = 7
+type_2 = 3
+override_stats = true
+base_hp = 60
+base_attack = 45
+base_defense = 50
+base_speed = 70
+base_sp_defense = 80
 front_sprite = ExtResource("9_n3e6d")
 front_sprite_shiny = ExtResource("10_1kj6s")
 back_sprite = ExtResource("6_h8b6e")
@@ -34,7 +43,17 @@ cry = ExtResource("8_cm4w1")
 front_sprite_offset = Vector2(0, 1)
 back_sprite_offset = Vector2(0, 3)
 override_graphics = true
-tags = PackedStringArray()
+override_abilities = true
+ability_1 = 14
+hidden_ability = 110
+override_pokedex = true
+category_name = "Mariposa"
+description = "Una vez que tiene oponentes atrapados en un
+tornado que podría volar un 10-
+camión de tonelada, los termina con
+sus escalas venenosas."
+height = 170
+tags = PackedStringArray("gmax")
 
 [sub_resource type="Resource" id="Resource_move0"]
 script = ExtResource("2_learn")
