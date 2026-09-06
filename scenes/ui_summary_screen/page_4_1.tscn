@@ -54,6 +54,14 @@ scale = Vector2(1, 1.05)
 texture = ExtResource("1_iwsvc")
 vframes = 2
 
+[node name="Cursor_box_origen" type="Sprite2D" parent="." unique_id=1724256935]
+visible = false
+position = Vector2(344, 106)
+scale = Vector2(1, 1.05)
+texture = ExtResource("1_iwsvc")
+vframes = 2
+frame = 1
+
 [node name="Move_Detail" type="Sprite2D" parent="." unique_id=200415654]
 position = Vector2(103, 182)
 texture = ExtResource("2_tkh7q")

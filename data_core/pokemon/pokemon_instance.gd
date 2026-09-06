@@ -230,8 +230,14 @@ func apply_status(new_status: Status) -> bool:
 
 ## Añade experiencia, sube de nivel las veces necesarias, recalcula stats
 ## y aprende movimientos nuevos de nivel. No maneja evoluciones todavía.
+##
+## Si el Pokémon ya conoce 4 movimientos, el nuevo movimiento NO se aprende
+## automáticamente (para eso ya no hay espacio libre): en vez de eso se añade
+## a "pending_moves" para que quien llame a esta función (normalmente el
+## combate) le pregunte al jugador qué movimiento olvidar, usando
+## replace_move_at().
 func gain_exp(amount: int) -> Dictionary:
-	var result: Dictionary = {"levels_gained": 0, "learned_moves": []}
+	var result: Dictionary = {"levels_gained": 0, "learned_moves": [], "pending_moves": []}
 	var species: PokemonDataStruct = get_species()
 	if species == null or amount <= 0 or level >= ExperienceSystem.MAX_LEVEL:
 		return result
@@ -246,9 +252,15 @@ func gain_exp(amount: int) -> Dictionary:
 		result["levels_gained"] += 1
 		recalculate_stats()
 		for entry: LevelUpMove in species.level_up_moves:
-			if entry and entry.level == level:
+			if entry == null or entry.level != level:
+				continue
+			if knows_move(entry.move):
+				continue
+			if has_free_move_slot():
 				if learn_move(entry.move):
 					result["learned_moves"].append(entry.move)
+			else:
+				result["pending_moves"].append(entry.move)
 
 	return result
 
@@ -368,13 +380,27 @@ func recalculate_stats() -> void:
 # MOVIMIENTOS
 # ============================================================
 
+func knows_move(move_id: Moves.MoveId) -> bool:
+	for slot: PokemonMoveSlot in moves:
+		if slot and slot.move_id == move_id:
+			return true
+	return false
+
+
+func has_free_move_slot() -> bool:
+	return moves.size() < 4
+
+
+## Aprende un movimiento nuevo. Si ya tiene 4 movimientos, olvida el más
+## antiguo automáticamente (sin preguntar). Se usa al crear un Pokémon y al
+## evolucionar. Para el flujo interactivo de combate (donde se le pregunta
+## al jugador qué movimiento olvidar) usa gain_exp()/replace_move_at().
 func learn_move(move_id: Moves.MoveId) -> bool:
 	if move_id == Moves.MoveId.MOVE_NONE:
 		return false
 
-	for slot: PokemonMoveSlot in moves:
-		if slot and slot.move_id == move_id:
-			return false
+	if knows_move(move_id):
+		return false
 
 	var new_slot: PokemonMoveSlot = PokemonMoveSlot.new()
 	new_slot.setup(move_id)
@@ -383,6 +409,23 @@ func learn_move(move_id: Moves.MoveId) -> bool:
 		moves.pop_front()
 
 	moves.append(new_slot)
+	return true
+
+
+## Reemplaza el movimiento en "index" (0-3) por uno nuevo, conservando su
+## posición en la lista. Pensado para cuando el jugador elige explícitamente
+## qué movimiento olvidar (pantalla Page_4_2 / SummaryPageMoveLearned).
+func replace_move_at(index: int, move_id: Moves.MoveId) -> bool:
+	if move_id == Moves.MoveId.MOVE_NONE:
+		return false
+	if index < 0 or index >= moves.size():
+		return false
+	if knows_move(move_id):
+		return false
+
+	var new_slot: PokemonMoveSlot = PokemonMoveSlot.new()
+	new_slot.setup(move_id)
+	moves[index] = new_slot
 	return true
 
 

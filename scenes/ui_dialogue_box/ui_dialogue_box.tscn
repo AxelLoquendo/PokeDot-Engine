@@ -204,6 +204,7 @@ _data = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1957761113 groups=["dialogue_box"]]
+layer = 120
 script = ExtResource("1_78i0o")
 
 [node name="Control" type="Control" parent="." unique_id=2017807056]

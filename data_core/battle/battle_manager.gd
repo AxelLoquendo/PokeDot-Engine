@@ -23,6 +23,10 @@ var is_trainer_battle: bool = false
 var weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
 var weather_turns: int = -1
 
+## Pantalla para elegir qué movimiento olvidar cuando un Pokémon con 4
+## movimientos completos quiere aprender uno nuevo durante el combate.
+const MOVE_LEARN_SCENE: PackedScene = preload("res://scenes/ui_summary_screen/move_learn_screen.tscn")
+
 func start_battle(player_pokemon: PokemonInstance, enemy_pokemon: PokemonInstance, party: Array[PokemonInstance] = [], enemy_trainer_party: Array[PokemonInstance] = []) -> void:
 	player = BattleBattler.new()
 	player.setup(player_pokemon, true)
@@ -227,8 +231,102 @@ func _award_experience() -> void:
 				move_data.move_name if move_data else "un movimiento"
 			])
 			await _wait(0.9)
+		for move_id: Moves.MoveId in result.get("pending_moves", []):
+			await _try_learn_move_interactive(player.pokemon, move_id)
 		await _check_evolution(player)
 	player_progress_changed.emit()
+
+
+## Se llama cuando un Pokémon ya tiene 4 movimientos y quiere aprender uno
+## nuevo. Le pregunta al jugador si quiere aprenderlo (Sí/No) y, en caso
+## afirmativo, abre la pantalla de selección (Page_4_2) para elegir qué
+## movimiento olvidar. Si el jugador cancela en cualquier punto, el Pokémon
+## simplemente no aprende el movimiento.
+func _try_learn_move_interactive(pokemon: PokemonInstance, move_id: Moves.MoveId) -> void:
+	var move_data: MoveData = MoveDatabase.get_move(move_id)
+	var move_name: String = move_data.move_name if move_data else "un movimiento nuevo"
+	var pkmn_nombre: String = pokemon.get_display_name()
+
+	message.emit("¡%s quiere aprender %s!" % [pkmn_nombre, move_name])
+	await _wait(0.7)
+	message.emit("Pero %s ya conoce cuatro movimientos." % pkmn_nombre)
+	await _wait(0.7)
+
+	var quiere_aprender: bool = await _preguntar_si_no(
+		"¿Quieres que %s aprenda %s?" % [pkmn_nombre, move_name]
+	)
+
+	if not quiere_aprender:
+		var abandona: bool = await _preguntar_si_no(
+			"¿Renunciar a que %s aprenda %s?" % [pkmn_nombre, move_name]
+		)
+		if not abandona:
+			# El jugador se arrepintió: volvemos a preguntar desde el inicio.
+			await _try_learn_move_interactive(pokemon, move_id)
+			return
+		message.emit("%s no aprendió %s." % [pkmn_nombre, move_name])
+		await _wait(0.7)
+		return
+
+	var eleccion: Dictionary = await _elegir_movimiento_a_olvidar(pokemon, move_id)
+	if eleccion.get("cancelado", true):
+		message.emit("%s no aprendió %s." % [pkmn_nombre, move_name])
+		await _wait(0.7)
+		return
+
+	var indice: int = eleccion.get("indice", -1)
+	var slot_anterior: PokemonMoveSlot = (
+		pokemon.moves[indice] if indice >= 0 and indice < pokemon.moves.size() else null
+	)
+	var nombre_olvidado: String = ""
+	if slot_anterior and not slot_anterior.is_empty():
+		var data_anterior: MoveData = MoveDatabase.get_move(slot_anterior.move_id)
+		nombre_olvidado = data_anterior.move_name if data_anterior else ""
+
+	if not pokemon.replace_move_at(indice, move_id):
+		return
+
+	if nombre_olvidado != "":
+		message.emit("¡%s olvidó %s...!" % [pkmn_nombre, nombre_olvidado])
+		await _wait(0.6)
+	message.emit("¡%s aprendió %s!" % [pkmn_nombre, move_name])
+	await _wait(0.9)
+
+
+## Muestra una pregunta de Sí/No usando el DialogueBox del árbol de escena
+## (grupo "dialogue_box") y devuelve true si el jugador elige "Sí".
+## Si no hay caja de diálogo disponible, se asume "Sí" para no bloquear
+## el combate.
+func _preguntar_si_no(pregunta: String) -> bool:
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return true
+
+	var caja: DialogueBox = tree.get_first_node_in_group("dialogue_box") as DialogueBox
+	if caja == null:
+		return true
+
+	DialogueManager.show_texts([pregunta], "", null, ["Sí", "No"])
+	var choice_id: String = await caja.choice_selected
+	return choice_id == "0"
+
+
+## Instancia la pantalla de aprendizaje de movimiento (MoveLearnScreen, que
+## envuelve a Page_4_2 / SummaryPageMoveLearned), espera la elección del
+## jugador y devuelve {"cancelado": bool, "indice": int}.
+func _elegir_movimiento_a_olvidar(pokemon: PokemonInstance, move_id: Moves.MoveId) -> Dictionary:
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return {"cancelado": true, "indice": -1}
+
+	var pantalla: MoveLearnScreen = MOVE_LEARN_SCENE.instantiate() as MoveLearnScreen
+	tree.root.add_child(pantalla)
+	pantalla.setup(pokemon, move_id)
+
+	var resultado: Array = await pantalla.resolved
+	pantalla.queue_free()
+
+	return {"cancelado": resultado[0], "indice": resultado[1]}
 
 func tiene_reemplazo() -> bool:
 	for mon: PokemonInstance in player_party:

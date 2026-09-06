@@ -3,6 +3,7 @@ extends Node2D
 class_name SummaryPageMoveDetail
 
 @onready var Cursor: Sprite2D = $Cursor_box
+@onready var CursorOrigen: Sprite2D = $Cursor_box_origen
 @onready var move_detail_panel: Sprite2D = $Move_Detail
 @onready var PkmnIcon: Sprite2D = $Move_Detail/Icon
 @onready var Category: Sprite2D = $Move_Detail/Category/Category_sprite
@@ -46,10 +47,29 @@ func set_cursor_index(index: int) -> void:
 	Cursor.position.y = row_positions_y[index]
 
 
-## view_mode viene de SummaryPageMove.ViewMode: BROWSE = oculto, DETAIL = frame 0, SWAP = frame 1.
-func set_cursor_state(view_mode: int) -> void:
+## Posiciona el cursor "fijo" que marca el movimiento elegido para mover (frame 1).
+## Solo se usa durante el modo SWAP.
+func set_origin_index(index: int) -> void:
+	if index < 0 or index >= row_positions_y.size():
+		return
+	CursorOrigen.position.y = row_positions_y[index]
+
+
+## view_mode viene de SummaryPageMove.ViewMode: BROWSE = oculto, DETAIL/SWAP = frame 0.
+## swap_from_index es la fila del movimiento que se está moviendo (solo relevante en SWAP);
+## esa fila muestra un segundo cursor fijo en frame 1 mientras el cursor principal
+## (frame 0) se sigue moviendo libremente para elegir con cuál movimiento intercambiarlo.
+func set_cursor_state(view_mode: int, swap_from_index: int = -1) -> void:
 	Cursor.visible = view_mode != SummaryPageMove.ViewMode.BROWSE
-	Cursor.frame = 1 if view_mode == SummaryPageMove.ViewMode.SWAP else 0
+	Cursor.frame = 0
+
+	var mostrar_origen: bool = (
+		view_mode == SummaryPageMove.ViewMode.SWAP and swap_from_index >= 0
+	)
+	CursorOrigen.visible = mostrar_origen
+	if mostrar_origen:
+		set_origin_index(swap_from_index)
+		CursorOrigen.frame = 1
 
 
 func set_detail_visible(value: bool) -> void:

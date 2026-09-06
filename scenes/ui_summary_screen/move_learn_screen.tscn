@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b3vmi17do1c7v"]
+
+[ext_resource type="Script" uid="uid://b2ek4glmbxh11" path="res://scenes/ui_summary_screen/move_learn_screen.gd" id="1_scr"]
+[ext_resource type="PackedScene" uid="uid://wyngosfat1yf" path="res://scenes/ui_summary_screen/Page_4_2.tscn" id="2_pg42"]
+
+[node name="MoveLearnScreen" type="CanvasLayer" unique_id=1778805239]
+layer = 120
+script = ExtResource("1_scr")
+
+[node name="Page_4_2" parent="." unique_id=2070149463 instance=ExtResource("2_pg42")]

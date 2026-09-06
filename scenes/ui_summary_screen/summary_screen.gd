@@ -62,7 +62,7 @@ func _actualizar_pagina_4_1() -> void:
 		return
 	pagina_4_1.setup(pagina_4.get_selected_move(), pagina_4.pokemon)
 	pagina_4_1.set_cursor_index(pagina_4.selected_index)
-	pagina_4_1.set_cursor_state(pagina_4.view_mode)
+	pagina_4_1.set_cursor_state(pagina_4.view_mode, pagina_4.swap_from_index)
 	pagina_4_1.set_detail_visible(pagina_4.view_mode != SummaryPageMove.ViewMode.BROWSE)
 
 func _reproducir_grito() -> void:
