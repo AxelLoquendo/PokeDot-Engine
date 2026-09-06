@@ -252,6 +252,26 @@ func gain_exp(amount: int) -> Dictionary:
 
 	return result
 
+## Aplica una evolución ya validada por EvolutionSystem: cambia de especie/forma,
+## recalcula stats (conservando proporción de HP) y aprende los movimientos de
+## nivel que la nueva especie ya debería tener. Reutilizable desde cualquier
+func apply_evolution(result: EvolutionResult, value: Variant) -> Dictionary:
+	var outcome: Dictionary = {"evolved": false, "learned_moves": []}
+	if not EvolutionSystem.evolve(self, result, value):
+		return outcome
+
+	recalculate_stats()
+
+	var species: PokemonDataStruct = get_species()
+	if species != null:
+		for entry: LevelUpMove in species.level_up_moves:
+			if entry and entry.level <= level:
+				if learn_move(entry.move):
+					outcome["learned_moves"].append(entry.move)
+
+	outcome["evolved"] = true
+	return outcome
+
 # ============================================================
 # STATS
 # ============================================================

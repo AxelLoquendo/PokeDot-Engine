@@ -128,6 +128,7 @@ func _ready() -> void:
 	battle.turn_ended.connect(_on_turn_ended)
 	battle.player_must_switch.connect(_on_player_must_switch)
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
+	battle.player_evolved.connect(_update_ui)
 
 	player_exp_bar.size.x = player_exp_bar_target
 	player_current_hp = player_pokemon.current_hp

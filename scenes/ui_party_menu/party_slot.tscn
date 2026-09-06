@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b63mmqvd3k033" path="res://scenes/ui_party_menu/party_slot.gd" id="1_d510d"]
 [ext_resource type="Texture2D" uid="uid://c0qck0mjbjpgy" path="res://game/graphics_eb/ui_party_menu/box_male_normal.png" id="1_vp6ju"]
 [ext_resource type="Texture2D" uid="uid://cit1uwpvtttql" path="res://game/graphics_eb/ui_party_menu/box_male_select.png" id="2_d510d"]
-[ext_resource type="Texture2D" uid="uid://xadxg80maeol" path="res://graphics/pokemon/icons/BULBASAUR.png" id="3_bcum1"]
 [ext_resource type="Texture2D" uid="uid://ddo2yr2i61d6x" path="res://game/graphics_eb/ui_party_menu/box_female_normal.png" id="4_bljkr"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="4_i1e4l"]
 [ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="5_bbp3n"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://pu240bc240fm" path="res://game/graphics_eb/ui_party_menu/box_male_switch.png" id="6_kmkxw"]
 [ext_resource type="Texture2D" uid="uid://c5lt6p4qelcmk" path="res://graphics/status/sleep.png" id="8_bljkr"]
 [ext_resource type="Texture2D" uid="uid://dui8qbvpsk2al" path="res://graphics/ui_party_menu/icon_item.png" id="8_kmkxw"]
+[ext_resource type="Texture2D" uid="uid://ysos3w0d5hgp" path="res://graphics/pokemon/icons/ARMAROUGE.png" id="8_t2hga"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bljkr"]
 font = ExtResource("4_i1e4l")
@@ -63,7 +63,7 @@ texture_focused = ExtResource("2_d510d")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=249025991]
 position = Vector2(38, 24)
-texture = ExtResource("3_bcum1")
+texture = ExtResource("8_t2hga")
 hframes = 2
 
 [node name="Held" type="Sprite2D" parent="." unique_id=408362145]

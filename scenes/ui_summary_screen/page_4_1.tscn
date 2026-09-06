@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://bvhgie4a72e2w"]
+
+[ext_resource type="Texture2D" uid="uid://d11o1oa0dayuy" path="res://graphics/ui_summary_screen/cursor_move.png" id="1_iwsvc"]
+[ext_resource type="Script" uid="uid://bghwqmf1ojc0u" path="res://scenes/ui_summary_screen/page_4_1.gd" id="1_tkh7q"]
+[ext_resource type="Texture2D" uid="uid://d206ajpqojm85" path="res://graphics/ui_summary_screen/movedetail/movedetail_0.png" id="2_tkh7q"]
+[ext_resource type="Texture2D" uid="uid://c3y4gvv0ueed4" path="res://graphics/pokemon/icons/TERAPAGOS.png" id="3_ib0ax"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="4_5u7pi"]
+[ext_resource type="Texture2D" uid="uid://8ce62eotmjuh" path="res://graphics/ui_summary_screen/physical.png" id="5_g7b3u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5hl2m"]
+font = ExtResource("4_5u7pi")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.30987793, 0.30987796, 0.30987784, 0.80784315)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0374p"]
+font = ExtResource("4_5u7pi")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.30980393, 0.30980393, 0.30980393, 0.80784315)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_81qox"]
+font = ExtResource("4_5u7pi")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbknf"]
+font = ExtResource("4_5u7pi")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("4_5u7pi")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[node name="page_4_1" type="Node2D" unique_id=2103066565]
+script = ExtResource("1_tkh7q")
+
+[node name="Cursor_box" type="Sprite2D" parent="." unique_id=1724256934]
+position = Vector2(344, 106)
+scale = Vector2(1, 1.05)
+texture = ExtResource("1_iwsvc")
+vframes = 2
+
+[node name="Move_Detail" type="Sprite2D" parent="." unique_id=200415654]
+position = Vector2(103, 182)
+texture = ExtResource("2_tkh7q")
+
+[node name="Icon" type="Sprite2D" parent="Move_Detail" unique_id=943734086]
+position = Vector2(-63, -107)
+texture = ExtResource("3_ib0ax")
+hframes = 2
+
+[node name="Category" type="Label" parent="Move_Detail" unique_id=303676922]
+offset_left = -103.0
+offset_top = -75.0
+offset_right = 19.0
+offset_bottom = -47.0
+text = "Categoría"
+label_settings = SubResource("LabelSettings_5hl2m")
+horizontal_alignment = 1
+
+[node name="Category_sprite" type="Sprite2D" parent="Move_Detail/Category" unique_id=1640444589]
+position = Vector2(165, 16)
+texture = ExtResource("5_g7b3u")
+
+[node name="Power" type="Label" parent="Move_Detail" unique_id=1735034954]
+offset_left = -103.0
+offset_top = -43.0
+offset_right = 19.0
+offset_bottom = -15.0
+text = "Potencia"
+label_settings = SubResource("LabelSettings_0374p")
+horizontal_alignment = 1
+
+[node name="Power_Number" type="Label" parent="Move_Detail/Power" unique_id=781586428]
+layout_mode = 0
+offset_left = 126.0
+offset_right = 204.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_81qox")
+horizontal_alignment = 1
+
+[node name="Presision" type="Label" parent="Move_Detail" unique_id=1219785244]
+offset_left = -103.0
+offset_top = -13.0
+offset_right = 19.0
+offset_bottom = 15.0
+text = "Precisión"
+label_settings = SubResource("LabelSettings_0374p")
+horizontal_alignment = 1
+
+[node name="Percent" type="Label" parent="Move_Detail/Presision" unique_id=1823133822]
+layout_mode = 0
+offset_left = 126.0
+offset_right = 204.0
+offset_bottom = 28.0
+text = "000%"
+label_settings = SubResource("LabelSettings_rbknf")
+horizontal_alignment = 1
+
+[node name="Move_Description" type="Label" parent="Move_Detail" unique_id=596679433]
+offset_left = -99.0
+offset_top = 18.0
+offset_right = 101.0
+offset_bottom = 138.0
+label_settings = SubResource("LabelSettings_htemk")
+autowrap_mode = 2

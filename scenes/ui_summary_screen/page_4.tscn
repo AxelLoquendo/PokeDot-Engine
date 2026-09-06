@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3y35g8j7mqjk" path="res://graphics/ui_summary_screen/moves/move_1.png" id="3_ou4s1"]
 [ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="4_abrtm"]
 [ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="6_5p822"]
+[ext_resource type="Texture2D" uid="uid://d11o1oa0dayuy" path="res://graphics/ui_summary_screen/cursor_move.png" id="7_j4xda"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ou4s1"]
 font = ExtResource("2_w7ot0")
@@ -172,3 +173,9 @@ offset_bottom = 28.0
 text = "00/00"
 label_settings = SubResource("LabelSettings_5p822")
 horizontal_alignment = 1
+
+[node name="Cursor_box" type="Sprite2D" parent="." unique_id=617213048]
+position = Vector2(344, 106)
+scale = Vector2(1, 1.05)
+texture = ExtResource("7_j4xda")
+vframes = 2

@@ -8,6 +8,8 @@ signal battle_ended(player_won: bool)
 signal turn_ended
 ## El mon activo se debilitó y hay reemplazo en el party.
 signal player_must_switch
+signal player_evolved
+
 
 var player: BattleBattler
 var enemy: BattleBattler
@@ -135,10 +137,67 @@ func _handle_enemy_faint() -> void:
 		turn_ended.emit()
 		return
 
+	await _check_battle_end_evolution()
+
 	message.emit("¡Ganaste!")
 	is_running = false
 	battle_ended.emit(true)
 
+func _check_evolution(battler: BattleBattler) -> void:
+	if battler.pokemon == null:
+		return
+
+	var context: EvolutionContext = EvolutionContext.new(battler.pokemon)
+	context.party = player_party if battler == player else enemy_party
+	context.is_day = DnsManager.current_time_state == DnsManager.TimeOfDay.MORNING \
+		or DnsManager.current_time_state == DnsManager.TimeOfDay.DAY
+
+	context.mode = PokemonData.EvolutionMode.EVO_MODE_BATTLE_ONLY
+	var result: EvolutionResult = EvolutionSystem.try_evolve(battler.pokemon, context.mode, context)
+	if result == null:
+		context.mode = PokemonData.EvolutionMode.EVO_MODE_NORMAL
+		result = EvolutionSystem.try_evolve(battler.pokemon, context.mode, context)
+	if result == null:
+		return
+
+	await _apply_evolution(battler, result, context)
+	await _check_evolution(battler)  # por si encadena otra evolución más
+
+
+func _apply_evolution(battler: BattleBattler, result: EvolutionResult, context: EvolutionContext) -> void:
+	var old_name: String = battler.pokemon.get_display_name()
+
+	message.emit("¡Qué! ¡%s está evolucionando!" % old_name)
+	await _wait(1.0)
+
+	var outcome: Dictionary = battler.pokemon.apply_evolution(result, context)
+	if not outcome.get("evolved", false):
+		return
+
+	message.emit("¡Felicidades! ¡Tu %s ahora es %s!" % [old_name, battler.pokemon.get_display_name()])
+	_emit_hp(battler.is_player_side)
+	if battler == player:
+		player_evolved.emit()
+	await _wait(1.0)
+
+	for move_id: Moves.MoveId in outcome.get("learned_moves", []):
+		var move_data: MoveData = MoveDatabase.get_move(move_id)
+		message.emit("¡%s aprendió %s!" % [
+			battler.pokemon.get_display_name(),
+			move_data.move_name if move_data else "un movimiento"
+		])
+		await _wait(0.9)
+
+
+func _check_battle_end_evolution() -> void:
+	if player.pokemon == null:
+		return
+	var context: EvolutionContext = EvolutionContext.new(player.pokemon)
+	context.party = player_party
+	context.mode = PokemonData.EvolutionMode.EVO_MODE_BATTLE_SPECIAL
+	var result: EvolutionResult = EvolutionSystem.try_evolve(player.pokemon, context.mode, context)
+	if result != null:
+		await _apply_evolution(player, result, context)
 
 func _award_experience() -> void:
 	if player.pokemon == null or enemy.pokemon == null:
@@ -168,6 +227,7 @@ func _award_experience() -> void:
 				move_data.move_name if move_data else "un movimiento"
 			])
 			await _wait(0.9)
+		await _check_evolution(player)
 	player_progress_changed.emit()
 
 func tiene_reemplazo() -> bool:

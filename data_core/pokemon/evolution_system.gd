@@ -148,11 +148,14 @@ static func _check_legacy_condition(
 			return pokemon.friendship >= evolution.condition_value
 	return false
 
-static func evolve(
-	pokemon: PokemonInstance,
-	result: EvolutionResult,
-	value: Variant
-) -> bool:
+## Busca la evolución de mayor prioridad disponible para el modo dado.
+## No la aplica — solo la encuentra. Usa PokemonInstance.apply_evolution()
+## para aplicarla de verdad.
+static func try_evolve(pokemon: PokemonInstance, mode: PokemonData.EvolutionMode, context: EvolutionContext = null) -> EvolutionResult:
+	var options: Array[EvolutionResult] = get_available_evolutions(pokemon, mode, context)
+	return options[0] if not options.is_empty() else null
+
+static func evolve(pokemon: PokemonInstance, result: EvolutionResult, value: Variant) -> bool:
 	if pokemon == null or result == null:
 		return false
 	if result.target_species == Species.SpeciesID.SPECIES_NONE:
