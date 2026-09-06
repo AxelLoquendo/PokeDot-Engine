@@ -7,15 +7,13 @@ var grid_position: Vector2i = Vector2i.ZERO
 var texture: Texture2D:
 	set(value):
 		texture = value
-		if is_node_ready():
+		if is_node_ready() and sprite:
 			sprite.texture = value
 
-# Escala forzada para que la textura real (sea cual sea su
-# tamaño en píxeles) llene exactamente un tile de FogWeather.TILE_SIZE.
 var escala_tile: Vector2 = Vector2.ONE:
 	set(value):
 		escala_tile = value
-		if is_node_ready():
+		if is_node_ready() and sprite:
 			sprite.scale = value
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -28,8 +26,8 @@ func _ready() -> void:
 	sprite.scale = escala_tile
 	sprite.modulate.a = 0.0
 
+
 func _process(_delta: float) -> void:
 	if weather == null:
 		return
-	# La transparencia viene directamente del estado del clima.
 	sprite.modulate.a = weather.intensidad

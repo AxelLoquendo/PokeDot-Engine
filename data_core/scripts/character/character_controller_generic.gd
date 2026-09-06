@@ -445,7 +445,6 @@ func buscar_capa_colisiones() -> void:
 
 
 func resetear_estado_de_mapa() -> void:
-	cancelar_movimiento()
 	capas_comportamiento.clear()
 	ultima_casilla_comportamiento = CASILLA_INVALIDA
 	ultima_escalera = CASILLA_INVALIDA

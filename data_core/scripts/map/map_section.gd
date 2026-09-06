@@ -1,5 +1,4 @@
 extends Node
-
 class_name MapSection
 
 enum SectionId {
@@ -9,14 +8,11 @@ enum SectionId {
 	MAPSEC_PUEBLO_ALBA,
 	# Kanto
 	MAPSEC_PALLET_TOWN,
-	
 }
 
 enum RegionId {
 	REGION_NONE,
-	# Custom Region
 	REGION_VALTHERION,
-	# Regiones oficiales
 	REGION_KANTO,
 	REGION_JOHTO,
 	REGION_HOENN,

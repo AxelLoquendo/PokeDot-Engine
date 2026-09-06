@@ -21,4 +21,4 @@ enum WeatherID {
 	#WEATHER_FOG,
 }
 
-@export var weather: WeatherID
+@export var weather: WeatherID = WeatherID.WEATHER_NONE

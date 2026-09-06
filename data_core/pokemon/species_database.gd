@@ -5,9 +5,13 @@ class_name SpeciesDB
 
 const SPECIES_PATH: String = "res://data_core/pokemon/resources/"
 const FILE_EXTENSION: String = ".tres"
+const INDEX_SCRIPT = preload("res://data_core/generated/resource_index.gd")
 
 ## Especies base cargadas por su SpeciesID.
 var _cache: Dictionary = {}
+var _species_paths: Dictionary = {}
+var _form_paths: Dictionary = {}
+var _loaded_paths: Dictionary = {}
 ## Formas embebidas en una especie base, indexadas por su propio SpeciesID.
 var _form_cache: Dictionary = {}
 ## Relación forma -> especie base.
@@ -38,6 +42,14 @@ func get_species(species_id: Species.SpeciesID) -> PokemonDataStruct:
 		return _cache[key] as PokemonDataStruct
 	if _resolved_cache.has(key):
 		return _resolved_cache[key] as PokemonDataStruct
+	if _species_paths.has(key):
+		_load_species_file(str(_species_paths[key]))
+	elif _form_paths.has(key):
+		_load_species_file(str(_form_paths[key]))
+	if _cache.has(key):
+		return _cache[key] as PokemonDataStruct
+	if _resolved_cache.has(key):
+		return _resolved_cache[key] as PokemonDataStruct
 	if _form_base_cache.has(key):
 		var resolved: PokemonDataStruct = _build_resolved_species(
 			_form_base_cache[key] as PokemonDataStruct,
@@ -55,24 +67,39 @@ func get_base_species(species_id: Species.SpeciesID) -> PokemonDataStruct:
 	var key: int = int(species_id)
 	if _cache.has(key):
 		return _cache[key] as PokemonDataStruct
+	if _form_paths.has(key):
+		_load_species_file(str(_form_paths[key]))
 	return _form_base_cache.get(key) as PokemonDataStruct
 
 ## Devuelve directamente la forma cuyo ID está declarado en species.gd.
 func get_form(form_species_id: Species.SpeciesID) -> PokemonFormData:
 	if not _loaded:
 		return null
-	return _form_cache.get(int(form_species_id)) as PokemonFormData
+	var id: int = int(form_species_id)
+	if not _form_cache.has(id) and _form_paths.has(id):
+		_load_species_file(str(_form_paths[id]))
+	return _form_cache.get(id) as PokemonFormData
 
 func get_form_base_species(form_species_id: Species.SpeciesID) -> PokemonDataStruct:
-	return _form_base_cache.get(int(form_species_id)) as PokemonDataStruct
+	var id: int = int(form_species_id)
+	if not _form_base_cache.has(id) and _form_paths.has(id):
+		_load_species_file(str(_form_paths[id]))
+	return _form_base_cache.get(id) as PokemonDataStruct
 
 func has_species(species_id: Species.SpeciesID) -> bool:
-	return _loaded and (_cache.has(int(species_id)) or _form_cache.has(int(species_id)))
+	if not _loaded:
+		return false
+	var id: int = int(species_id)
+	return _cache.has(id) or _species_paths.has(id) or _form_paths.has(id)
 
 func has_form(form_species_id: Species.SpeciesID) -> bool:
-	return _loaded and _form_cache.has(int(form_species_id))
+	if not _loaded:
+		return false
+	var id: int = int(form_species_id)
+	return _form_cache.has(id) or _form_paths.has(id)
 
 func get_all_species() -> Array[PokemonDataStruct]:
+	_ensure_all_species_loaded()
 	var result: Array[PokemonDataStruct] = []
 	for value: Variant in _cache.values():
 		var data: PokemonDataStruct = value as PokemonDataStruct
@@ -80,11 +107,16 @@ func get_all_species() -> Array[PokemonDataStruct]:
 			result.append(data)
 	return result
 
+func _ensure_all_species_loaded() -> void:
+	for id: int in _species_paths.keys():
+		if not _cache.has(id):
+			_load_species_file(str(_species_paths[id]))
+
 func get_species_count() -> int:
-	return _cache.size()
+	return _species_paths.size() if not _species_paths.is_empty() else _cache.size()
 
 func get_form_count() -> int:
-	return _form_cache.size()
+	return _form_paths.size() if not _form_paths.is_empty() else _form_cache.size()
 
 func get_load_errors() -> Array[String]:
 	return _errors.duplicate()
@@ -104,24 +136,32 @@ func load_database() -> void:
 	_loading = true
 	_loaded = false
 	_cache.clear()
+	_species_paths.clear()
+	_form_paths.clear()
+	_loaded_paths.clear()
 	_form_cache.clear()
 	_form_base_cache.clear()
 	_resolved_cache.clear()
 	_errors.clear()
 	_warnings.clear()
 
-	_load_from_subfolder(SPECIES_PATH)
+	var index: Dictionary = INDEX_SCRIPT.new().get_paths("species")
+	var forms_index: Dictionary = INDEX_SCRIPT.new().get_paths("forms")
+	if index.is_empty():
+		_load_from_subfolder(SPECIES_PATH)
+	else:
+		_species_paths = index.duplicate()
+		_form_paths = forms_index.duplicate()
 
 	_loaded = true
 	_loading = false
-	database_loaded.emit(_cache.size())
-	print("SpeciesDB: %d especies y %d formas cargadas." % [_cache.size(), _form_cache.size()])
+	database_loaded.emit(get_species_count())
+	print("SpeciesDB: índice listo con %d especies y %d formas; cargadas ahora: %d." % [get_species_count(), get_form_count(), _cache.size()])
 
 	if not _errors.is_empty():
 		print("SpeciesDB: %d errores:" % _errors.size())
 		for message: String in _errors:
 			push_error("  ✖ %s" % message)
-
 
 func _load_from_subfolder(path: String) -> void:
 	for entry: String in ResourceLoader.list_directory(path):
@@ -134,6 +174,9 @@ func _load_from_subfolder(path: String) -> void:
 			_load_species_file(full_path)
 
 func _load_species_file(path: String) -> void:
+	if _loaded_paths.has(path):
+		return
+	_loaded_paths[path] = true
 	var resource: Resource = ResourceLoader.load(path)
 	if resource == null:
 		_errors.append("'%s' no se pudo cargar." % path)
@@ -168,8 +211,6 @@ func _index_forms(base_species: PokemonDataStruct, path: String) -> void:
 			continue
 		var form_id: int = int(form.species_id)
 		if form_id == int(Species.SpeciesID.SPECIES_NONE):
-			# Recursos creados con el modelo anterior todavía pueden tener
-			# solo form_id. Se conservan, pero no pueden resolverse por enum.
 			_warnings.append("'%s': la forma '%s' no tiene SpeciesID." % [path, str(form.form_id)])
 			continue
 		if form_id == int(base_species.species_id):

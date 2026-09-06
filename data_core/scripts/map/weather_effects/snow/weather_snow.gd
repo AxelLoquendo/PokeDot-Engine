@@ -14,11 +14,12 @@ const DURACION_TRANSICION: float = 0.8
 var intensidad: float = 1.0
 var deteniendo: bool = false
 var copos: Array[SnowFlake] = []
-
 var _fade_tween: Tween
+
 
 static func obtener_textura() -> Texture2D:
 	return TEXTURAS.pick_random()
+
 
 func start() -> void:
 	deteniendo = false
@@ -26,45 +27,37 @@ func start() -> void:
 	for _i: int in range(CANTIDAD):
 		crear_copo()
 
+
 func crear_copo() -> void:
 	if deteniendo:
 		return
-	var copo: SnowFlake = SnowFlakeScene.instantiate()
+	var copo: SnowFlake = SnowFlakeScene.instantiate() as SnowFlake
 	copo.weather = self
 	WeatherManager.get_weather_container().add_child(copo)
 	copos.append(copo)
 
+
 func stop() -> void:
 	deteniendo = true
+
 
 func fade_in() -> Signal:
 	if _fade_tween:
 		_fade_tween.kill()
-
 	_fade_tween = create_tween()
-	_fade_tween.tween_property(
-		self,
-		"intensidad",
-		1.0,
-		DURACION_TRANSICION
-	)
+	_fade_tween.tween_property(self, "intensidad", 1.0, DURACION_TRANSICION)
 	return _fade_tween.finished
+
 
 func fade_out() -> Signal:
 	deteniendo = true
-
 	if _fade_tween:
 		_fade_tween.kill()
-
 	_fade_tween = create_tween()
-	_fade_tween.tween_property(
-		self,
-		"intensidad",
-		0.0,
-		DURACION_TRANSICION
-	)
+	_fade_tween.tween_property(self, "intensidad", 0.0, DURACION_TRANSICION)
 	_fade_tween.finished.connect(_al_terminar_fade_out)
 	return _fade_tween.finished
+
 
 func _al_terminar_fade_out() -> void:
 	for copo: SnowFlake in copos:
@@ -72,13 +65,10 @@ func _al_terminar_fade_out() -> void:
 			copo.queue_free()
 	copos.clear()
 
-func copo_terminado(copo: SnowFlake) -> void:
-	if copos.has(copo):
-		copos.erase(copo)
 
-func update_weather(_delta: float) -> void:
-	var vivos: Array[SnowFlake] = []
-	for copo: SnowFlake in copos:
-		if is_instance_valid(copo):
-			vivos.append(copo)
-	copos = vivos
+func copo_terminado(copo: SnowFlake) -> void:
+	if deteniendo:
+		return
+	# Reciclar
+	if is_instance_valid(copo):
+		copo.iniciar()
