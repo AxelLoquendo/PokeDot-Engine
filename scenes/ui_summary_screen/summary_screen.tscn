@@ -67,7 +67,6 @@ position = Vector2(240, 160)
 texture = ExtResource("2_b4q7a")
 
 [node name="Page0" parent="." unique_id=2146259770 instance=ExtResource("5_plwqo")]
-visible = false
 
 [node name="Page1" parent="." unique_id=1094160894 instance=ExtResource("4_5i46e")]
 visible = false
@@ -79,6 +78,7 @@ visible = false
 visible = false
 
 [node name="Page4" parent="." unique_id=912600889 instance=ExtResource("7_bwg25")]
+visible = false
 
 [node name="Info_0" type="Sprite2D" parent="." unique_id=1609476859]
 position = Vector2(96, 80)

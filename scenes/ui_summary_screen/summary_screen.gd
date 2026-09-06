@@ -13,6 +13,7 @@ var party_index: int = 0
 @onready var pagina_2: SummaryPageSkills = $Page2
 @onready var pagina_3: SummaryPageBaseIvEv = $Page3
 @onready var pagina_4: SummaryPageMove = $Page4
+@onready var pagina_4_1: SummaryPageMoveDetail = $page_4_1
 
 # -------- indicadores (hframes = 2) --------
 @onready var page_info: Sprite2D = $Page_Info
@@ -52,7 +53,17 @@ const FRAME_ACTIVE: int = 1
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_inicializar_indicadores()
+	if pagina_4:
+		pagina_4.selection_changed.connect(_actualizar_pagina_4_1)
+		pagina_4.view_mode_changed.connect(_actualizar_pagina_4_1)
 
+func _actualizar_pagina_4_1() -> void:
+	if pagina_4_1 == null or pagina_4 == null:
+		return
+	pagina_4_1.setup(pagina_4.get_selected_move(), pagina_4.pokemon)
+	pagina_4_1.set_cursor_index(pagina_4.selected_index)
+	pagina_4_1.set_cursor_state(pagina_4.view_mode)
+	pagina_4_1.set_detail_visible(pagina_4.view_mode != SummaryPageMove.ViewMode.BROWSE)
 
 func _reproducir_grito() -> void:
 	if cry_poke == null or pokemon == null:
@@ -223,19 +234,39 @@ func _input(event: InputEvent) -> void:
 	if event.is_echo() or not event.is_pressed():
 		return
 
+	if event.is_action_pressed("buttonA"):
+		if current_page == 4 and pagina_4:
+			get_viewport().set_input_as_handled()
+			pagina_4.handle_button_a()
+			if cursor:
+				cursor.play()
+			return
+
 	if event.is_action_pressed("buttonB"):
 		get_viewport().set_input_as_handled()
+		if current_page == 4 and pagina_4 and pagina_4.handle_button_b():
+			if cursor:
+				cursor.play()
+			return
 		close()
 		return
 
 	if event.is_action_pressed("Up"):
 		get_viewport().set_input_as_handled()
-		_cambiar_miembro(-1)
+		if current_page == 4 and pagina_4 and pagina_4.view_mode != SummaryPageMove.ViewMode.BROWSE:
+			if pagina_4.move_cursor(-1) and cursor:
+				cursor.play()
+		else:
+			_cambiar_miembro(-1)
 		return
 
 	if event.is_action_pressed("Down"):
 		get_viewport().set_input_as_handled()
-		_cambiar_miembro(1)
+		if current_page == 4 and pagina_4 and pagina_4.view_mode != SummaryPageMove.ViewMode.BROWSE:
+			if pagina_4.move_cursor(1) and cursor:
+				cursor.play()
+		else:
+			_cambiar_miembro(1)
 		return
 
 	# Páginas del summary
@@ -251,9 +282,12 @@ func _input(event: InputEvent) -> void:
 
 
 func _cambiar_pagina(direccion: int) -> void:
+	if current_page == 4 and pagina_4 and pagina_4.view_mode != SummaryPageMove.ViewMode.BROWSE:
+		return
+
 	var nueva: int = current_page + direccion
 	if nueva < 0 or nueva >= PAGE_COUNT:
-		return  # o posmod para loop
+		return
 
 	current_page = nueva
 	_actualizar_indicadores_pagina()
@@ -280,6 +314,8 @@ func _mostrar_pagina_actual() -> void:
 	# Page4 (Move):
 	if pagina_4:
 		pagina_4.visible = (current_page == 4)
+	if pagina_4_1:
+		pagina_4_1.visible = (current_page == 4)
 
 func close() -> void:
 	summary_closed.emit()
