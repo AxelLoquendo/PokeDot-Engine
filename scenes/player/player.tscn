@@ -23,6 +23,7 @@ metadata/_custom_type_script = "uid://to3q6mhpmlbk"
 
 [sub_resource type="Resource" id="Resource_obk2l"]
 script = ExtResource("2_0owmy")
+money = 0
 name = "Kael"
 gender_option = SubResource("Resource_xuxe7")
 bag = SubResource("Resource_ugbui")
@@ -415,7 +416,7 @@ script = ExtResource("3_gmlin")
 sprite_frames = SubResource("SpriteFrames_hyqqp")
 animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.58985555
+frame_progress = 0.5217856
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=246521600]
 zoom = Vector2(2, 2)

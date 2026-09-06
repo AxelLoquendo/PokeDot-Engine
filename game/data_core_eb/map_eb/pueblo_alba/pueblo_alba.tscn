@@ -424,7 +424,7 @@ shadow_offset_y = 11.0
 metadata/_custom_type_script = "uid://d1j7qa7rbivcw"
 
 [node name="MapData" unique_id=391028103 instance=ExtResource("1_base")]
-map_name = "Pueblo_Alba"
+map_name = "Pueblo Alba"
 map_id_section = 2
 map_region = 1
 map_size = Vector2i(56, 41)

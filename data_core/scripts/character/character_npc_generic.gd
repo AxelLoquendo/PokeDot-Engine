@@ -1,6 +1,5 @@
 @tool
 extends CharacterGame
-
 class_name CharacterNpc
 
 enum Comportamiento {
@@ -21,8 +20,8 @@ enum DireccionInicial {
 @export_group("Identidad")
 @export var nombre: String = "NPC"
 @export var npc_id: StringName
-var _sprite_overworld: EventObjects.NpcID = EventObjects.NpcID.NONE
 
+var _sprite_overworld: EventObjects.NpcID = EventObjects.NpcID.NONE
 @export var sprite_overworld: EventObjects.NpcID:
 	set(value):
 		if _sprite_overworld == value:

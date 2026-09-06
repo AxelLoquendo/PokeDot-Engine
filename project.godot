@@ -47,7 +47,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ability_editor/plugin.cfg", "res://addons/ability_validator/plugin.cfg", "res://addons/item_editor/plugin.cfg", "res://addons/map_creator/plugin.cfg", "res://addons/map_editor/plugin.cfg", "res://addons/move_editor/plugin.cfg", "res://addons/move_validator/plugin.cfg", "res://addons/species_editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/ability_editor/plugin.cfg", "res://addons/ability_validator/plugin.cfg", "res://addons/item_editor/plugin.cfg", "res://addons/map_creator/plugin.cfg", "res://addons/map_editor/plugin.cfg", "res://addons/move_editor/plugin.cfg", "res://addons/move_validator/plugin.cfg", "res://addons/species_editor/plugin.cfg")
 
 [file_customization]
 
