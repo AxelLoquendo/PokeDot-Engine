@@ -1,0 +1,313 @@
+[gd_scene format=3 uid="uid://wyngosfat1yf"]
+
+[ext_resource type="Texture2D" uid="uid://cfrypjym7s4ay" path="res://graphics/ui_summary_screen/bg.png" id="1_tcn51"]
+[ext_resource type="Script" uid="uid://cshn61of64ha7" path="res://scenes/ui_summary_screen/page_4_2.gd" id="1_vuvwv"]
+[ext_resource type="Texture2D" uid="uid://56rurvfvbut7" path="res://graphics/ui_summary_screen/moves/move_0.png" id="2_vuvwv"]
+[ext_resource type="Texture2D" uid="uid://bqub6yo80gqp6" path="res://graphics/ui_summary_screen/movelearned/movelearned_0.png" id="3_xh5nl"]
+[ext_resource type="Texture2D" uid="uid://c3y4gvv0ueed4" path="res://graphics/pokemon/icons/TERAPAGOS.png" id="4_at72v"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="5_1qja2"]
+[ext_resource type="Texture2D" uid="uid://8ce62eotmjuh" path="res://graphics/ui_summary_screen/physical.png" id="6_svcj4"]
+[ext_resource type="Texture2D" uid="uid://fe1cjij3j2f8" path="res://graphics/ui_summary_screen/movelearned/movelearned_1.png" id="7_k4561"]
+[ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="8_p84gl"]
+[ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="9_6vh30"]
+[ext_resource type="Texture2D" uid="uid://d11o1oa0dayuy" path="res://graphics/ui_summary_screen/cursor_move.png" id="11_xh5nl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0bjse"]
+font = ExtResource("5_1qja2")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.30987793, 0.30987796, 0.30987784, 0.80784315)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5tcsl"]
+font = ExtResource("5_1qja2")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.30980393, 0.30980393, 0.30980393, 0.80784315)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxkgx"]
+font = ExtResource("5_1qja2")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xg46f"]
+font = ExtResource("5_1qja2")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g62ur"]
+font = ExtResource("5_1qja2")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5bhbq"]
+font = ExtResource("5_1qja2")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0.41960785, 0.41960785, 0.41960785, 0.60784316)
+shadow_offset = Vector2(0, 2)
+
+[node name="Page_4_2" type="Node2D" unique_id=2090850352]
+script = ExtResource("1_vuvwv")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=223783332]
+position = Vector2(240, 160)
+texture = ExtResource("1_tcn51")
+
+[node name="Title" type="Sprite2D" parent="." unique_id=1239043865]
+position = Vector2(240, 24)
+texture = ExtResource("2_vuvwv")
+
+[node name="MoveInfo" type="Sprite2D" parent="." unique_id=59647593]
+position = Vector2(112, 182)
+texture = ExtResource("3_xh5nl")
+
+[node name="Icon" type="Sprite2D" parent="MoveInfo" unique_id=1905461451]
+position = Vector2(-64, -106)
+texture = ExtResource("4_at72v")
+hframes = 2
+
+[node name="Category" type="Label" parent="MoveInfo" unique_id=344918068]
+offset_left = -112.0
+offset_top = -74.0
+offset_right = 10.0
+offset_bottom = -46.0
+text = "Categoría"
+label_settings = SubResource("LabelSettings_0bjse")
+horizontal_alignment = 1
+
+[node name="Category_sprite" type="Sprite2D" parent="MoveInfo/Category" unique_id=1928979930]
+position = Vector2(173, 16)
+texture = ExtResource("6_svcj4")
+
+[node name="Power" type="Label" parent="MoveInfo" unique_id=88285225]
+offset_left = -112.0
+offset_top = -42.0
+offset_right = 10.0
+offset_bottom = -14.0
+text = "Potencia"
+label_settings = SubResource("LabelSettings_5tcsl")
+horizontal_alignment = 1
+
+[node name="Power_Number" type="Label" parent="MoveInfo/Power" unique_id=378433359]
+layout_mode = 0
+offset_left = 126.0
+offset_right = 222.0
+offset_bottom = 28.0
+text = "000"
+label_settings = SubResource("LabelSettings_fxkgx")
+horizontal_alignment = 1
+
+[node name="Presision" type="Label" parent="MoveInfo" unique_id=1217156786]
+offset_left = -111.0
+offset_top = -13.0
+offset_right = 9.0
+offset_bottom = 15.0
+text = "Precisión"
+label_settings = SubResource("LabelSettings_5tcsl")
+horizontal_alignment = 1
+
+[node name="Percent" type="Label" parent="MoveInfo/Presision" unique_id=832093155]
+layout_mode = 0
+offset_left = 125.0
+offset_right = 221.0
+offset_bottom = 28.0
+text = "000%"
+label_settings = SubResource("LabelSettings_xg46f")
+horizontal_alignment = 1
+
+[node name="Move_Description" type="Label" parent="MoveInfo" unique_id=2097631472]
+offset_left = -108.0
+offset_top = 18.0
+offset_right = 106.0
+offset_bottom = 138.0
+label_settings = SubResource("LabelSettings_g62ur")
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1734432063]
+
+[node name="MoveLearned_1" type="Sprite2D" parent="." unique_id=990442251]
+position = Vector2(336, 160)
+texture = ExtResource("7_k4561")
+
+[node name="Type_Move0" type="Sprite2D" parent="MoveLearned_1" unique_id=1530024120]
+position = Vector2(-70, -136)
+texture = ExtResource("8_p84gl")
+
+[node name="Move_Name" type="Label" parent="MoveLearned_1/Type_Move0" unique_id=1942862940]
+offset_left = 36.0
+offset_top = -14.0
+offset_right = 202.0
+offset_bottom = 14.0
+text = "Tera Explosión"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+script = ExtResource("9_6vh30")
+ancho_maximo = 80.0
+
+[node name="PP" type="Label" parent="MoveLearned_1/Type_Move0" unique_id=1359219761]
+offset_left = 60.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 43.0
+text = "PP"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Number_PP" type="Label" parent="MoveLearned_1/Type_Move0/PP" unique_id=18137946]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 118.0
+offset_bottom = 28.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Type_Move1" type="Sprite2D" parent="MoveLearned_1" unique_id=370658601]
+position = Vector2(-70, -78)
+texture = ExtResource("8_p84gl")
+
+[node name="Move_Name" type="Label" parent="MoveLearned_1/Type_Move1" unique_id=1207154549]
+offset_left = 36.0
+offset_top = -14.0
+offset_right = 202.0
+offset_bottom = 14.0
+text = "Tera Explosión"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+script = ExtResource("9_6vh30")
+ancho_maximo = 80.0
+
+[node name="PP" type="Label" parent="MoveLearned_1/Type_Move1" unique_id=1575203552]
+offset_left = 60.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 43.0
+text = "PP"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Number_PP" type="Label" parent="MoveLearned_1/Type_Move1/PP" unique_id=697708782]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 118.0
+offset_bottom = 28.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Type_Move2" type="Sprite2D" parent="MoveLearned_1" unique_id=1100052718]
+position = Vector2(-70, -20)
+texture = ExtResource("8_p84gl")
+
+[node name="Move_Name" type="Label" parent="MoveLearned_1/Type_Move2" unique_id=497853413]
+offset_left = 36.0
+offset_top = -14.0
+offset_right = 202.0
+offset_bottom = 14.0
+text = "Tera Explosión"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+script = ExtResource("9_6vh30")
+ancho_maximo = 80.0
+
+[node name="PP" type="Label" parent="MoveLearned_1/Type_Move2" unique_id=796456108]
+offset_left = 60.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 43.0
+text = "PP"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Number_PP" type="Label" parent="MoveLearned_1/Type_Move2/PP" unique_id=766106676]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 118.0
+offset_bottom = 28.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Type_Move3" type="Sprite2D" parent="MoveLearned_1" unique_id=397846639]
+position = Vector2(-70, 38)
+texture = ExtResource("8_p84gl")
+
+[node name="Move_Name" type="Label" parent="MoveLearned_1/Type_Move3" unique_id=1916636637]
+offset_left = 36.0
+offset_top = -14.0
+offset_right = 202.0
+offset_bottom = 14.0
+text = "Tera Explosión"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+script = ExtResource("9_6vh30")
+ancho_maximo = 80.0
+
+[node name="PP" type="Label" parent="MoveLearned_1/Type_Move3" unique_id=939998932]
+offset_left = 60.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 43.0
+text = "PP"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Number_PP" type="Label" parent="MoveLearned_1/Type_Move3/PP" unique_id=1412806554]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 118.0
+offset_bottom = 28.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Type_Move4" type="Sprite2D" parent="MoveLearned_1" unique_id=1889659400]
+position = Vector2(-70, 110)
+texture = ExtResource("8_p84gl")
+
+[node name="Move_Name" type="Label" parent="MoveLearned_1/Type_Move4" unique_id=1974379238]
+offset_left = 36.0
+offset_top = -14.0
+offset_right = 202.0
+offset_bottom = 14.0
+text = "Tera Explosión"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+script = ExtResource("9_6vh30")
+ancho_maximo = 80.0
+
+[node name="PP" type="Label" parent="MoveLearned_1/Type_Move4" unique_id=1940831791]
+offset_left = 60.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 43.0
+text = "PP"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Number_PP" type="Label" parent="MoveLearned_1/Type_Move4/PP" unique_id=457492812]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 118.0
+offset_bottom = 28.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_5bhbq")
+horizontal_alignment = 1
+
+[node name="Cursor_box" type="Sprite2D" parent="." unique_id=226907665]
+position = Vector2(350, 44)
+scale = Vector2(1, 1.0000001)
+texture = ExtResource("11_xh5nl")
+vframes = 2
