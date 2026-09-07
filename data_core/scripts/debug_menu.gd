@@ -36,7 +36,7 @@ func _show(screen: String) -> void:
 		"root":
 			DialogueManager.show_texts(["DEBUG MENU"], "", null, ["Jugador", "Mundo", "Objetos y flags", "Guardar / info"])
 		"player":
-			DialogueManager.show_texts(["Jugador"], "", null, ["Cambiar sprite", "Curar PP", "Volver"])
+			DialogueManager.show_texts(["Jugador"], "", null, ["Cambiar sprite", "Curar PP", "Marcar dex demo", "Rellenar Dex", "Volver"])
 		"world":
 			DialogueManager.show_texts(["Mundo"], "", null, ["Clima", "Warp Prado Natal", "Warp Pueblo Alba", "Volver"])
 		"weather":
@@ -65,7 +65,12 @@ func _handle_choice() -> void:
 				_cycle_player_sprite()
 			elif _choice == "1":
 				_restore_party_pp()
-			if _choice == "2":
+			elif _choice == "2":
+				_mark_pokedex_demo()
+			elif _choice == "3":
+				_fill_pokedex_owned()
+			# "3" = Volver
+			if _choice == "4":
 				_show("root")
 			else:
 				_show("player")
@@ -147,3 +152,42 @@ func _debug_info() -> String:
 	var player: CharacterController = _player()
 	var map_name: String = player.mapa_raiz.map_name if player and player.mapa_raiz is MapAttributes else "Sin mapa"
 	return "Mapa: %s\nFlags: %d\nTiempo: %ds" % [map_name, ScriptExecutionContext.global_flags.size(), int(SaveManager.get_play_seconds())]
+
+func _mark_pokedex_demo() -> void:
+	var player: CharacterController = _player()
+	var data: CharacterPlayer = player.character_data as CharacterPlayer if player else null
+	if data == null:
+		return
+	if data.pokedex == null:
+		data.pokedex = PokedexData.new()
+
+	# Usa species_id reales de tu enum / base de datos.
+	# Ejemplos típicos (ajusta a los IDs que existan en tu Species.SpeciesID):
+	data.pokedex.set_seen(1)    # visto
+	data.pokedex.set_seen(4)
+	data.pokedex.set_owned(25)  # visto + capturado
+	data.pokedex.set_owned(7)
+
+	print("Pokédex demo: seen=%d owned=%d" % [
+		data.pokedex.seen_count(),
+		data.pokedex.owned_count()
+	])
+
+func _fill_pokedex_owned() -> void:
+	var player: CharacterController = _player()
+	var data: CharacterPlayer = player.character_data as CharacterPlayer if player else null
+	if data == null:
+		return
+
+	if data.pokedex == null:
+		data.pokedex = PokedexData.new()
+
+	var index: Array[Dictionary] = SpeciesDatabase.get_dex_index()
+	for entry: Dictionary in index:
+		var sid: int = int(entry["id"])
+		data.pokedex.set_owned(sid)  # owned implica seen
+
+	print("Pokédex rellenada: %d owned / %d en índice" % [
+		data.pokedex.owned_count(),
+		index.size()
+	])

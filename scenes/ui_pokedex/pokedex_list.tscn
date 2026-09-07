@@ -30,7 +30,7 @@ shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.3019608)
 shadow_offset = Vector2(0, 2)
 
-[node name="Pokedex_List" type="Node2D" unique_id=103101180]
+[node name="Pokedex_List" type="CanvasLayer" unique_id=426891792]
 script = ExtResource("1_giubj")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=662317726]
@@ -83,7 +83,7 @@ hframes = 2
 vframes = 2
 
 [node name="Scroll" type="Sprite2D" parent="." unique_id=248783622]
-position = Vector2(458, 95)
+position = Vector2(458, 274)
 texture = ExtResource("4_6ai16")
 hframes = 2
 frame = 1

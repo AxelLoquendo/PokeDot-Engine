@@ -22,17 +22,17 @@ font_size = 32
 font = ExtResource("3_2cw2u")
 font_size = 32
 
-[node name="Pokedex" type="Node2D" unique_id=441164056]
+[node name="Pokedex" type="CanvasLayer" unique_id=2056315408]
 script = ExtResource("1_37sdm")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=1035351948]
-position = Vector2(242, 160)
+position = Vector2(240, 160)
 texture = ExtResource("2_cm517")
 
 [node name="Seen" type="Label" parent="." unique_id=1115104363]
-offset_left = 250.0
+offset_left = 248.0
 offset_top = 124.0
-offset_right = 314.0
+offset_right = 312.0
 offset_bottom = 152.0
 text = "Vistos"
 label_settings = SubResource("LabelSettings_htemk")
@@ -69,9 +69,9 @@ vframes = 2
 frame = 1
 
 [node name="Caught" type="Label" parent="." unique_id=1381347489]
-offset_left = 345.0
+offset_left = 343.0
 offset_top = 124.0
-offset_right = 409.0
+offset_right = 443.0
 offset_bottom = 152.0
 text = "Obtenidos"
 label_settings = SubResource("LabelSettings_htemk")
@@ -110,9 +110,9 @@ frame = 3
 [node name="Dex" type="Control" parent="." unique_id=1521570923]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 64.0
+offset_left = 62.0
 offset_top = 176.0
-offset_right = 238.0
+offset_right = 236.0
 offset_bottom = 272.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Dex" unique_id=1761979802]
@@ -122,12 +122,12 @@ offset_bottom = 40.0
 
 [node name="Regional" type="Label" parent="Dex/VBoxContainer" unique_id=947301273]
 layout_mode = 2
-text = "Pokedex Regional"
+text = "Pokédex Regional"
 label_settings = SubResource("LabelSettings_14cdr")
 
 [node name="Nacional" type="Label" parent="Dex/VBoxContainer" unique_id=1804520069]
 layout_mode = 2
-text = "Pokedex Regional"
+text = "Pokédex Nacional"
 label_settings = SubResource("LabelSettings_14cdr")
 
 [node name="Salir" type="Label" parent="Dex/VBoxContainer" unique_id=1625315565]

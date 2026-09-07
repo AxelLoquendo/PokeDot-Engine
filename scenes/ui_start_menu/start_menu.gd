@@ -11,6 +11,7 @@ var is_open: bool = false
 
 var bag_ui: BagUI = null
 var party_menu: PartyMenu = null
+var pokedex_ui: Node = null 
 var last_option: String = ""
 
 # ============================================================
@@ -199,6 +200,8 @@ func _botones_visibles() -> Array[Control]:
 func _on_option_selected(option: String) -> void:
 	last_option = option
 	match option:
+		"Pokedex":
+			_open_pokedex()
 		"Save":
 			SaveManager.request_save(get_tree(), self)
 		"Pokemon":
@@ -209,7 +212,7 @@ func _on_option_selected(option: String) -> void:
 			_open_trainer_card()
 		"Bag":
 			_open_bag()
-		"Pokedex", "Options":
+		"Options":
 			print("%s: próximamente" % option)
 
 # ============================================================
@@ -378,3 +381,29 @@ func _actualizar_opcion_pokemon() -> void:
 	# Evita que el foco de Godot entre en un botón oculto
 	if btn is BaseButton:
 		(btn as BaseButton).focus_mode = (Control.FOCUS_ALL if hay else Control.FOCUS_NONE)
+
+func _open_pokedex() -> void:
+	toggle_menu()
+	if is_instance_valid(pokedex_ui):
+		return
+
+	var packed: PackedScene = preload("res://scenes/ui_pokedex/pokedex.tscn")
+	pokedex_ui = packed.instantiate()
+	get_tree().current_scene.add_child(pokedex_ui)
+
+	var jugador: CharacterController = get_tree().get_first_node_in_group("player") as CharacterController
+	if jugador == null:
+		pokedex_ui.queue_free()
+		pokedex_ui = null
+		_reactivate_menu()
+		return
+
+	if pokedex_ui.has_method("setup"):
+		pokedex_ui.call("setup", jugador.character_data as CharacterPlayer)
+	if pokedex_ui.has_signal("pokedex_closed"):
+		pokedex_ui.connect("pokedex_closed", _on_pokedex_closed)
+
+
+func _on_pokedex_closed() -> void:
+	pokedex_ui = null
+	_reactivate_menu()

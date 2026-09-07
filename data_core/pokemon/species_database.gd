@@ -27,6 +27,8 @@ var _warnings: Array[String] = []
 signal database_loaded(count: int)
 #signal database_error(message: String)
 
+var _dex_index: Array[Dictionary] = []
+
 func _ready() -> void:
 	load_database()
 
@@ -60,6 +62,47 @@ func get_species(species_id: Species.SpeciesID) -> PokemonDataStruct:
 
 	push_warning("SpeciesDB: Especie o forma %d no encontrada." % key)
 	return null
+
+## Solo IDs del índice (no carga recursos).
+func get_species_ids() -> Array[int]:
+	var ids: Array[int] = []
+	for id: Variant in _species_paths.keys():
+		ids.append(int(id))
+	ids.sort()
+	return ids
+
+
+## Construye una sola vez. Luego abrir la dex es barato.
+func get_dex_index() -> Array[Dictionary]:
+	if not _dex_index.is_empty():
+		return _dex_index
+
+	_dex_index.clear()
+	for id_key: Variant in _species_paths.keys():
+		var sid: int = int(id_key)
+		if sid <= 0:
+			continue
+		var path: String = str(_species_paths[id_key])
+		# Nombre solo del archivo (no abre el .tres)
+		var file_name: String = path.get_file().get_basename()
+		# BULBASAUR -> Bulbasaur (aprox.; el nombre real se usa al ver ficha/preview)
+		var display: String = file_name.capitalize().replace("_", " ")
+
+		_dex_index.append({
+			"id": sid,
+			"national": sid,   # si tu id == national dex
+			"regional": sid if sid <= 151 else 0,
+			"name": display,
+		})
+
+	_dex_index.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return int(a["national"]) < int(b["national"])
+	)
+	return _dex_index
+
+
+func clear_dex_index_cache() -> void:
+	_dex_index.clear()
 
 ## Devuelve siempre el recurso base, incluso cuando el ID recibido es el de
 ## una forma. Es útil para el resolver y para operaciones de herencia.
