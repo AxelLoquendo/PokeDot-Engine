@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://du2xcu5rf5dys"]
 
+[ext_resource type="Script" uid="uid://b7ygmjmjxtb0" path="res://scenes/ui_pokedex/pokedex_data.gd" id="1_4negv"]
 [ext_resource type="PackedScene" uid="uid://d0e2vsb2rbte" path="res://scenes/ui_pokedex/page_0.tscn" id="1_8vwrx"]
 [ext_resource type="Texture2D" uid="uid://do347jnh3h58q" path="res://graphics/ui_pokedex/page_info.png" id="2_e326x"]
 [ext_resource type="PackedScene" uid="uid://bat23vo1vg75x" path="res://scenes/ui_pokedex/page_1.tscn" id="2_rij8k"]
@@ -10,17 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://caasl7pvqj2w7" path="res://graphics/ui_pokedex/page_data.png" id="5_4qmlm"]
 [ext_resource type="Texture2D" uid="uid://nowhpguefbm3" path="res://graphics/ui_pokedex/page_arrows.png" id="6_ko751"]
 
-[node name="Pokedex_Data" type="CanvasLayer" unique_id=2115698924]
+[node name="Pokedex_Entry" type="CanvasLayer" unique_id=2115698924]
+script = ExtResource("1_4negv")
 
-[node name="Page_0" parent="." unique_id=1644811598 instance=ExtResource("1_8vwrx")]
+[node name="Pages" type="Node2D" parent="." unique_id=184815060]
 
-[node name="Page_1" parent="." unique_id=418160682 instance=ExtResource("2_rij8k")]
+[node name="Page_0" parent="Pages" unique_id=1644811598 instance=ExtResource("1_8vwrx")]
+
+[node name="Page_1" parent="Pages" unique_id=418160682 instance=ExtResource("2_rij8k")]
 visible = false
 
-[node name="Page_2" parent="." unique_id=1579363364 instance=ExtResource("3_4negv")]
+[node name="Page_2" parent="Pages" unique_id=1579363364 instance=ExtResource("3_4negv")]
 visible = false
 
-[node name="Page_3" parent="." unique_id=471327642 instance=ExtResource("4_0pifh")]
+[node name="Page_3" parent="Pages" unique_id=471327642 instance=ExtResource("4_0pifh")]
 visible = false
 
 [node name="Info" type="Sprite2D" parent="." unique_id=1939348736]
@@ -60,3 +64,5 @@ texture = ExtResource("6_ko751")
 hframes = 2
 vframes = 2
 frame = 1
+
+[node name="Cry" type="AudioStreamPlayer" parent="." unique_id=1204409191]

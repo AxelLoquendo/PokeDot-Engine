@@ -41,6 +41,8 @@ var _hold_dir: int = 0
 var _hold_timer: float = 0.0
 var _repeating: bool = false
 
+var _entry_ui: Node = null
+var _player_data: CharacterPlayer = null
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -59,7 +61,8 @@ func _collect_slots() -> void:
 			_slot_nodes.append(slot)
 
 
-func setup(_player_data: CharacterPlayer, pokedex: PokedexData, is_national: bool = true) -> void:
+func setup(player_data: CharacterPlayer, pokedex: PokedexData, is_national: bool = true) -> void:
+	_player_data = player_data
 	_pokedex = pokedex if pokedex else PokedexData.new()
 	_is_national = is_national
 	_build_entries()
@@ -71,6 +74,35 @@ func setup(_player_data: CharacterPlayer, pokedex: PokedexData, is_national: boo
 		scroll_bar.position = Vector2(SCROLL_X, SCROLL_Y_MIN)
 	_refresh_ui()
 
+func _try_open_entry() -> void:
+	if _entries.is_empty() or _entry_ui != null:
+		return
+	var entry: Dictionary = _entries[_cursor]
+	var sid: int = int(entry["id"])
+	if not _pokedex.is_seen(sid):
+		return
+
+	_active = false
+	var packed: PackedScene = load("res://scenes/ui_pokedex/pokedex_data.tscn") as PackedScene
+	# o pokedex_entry.tscn si la renombras
+	if packed == null:
+		_active = true
+		return
+
+	_entry_ui = packed.instantiate()
+	get_parent().add_child(_entry_ui)
+	if _entry_ui.has_method("setup"):
+		_entry_ui.call("setup", sid, _pokedex, _entries, _cursor)
+	if _entry_ui.has_signal("entry_closed"):
+		_entry_ui.connect("entry_closed", _on_entry_closed)
+	visible = false
+
+
+func _on_entry_closed() -> void:
+	_entry_ui = null
+	visible = true
+	_active = true
+	_refresh_ui()
 
 func _build_entries() -> void:
 	_entries.clear()
@@ -265,16 +297,6 @@ func _refresh_scroll_visual() -> void:
 	else:
 		var t: float = float(_scroll) / float(max_scroll)
 		scroll_bar.position.y = lerpf(SCROLL_Y_MIN, SCROLL_Y_MAX, t)
-
-
-func _try_open_entry() -> void:
-	if _entries.is_empty():
-		return
-	var entry: Dictionary = _entries[_cursor]
-	if not _pokedex.is_seen(int(entry["id"])):
-		return
-	print("Abrir ficha: ", entry["name"])
-
 
 func _close() -> void:
 	_active = false
