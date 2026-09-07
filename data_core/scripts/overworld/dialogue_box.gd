@@ -127,12 +127,22 @@ func _mostrar_opciones(choices: Array[DialogueChoice]) -> void:
 
 	esperando_eleccion = true
 
-	if not multichoice.choice_selected.is_connected(_on_multichoice_selected):
-		multichoice.choice_selected.connect(_on_multichoice_selected)
+	# Limpia conexiones viejas y usa ONE_SHOT (evita cancel fantasma)
+	if multichoice.choice_selected.is_connected(_on_multichoice_selected):
+		multichoice.choice_selected.disconnect(_on_multichoice_selected)
+	if multichoice.cancelled.is_connected(_on_multichoice_cancelled):
+		multichoice.cancelled.disconnect(_on_multichoice_cancelled)
+
+	multichoice.choice_selected.connect(_on_multichoice_selected, CONNECT_ONE_SHOT)
+	multichoice.cancelled.connect(_on_multichoice_cancelled, CONNECT_ONE_SHOT)
 
 	var pos: Vector2 = choice_position if choice_position.x >= 0.0 else _calcular_posicion_opciones()
 	multichoice.show_choices(choices, pos, true)
 
+func _on_multichoice_cancelled() -> void:
+	esperando_eleccion = false
+	# No emitir choice_selected → los sistemas ven "sin elección"
+	cerrar()
 
 func _calcular_posicion_opciones() -> Vector2:
 	# Esquina superior-derecha de la caja de diálogo.
@@ -147,6 +157,10 @@ func _calcular_posicion_opciones() -> Vector2:
 
 func _on_multichoice_selected(index: int, choice_id: String) -> void:
 	esperando_eleccion = false
+
+	# Si quedó conectado cancelled (no debería con ONE_SHOT), quitarlo
+	if multichoice != null and multichoice.cancelled.is_connected(_on_multichoice_cancelled):
+		multichoice.cancelled.disconnect(_on_multichoice_cancelled)
 
 	if dialogo_actual == null or pagina_actual >= dialogo_actual.pages.size():
 		cerrar()
@@ -167,7 +181,6 @@ func _on_multichoice_selected(index: int, choice_id: String) -> void:
 	if not siguiente_id.is_empty():
 		bloqueado = false
 		var indice_destino: int = _buscar_indice_por_id(siguiente_id)
-
 		if indice_destino != -1:
 			pagina_actual = indice_destino
 			mostrar_pagina()

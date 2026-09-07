@@ -8,32 +8,35 @@ signal cancelled()
 @onready var margin: MarginContainer = $ChoiceWindow/MarginContainer
 @onready var scroll: ScrollContainer = $ChoiceWindow/MarginContainer/ScrollContainer
 @onready var options_container: VBoxContainer = $ChoiceWindow/MarginContainer/ScrollContainer/OptionsContainer
-@onready var cursor: TextureRect = $ChoiceWindow/Cursor   # ← YA NO está dentro del MarginContainer
+@onready var cursor: TextureRect = $ChoiceWindow/Cursor
 
-# --- Configuración exportable (Inspector) ---
-@export var font_color: Color = Color(0.31, 0.31, 0.31, 1.0)          # color del texto
-@export var font_shadow_color: Color = Color(0.8, 0.8, 0.8, 1.0)     # sombra suave
-@export var max_visible_options: int = 8                             # a partir de aquí hace scroll
-@export var cursor_left_margin: int = 14                             # espacio reservado para el cursor
+@export var font_color: Color = Color(0.31, 0.31, 0.31, 1.0)
+@export var font_shadow_color: Color = Color(0.8, 0.8, 0.8, 1.0)
+@export var max_visible_options: int = 8
+@export var cursor_left_margin: int = 14
+@export var cursor_x: float = 6.0
 
 const FONT_PATH: String = "res://pokemon-emerald-pro.ttf"
 const FONT_SIZE: int = 32
-const LINE_HEIGHT: int = 20
+# Debe ser >= alto real de la fuente (32) + un poco de aire
+const LINE_HEIGHT: int = 36
 const PADDING_X: int = 8
-const PADDING_Y: int = 10
+const PADDING_Y: int = 12
 const MIN_WIDTH: int = 80
-const SEPARATION: int = 2
+const SEPARATION: int = 4
 
 var _choices: Array[DialogueChoice] = []
-var _buttons: Array[Button] = []
+var _labels: Array[Label] = []
 var _current_index: int = 0
 var _active: bool = false
 var _font: FontFile = null
 var _show_call_id: int = 0
+var _busy: bool = false  # evita doble A/B en el mismo frame
 
 
 func _ready() -> void:
 	visible = false
+	process_mode = Node.PROCESS_MODE_INHERIT
 	_font = load(FONT_PATH) as FontFile
 	if _font == null:
 		push_error("No se pudo cargar la fuente: %s" % FONT_PATH)
@@ -43,132 +46,139 @@ func _ready() -> void:
 		cursor.visible = false
 		cursor.z_index = 10
 
-	# Márgenes fijos: izquierda grande para el cursor, resto pequeño
 	margin.add_theme_constant_override("margin_left", cursor_left_margin + PADDING_X)
 	margin.add_theme_constant_override("margin_right", PADDING_X)
 	margin.add_theme_constant_override("margin_top", PADDING_Y)
 	margin.add_theme_constant_override("margin_bottom", PADDING_Y)
-
 	options_container.add_theme_constant_override("separation", SEPARATION)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not _active:
+func _input(event: InputEvent) -> void:
+	if not _active or _busy:
+		return
+	if event.is_echo():
 		return
 
-	if event.is_action_pressed("Up") or event.is_action_pressed("Down"):
-		var direction: int = -1 if event.is_action_pressed("Up") else 1
-		_move_cursor(direction)
+	# Solo acciones de TU proyecto (evita ui_accept/ui_cancel fantasma)
+	if event.is_action_pressed("Up"):
+		_move_cursor(-1)
 		get_viewport().set_input_as_handled()
+		return
 
-	elif event.is_action_pressed("buttonA"):
+	if event.is_action_pressed("Down"):
+		_move_cursor(1)
+		get_viewport().set_input_as_handled()
+		return
+
+	if event.is_action_pressed("buttonA"):
 		_confirm_choice()
 		get_viewport().set_input_as_handled()
+		return
 
-	elif event.is_action_pressed("buttonB"):
-		# Descomenta si quieres poder cancelar con B
-		# cancelled.emit()
-		# hide_menu()
+	if event.is_action_pressed("buttonB"):
+		_cancel()
 		get_viewport().set_input_as_handled()
+		return
 
 
-# ============================================================
-# API PÚBLICA
-# ============================================================
-
-## position = punto ancla (normalmente esquina superior-derecha de la caja de diálogo).
-## El menú se coloca con su esquina inferior-derecha pegada a ese punto
-## (a la derecha y arriba, estilo pokeemerald expansion).
-func show_choices(choices: Array[DialogueChoice], position: Vector2 = Vector2(-1, -1), anchor_bottom: bool = true) -> void:
+func show_choices(
+	choices: Array[DialogueChoice],
+	menu_pos: Vector2 = Vector2(-1, -1),
+	_use_anchor_bottom: bool = true
+) -> void:
 	if choices.is_empty():
-		push_warning("MultichoiceBox: se recibieron 0 opciones")
+		push_warning("MultichoiceBox: 0 opciones")
 		return
 
 	_show_call_id += 1
 	var call_id: int = _show_call_id
+	_busy = false
 
 	_choices = choices
-	_clear_buttons()
-	_create_buttons()
+	_clear_options()
+	_create_options()
 	_resize_window()
 
 	await get_tree().process_frame
 	if call_id != _show_call_id:
 		return
-
-	# Esperamos un frame más para que los tamaños reales de los botones estén listos
 	await get_tree().process_frame
 	if call_id != _show_call_id:
 		return
 
-	if position.x >= 0.0 and position.y >= 0.0:
-		_place_menu(position, anchor_bottom)
+	if menu_pos.x >= 0.0 and menu_pos.y >= 0.0:
+		_place_menu(menu_pos)
 
 	_current_index = 0
-	_update_cursor()
-	_ensure_cursor_visible()
-
-	visible = true
 	_active = true
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	visible = true
 	if cursor != null:
 		cursor.visible = true
+
+	# Esperar un frame más para que los Label tengan global_rect real
+	await get_tree().process_frame
+	if call_id != _show_call_id:
+		return
+	_update_cursor()
 
 
 func hide_menu() -> void:
 	_show_call_id += 1
 	_active = false
+	_busy = false
+	process_mode = Node.PROCESS_MODE_INHERIT
 	visible = false
 	if cursor != null:
 		cursor.visible = false
-	_clear_buttons()
+	_clear_options()
 	_choices.clear()
 
 
-# ============================================================
-# INTERNO
-# ============================================================
+func _cancel() -> void:
+	if _busy or not _active:
+		return
+	_busy = true
+	_active = false
+	hide_menu()
+	cancelled.emit()
 
-func _create_buttons() -> void:
+
+func _create_options() -> void:
 	for i: int in range(_choices.size()):
 		var choice: DialogueChoice = _choices[i]
-		var btn: Button = Button.new()
-		btn.name = "Option_%d" % i
-		btn.text = choice.text
-		btn.flat = true
-		btn.focus_mode = Control.FOCUS_NONE
-		btn.mouse_filter = Control.MOUSE_FILTER_STOP
-		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		btn.custom_minimum_size = Vector2(0, LINE_HEIGHT)
+		var label: Label = Label.new()
+		label.name = "Option_%d" % i
+		label.text = choice.text
+		label.mouse_filter = Control.MOUSE_FILTER_STOP
+		label.custom_minimum_size = Vector2(0, LINE_HEIGHT)
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
 		if _font != null:
-			btn.add_theme_font_override("font", _font)
-			btn.add_theme_font_size_override("font_size", FONT_SIZE)
+			label.add_theme_font_override("font", _font)
+			label.add_theme_font_size_override("font_size", FONT_SIZE)
+		label.add_theme_color_override("font_color", font_color)
+		label.add_theme_color_override("font_shadow_color", font_shadow_color)
+		label.add_theme_constant_override("shadow_offset_x", 1)
+		label.add_theme_constant_override("shadow_offset_y", 1)
 
-		# Color de letra (exportable)
-		btn.add_theme_color_override("font_color", font_color)
-		btn.add_theme_color_override("font_hover_color", font_color)
-		btn.add_theme_color_override("font_pressed_color", font_color)
-		btn.add_theme_color_override("font_focus_color", font_color)
-		btn.add_theme_color_override("font_shadow_color", font_shadow_color)
-		btn.add_theme_constant_override("shadow_offset_x", 1)
-		btn.add_theme_constant_override("shadow_offset_y", 1)
+		var idx: int = i
+		label.gui_input.connect(func(ev: InputEvent) -> void:
+			if not _active or _busy:
+				return
+			if ev is InputEventMouseButton and ev.pressed and ev.button_index == MOUSE_BUTTON_LEFT:
+				_current_index = idx
+				_confirm_choice()
+		)
 
-		# Quitar estilos nativos del Button
-		var empty_style: StyleBoxEmpty = StyleBoxEmpty.new()
-		btn.add_theme_stylebox_override("normal", empty_style)
-		btn.add_theme_stylebox_override("hover", empty_style)
-		btn.add_theme_stylebox_override("pressed", empty_style)
-		btn.add_theme_stylebox_override("focus", empty_style)
-
-		btn.pressed.connect(_on_button_pressed.bind(i))
-		options_container.add_child(btn)
-		_buttons.append(btn)
+		options_container.add_child(label)
+		_labels.append(label)
 
 
-func _clear_buttons() -> void:
-	for btn: Button in _buttons:
-		btn.queue_free()
-	_buttons.clear()
+func _clear_options() -> void:
+	for label: Label in _labels:
+		label.queue_free()
+	_labels.clear()
 
 
 func _resize_window() -> void:
@@ -178,17 +188,11 @@ func _resize_window() -> void:
 	var max_text_width: int = 0
 	for choice: DialogueChoice in _choices:
 		var text_size: Vector2 = _font.get_string_size(
-			choice.text,
-			HORIZONTAL_ALIGNMENT_LEFT,
-			-1,
-			FONT_SIZE
+			choice.text, HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_SIZE
 		)
 		max_text_width = maxi(max_text_width, int(text_size.x))
 
-	# Ancho total = texto + espacio del cursor + paddings
 	var content_width: int = maxi(max_text_width + cursor_left_margin + PADDING_X * 2 + 4, MIN_WIDTH)
-
-	# Altura: máximo max_visible_options líneas + paddings
 	var visible_count: int = mini(_choices.size(), max_visible_options)
 	var content_height: int = (
 		visible_count * LINE_HEIGHT
@@ -197,83 +201,71 @@ func _resize_window() -> void:
 	)
 
 	window.size = Vector2(content_width, content_height)
-
-	# El ScrollContainer debe ocupar todo el margen
 	scroll.custom_minimum_size = Vector2(
 		content_width - cursor_left_margin - PADDING_X * 2,
 		content_height - PADDING_Y * 2
 	)
 	scroll.size = scroll.custom_minimum_size
-
-	# Si hay más opciones de las visibles, el VBox puede crecer
 	options_container.custom_minimum_size = Vector2(
 		scroll.custom_minimum_size.x,
 		_choices.size() * LINE_HEIGHT + maxi(_choices.size() - 1, 0) * SEPARATION
 	)
 
 
-func _place_menu(anchor: Vector2, anchor_bottom: bool) -> void:
-	# anchor = esquina superior-derecha de la caja de diálogo (o el punto que nos pasen)
-	# Queremos que la esquina inferior-derecha del menú quede justo encima de ese punto.
+func _place_menu(anchor: Vector2) -> void:
 	var menu_size: Vector2 = window.size
-	var target_x: float = anchor.x - menu_size.x          # alineado a la derecha
-	var target_y: float = anchor.y - menu_size.y          # arriba de la caja
-
-	# Seguridad: no salirse de la pantalla
+	var target_x: float = anchor.x - menu_size.x
+	var target_y: float = anchor.y - menu_size.y
 	var vp: Vector2 = get_viewport().get_visible_rect().size
 	target_x = clampf(target_x, 4.0, vp.x - menu_size.x - 4.0)
 	target_y = clampf(target_y, 4.0, vp.y - menu_size.y - 4.0)
-
 	global_position = Vector2(target_x, target_y)
 
 
 func _move_cursor(direction: int) -> void:
-	if _buttons.is_empty():
+	if _labels.is_empty():
 		return
-
-	_current_index = wrapi(_current_index + direction, 0, _buttons.size())
-	_update_cursor()
+	_current_index = wrapi(_current_index + direction, 0, _labels.size())
 	_ensure_cursor_visible()
+	_update_cursor()
 
 
 func _update_cursor() -> void:
-	if _buttons.is_empty() or cursor == null:
+	if cursor == null or _labels.is_empty():
+		return
+	if _current_index < 0 or _current_index >= _labels.size():
 		return
 
-	var target_btn: Button = _buttons[_current_index]
+	var label: Label = _labels[_current_index]
+	# Rect global real de la opción → local del ChoiceWindow
+	var label_rect: Rect2 = label.get_global_rect()
+	var window_origin: Vector2 = window.global_position
+	var local_y: float = label_rect.position.y - window_origin.y
+	local_y += (label_rect.size.y - cursor.size.y) * 0.5
 
-	# Convertimos la posición global del botón a local del ChoiceWindow
-	var btn_global: Vector2 = target_btn.global_position
-	var window_global: Vector2 = window.global_position
-	var local_y: float = btn_global.y - window_global.y + (target_btn.size.y - cursor.size.y) * 0.5
-
-	cursor.position = Vector2(
-		4,                          # un poco a la izquierda del texto
-		local_y
-	)
+	cursor.position = Vector2(cursor_x, local_y)
 
 
 func _ensure_cursor_visible() -> void:
-	if _buttons.is_empty() or scroll == null:
+	if scroll == null or _labels.is_empty():
 		return
-
-	var target_btn: Button = _buttons[_current_index]
-	# Hacemos que el ScrollContainer muestre el botón seleccionado
-	scroll.ensure_control_visible(target_btn)
+	scroll.ensure_control_visible(_labels[_current_index])
+	call_deferred("_update_cursor")
 
 
 func _confirm_choice() -> void:
+	if _busy or not _active:
+		return
 	if _current_index < 0 or _current_index >= _choices.size():
 		return
+
+	_busy = true
+	_active = false
 
 	var choice: DialogueChoice = _choices[_current_index]
 	var index: int = _current_index
 	var id: String = choice.choice_id
 
+	# Importante: NO emitir cancelled aquí
 	hide_menu()
 	choice_selected.emit(index, id)
-
-
-func _on_button_pressed(index: int) -> void:
-	_current_index = index
-	_confirm_choice()
