@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://d0e2vsb2rbte"]
+
+[ext_resource type="Script" uid="uid://dooyate2ua0jv" path="res://scenes/ui_pokedex/page_0.gd" id="1_8oqnn"]
+[ext_resource type="Texture2D" uid="uid://govipyes4a6g" path="res://graphics/ui_pokedex/bg_info.png" id="1_84pik"]
+[ext_resource type="Texture2D" uid="uid://crvour31oqrnc" path="res://graphics/pokemon/front/MEGA_DRAMPA.png" id="2_0uomc"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="3_8oqnn"]
+[ext_resource type="Texture2D" uid="uid://bw84iij4dnwpr" path="res://graphics/ui_pokedex/icon_own.png" id="4_tn423"]
+[ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="5_lfsgi"]
+[ext_resource type="Texture2D" uid="uid://d0elre6danqqd" path="res://graphics/types/poison.png" id="6_4s056"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6scu6"]
+font = ExtResource("3_8oqnn")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.3019608)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_unw5n"]
+font = ExtResource("3_8oqnn")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.3019608)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qlcy1"]
+font = ExtResource("3_8oqnn")
+font_size = 32
+font_color = Color(0.39384586, 0.39384592, 0.39384574, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.3019608)
+shadow_offset = Vector2(0, 2)
+
+[node name="Page_0" type="Node2D" unique_id=1644811598]
+script = ExtResource("1_8oqnn")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=334859092]
+position = Vector2(240, 160)
+texture = ExtResource("1_84pik")
+
+[node name="Front" type="Sprite2D" parent="." unique_id=1406948687]
+position = Vector2(97, 121)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0uomc")
+
+[node name="Dex_number" type="Label" parent="." unique_id=2060758084]
+offset_left = 237.0
+offset_top = 33.0
+offset_right = 285.0
+offset_bottom = 61.0
+text = "0000"
+label_settings = SubResource("LabelSettings_6scu6")
+
+[node name="Name_Specie" type="Label" parent="." unique_id=1477526756]
+offset_left = 287.0
+offset_top = 33.0
+offset_right = 385.0
+offset_bottom = 61.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_unw5n")
+
+[node name="Category_Name" type="Label" parent="." unique_id=564043067]
+offset_left = 237.0
+offset_top = 61.0
+offset_right = 335.0
+offset_bottom = 89.0
+text = "Pokémon Semilla"
+label_settings = SubResource("LabelSettings_qlcy1")
+
+[node name="Altura" type="Label" parent="." unique_id=1484787403]
+offset_left = 297.0
+offset_top = 129.0
+offset_right = 365.0
+offset_bottom = 157.0
+text = "Altura:"
+label_settings = SubResource("LabelSettings_qlcy1")
+
+[node name="Altura_number" type="Label" parent="Altura" unique_id=1366926682]
+layout_mode = 0
+offset_left = 74.0
+offset_right = 170.0
+offset_bottom = 28.0
+text = "000.000 m"
+label_settings = SubResource("LabelSettings_qlcy1")
+
+[node name="Peso" type="Label" parent="." unique_id=1132545718]
+offset_left = 297.0
+offset_top = 157.0
+offset_right = 351.0
+offset_bottom = 185.0
+text = "Peso:"
+label_settings = SubResource("LabelSettings_qlcy1")
+
+[node name="Peso_number" type="Label" parent="Peso" unique_id=1096384970]
+layout_mode = 0
+offset_left = 62.0
+offset_right = 170.0
+offset_bottom = 28.0
+text = "000.000 kg"
+label_settings = SubResource("LabelSettings_qlcy1")
+
+[node name="Specie_Description" type="Label" parent="." unique_id=1917350402]
+offset_left = 36.0
+offset_top = 200.0
+offset_right = 445.0
+offset_bottom = 305.0
+text = "Una rara semilla le fue plantada en el lomo al nacer. La planta brota y crece con este Pokémon."
+label_settings = SubResource("LabelSettings_qlcy1")
+autowrap_mode = 2
+
+[node name="Status" type="Sprite2D" parent="." unique_id=294822411]
+position = Vector2(214, 48)
+texture = ExtResource("4_tn423")
+
+[node name="Tipos" type="GridContainer" parent="." unique_id=1746009845]
+offset_left = 278.0
+offset_top = 97.0
+offset_right = 410.0
+offset_bottom = 124.0
+
+[node name="Type_1" type="Sprite2D" parent="Tipos" unique_id=873145137]
+position = Vector2(32, 14)
+texture = ExtResource("5_lfsgi")
+
+[node name="Type_2" type="Sprite2D" parent="Tipos" unique_id=358447907]
+position = Vector2(100, 14)
+texture = ExtResource("6_4s056")

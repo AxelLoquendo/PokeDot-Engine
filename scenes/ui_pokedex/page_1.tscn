@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bat23vo1vg75x"]
+
+[ext_resource type="Texture2D" uid="uid://c07akego2cvey" path="res://graphics/ui_pokedex/bg_area.png" id="1_645fm"]
+
+[node name="Page_1" type="Node2D" unique_id=418160682]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1056453225]
+position = Vector2(240, 160)
+texture = ExtResource("1_645fm")

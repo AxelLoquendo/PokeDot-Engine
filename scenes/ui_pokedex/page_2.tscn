@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://urnmlv5mwwh7"]
+
+[ext_resource type="Texture2D" uid="uid://cht5x8pmae3eb" path="res://graphics/ui_pokedex/bg_forms.png" id="1_axxcx"]
+[ext_resource type="Script" uid="uid://yrt63cf8hs7k" path="res://scenes/ui_pokedex/page_2.gd" id="1_qgtf4"]
+[ext_resource type="Texture2D" uid="uid://fl8flujc8ngo" path="res://graphics/pokemon/front_shiny/TERAPAGOS_STELLAR.png" id="2_brbdn"]
+[ext_resource type="Texture2D" uid="uid://01ibo1tjwfnc" path="res://graphics/pokemon/back/TERAPAGOS_STELLAR.png" id="3_0xjgl"]
+[ext_resource type="Texture2D" uid="uid://dsa3jbr712f3" path="res://graphics/pokemon/icons/TERAPAGOS_STELLAR.png" id="4_1a7nf"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="5_b6v8v"]
+[ext_resource type="Texture2D" uid="uid://c7fbhvt61gwj7" path="res://graphics/text_window/up_arrow.png" id="6_qgtf4"]
+[ext_resource type="Texture2D" uid="uid://ck416673h52uk" path="res://graphics/text_window/down_arrow.png" id="7_4rsue"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("5_b6v8v")
+font_size = 32
+font_color = Color(0.3764706, 0.3764706, 0.3764706, 1)
+shadow_size = 0
+shadow_color = Color(0.3764706, 0.3764706, 0.3764706, 0.3764706)
+shadow_offset = Vector2(0, 2)
+
+[node name="Page_2" type="Node2D" unique_id=1579363364]
+script = ExtResource("1_qgtf4")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=815572558]
+position = Vector2(240, 160)
+texture = ExtResource("1_axxcx")
+
+[node name="Front" type="Sprite2D" parent="." unique_id=1261376193]
+position = Vector2(121, 132)
+scale = Vector2(2, 2)
+texture = ExtResource("2_brbdn")
+
+[node name="Back" type="Sprite2D" parent="." unique_id=1291419266]
+position = Vector2(359, 150)
+scale = Vector2(2, 2)
+texture = ExtResource("3_0xjgl")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=15506446]
+position = Vector2(80, 273)
+texture = ExtResource("4_1a7nf")
+hframes = 2
+
+[node name="Specie" type="Label" parent="." unique_id=853060472]
+offset_left = 180.0
+offset_top = 244.0
+offset_right = 316.0
+offset_bottom = 272.0
+text = "Brutte Bonet"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Form" type="Label" parent="." unique_id=62828026]
+offset_left = 180.0
+offset_top = 273.0
+offset_right = 316.0
+offset_bottom = 301.0
+text = "Forma: Stellar"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Arrow_Up" type="Sprite2D" parent="." unique_id=1616139570]
+position = Vector2(244, 241)
+texture = ExtResource("6_qgtf4")
+hframes = 8
+
+[node name="Arrow_Down" type="Sprite2D" parent="." unique_id=519562068]
+position = Vector2(245, 306)
+texture = ExtResource("7_4rsue")
+hframes = 8
