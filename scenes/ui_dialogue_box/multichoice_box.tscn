@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://nfe6d3qk2j6w"]
+
+[ext_resource type="Script" uid="uid://bnts8umm8byj6" path="res://scenes/ui_dialogue_box/multichoice_box.gd" id="1_4a181"]
+[ext_resource type="Texture2D" uid="uid://b6jp0w58i5x43" path="res://graphics/text_window/choice 1.png" id="1_31qwe"]
+[ext_resource type="Texture2D" uid="uid://batr4ra625ugk" path="res://graphics/text_window/sel_arrow.png" id="2_4a181"]
+
+[node name="Multichoice" type="CanvasLayer" unique_id=747739245]
+
+[node name="MultichoiceBox" type="Control" parent="." unique_id=890732290 groups=["multichoice_box"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4a181")
+
+[node name="ChoiceWindow" type="NinePatchRect" parent="MultichoiceBox" unique_id=424775080]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_31qwe")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MultichoiceBox/ChoiceWindow" unique_id=1812449133]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MultichoiceBox/ChoiceWindow/MarginContainer" unique_id=905876828]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Cursor" type="TextureRect" parent="MultichoiceBox/ChoiceWindow/MarginContainer" unique_id=29019424]
+layout_mode = 2
+texture = ExtResource("2_4a181")
+stretch_mode = 2

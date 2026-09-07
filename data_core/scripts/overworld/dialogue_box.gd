@@ -1,5 +1,4 @@
 extends CanvasLayer
-
 class_name DialogueBox
 
 # Señal para notificar elecciones al sistema de guardado/quest
@@ -15,12 +14,13 @@ signal dialogue_closed()
 @onready var texto: Label = $Control/CajaDialogo/TextLabel
 @onready var flecha_dialogo: Sprite2D = $Control/CajaDialogo/Flecha
 @onready var sonido_dialogo: AudioStreamPlayer = $SonidoTexto
-@onready var container_opciones: VBoxContainer = $Control/CajaDialogo/ContainerOpciones
+
+# --- Multichoice externo ---
+@onready var multichoice: MultichoiceBox = get_tree().get_first_node_in_group("multichoice_box")
 
 # --- Variables de estado ---
 var dialogo_abierto: bool = false
 var npc_actual: CharacterController = null
-
 var escribiendo: bool = false
 var pagina_actual: int = 0
 var dialogo_actual: Dialogue = null
@@ -30,57 +30,29 @@ static var activo: bool = false
 var animando: bool = false
 var cerrando: bool = false
 var bloqueado: bool = false
-
 var mostrar_caja_nombre: bool = false
 
 # --- Variables para multichoice ---
 var esperando_eleccion: bool = false
+# Si la dejas en (-1, -1), la posición se calcula automáticamente pegada
+# a la caja de diálogo (ver _calcular_posicion_opciones). Asígnala desde
+# afuera solo si necesitas una posición fija puntual para un diálogo en
+# concreto.
 var choice_position: Vector2 = Vector2(-1, -1)
-var default_choice_position: Vector2 = Vector2.ZERO
-var botones_pool: Array[Button] = []
-const MAX_OPCIONES: int = 4
+
+# Offset del menú de opciones respecto a la esquina superior derecha de
+# la caja de diálogo. Ajusta estos valores a ojo hasta que quede pegado
+# donde lo tiene pokeemerald expansion en tu layout.
+const CHOICE_OFFSET_X: int = 0
+const CHOICE_ABOVE_GAP: int = 8  # espacio entre el menú y la caja de diálogo
+const CHOICE_OFFSET_Y: int = -10
 
 
 func _ready() -> void:
-#	print("DialogueBox cargado")
 	visible = false
 	texto.text = ""
 	nombre.text = ""
 	flecha_dialogo.visible = false
-	
-	if container_opciones != null:
-		default_choice_position = container_opciones.position
-		container_opciones.visible = false
-		_preparar_botones()
-
-
-func _preparar_botones() -> void:
-	# Cargamos la fuente una sola vez
-	var fuente_personalizada: FontFile = load("res://pokemon-emerald-pro.ttf") as FontFile
-	
-	# Validación por si la ruta está mal o el archivo no existe
-	if fuente_personalizada == null:
-		push_error("No se pudo cargar la fuente 'pokemon-emerald-pro.ttf'. Verifica la ruta.")
-	
-	for i: int in range(MAX_OPCIONES):
-		var btn: Button = Button.new()
-		btn.name = "BtnOpcion_%d" % i
-		btn.visible = false
-		
-		# --- APLICACIÓN DE LA FUENTE ---
-		if fuente_personalizada != null:
-			# Asignamos la fuente al tema del botón para el estado normal
-			btn.add_theme_font_override("font", fuente_personalizada)
-			# Opcional: Ajustar tamaño si la fuente por defecto es muy pequeña/grande
-			btn.add_theme_font_size_override("font_size", 32) 
-		else:
-			# Fallback por si falla la carga (usa la fuente por defecto del proyecto)
-			pass
-		# -------------------------------
-		
-		btn.pressed.connect(_on_opcion_presionada.bind(i))
-		container_opciones.add_child(btn)
-		botones_pool.append(btn)
 
 
 func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: CharacterController = null) -> void:
@@ -98,12 +70,12 @@ func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: Character
 	texto_completo = ""
 	flecha_dialogo.visible = false
 	_ocultar_opciones()
-	
+
 	visible = true
 	animaciones.play("inicio")
 	if mostrar_caja_nombre:
 		animaciones_cn.play("inicio")
-	
+
 	await animaciones.animation_finished
 
 	bloqueado = false
@@ -130,7 +102,7 @@ func mostrar_pagina() -> void:
 	esperando_eleccion = false
 
 	sonido_dialogo.play()
-	
+
 	for letra: String in texto_completo:
 		if escritura_actual != id_escritura:
 			return
@@ -146,44 +118,71 @@ func mostrar_pagina() -> void:
 func _verificar_tipo_pagina(pagina: DialoguePage) -> void:
 	if pagina.has_choices():
 		_mostrar_opciones(pagina.choices)
-		esperando_eleccion = true
 	else:
 		flecha_dialogo.visible = true
 
 
 func _mostrar_opciones(choices: Array[DialogueChoice]) -> void:
-	if container_opciones == null:
-		push_error("Falta el nodo ContainerOpciones en la escena del DialogueBox")
+	if multichoice == null:
+		push_error("No se encontró MultichoiceBox en el grupo 'multichoice_box'")
 		return
-		
-	container_opciones.visible = true
-	if choice_position.x >= 0.0 and choice_position.y >= 0.0:
-		container_opciones.position = choice_position
-	else:
-		container_opciones.position = default_choice_position
-	var indice_valido: int = 0
-	
-	for btn: Button in botones_pool:
-		btn.visible = false
 
-	for choice: DialogueChoice in choices:
-		if indice_valido >= MAX_OPCIONES:
-			push_warning("Demasiadas opciones en diálogo. Máximo: %d" % MAX_OPCIONES)
-			break
-			
-		var btn: Button = botones_pool[indice_valido]
-		btn.text = choice.text
-		btn.visible = true
-		btn.set_meta("dato_elecion", choice)
-		
-		indice_valido += 1
+	esperando_eleccion = true
+
+	if not multichoice.choice_selected.is_connected(_on_multichoice_selected):
+		multichoice.choice_selected.connect(_on_multichoice_selected)
+
+	var pos: Vector2 = choice_position if choice_position.x >= 0.0 else _calcular_posicion_opciones()
+	multichoice.show_choices(choices, pos, true)
+
+
+func _calcular_posicion_opciones() -> Vector2:
+	# Punto inferior-izquierdo del menú: pegado al borde superior de la
+	# caja de diálogo, con un pequeño margen (CHOICE_ABOVE_GAP).
+	var caja_rect: Rect2 = caja.get_global_rect()
+	return Vector2(
+		caja_rect.position.x + CHOICE_OFFSET_X,
+		caja_rect.position.y - CHOICE_ABOVE_GAP
+	)
+
+
+func _on_multichoice_selected(index: int, choice_id: String) -> void:
+	esperando_eleccion = false
+
+	if dialogo_actual == null or pagina_actual >= dialogo_actual.pages.size():
+		cerrar()
+		return
+
+	var pagina: DialoguePage = dialogo_actual.pages[pagina_actual]
+	if index < 0 or index >= pagina.choices.size():
+		cerrar()
+		return
+
+	var opcion: DialogueChoice = pagina.choices[index]
+
+	if not opcion.choice_id.is_empty():
+		choice_selected.emit(opcion.choice_id)
+
+	var siguiente_id: String = opcion.next_page_id
+
+	if not siguiente_id.is_empty():
+		bloqueado = false
+		var indice_destino: int = _buscar_indice_por_id(siguiente_id)
+
+		if indice_destino != -1:
+			pagina_actual = indice_destino
+			mostrar_pagina()
+		else:
+			print("No se encontró la página con ID: '%s'" % siguiente_id)
+			cerrar()
+	else:
+		bloqueado = true
+		cerrar()
 
 
 func _ocultar_opciones() -> void:
-	if container_opciones != null:
-		container_opciones.visible = false
-	for btn: Button in botones_pool:
-		btn.visible = false
+	if multichoice != null:
+		multichoice.hide_menu()
 
 
 func siguiente_pagina() -> void:
@@ -191,7 +190,7 @@ func siguiente_pagina() -> void:
 		return
 
 	var pagina_recurso: DialoguePage = dialogo_actual.pages[pagina_actual]
-	
+
 	# 1. Prioridad: Si hay un next_page_id explícito, úsalo
 	if not pagina_recurso.next_page_id.is_empty():
 		var nuevo_index: int = _buscar_indice_por_id(pagina_recurso.next_page_id)
@@ -203,14 +202,12 @@ func siguiente_pagina() -> void:
 			cerrar()
 		return
 
-	# 2. Lógica de corrección: Si NO hay next_page_id
-	# Si la página tiene elecciones (es un punto de decisión), NO avanzamos automáticamente.
-	# Esto evita caer en la rama del "No" después de elegir "Sí".
+	# 2. Si la página tiene elecciones, no avanzamos automáticamente
 	if pagina_recurso.has_choices():
 		cerrar()
 		return
 
-	# 3. Comportamiento por defecto: Avanzar a la siguiente página lineal
+	# 3. Comportamiento por defecto: avanzar a la siguiente página lineal
 	if pagina_actual + 1 >= dialogo_actual.pages.size():
 		cerrar()
 		return
@@ -222,7 +219,7 @@ func siguiente_pagina() -> void:
 func _buscar_indice_por_id(id_busqueda: String) -> int:
 	if dialogo_actual == null:
 		return -1
-	
+
 	var pages_count: int = dialogo_actual.pages.size()
 	for i: int in range(pages_count):
 		if dialogo_actual.pages[i].page_id == id_busqueda:
@@ -250,6 +247,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func terminar_escritura() -> void:
 	escribiendo = false
 	texto.text = texto_completo
+
 	if dialogo_actual != null and pagina_actual < dialogo_actual.pages.size():
 		_verificar_tipo_pagina(dialogo_actual.pages[pagina_actual])
 
@@ -257,6 +255,7 @@ func terminar_escritura() -> void:
 func mostrar_nombre(nombre_personaje: String) -> void:
 	mostrar_caja_nombre = not nombre_personaje.is_empty()
 	caja_nombre.visible = mostrar_caja_nombre
+
 	if mostrar_caja_nombre:
 		nombre.text = nombre_personaje
 	else:
@@ -279,60 +278,24 @@ func cerrar() -> void:
 
 	if mostrar_caja_nombre:
 		animaciones_cn.play("fin")
+
 	animaciones.play("fin")
 	await animaciones.animation_finished
-	
+
 	caja_nombre.visible = false
 	mostrar_caja_nombre = false
 	visible = false
-
 	activo = false
+
 	var npc_a_notificar: CharacterController = npc_actual
 	npc_actual = null
 	dialogo_actual = null
 	pagina_actual = 0
 	cerrando = false
 
-	# El runner puede abrir otro diálogo inmediatamente. Por eso toda la
-	# limpieza debe terminar antes de notificar al NPC.
+	# El runner puede abrir otro diálogo inmediatamente.
+	# Por eso toda la limpieza debe terminar antes de notificar al NPC.
 	if npc_a_notificar != null:
 		npc_a_notificar.terminar_dialogo()
+
 	dialogue_closed.emit()
-
-
-func _on_opcion_presionada(indice: int) -> void:
-	if indice < 0 or indice >= botones_pool.size():
-		push_error("Índice de opción fuera de rango: %d" % indice)
-		return
-	
-	var btn: Button = botones_pool[indice]
-	if not btn.visible:
-		return
-
-	var opcion: DialogueChoice = btn.get_meta("dato_elecion") as DialogueChoice
-	if opcion == null:
-		push_error("Meta 'dato_elecion' no es válida o es null en botón índice %d" % indice)
-		return
-
-	if not opcion.choice_id.is_empty():
-		choice_selected.emit(opcion.choice_id)
-
-	var siguiente_id: String = opcion.next_page_id
-	
-	esperando_eleccion = false
-	_ocultar_opciones()
-	
-	if not siguiente_id.is_empty():
-		bloqueado = false
-		var indice_destino: int = _buscar_indice_por_id(siguiente_id)
-		
-		if indice_destino != -1:
-			pagina_actual = indice_destino
-			mostrar_pagina()
-		else:
-			print("No se encontró la página con ID: '%s' en el diálogo actual." % siguiente_id)
-			cerrar()
-	else:
-		# Si la opción no tiene destino, cerramos el diálogo inmediatamente
-		bloqueado = true
-		cerrar()

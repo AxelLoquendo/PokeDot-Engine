@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_fk8eb"]
 [ext_resource type="Texture2D" uid="uid://u2p8othfnyvr" path="res://graphics/ui_dialogue_box/box_normal_name.png" id="2_kfurw"]
 [ext_resource type="AudioStream" uid="uid://1iuty86rgpif" path="res://sfx/se/Tile Game cursor.ogg" id="4_yweyw"]
+[ext_resource type="PackedScene" uid="uid://nfe6d3qk2j6w" path="res://scenes/ui_dialogue_box/multichoice_box.tscn" id="6_xp4rw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fk8eb"]
 font = ExtResource("2_fk8eb")
@@ -271,3 +272,5 @@ libraries/ = SubResource("AnimationLibrary_f67xj")
 
 [node name="SonidoTexto" type="AudioStreamPlayer" parent="." unique_id=224588506]
 stream = ExtResource("4_yweyw")
+
+[node name="Multichoice" parent="." unique_id=747739245 instance=ExtResource("6_xp4rw")]
