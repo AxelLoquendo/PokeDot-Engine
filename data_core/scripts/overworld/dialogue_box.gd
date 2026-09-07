@@ -34,15 +34,13 @@ var mostrar_caja_nombre: bool = false
 
 # --- Variables para multichoice ---
 var esperando_eleccion: bool = false
-# Si la dejas en (-1, -1), la posición se calcula automáticamente pegada
-# a la caja de diálogo (ver _calcular_posicion_opciones). Asígnala desde
-# afuera solo si necesitas una posición fija puntual para un diálogo en
-# concreto.
+# Si la dejas en (-1, -1), la posición se calcula automáticamente
+# a la derecha y arriba de la caja de diálogo.
+# Asígnala desde afuera solo si necesitas una posición fija puntual.
 var choice_position: Vector2 = Vector2(-1, -1)
 
-# Offset del menú de opciones respecto a la esquina superior derecha de
-# la caja de diálogo. Ajusta estos valores a ojo hasta que quede pegado
-# donde lo tiene pokeemerald expansion en tu layout.
+# Offset del menú de opciones respecto a la esquina superior-derecha
+# de la caja de diálogo. Ajusta estos valores a ojo.
 const CHOICE_OFFSET_X: int = 0
 const CHOICE_ABOVE_GAP: int = 8  # espacio entre el menú y la caja de diálogo
 const CHOICE_OFFSET_Y: int = -10
@@ -137,11 +135,12 @@ func _mostrar_opciones(choices: Array[DialogueChoice]) -> void:
 
 
 func _calcular_posicion_opciones() -> Vector2:
-	# Punto inferior-izquierdo del menú: pegado al borde superior de la
-	# caja de diálogo, con un pequeño margen (CHOICE_ABOVE_GAP).
+	# Esquina superior-derecha de la caja de diálogo.
+	# El MultichoiceBox colocará su esquina inferior-derecha justo encima de este punto
+	# (a la derecha y arriba, estilo pokeemerald expansion).
 	var caja_rect: Rect2 = caja.get_global_rect()
 	return Vector2(
-		caja_rect.position.x + CHOICE_OFFSET_X,
+		caja_rect.position.x + caja_rect.size.x + CHOICE_OFFSET_X,
 		caja_rect.position.y - CHOICE_ABOVE_GAP
 	)
 
