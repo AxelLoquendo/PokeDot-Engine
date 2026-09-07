@@ -40,7 +40,7 @@ func _show(screen: String) -> void:
 		"world":
 			DialogueManager.show_texts(["Mundo"], "", null, ["Clima", "Warp Prado Natal", "Warp Pueblo Alba", "Volver"])
 		"weather":
-			DialogueManager.show_texts(["Clima"], "", null, ["Ninguno", "Lluvia", "Nieve", "Tormenta arena"])
+			DialogueManager.show_texts(["Clima"], "", null, ["Ninguno", "Lluvia", "Nieve", "Tormenta arena", "Neblina horizontal", "Neblina diagonal", "Soleado"])
 		"items":
 			DialogueManager.show_texts(["Objetos y flags"], "", null, ["+10 Pociones", "Toggle FLAG_DEBUG", "Volver"])
 		"save":
@@ -83,7 +83,10 @@ func _handle_choice() -> void:
 				WeatherEffect.WeatherID.WEATHER_NONE,
 				WeatherEffect.WeatherID.WEATHER_RAIN,
 				WeatherEffect.WeatherID.WEATHER_SNOW,
-				WeatherEffect.WeatherID.WEATHER_SANDSTORM
+				WeatherEffect.WeatherID.WEATHER_SANDSTORM,
+				WeatherEffect.WeatherID.WEATHER_FOG_HORIZONTAL,
+				WeatherEffect.WeatherID.WEATHER_FOG_DIAGONAL,
+				WeatherEffect.WeatherID.WEATHER_DROUGHT
 			]
 			var w: int = _choice.to_int()
 			if w >= 0 and w < climates.size():

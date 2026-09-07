@@ -177,7 +177,13 @@ func restore_player_collection(player_data: CharacterPlayer, saved: Dictionary) 
 					slot.pp_ups = int(move_entry.get("pp_ups", 0))
 					pokemon.moves.append(slot)
 			player_data.add_pokemon(pokemon)
-
+	if player_data.pokedex == null:
+		player_data.pokedex = PokedexData.new()
+	var pokedex_val: Variant = saved.get("pokedex", {})
+	if pokedex_val is Dictionary:
+		player_data.pokedex.from_dict(pokedex_val as Dictionary)
+	else:
+		player_data.pokedex.clear()
 
 func _serialize_party(party: Array[PokemonInstance]) -> Array:
 	var result: Array = []
@@ -212,7 +218,8 @@ func save_game(tree: SceneTree) -> bool:
 		"map_section": int(map.map_id_section) if map else 0,
 		"flags": ScriptExecutionContext.global_flags,
 		"bag": player_data.bag.quantities if player_data and player_data.bag else {},
-		"party": _serialize_party(player_data.party) if player_data else []
+		"party": _serialize_party(player_data.party) if player_data else [],
+		"pokedex": player_data.ensure_pokedex().to_dict() if player_data.has_method("ensure_pokedex") else (player_data.pokedex.to_dict() if player_data.pokedex else {"seen": [], "owned": []}),
 	}
 	var file: FileAccess = FileAccess.open(slot_path(active_slot), FileAccess.WRITE)
 	if not file:

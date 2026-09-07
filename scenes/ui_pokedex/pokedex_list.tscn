@@ -1,0 +1,312 @@
+[gd_scene format=3 uid="uid://cxofgijojge1f"]
+
+[ext_resource type="Script" uid="uid://dsmen0jw4sth5" path="res://scenes/ui_pokedex/pokedex_list.gd" id="1_giubj"]
+[ext_resource type="Texture2D" uid="uid://cjcgiabd2srai" path="res://graphics/ui_pokedex/bg_list.png" id="1_p2ne7"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="2_giubj"]
+[ext_resource type="Texture2D" uid="uid://crvour31oqrnc" path="res://graphics/pokemon/front/MEGA_DRAMPA.png" id="3_gs1dd"]
+[ext_resource type="Texture2D" uid="uid://c7i572vlnj62n" path="res://graphics/ui_pokedex/icon_slider.png" id="4_6ai16"]
+[ext_resource type="Texture2D" uid="uid://bw84iij4dnwpr" path="res://graphics/ui_pokedex/icon_own.png" id="5_15wis"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htemk"]
+font = ExtResource("2_giubj")
+font_size = 32
+font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.4862745)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0gcp5"]
+font = ExtResource("2_giubj")
+font_size = 32
+shadow_size = 0
+shadow_color = Color(0.30588236, 0.30588236, 0.30588236, 0.83137256)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_14cdr"]
+font = ExtResource("2_giubj")
+font_size = 32
+font_color = Color(0.39384586, 0.39384592, 0.39384574, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.3019608)
+shadow_offset = Vector2(0, 2)
+
+[node name="Pokedex_List" type="Node2D" unique_id=103101180]
+script = ExtResource("1_giubj")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=662317726]
+position = Vector2(240, 160)
+texture = ExtResource("1_p2ne7")
+
+[node name="Species_Name" type="Label" parent="." unique_id=1468968346]
+offset_left = 25.0
+offset_top = 43.0
+offset_right = 186.0
+offset_bottom = 71.0
+text = "Iron Crown"
+label_settings = SubResource("LabelSettings_htemk")
+horizontal_alignment = 1
+
+[node name="Dex_Type" type="Label" parent="." unique_id=893072153]
+offset_left = 205.0
+offset_top = 1.0
+offset_right = 375.0
+offset_bottom = 29.0
+text = "Pokédex Nacional"
+label_settings = SubResource("LabelSettings_0gcp5")
+horizontal_alignment = 1
+
+[node name="Front" type="Sprite2D" parent="." unique_id=61044449]
+position = Vector2(103, 162)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gs1dd")
+
+[node name="Seen" type="Label" parent="." unique_id=1084955069]
+offset_left = 23.0
+offset_top = 256.0
+offset_right = 184.0
+offset_bottom = 284.0
+text = "Avistados: 1025"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Caught" type="Label" parent="." unique_id=900437065]
+offset_left = 23.0
+offset_top = 279.0
+offset_right = 184.0
+offset_bottom = 307.0
+text = "Capturas: 1025"
+label_settings = SubResource("LabelSettings_htemk")
+
+[node name="Arrow_Up" type="Sprite2D" parent="." unique_id=143594102]
+position = Vector2(458, 50)
+texture = ExtResource("4_6ai16")
+hframes = 2
+vframes = 2
+
+[node name="Scroll" type="Sprite2D" parent="." unique_id=248783622]
+position = Vector2(458, 95)
+texture = ExtResource("4_6ai16")
+hframes = 2
+frame = 1
+
+[node name="Arrow_Down" type="Sprite2D" parent="." unique_id=2023129910]
+position = Vector2(458, 299)
+texture = ExtResource("4_6ai16")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Control" type="Control" parent="." unique_id=321176734]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 214.0
+offset_top = 44.0
+offset_right = 432.0
+offset_bottom = 310.0
+
+[node name="Slot" type="Control" parent="Control" unique_id=1393421934]
+anchors_preset = 0
+offset_top = 7.0
+offset_right = 218.0
+offset_bottom = 47.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot" unique_id=1013371307]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot" unique_id=1835192214]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot" unique_id=1165826073]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")
+
+[node name="Slot2" type="Control" parent="Control" unique_id=2061620590]
+anchors_preset = 0
+offset_top = 39.0
+offset_right = 218.0
+offset_bottom = 79.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot2" unique_id=194887388]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot2" unique_id=750176647]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot2" unique_id=320249755]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")
+
+[node name="Slot3" type="Control" parent="Control" unique_id=760168414]
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 218.0
+offset_bottom = 110.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot3" unique_id=2087108841]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot3" unique_id=2017706214]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot3" unique_id=967472322]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")
+
+[node name="Slot4" type="Control" parent="Control" unique_id=1519750735]
+anchors_preset = 0
+offset_top = 101.0
+offset_right = 218.0
+offset_bottom = 141.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot4" unique_id=2145945866]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot4" unique_id=1382631492]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot4" unique_id=455562476]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")
+
+[node name="Slot5" type="Control" parent="Control" unique_id=1186080155]
+anchors_preset = 0
+offset_top = 132.0
+offset_right = 218.0
+offset_bottom = 172.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot5" unique_id=1719522076]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot5" unique_id=603413417]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot5" unique_id=1494114735]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")
+
+[node name="Slot6" type="Control" parent="Control" unique_id=1104561788]
+anchors_preset = 0
+offset_top = 163.0
+offset_right = 218.0
+offset_bottom = 203.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot6" unique_id=131034334]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot6" unique_id=952946605]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot6" unique_id=243741792]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")
+
+[node name="Slot7" type="Control" parent="Control" unique_id=1900014669]
+anchors_preset = 0
+offset_top = 195.0
+offset_right = 218.0
+offset_bottom = 235.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot7" unique_id=2053334273]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot7" unique_id=1726949525]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot7" unique_id=1597866283]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")
+
+[node name="Slot8" type="Control" parent="Control" unique_id=388391031]
+anchors_preset = 0
+offset_top = 227.0
+offset_right = 218.0
+offset_bottom = 267.0
+
+[node name="Dex_number" type="Label" parent="Control/Slot8" unique_id=655189146]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "0000"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Name_Specie" type="Label" parent="Control/Slot8" unique_id=1582623238]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 188.0
+offset_bottom = 28.0
+text = "Bulbasaur"
+label_settings = SubResource("LabelSettings_14cdr")
+
+[node name="Status" type="Sprite2D" parent="Control/Slot8" unique_id=1440788366]
+position = Vector2(17, 15)
+texture = ExtResource("5_15wis")

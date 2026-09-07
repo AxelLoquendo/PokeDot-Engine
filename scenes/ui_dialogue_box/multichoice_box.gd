@@ -2,6 +2,7 @@ extends Control
 class_name MultichoiceBox
 
 signal choice_selected(index: int, choice_id: String)
+@warning_ignore("unused_signal")
 signal cancelled()
 
 @onready var window: NinePatchRect = $ChoiceWindow

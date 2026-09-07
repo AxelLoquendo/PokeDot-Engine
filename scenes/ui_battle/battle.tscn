@@ -297,7 +297,7 @@ texture = ExtResource("13_j8t3v")
 [node name="NamePkmnPlayer" type="Label" parent="PlayerHPBox" unique_id=1632025105]
 offset_left = -42.0
 offset_top = -17.0
-offset_right = 7.0
+offset_right = 19.5
 offset_bottom = -3.0
 text = "Hydrapple"
 label_settings = SubResource("LabelSettings_14cdr")
@@ -362,7 +362,7 @@ texture = ExtResource("14_axcis")
 [node name="NamePkmnEnemy" type="Label" parent="EnemyHPBox" unique_id=939590809]
 offset_left = -48.0
 offset_top = -15.5
-offset_right = 1.0
+offset_right = 10.0
 offset_bottom = -1.5
 text = "Hydrapple"
 label_settings = SubResource("LabelSettings_14cdr")

@@ -12,6 +12,7 @@ class_name CharacterPlayer
 @export_group("Datos de partida")
 @export var bag: Bag = Bag.new()
 @export var party: Array[PokemonInstance] = []
+@export var pokedex: PokedexData = PokedexData.new()
 @export var created_at: String = ""
 @export var trainer_id: int = 0
 
@@ -31,3 +32,8 @@ func add_pokemon(pokemon: PokemonInstance) -> bool:
 		return false
 	party.append(pokemon)
 	return true
+
+func ensure_pokedex() -> PokedexData:
+	if pokedex == null:
+		pokedex = PokedexData.new()
+	return pokedex
