@@ -1003,50 +1003,29 @@ func _get_pocket_name(
 # OBTENER ITEMS DEL BOLSILLO
 # ============================================================
 
-func _get_items_in_pocket(
-	pocket: ItemConstants.Pocket
-) -> Array[Items.ItemId]:
-
+func _get_items_in_pocket(pocket: ItemConstants.Pocket) -> Array[Items.ItemId]:
 	var resultado: Array[Items.ItemId] = []
 
-
-	if player_data == null:
+	if player_data == null or player_data.bag == null:
 		return resultado
 
-
-	var todos_los_items: Array[ItemData] = (
-		ItemDatabase.get_all_items()
-	)
-
-
-	for item_data: ItemData in todos_los_items:
-
-		if item_data == null:
+	# Solo los items que el jugador tiene (no todo el catálogo del juego)
+	for item_key: Variant in player_data.bag.quantities.keys():
+		var item_id: Items.ItemId = int(item_key) as Items.ItemId
+		var cantidad: int = int(player_data.bag.quantities[item_key])
+		if cantidad <= 0:
 			continue
 
+		var item_data: ItemData = ItemDatabase.get_item(item_id)
+		if item_data == null:
+			continue
 
 		if item_data.pocket != pocket:
 			continue
 
-
-		var cantidad: int = (
-			player_data.bag.get_quantity(
-				item_data.item_id
-			)
-		)
-
-
-		if cantidad <= 0:
-			continue
-
-
-		resultado.append(
-			item_data.item_id
-		)
-
+		resultado.append(item_id)
 
 	return resultado
-
 
 # ============================================================
 # COMPROBAR SI ESTÁ SELECCIONADO "SALIR"

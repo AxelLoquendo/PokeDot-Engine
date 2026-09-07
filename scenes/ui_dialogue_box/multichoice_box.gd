@@ -33,6 +33,7 @@ var _font: FontFile = null
 var _show_call_id: int = 0
 var _busy: bool = false  # evita doble A/B en el mismo frame
 
+var _last_input_frame: int = -1
 
 func _ready() -> void:
 	visible = false
@@ -59,27 +60,35 @@ func _input(event: InputEvent) -> void:
 	if event.is_echo():
 		return
 
-	# Solo acciones de TU proyecto (evita ui_accept/ui_cancel fantasma)
-	if event.is_action_pressed("Up"):
+	# Un solo manejo por frame (evita A+B fantasma)
+	var frame: int = Engine.get_process_frames()
+	if frame == _last_input_frame:
+		return
+
+	# Usamos el estado global del Input Map (más fiable que el event suelto)
+	if Input.is_action_just_pressed("Up"):
+		_last_input_frame = frame
 		_move_cursor(-1)
 		get_viewport().set_input_as_handled()
 		return
 
-	if event.is_action_pressed("Down"):
+	if Input.is_action_just_pressed("Down"):
+		_last_input_frame = frame
 		_move_cursor(1)
 		get_viewport().set_input_as_handled()
 		return
 
-	if event.is_action_pressed("buttonA"):
+	if Input.is_action_just_pressed("buttonA"):
+		_last_input_frame = frame
 		_confirm_choice()
 		get_viewport().set_input_as_handled()
 		return
 
-	if event.is_action_pressed("buttonB"):
+	if Input.is_action_just_pressed("buttonB"):
+		_last_input_frame = frame
 		_cancel()
 		get_viewport().set_input_as_handled()
 		return
-
 
 func show_choices(
 	choices: Array[DialogueChoice],
@@ -140,8 +149,10 @@ func _cancel() -> void:
 		return
 	_busy = true
 	_active = false
+
+	# Cancel = misma señal, índice -1 (NO usamos signal cancelled)
 	hide_menu()
-	cancelled.emit()
+	choice_selected.emit(-1, "")
 
 
 func _create_options() -> void:
@@ -262,10 +273,9 @@ func _confirm_choice() -> void:
 	_busy = true
 	_active = false
 
-	var choice: DialogueChoice = _choices[_current_index]
 	var index: int = _current_index
-	var id: String = choice.choice_id
+	var id: String = _choices[_current_index].choice_id
 
-	# Importante: NO emitir cancelled aquí
-	hide_menu()
+	# Emitir ANTES de hide_menu (evita perder listeners)
 	choice_selected.emit(index, id)
+	hide_menu()

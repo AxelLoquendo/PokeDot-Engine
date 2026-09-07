@@ -127,22 +127,17 @@ func _mostrar_opciones(choices: Array[DialogueChoice]) -> void:
 
 	esperando_eleccion = true
 
-	# Limpia conexiones viejas y usa ONE_SHOT (evita cancel fantasma)
 	if multichoice.choice_selected.is_connected(_on_multichoice_selected):
 		multichoice.choice_selected.disconnect(_on_multichoice_selected)
+
+	# Ya no conectamos cancelled
 	if multichoice.cancelled.is_connected(_on_multichoice_cancelled):
 		multichoice.cancelled.disconnect(_on_multichoice_cancelled)
 
 	multichoice.choice_selected.connect(_on_multichoice_selected, CONNECT_ONE_SHOT)
-	multichoice.cancelled.connect(_on_multichoice_cancelled, CONNECT_ONE_SHOT)
 
 	var pos: Vector2 = choice_position if choice_position.x >= 0.0 else _calcular_posicion_opciones()
 	multichoice.show_choices(choices, pos, true)
-
-func _on_multichoice_cancelled() -> void:
-	esperando_eleccion = false
-	# No emitir choice_selected → los sistemas ven "sin elección"
-	cerrar()
 
 func _calcular_posicion_opciones() -> Vector2:
 	# Esquina superior-derecha de la caja de diálogo.
@@ -158,26 +153,26 @@ func _calcular_posicion_opciones() -> Vector2:
 func _on_multichoice_selected(index: int, choice_id: String) -> void:
 	esperando_eleccion = false
 
-	# Si quedó conectado cancelled (no debería con ONE_SHOT), quitarlo
-	if multichoice != null and multichoice.cancelled.is_connected(_on_multichoice_cancelled):
-		multichoice.cancelled.disconnect(_on_multichoice_cancelled)
+	# Cancel (B) → index -1 / choice_id vacío
+	if index < 0 or choice_id.is_empty():
+		cerrar()
+		return
 
 	if dialogo_actual == null or pagina_actual >= dialogo_actual.pages.size():
 		cerrar()
 		return
 
 	var pagina: DialoguePage = dialogo_actual.pages[pagina_actual]
-	if index < 0 or index >= pagina.choices.size():
+	if index >= pagina.choices.size():
 		cerrar()
 		return
 
 	var opcion: DialogueChoice = pagina.choices[index]
 
-	if not opcion.choice_id.is_empty():
-		choice_selected.emit(opcion.choice_id)
+	# Notificar a debug / save / scripts
+	choice_selected.emit(opcion.choice_id)
 
 	var siguiente_id: String = opcion.next_page_id
-
 	if not siguiente_id.is_empty():
 		bloqueado = false
 		var indice_destino: int = _buscar_indice_por_id(siguiente_id)
@@ -190,6 +185,10 @@ func _on_multichoice_selected(index: int, choice_id: String) -> void:
 	else:
 		bloqueado = true
 		cerrar()
+
+func _on_multichoice_cancelled() -> void:
+	esperando_eleccion = false
+	cerrar()
 
 
 func _ocultar_opciones() -> void:
