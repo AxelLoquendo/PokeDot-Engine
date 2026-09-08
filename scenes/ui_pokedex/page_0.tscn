@@ -23,6 +23,7 @@ shadow_color = Color(0, 0, 0, 0.3019608)
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlcy1"]
+line_spacing = -1.0
 font = ExtResource("3_8oqnn")
 font_size = 32
 font_color = Color(0.39384586, 0.39384592, 0.39384574, 1)
@@ -100,10 +101,11 @@ label_settings = SubResource("LabelSettings_qlcy1")
 
 [node name="Specie_Description" type="Label" parent="." unique_id=1917350402]
 offset_left = 36.0
-offset_top = 200.0
+offset_top = 197.0
 offset_right = 445.0
-offset_bottom = 305.0
-text = "Una rara semilla le fue plantada en el lomo al nacer. La planta brota y crece con este Pokémon."
+offset_bottom = 309.0
+text = "Una rara semilla le fue plantada en el lomo al nacer. La planta brota y crece con este Pokémon.
+lllllll"
 label_settings = SubResource("LabelSettings_qlcy1")
 autowrap_mode = 2
 

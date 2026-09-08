@@ -7,14 +7,12 @@ const VISIBLE_SLOTS: int = 8
 const UNKNOWN_NAME: String = "-----"
 const REGIONAL_MAX: int = 151
 
-# Scroll del slider (coordenadas que pediste)
 const SCROLL_X: float = 458.0
 const SCROLL_Y_MIN: float = 95.0
 const SCROLL_Y_MAX: float = 274.0
 
-# Hold-to-scroll
-const REPEAT_DELAY: float = 0.35   # espera antes de repetir
-const REPEAT_RATE: float = 0.07    # velocidad al mantener
+const REPEAT_DELAY: float = 0.35
+const REPEAT_RATE: float = 0.07
 
 @onready var label_species_name: Label = $Species_Name
 @onready var label_dex_type: Label = $Dex_Type
@@ -26,8 +24,8 @@ const REPEAT_RATE: float = 0.07    # velocidad al mantener
 @onready var arrow_down: Sprite2D = $Arrow_Down
 @onready var slots_root: Control = $Control
 
-@export var icon_seen: Texture2D  # graphics/ui_pokedex/icon_seen.png
-@export var icon_own: Texture2D   # graphics/ui_pokedex/icon_own.png
+@export var icon_seen: Texture2D
+@export var icon_own: Texture2D
 
 var _pokedex: PokedexData = null
 var _is_national: bool = true
@@ -43,9 +41,12 @@ var _repeating: bool = false
 
 var _entry_ui: Node = null
 var _player_data: CharacterPlayer = null
+var _form_overrides: Dictionary = {}
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	add_to_group("pokedex_list")
 	_collect_slots()
 	if icon_seen == null:
 		icon_seen = load("res://graphics/ui_pokedex/icon_seen.png") as Texture2D
@@ -74,39 +75,24 @@ func setup(player_data: CharacterPlayer, pokedex: PokedexData, is_national: bool
 		scroll_bar.position = Vector2(SCROLL_X, SCROLL_Y_MIN)
 	_refresh_ui()
 
-func _try_open_entry() -> void:
-	if _entries.is_empty() or _entry_ui != null:
-		return
-	var entry: Dictionary = _entries[_cursor]
-	var sid: int = int(entry["id"])
-	if not _pokedex.is_seen(sid):
-		return
 
-	_active = false
-	var packed: PackedScene = load("res://scenes/ui_pokedex/pokedex_data.tscn") as PackedScene
-	# o pokedex_entry.tscn si la renombras
-	if packed == null:
-		_active = true
-		return
-
-	_entry_ui = packed.instantiate()
-	get_parent().add_child(_entry_ui)
-	if _entry_ui.has_method("setup"):
-		_entry_ui.call("setup", sid, _pokedex, _entries, _cursor)
-	if _entry_ui.has_signal("entry_closed"):
-		_entry_ui.connect("entry_closed", _on_entry_closed)
-	visible = false
+func set_form_override(species_id: int, form_index: int, form_data: Dictionary) -> void:
+	_form_overrides[species_id] = {
+		"index": form_index,
+		"data": form_data.duplicate(),
+	}
+	if not _entries.is_empty() and int(_entries[_cursor]["id"]) == species_id:
+		_refresh_preview()
 
 
-func _on_entry_closed() -> void:
-	_entry_ui = null
-	visible = true
-	_active = true
-	_refresh_ui()
+func get_form_override_index(species_id: int) -> int:
+	if not _form_overrides.has(species_id):
+		return 0
+	return int(_form_overrides[species_id].get("index", 0))
+
 
 func _build_entries() -> void:
 	_entries.clear()
-	# Solo índice en memoria: no carga .tres
 	for e: Dictionary in SpeciesDatabase.get_dex_index():
 		var nat: int = int(e["national"])
 		if not _is_national and (nat < 1 or nat > REGIONAL_MAX):
@@ -121,26 +107,21 @@ func _build_entries() -> void:
 func _process(delta: float) -> void:
 	if not _active:
 		return
-
 	var dir: int = 0
 	if Input.is_action_pressed("Down"):
 		dir = 1
 	elif Input.is_action_pressed("Up"):
 		dir = -1
-
 	if dir == 0:
 		_hold_dir = 0
 		_hold_timer = 0.0
 		_repeating = false
 		return
-
 	if dir != _hold_dir:
-		# Primera pulsación ya la maneja _input; aquí solo hold
 		_hold_dir = dir
 		_hold_timer = 0.0
 		_repeating = false
 		return
-
 	_hold_timer += delta
 	if not _repeating:
 		if _hold_timer >= REPEAT_DELAY:
@@ -158,8 +139,6 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_echo():
 		return
-
-	# Consumir input para que no llegue al overworld
 	if event.is_action_pressed("Up"):
 		_move(-1)
 		_hold_dir = -1
@@ -178,8 +157,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("buttonA"):
 		_try_open_entry()
 		get_viewport().set_input_as_handled()
-	elif event is InputEventKey or event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		# Bloquea movimiento del jugador mientras la lista está abierta
+	else:
 		get_viewport().set_input_as_handled()
 
 
@@ -228,7 +206,6 @@ func _refresh_slots() -> void:
 		if lbl_name:
 			lbl_name.text = str(entry["name"]) if seen else UNKNOWN_NAME
 
-		# Status: owned > seen > ninguno
 		if status:
 			if owned and icon_own:
 				status.texture = icon_own
@@ -256,11 +233,18 @@ func _refresh_preview() -> void:
 		sprite_front.texture = null
 		return
 
-	# Aquí SÍ cargamos el .tres (solo el seleccionado y visto)
-	var data: PokemonDataStruct = SpeciesDatabase.get_species(sid as Species.SpeciesID)
-	if data:
-		label_species_name.text = data.species_name
-		sprite_front.texture = data.front_sprite
+	if _form_overrides.has(sid):
+		var ov: Dictionary = _form_overrides[sid]
+		var data: Dictionary = ov.get("data", {})
+		label_species_name.text = str(entry["name"])
+		if data.get("front"):
+			sprite_front.texture = data["front"] as Texture2D
+			return
+
+	var species: PokemonDataStruct = SpeciesDatabase.get_species(sid as Species.SpeciesID)
+	if species:
+		label_species_name.text = species.species_name
+		sprite_front.texture = species.front_sprite
 	else:
 		label_species_name.text = str(entry["name"])
 		sprite_front.texture = null
@@ -298,7 +282,45 @@ func _refresh_scroll_visual() -> void:
 		var t: float = float(_scroll) / float(max_scroll)
 		scroll_bar.position.y = lerpf(SCROLL_Y_MIN, SCROLL_Y_MAX, t)
 
+
+func _try_open_entry() -> void:
+	if _entries.is_empty() or _entry_ui != null:
+		return
+	var entry: Dictionary = _entries[_cursor]
+	var sid: int = int(entry["id"])
+	if not _pokedex.is_seen(sid):
+		return
+
+	_active = false
+	var packed: PackedScene = load("res://scenes/ui_pokedex/pokedex_data.tscn") as PackedScene
+	if packed == null:
+		_active = true
+		return
+
+	_entry_ui = packed.instantiate()
+	get_parent().add_child(_entry_ui)
+
+	if _entry_ui.has_method("set_selected_form_index"):
+		_entry_ui.call("set_selected_form_index", sid, get_form_override_index(sid))
+
+	if _entry_ui.has_method("setup"):
+		_entry_ui.call("setup", sid, _pokedex, _entries, _cursor)
+
+	if _entry_ui.has_signal("entry_closed"):
+		_entry_ui.connect("entry_closed", _on_entry_closed)
+
+	visible = false
+
+
+func _on_entry_closed() -> void:
+	_entry_ui = null
+	visible = true
+	_active = true
+	_refresh_ui()
+
+
 func _close() -> void:
+	_form_overrides.clear()
 	_active = false
 	list_closed.emit()
 	queue_free()

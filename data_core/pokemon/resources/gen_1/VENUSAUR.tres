@@ -56,9 +56,7 @@ ability_2 = 47
 hidden_ability = 47
 override_pokedex = true
 category_name = "Semilla"
-description = "Para apoyar su flor, que
-ha crecido debido a Megaevolución,
-su espalda y sus piernas se han vuelto más fuertes."
+description = "Para apoyar su flor, que ha crecido debido a Megaevolución, su espalda y sus piernas se han vuelto más fuertes."
 height = 24
 weight = 1555
 tags = PackedStringArray("mega")
@@ -94,10 +92,7 @@ ability_1 = 65
 hidden_ability = 34
 override_pokedex = true
 category_name = "Semilla"
-description = "Escupe grandes cantidades de polen como un volcán.
-Respirar demasiado causa desmayo.
-En batalla, oscila alrededor de dos vides gruesas
-que puede rematar fácilmente edificios de 10 pisos."
+description = "Escupe grandes cantidades de polen como un volcán. En batalla, oscila alrededor de dos vides gruesas que puede rematar edificios de 10 pisos."
 height = 240
 tags = PackedStringArray("gmax")
 
