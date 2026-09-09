@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cba8i5w3gqtwn" path="res://graphics/pokemon/back_shiny/ARTICUNO_GALAR.png" id="7_d0ncl"]
 [ext_resource type="Texture2D" uid="uid://gaca20fctf4o" path="res://graphics/pokemon/front/ARTICUNO_GALAR.png" id="8_yc532"]
 [ext_resource type="Texture2D" uid="uid://bb05xr7jhcwrd" path="res://graphics/pokemon/front_shiny/ARTICUNO_GALAR.png" id="9_y7jtg"]
+[ext_resource type="Texture2D" uid="uid://d4kstmbos2t45" path="res://graphics/pokemon/icons/ARTICUNO_GALAR.png" id="10_t8h57"]
 [ext_resource type="Texture2D" uid="uid://2kad6wu4nuhm" path="res://graphics/pokemon/front/ARTICUNO.png" id="12_n18cl"]
 [ext_resource type="Texture2D" uid="uid://bp26qd24vyyu5" path="res://graphics/pokemon/front_shiny/ARTICUNO.png" id="13_h64hv"]
 [ext_resource type="Texture2D" uid="uid://0swnmr267bdj" path="res://graphics/pokemon/icons/ARTICUNO.png" id="14_baviv"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_cx5ac")
 species_id = 982
-form_id = &"articuno_galar"
+form_id = &"Galar"
 display_name = "Articuno"
 base_species_id = 144
 override_types = true
@@ -37,7 +38,7 @@ front_sprite = ExtResource("8_yc532")
 front_sprite_shiny = ExtResource("9_y7jtg")
 back_sprite = ExtResource("6_1jqa8")
 back_sprite_shiny = ExtResource("7_d0ncl")
-icon_sprite = ExtResource("14_baviv")
+icon_sprite = ExtResource("10_t8h57")
 overworld_scene = ExtResource("gfx100")
 cry = ExtResource("3_dlcsp")
 back_sprite_offset = Vector2(0, 5)
@@ -46,10 +47,7 @@ override_abilities = true
 ability_1 = 172
 override_pokedex = true
 category_name = "Cruel"
-description = "Dispara rayos que inmovilizan oponentes
-como si hubieran sido congelados sólidos.
-Sus hojas como plumas de energía psíquica
-madurar a través de gruesas planchas de hierro como papel."
+description = "Dispara rayos que paralizan a los rivales como si estuvieran congelados. Sus plumas de energía atraviesan placas de acero como si fueran papel."
 height = 17
 weight = 509
 tags = PackedStringArray()
@@ -165,7 +163,7 @@ exp_yield = 261
 friendship = 35
 growth_rate = 5
 category_name = "Congelar"
-description = "Legendario Pokémon pájaro capaz de generar ventiscas congelando la humedad del aire."
+description = "Es un legendario pájaro Pokémon que puede controlar el hielo. El batir de sus alas congela el aire. Dicen que consigue hacer nevar cuando vuela."
 height = 17
 weight = 554
 body_color = 1

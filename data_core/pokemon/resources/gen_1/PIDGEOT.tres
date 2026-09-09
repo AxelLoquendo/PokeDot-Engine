@@ -21,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_7jxe6")
 species_id = 911
-form_id = &"pidgeot_mega"
+form_id = &"Mega"
 display_name = "Pidgeot"
 base_species_id = 18
 override_types = true
@@ -47,11 +47,8 @@ override_abilities = true
 ability_1 = 99
 ability_2 = 99
 hidden_ability = 99
-override_pokedex = true
-category_name = "Ave"
-description = "Con su fuerza muscular ahora grande
-aumentada, puede volar continuamente
-durante dos semanas sin descansar."
+category_name = "Pájaro"
+description = "Con su fuerza muscular aumentada en exceso, puede volar csin parar durante 2 semanas sin descansar."
 height = 22
 weight = 505
 tags = PackedStringArray("mega")
@@ -140,7 +137,7 @@ exp_yield = 216
 friendship = 70
 growth_rate = 3
 category_name = "Pájaro"
-description = "Cuando caza, vuela muy deprisa a ras del agua y sorprende a inocentes presas como Magikarp."
+description = "Este Pokémon vuela a una velocidad de 2 Mach en busca de presas. Sus grandes garras son armas muy peligrosas."
 height = 15
 weight = 395
 body_color = 5

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_14ugf"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://dq2no4r4uktvn" path="res://graphics/pokemon/icons/MOLTRES_GALAR.png" id="10_q7gtf"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://7k665p2fa8jb" path="res://graphics/pokemon/front/MOLTRES.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://cdgk6o24m42e2" path="res://graphics/pokemon/front_shiny/MOLTRES.png" id="gfx101"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_14ugf")
 species_id = 984
-form_id = &"moltres_galar"
+form_id = &"Galar"
 display_name = "Moltres"
 base_species_id = 146
 override_types = true
@@ -37,7 +38,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("10_q7gtf")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
@@ -46,11 +47,8 @@ override_graphics = true
 override_abilities = true
 ability_1 = 201
 override_pokedex = true
-category_name = "Malevolent"
-description = "Este Pokémon es un aura siniestro, como una llama
-consumirá el espíritu de cualquier criatura
-golpea. Las víctimas se queman.
-sombras de sí mismos."
+category_name = "Malevolencia"
+description = "Su aura siniestra, similar a una llama, consumirá el espíritu de cualquier criatura que toque. Las víctimas se convierten en sombras de sí mismas."
 height = 20
 weight = 660
 tags = PackedStringArray()
@@ -176,7 +174,7 @@ exp_yield = 261
 friendship = 35
 growth_rate = 5
 category_name = "Llama"
-description = "Es más conocido como el legendario pájaro de fuego. Con cada aleteo crea brillantes llamas."
+description = "Es un legendario pájaro Pokémon que tiene la habilidad de controlar el fuego. Dicen que, si resulta herido, se sumerge en el magma de un volcán para arder y curarse."
 height = 20
 weight = 600
 body_color = 2

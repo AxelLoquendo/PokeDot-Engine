@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="5_2hckk"]
+[ext_resource type="Texture2D" uid="uid://cv20xfq58qsx6" path="res://graphics/pokemon/icons/MEOWTH_ALOLA.png" id="13_we0s2"]
+[ext_resource type="Texture2D" uid="uid://prfyk718k2tc" path="res://graphics/pokemon/icons/MEOWTH_GALAR.png" id="20_ftplw"]
 [ext_resource type="Script" uid="uid://ubphmg8l4a62" path="res://data_core/pokemon/conditions/condition_friendship.gd" id="ext_cond_friend"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
@@ -62,7 +64,7 @@ conditions = Array[ExtResource("2_dp5hs")]([SubResource("Resource_cond2")])
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("5_2hckk")
 species_id = 965
-form_id = &"meowth_alola"
+form_id = &"Alola"
 display_name = "Meowth"
 base_species_id = 52
 override_types = true
@@ -78,7 +80,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx121")
+icon_sprite = ExtResource("13_we0s2")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
@@ -90,10 +92,7 @@ ability_2 = 101
 hidden_ability = 155
 override_pokedex = true
 category_name = "Gato araña"
-description = "Está acostumbrado al lujo porque usaba
-vivir con la realeza de Alolan. Muy inteligente
-y orgulloso, es famosamente difícil
-mango, pero eso también lo hace popular."
+description = "Está acostumbrado al lujo porque solía vivir con la realeza de Alola. Muy listo y orgulloso, es bastante difícil de manejar, pero eso lo hace popular."
 height = 4
 weight = 42
 tags = PackedStringArray()
@@ -101,7 +100,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("5_2hckk")
 species_id = 974
-form_id = &"meowth_galar"
+form_id = &"Galar"
 display_name = "Meowth"
 base_species_id = 52
 override_types = true
@@ -117,8 +116,8 @@ front_sprite = ExtResource("gfx113")
 front_sprite_shiny = ExtResource("gfx114")
 back_sprite = ExtResource("gfx115")
 back_sprite_shiny = ExtResource("gfx116")
-icon_sprite = ExtResource("gfx121")
-overworld_scene = ExtResource("gfx112")
+icon_sprite = ExtResource("20_ftplw")
+overworld_scene = ExtResource("gfx122")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
 back_sprite_offset = Vector2(0, 8)
@@ -129,10 +128,7 @@ ability_2 = 181
 hidden_ability = 127
 override_pokedex = true
 category_name = "Gato araña"
-description = "Vivir con una gente salvaje y marinera tiene
-endureció su cuerpo tanto que partes de él
-se convirtió en hierro. Las monedas más oscuras son más difíciles
-y obtener más respeto entre Meowth."
+description = "Vivir con un pueblo salvaje y marinero ha endurecido tanto su cuerpo que se ha transformado en acero. Las monedas oscuras son duras y ganan más respeto."
 height = 4
 weight = 75
 tags = PackedStringArray()
@@ -140,7 +136,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("5_2hckk")
 species_id = 1494
-form_id = &"meowth_gmax"
+form_id = &"Gigamax"
 display_name = "Meowth"
 base_species_id = 52
 override_types = true
@@ -157,17 +153,14 @@ front_sprite_shiny = ExtResource("gfx118")
 back_sprite = ExtResource("gfx119")
 back_sprite_shiny = ExtResource("gfx120")
 icon_sprite = ExtResource("gfx121")
-overworld_scene = ExtResource("gfx122")
+overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 3)
 back_sprite_offset = Vector2(0, 5)
 override_graphics = true
 override_pokedex = true
 category_name = "Gato araña"
-description = "El patrón que ha aparecido
-su moneda gigante se cree que es
-llave para abrir los secretos de los
-Fenómeno Dynamax."
+description = "Se cree que el patrón que surgió en su gigantesca moneda es clave para desbloquear los secretos del fenómeno Dynamax."
 height = 330
 tags = PackedStringArray("gmax")
 
@@ -271,7 +264,7 @@ catch_rate = 255
 exp_yield = 58
 friendship = 70
 category_name = "Gato Araña"
-description = "Es de naturaleza nocturna. Le atraen los objetos brillantes."
+description = "Retrae sus afiladas uñas en las zarpas y camina a hurtadillas. Así pasa inadvertido. No se sabe por qué, pero adora las monedas brillantes que resplandecen con la luz."
 height = 4
 weight = 42
 body_color = 2

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_skdty"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://cv5vftjdcbc8v" path="res://graphics/pokemon/icons/RATICATE_ALOLA.png" id="10_1bet0"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://buettnrh2o1r5" path="res://graphics/pokemon/front/RATICATE.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://cjougecyikfho" path="res://graphics/pokemon/front_shiny/RATICATE.png" id="gfx101"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_skdty")
 species_id = 957
-form_id = &"raticate_alola"
+form_id = &"Alola"
 display_name = "Raticate"
 base_species_id = 20
 override_types = true
@@ -37,7 +38,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("10_1bet0")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
@@ -49,10 +50,7 @@ ability_2 = 55
 hidden_ability = 47
 override_pokedex = true
 category_name = "Ratón"
-description = "Forma un grupo de Rattata, que es
-asume el mando. Cada grupo
-tiene su propio territorio, y controversias
-sobre la comida ocurre a menudo."
+description = "Forma un grupo de Rattata, del cual asume el mando. Cada grupo tiene su propio territorio, y las disputas por la comida ocurren a menudo."
 height = 7
 weight = 255
 tags = PackedStringArray()
@@ -183,7 +181,7 @@ catch_rate = 127
 exp_yield = 145
 friendship = 70
 category_name = "Ratón"
-description = "Lima sus colmillos royendo objetos duros. Con ellos puede destruir incluso paredes de hormigón."
+description = "Gracias a las pequeñas membranas de sus patas traseras, puede nadar por los ríos para capturar a sus presas."
 height = 7
 weight = 185
 body_color = 5

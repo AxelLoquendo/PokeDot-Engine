@@ -27,7 +27,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_eqpp3")
 species_id = 914
-form_id = &"gengar_mega"
+form_id = &"Mega"
 display_name = "Gengar"
 base_species_id = 94
 override_types = true
@@ -55,10 +55,7 @@ ability_2 = 23
 hidden_ability = 23
 override_pokedex = true
 category_name = "Sombra"
-description = "Las relaciones de Gengar están en conflicto. It
-trata de llevar la vida de cualquiera y
-Todos. Incluso tratará de maldecir
-Entrenador que es su maestro!"
+description = "Sus relaciones están alteradas. Intenta quitar la vida a todos. ¡Incluso intentará maldecir a su entrenador!"
 height = 14
 weight = 405
 tags = PackedStringArray("mega")
@@ -66,7 +63,7 @@ tags = PackedStringArray("mega")
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_eqpp3")
 species_id = 1496
-form_id = &"gengar_gmax"
+form_id = &"Gigamax"
 display_name = "Gengar"
 base_species_id = 94
 override_types = true
@@ -90,10 +87,7 @@ back_sprite_offset = Vector2(0, 6)
 override_graphics = true
 override_pokedex = true
 category_name = "Sombra"
-description = "El rumor tiene que su gigante
-la boca no conduce a su cuerpo, llena
-con energía maldecida, pero en cambio
-directamente a la otra vida."
+description = "Se dice que su gigantesca boca no lleva a su cuerpo, lleno de energía maldita, sino directamente al más allá."
 height = 200
 tags = PackedStringArray("gmax")
 
@@ -199,7 +193,7 @@ exp_yield = 225
 friendship = 70
 growth_rate = 3
 category_name = "Sombra"
-description = "Se esconde entre las sombras. Se dice que donde Gengar acecha, la temperatura baja 5 °C."
+description = "Si una noche oscura ves que tu sombra te adelanta de repente, en realidad estarás viendo a Gengar haciéndose pasar por la misma."
 height = 15
 weight = 405
 body_color = 6

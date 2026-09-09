@@ -164,11 +164,23 @@ func _input(event: InputEvent) -> void:
 func _move(dir: int) -> void:
 	if _entries.is_empty():
 		return
-	_cursor = clampi(_cursor + dir, 0, _entries.size() - 1)
+
+	_cursor = wrapi(_cursor + dir, 0, _entries.size())
+
+	# Ajustar ventana visible
 	if _cursor < _scroll:
 		_scroll = _cursor
 	elif _cursor >= _scroll + VISIBLE_SLOTS:
 		_scroll = _cursor - VISIBLE_SLOTS + 1
+
+	# Si dimos la vuelta al final → inicio: scroll al tope
+	if dir > 0 and _cursor == 0:
+		_scroll = 0
+	# Si dimos la vuelta al inicio → final: scroll al fondo
+	elif dir < 0 and _cursor == _entries.size() - 1:
+		_scroll = maxi(_entries.size() - VISIBLE_SLOTS, 0)
+
+	_scroll = clampi(_scroll, 0, maxi(_entries.size() - VISIBLE_SLOTS, 0))
 	_refresh_ui()
 
 
@@ -193,7 +205,7 @@ func _refresh_slots() -> void:
 			if status:
 				status.texture = null
 				status.visible = false
-			slot.modulate = Color(1, 1, 1, 0.35)
+			slot.modulate = Color(1.0, 1.0, 1.0, 0.35)
 			continue
 
 		var entry: Dictionary = _entries[entry_index]
@@ -312,12 +324,21 @@ func _try_open_entry() -> void:
 	visible = false
 
 
-func _on_entry_closed() -> void:
+func _on_entry_closed(entry_index: int = -1) -> void:
 	_entry_ui = null
 	visible = true
 	_active = true
-	_refresh_ui()
 
+	if entry_index >= 0 and entry_index < _entries.size():
+		_cursor = entry_index
+		# Centrar scroll para que el cursor quede visible
+		if _cursor < _scroll:
+			_scroll = _cursor
+		elif _cursor >= _scroll + VISIBLE_SLOTS:
+			_scroll = _cursor - VISIBLE_SLOTS + 1
+		_scroll = clampi(_scroll, 0, maxi(_entries.size() - VISIBLE_SLOTS, 0))
+
+	_refresh_ui()
 
 func _close() -> void:
 	_form_overrides.clear()

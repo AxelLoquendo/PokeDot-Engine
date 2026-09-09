@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://2qb0hif2akqs" path="res://graphics/pokemon/back_shiny/ARCANINE_HISUI.png" id="7_12fwa"]
 [ext_resource type="Texture2D" uid="uid://c27lelga46t6v" path="res://graphics/pokemon/front/ARCANINE_HISUI.png" id="8_ru0wq"]
 [ext_resource type="Texture2D" uid="uid://bi6a53pmkwx4i" path="res://graphics/pokemon/front_shiny/ARCANINE_HISUI.png" id="9_gd2ye"]
+[ext_resource type="Texture2D" uid="uid://bm8lkn112w4tu" path="res://graphics/pokemon/icons/ARCANINE_HISUI.png" id="10_j7fws"]
 [ext_resource type="Texture2D" uid="uid://bqxjes6y0bw7f" path="res://graphics/pokemon/front/ARCANINE.png" id="12_lu0wq"]
 [ext_resource type="Texture2D" uid="uid://dp6h4lotr08ca" path="res://graphics/pokemon/front_shiny/ARCANINE.png" id="13_x4ant"]
 [ext_resource type="Texture2D" uid="uid://b5kwgb6btdd0" path="res://graphics/pokemon/icons/ARCANINE.png" id="14_c0idv"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_raojs")
 species_id = 994
-form_id = &"arcanine_hisui"
+form_id = &"Hisui"
 display_name = "Arcanine"
 base_species_id = 59
 override_types = true
@@ -37,7 +38,7 @@ front_sprite = ExtResource("8_ru0wq")
 front_sprite_shiny = ExtResource("9_gd2ye")
 back_sprite = ExtResource("6_l1c7f")
 back_sprite_shiny = ExtResource("7_12fwa")
-icon_sprite = ExtResource("14_c0idv")
+icon_sprite = ExtResource("10_j7fws")
 overworld_scene = ExtResource("gfx100")
 cry = ExtResource("3_6jksv")
 back_sprite_offset = Vector2(0, 3)
@@ -48,10 +49,7 @@ ability_2 = 18
 hidden_ability = 69
 override_pokedex = true
 category_name = "Legendario"
-description = "Enganchados en sus enemigos con colchones enrollados
-llama ardiente. A pesar de su vracs,
-se une cada cual, oponentes líderes
-en una persecución engañosa."
+description = "Ataca con sus colmillos ardientes. A pesar de su cuerpo, se mueve ágilmente, haciéndo creer a sus rivales que están siguiendolo en una falsa y alegre caza."
 height = 20
 weight = 1680
 tags = PackedStringArray()
@@ -154,8 +152,8 @@ catch_rate = 75
 exp_yield = 194
 friendship = 70
 growth_rate = 5
-category_name = "Leyenda"
-description = "Un Pokémon muy admirado desde la antigüedad por su belleza. Corre ágilmente como si tuviera alas."
+category_name = "Legendario"
+description = "Es conocido por su velocidad. Dicen que es capaz de correr 10.000 km en 24 horas. El fuego que arde con vigor en su interior constituye su fuente de energía."
 height = 19
 weight = 1550
 body_color = 5

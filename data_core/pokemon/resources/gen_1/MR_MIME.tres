@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cegjk1lyrljw2" path="res://data_core/pokemon/evolution_condition.gd" id="2_mc4ay"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_p2xav"]
+[ext_resource type="Texture2D" uid="uid://dselrrpg4gmjj" path="res://graphics/pokemon/icons/MR_MIME_GALAR.png" id="12_wyehu"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://cy5tg8h7jeeob" path="res://graphics/pokemon/front/MR_MIME.png" id="gfx100"]
@@ -32,7 +33,7 @@ conditions = Array[ExtResource("2_mc4ay")]([SubResource("Resource_cond0")])
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("4_p2xav")
 species_id = 981
-form_id = &"mr_mime_galar"
+form_id = &"Galar"
 display_name = "Mr. Mime"
 base_species_id = 122
 override_types = true
@@ -49,7 +50,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("12_wyehu")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 7)
@@ -61,10 +62,7 @@ ability_2 = 251
 hidden_ability = 115
 override_pokedex = true
 category_name = "Bailando"
-description = "Su talento es bailar. Puede irradiarse
-escalofrío desde el fondo de sus pies hasta
-para crear un piso de hielo, que este
-Pokémon puede empezar a usar como barrera."
+description = "Su talento es el claqué. Puede irradiar frialdad desde sus pies para crear un suelo de hielo, el cual este puede levantar y usar como barrera."
 height = 14
 weight = 568
 tags = PackedStringArray()
@@ -221,7 +219,7 @@ catch_rate = 45
 exp_yield = 161
 friendship = 70
 category_name = "Barrera"
-description = "Para repeler ataques, solidifica el aire y crea muros invisibles con emanaciones de sus dedos."
+description = "Es un maestro de la pantomima. Puede convencer a otros de que algo invisible existe realmente. Una vez convencidos, el objeto imaginario se vuelve real."
 height = 13
 weight = 545
 body_color = 9

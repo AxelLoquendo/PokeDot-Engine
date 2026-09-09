@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_1smow"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://b8om57xgvprt3" path="res://graphics/pokemon/icons/SLOWBRO_GALAR.png" id="18_imwmb"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://fn66nleeki4g" path="res://graphics/pokemon/front/SLOWBRO.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://d34hx8tgn71sd" path="res://graphics/pokemon/front_shiny/SLOWBRO.png" id="gfx101"]
@@ -26,7 +27,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_1smow")
 species_id = 913
-form_id = &"slowbro_mega"
+form_id = &"Mega"
 display_name = "Slowbro"
 base_species_id = 80
 override_types = true
@@ -44,7 +45,7 @@ front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
 icon_sprite = ExtResource("gfx111")
-overworld_scene = ExtResource("gfx112")
+overworld_scene = ExtResource("gfx105")
 cry = ExtResource("gfx113")
 back_sprite_offset = Vector2(0, 9)
 override_graphics = true
@@ -54,10 +55,7 @@ ability_2 = 75
 hidden_ability = 75
 override_pokedex = true
 category_name = "Cangrejo ermitaño"
-description = "Cuando se baña en la energía de Mega
-Evolution, Shellder se convierte en
-armadura inexpugnable. No hay prácticamente ningún
-cambio en Slowpoke."
+description = "Cuando se baña en la energía Mega, Shellder se convierte en una armadura impenetrable. No hay cambios en Slowpoke."
 height = 20
 weight = 1200
 tags = PackedStringArray("mega")
@@ -65,7 +63,7 @@ tags = PackedStringArray("mega")
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_1smow")
 species_id = 978
-form_id = &"slowbro_galar"
+form_id = &"Galar"
 display_name = "Slowbro"
 base_species_id = 80
 override_types = true
@@ -82,7 +80,7 @@ front_sprite = ExtResource("gfx114")
 front_sprite_shiny = ExtResource("gfx115")
 back_sprite = ExtResource("gfx116")
 back_sprite_shiny = ExtResource("gfx117")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("18_imwmb")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx113")
 front_sprite_offset = Vector2(0, 4)
@@ -94,10 +92,7 @@ ability_2 = 20
 hidden_ability = 144
 override_pokedex = true
 category_name = "Cangrejo ermitaño"
-description = "Una mordedura de Shellder desactiva una reacción química
-con las especias dentro del cuerpo de Slowbro,
-causando que Slowbro se convierta en
-Pokémon tipo veneno."
+description = "Un mordisco de Shellder desencadenó una reacción con las especias dentro de su cuerpo, haciendo que se convirtiera en un Pokémon de tipo Veneno."
 height = 16
 weight = 705
 tags = PackedStringArray()
@@ -205,7 +200,7 @@ catch_rate = 75
 exp_yield = 172
 friendship = 70
 category_name = "Ermitaño"
-description = "Tiene una cola tan apetecible, que el Shellder que va enganchado a ella no se soltará por nada del mundo."
+description = "Lleva en la cola un Shellder enganchado por los dientes. Como Slowbro no puede pescar con la cola, se mete en el agua de mala gana en busca de sus presas."
 height = 16
 weight = 785
 body_color = 9

@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_jvy2l")
 species_id = 1525
-form_id = &"victreebel_mega"
+form_id = &"Mega"
 display_name = "Victreebel"
 base_species_id = 71
 override_types = true
@@ -48,10 +48,7 @@ ability_2 = 215
 hidden_ability = 215
 override_pokedex = true
 category_name = "Atrapamoscas"
-description = "El volumen del ácido de Pokémon
-ha aumentado debido a Megaevolución,
-llenando su boca. Si no es cuidadoso,
-el ácido se desbordará y se derramará."
+description = "El volumen del ácido de Pokémon ha aumentado debido a Megaevolución, llenando su boca. Si no es cuidadoso, el ácido se desbordará y se derramará."
 height = 45
 weight = 1255
 tags = PackedStringArray("mega")
@@ -134,7 +131,7 @@ exp_yield = 221
 friendship = 70
 growth_rate = 3
 category_name = "Matamoscas"
-description = "Dicen que vive en grandes colonias en el interior de las junglas, aunque nadie ha podido verificarlo."
+description = "Tiene una enredadera que le sale de la cabeza. Cuando la agita y colea, recuerda a un animal y así consigue atraer a sus presas. Si se le acerca un rival, lo engulle."
 height = 17
 weight = 155
 body_color = 3

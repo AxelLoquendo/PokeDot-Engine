@@ -37,8 +37,6 @@ func apply_form_display(form_data: Dictionary) -> void:
 	if label_name:
 		var form_name: String = str(form_data.get("name", ""))
 		if form_name != "" and form_name != "Normal":
-			label_name.text = "%s (%s)" % [_species.species_name, form_name]
-		else:
 			label_name.text = _species.species_name
 
 	if label_category and form_data.has("category_name"):

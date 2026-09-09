@@ -21,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_aognd")
 species_id = 1492
-form_id = &"butterfree_gmax"
+form_id = &"Gigamax"
 display_name = "Butterfree"
 base_species_id = 12
 override_types = true
@@ -48,10 +48,7 @@ ability_1 = 14
 hidden_ability = 110
 override_pokedex = true
 category_name = "Mariposa"
-description = "Una vez que tiene oponentes atrapados en un
-tornado que podría volar un 10-
-camión de tonelada, los termina con
-sus escalas venenosas."
+description = "Cuando atrapa a sus rivales en un tornado que podría volar un camión, los remata con sus escamas venenosas."
 height = 170
 tags = PackedStringArray("gmax")
 
@@ -169,7 +166,7 @@ catch_rate = 45
 exp_yield = 178
 friendship = 70
 category_name = "Mariposa"
-description = "Adora el néctar de las flores. Puede localizar hasta las más pequeñas cantidades de polen."
+description = "Butterfree tiene una habilidad especial para encontrar rico néctar en las flores. Localiza, extrae y transporta el polen de flores."
 height = 11
 weight = 320
 body_color = 8

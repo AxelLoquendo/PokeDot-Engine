@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_mom5n"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://3a7fotjs6p6k" path="res://graphics/pokemon/icons/GOLEM_ALOLA.png" id="10_k1r5g"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://cxfmkr42xepkt" path="res://graphics/pokemon/front/GOLEM.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://bkrm32utnywlm" path="res://graphics/pokemon/front_shiny/GOLEM.png" id="gfx101"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_mom5n")
 species_id = 969
-form_id = &"golem_alola"
+form_id = &"Alola"
 display_name = "Golem"
 base_species_id = 76
 override_types = true
@@ -37,7 +38,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("10_k1r5g")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 1)
@@ -49,10 +50,7 @@ ability_2 = 5
 hidden_ability = 206
 override_pokedex = true
 category_name = "Megatón"
-description = "Dispara rocas cargadas de electricidad.
-Incluso si la roca no se despide
-con precisión, sólo pastorear a un oponente
-causará entumecimiento y desmayo."
+description = "Lanza rocas cargadas con electricidad. Incluso si la roca se lanza mal, solo rozar al oponente causará entumecimiento y desmayo."
 height = 17
 weight = 3160
 tags = PackedStringArray()
@@ -167,7 +165,7 @@ exp_yield = 223
 friendship = 70
 growth_rate = 3
 category_name = "Megatón"
-description = "Se lanza montaña abajo y deja un surco desde la cima hasta el pie. Es mejor mantenerse alejado."
+description = "Dicen que vive en cráteres volcánicos situados en altas cimas. Una vez al año, muda la piel y crece. La muda se deshace y es absorbida por la tierra."
 height = 14
 weight = 3000
 body_color = 5

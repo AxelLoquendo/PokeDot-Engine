@@ -27,7 +27,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_gdr7a")
 species_id = 906
-form_id = &"venusaur_mega"
+form_id = &"Mega"
 display_name = "Venusaur"
 base_species_id = 3
 override_types = true
@@ -56,7 +56,7 @@ ability_2 = 47
 hidden_ability = 47
 override_pokedex = true
 category_name = "Semilla"
-description = "Para apoyar su flor, que ha crecido debido a Megaevolución, su espalda y sus piernas se han vuelto más fuertes."
+description = "Para apoyar su flor, la cual ha crecido más grande debido a la Megaevolución, su espalda y patas se han fortalecido."
 height = 24
 weight = 1555
 tags = PackedStringArray("mega")
@@ -64,7 +64,7 @@ tags = PackedStringArray("mega")
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_gdr7a")
 species_id = 1489
-form_id = &"venusaur_gmax"
+form_id = &"Gigamax"
 display_name = "Venusaur"
 base_species_id = 3
 override_types = true
@@ -92,7 +92,7 @@ ability_1 = 65
 hidden_ability = 34
 override_pokedex = true
 category_name = "Semilla"
-description = "Escupe grandes cantidades de polen como un volcán. En batalla, oscila alrededor de dos vides gruesas que puede rematar edificios de 10 pisos."
+description = "Escupe grandes cantidades de polen como un volcán que puede provocar desmayos. Posee 2 gruesas enredaderas que pueden derribar edificios de 10 pisos."
 height = 240
 tags = PackedStringArray("gmax")
 
@@ -200,7 +200,7 @@ exp_yield = 236
 friendship = 70
 growth_rate = 3
 category_name = "Semilla"
-description = "Llena su cuerpo de energía con los rayos solares que captan los anchos pétalos de su flor."
+description = "Según parece, la flor de Venusaur adquiere unos colores muy vivos con una buena nutrición y mucho sol. El aroma delicado de esta flor calma los ánimos."
 height = 20
 weight = 1000
 body_color = 3

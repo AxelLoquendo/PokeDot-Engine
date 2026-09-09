@@ -11,7 +11,7 @@ signal form_changed(form_index: int, form_data: Dictionary)
 @onready var arrow_up: Sprite2D = $Arrow_Up
 @onready var arrow_down: Sprite2D = $Arrow_Down
 
-@export var icon_frame_time: float = 0.5
+@export var icon_frame_time: float = 0.15
 @export var arrow_frame_time: float = 0.08
 
 var _base: PokemonDataStruct = null
@@ -67,7 +67,7 @@ func _make_base_entry() -> Dictionary:
 
 
 func _make_form_entry(form: PokemonFormData) -> Dictionary:
-	var fname: String = form.display_name
+	var fname: String = form.form_id
 	if fname.is_empty():
 		fname = str(form.form_id)
 

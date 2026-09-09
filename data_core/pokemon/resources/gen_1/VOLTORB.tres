@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="5_4u0qf"]
+[ext_resource type="Texture2D" uid="uid://belgx8iddv3i4" path="res://graphics/pokemon/icons/VOLTORB_HISUI.png" id="13_htudu"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://yq0gnwhunx5e" path="res://data_core/pokemon/conditions/condition_level.gd" id="ext_cond_level"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
@@ -44,7 +45,7 @@ conditions = Array[ExtResource("2_31v0y")]([SubResource("Resource_cond1")])
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("5_4u0qf")
 species_id = 995
-form_id = &"voltorb_hisui"
+form_id = &"Hisui"
 display_name = "Voltorb"
 base_species_id = 100
 override_types = true
@@ -61,7 +62,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("13_htudu")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 17)
@@ -72,11 +73,8 @@ ability_1 = 43
 ability_2 = 9
 hidden_ability = 106
 override_pokedex = true
-category_name = "Sphere"
-description = "Se parece a un antiguo diseño Poké Ball.
-Cuando se excita, descarga la electricidad
-corriente que ha almacenado en su vientre, entonces
-deja salir una risa grande y arrogante."
+category_name = "Esfera"
+description = "Recuerda el diseño de una Poké Ball antigua. Al emocionarse, descarga la corriente que almacena en su vientre, y luego emite una gran risa estruendosa."
 height = 5
 weight = 130
 tags = PackedStringArray()
@@ -186,7 +184,7 @@ catch_rate = 190
 exp_yield = 66
 friendship = 70
 category_name = "Bola"
-description = "Fue descubierto cuando se crearon las Poké Balls. Se dice que tiene algo que ver con ellas."
+description = "Tiene un curioso e inexplicable parecido con una Poké Ball. Como estalla a la mínima, hasta los Entrenadores veteranos lo tratan con mucho cuidado."
 height = 5
 weight = 104
 front_sprite = ExtResource("gfx100")

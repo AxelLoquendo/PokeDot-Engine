@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://djplwq5anstos" path="res://graphics/pokemon/back_shiny/DIGLETT_ALOLA.png" id="9_3uqpf"]
 [ext_resource type="Texture2D" uid="uid://8ii5t4mkgwsl" path="res://graphics/pokemon/front/DIGLETT_ALOLA.png" id="10_ms014"]
 [ext_resource type="Texture2D" uid="uid://fda5b6sj0sg6" path="res://graphics/pokemon/front_shiny/DIGLETT_ALOLA.png" id="11_sryy1"]
+[ext_resource type="Texture2D" uid="uid://dp6h4w7461taa" path="res://graphics/pokemon/icons/DIGLETT_ALOLA.png" id="12_p4e3g"]
 [ext_resource type="Texture2D" uid="uid://c3pchuwunpe7h" path="res://graphics/pokemon/front/DIGLETT.png" id="14_gawfx"]
 [ext_resource type="Texture2D" uid="uid://des3cxg1fjn3t" path="res://graphics/pokemon/front_shiny/DIGLETT.png" id="15_xr4f8"]
 [ext_resource type="Texture2D" uid="uid://bbrndqupj0wei" path="res://graphics/pokemon/icons/DIGLETT.png" id="16_qioft"]
@@ -32,7 +33,7 @@ conditions = Array[ExtResource("2_nn2rf")]([SubResource("Resource_cond0")])
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("4_30o6g")
 species_id = 963
-form_id = &"diglett_alola"
+form_id = &"Alola"
 display_name = "Diglett"
 base_species_id = 50
 override_types = true
@@ -49,7 +50,7 @@ front_sprite = ExtResource("10_ms014")
 front_sprite_shiny = ExtResource("11_sryy1")
 back_sprite = ExtResource("8_7vcsu")
 back_sprite_shiny = ExtResource("9_3uqpf")
-icon_sprite = ExtResource("16_qioft")
+icon_sprite = ExtResource("12_p4e3g")
 overworld_scene = ExtResource("gfx100")
 cry = ExtResource("3_obkb8")
 front_sprite_offset = Vector2(0, 19)
@@ -61,10 +62,7 @@ ability_2 = 221
 hidden_ability = 159
 override_pokedex = true
 category_name = "Topo"
-description = "La geología rica en metal de su hábitat
-lo hizo desarrollar silbidos de acero en su
-cabeza que cambia de forma dependiendo de su
-humor y cuando se comunica con otros."
+description = "La geología rica en metal de su hábitat hizo que le crecieran pelos de acero en su cabeza que cambian de forma según su ánimo y cuando se comunica."
 height = 2
 weight = 10
 tags = PackedStringArray()
@@ -164,7 +162,7 @@ catch_rate = 255
 exp_yield = 53
 friendship = 70
 category_name = "Topo"
-description = "Vive un metro por debajo del suelo, donde se alimenta de raíces. También aparece en la superficie."
+description = "En muchas granjas suelen criarlos porque, caven donde caven, dejan la tierra bien labrada para sembrar. El terreno queda listo para plantar ricas verduras."
 height = 2
 weight = 8
 body_color = 5

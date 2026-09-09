@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_wyerr")
 species_id = 1526
-form_id = &"starmie_mega"
+form_id = &"Mega"
 display_name = "Starmie"
 base_species_id = 121
 override_types = true
@@ -47,10 +47,7 @@ ability_2 = 37
 hidden_ability = 37
 override_pokedex = true
 category_name = "Misterioso"
-description = "Sus movimientos se han vuelto más
-humano. Si es simplemente
-tratar de comunicarse o desea
-Suplantar la humanidad no está clara."
+description = "Sus movimientos se han vuelto más humano. Si es simplemente un intento de comunicarse o desea suplantar a la humanidad no está claro."
 height = 23
 weight = 800
 tags = PackedStringArray("mega")
@@ -146,7 +143,7 @@ exp_yield = 182
 friendship = 70
 growth_rate = 5
 category_name = "Misterioso"
-description = "Su núcleo central brilla con los colores del arcoíris. Para algunos tiene el valor de una gema."
+description = "En otro tiempo, se pensaba que Starmie era el resultado de los reflejos de las estrellas que centelleaban con suavidad en el cielo nocturno."
 height = 11
 weight = 800
 body_color = 6

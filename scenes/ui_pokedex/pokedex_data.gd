@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name PokedexEntryUI
 
-signal entry_closed
+signal entry_closed(entry_index: int)
 
 @onready var pages_root: Node2D = $Pages
 @onready var cry_player: AudioStreamPlayer = $Cry
@@ -301,5 +301,5 @@ func _play_cry() -> void:
 
 func _close() -> void:
 	_active = false
-	entry_closed.emit()
+	entry_closed.emit(_entry_index)
 	queue_free()

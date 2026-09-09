@@ -21,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_3ikgh")
 species_id = 918
-form_id = &"aerodactyl_mega"
+form_id = &"Mega"
 display_name = "Aerodactyl"
 base_species_id = 142
 override_types = true
@@ -49,9 +49,7 @@ ability_2 = 181
 hidden_ability = 181
 override_pokedex = true
 category_name = "Fósil"
-description = "El poder de Megaevolución tiene
-completamente restaurado sus genes. Las rocas
-en su cuerpo son más difíciles que el diamante."
+description = "El poder de la Mega ha restaurado al completo sus genes. Las rocas en su cuerpo son más duras que el diamante."
 height = 21
 weight = 790
 tags = PackedStringArray("mega")
@@ -160,7 +158,7 @@ exp_yield = 180
 friendship = 70
 growth_rate = 5
 category_name = "Fósil"
-description = "Se regeneró a partir de material genético de un dinosaurio encontrado en ámbar. Cuando vuela emite escandalosos alaridos."
+description = "Surgió en la era de los dinosaurios. Se regeneró a partir de material genético contenido en ámbar. Se cree que fue el amo de los cielos en épocas pasadas."
 height = 18
 weight = 590
 body_color = 6

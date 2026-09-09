@@ -27,7 +27,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_5fjex")
 species_id = 919
-form_id = &"mewtwo_mega_x"
+form_id = &"Mega X"
 display_name = "Mewtwo"
 base_species_id = 150
 override_types = true
@@ -55,10 +55,7 @@ ability_2 = 80
 hidden_ability = 80
 override_pokedex = true
 category_name = "Genético"
-description = "El poder psíquico ha aumentado sus músculos.
-Tiene una fuerza de agarre de una tonelada y puede
-sprint a cien metros en dos segundos
-¡Hala!"
+description = "Su poder incrementó sus músculos. Tiene una fuerza de agarre de 1 T y puede correr 100 mts en 2 segundos ¡en línea recta!"
 height = 23
 weight = 1270
 tags = PackedStringArray("mega")
@@ -66,7 +63,7 @@ tags = PackedStringArray("mega")
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_5fjex")
 species_id = 920
-form_id = &"mewtwo_mega_y"
+form_id = &"Mega Y"
 display_name = "Mewtwo"
 base_species_id = 150
 override_types = true
@@ -93,10 +90,7 @@ ability_2 = 15
 hidden_ability = 15
 override_pokedex = true
 category_name = "Genético"
-description = "A pesar de su tamaño reducido, su mente
-El poder ha crecido fenomenalmente. Con un mero
-pensar, puede romper un rascacielos
-Herreens."
+description = "Pese a su tamaño reducido, su poder a aumentado en exceso. Con un simple pensamiento, puede destrozar un rascacielos en pedacitos."
 height = 15
 weight = 330
 tags = PackedStringArray("mega")
@@ -222,7 +216,7 @@ catch_rate = 3
 exp_yield = 306
 growth_rate = 5
 category_name = "Genético"
-description = "Fue creado por un científico tras años de horribles experimentos de ingeniería genética."
+description = "Fue creado por manipulación genética. Pero, a pesar de que los científicos dieron a Mewtwo un cuerpo, no lograron dotarle de un corazón compasivo."
 height = 20
 weight = 1220
 body_color = 6

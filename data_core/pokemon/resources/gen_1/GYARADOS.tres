@@ -21,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_x7ikj")
 species_id = 917
-form_id = &"gyarados_mega"
+form_id = &"Mega"
 display_name = "Gyarados"
 base_species_id = 130
 override_types = true
@@ -48,11 +48,8 @@ ability_1 = 104
 ability_2 = 104
 hidden_ability = 104
 override_pokedex = true
-category_name = "Feroz"
-description = "Aunque obedece su impulso instintivo a
-destruir todo a su alcance,
-responderá a órdenes de un entrenador que
-realmente confía."
+category_name = "Atrocidad"
+description = "Aunque obedece su impulso de destruir todo a su alcance, responderá a un Entrenador en en el que realmente confíe."
 height = 65
 weight = 3050
 tags = PackedStringArray("mega")
@@ -170,7 +167,7 @@ exp_yield = 189
 friendship = 70
 growth_rate = 5
 category_name = "Atrocidad"
-description = "En la literatura antigua se dice que un Gyarados rebosante de violencia arrasó un poblado."
+description = "Es extremadamente feroz y violento. Cuando las personas comienzan a luchar, aparece y reduce a cenizas todo lo que pilla con intensas llamaradas."
 height = 65
 weight = 2350
 body_color = 1

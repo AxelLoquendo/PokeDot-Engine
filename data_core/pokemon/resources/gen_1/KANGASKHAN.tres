@@ -21,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_b200j")
 species_id = 915
-form_id = &"kangaskhan_mega"
+form_id = &"Mega"
 display_name = "Kangaskhan"
 base_species_id = 115
 override_types = true
@@ -46,12 +46,8 @@ override_abilities = true
 ability_1 = 185
 ability_2 = 185
 hidden_ability = 185
-override_pokedex = true
-category_name = "Paternal"
-description = "Cuando la madre ve la espalda
-Hija megaevolucionada, la hace pensar
-del día en que su hijo inevitablemente
-Déjala."
+category_name = "Maternal"
+description = "Cuando la madre ve la espalda de su hijo Mega, le recuerda el día en que inevitablemente la dejará."
 height = 22
 weight = 1000
 tags = PackedStringArray("mega")
@@ -174,7 +170,7 @@ catch_rate = 45
 exp_yield = 172
 friendship = 70
 category_name = "Maternal"
-description = "Lleva a su cría en la bolsa de su panza. Solo deja que su cría salga a jugar cuando no siente peligro."
+description = "Si te cruzas con uno que esté jugando, no lo molestes ni intentes atraparlo. Seguro que uno de sus progenitores anda cerca y reaccionará con enfado y violencia."
 height = 22
 weight = 800
 body_color = 5

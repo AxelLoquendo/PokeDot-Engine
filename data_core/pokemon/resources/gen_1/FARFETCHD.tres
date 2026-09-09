@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="3_hwhfw"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://3sedgouno8ig" path="res://graphics/pokemon/icons/FARFETCHD_GALAR.png" id="11_eu8pj"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://b2uje1cyv8qjv" path="res://graphics/pokemon/front/FARFETCHD.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://4ifa3tqw6vx1" path="res://graphics/pokemon/front_shiny/FARFETCHD.png" id="gfx101"]
@@ -27,7 +28,7 @@ trigger = 6
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("3_hwhfw")
 species_id = 979
-form_id = &"farfetchd_galar"
+form_id = &"Galar"
 display_name = "Farfetch'd"
 base_species_id = 83
 override_types = true
@@ -43,7 +44,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("11_eu8pj")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 9)
@@ -54,10 +55,7 @@ ability_1 = 80
 hidden_ability = 113
 override_pokedex = true
 category_name = "Pato salvaje"
-description = "Los tallos de los puerros son más gruesos y más largos
-en la región de Galar. Brave Farfetch'd
-guerreros adaptados a estos tallos
-tomó una forma única."
+description = "Los tallos son más gruesos y largos en la región de Galar. Los Farfetch'd que se adaptaron a estos tallos adoptaron una forma única."
 height = 8
 weight = 420
 tags = PackedStringArray()
@@ -177,7 +175,7 @@ catch_rate = 45
 exp_yield = 132
 friendship = 70
 category_name = "Pato Salvaje"
-description = "El puerro que lleva es su mejor arma. Suele usarlo como espada para cortar cosas."
+description = "Lleva siempre una especie de palo de algún tipo de planta. Según parece, los hay mejores y peores. Tiene fama de pelearse por algún palo."
 height = 8
 weight = 150
 body_color = 5

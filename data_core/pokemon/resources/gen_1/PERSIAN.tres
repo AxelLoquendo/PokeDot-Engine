@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ujui2"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://dtjtrxlme1vxk" path="res://graphics/pokemon/icons/PERSIAN_ALOLA.png" id="10_71tj0"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://curc1tevt7t3t" path="res://graphics/pokemon/front/PERSIAN.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://bxixhpa27vcik" path="res://graphics/pokemon/front_shiny/PERSIAN.png" id="gfx101"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ujui2")
 species_id = 966
-form_id = &"persian_alola"
+form_id = &"Alola"
 display_name = "Persian"
 base_species_id = 53
 override_types = true
@@ -36,7 +37,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("10_71tj0")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 8)
@@ -47,10 +48,7 @@ ability_2 = 101
 hidden_ability = 155
 override_pokedex = true
 category_name = "Gato refinado"
-description = "Mira hacia abajo a todos los demás
-en sí mismo. En contraste con su hermosa cara,
-es tan brutal que tortura su debilitado
-en lugar de terminarlos."
+description = "Mira con desdén a los demás, excepto a sí mismo. Opuesto a su rostro cordial, es tan brutal que tortura a sus presas debilitadas en lugar de rematarlas."
 height = 11
 weight = 330
 tags = PackedStringArray()
@@ -165,7 +163,7 @@ catch_rate = 90
 exp_yield = 154
 friendship = 70
 category_name = "Gato Fino"
-description = "Aunque es muy admirado por el pelo, es difícil de entrenar como mascota, porque es un poco travieso."
+description = "Tiene seis llamativos bigotes que le dan un aspecto feroz y le sirven para detectar cualquier amenaza. Si se le agarra por los bigotes, se vuelve dócil."
 height = 10
 weight = 320
 body_color = 2

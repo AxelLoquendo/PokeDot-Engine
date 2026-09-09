@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_xf557")
 species_id = 1498
-form_id = &"lapras_gmax"
+form_id = &"Gigamax"
 display_name = "Lapras"
 base_species_id = 131
 override_types = true
@@ -47,10 +47,7 @@ ability_2 = 75
 hidden_ability = 93
 override_pokedex = true
 category_name = "Transporte"
-description = "Más de 5.000 personas pueden montar en su
-Concha a la vez. Y es muy
-cómodo paseo, sin el más mínimo
-temblando o temblando."
+description = "Más de 5 mil personas pueden montarse en su caparazón. Y es un viaje muy cómodo, sin el más mínimo movimiento."
 height = 240
 tags = PackedStringArray("gmax")
 
@@ -151,7 +148,7 @@ exp_yield = 187
 friendship = 70
 growth_rate = 5
 category_name = "Transporte"
-description = "Son buenos de corazón. Muchos fueron capturados por ser tan pacíficos. Ahora hay muchos menos."
+description = "Por culpa de la gente, está en peligro de extinción. Dicen que, al anochecer, se pone a cantar quejicoso mientras busca a los miembros de su especie que puedan quedar."
 height = 25
 weight = 2200
 body_color = 1

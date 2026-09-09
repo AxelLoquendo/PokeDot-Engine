@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="3_h2pm3"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://cs2dg87kg4ldc" path="res://graphics/pokemon/icons/GRAVELER_ALOLA.png" id="11_sa7al"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://vcibstc4qe2p" path="res://graphics/pokemon/front/GRAVELER.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://n0sgpe7m440f" path="res://graphics/pokemon/front_shiny/GRAVELER.png" id="gfx101"]
@@ -27,7 +28,7 @@ trigger = 3
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("3_h2pm3")
 species_id = 968
-form_id = &"graveler_alola"
+form_id = &"Alola"
 display_name = "Graveler"
 base_species_id = 75
 override_types = true
@@ -44,7 +45,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("11_sa7al")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 8)
@@ -56,10 +57,7 @@ ability_2 = 5
 hidden_ability = 206
 override_pokedex = true
 category_name = "Roca"
-description = "Cuando dos Graveler se destrozan
-dravite, su comida favorita, causan
-flashes de luz y ruidos en auge.
-La gente los llama “trabajos de fuego de la tierra”."
+description = "Cuando 2 Graveler se golpean entre sí crean destellos de luz y ruidos ensordecedores. La gente los llama “fuegos artificiales de la tierra.”"
 height = 10
 weight = 1100
 tags = PackedStringArray()
@@ -164,7 +162,7 @@ exp_yield = 137
 friendship = 70
 growth_rate = 3
 category_name = "Roca"
-description = "De naturaleza descuidada y libre, no le importa dañarse cuando baja rodando montañas."
+description = "Baja las montañas rodando por cuestas escarpadas. Es tan robusto que destroza árboles y cantos rodados al impactar contra ellos."
 height = 10
 weight = 1050
 body_color = 5

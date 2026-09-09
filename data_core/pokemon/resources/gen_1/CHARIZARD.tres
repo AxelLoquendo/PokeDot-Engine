@@ -33,7 +33,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ra4md")
 species_id = 907
-form_id = &"charizard_mega_x"
+form_id = &"Mega X"
 display_name = "Charizard"
 base_species_id = 6
 override_types = true
@@ -61,9 +61,7 @@ ability_2 = 181
 hidden_ability = 181
 override_pokedex = true
 category_name = "Llama"
-description = "El poder abrumador que llena su
-todo el cuerpo lo hace girar negro
-y crea intensas llamas azules."
+description = "El poder abrumador que llena todo su cuerpo lo hace volverse negro y crea intensas llamas azules."
 height = 17
 weight = 1105
 tags = PackedStringArray("mega")
@@ -71,7 +69,7 @@ tags = PackedStringArray("mega")
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_ra4md")
 species_id = 908
-form_id = &"charizard_mega_y"
+form_id = &"Mega Y"
 display_name = "Charizard"
 base_species_id = 6
 override_types = true
@@ -99,10 +97,7 @@ ability_2 = 70
 hidden_ability = 70
 override_pokedex = true
 category_name = "Llama"
-description = "Su vínculo con su entrenador es la fuente
-de su poder. Cuenta con velocidad y
-maniobrabilidad mayor que la de un
-Jet Fighter."
+description = "Su vínculo con su Entrenador es la fuente de su poder. Posee una velocidad y maniobrabilidad mayores que las de un avión de combate."
 height = 17
 weight = 1005
 tags = PackedStringArray("mega")
@@ -110,7 +105,7 @@ tags = PackedStringArray("mega")
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_ra4md")
 species_id = 1491
-form_id = &"charizard_gmax"
+form_id = &"Gigamax"
 display_name = "Charizard"
 base_species_id = 6
 override_types = true
@@ -136,10 +131,7 @@ ability_1 = 66
 hidden_ability = 94
 override_pokedex = true
 category_name = "Llama"
-description = "La llama dentro de su cuerpo quema
-más caliente que 3.600 grados Fahrenheit.
-Cuando Charizard ruge, eso
-La temperatura aumenta aún más."
+description = "La llama dentro de su cuerpo arde más caliente que 3.600 ºC. Cuando Charizard ruge, esa temperatura sube aún más alto."
 height = 280
 tags = PackedStringArray("gmax")
 
@@ -261,7 +253,7 @@ exp_yield = 240
 friendship = 70
 growth_rate = 3
 category_name = "Llama"
-description = "Cuando lanza una descarga de fuego supercaliente, la roja llama de su cola brilla más intensamente."
+description = "Charizard va volando en busca de rivales fuertes. Echa fuego por la boca y es capaz de derretirlo todo. Se contiene contra enemigos débiles."
 height = 17
 weight = 905
 front_sprite = ExtResource("25_etuu8")

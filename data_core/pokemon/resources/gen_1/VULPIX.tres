@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="4_yexxn"]
+[ext_resource type="Texture2D" uid="uid://d0tij7ci6g4kq" path="res://graphics/pokemon/icons/VULPIX_ALOLA.png" id="12_rubyn"]
 [ext_resource type="Script" uid="uid://dqwfkt4jni6pg" path="res://data_core/pokemon/conditions/condition_item.gd" id="ext_cond_item"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://snqe8fs78de6" path="res://graphics/pokemon/front/VULPIX.png" id="gfx100"]
@@ -44,7 +45,7 @@ conditions = Array[ExtResource("2_arm0u")]([SubResource("Resource_cond1")])
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("4_yexxn")
 species_id = 961
-form_id = &"vulpix_alola"
+form_id = &"Alola"
 display_name = "Vulpix"
 base_species_id = 37
 override_types = true
@@ -60,7 +61,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("12_rubyn")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 10)
@@ -71,10 +72,7 @@ ability_1 = 81
 hidden_ability = 117
 override_pokedex = true
 category_name = "Zorro"
-description = "Viven juntos en un skulk, ayudando
-uno al otro. En clima caliente, este Pokémon
-hace trizas de hielo con sus seis colas y
-los rocia alrededor para refrescarse."
+description = "Viven juntos en una manada, cooperando. En clima caluroso, crea piezas de hielo con sus colas y los esparcen para refrescarse."
 height = 6
 weight = 99
 tags = PackedStringArray()
@@ -209,7 +207,7 @@ catch_rate = 190
 exp_yield = 60
 friendship = 70
 category_name = "Zorro"
-description = "Cuando nace solo tiene una cola, pero a medida que crece, esta se va dividiendo desde la punta."
+description = "Puede controlar el fuego a su antojo y libera llamas por la boca. Tiene seis colas cuya temperatura sube de forma radical justo antes de evolucionar."
 height = 6
 weight = 99
 body_color = 5

@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
 [ext_resource type="Texture2D" uid="uid://42c5aqtghc6x" path="res://graphics/pokemon/front/DUGTRIO.png" id="7_pdxvt"]
 [ext_resource type="Texture2D" uid="uid://b3rntrs1r08xx" path="res://graphics/pokemon/front_shiny/DUGTRIO.png" id="8_4oj78"]
+[ext_resource type="Texture2D" uid="uid://cx20kmjisesof" path="res://graphics/pokemon/icons/DUGTRIO_ALOLA.png" id="10_f5drq"]
 [ext_resource type="Texture2D" uid="uid://cd1vl5fjq2ex8" path="res://graphics/pokemon/follower/DUGTRIO.png" id="10_gog3h"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://bn5fu8t3tnwbs" path="res://graphics/pokemon/front/DUGTRIO_ALOLA.png" id="gfx100"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_pl3cm")
 species_id = 964
-form_id = &"dugtrio_alola"
+form_id = &"Alola"
 display_name = "Dugtrio"
 base_species_id = 51
 override_types = true
@@ -37,7 +38,7 @@ front_sprite = ExtResource("gfx100")
 front_sprite_shiny = ExtResource("gfx101")
 back_sprite = ExtResource("gfx102")
 back_sprite_shiny = ExtResource("gfx103")
-icon_sprite = ExtResource("gfx104")
+icon_sprite = ExtResource("10_f5drq")
 overworld_scene = ExtResource("gfx105")
 cry = ExtResource("3_o2rau")
 front_sprite_offset = Vector2(0, 11)
@@ -49,10 +50,7 @@ ability_2 = 221
 hidden_ability = 159
 override_pokedex = true
 category_name = "Topo"
-description = "Sus hermosos silbidos metálicos crean
-una especie de casco protector en
-cabezas de heredero, y también funcionan
-como sensores altamente precisos."
+description = "Sus hermosos pelos metálicos crean una especie de casco protector en sus cabezas, y también funcionan como sensores de alta precisión."
 height = 7
 weight = 666
 tags = PackedStringArray()
@@ -166,7 +164,7 @@ catch_rate = 50
 exp_yield = 149
 friendship = 70
 category_name = "Topo"
-description = "En combate, cava la tierra, se esconde y sale de repente para golpear a su rival. Nunca se sabe por dónde puede aparecer."
+description = "Los Dugtrio son trillizos que salieron de un mismo cuerpo, por eso piensan de la misma forma. A la hora de cavar, trabajan en equipo y sin descanso."
 height = 7
 weight = 333
 body_color = 5

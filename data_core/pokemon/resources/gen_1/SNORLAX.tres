@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_5s04e")
 species_id = 1500
-form_id = &"snorlax_gmax"
+form_id = &"Gigamax"
 display_name = "Snorlax"
 base_species_id = 143
 override_types = true
@@ -46,10 +46,7 @@ ability_2 = 47
 hidden_ability = 82
 override_pokedex = true
 category_name = "Durmiente"
-description = "Gigantamax energía ha afectado
-semillas perdidas e incluso piedras que
-se atascó a Snorlax, haciendo que crezcan
-a un tamaño enorme."
+description = "La energía han afectado a las semillas y hasta a las piedras que se quedaron pegadas, haciéndolas crecer enormes."
 height = 350
 tags = PackedStringArray("gmax")
 
@@ -223,7 +220,7 @@ exp_yield = 189
 friendship = 70
 growth_rate = 5
 category_name = "Dormir"
-description = "No se encuentra satisfecho hasta que no se come 400 kg de comida cada día. Cuando acaba de comer, se queda dormido."
+description = "Se dedica a comer y dormir. Es tan dócil que es fácil ver a niños usando la gran panza que tiene como lugar de juegos."
 height = 21
 weight = 4600
 body_color = 4

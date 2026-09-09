@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_hmrr8"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://dno0c8cgmw0iq" path="res://graphics/pokemon/icons/TAUROS_PALDEA_COMBAT.png" id="10_hd2ol"]
+[ext_resource type="Texture2D" uid="uid://deerh2a2wx3m8" path="res://graphics/pokemon/follower/TAUROS_1.png" id="12_ax7q7"]
+[ext_resource type="Texture2D" uid="uid://bwvq7ufp4yt6g" path="res://graphics/pokemon/icons/TAUROS_PALDEA_BLAZE.png" id="17_o3k2e"]
+[ext_resource type="Texture2D" uid="uid://ecjlx54m43qh" path="res://graphics/pokemon/follower/TAUROS_2.png" id="18_7h2r7"]
+[ext_resource type="Texture2D" uid="uid://dkqjqdj25gr5v" path="res://graphics/pokemon/icons/TAUROS_PALDEA_AQUA.png" id="23_1fedq"]
+[ext_resource type="Texture2D" uid="uid://ml78mvx11x2v" path="res://graphics/pokemon/follower/TAUROS_3.png" id="24_m331v"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://bblk8imkurd1x" path="res://graphics/pokemon/front/TAUROS.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://b4dh7hsc5n2a4" path="res://graphics/pokemon/front_shiny/TAUROS.png" id="gfx101"]
@@ -27,7 +33,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_hmrr8")
 species_id = 1402
-form_id = &"tauros_paldea_combat"
+form_id = &"Paldea - Combat"
 display_name = "Tauros"
 base_species_id = 128
 override_types = true
@@ -43,8 +49,8 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("10_hd2ol")
+overworld_scene = ExtResource("12_ax7q7")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 5)
 back_sprite_offset = Vector2(0, 9)
@@ -55,10 +61,7 @@ ability_2 = 83
 hidden_ability = 291
 override_pokedex = true
 category_name = "Toro salvaje"
-description = "Este Pokémon tiene un cuerpo muscular
-y sobresale en combate de corta distancia.
-Usa sus cuernos cortos para golpear
-los puntos débiles del adversario."
+description = "Este Pokémon tiene un cuerpo musculoso y sobresale en el combate cuerpo a cuerpo. Utiliza sus cuernos cortos para golpear los puntos débiles del oponente."
 height = 14
 weight = 1150
 tags = PackedStringArray()
@@ -66,7 +69,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_hmrr8")
 species_id = 1403
-form_id = &"tauros_paldea_blaze"
+form_id = &"Paldea - Blaze"
 display_name = "Tauros"
 base_species_id = 128
 override_types = true
@@ -83,8 +86,8 @@ front_sprite = ExtResource("gfx111")
 front_sprite_shiny = ExtResource("gfx112")
 back_sprite = ExtResource("gfx113")
 back_sprite_shiny = ExtResource("gfx114")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("17_o3k2e")
+overworld_scene = ExtResource("18_7h2r7")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 5)
 back_sprite_offset = Vector2(0, 9)
@@ -95,10 +98,7 @@ ability_2 = 83
 hidden_ability = 291
 override_pokedex = true
 category_name = "Toro salvaje"
-description = "Cuando se calienta con energía de fuego, sus cuernos pueden
-Más caliente que 1,800 grados Fahrenheit.
-Los criados por ellos sufrirán
-ambas heridas y quemaduras."
+description = "Cuando se calienta con energía de fuego, sus cuernos pueden alcanzar temperaturas superiores a 1,800 ºC. Quienes sean atravesados por ellos sufrirán tanto heridas como quemaduras."
 height = 14
 weight = 850
 tags = PackedStringArray()
@@ -106,7 +106,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_hmrr8")
 species_id = 1404
-form_id = &"tauros_paldea_aqua"
+form_id = &"Paldea - Aqua"
 display_name = "Tauros"
 base_species_id = 128
 override_types = true
@@ -123,8 +123,8 @@ front_sprite = ExtResource("gfx115")
 front_sprite_shiny = ExtResource("gfx116")
 back_sprite = ExtResource("gfx117")
 back_sprite_shiny = ExtResource("gfx118")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("23_1fedq")
+overworld_scene = ExtResource("24_m331v")
 cry = ExtResource("gfx106")
 front_sprite_offset = Vector2(0, 5)
 back_sprite_offset = Vector2(0, 9)
@@ -135,10 +135,7 @@ ability_2 = 83
 hidden_ability = 291
 override_pokedex = true
 category_name = "Toro salvaje"
-description = "Este Pokémon explota el agua de los agujeros en
-las puntas de sus cuernos - la alta presión
-jets perforan justo a través de
-Los enemigos de Tauros."
+description = "Este Pokémon lanza agua desde los agujeros en las puntas de sus cuernos los chorros a alta presión atraviesan a los enemigos de Tauros."
 height = 14
 weight = 1100
 tags = PackedStringArray()
@@ -255,7 +252,7 @@ exp_yield = 172
 friendship = 70
 growth_rate = 5
 category_name = "Toro Bravo"
-description = "Después de animarse a luchar fustigándose con sus tres colas, carga a toda velocidad."
+description = "Le resulta imposible estarse quieto. Si no hay ningún rival que luche con él, se estampa contra árboles para calmarse y los embiste para echarlos abajo."
 height = 14
 weight = 884
 body_color = 5

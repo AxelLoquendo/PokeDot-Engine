@@ -21,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_lfkp7")
 species_id = 912
-form_id = &"alakazam_mega"
+form_id = &"Mega"
 display_name = "Alakazam"
 base_species_id = 65
 override_types = true
@@ -46,9 +46,7 @@ ability_2 = 36
 hidden_ability = 36
 override_pokedex = true
 category_name = "Psíquico"
-description = "Habiendo cambiado sus músculos, Alakazam
-el verdadero poder ha sido desatado. Con su
-poderes psíquicos, puede prever todas las cosas."
+description = "Reemplazando sus músculos, liberó todo su poder. Con sus poderes mentales, puede prever todas las cosas."
 height = 12
 weight = 480
 tags = PackedStringArray("mega")
@@ -152,7 +150,7 @@ exp_yield = 225
 friendship = 70
 growth_rate = 3
 category_name = "Psi"
-description = "Sus neuronas se multiplican continuamente durante su vida. Por eso, siempre lo recuerda todo."
+description = "Aunque tiene una gran capacidad psíquica y una inteligencia excepcional, la musculatura de Alakazam es muy débil. Para moverse, utiliza poderes psíquicos."
 height = 15
 weight = 480
 body_color = 5

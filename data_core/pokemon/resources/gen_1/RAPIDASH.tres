@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_l5vuh"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://dvjpshpif4df6" path="res://graphics/pokemon/icons/RAPIDASH_GALAR.png" id="10_yy42b"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://brsdbr5ld2cg" path="res://graphics/pokemon/front/RAPIDASH.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://cg0e6ucoyfu6q" path="res://graphics/pokemon/front_shiny/RAPIDASH.png" id="gfx101"]
@@ -20,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_l5vuh")
 species_id = 976
-form_id = &"rapidash_galar"
+form_id = &"Galar"
 display_name = "Rapidash"
 base_species_id = 78
 override_types = true
@@ -37,7 +38,7 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx111")
+icon_sprite = ExtResource("10_yy42b")
 overworld_scene = ExtResource("gfx112")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 6)
@@ -47,11 +48,8 @@ ability_1 = 50
 ability_2 = 257
 hidden_ability = 107
 override_pokedex = true
-category_name = "Cuerno único"
-description = "Un poco puede soportar su corte psicótico.
-Desatado del cuerno de Pokémon,
-el movimiento golpeará un agujero derecho
-a través de una gruesa hoja de metal."
+category_name = "Unicorne"
+description = "Poco puede resistir su Corte Psíquico. Desatado desde su cuerno, el movimiento perforará una placa de metal grueso sin problemas."
 height = 17
 weight = 800
 tags = PackedStringArray()
@@ -159,7 +157,7 @@ catch_rate = 60
 exp_yield = 175
 friendship = 70
 category_name = "Caballo Fuego"
-description = "Muy competitivo, este Pokémon perseguirá a todo lo que se mueva rápido e intentará salir airoso."
+description = "Suele trotar sin rumbo por campos y llanos. Pero, si debe ir a algún sitio, se le aviva el fuego de las melenas y emprende un galope llameante alcanzando 240 km por hora."
 height = 17
 weight = 950
 body_color = 2

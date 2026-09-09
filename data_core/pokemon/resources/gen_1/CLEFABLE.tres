@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_brdwp")
 species_id = 1524
-form_id = &"clefable_mega"
+form_id = &"Mega"
 display_name = "Clefable"
 base_species_id = 36
 override_types = true
@@ -48,9 +48,7 @@ ability_2 = 156
 hidden_ability = 156
 override_pokedex = true
 category_name = "Hada"
-description = "vuela usando el poder de
-luz de luna para controlar la gravedad dentro
-un radio de más de 32 pies alrededor."
+description = "Vuela usando el poder de luz de la luna para controlar la gravedad dentro un radio de más de 32 pies a su alrededor."
 height = 17
 weight = 423
 tags = PackedStringArray("mega")
@@ -169,7 +167,7 @@ exp_yield = 217
 friendship = 140
 growth_rate = 4
 category_name = "Hada"
-description = "Su oído es tan agudo que puede oír una aguja caer a 1 km. Vive en montañas solitarias."
+description = "Usa las alas para dar saltitos y poder caminar por el agua, pero no llega a volar. Se sabe que le encanta pasear por los lagos en tranquilas noches de luna llena."
 height = 13
 weight = 400
 body_color = 9
