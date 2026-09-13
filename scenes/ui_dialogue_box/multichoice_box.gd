@@ -108,7 +108,12 @@ func show_choices(
 	var call_id: int = _show_call_id
 	_busy = false
 
-	_choices = choices
+	# .duplicate() es crítico: sin esto, _choices apunta al MISMO array
+	# que le pasó el llamador (p. ej. DialoguePage.choices). Como
+	# hide_menu() hace _choices.clear(), sin copiar terminaría borrando
+	# los choices del propio DialoguePage antes de que la señal
+	# choice_selected llegue a quien la escucha.
+	_choices = choices.duplicate()
 	_clear_options()
 	_create_options()
 	_resize_window()

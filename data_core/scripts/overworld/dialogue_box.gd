@@ -180,8 +180,7 @@ func _calcular_posicion_opciones() -> Vector2:
 func _on_multichoice_selected(index: int, choice_id: String) -> void:
 	esperando_eleccion = false
 
-	# Cancel (B) → index -1 / choice_id vacío
-	if index < 0 or choice_id.is_empty():
+	if index < 0:
 		cerrar()
 		return
 
@@ -196,7 +195,6 @@ func _on_multichoice_selected(index: int, choice_id: String) -> void:
 
 	var opcion: DialogueChoice = pagina.choices[index]
 
-	# Notificar a debug / save / scripts
 	choice_index_selected.emit(index)
 	choice_selected.emit(opcion.choice_id)
 
@@ -208,7 +206,6 @@ func _on_multichoice_selected(index: int, choice_id: String) -> void:
 			pagina_actual = indice_destino
 			mostrar_pagina()
 		else:
-			print("No se encontró la página con ID: '%s'" % siguiente_id)
 			cerrar()
 	else:
 		bloqueado = true

@@ -46,7 +46,6 @@ func _show(screen: String) -> void:
 		"save":
 			DialogueManager.show_texts([_debug_info()], "", null, ["Guardar", "Volver"])
 
-
 func _handle_choice() -> void:
 	# Cancel (B) → salir limpio del debug
 	if _choice.is_empty():
