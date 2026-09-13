@@ -24,6 +24,8 @@ var charging_target: BattleBattler = null
 var charging_slot_index: int = -1
 var semi_invulnerable: bool = false
 var must_recharge: bool = false
+## Focus Energy aumenta dos niveles la probabilidad de golpe crítico.
+var focus_energy: bool = false
 
 ## ─── Habilidades (ver ability_runtime.gd) ────────────────
 ## Si es false, la habilidad de este Pokémon no tiene ningún efecto
@@ -60,6 +62,7 @@ func _reset_stages() -> void:
 	charging_slot_index = -1
 	semi_invulnerable = false
 	must_recharge = false
+	focus_energy = false
 
 func is_fainted() -> bool:
 	return pokemon == null or pokemon.current_hp <= 0

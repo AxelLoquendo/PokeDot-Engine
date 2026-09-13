@@ -1,5 +1,54 @@
 extends Node
 
+## El selector vive en una capa independiente de DialogueBox: puede usarse
+## sobre menús, combate o escenas que ya dibujan su propio texto.
+const MULTICHOICE_SCENE: PackedScene = preload("res://scenes/ui_dialogue_box/multichoice_box.tscn")
+var _multichoice_layer: CanvasLayer = null
+
+func _ready() -> void:
+	call_deferred("_ensure_multichoice")
+
+func _ensure_multichoice() -> MultichoiceBox:
+	if _multichoice_layer != null and is_instance_valid(_multichoice_layer):
+		return _multichoice_layer.get_node_or_null("MultichoiceBox") as MultichoiceBox
+	var tree: SceneTree = get_tree()
+	if tree == null or tree.root == null:
+		return null
+	_multichoice_layer = MULTICHOICE_SCENE.instantiate() as CanvasLayer
+	tree.root.add_child(_multichoice_layer)
+	return _multichoice_layer.get_node_or_null("MultichoiceBox") as MultichoiceBox
+
+func get_multichoice() -> MultichoiceBox:
+	return _ensure_multichoice()
+
+## Muestra solo las opciones; no abre ni modifica DialogueBox.
+func show_choices_only(options: Array[String], position: Vector2 = Vector2(-1, -1)) -> MultichoiceBox:
+	var box: MultichoiceBox = _ensure_multichoice()
+	if box == null or options.is_empty():
+		return null
+	var choices: Array[DialogueChoice] = []
+	for index: int in range(options.size()):
+		var choice: DialogueChoice = DialogueChoice.new()
+		choice.text = options[index]
+		choice.choice_id = str(index)
+		choices.append(choice)
+	box.show_choices(choices, _default_choice_position(position), false)
+	return box
+
+## Conveniencia asíncrona. Devuelve -1 al cancelar o si no se pudo abrir.
+func choose(options: Array[String], position: Vector2 = Vector2(-1, -1)) -> int:
+	var box: MultichoiceBox = show_choices_only(options, position)
+	if box == null:
+		return -1
+	var selected: Array = await box.choice_selected
+	return int(selected[0]) if not selected.is_empty() else -1
+
+func _default_choice_position(position: Vector2) -> Vector2:
+	if position.x >= 0.0 and position.y >= 0.0:
+		return position
+	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
+	return Vector2(viewport_size.x - 12.0, viewport_size.y - 12.0)
+
 func start(dialogue: Dialogue, speaker_name: String = "", speaker: CharacterController = null) -> void:
 	var caja: DialogueBox = get_tree().get_first_node_in_group("dialogue_box") as DialogueBox
 

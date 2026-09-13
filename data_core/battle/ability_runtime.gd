@@ -113,9 +113,6 @@ static func damage_taken_multiplier(defender: BattleBattler, move: MoveData, eff
 		AbilityId.Id.SOLID_ROCK, AbilityId.Id.FILTER, AbilityId.Id.PRISM_ARMOR:
 			if effectiveness > 1.0:
 				mult *= 0.75
-		AbilityId.Id.SOLID_ROCK, AbilityId.Id.FILTER, AbilityId.Id.PRISM_ARMOR:
-			if effectiveness > 1.0:
-				mult *= 0.75
 		AbilityId.Id.MULTISCALE:
 			if defender.pokemon.current_hp == defender.pokemon.max_hp:
 				mult *= 0.5
@@ -197,10 +194,6 @@ static func on_contact_hit(attacker: BattleBattler, defender: BattleBattler, mov
 			@warning_ignore("integer_division")
 			var dmg: int = maxi(1, attacker.get_max_hp() / 8)
 			battle.ability_deal_damage(attacker, dmg, defender)
-		AbilityId.Id.ROUGH_SKIN, AbilityId.Id.IRON_BARBS:
-			@warning_ignore("integer_division")
-			var dmg: int = maxi(1, attacker.get_max_hp() / 8)
-			battle.ability_deal_damage(attacker, dmg, defender)
 		AbilityId.Id.EFFECT_SPORE:
 			if randf() < 0.3:
 				var statuses: Array = [PokemonInstance.Status.SLEEP, PokemonInstance.Status.POISON, PokemonInstance.Status.PARALYSIS]
@@ -218,10 +211,6 @@ static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleMana
 				battle.ability_cure_status(battler)
 		AbilityId.Id.RAIN_DISH:
 			if weather == WeatherId.WEATHER_RAIN:
-				@warning_ignore("integer_division")
-				battle.ability_heal(battler, maxi(1, battler.get_max_hp() / 16))
-		AbilityId.Id.ICE_BODY:
-			if weather == WeatherId.WEATHER_SNOW:
 				@warning_ignore("integer_division")
 				battle.ability_heal(battler, maxi(1, battler.get_max_hp() / 16))
 		AbilityId.Id.ICE_BODY:

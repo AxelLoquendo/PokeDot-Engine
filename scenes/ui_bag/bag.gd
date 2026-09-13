@@ -3,10 +3,12 @@ class_name BagUI
 
 signal bag_closed
 signal item_chosen(item_id: Items.ItemId)
+signal battle_item_selected(item_id: Items.ItemId)
 
 enum BagMode {
 	NORMAL,
 	GIVE_HELD,
+	BATTLE,
 }
 
 var bag_mode: BagMode = BagMode.NORMAL
@@ -123,6 +125,8 @@ var scroll_offset: int = 0
 # La escena se instancia ya abierta.
 
 var es_abierto: bool = true
+var _using_item: bool = false
+var _party_target_menu: PartyMenu = null
 
 
 # ============================================================
@@ -572,6 +576,159 @@ func _get_selected_item_id() -> Items.ItemId:
 	if indice_seleccion < 0 or indice_seleccion >= items_actuales.size():
 		return Items.ItemId.ITEM_NONE
 	return items_actuales[indice_seleccion]
+
+
+## Abre el menú contextual clásico. El MultichoiceBox es independiente de la
+## caja de diálogo, por lo que la mochila no crea una segunda caja de texto.
+func _open_item_actions() -> void:
+	var item_id: Items.ItemId = _get_selected_item_id()
+	if item_id == Items.ItemId.ITEM_NONE or player_data == null:
+		return
+	var item: ItemData = ItemDatabase.get_item(item_id)
+	if item == null:
+		label_descripcion.text = "No se pudieron cargar los datos del objeto."
+		return
+
+	_using_item = true
+	var actions: Array[String] = _get_item_actions(item)
+	var choice: int = await DialogueManager.choose(actions, Vector2(468, 308))
+	if choice >= 0 and choice < actions.size():
+		match actions[choice]:
+			"Usar":
+				if bag_mode == BagMode.BATTLE:
+					battle_item_selected.emit(item_id)
+					close_bag()
+				elif _is_key_item(item):
+					_use_key_item(item)
+				else:
+					await _use_item_on_party(item_id, item)
+			"Dar":
+				await _give_item_to_pokemon(item_id, item)
+			"Tirar":
+				await _discard_item(item_id, item)
+			"Asignar":
+				player_data.registered_item = item_id
+				label_descripcion.text = "%s fue asignado." % item.item_name
+	_using_item = false
+
+
+func _get_item_actions(item: ItemData) -> Array[String]:
+	if bag_mode == BagMode.BATTLE:
+		return ["Usar", "Salir"]
+	if _is_key_item(item):
+		return ["Usar", "Asignar", "Salir"]
+	if _is_battle_only_item(item):
+		return ["Dar", "Tirar", "Salir"]
+	if _is_field_usable_item(item):
+		return ["Usar", "Dar", "Tirar", "Salir"]
+	return ["Dar", "Tirar", "Salir"]
+
+
+func _is_key_item(item: ItemData) -> bool:
+	return item.importance or item.pocket == ItemConstants.Pocket.POCKET_KEY_ITEMS
+
+
+func _is_battle_only_item(item: ItemData) -> bool:
+	return item.pocket == ItemConstants.Pocket.POCKET_POKE_BALLS \
+		or item.pocket == ItemConstants.Pocket.POCKET_BATTLE_ITEMS \
+		or item.item_type == Items.ItemType.ITEM_USE_BATTLER
+
+
+func _is_field_usable_item(item: ItemData) -> bool:
+	return item.item_type == Items.ItemType.ITEM_USE_PARTY_MENU \
+		or item.item_type == Items.ItemType.ITEM_USE_FIELD \
+		or item.item_type == Items.ItemType.ITEM_USE_PARTY_MENU_MOVES
+
+
+func _use_key_item(item: ItemData) -> void:
+	label_descripcion.text = "%s aún no tiene una acción de campo implementada." % item.item_name
+
+
+func _use_item_on_party(item_id: Items.ItemId, item: ItemData) -> void:
+	if player_data.party.is_empty():
+		label_descripcion.text = "No tienes Pokémon en el equipo."
+		return
+
+	var pokemon: PokemonInstance = await _select_party_target(
+		"¿En cuál Pokémon usar %s?" % item.item_name
+	)
+	if pokemon == null:
+		return
+
+	var move_index: int = -1
+	if item.effect == Items.EffectItem.EFFECT_ITEM_RESTORE_PP:
+		var moves: Array[String] = []
+		for slot: PokemonMoveSlot in pokemon.moves:
+			var move: MoveData = MoveDatabase.get_move(slot.move_id) if slot else null
+			moves.append(move.move_name if move else "---")
+		move_index = await DialogueManager.choose(moves, Vector2(468, 308))
+		if move_index < 0:
+			return
+
+	var result: ItemUseResolver.Result = player_data.use_bag_item_on_pokemon(
+		item_id, pokemon, move_index
+	)
+	label_descripcion.text = result.message
+	_update_ui()
+
+
+func _give_item_to_pokemon(item_id: Items.ItemId, item: ItemData) -> void:
+	if player_data.party.is_empty():
+		label_descripcion.text = "No tienes Pokémon en el equipo."
+		return
+	var target: PokemonInstance = await _select_party_target(
+		"¿A qué Pokémon dar %s?" % item.item_name
+	)
+	if target == null:
+		return
+	if target.held_item != Items.ItemId.ITEM_NONE:
+		player_data.bag.add_item(target.held_item)
+	if not player_data.bag.remove_item(item_id):
+		label_descripcion.text = "No queda ese objeto en la mochila."
+		return
+	target.held_item = item_id
+	label_descripcion.text = "%s recibió %s." % [target.get_display_name(), item.item_name]
+	_update_ui()
+
+
+## Oculta la mochila de forma temporal y usa el PartyMenu real para seleccionar
+## el objetivo. Al volver, se conserva la mochila exactamente donde estaba.
+func _select_party_target(prompt: String) -> PokemonInstance:
+	if player_data == null:
+		return null
+	# No se usa preload aquí: PartyMenu también conoce BagUI para el flujo de
+	# objetos equipados, y precargar ambas escenas crea una dependencia circular.
+	var party_scene: PackedScene = load("res://scenes/ui_party_menu/party_menu.tscn") as PackedScene
+	if party_scene == null or party_scene.get_state() == null or party_scene.get_state().get_node_count() == 0:
+		push_error("BagUI: no se pudo cargar la escena PartyMenu.")
+		return null
+	visible = false
+	_party_target_menu = party_scene.instantiate() as PartyMenu
+	if _party_target_menu == null:
+		visible = true
+		return null
+	_party_target_menu.layer = layer + 1
+	get_tree().root.add_child(_party_target_menu)
+	_party_target_menu.setup_item_target(player_data, prompt)
+	var result: Array = await _party_target_menu.item_target_resolved
+	# PartyMenu se cierra después de emitir su señal y libera el input del
+	# jugador. Esperar un frame evita que ambas interfaces se dibujen juntas.
+	await get_tree().process_frame
+	_party_target_menu = null
+	_bloquear_jugador()
+	visible = true
+	if result.size() < 2 or bool(result[0]):
+		return null
+	return result[1] as PokemonInstance
+
+
+func _discard_item(item_id: Items.ItemId, item: ItemData) -> void:
+	var confirmation: int = await DialogueManager.choose(["Sí", "No"], Vector2(468, 308))
+	if confirmation != 0:
+		return
+	if player_data.bag.remove_item(item_id):
+		label_descripcion.text = "Tiraste %s." % item.item_name
+		_update_ui()
 
 # ============================================================
 # ACTUALIZAR GRÁFICOS DEL JUGADOR
@@ -1352,6 +1509,8 @@ func _input(event: InputEvent) -> void:
 
 	if not es_abierto:
 		return
+	if _using_item:
+		return
 
 
 	if event.is_echo():
@@ -1393,7 +1552,7 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 
-		# NORMAL: usar ítem en campo (más adelante)
+		_open_item_actions()
 		get_viewport().set_input_as_handled()
 		return
 

@@ -143,6 +143,8 @@ static func compute_hit(attacker: BattleBattler, defender: BattleBattler, move: 
 		return result
 
 	var crit_stage: int = move.crit_stage
+	if attacker.focus_energy:
+		crit_stage += 2
 	if AbilityRuntime.has(attacker, AbilityId.Id.SUPER_LUCK):
 		crit_stage += 1
 

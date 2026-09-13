@@ -144,6 +144,7 @@ func restore_player_collection(player_data: CharacterPlayer, saved: Dictionary) 
 	player_data.sprite_overworld = int(saved.get("player_sprite_overworld", player_data.sprite_overworld)) as EventObjects.PlayerID
 	player_data.created_at = str(saved.get("created_at", player_data.created_at))  
 	player_data.trainer_id = int(saved.get("player_trainer_id", player_data.trainer_id))  
+	player_data.registered_item = int(saved.get("registered_item", player_data.registered_item)) as Items.ItemId
 	if player_data.bag == null:  
 		player_data.bag = Bag.new()
 	player_data.bag.quantities.clear()
@@ -158,24 +159,7 @@ func restore_player_collection(player_data: CharacterPlayer, saved: Dictionary) 
 			if not entry_value is Dictionary:
 				continue
 			var entry: Dictionary = entry_value as Dictionary
-			var pokemon: PokemonInstance = PokemonInstance.new()
-			pokemon.species_id = int(entry.get("species_id", 0)) as Species.SpeciesID
-			pokemon.level = clampi(int(entry.get("level", 1)), 1, 100)
-			pokemon.experience = int(entry.get("experience", 0))
-			pokemon.nickname = str(entry.get("nickname", ""))
-			pokemon.ability_id = int(entry.get("ability_id", 0)) as AbilityId.Id
-			pokemon.held_item = int(entry.get("held_item", 0)) as Items.ItemId
-			var moves_value: Variant = entry.get("moves", [])
-			if moves_value is Array:
-				for move_value: Variant in moves_value:
-					if not move_value is Dictionary:
-						continue
-					var move_entry: Dictionary = move_value as Dictionary
-					var slot: PokemonMoveSlot = PokemonMoveSlot.new()
-					slot.move_id = int(move_entry.get("move_id", 0)) as Moves.MoveId
-					slot.current_pp = int(move_entry.get("current_pp", 0))
-					slot.pp_ups = int(move_entry.get("pp_ups", 0))
-					pokemon.moves.append(slot)
+			var pokemon: PokemonInstance = PokemonInstance.from_dict(entry)
 			player_data.add_pokemon(pokemon)
 	if player_data.pokedex == null:
 		player_data.pokedex = PokedexData.new()
@@ -190,11 +174,7 @@ func _serialize_party(party: Array[PokemonInstance]) -> Array:
 	for pokemon: PokemonInstance in party:
 		if pokemon == null:
 			continue
-		var serialized_moves: Array = []
-		for slot: PokemonMoveSlot in pokemon.moves:
-			if slot:
-				serialized_moves.append({"move_id": int(slot.move_id), "current_pp": slot.current_pp, "pp_ups": slot.pp_ups})
-		result.append({"species_id": int(pokemon.species_id), "level": pokemon.level, "experience": pokemon.experience, "nickname": pokemon.nickname, "ability_id": int(pokemon.ability_id), "held_item": int(pokemon.held_item), "moves": serialized_moves})
+		result.append(pokemon.to_dict())
 	return result
 
 func save_game(tree: SceneTree) -> bool:
@@ -214,6 +194,7 @@ func save_game(tree: SceneTree) -> bool:
 		"player_trainer_id": player_data.trainer_id if player_data else 0,
 		"player_gender": player_data.gender if player_data else 0,  
 		"player_sprite_overworld": int(player_data.sprite_overworld) if player_data else 0,
+		"registered_item": int(player_data.registered_item) if player_data else int(Items.ItemId.ITEM_NONE),
 		"map_name": map.map_name if map else "",
 		"map_section": int(map.map_id_section) if map else 0,
 		"flags": ScriptExecutionContext.global_flags,

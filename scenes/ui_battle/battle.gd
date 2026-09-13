@@ -39,6 +39,7 @@ extends Node2D
 @onready var bg_sprite: Sprite2D = $BG
 
 const PARTY_SCENE: PackedScene = preload("res://scenes/ui_party_menu/party_menu.tscn")
+const BAG_SCENE: PackedScene = preload("res://scenes/ui_bag/bag.tscn")
 
 var player_pokemon: PokemonInstance
 var enemy_pokemon: PokemonInstance
@@ -74,6 +75,8 @@ var _current_move_focused: Array[Texture2D] = []
 var _ended_by_run: bool = false
 var _battle_closing: bool = false
 var _party_ui: PartyMenu = null
+var _bag_ui: BagUI = null
+var _battle_item_pending: bool = false
 var _force_switch_pending: bool = false
 var _battle_canvas_modulate: CanvasModulate = null
 
@@ -505,7 +508,20 @@ func _on_fight_pressed() -> void:
 
 
 func _on_bag_pressed() -> void:
-	_show_message("¡Aún no implementado!")
+	if _bag_ui != null and is_instance_valid(_bag_ui):
+		return
+	var data: CharacterPlayer = BattleSession.player_controller.character_data as CharacterPlayer if BattleSession.player_controller else null
+	if data == null:
+		_show_message("¡No hay mochila disponible!")
+		return
+	current_menu = MenuState.BUSY
+	action_menu.visible = false
+	_bag_ui = BAG_SCENE.instantiate() as BagUI
+	_bag_ui.layer = 120
+	get_tree().root.add_child(_bag_ui)
+	_bag_ui.setup(data, BagUI.BagMode.BATTLE)
+	_bag_ui.battle_item_selected.connect(_on_battle_item_selected)
+	_bag_ui.bag_closed.connect(_on_battle_bag_closed)
 
 
 func _on_pkmn_pressed() -> void:
@@ -513,6 +529,19 @@ func _on_pkmn_pressed() -> void:
 
 
 func _on_player_must_switch() -> void:
+	_ask_fainted_action()
+
+func _ask_fainted_action() -> void:
+	current_menu = MenuState.BUSY
+	_show_message_box("¿Qué hará el entrenador?")
+	var options: Array[String] = ["Cambiar Pokémon"]
+	if not battle.is_trainer_battle:
+		options.append("Escapar")
+	var choice: int = await DialogueManager.choose(options, Vector2(468, 308))
+	if choice == 1 and not battle.is_trainer_battle:
+		_ended_by_run = true
+		battle.player_choose_run()
+		return
 	_force_switch_pending = true
 	_abrir_party_batalla(true)
 
@@ -568,6 +597,42 @@ func _on_party_cancelled() -> void:
 
 func _on_party_closed() -> void:
 	_party_ui = null
+
+func _on_battle_item_selected(item_id: Items.ItemId) -> void:
+	_battle_item_pending = true
+	var data: ItemData = ItemDatabase.get_item(item_id)
+	if data == null:
+		_battle_item_pending = false
+		_on_battle_bag_closed()
+		return
+	var move_index: int = -1
+	if data.effect == Items.EffectItem.EFFECT_ITEM_RESTORE_PP:
+		var choices: Array[String] = []
+		for slot: PokemonMoveSlot in player_pokemon.moves:
+			var move: MoveData = MoveDatabase.get_move(slot.move_id) if slot else null
+			choices.append(move.move_name if move else "---")
+		move_index = await DialogueManager.choose(choices, Vector2(468, 308))
+		if move_index < 0:
+			_battle_item_pending = false
+			_on_battle_bag_closed()
+			return
+	await battle.player_choose_item(item_id, player_pokemon, move_index)
+	_update_ui()
+	_battle_item_pending = false
+	if battle.is_running and current_menu == MenuState.BUSY:
+		_on_battle_bag_closed()
+
+func _on_battle_bag_closed() -> void:
+	_bag_ui = null
+	if _battle_item_pending:
+		return
+	if battle != null and battle.is_running and current_menu == MenuState.BUSY:
+		if not _force_switch_pending:
+			action_menu.visible = true
+			current_menu = MenuState.ACTIONS
+			selected_action = 0
+			_update_action_focus()
+			_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 
 
 func _on_run_pressed() -> void:

@@ -13,6 +13,7 @@ const COMANDOS_VALIDOS: Array[String] = [
 	"goto",
 	"ifchoice",
 	"ifflag",
+	"checkitem",
 	"compare",
 	"applymovement",
 	"weather",

@@ -35,7 +35,9 @@ func execute(context: ScriptExecutionContext) -> bool:
 		dialogue_box.dialogue_closed.connect(context.complete_async, CONNECT_ONE_SHOT)
 	if not choices.is_empty() and not choice_variable.is_empty():
 		if dialogue_box:
-			dialogue_box.choice_selected.connect(_on_choice_selected.bind(context), CONNECT_ONE_SHOT)
+			# Los .txt comparan el índice visible (0 = primera opción). No
+			# dependemos de choice_id, que puede ser personalizado por una UI.
+			dialogue_box.choice_index_selected.connect(_on_choice_index_selected.bind(context), CONNECT_ONE_SHOT)
 	if DialogueManager and DialogueManager.has_method("show_texts"):
 		DialogueManager.show_texts(text_pages, final_speaker, context.npc as CharacterController, choices, choice_position)
 		context.is_waiting = true
@@ -75,8 +77,8 @@ func execute(context: ScriptExecutionContext) -> bool:
 	context.is_waiting = true
 	return false
 
-func _on_choice_selected(choice_id: String, context: ScriptExecutionContext) -> void:
-	context.set_variable(choice_variable, choice_id)
+func _on_choice_index_selected(index: int, context: ScriptExecutionContext) -> void:
+	context.set_variable(choice_variable, str(index))
 
 
 func get_display_text() -> String:

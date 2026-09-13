@@ -1,8 +1,10 @@
 extends Resource
 class_name WildEncounterTable
 
-## Probabilidad (0–100) de intento de encuentro por paso en hierba.
-@export_range(0, 100) var encounter_rate: int = 25
+## Probabilidad exacta (0–100) de encuentro por paso completado en hierba.
+## 12 es una frecuencia moderada para rutas normales. Cada mapa puede subirla
+## o bajarla desde su recurso WildEncounterTable.
+@export_range(0, 100) var encounter_rate: int = 12
 @export var entries: Array[WildEncounterEntry] = []
 
 
@@ -13,7 +15,9 @@ func esta_vacia() -> bool:
 func intentar_encuentro() -> PokemonInstance:
 	if esta_vacia():
 		return null
-	if randi_range(1, 100) > encounter_rate:
+	# El intervalo 0..99 hace que encounter_rate sea un porcentaje exacto:
+	# 12 produce 12 resultados favorables de 100, no una aproximación.
+	if randi_range(0, 99) >= encounter_rate:
 		return null
 	return _elegir_pokemon()
 

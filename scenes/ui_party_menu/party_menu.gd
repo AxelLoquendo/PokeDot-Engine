@@ -4,6 +4,7 @@ class_name PartyMenu
 signal party_closed
 signal battle_pokemon_selected(pokemon: PokemonInstance)
 signal battle_cancelled
+signal item_target_resolved(cancelled: bool, pokemon: PokemonInstance)
 
 # ============================================================
 # REFERENCIAS
@@ -57,6 +58,7 @@ enum MenuMode {
 	SWAP_ITEM,
 	BATTLE_SELECT,
 	BATTLE_CONTEXT,
+	ITEM_TARGET,
 }
 
 var menu_mode: MenuMode = MenuMode.SLOTS
@@ -141,6 +143,15 @@ func setup_battle(datos_jugador: CharacterPlayer, activo: PokemonInstance, forza
 			context_help.text = "¡Elige un Pokémon!"
 		else:
 			context_help.text = "¿Qué Pokémon quieres sacar?"
+
+
+## Selector directo para objetos: se conserva la interfaz completa del equipo,
+## pero A elige el Pokémon sin abrir sus opciones normales.
+func setup_item_target(datos_jugador: CharacterPlayer, prompt: String = "¿En cuál Pokémon?") -> void:
+	setup(datos_jugador)
+	menu_mode = MenuMode.ITEM_TARGET
+	if context_help != null:
+		context_help.text = prompt
 
 func _after_setup_focus() -> void:
 	var ultimo: int = _obtener_ultimo_slot_visible()
@@ -258,6 +269,9 @@ func _input(event: InputEvent) -> void:
 					return
 				battle_cancelled.emit()
 				close()
+			MenuMode.ITEM_TARGET:
+				item_target_resolved.emit(true, null)
+				close()
 		return
 
 	# ---------- A ----------
@@ -285,6 +299,8 @@ func _input(event: InputEvent) -> void:
 					_abrir_menu_contexto_batalla()
 			MenuMode.BATTLE_CONTEXT:
 				_confirmar_contexto_batalla()
+			MenuMode.ITEM_TARGET:
+				_confirmar_objetivo_objeto()
 		return
 
 	# ---------- D-pad ----------
@@ -323,9 +339,23 @@ func _confirmar_seleccion_batalla() -> void:
 	battle_pokemon_selected.emit(mon)
 	close()
 
+
+func _confirmar_objetivo_objeto() -> void:
+	if seleccion_cancel:
+		item_target_resolved.emit(true, null)
+		close()
+		return
+	if indice_seleccion < 0 or indice_seleccion >= party_actual.size():
+		return
+	var mon: PokemonInstance = party_actual[indice_seleccion]
+	if mon == null:
+		return
+	item_target_resolved.emit(false, mon)
+	close()
+
 func _navegar(direccion: int, vertical: bool) -> void:
 	match menu_mode:
-		MenuMode.SLOTS, MenuMode.SWAP_POKEMON, MenuMode.SWAP_ITEM, MenuMode.BATTLE_SELECT:
+		MenuMode.SLOTS, MenuMode.SWAP_POKEMON, MenuMode.SWAP_ITEM, MenuMode.BATTLE_SELECT, MenuMode.ITEM_TARGET:
 			if vertical:
 				_mover_vertical(direccion)
 			else:

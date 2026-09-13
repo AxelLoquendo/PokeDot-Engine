@@ -600,6 +600,8 @@ func to_dict() -> Dictionary:
 		"nickname": nickname,
 		"current_hp": current_hp,
 		"max_hp": max_hp,
+		"status": int(status),
+		"status_counter": status_counter,
 		"ability_id": int(ability_id),
 		"tera_type": int(tera_type),
 		"held_item": int(held_item),
@@ -626,6 +628,8 @@ static func from_dict(data: Dictionary) -> PokemonInstance:
 	pokemon.nickname = str(data.get("nickname", ""))
 	pokemon.current_hp = int(data.get("current_hp", 0))
 	pokemon.max_hp = int(data.get("max_hp", 0))
+	pokemon.status = int(data.get("status", 0)) as Status
+	pokemon.status_counter = maxi(0, int(data.get("status_counter", 0)))
 	pokemon.ability_id = int(data.get("ability_id", 0)) as AbilityId.Id
 	pokemon.tera_type = int(data.get("tera_type", 0)) as PokemonData.Type
 	pokemon.held_item = int(data.get("held_item", 0)) as Items.ItemId

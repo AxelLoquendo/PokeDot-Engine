@@ -3,6 +3,9 @@ class_name DialogueBox
 
 # Señal para notificar elecciones al sistema de guardado/quest
 signal choice_selected(choice_id: String)
+## Variante con índice real, para flujos que usan posiciones de menú como los
+## scripts .txt (`ifchoice 0 etiqueta`).
+signal choice_index_selected(index: int)
 signal dialogue_closed()
 
 # --- Referencias a nodos ---
@@ -34,6 +37,10 @@ var mostrar_caja_nombre: bool = false
 
 # --- Variables para multichoice ---
 var esperando_eleccion: bool = false
+var _choice_generation: int = 0
+## Conexión temporal al selector global. Se gestiona explícitamente para que
+## una elección de un diálogo anterior nunca pueda consumir la del actual.
+var _choice_listener: Callable = Callable()
 # Si la dejas en (-1, -1), la posición se calcula automáticamente
 # a la derecha y arriba de la caja de diálogo.
 # Asígnala desde afuera solo si necesitas una posición fija puntual.
@@ -54,6 +61,7 @@ func _ready() -> void:
 
 
 func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: CharacterController = null) -> void:
+	_desconectar_selector()
 	npc_actual = _npc
 	bloqueado = true
 	activo = true
@@ -61,6 +69,7 @@ func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: Character
 	dialogo_actual = _dialogo
 	pagina_actual = 0
 	esperando_eleccion = false
+	_choice_generation += 1
 
 	mostrar_nombre(_nombre_personaje)
 
@@ -121,23 +130,41 @@ func _verificar_tipo_pagina(pagina: DialoguePage) -> void:
 
 
 func _mostrar_opciones(choices: Array[DialogueChoice]) -> void:
+	if multichoice == null or not is_instance_valid(multichoice):
+		multichoice = DialogueManager.get_multichoice() if DialogueManager else null
 	if multichoice == null:
 		push_error("No se encontró MultichoiceBox en el grupo 'multichoice_box'")
 		return
 
 	esperando_eleccion = true
+	# El selector vive en otra capa. Bloquear de forma explícita esta caja evita
+	# que su _unhandled_input procese el mismo botón A mientras el multichoice
+	# está activo. El control vuelve aquí solo si una opción abre otra página.
+	bloqueado = true
 
-	if multichoice.choice_selected.is_connected(_on_multichoice_selected):
-		multichoice.choice_selected.disconnect(_on_multichoice_selected)
-
-	# Ya no conectamos cancelled
-	if multichoice.cancelled.is_connected(_on_multichoice_cancelled):
-		multichoice.cancelled.disconnect(_on_multichoice_cancelled)
-
-	multichoice.choice_selected.connect(_on_multichoice_selected, CONNECT_ONE_SHOT)
-
+	# No usamos una corrutina "fire and forget" aquí. En Godot esa llamada puede
+	# quedarse ligada a un estado de diálogo que ya fue cerrado. Una conexión
+	# temporal con generación asociada hace que A llegue siempre como selección
+	# y solo B produzca el índice -1 que representa cancelar.
+	_desconectar_selector()
+	_choice_listener = _recibir_eleccion_del_selector.bind(_choice_generation)
+	multichoice.choice_selected.connect(_choice_listener, CONNECT_ONE_SHOT)
 	var pos: Vector2 = choice_position if choice_position.x >= 0.0 else _calcular_posicion_opciones()
 	multichoice.show_choices(choices, pos, true)
+
+
+func _recibir_eleccion_del_selector(index: int, choice_id: String, generation: int) -> void:
+	_choice_listener = Callable()
+	if generation != _choice_generation or not dialogo_abierto:
+		return
+	_on_multichoice_selected(index, choice_id)
+
+
+func _desconectar_selector() -> void:
+	if multichoice != null and is_instance_valid(multichoice) and not _choice_listener.is_null():
+		if multichoice.choice_selected.is_connected(_choice_listener):
+			multichoice.choice_selected.disconnect(_choice_listener)
+	_choice_listener = Callable()
 
 func _calcular_posicion_opciones() -> Vector2:
 	# Esquina superior-derecha de la caja de diálogo.
@@ -170,6 +197,7 @@ func _on_multichoice_selected(index: int, choice_id: String) -> void:
 	var opcion: DialogueChoice = pagina.choices[index]
 
 	# Notificar a debug / save / scripts
+	choice_index_selected.emit(index)
 	choice_selected.emit(opcion.choice_id)
 
 	var siguiente_id: String = opcion.next_page_id
@@ -278,6 +306,8 @@ func cerrar() -> void:
 		return
 
 	cerrando = true
+	_desconectar_selector()
+	_choice_generation += 1
 	dialogo_abierto = false
 	id_escritura += 1
 	escribiendo = false

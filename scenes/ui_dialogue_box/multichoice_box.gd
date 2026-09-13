@@ -39,6 +39,7 @@ var _last_input_frame: int = -1
 func _ready() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_INHERIT
+	focus_mode = Control.FOCUS_ALL
 	_font = load(FONT_PATH) as FontFile
 	if _font == null:
 		push_error("No se pudo cargar la fuente: %s" % FONT_PATH)
@@ -66,26 +67,29 @@ func _input(event: InputEvent) -> void:
 	if frame == _last_input_frame:
 		return
 
-	# Usamos el estado global del Input Map (más fiable que el event suelto)
-	if Input.is_action_just_pressed("Up"):
+	# Hay que usar el evento recibido, no Input.is_action_just_pressed(). El
+	# estado global puede pertenecer a otro evento del mismo frame (por ejemplo
+	# el botón B que cerró un menú inferior) y hacer que esta caja interprete
+	# erróneamente una cancelación.
+	if event.is_action_pressed("Up", true):
 		_last_input_frame = frame
 		_move_cursor(-1)
 		get_viewport().set_input_as_handled()
 		return
 
-	if Input.is_action_just_pressed("Down"):
+	if event.is_action_pressed("Down", true):
 		_last_input_frame = frame
 		_move_cursor(1)
 		get_viewport().set_input_as_handled()
 		return
 
-	if Input.is_action_just_pressed("buttonA"):
+	if event.is_action_pressed("buttonA", true):
 		_last_input_frame = frame
 		_confirm_choice()
 		get_viewport().set_input_as_handled()
 		return
 
-	if Input.is_action_just_pressed("buttonB"):
+	if event.is_action_pressed("buttonB", true):
 		_last_input_frame = frame
 		_cancel()
 		get_viewport().set_input_as_handled()
@@ -120,9 +124,11 @@ func show_choices(
 		_place_menu(menu_pos)
 
 	_current_index = 0
+	_last_input_frame = -1
 	_active = true
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = true
+	grab_focus()
 	if cursor != null:
 		cursor.visible = true
 
@@ -277,6 +283,9 @@ func _confirm_choice() -> void:
 	var index: int = _current_index
 	var id: String = _choices[_current_index].choice_id
 
-	# Emitir ANTES de hide_menu (evita perder listeners)
-	choice_selected.emit(index, id)
+	# Cerrar antes de emitir. Los receptores pueden abrir otro selector de forma
+	# inmediata (por ejemplo, Usar objeto -> elegir Pokémon); si emitiéramos
+	# antes, hide_menu() cerraría también ese nuevo selector y el flujo quedaría
+	# esperando una elección que ya no es visible.
 	hide_menu()
+	choice_selected.emit(index, id)

@@ -166,6 +166,14 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 				cmd.target_label = args[1]
 			return cmd
 
+		"checkitem":
+			var cmd: ScriptCmdCheckItem = ScriptCmdCheckItem.new()
+			if not args.is_empty():
+				cmd.item_id = args[0]
+			if args.size() > 1 and args[1].is_valid_int():
+				cmd.amount = maxi(1, int(args[1]))
+			return cmd
+
 		"compare":
 			var cmd: ScriptCmdCompare = ScriptCmdCompare.new()
 			if args.size() >= 5:

@@ -124,6 +124,118 @@ func player_choose_run() -> void:
 	is_running = false
 	battle_ended.emit(true)
 
+
+## Usa un objeto de la mochila durante el combate. La UI decide qué objeto y
+## qué movimiento (para Éter/Elixir) apunta; la lógica y el consumo viven aquí.
+func player_choose_item(item_id: Items.ItemId, target: PokemonInstance = null, move_slot_index: int = -1) -> void:
+	if not is_running or player == null:
+		return
+	var controller: CharacterController = BattleSession.player_controller
+	var data: CharacterPlayer = controller.character_data as CharacterPlayer if controller else null
+	if data == null or data.bag == null or not data.bag.has_item(item_id):
+		message.emit("¡No queda ese objeto!")
+		return
+	var item: ItemData = ItemDatabase.get_item(item_id)
+	if item == null:
+		message.emit("¡Ese objeto no tiene datos válidos!")
+		return
+	if await _try_use_battle_field_item(item, data):
+		return
+	var recipient: PokemonInstance = target if target != null else player.pokemon
+	var result: ItemUseResolver.Result = ItemUseResolver.use_on_pokemon(item, recipient, null, move_slot_index)
+	message.emit(result.message)
+	await _wait(0.7)
+	if not result.success:
+		return
+	if result.consume_item:
+		data.bag.remove_item(item_id)
+	if result.evolved != null:
+		var battler: BattleBattler = player if recipient == player.pokemon else null
+		if battler != null:
+			var evo_context: EvolutionContext = EvolutionContext.new(recipient)
+			evo_context.mode = PokemonData.EvolutionMode.EVO_MODE_ITEM_USE
+			evo_context.used_item_id = item_id
+			await _apply_evolution(battler, result.evolved, evo_context)
+	_emit_hp(player.is_player_side)
+	var enemy_action: BattleAction = _enemy_choose_move()
+	if enemy_action != null:
+		await _resolve_turn(null, enemy_action)
+
+
+## Efectos de objetos que pertenecen al campo de batalla, no a un Pokémon
+## concreto. Devuelve true cuando el objeto fue reconocido, incluso si no pudo
+## surtir efecto, para impedir que el resolvedor de objetos de equipo lo trate
+## como un objeto de curación.
+func _try_use_battle_field_item(item: ItemData, data: CharacterPlayer) -> bool:
+	match item.effect:
+		Items.EffectItem.EFFECT_ITEM_SET_MIST:
+			var side: FieldSide = _side_for(player)
+			if side.mist_turns > 0:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return true
+			side.mist_turns = 5
+			if not item.not_consumed:
+				data.bag.remove_item(item.item_id)
+			message.emit("¡El equipo quedó protegido por Neblina!")
+			await _wait(0.7)
+			await _resolve_item_enemy_turn()
+			return true
+		Items.EffectItem.EFFECT_ITEM_SET_FOCUS_ENERGY:
+			if player.focus_energy:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return true
+			player.focus_energy = true
+			if not item.not_consumed:
+				data.bag.remove_item(item.item_id)
+			message.emit("¡%s se concentró para asestar golpes críticos!" % player.get_display_name())
+			await _wait(0.7)
+			await _resolve_item_enemy_turn()
+			return true
+		Items.EffectItem.EFFECT_ITEM_INCREASE_STAT:
+			if item.effect_stat == PokemonInstance.Stat.HP:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return true
+			var change: int = player.modify_stage(item.effect_stat, maxi(1, item.effect_amount))
+			if change == 0:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return true
+			if not item.not_consumed:
+				data.bag.remove_item(item.item_id)
+			message.emit("¡El %s de %s subió!" % [_stat_display_name(item.effect_stat), player.get_display_name()])
+			await _wait(0.7)
+			await _resolve_item_enemy_turn()
+			return true
+		Items.EffectItem.EFFECT_ITEM_INCREASE_ALL_STATS:
+			var changed: bool = false
+			for stat: PokemonInstance.Stat in [
+				PokemonInstance.Stat.ATTACK, PokemonInstance.Stat.DEFENSE,
+				PokemonInstance.Stat.SP_ATTACK, PokemonInstance.Stat.SP_DEFENSE,
+				PokemonInstance.Stat.SPEED
+			]:
+				changed = player.modify_stage(stat, maxi(1, item.effect_amount)) != 0 or changed
+			if not changed:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return true
+			if not item.not_consumed:
+				data.bag.remove_item(item.item_id)
+			message.emit("¡Las estadísticas de %s subieron!" % player.get_display_name())
+			await _wait(0.7)
+			await _resolve_item_enemy_turn()
+			return true
+		_:
+			return false
+
+
+func _resolve_item_enemy_turn() -> void:
+	var enemy_action: BattleAction = _enemy_choose_move()
+	if enemy_action != null:
+		await _resolve_turn(null, enemy_action)
+
 func _handle_enemy_faint() -> void:
 	message.emit("¡%s se debilitó!" % enemy.get_display_name())
 	await _wait(1.0)
@@ -298,17 +410,12 @@ func _try_learn_move_interactive(pokemon: PokemonInstance, move_id: Moves.MoveId
 ## Si no hay caja de diálogo disponible, se asume "Sí" para no bloquear
 ## el combate.
 func _preguntar_si_no(pregunta: String) -> bool:
-	var tree: SceneTree = Engine.get_main_loop() as SceneTree
-	if tree == null:
-		return true
-
-	var caja: DialogueBox = tree.get_first_node_in_group("dialogue_box") as DialogueBox
-	if caja == null:
-		return true
-
-	DialogueManager.show_texts([pregunta], "", null, ["Sí", "No"])
-	var choice_id: String = await caja.choice_selected
-	return choice_id == "0"
+	# Battle usa su propia caja de mensajes. Solo las opciones se muestran en
+	# la capa independiente, sin abrir DialogueBox sobre el combate.
+	message.emit(pregunta)
+	await _wait(0.2)
+	var choice: int = await DialogueManager.choose(["Sí", "No"], Vector2(468, 308))
+	return choice == 0
 
 
 ## Instancia la pantalla de aprendizaje de movimiento (MoveLearnScreen, que
@@ -479,6 +586,12 @@ func _process_end_of_turn() -> void:
 
 	player_side.tick_down()
 	enemy_side.tick_down()
+	if weather_turns > 0:
+		weather_turns -= 1
+		if weather_turns == 0:
+			weather = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+			message.emit("¡El clima volvió a la normalidad!")
+			await _wait(0.6)
 
 func _apply_weather_damage() -> void:
 	match weather:
@@ -694,8 +807,6 @@ func _execute_move(action: BattleAction) -> void:
 			if actor.is_fainted():
 				break
 
-		if move.effect == MoveStruct.MoveEffect.EFFECT_RAPID_SPIN and dealt > 0:
-			_side_for(actor).clear_hazards()
 
 	if last_result == null or last_result.ability_immunity != "" or last_result.effectiveness <= 0.0:
 		return
@@ -713,6 +824,7 @@ func _execute_move(action: BattleAction) -> void:
 
 	message.emit("Hizo %d PS de daño." % total_dealt)
 	await _wait(0.7)
+	await _apply_damaging_move_effect(actor, target, move, total_dealt)
 
 	if target.is_fainted():
 		_trigger_ko_ability(actor, target)
@@ -727,6 +839,7 @@ func _execute_move(action: BattleAction) -> void:
 			chance = mini(100, chance * 2)
 		if randi_range(1, 100) <= chance:
 			await _apply_secondary_effect(actor, target, move)
+
 
 @warning_ignore("unused_parameter")
 func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: DamageCalculator.HitResult) -> void:
@@ -918,6 +1031,80 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			return
 
 	match move.effect:
+		MoveStruct.MoveEffect.EFFECT_RESTORE_HP, MoveStruct.MoveEffect.EFFECT_SOFTBOILED, \
+		MoveStruct.MoveEffect.EFFECT_HEAL_PULSE, MoveStruct.MoveEffect.EFFECT_MORNING_SUN, \
+		MoveStruct.MoveEffect.EFFECT_SYNTHESIS, MoveStruct.MoveEffect.EFFECT_MOONLIGHT, \
+		MoveStruct.MoveEffect.EFFECT_ROOST, MoveStruct.MoveEffect.EFFECT_SHORE_UP, \
+		MoveStruct.MoveEffect.EFFECT_LIFE_DEW, MoveStruct.MoveEffect.EFFECT_JUNGLE_HEALING:
+			await _heal_move_target(receiver, move)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_REST:
+			if actor.pokemon.current_hp >= actor.get_max_hp() or actor.pokemon.has_status():
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			actor.pokemon.current_hp = actor.get_max_hp()
+			actor.pokemon.status = PokemonInstance.Status.SLEEP
+			actor.pokemon.status_counter = 2
+			_emit_hp(actor.is_player_side)
+			message.emit("¡%s se durmió y recuperó todos sus PS!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HAZE:
+			player._reset_stages()
+			enemy._reset_stages()
+			message.emit("¡Se eliminaron todos los cambios de estadísticas!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HEAL_BELL, MoveStruct.MoveEffect.EFFECT_REFRESH, MoveStruct.MoveEffect.EFFECT_PURIFY:
+			if receiver.pokemon.has_status():
+				receiver.pokemon.cure_status()
+				message.emit("¡%s se curó de su estado!" % receiver.get_display_name())
+			else:
+				message.emit("¡Pero falló!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_WEATHER, MoveStruct.MoveEffect.EFFECT_WEATHER_AND_SWITCH:
+			_set_weather_from_move(move)
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_BULK_UP:
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			return
+		MoveStruct.MoveEffect.EFFECT_CALM_MIND:
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 1)
+			return
+		MoveStruct.MoveEffect.EFFECT_DRAGON_DANCE:
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 1)
+			return
+		MoveStruct.MoveEffect.EFFECT_COSMIC_POWER:
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 1)
+			return
+		MoveStruct.MoveEffect.EFFECT_QUIVER_DANCE:
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 1)
+			return
+		MoveStruct.MoveEffect.EFFECT_SHIFT_GEAR:
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 2)
+			return
+		MoveStruct.MoveEffect.EFFECT_SHELL_SMASH:
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, -1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, -1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 2)
+			return
 		MoveStruct.MoveEffect.EFFECT_REFLECT:
 			var own_side: FieldSide = _side_for(actor)
 			if own_side.reflect_turns > 0:
@@ -1008,7 +1195,75 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 	message.emit("¡Pero no tuvo ningún efecto todavía!")
 	await _wait(0.8)
 
+
+func _heal_move_target(target: BattleBattler, move: MoveData) -> void:
+	if target == null or target.pokemon == null or target.is_fainted() or target.get_current_hp() >= target.get_max_hp():
+		message.emit("¡No surtirá efecto!")
+		await _wait(0.7)
+		return
+	var fraction: float = 0.5
+	if move.effect == MoveStruct.MoveEffect.EFFECT_MORNING_SUN \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_SYNTHESIS \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_MOONLIGHT:
+		if weather == AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
+			fraction = 2.0 / 3.0
+		elif weather != AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
+			fraction = 0.25
+	elif move.effect == MoveStruct.MoveEffect.EFFECT_SHORE_UP and weather == AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM:
+		fraction = 2.0 / 3.0
+	var amount: int = maxi(1, int(floor(float(target.get_max_hp()) * fraction)))
+	target.pokemon.apply_heal(amount)
+	_emit_hp(target.is_player_side)
+	message.emit("¡%s recuperó PS!" % target.get_display_name())
+	await _wait(0.7)
+
+
+func _set_weather_from_move(move: MoveData) -> void:
+	var weather_from_type: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+	match move.type:
+		PokemonData.Type.TYPE_WATER:
+			weather_from_type = AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN
+		PokemonData.Type.TYPE_FIRE:
+			weather_from_type = AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT
+		PokemonData.Type.TYPE_ROCK:
+			weather_from_type = AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM
+		PokemonData.Type.TYPE_ICE:
+			weather_from_type = AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW
+		_:
+			pass
+	if weather_from_type == AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
+		message.emit("¡Pero falló!")
+		return
+	set_weather(weather_from_type, 5)
+
+
+func _apply_damaging_move_effect(actor: BattleBattler, target: BattleBattler, move: MoveData, damage_dealt: int) -> void:
+	if damage_dealt <= 0 or actor.is_fainted():
+		return
+	match move.effect:
+		MoveStruct.MoveEffect.EFFECT_RAPID_SPIN:
+			_side_for(actor).clear_hazards()
+			message.emit("¡%s eliminó los peligros de su lado!" % actor.get_display_name())
+			await _wait(0.5)
+		MoveStruct.MoveEffect.EFFECT_STONE_AXE:
+			_side_for(target).stealth_rock = true
+			message.emit("¡Aparecieron rocas puntiagudas alrededor del rival!")
+			await _wait(0.5)
+		MoveStruct.MoveEffect.EFFECT_CEASELESS_EDGE:
+			_side_for(target).spikes_layers = mini(3, _side_for(target).spikes_layers + 1)
+			message.emit("¡Se esparcieron púas alrededor del rival!")
+			await _wait(0.5)
+		MoveStruct.MoveEffect.EFFECT_HIT_ENEMY_HEAL_ALLY:
+			await _heal_move_target(actor, move)
+		MoveStruct.MoveEffect.EFFECT_FELL_STINGER:
+			if target.is_fainted():
+				await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 3)
+
 func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
+	if caused_by_foe and stages < 0 and _side_for(battler).mist_turns > 0:
+		message.emit("¡Neblina protege a %s de la bajada de estadística!" % battler.get_display_name())
+		await _wait(0.6)
+		return
 	if caused_by_foe and stages < 0 and AbilityRuntime.blocks_foe_stat_drop(battler, stat):
 		message.emit("¡La habilidad de %s evitó la bajada de estadística!" % battler.get_display_name())
 		await _wait(0.6)

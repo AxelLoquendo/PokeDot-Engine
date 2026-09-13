@@ -68,9 +68,15 @@ func _evaluate_condition(context: ScriptExecutionContext) -> bool:
 			return var_value == compare_value
 				
 		ConditionType.HAS_ITEM:
-			# NO IMPLEMENTADO AUN - requiere sistema de items
-			push_warning("ScriptCmdIf: HAS_ITEM aun no implementado")
-			return false
+			var player: CharacterController = context.player as CharacterController
+			var player_data: CharacterPlayer = player.character_data as CharacterPlayer if player else null
+			if player_data == null or player_data.bag == null:
+				return false
+			var item_key: String = flag_name.to_upper()
+			if not item_key.begins_with("ITEM_"):
+				item_key = "ITEM_" + item_key
+			var item_value: int = int(Items.ItemId.get(item_key, -1))
+			return item_value >= 0 and player_data.bag.has_item(item_value as Items.ItemId)
 				
 		ConditionType.NPC_FACING_PLAYER:
 			return context.is_player_facing_npc()

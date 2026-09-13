@@ -15,3 +15,4 @@ battle_usage = 1
 fling_power = 30
 icon = ExtResource("1_jd3bk")
 effect = 1
+effect_amount = 60

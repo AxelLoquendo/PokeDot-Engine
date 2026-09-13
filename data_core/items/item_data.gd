@@ -27,6 +27,11 @@ class_name ItemData
 
 # efecto real del objeto
 @export var effect: Items.EffectItem = Items.EffectItem.EFFECT_ITEM_NONE
+## Parámetro del efecto consumible (PS, PP o EV según `effect`). Se mantiene
+## separado de hold_effect_param, que pertenece exclusivamente a objetos
+## equipados durante combate.
+@export var effect_amount: int = 0
+@export var effect_stat: PokemonInstance.Stat = PokemonInstance.Stat.HP
 
 
 func _validate() -> Array[String]:
