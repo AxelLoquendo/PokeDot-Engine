@@ -1,18 +1,14 @@
 @tool
 extends EditorPlugin
+
+## Compatibility shim. The Ability editor is hosted by the unified workspace.
+## It intentionally registers no bottom panel.
 class_name AbilityEditorPlugin
 
-const DOCK_SCRIPT := preload("res://addons/ability_editor/ability_dock.gd")
-
-var ability_dock: Control
-
 func _enter_tree() -> void:
-	ability_dock = DOCK_SCRIPT.new()
-	ability_dock.name = "Ability Editor"
-	add_control_to_bottom_panel(ability_dock, "⚙ Ability Editor")
+	# Keep this plugin loadable for existing projects without adding a dock.
+	pass
 
 func _exit_tree() -> void:
-	if is_instance_valid(ability_dock):
-		remove_control_from_bottom_panel(ability_dock)
-		ability_dock.queue_free()
-		ability_dock = null
+	# No control is registered here; the unified workspace owns the editor.
+	pass

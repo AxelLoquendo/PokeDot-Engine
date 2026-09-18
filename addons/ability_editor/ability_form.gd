@@ -48,7 +48,7 @@ func apply_to_data(data: AbilityData) -> bool:
 func get_validation_hint() -> String:
 	var data := AbilityData.new()
 	if not apply_to_data(data):
-		return "✗ stat_modifiers debe ser un objeto JSON válido"
+		return " stat_modifiers debe ser un objeto JSON válido"
 	return ""
 
 func _build(data: AbilityData) -> void:

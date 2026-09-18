@@ -3,6 +3,8 @@ extends VBoxContainer
 
 class_name PokemonFormEditor
 
+const EDITOR_THEME: Script = preload("res://addons/editor_shared/editor_ui_theme.gd")
+
 signal changed
 
 const EVOLUTION_TABLE_SCRIPT := preload("res://addons/species_editor/controls/evolution_table.gd")
@@ -14,12 +16,19 @@ var current_form: PokemonFormData
 var available_species: Array[PokemonDataStruct] = []
 var available_moves: Array[MoveData] = []
 var available_abilities: Array[AbilityData] = []
-var form_species_id_input: SpinBox
+var form_species_id_input: OptionButton
 var form_id_input: LineEdit
 var name_input: LineEdit
 var type_1: TypeSelector
 var type_2: TypeSelector
 var override_types: CheckBox
+var override_stats: CheckBox
+var stat_hp_input: SpinBox
+var stat_attack_input: SpinBox
+var stat_defense_input: SpinBox
+var stat_speed_input: SpinBox
+var stat_sp_attack_input: SpinBox
+var stat_sp_defense_input: SpinBox
 var override_graphics: CheckBox
 var front_picker: EditorResourcePicker
 var shiny_picker: EditorResourcePicker
@@ -78,11 +87,9 @@ func _rebuild() -> void:
 		add_child(empty)
 		return
 
-	form_species_id_input = _add_integer_field(
+	form_species_id_input = _add_species_id_enum(
 		"SpeciesID de forma (species.gd)",
-		int(current_form.species_id),
-		0,
-		999999
+		int(current_form.species_id)
 	)
 	form_id_input = _add_text_field("Clave interna legacy", str(current_form.form_id), true)
 	name_input = _add_text_field("Nombre visible", current_form.display_name, false)
@@ -96,6 +103,20 @@ func _rebuild() -> void:
 	type_2 = _make_type_selector(current_form.type_2)
 	_add_labeled_control("Tipo 1 (NONE = heredar)", type_1)
 	_add_labeled_control("Tipo 2 (NONE = heredar)", type_2)
+
+	_add_section_label("Estadísticas de la forma")
+	override_stats = CheckBox.new()
+	override_stats.text = "Sobrescribir estadísticas de la especie base"
+	override_stats.button_pressed = current_form.override_stats
+	override_stats.toggled.connect(_on_override_stats_toggled)
+	add_child(override_stats)
+	stat_hp_input = _add_integer_field("PS", current_form.base_hp, 1, 255)
+	stat_attack_input = _add_integer_field("Ataque", current_form.base_attack, 1, 255)
+	stat_defense_input = _add_integer_field("Defensa", current_form.base_defense, 1, 255)
+	stat_speed_input = _add_integer_field("Velocidad", current_form.base_speed, 1, 255)
+	stat_sp_attack_input = _add_integer_field("Ataque especial", current_form.base_sp_attack, 1, 255)
+	stat_sp_defense_input = _add_integer_field("Defensa especial", current_form.base_sp_defense, 1, 255)
+	_update_stat_inputs(current_form.override_stats)
 
 	override_abilities = CheckBox.new()
 	override_abilities.text = "Usar habilidades propias de esta forma"
@@ -176,9 +197,27 @@ func _rebuild() -> void:
 	notes_input.text_changed.connect(_on_changed)
 	add_child(notes_input)
 
+func _on_override_stats_toggled(enabled: bool) -> void:
+	_update_stat_inputs(enabled)
+	_on_changed()
+
+func _update_stat_inputs(enabled: bool) -> void:
+	if stat_hp_input != null:
+		stat_hp_input.editable = enabled
+	if stat_attack_input != null:
+		stat_attack_input.editable = enabled
+	if stat_defense_input != null:
+		stat_defense_input.editable = enabled
+	if stat_speed_input != null:
+		stat_speed_input.editable = enabled
+	if stat_sp_attack_input != null:
+		stat_sp_attack_input.editable = enabled
+	if stat_sp_defense_input != null:
+		stat_sp_defense_input.editable = enabled
+
 func _add_form_pokedex_editor() -> void:
 	var title := Label.new()
-	title.text = "📖 Entrada de Pokédex de la forma"
+	title.text = "Entrada de Pokédex de la forma"
 	title.add_theme_font_size_override("font_size", 13)
 	add_child(title)
 	override_pokedex = CheckBox.new()
@@ -194,12 +233,19 @@ func _add_form_pokedex_editor() -> void:
 func apply_to_form(form: PokemonFormData) -> void:
 	if form == null or current_form == null:
 		return
-	form.species_id = int(form_species_id_input.value) as Species.SpeciesID
+	form.species_id = form_species_id_input.get_selected_id() as Species.SpeciesID
 	form.form_id = StringName(form_id_input.text.strip_edges())
 	form.display_name = name_input.text.strip_edges()
 	form.override_types = override_types.button_pressed
 	form.type_1 = type_1.selected_type
 	form.type_2 = type_2.selected_type
+	form.override_stats = override_stats.button_pressed
+	form.base_hp = int(stat_hp_input.value)
+	form.base_attack = int(stat_attack_input.value)
+	form.base_defense = int(stat_defense_input.value)
+	form.base_speed = int(stat_speed_input.value)
+	form.base_sp_attack = int(stat_sp_attack_input.value)
+	form.base_sp_defense = int(stat_sp_defense_input.value)
 	form.override_abilities = override_abilities.button_pressed
 	form.ability_1 = ability_1_selector.selected_ability
 	form.ability_2 = ability_2_selector.selected_ability
@@ -230,6 +276,31 @@ func apply_to_form(form: PokemonFormData) -> void:
 	form.back_sprite_offset = Vector2(back_x.value, back_y.value)
 	form.notes = notes_input.text
 
+func _add_species_id_enum(label_text: String, current_value: int) -> OptionButton:
+	var row: HBoxContainer = HBoxContainer.new()
+	var label: Label = Label.new()
+	label.text = label_text
+	label.custom_minimum_size = Vector2(180, 0)
+	row.add_child(label)
+	var input: OptionButton = OptionButton.new()
+	var names: Array = Species.SpeciesID.keys()
+	var values: Array = Species.SpeciesID.values()
+	var selected_index: int = -1
+	for index: int in range(values.size()):
+		var species_id: int = int(values[index])
+		input.add_item("[%d] %s" % [species_id, str(names[index]).replace("SPECIES_", "").replace("_", " ").capitalize()], species_id)
+		if species_id == current_value:
+			selected_index = index
+	if selected_index < 0:
+		input.add_item("[%d] CUSTOM / DESCONOCIDO" % current_value, current_value)
+		selected_index = input.item_count - 1
+	input.select(selected_index)
+	input.item_selected.connect(_on_changed)
+	input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(input)
+	add_child(row)
+	return input
+
 func _add_integer_field(label_text: String, value: int, minimum: int, maximum: int) -> SpinBox:
 	var row: HBoxContainer = HBoxContainer.new()
 	var label: Label = Label.new()
@@ -250,6 +321,7 @@ func _add_integer_field(label_text: String, value: int, minimum: int, maximum: i
 func _add_section_label(text: String) -> void:
 	var label := Label.new()
 	label.text = text
+	EDITOR_THEME.style_section_label(label)
 	label.add_theme_color_override("font_color", Color(0.55, 0.85, 1.0))
 	add_child(label)
 

@@ -30,8 +30,8 @@ func validate(data: AbilityData, catalog: AbilityEditorCatalog = null) -> Array[
 
 func format_errors(errors: Array[String]) -> String:
 	if errors.is_empty():
-		return "✓ Válida"
-	var lines := ["✗ %d problema(s):" % errors.size()]
+		return " Válida"
+	var lines := [" %d problema(s):" % errors.size()]
 	for error: String in errors:
 		lines.append("• " + error)
 	return "\n".join(lines)

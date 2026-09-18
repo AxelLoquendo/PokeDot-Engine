@@ -42,7 +42,7 @@ var has_unsaved_changes: bool = false
 var is_ready: bool = false
 
 func _init() -> void:
-	name = "🧰 Item Editor"
+	name = " Item Editor"
 	custom_minimum_size = Vector2(760, 520)
 	repository = REPOSITORY_SCRIPT.new()
 	catalog = CATALOG_SCRIPT.new()
@@ -64,7 +64,7 @@ func _build_ui() -> void:
 	split.add_child(left)
 
 	var title: Label = Label.new()
-	title.text = "📋 Catálogo de ítems"
+	title.text = " Catálogo de ítems"
 	title.add_theme_font_size_override("font_size", 14)
 	left.add_child(title)
 
@@ -75,7 +75,7 @@ func _build_ui() -> void:
 	left.add_child(search_box)
 
 	var refresh: Button = Button.new()
-	refresh.text = "↻ Recargar catálogo"
+	refresh.text = " Recargar catálogo"
 	refresh.pressed.connect(_load_items)
 	left.add_child(refresh)
 
@@ -98,7 +98,7 @@ func _build_ui() -> void:
 	actions.add_child(delete_button)
 
 	restore_button = Button.new()
-	restore_button.text = "♻ Restaurar desde papelera"
+	restore_button.text = " Restaurar desde papelera"
 	restore_button.pressed.connect(_on_restore_pressed)
 	left.add_child(restore_button)
 
@@ -113,7 +113,7 @@ func _build_ui() -> void:
 	right.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	split.add_child(right)
 	var properties: Label = Label.new()
-	properties.text = "✏️ Propiedades de ItemData"
+	properties.text = " Propiedades de ItemData"
 	properties.add_theme_font_size_override("font_size", 14)
 	right.add_child(properties)
 
@@ -129,11 +129,11 @@ func _build_ui() -> void:
 
 	var footer: HBoxContainer = HBoxContainer.new()
 	right.add_child(footer)
-	save_button = _make_button("💾 Guardar", _on_save_pressed)
+	save_button = _make_button(" Guardar", _on_save_pressed)
 	footer.add_child(save_button)
-	revert_button = _make_button("↶ Revertir", _on_revert_pressed)
+	revert_button = _make_button(" Revertir", _on_revert_pressed)
 	footer.add_child(revert_button)
-	validate_button = _make_button("✓ Validar", _on_validate_pressed)
+	validate_button = _make_button(" Validar", _on_validate_pressed)
 	footer.add_child(validate_button)
 
 	status_label = Label.new()
@@ -208,9 +208,9 @@ func _load_items() -> void:
 	_update_buttons()
 	var problem_count: int = repository.get_errors().size() + catalog.get_errors().size()
 	if problem_count > 0:
-		_show_status("⚠ %d problemas encontrados; revisa la consola." % problem_count, 4.0)
+		_show_status(" %d problemas encontrados; revisa la consola." % problem_count, 4.0)
 	else:
-		_show_status("✓ %d ítems cargados" % records.size(), 2.0)
+		_show_status(" %d ítems cargados" % records.size(), 2.0)
 
 func _refresh_list() -> void:
 	if item_list == null:
@@ -263,7 +263,7 @@ func _on_item_selected(index: int) -> void:
 func _load_item_from_path(path: String, force_reload: bool = true) -> void:
 	var item: ItemData = repository.get_item_at(path, force_reload)
 	if item == null:
-		_show_status("✗ No se pudo cargar: %s" % path, 3.0)
+		_show_status(" No se pudo cargar: %s" % path, 3.0)
 		return
 	selected_item = item
 	selected_path = path
@@ -284,29 +284,29 @@ func _on_form_changed() -> void:
 		return
 	has_unsaved_changes = true
 	_update_buttons()
-	_show_status("⚠ Cambios sin guardar", 2.0)
+	_show_status(" Cambios sin guardar", 2.0)
 
 func _on_save_pressed() -> void:
 	if selected_item == null or selected_path.is_empty():
-		_show_status("✗ No hay ítem seleccionado", 2.0)
+		_show_status(" No hay ítem seleccionado", 2.0)
 		return
 	if not form_panel.apply_to_item(selected_item):
-		_show_status("✗ No se pudieron aplicar los campos", 3.0)
+		_show_status(" No se pudieron aplicar los campos", 3.0)
 		return
 	var errors: Array[String] = validator.validate(selected_item, repository, selected_path)
 	if not errors.is_empty():
-		_show_status("✗ %d errores de validación; revisa la consola" % errors.size(), 4.0)
+		_show_status(" %d errores de validación; revisa la consola" % errors.size(), 4.0)
 		push_warning("Item Editor:\n" + "\n".join(errors))
 		return
 	var result: Error = repository.save_item(selected_item, selected_path)
 	if result != OK:
-		_show_status("✗ Error al guardar: %s" % error_string(result), 3.0)
+		_show_status(" Error al guardar: %s" % error_string(result), 3.0)
 		return
 	has_unsaved_changes = false
 	EditorInterface.get_resource_filesystem().scan()
 	_load_items()
 	_update_buttons()
-	_show_status("✓ Guardado: %s" % selected_item.item_name, 3.0)
+	_show_status(" Guardado: %s" % selected_item.item_name, 3.0)
 
 func _on_revert_pressed() -> void:
 	if not selected_path.is_empty():
@@ -320,9 +320,9 @@ func _on_validate_pressed() -> void:
 		form_panel.apply_to_item(selected_item)
 	var errors: Array[String] = validator.validate(selected_item, repository, selected_path)
 	if errors.is_empty():
-		_show_status("✓ Validación correcta", 2.0)
+		_show_status(" Validación correcta", 2.0)
 	else:
-		_show_status("✗ %d errores; revisa la consola" % errors.size(), 4.0)
+		_show_status(" %d errores; revisa la consola" % errors.size(), 4.0)
 		push_warning("Item Editor:\n" + "\n".join(errors))
 
 func _on_new_pressed() -> void:
@@ -399,7 +399,7 @@ func _on_create_confirmed() -> void:
 	EditorInterface.get_resource_filesystem().scan()
 	_load_items()
 	_load_item_from_path(path, true)
-	_show_status("✓ Ítem creado", 2.0)
+	_show_status(" Ítem creado", 2.0)
 
 func _make_template() -> ItemData:
 	var data: ItemData = ItemData.new()
@@ -436,7 +436,7 @@ func _on_delete_pressed() -> void:
 func _on_delete_confirmed() -> void:
 	var destination: String = repository.move_to_trash(selected_path)
 	if destination.is_empty():
-		_show_status("✗ No se pudo mover el ítem a la papelera", 3.0)
+		_show_status(" No se pudo mover el ítem a la papelera", 3.0)
 		return
 	selected_item = null
 	selected_path = ""
@@ -444,7 +444,7 @@ func _on_delete_confirmed() -> void:
 	form_panel.set_item(null)
 	EditorInterface.get_resource_filesystem().scan()
 	_load_items()
-	_show_status("✓ Ítem movido a la papelera", 2.0)
+	_show_status(" Ítem movido a la papelera", 2.0)
 
 func _on_restore_pressed() -> void:
 	trash_popup.clear()
@@ -469,7 +469,7 @@ func _on_restore_option_selected(index: int) -> void:
 	EditorInterface.get_resource_filesystem().scan()
 	_load_items()
 	_load_item_from_path(destination, true)
-	_show_status("✓ Ítem restaurado", 2.0)
+	_show_status(" Ítem restaurado", 2.0)
 
 func _update_buttons() -> void:
 	if save_button:

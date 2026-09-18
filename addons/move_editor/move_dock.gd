@@ -36,7 +36,7 @@ var create_id_input: SpinBox
 var create_as_duplicate: bool = false
 
 func _init() -> void:
-	name = "⚔ Move Editor"
+	name = " Move Editor"
 	custom_minimum_size = Vector2(760, 540)
 	repository = REPOSITORY_SCRIPT.new()
 	catalog = CATALOG_SCRIPT.new()
@@ -58,7 +58,7 @@ func _build_ui() -> void:
 	split.add_child(left)
 
 	var title: Label = Label.new()
-	title.text = "⚔ Movimientos"
+	title.text = " Movimientos"
 	title.add_theme_font_size_override("font_size", 15)
 	left.add_child(title)
 
@@ -69,7 +69,7 @@ func _build_ui() -> void:
 	left.add_child(search_box)
 
 	var reload_button: Button = Button.new()
-	reload_button.text = "↻ Recargar catálogo"
+	reload_button.text = " Recargar catálogo"
 	reload_button.pressed.connect(reload_moves)
 	left.add_child(reload_button)
 
@@ -107,7 +107,7 @@ func _build_ui() -> void:
 	split.add_child(right)
 
 	var properties_title: Label = Label.new()
-	properties_title.text = "✏ Propiedades de MoveData"
+	properties_title.text = " Propiedades de MoveData"
 	properties_title.add_theme_font_size_override("font_size", 15)
 	right.add_child(properties_title)
 
@@ -124,15 +124,15 @@ func _build_ui() -> void:
 	var bottom: HBoxContainer = HBoxContainer.new()
 	right.add_child(bottom)
 	save_button = Button.new()
-	save_button.text = "💾 Guardar"
+	save_button.text = " Guardar"
 	save_button.pressed.connect(_on_save_pressed)
 	bottom.add_child(save_button)
 	revert_button = Button.new()
-	revert_button.text = "↶ Revertir"
+	revert_button.text = " Revertir"
 	revert_button.pressed.connect(_on_revert_pressed)
 	bottom.add_child(revert_button)
 	var validate: Button = Button.new()
-	validate.text = "✓ Validar"
+	validate.text = " Validar"
 	validate.pressed.connect(_on_validate_pressed)
 	bottom.add_child(validate)
 
@@ -196,9 +196,9 @@ func reload_moves() -> void:
 	_update_buttons()
 	var errors: Array[String] = repository.get_errors()
 	if errors.is_empty():
-		_show_status("✓ %d movimientos cargados" % all_entries.size(), 2.0)
+		_show_status(" %d movimientos cargados" % all_entries.size(), 2.0)
 	else:
-		_show_status("⚠ %d problemas al cargar movimientos (ver consola)" % errors.size(), 4.0)
+		_show_status(" %d problemas al cargar movimientos (ver consola)" % errors.size(), 4.0)
 		for error: String in errors:
 			push_warning("Move Editor: " + error)
 
@@ -212,7 +212,7 @@ func _refresh_list() -> void:
 		var move_name: String = str(entry.get("name", ""))
 		if not query.is_empty() and not id_text.contains(query) and not move_name.to_lower().contains(query):
 			continue
-		var suffix: String = " ⚠" if not bool(entry.get("valid", true)) else ""
+		var suffix: String = " " if not bool(entry.get("valid", true)) else ""
 		var item_index: int = move_list.add_item("[%s] %s%s" % [id_text, move_name, suffix])
 		move_list.set_item_metadata(item_index, str(entry.get("path", "")))
 
@@ -234,7 +234,7 @@ func _on_list_selected(index: int) -> void:
 func _load_from_path(path: String) -> void:
 	var resource: Resource = ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
 	if resource == null or not resource is MoveData:
-		_show_status("✗ No se pudo cargar: %s" % path, 3.0)
+		_show_status(" No se pudo cargar: %s" % path, 3.0)
 		return
 	selected_path = path
 	selected_move = resource as MoveData
@@ -260,17 +260,17 @@ func _on_save_pressed() -> void:
 		return
 	var errors: Array[String] = form.validate_current()
 	if not errors.is_empty():
-		_show_status("✗ No se guardó: " + errors[0], 4.0)
+		_show_status(" No se guardó: " + errors[0], 4.0)
 		return
 	var save_error: Error = ResourceSaver.save(selected_move, selected_path)
 	if save_error != OK:
-		_show_status("✗ No se pudo guardar el recurso (%s)" % save_error, 4.0)
+		_show_status(" No se pudo guardar el recurso (%s)" % save_error, 4.0)
 		return
 	has_unsaved_changes = false
 	EditorInterface.get_resource_filesystem().scan()
 	reload_moves()
 	_load_from_path(selected_path)
-	_show_status("✓ Movimiento guardado", 2.0)
+	_show_status(" Movimiento guardado", 2.0)
 
 func _on_revert_pressed() -> void:
 	if selected_path.is_empty():
@@ -284,9 +284,9 @@ func _on_validate_pressed() -> void:
 		return
 	var errors: Array[String] = form.validate_current()
 	if errors.is_empty():
-		_show_status("✓ MoveData válido", 2.0)
+		_show_status(" MoveData válido", 2.0)
 	else:
-		_show_status("✗ %d errores: %s" % [errors.size(), errors[0]], 4.0)
+		_show_status(" %d errores: %s" % [errors.size(), errors[0]], 4.0)
 
 func _on_new_pressed() -> void:
 	create_as_duplicate = false
@@ -343,7 +343,7 @@ func _on_create_confirmed() -> void:
 	EditorInterface.get_resource_filesystem().scan()
 	reload_moves()
 	_load_from_path(file_path)
-	_show_status("✓ Movimiento creado", 2.0)
+	_show_status(" Movimiento creado", 2.0)
 
 func _make_template() -> MoveData:
 	var data: MoveData = MoveData.new()
@@ -413,7 +413,7 @@ func _on_trash_confirmed() -> void:
 	form.load_move(null)
 	EditorInterface.get_resource_filesystem().scan()
 	reload_moves()
-	_show_status("✓ Movimiento enviado a la papelera", 2.0)
+	_show_status(" Movimiento enviado a la papelera", 2.0)
 
 func _on_restore_pressed() -> void:
 	restore_menu.clear()
@@ -452,7 +452,7 @@ func _on_restore_option(index: int) -> void:
 	EditorInterface.get_resource_filesystem().scan()
 	reload_moves()
 	_load_from_path(destination)
-	_show_status("✓ Movimiento restaurado", 2.0)
+	_show_status(" Movimiento restaurado", 2.0)
 
 func _update_buttons() -> void:
 	if save_button == null:

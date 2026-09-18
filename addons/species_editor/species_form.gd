@@ -270,7 +270,7 @@ func _add_group_label(text: String) -> void:
 	var label := Label.new()
 	label.text = text
 	label.add_theme_font_size_override("font_size", 13)
-	label.add_theme_color_override("font_color", Color(0.55, 0.85, 1.0))
+	label.add_theme_color_override("font_color", Color("a7b7c8"))
 	_add_to_current_page(label)
 
 func _add_field(id: String, label_text: String, value: String, _numeric := false, multiline := false) -> void:

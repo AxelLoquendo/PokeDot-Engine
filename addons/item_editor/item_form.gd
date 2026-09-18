@@ -38,30 +38,30 @@ func _rebuild() -> void:
 		rebuilding = false
 		return
 
-	_add_heading("🔖 Identidad")
+	_add_heading(" Identidad")
 	_add_enum("item_id", "ID del ítem", Items.ItemId.keys(), Items.ItemId.values(), current_item.item_id)
 	_add_text("item_name", "Nombre", current_item.item_name)
 	_add_text("plural_name", "Nombre plural", current_item.plural_name)
 	_add_text("item_description", "Descripción", current_item.item_description, true)
 
-	_add_heading("💰 Economía y mochila")
+	_add_heading(" Economía y mochila")
 	_add_spin("secondary_id", "ID secundario", current_item.secondary_id, 0, 999999, 1)
 	_add_spin("price", "Precio", current_item.price, 0, 999999999, 1)
 	_add_enum("pocket", "Bolsillo", ItemConstants.Pocket.keys(), ItemConstants.Pocket.values(), current_item.pocket)
 	_add_enum("item_type", "Tipo de uso", Items.ItemType.keys(), Items.ItemType.values(), current_item.item_type)
 
-	_add_heading("⚔️ Uso y efectos")
+	_add_heading(" Uso y efectos")
 	_add_enum("hold_effect", "Efecto al sostener", HoldEffects.HoldEffect.keys(), HoldEffects.HoldEffect.values(), current_item.hold_effect)
 	_add_spin("hold_effect_param", "Parámetro del efecto", current_item.hold_effect_param, 0, 999999999, 1)
 	_add_enum("battle_usage", "Uso en batalla", Items.BattleUsage.keys(), Items.BattleUsage.values(), current_item.battle_usage)
 	_add_spin("fling_power", "Potencia de Lanzamiento", current_item.fling_power, 0, 999, 1)
 	_add_enum("effect", "Efecto real", Items.EffectItem.keys(), Items.EffectItem.values(), current_item.effect)
 
-	_add_heading("🏷️ Banderas")
+	_add_heading(" Banderas")
 	_add_check("importance", "Ítem clave / importante", current_item.importance)
 	_add_check("not_consumed", "No se consume al usarlo", current_item.not_consumed)
 
-	_add_heading("🖼️ Presentación")
+	_add_heading(" Presentación")
 	_add_texture("icon", "Icono", current_item.icon)
 	rebuilding = false
 

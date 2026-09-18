@@ -37,7 +37,7 @@ var has_unsaved_changes := false
 var _loading := false
 
 func _init() -> void:
-	name = "⚙ Ability Editor"
+	name = " Ability Editor"
 	custom_minimum_size = Vector2(820, 560)
 	catalog = CATALOG_SCRIPT.new()
 	validator = VALIDATOR_SCRIPT.new()
@@ -57,7 +57,7 @@ func _build_ui() -> void:
 	split.add_child(left)
 
 	title_label = Label.new()
-	title_label.text = "⚙ Habilidades"
+	title_label.text = " Habilidades"
 	title_label.add_theme_font_size_override("font_size", 15)
 	left.add_child(title_label)
 
@@ -70,7 +70,7 @@ func _build_ui() -> void:
 	var list_actions := HBoxContainer.new()
 	left.add_child(list_actions)
 	var refresh := Button.new()
-	refresh.text = "↻ Recargar"
+	refresh.text = " Recargar"
 	refresh.tooltip_text = "Volver a escanear recursos del proyecto"
 	refresh.pressed.connect(_reload_catalog)
 	list_actions.add_child(refresh)
@@ -122,20 +122,20 @@ func _build_ui() -> void:
 	var editor_actions := HBoxContainer.new()
 	right.add_child(editor_actions)
 	save_button = Button.new()
-	save_button.text = "💾 Guardar"
+	save_button.text = " Guardar"
 	save_button.tooltip_text = "Validar y guardar el recurso actual"
 	save_button.pressed.connect(_save_current)
 	editor_actions.add_child(save_button)
 	revert_button = Button.new()
-	revert_button.text = "↶ Revertir"
+	revert_button.text = " Revertir"
 	revert_button.pressed.connect(_revert_current)
 	editor_actions.add_child(revert_button)
 	var validate := Button.new()
-	validate.text = "✓ Validar"
+	validate.text = " Validar"
 	validate.pressed.connect(_validate_current)
 	editor_actions.add_child(validate)
 	trash_button = Button.new()
-	trash_button.text = "🗑 Papelera"
+	trash_button.text = " Papelera"
 	trash_button.pressed.connect(_open_delete_dialog)
 	editor_actions.add_child(trash_button)
 	restore_button = Button.new()
@@ -240,8 +240,8 @@ func _render_list() -> void:
 	for index: int in range(visible_records.size()):
 		var record := visible_records[index]
 		var data := record.get("data") as AbilityData
-		var prefix := "🗑 " if bool(record.get("trashed", false)) else ""
-		var validity := " ⚠" if not bool(record.get("valid", true)) else ""
+		var prefix := " " if bool(record.get("trashed", false)) else ""
+		var validity := " " if not bool(record.get("valid", true)) else ""
 		ability_list.add_item(prefix + catalog.name_for(data) + validity)
 		ability_list.set_item_tooltip(index, str(record.get("path", "")))
 		if str(record.get("path", "")) == current_path:

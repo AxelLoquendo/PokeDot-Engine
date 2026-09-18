@@ -39,6 +39,14 @@ func validate(species: PokemonDataStruct) -> Array[String]:
 		if form_id == int(Species.SpeciesID.SPECIES_NONE):
 			errors.append("La forma '%s' no tiene SpeciesID en species.gd." % str(form.form_id))
 			continue
+		if form.display_name.strip_edges().is_empty():
+			errors.append("La forma %d no tiene nombre visible." % form_id)
+		if form.override_stats:
+			var form_stats: Array[int] = [form.base_hp, form.base_attack, form.base_defense, form.base_speed, form.base_sp_attack, form.base_sp_defense]
+			for stat_value: int in form_stats:
+				if stat_value < 1 or stat_value > 255:
+					errors.append("La forma %d tiene una estadística fuera de rango (1-255)." % form_id)
+					break
 		if form_id == int(species.species_id):
 			errors.append("La forma '%s' reutiliza el ID de la especie base." % form.get_display_name())
 		if form_ids.has(form_id):
@@ -48,8 +56,8 @@ func validate(species: PokemonDataStruct) -> Array[String]:
 			errors.append("La forma %d apunta a otra especie base (%d)." % [form_id, int(form.base_species_id)])
 		if form.override_abilities:
 			for ability: AbilityId.Id in [form.ability_1, form.ability_2, form.hidden_ability]:
-				if ability != AbilityId.Id.NONE and not int(ability) in AbilityId.Id.values():
-					errors.append("La forma %d tiene una habilidad inválida: %d." % [form_id, int(ability)])
+				if ability != AbilityId.Id.NONE and (not int(ability) in AbilityId.Id.values() or not _ability_exists(ability)):
+					errors.append("La forma %d tiene una habilidad sin recurso válido: %d." % [form_id, int(ability)])
 		if not _species_enum_id_exists(form_id):
 			errors.append("La forma %d no está declarada en species.gd." % form_id)
 		if form.override_pokedex:
@@ -63,16 +71,25 @@ func validate(species: PokemonDataStruct) -> Array[String]:
 		for move: Moves.MoveId in form.egg_moves:
 			if move != Moves.MoveId.MOVE_NONE and not _move_exists(move):
 				errors.append("Movimiento huevo de la forma %d sin recurso .tres: %d" % [form_id, int(move)])
+		var form_move_ids: Dictionary = {}
 		for level_move: LevelUpMove in form.level_up_moves:
-			if level_move != null and not _move_exists(level_move.move):
-				errors.append("Movimiento de nivel de la forma %d sin recurso .tres: %d" % [form_id, int(level_move.move)])
+			if level_move == null:
+				continue
+			if level_move.level < 1 or level_move.level > 100:
+				errors.append("Movimiento de nivel de la forma %d tiene nivel inválido: %d" % [form_id, level_move.level])
+			if level_move.move == Moves.MoveId.MOVE_NONE or not _move_exists(level_move.move):
+				errors.append("Movimiento de nivel de la forma %d sin recurso válido: %d" % [form_id, int(level_move.move)])
+			var move_key: int = int(level_move.move)
+			if form_move_ids.has(move_key):
+				errors.append("Movimiento de nivel duplicado en la forma %d: %d" % [form_id, move_key])
+			form_move_ids[move_key] = true
 
 	return errors
 
 func _species_enum_id_exists(id: int) -> bool:
 	if not FileAccess.file_exists("res://data_core/pokemon/species.gd"):
 		return false
-	var content := FileAccess.get_file_as_string("res://data_core/pokemon/species.gd")
+	var content: String = FileAccess.get_file_as_string("res://data_core/pokemon/species.gd")
 	return content.contains("= %d," % id) or content.contains("= %d\\n" % id)
 
 func _ability_exists(id: AbilityId.Id) -> bool:
@@ -84,7 +101,7 @@ func _move_exists(id: Moves.MoveId) -> bool:
 	return _find_resource_with_id(path, "move_id", int(id))
 
 func _find_resource_with_id(path: String, property_name: String, wanted_id: int) -> bool:
-	var directory := DirAccess.open(path)
+	var directory: DirAccess = DirAccess.open(path)
 	if directory == null:
 		return false
 
@@ -98,7 +115,7 @@ func _find_resource_with_id(path: String, property_name: String, wanted_id: int)
 					directory.list_dir_end()
 					return true
 			elif entry.ends_with(".tres"):
-				var resource := ResourceLoader.load(full_path)
+				var resource: Resource = ResourceLoader.load(full_path)
 				if resource and int(resource.get(property_name)) == wanted_id:
 					directory.list_dir_end()
 					return true
