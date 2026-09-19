@@ -41,31 +41,44 @@ func obtener_velocidad_movimiento() -> float:
 	return character_data.walk_speed
 
 
-func process_input() -> void:
-	if (start_menu and start_menu.is_open) or (trainer_card and trainer_card.is_open):
-		_detener_input()
+func process_input() -> void:  
+	if start_menu and start_menu.is_open or trainer_card and trainer_card.is_open:
+		input_direction = Vector2.ZERO  
+		is_moving = false 
+		reproducir_idle() 
 		return
 
 	if DialogueBox.activo:
-		_limpiar_estado_input()
-		_detener_input()
-		return
+		direccion_pendiente = Vector2.ZERO
+		tiempo_direccion_pendiente = 0.0
+		tiempo_paso_bloqueo = 0.0
 
-	var deseada: Vector2 = _obtener_direccion_deseada()
-	if deseada == Vector2.ZERO:
-		_limpiar_estado_input()
+		is_moving = false
+		input_direction = Vector2.ZERO
+		anim_player.speed_scale = 1.0
 		reproducir_idle()
 		return
 
-	if deseada != direccion_pendiente:
-		direccion_pendiente = deseada
+	var direccion_deseada: Vector2 = obtener_direccion_deseada()
+
+	if direccion_deseada == Vector2.ZERO:
+		direccion_pendiente = Vector2.ZERO
 		tiempo_direccion_pendiente = 0.0
 		tiempo_paso_bloqueo = 0.0
 		anim_player.speed_scale = 1.0
-		_mirar_hacia(direccion_pendiente)
+		reproducir_idle()
+		return
+
+	if direccion_deseada != direccion_pendiente:
+		direccion_pendiente = direccion_deseada
+		tiempo_direccion_pendiente = 0.0
+		tiempo_paso_bloqueo = 0.0
+		anim_player.speed_scale = 1.0
+		mirar_hacia(direccion_pendiente)
 		return
 
 	tiempo_direccion_pendiente += get_physics_process_delta_time()
+
 	if tiempo_direccion_pendiente < TIEMPO_MINIMO_PARA_CAMINAR:
 		return
 
@@ -78,13 +91,15 @@ func process_input() -> void:
 		return
 
 	tiempo_paso_bloqueo += get_physics_process_delta_time()
-	var duracion: float = 1.0 / (VELOCIDAD_ANIM_BLOQUEO * 2.0)
-	if tiempo_paso_bloqueo >= duracion:
+
+	var duracion_paso: float = 1.0 / (VELOCIDAD_ANIM_BLOQUEO * 2.0)
+
+	if tiempo_paso_bloqueo >= duracion_paso:
 		tiempo_paso_bloqueo = 0.0
 		is_first_step = not is_first_step
+
 	anim_player.speed_scale = VELOCIDAD_ANIM_BLOQUEO
 	reproducir_paso()
-
 
 func _detener_input() -> void:
 	input_direction = Vector2.ZERO

@@ -1,6 +1,5 @@
 @tool
 extends CharacterController
-class_name Npc
 
 var casilla_inicial: Vector2i = Vector2i.ZERO
 var yendo_a_derecha: bool = true
@@ -8,13 +7,17 @@ var yendo_a_arriba: bool = true
 var tiempo_espera_restante: float = 0.0
 var datos_npc: CharacterNpc
 var en_dialogo: bool = false
-var mapa_dueño: MapAttributes
-var script_runner: ScriptRunner = null
 
+var mapa_dueño: MapAttributes
+var script_runner: ScriptRunner = null  ## Instancia del ejecutor de scripts
+var _autonomous_machine: AutonomousMovementStateMachine
+var _autonomous_running: bool = false
 
 func _ready() -> void:
 	super._ready()
+
 	mapa_dueño = get_parent().get_parent() as MapAttributes
+
 	if mapa_dueño == null:
 		push_warning("NPC sin mapa dueño")
 		return
@@ -26,6 +29,7 @@ func _ready() -> void:
 
 	if not Engine.is_editor_hint():
 		add_to_group(&"NPC")
+
 		if datos_npc.scripts and script_runner == null:
 			script_runner = ScriptRunner.new()
 			add_child(script_runner)
@@ -34,121 +38,130 @@ func _ready() -> void:
 	yendo_a_derecha = datos_npc.direccion_inicial != CharacterNpc.DireccionInicial.IZQUIERDA
 	aplicar_direccion_inicial()
 
-
 func process_input() -> void:
-	if not datos_npc:
+	_process_autonomous()
+
+func _process_input() -> void:
+	_process_autonomous()
+
+## Runs one generated autonomous action list, then asks the type for the next
+## list. Dialog/event movement pauses this loop without affecting ApplyMovement.
+func _process_autonomous() -> void:
+	if not datos_npc or en_dialogo or ejecutando_evento or _autonomous_running:
 		return
-	if en_dialogo:
-		_detener_y_idle()
-		return
+	if _autonomous_machine == null or not _autonomous_machine.matches(datos_npc.comportamiento):
+		_autonomous_machine = AutonomousMovementStateMachine.new(datos_npc.comportamiento, casilla_inicial)
+	_autonomous_running = true
+	_run_autonomous_cycle()
 
-	match datos_npc.comportamiento:
-		CharacterNpc.Comportamiento.QUIETO:
-			_detener_y_idle()
-		CharacterNpc.Comportamiento.PATRULLA_HORIZONTAL:
-			_procesar_patrulla_horizontal()
-		CharacterNpc.Comportamiento.PATRULLA_VERTICAL:
-			_procesar_patrulla_vertical()
-		CharacterNpc.Comportamiento.RANDOM_WALK:
-			_procesar_random_walk()
-		CharacterNpc.Comportamiento.LOOK_AROUND:
-			_procesar_mirar_alrededor()
+func _run_autonomous_cycle() -> void:
+	await _autonomous_machine.run_cycle(self)
+	_autonomous_running = false
 
 
-func _detener_y_idle() -> void:
-	is_moving = false
-	input_direction = Vector2.ZERO
-	reproducir_idle()
-
-
-func _manejar_espera() -> bool:
-	if tiempo_espera_restante <= 0.0:
-		return false
-	tiempo_espera_restante -= get_process_delta_time()
-	_detener_y_idle()
-	return true
-
-
-func _intentar_paso(direccion: Vector2) -> bool:
-	if is_moving:
-		return false
-	if intentar_mover(direccion):
-		is_first_step = not is_first_step
-		return true
-	return false
-
-
-func _procesar_patrulla_horizontal() -> void:
-	if _manejar_espera():
-		return
-
+# inicio proceso de comportamientos
+func procesar_patrulla_horizontal() -> void:
 	var direccion: Vector2 = Vector2.RIGHT if yendo_a_derecha else Vector2.LEFT
-	var destino: Vector2i = casilla_actual + Vector2i(direccion)
-	var pos_global: Vector2 = global_position + direccion * float(TILE_SIZE)
-	var max_x: int = casilla_inicial.x + datos_npc.distancia_patrulla
-	var min_x: int = casilla_inicial.x - datos_npc.distancia_patrulla
-	var permitida: bool = casilla_permitida(pos_global)
+	var casilla_destino: Vector2i = casilla_actual + Vector2i(direccion)
+	var posicion_destino_global: Vector2 = global_position + direccion * TILE_SIZE
+	var limite_max: int = casilla_inicial.x + datos_npc.distancia_patrulla
+	var _limite_min: int = casilla_inicial.x - datos_npc.distancia_patrulla
 
-	if yendo_a_derecha and (destino.x > max_x or not permitida):
-		yendo_a_derecha = false
-		tiempo_espera_restante = datos_npc.tiempo_espera
-		return
-	if not yendo_a_derecha and (destino.x < min_x or not permitida):
-		yendo_a_derecha = true
-		tiempo_espera_restante = datos_npc.tiempo_espera
+	if tiempo_espera_restante > 0:
+		tiempo_espera_restante -= get_process_delta_time()
+		is_moving = false
+		current_direction = Direction.EAST if yendo_a_derecha else Direction.WEST
+		reproducir_idle()
 		return
 
-	_intentar_paso(direccion)
+	if is_moving: return
 
+	var permitida: bool = casilla_permitida(posicion_destino_global)
 
-func _procesar_patrulla_vertical() -> void:
-	if _manejar_espera():
-		return
+	if yendo_a_derecha:
+		if casilla_destino.x > limite_max or not permitida:
+			yendo_a_derecha = false
+			tiempo_espera_restante = datos_npc.tiempo_espera
+			return
+	else:
+		if casilla_destino.x < _limite_min or not permitida:
+			yendo_a_derecha = true
+			tiempo_espera_restante = datos_npc.tiempo_espera
+			return
 
+	if intentar_mover(direccion):
+		iniciar_paso_animacion()
+
+func procesar_patrulla_vertical() -> void:
 	var direccion: Vector2 = Vector2.UP if yendo_a_arriba else Vector2.DOWN
-	var destino: Vector2i = casilla_actual + Vector2i(direccion)
-	var pos_global: Vector2 = global_position + direccion * float(TILE_SIZE)
-	var max_y: int = casilla_inicial.y + datos_npc.distancia_patrulla
-	var min_y: int = casilla_inicial.y - datos_npc.distancia_patrulla
-	var permitida: bool = casilla_permitida(pos_global)
-
-	if yendo_a_arriba and (destino.y < min_y or not permitida):
-		yendo_a_arriba = false
-		tiempo_espera_restante = datos_npc.tiempo_espera
-		return
-	if not yendo_a_arriba and (destino.y > max_y or not permitida):
-		yendo_a_arriba = true
-		tiempo_espera_restante = datos_npc.tiempo_espera
+	var casilla_destino: Vector2i = casilla_actual + Vector2i(direccion)
+	var posicion_destino_global: Vector2 = global_position + direccion * TILE_SIZE
+	var limite_max: int = casilla_inicial.y + datos_npc.distancia_patrulla
+	var _limite_min: int = casilla_inicial.y - datos_npc.distancia_patrulla
+	if tiempo_espera_restante > 0:
+		tiempo_espera_restante -= get_process_delta_time()
+		is_moving = false
+		current_direction = Direction.NORTH if yendo_a_arriba else Direction.SOUTH
+		reproducir_idle()
 		return
 
-	_intentar_paso(direccion)
+	if is_moving: return
 
+	var permitida: bool = casilla_permitida(posicion_destino_global)
 
-func _procesar_random_walk() -> void:
-	if _manejar_espera():
+	if yendo_a_arriba:
+		if casilla_destino.y < _limite_min or not permitida:
+			yendo_a_arriba = false
+			tiempo_espera_restante = datos_npc.tiempo_espera
+			return
+	else:
+		if casilla_destino.y > limite_max or not permitida:
+			yendo_a_arriba = true
+			tiempo_espera_restante = datos_npc.tiempo_espera
+			return
+
+	if intentar_mover(direccion):
+		iniciar_paso_animacion()
+
+func procesar_random_walk() -> void:
+	if tiempo_espera_restante > 0:
+		tiempo_espera_restante -= get_process_delta_time()
+		reproducir_idle()
 		return
+
 	if is_moving:
 		return
 
-	var direcciones: Array[Vector2] = [Vector2.DOWN, Vector2.UP, Vector2.LEFT, Vector2.RIGHT]
-	var dir: Vector2 = direcciones.pick_random()
-	if casilla_permitida(global_position + dir * float(TILE_SIZE)):
-		_intentar_paso(dir)
+	var _direcciones: Array[Vector2] = [
+		Vector2.DOWN,
+		Vector2.UP,
+		Vector2i.LEFT,
+		Vector2.RIGHT,
+	]
+	var _direccion: Vector2 = _direcciones.pick_random()
+	var _posicion_destino: Vector2 = global_position + _direccion * TILE_SIZE
+	if casilla_permitida(_posicion_destino):
+		intentar_mover(_direccion)
 	tiempo_espera_restante = 1.5
 
-
-func _procesar_mirar_alrededor() -> void:
-	if _manejar_espera():
+func procesar_mirar_alrededor() -> void:
+	if tiempo_espera_restante > 0:
+		tiempo_espera_restante -= get_process_delta_time()
+		reproducir_idle()
 		return
-
-	const DIRS: Array[Direction] = [Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST]
-	var nueva: Direction = current_direction
-	while nueva == current_direction:
-		nueva = DIRS.pick_random()
-	current_direction = nueva
+	const DIRECCIONES: Array[Direction] = [
+		Direction.NORTH,
+		Direction.SOUTH,
+		Direction.WEST,
+		Direction.EAST
+	]
+	var direccion: Direction = current_direction
+	while direccion == current_direction:
+		direccion = DIRECCIONES.pick_random()
+	current_direction = direccion
 	reproducir_idle()
 	tiempo_espera_restante = 1.0
-
+# fin proceso de comportamientos
 
 func aplicar_direccion_inicial() -> void:
 	match datos_npc.direccion_inicial:
@@ -160,15 +173,29 @@ func aplicar_direccion_inicial() -> void:
 			current_direction = Direction.WEST
 		CharacterNpc.DireccionInicial.DERECHA:
 			current_direction = Direction.EAST
+
 	reproducir_idle()
 
+
+func reproducir_idle() -> void:
+	if not anim_player:
+		return
+
+	match current_direction:
+		Direction.NORTH:
+			anim_player.play("idle_up")
+		Direction.SOUTH:
+			anim_player.play("idle_down")
+		Direction.EAST:
+			anim_player.play("idle_right")
+		Direction.WEST:
+			anim_player.play("idle_left")
 
 func interact() -> void:
 	if datos_npc.scripts and script_runner:
 		var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
 		var commands: Array[ScriptCommand] = [datos_npc.scripts]
 		script_runner.start_script(commands, self, player, mapa_dueño)
-
 
 func preparar_dialogo(posicion_jugador: Vector2) -> void:
 	en_dialogo = true
@@ -177,10 +204,35 @@ func preparar_dialogo(posicion_jugador: Vector2) -> void:
 	mirar_hacia_posicion(posicion_jugador)
 	reproducir_idle()
 
-
 func terminar_dialogo() -> void:
 	en_dialogo = false
 	tiempo_espera_restante = 0.5
+
+	# Notificar al script runner que el diálogo terminó
 	if script_runner and script_runner.is_running:
 		script_runner.on_async_complete()
+
 	reproducir_idle()
+
+
+## Conservative follow behavior: one grid step per tick, using existing collision rules.
+## It is intentionally an autonomous base behavior, never a replacement for ApplyMovement.
+func procesar_seguir_jugador() -> void:
+	if is_moving or tiempo_espera_restante > 0.0:
+		tiempo_espera_restante = maxf(tiempo_espera_restante - get_physics_process_delta_time(), 0.0)
+		return
+	var jugador: CharacterController = get_tree().get_first_node_in_group(&"player") as CharacterController
+	if not jugador:
+		return
+	var delta_celda: Vector2i = jugador.casilla_actual - casilla_actual
+	if abs(delta_celda.x) + abs(delta_celda.y) <= datos_npc.rango_seguimiento:
+		return
+	var direccion: Vector2 = Vector2.ZERO
+	if abs(delta_celda.x) >= abs(delta_celda.y):
+		direccion = Vector2.RIGHT if delta_celda.x > 0 else Vector2.LEFT
+	else:
+		direccion = Vector2.DOWN if delta_celda.y > 0 else Vector2.UP
+	if casilla_permitida(global_position + direccion * TILE_SIZE):
+		intentar_mover(direccion)
+	tiempo_espera_restante = 0.1
+

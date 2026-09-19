@@ -2,77 +2,52 @@
 extends ScriptCommand
 class_name ScriptCmdApplyMovement
 
-## Ejemplo: applymovement npc_guardia "walk left 2; face down; wait 0.5"
+## Temporary, explicit command list. Unlike CharacterNpc's autonomous loop this
+## list runs once and completes. Every command resolves to one MovementAction.
 @export var target_id: StringName
 @export_multiline var movement_script: String = ""
 
 func execute(context: ScriptExecutionContext) -> bool:
 	var target: CharacterController = context.find_character_by_id(target_id)
-	if not target:
-		push_warning("ScriptCmdApplyMovement: no se encontró el NPC '%s'" % target_id)
-		return true
+	if not target: return true
 	context.is_waiting = true
 	_run_movement(target, context)
 	return false
-
 
 func _run_movement(target: CharacterController, context: ScriptExecutionContext) -> void:
 	var previous_event_state: bool = target.ejecutando_evento
 	target.ejecutando_evento = true
 	for instruction: String in movement_script.split(";"):
-		var parts: PackedStringArray = instruction.strip_edges().split(" ", false)
-		if parts.is_empty():
-			continue
-		var action: String = parts[0].to_lower()
-		if action == "face" and parts.size() > 1:
-			_face(target, parts[1])
-		elif action == "walk" and parts.size() > 1:
-			var steps: int = int(parts[2]) if parts.size() > 2 and parts[2].is_valid_int() else 1
-			var direction: Vector2 = _direction(parts[1])
-			for step: int in range(steps):
-				if direction != Vector2.ZERO:
-					await _walk_one_step(target, direction)
-		elif action == "wait" and parts.size() > 1 and parts[1].is_valid_float():
-			await target.get_tree().create_timer(float(parts[1])).timeout
+		var action: Dictionary = _parse_instruction(instruction.strip_edges())
+		if not action.is_empty(): await MovementExecutor.execute_action(target, action)
 	target.ejecutando_evento = previous_event_state
 	context.complete_async()
 
-
-func _walk_one_step(target: CharacterController, direction: Vector2) -> void:
-	target.cancelar_movimiento()
-	var old_tile: Vector2i = target.casilla_actual
-	var new_tile: Vector2i = old_tile + Vector2i(direction)
-	var destination: Vector2 = target.position + direction * target.TILE_SIZE
-
-	EventObjects.liberar_casilla(old_tile)
-	EventObjects.liberar_reserva(old_tile)
-	EventObjects.reservar_casilla(new_tile, target)
-	target.input_direction = direction
-	target.is_moving = false
-	target.reproducir_paso()
-
-	var duration: float = 1.0 / maxf(target.obtener_velocidad_movimiento(), 0.1)
-	var tween: Tween = target.create_tween()
-	tween.tween_property(target, "position", destination, duration)
-	await tween.finished
-
-	target.position = target.snap_to_grid(destination)
-	target.casilla_actual = new_tile
-	target.casilla_reservada = new_tile
-	EventObjects.liberar_reserva(new_tile)
-	EventObjects.registrar_casilla(new_tile, target)
-	target.reproducir_idle()
-
-
-func _face(target: CharacterController, value: String) -> void:
-	target.mirar_hacia_posicion(target.global_position + _direction(value) * target.TILE_SIZE)
-	target.reproducir_idle()
-
-
-func _direction(value: String) -> Vector2:
-	match value.to_lower():
-		"up", "arriba": return Vector2.UP
-		"down", "abajo": return Vector2.DOWN
-		"left", "izquierda": return Vector2.LEFT
-		"right", "derecha": return Vector2.RIGHT
-	return Vector2.ZERO
+func _parse_instruction(instruction: String) -> Dictionary:
+	var parts: PackedStringArray = instruction.split(" ", false)
+	if parts.is_empty(): return {}
+	var name: String = parts[0].to_lower().replace("-", "_")
+	var direction: Vector2 = MovementTypes.direction_from_text(parts[1]) if parts.size() > 1 else Vector2.ZERO
+	var kind: MovementTypes.MovementAction
+	match name:
+		"face", "look": return {"kind": MovementTypes.MovementAction.FACE, "direction": direction}
+		"turn", "rotate", "clockwise", "rotate_clockwise": return {"kind": MovementTypes.MovementAction.TURN_CLOCKWISE}
+		"counterclockwise", "rotate_counterclockwise": return {"kind": MovementTypes.MovementAction.TURN_COUNTERCLOCKWISE}
+		"walk": kind = MovementTypes.MovementAction.WALK
+		"jog": kind = MovementTypes.MovementAction.JOG
+		"run": kind = MovementTypes.MovementAction.RUN
+		"walk_in_place", "jog_in_place", "run_in_place", "slowly_in_place":
+			return {"kind": MovementTypes.MovementAction.WALK_IN_PLACE, "mode": name}
+		"copy_player": return {"kind": MovementTypes.MovementAction.COPY_PLAYER}
+		"follow_player": return {"kind": MovementTypes.MovementAction.FOLLOW_PLAYER}
+		"hide", "invisible": return {"kind": MovementTypes.MovementAction.HIDE}
+		"show": return {"kind": MovementTypes.MovementAction.SHOW}
+		"tree_disguise": return {"kind": MovementTypes.MovementAction.TREE_DISGUISE}
+		"mountain_disguise": return {"kind": MovementTypes.MovementAction.MOUNTAIN_DISGUISE}
+		"buried": return {"kind": MovementTypes.MovementAction.BURIED}
+		"berry_tree_growth", "berry_growth": return {"kind": MovementTypes.MovementAction.BERRY_TREE_GROWTH}
+		"wait": return {"kind": MovementTypes.MovementAction.WAIT, "seconds": float(parts[1]) if parts.size() > 1 and parts[1].is_valid_float() else 0.1}
+		_: return {}
+	# ApplyMovement is an explicit list: one instruction is one atomic action.
+	# Repeat commands in the list when multiple steps are required.
+	return {"kind": kind, "direction": direction, "mode": name}
