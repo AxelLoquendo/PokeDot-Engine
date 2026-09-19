@@ -96,13 +96,18 @@ z_as_relative = false
 tile_set = SubResource("TileSet_q4vpe")
 script = ExtResource("2_4ca71")
 
-[node name="Tile2" type="TileMapLayer" parent="Tilesets" unique_id=1120296338]
+[node name="Tile2" type="TileMapLayer" parent="Tilesets" unique_id=1637205363]
+z_as_relative = false
+tile_set = SubResource("TileSet_q4vpe")
+script = ExtResource("2_4ca71")
+
+[node name="Tile3" type="TileMapLayer" parent="Tilesets" unique_id=1120296338]
 z_index = 1000
 z_as_relative = false
 tile_set = SubResource("TileSet_11cst")
 script = ExtResource("2_4ca71")
 
-[node name="Tile3" type="TileMapLayer" parent="Tilesets" unique_id=144382310]
+[node name="Tile4" type="TileMapLayer" parent="Tilesets" unique_id=144382310]
 z_index = 2000
 z_as_relative = false
 tile_set = SubResource("TileSet_fdm51")
