@@ -11,6 +11,7 @@ signal player_must_switch
 signal player_evolved
 
 signal ability_announced(is_player: bool, pokemon: PokemonInstance)
+signal ability_bar_finished
 
 var player: BattleBattler
 var enemy: BattleBattler
@@ -28,7 +29,12 @@ var weather_turns: int = -1
 ## movimientos completos quiere aprender uno nuevo durante el combate.
 const MOVE_LEARN_SCENE: PackedScene = preload("res://scenes/ui_summary_screen/move_learn_screen.tscn")
 
-func start_battle(player_pokemon: PokemonInstance, enemy_pokemon: PokemonInstance, party: Array[PokemonInstance] = [], enemy_trainer_party: Array[PokemonInstance] = []) -> void:
+func start_battle(
+	player_pokemon: PokemonInstance,
+	enemy_pokemon: PokemonInstance,
+	party: Array[PokemonInstance] = [],
+	enemy_trainer_party: Array[PokemonInstance] = []
+) -> void:
 	player = BattleBattler.new()
 	player.setup(player_pokemon, true)
 	enemy = BattleBattler.new()
@@ -42,9 +48,21 @@ func start_battle(player_pokemon: PokemonInstance, enemy_pokemon: PokemonInstanc
 	_emit_hp(true)
 	_emit_hp(false)
 
-	AbilityRuntime.on_switch_in(player, enemy, self)
-	AbilityRuntime.on_switch_in(enemy, player, self)
 
+## Secuencia de mensajes + habilidades de entrada. Se llama aparte de
+## start_battle() para que la UI pueda mostrar sprites/HP antes de que
+## empiecen los textos.
+func start_battle_intro() -> void:
+	if is_trainer_battle:
+		message.emit("¡El rival envía a %s!" % enemy.get_display_name())
+	else:
+		message.emit("¡Un %s salvaje apareció!" % enemy.get_display_name())
+	await _wait(1.0)
+	await AbilityRuntime.on_switch_in(enemy, player, self)
+
+	message.emit("¡Adelante, %s!" % player.get_display_name())
+	await _wait(0.8)
+	await AbilityRuntime.on_switch_in(player, enemy, self)
 
 func _emit_hp(is_player_side: bool) -> void:
 	var b: BattleBattler = player if is_player_side else enemy
@@ -96,7 +114,7 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 	_emit_hp(true)
 	message.emit("¡Adelante, %s!" % player.get_display_name())
 	await _wait(0.8)
-	AbilityRuntime.on_switch_in(player, enemy, self)
+	await AbilityRuntime.on_switch_in(player, enemy, self)
 	await _apply_hazards_on_switch_in(player)
 
 	if free_switch:
@@ -249,7 +267,7 @@ func _handle_enemy_faint() -> void:
 		await _wait(0.8)
 		enemy.setup(nuevo, false)
 		_emit_hp(false)
-		AbilityRuntime.on_switch_in(enemy, player, self)
+		await AbilityRuntime.on_switch_in(enemy, player, self)
 		await _apply_hazards_on_switch_in(enemy)
 		turn_ended.emit()
 		return
@@ -789,17 +807,17 @@ func _execute_move(action: BattleAction) -> void:
 		if move.drain_percent > 0:
 			await _apply_drain(actor, target, dealt, move.drain_percent)
 
-		AbilityRuntime.on_contact_hit(actor, target, move, self)
+		await AbilityRuntime.on_contact_hit(actor, target, move, self)
 		if actor.is_fainted():
 			break
 
 		if result.critical and AbilityRuntime.has(target, AbilityId.Id.ANGER_POINT) and not target.is_fainted():
 			var boost: int = 6 - target.stage_attack
 			if boost > 0:
-				ability_change_stat(target, PokemonInstance.Stat.ATTACK, boost)
+				await ability_change_stat(target, PokemonInstance.Stat.ATTACK, boost)
 
 		if move.type == PokemonData.Type.TYPE_DARK and AbilityRuntime.has(target, AbilityId.Id.JUSTIFIED) and not target.is_fainted():
-			ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
+			await ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
 
 		if target.is_fainted() and move.makes_contact and AbilityRuntime.has(target, AbilityId.Id.AFTERMATH):
 			@warning_ignore("integer_division")
@@ -828,7 +846,7 @@ func _execute_move(action: BattleAction) -> void:
 	await _apply_damaging_move_effect(actor, target, move, total_dealt)
 
 	if target.is_fainted():
-		_trigger_ko_ability(actor, target)
+		await _trigger_ko_ability(actor, target)
 		return
 
 	if actor.is_fainted():
@@ -853,19 +871,19 @@ func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: Dam
 			message.emit("¡%s absorbió el ataque gracias a %s!" % [target.get_display_name(), ability_display])
 			await _wait(0.6)
 			@warning_ignore("integer_division")
-			ability_heal(target, maxi(1, target.get_max_hp() / 4))
+			await ability_heal(target, maxi(1, target.get_max_hp() / 4))
 		"spatk_up":
 			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
 			await _wait(0.6)
-			ability_change_stat(target, PokemonInstance.Stat.SP_ATTACK, 1)
+			await ability_change_stat(target, PokemonInstance.Stat.SP_ATTACK, 1)
 		"atk_up":
 			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
 			await _wait(0.6)
-			ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
+			await ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
 		"spe_up":
 			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
 			await _wait(0.6)
-			ability_change_stat(target, PokemonInstance.Stat.SPEED, 1)
+			await ability_change_stat(target, PokemonInstance.Stat.SPEED, 1)
 		"flash_fire":
 			target.flash_fire_boosted = true
 			message.emit("¡%s de %s se activó! Sus movimientos de Fuego se potencian." % [ability_display, target.get_display_name()])
@@ -888,11 +906,11 @@ func _trigger_ko_ability(actor: BattleBattler, _fainted_target: BattleBattler) -
 		return
 	match AbilityRuntime.get_id(actor):
 		AbilityId.Id.MOXIE:
-			ability_announce(actor)
-			ability_change_stat(actor, PokemonInstance.Stat.ATTACK, 1)
+			await ability_announce(actor)
+			await ability_change_stat(actor, PokemonInstance.Stat.ATTACK, 1)
 		AbilityId.Id.BEAST_BOOST:
-			ability_announce(actor)
-			ability_change_stat(actor, _highest_stat(actor), 1)
+			await ability_announce(actor)
+			await ability_change_stat(actor, _highest_stat(actor), 1)
 
 
 func _highest_stat(battler: BattleBattler) -> PokemonInstance.Stat:
@@ -1377,10 +1395,12 @@ func _wait(seconds: float) -> void:
 		await Engine.get_main_loop().process_frame
 
 func ability_announce(battler: BattleBattler) -> void:
-	var name: String = AbilityRuntime.ability_name(battler)
 	if battler == null or battler.pokemon == null:
 		return
+	var name: String = AbilityRuntime.ability_name(battler)
 	ability_announced.emit(battler.is_player_side, battler.pokemon)
+	if ability_announced.get_connections().size() > 0:
+		await ability_bar_finished
 	if name.is_empty():
 		return
 	message.emit("¡Se activó %s de %s!" % [name, battler.get_display_name()])
@@ -1388,6 +1408,7 @@ func ability_announce(battler: BattleBattler) -> void:
 func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
 	if caused_by_foe and stages < 0 and AbilityRuntime.blocks_foe_stat_drop(battler, stat):
 		message.emit("¡La habilidad de %s lo protegió del Intimidad!" % battler.get_display_name())
+		await _wait(0.6)
 		return
 	var adjusted: int = AbilityRuntime.adjust_own_stage_change(battler, stages)
 	var actual: int = battler.modify_stage(stat, adjusted)
@@ -1398,6 +1419,7 @@ func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, sta
 		message.emit("¡%s de %s subió!" % [name, battler.get_display_name()])
 	else:
 		message.emit("¡%s de %s bajó!" % [name, battler.get_display_name()])
+	await _wait(0.6)
 
 func ability_apply_status(battler: BattleBattler, status: PokemonInstance.Status, source: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null or battler.is_fainted():

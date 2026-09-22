@@ -158,19 +158,19 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 	match get_id(battler):
 		AbilityId.Id.INTIMIDATE:
 			if opponent != null and not opponent.is_fainted():
-				battle.ability_announce(battler)
-				battle.ability_change_stat(opponent, PokemonInstance.Stat.ATTACK, -1, true)
+				await battle.ability_announce(battler)
+				await battle.ability_change_stat(opponent, PokemonInstance.Stat.ATTACK, -1, true)
 		AbilityId.Id.DRIZZLE:
-			battle.ability_announce(battler)
+			await battle.ability_announce(battler)
 			battle.set_weather(WeatherId.WEATHER_RAIN, -1)
 		AbilityId.Id.DROUGHT:
-			battle.ability_announce(battler)
+			await battle.ability_announce(battler)
 			battle.set_weather(WeatherId.WEATHER_DROUGHT, -1)
 		AbilityId.Id.SAND_STREAM:
-			battle.ability_announce(battler)
+			await battle.ability_announce(battler)
 			battle.set_weather(WeatherId.WEATHER_SANDSTORM, -1)
 		AbilityId.Id.SNOW_WARNING:
-			battle.ability_announce(battler)
+			await battle.ability_announce(battler)
 			battle.set_weather(WeatherId.WEATHER_SNOW, -1)
 
 ## ─── Contacto: Static / Poison Point / Flame Body / Rough Skin / Iron Barbs ─
@@ -183,7 +183,7 @@ static func on_contact_hit(attacker: BattleBattler, defender: BattleBattler, mov
 	match get_id(defender):
 		AbilityId.Id.STATIC:
 			if randf() < 0.3:
-				battle.ability_apply_status(attacker, PokemonInstance.Status.PARALYSIS, defender)
+				await battle.ability_apply_status(attacker, PokemonInstance.Status.PARALYSIS, defender)
 		AbilityId.Id.POISON_POINT:
 			if randf() < 0.3:
 				battle.ability_apply_status(attacker, PokemonInstance.Status.POISON, defender)

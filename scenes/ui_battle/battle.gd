@@ -148,38 +148,31 @@ func _ready() -> void:
 	if battle.has_signal("ability_announced"):
 		battle.ability_announced.connect(_on_ability_announced)
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
-	battle.player_evolved.connect(_update_ui)
 
 	player_exp_bar.size.x = player_exp_bar_target
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
-
-	_battle_canvas_modulate = CanvasModulate.new()
-	if DnsManager != null and DnsManager.canvas_modulate != null:
-		_battle_canvas_modulate.color = DnsManager.canvas_modulate.color
-	add_child(_battle_canvas_modulate)
-
-	var textura_fondo: Texture2D = BattleBackground.get_texture(BattleSession.battle_background)
-	if textura_fondo != null:
-		bg_sprite.texture = textura_fondo
 
 	_update_ui()
 	player_hp_bar.size.x = player_hp_bar_target
 	enemy_hp_bar.size.x = enemy_hp_bar_target
 
 	fight_menu.visible = false
-	action_menu.visible = true
-	current_menu = MenuState.ACTIONS
-	selected_action = 0
-	_update_action_focus()
-	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
+	action_menu.visible = false
+	current_menu = MenuState.BUSY
 
 	if ability_bar_player:
 		ability_bar_player.visible = false
 	if ability_bar_enemy:
 		ability_bar_enemy.visible = false
-	if ability_anim and ability_anim.has_animation("RESET"):
-		ability_anim.play("RESET")
+
+	await battle.start_battle_intro()
+
+	action_menu.visible = true
+	current_menu = MenuState.ACTIONS
+	selected_action = 0
+	_update_action_focus()
+	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 
 func _on_player_progress_changed() -> void:
 	player_level_label.text = str(player_pokemon.level)
@@ -756,6 +749,8 @@ func _on_ability_announced(is_player: bool, mon: PokemonInstance) -> void:
 
 func _run_ability_bar(is_player: bool, mon: PokemonInstance) -> void:
 	await show_ability_activation(is_player, mon)
+	if battle:
+		battle.ability_bar_finished.emit()
 
 
 ## API pública: muestra entrada → hold → salida
