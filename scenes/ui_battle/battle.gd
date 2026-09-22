@@ -158,24 +158,29 @@ func _ready() -> void:
 	if battle.has_signal("illusion_broken"):
 		battle.illusion_broken.connect(_on_illusion_broken)
 
+	# start_battle debe llamar prepare_illusion internamente
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 
 	player_exp_bar.size.x = player_exp_bar_target
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
 
+	# 1) Base (HP, nivel, etc.)
 	_update_ui()
+	# 2) Apariencia real YA (Illusion lista en el battler)
+	_refresh_side_appearance(false)
+	_refresh_side_appearance(true)
+
 	player_hp_bar.size.x = player_hp_bar_target
 	enemy_hp_bar.size.x = enemy_hp_bar_target
 
 	fight_menu.visible = false
 	action_menu.visible = false
 	current_menu = MenuState.BUSY
-
 	_reset_ability_bars()
 
 	await battle.start_battle_intro()
-	# Illusion / Imposter se aplican en on_switch_in
+	# Imposter / Trace / etc. pueden mutar en on_switch_in
 	_refresh_side_appearance(false)
 	_refresh_side_appearance(true)
 
@@ -183,7 +188,7 @@ func _ready() -> void:
 	current_menu = MenuState.ACTIONS
 	selected_action = 0
 	_update_action_focus()
-	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
+	_show_message_box("¿Qué debe hacer %s?" % battle.player.get_display_name())
 
 func _on_player_progress_changed() -> void:
 	player_level_label.text = str(player_pokemon.level)
@@ -619,8 +624,9 @@ func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	_force_switch_pending = false
 	player_pokemon = mon
 	await battle.player_choose_switch(mon, free_switch)
-	_update_ui()
-	_refresh_side_appearance(true)
+	_update_hp_bars()
+	_update_exp_bar()
+	player_level_label.text = str(player_pokemon.level)
 
 
 func _on_party_cancelled() -> void:

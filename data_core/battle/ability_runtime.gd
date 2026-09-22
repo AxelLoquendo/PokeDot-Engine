@@ -299,7 +299,9 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 			battler.slow_start_turns = 5
 
 		AbilityId.Id.ILLUSION:
-			await _setup_illusion(battler, battle)
+			if not battler.illusion_active:
+				if prepare_illusion(battler, battle):
+					battle.battler_appearance_changed.emit(battler.is_player_side)
 
 		AbilityId.Id.IMPOSTER:
 			if opponent != null and not opponent.is_fainted():
@@ -662,38 +664,39 @@ static func _setup_imposter(
 ) -> void:
 	if battler == null or opponent == null or opponent.pokemon == null:
 		return
+	if battler.is_transformed:
+		return
 
 	await battle.ability_announce(battler)
 
-	# Backup mínimo por si más adelante quieres des-transformar al cambiar.
-	battler.transform_backup = {
-		"species_id": battler.pokemon.species_id,
-		"ability_id": battler.pokemon.ability_id,
-		"moves": battler.pokemon.moves.duplicate(true),
-	}
-
-	# Copia visual + datos de combate del rival (HP/max HP se mantienen del original).
 	var src: PokemonInstance = opponent.pokemon
 	var dst: PokemonInstance = battler.pokemon
 
-	# Ajusta a tu API real de especie/forma:
+	battler.transform_backup = {
+		"species_id": dst.species_id,
+		"form_id": dst.form_id,
+		"ability_id": dst.ability_id,
+		"moves": dst.moves.duplicate(true),
+	}
+
+	# HP / max_hp del Ditto se conservan
 	dst.species_id = src.species_id
-	if "form_id" in dst and "form_id" in src:
-		dst.form_id = src.form_id
+	dst.form_id = src.form_id
 	dst.ability_id = src.ability_id
 
-	# Moves: copia slots (PP al máximo del move copiado o PP actuales del rival; típico = PP del move).
 	dst.moves.clear()
 	for slot: PokemonMoveSlot in src.moves:
 		if slot == null or slot.is_empty():
 			continue
 		var copy: PokemonMoveSlot = PokemonMoveSlot.new()
 		copy.move_id = slot.move_id
-		copy.current_pp = slot.current_pp
-		copy.max_pp = slot.max_pp
+		copy.pp_ups = 0
+		# Transform clásico: 5 PP (o el máximo del move si es menor)
+		var md: MoveData = MoveDatabase.get_move(slot.move_id)
+		var base_pp: int = md.pp if md != null else 5
+		copy.current_pp = mini(5, base_pp)
 		dst.moves.append(copy)
 
-	# Stages del transform: se copian los del rival (comportamiento clásico de Transform).
 	battler.stage_attack = opponent.stage_attack
 	battler.stage_defense = opponent.stage_defense
 	battler.stage_sp_attack = opponent.stage_sp_attack
@@ -703,7 +706,7 @@ static func _setup_imposter(
 	battler.stage_evasion = opponent.stage_evasion
 
 	battler.is_transformed = true
-	battler.clear_illusion()  # por si acaso
+	battler.clear_illusion()
 
 	battle.message.emit("¡%s se transformó en %s!" % [
 		battler.get_display_name(),
@@ -711,3 +714,60 @@ static func _setup_imposter(
 	])
 	battle.battler_appearance_changed.emit(battler.is_player_side)
 	await battle._wait(0.9)
+
+static func revert_transform(battler: BattleBattler) -> void:
+	if battler == null or not battler.is_transformed:
+		return
+	if battler.pokemon == null or battler.transform_backup.is_empty():
+		battler.is_transformed = false
+		battler.transform_backup.clear()
+		return
+
+	var dst: PokemonInstance = battler.pokemon
+	var bak: Dictionary = battler.transform_backup
+
+	dst.species_id = bak.get("species_id", dst.species_id)
+	dst.form_id = bak.get("form_id", dst.form_id)
+	dst.ability_id = bak.get("ability_id", dst.ability_id)
+
+	var moves_bak: Variant = bak.get("moves", null)
+	if moves_bak is Array:
+		dst.moves.clear()
+		for slot: Variant in moves_bak:
+			if slot is PokemonMoveSlot:
+				dst.moves.append(slot)
+
+	battler.is_transformed = false
+	battler.transform_backup.clear()
+
+## Solo estado visual. Sin await, sin Ability Bar.
+## Llamar ANTES de mostrar sprites / nombres.
+static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> bool:
+	if battler == null or battler.pokemon == null or battle == null:
+		return false
+	if get_id(battler) != AbilityId.Id.ILLUSION:
+		return false
+
+	var party: Array[PokemonInstance] = (
+		battle.player_party if battler.is_player_side else battle.enemy_party
+	)
+	var disguise: PokemonInstance = null
+	for i: int in range(party.size() - 1, -1, -1):
+		var mon: PokemonInstance = party[i]
+		if mon == null or mon == battler.pokemon:
+			continue
+		if mon.is_fainted():
+			continue
+		disguise = mon
+		break
+
+	if disguise == null:
+		battler.clear_illusion()
+		return false
+
+	battler.illusion_active = true
+	battler.illusion_species_id = disguise.species_id
+	battler.illusion_nickname = disguise.get_display_name()
+	battler.illusion_gender = disguise.gender
+	battler.illusion_shiny = disguise.shiny if "shiny" in disguise else false
+	return true

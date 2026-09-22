@@ -65,6 +65,11 @@ func start_battle(
 	terrain = TerrainId.TERRAIN_NONE
 	terrain_turns = 0
 	weather_primal = false
+	
+	# Disfraz listo ANTES de que la UI pinte
+	AbilityRuntime.prepare_illusion(player, self)
+	AbilityRuntime.prepare_illusion(enemy, self)
+	
 	_emit_hp(true)
 	_emit_hp(false)
 
@@ -130,8 +135,18 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 		message.emit("¡%s, vuelve!" % saliente_nombre)
 		await _wait(0.6)
 
+	# Importante: des-transformar ANTES de setup del entrante
+	AbilityRuntime.revert_transform(player)
+
+	# 1) Datos
 	player.setup(nuevo, true)
+	# 2) Illusion silenciosa YA
+	AbilityRuntime.prepare_illusion(player, self)
+	# 3) UI al mismo tiempo (sprite + nombre + género)
 	_emit_hp(true)
+	battler_appearance_changed.emit(true)
+
+	# 4) Mensajes / habilidades que SÍ anuncian
 	message.emit("¡Adelante, %s!" % player.get_display_name())
 	await _wait(0.8)
 	await AbilityRuntime.on_switch_in(player, enemy, self)
@@ -160,6 +175,7 @@ func player_choose_run() -> void:
 	if not is_running:
 		return
 	message.emit("¡Escapaste con éxito!")
+	_cleanup_battle_pokemon()
 	is_running = false
 	battle_ended.emit(true)
 
@@ -283,18 +299,22 @@ func _handle_enemy_faint() -> void:
 
 	if is_trainer_battle and _enemy_tiene_reemplazo():
 		var nuevo: PokemonInstance = _enemy_siguiente_reemplazo()
-		message.emit("¡El rival envía a %s!" % (nuevo.get_display_name() if nuevo else "???"))
-		await _wait(0.8)
+		AbilityRuntime.revert_transform(enemy)
 		enemy.setup(nuevo, false)
+		AbilityRuntime.prepare_illusion(enemy, self)
 		_emit_hp(false)
+		battler_appearance_changed.emit(false)
+		message.emit("¡El rival envía a %s!" % enemy.get_display_name())
+		await _wait(0.8)
 		await AbilityRuntime.on_switch_in(enemy, player, self)
 		await _apply_hazards_on_switch_in(enemy)
 		turn_ended.emit()
-		return
+		return  # ← sin esto dabas la pelea por ganada
 
 	await _check_battle_end_evolution()
 
 	message.emit("¡Ganaste!")
+	_cleanup_battle_pokemon()
 	is_running = false
 	battle_ended.emit(true)
 
@@ -676,6 +696,7 @@ func _manejar_debilitacion_jugador() -> void:
 
 	message.emit("Has perdido...")
 	await _wait(1.0)
+	_cleanup_battle_pokemon()
 	is_running = false
 	battle_ended.emit(false)
 
@@ -1559,3 +1580,11 @@ func _announce_passive_abilities(
 	for ab_id: AbilityId.Id in result.activated_defender:
 		if AbilityRuntime.get_id(target) == ab_id:
 			await ability_announce(target)
+
+func _cleanup_battle_pokemon() -> void:
+	if player != null:
+		AbilityRuntime.revert_transform(player)
+		player.clear_illusion()
+	if enemy != null:
+		AbilityRuntime.revert_transform(enemy)
+		enemy.clear_illusion()
