@@ -284,6 +284,7 @@ _data = {
 script = ExtResource("1_axcis")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=2015925737]
+z_index = -1
 position = Vector2(256, 112)
 scale = Vector2(2, 2)
 texture = ExtResource("1_c8v4i")

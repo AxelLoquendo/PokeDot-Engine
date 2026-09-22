@@ -35,6 +35,9 @@ var weather_turns: int = -1
 ## movimientos completos quiere aprender uno nuevo durante el combate.
 const MOVE_LEARN_SCENE: PackedScene = preload("res://scenes/ui_summary_screen/move_learn_screen.tscn")
 
+signal terrain_changed(terrain: int)
+signal weather_changed(weather: int, primal: bool)
+
 enum TerrainId {
 	TERRAIN_NONE,
 	TERRAIN_ELECTRIC,
@@ -45,7 +48,6 @@ enum TerrainId {
 
 var terrain: int = TerrainId.TERRAIN_NONE
 var terrain_turns: int = 0
-## Clima primigenio: no lo pisan climas normales.
 var weather_primal: bool = false
 
 func start_battle(
@@ -1532,32 +1534,16 @@ func ability_cure_status(battler: BattleBattler) -> void:
 	battler.pokemon.cure_status()
 	message.emit("¡%s se curó gracias a su habilidad!" % battler.get_display_name())
 
-func set_terrain(new_terrain: int, turns: int = 5) -> void:
-	if terrain == new_terrain:
-		return
-	terrain = new_terrain
-	terrain_turns = turns
-	match new_terrain:
-		TerrainId.TERRAIN_ELECTRIC:
-			message.emit("¡El campo se electrificó!")
-		TerrainId.TERRAIN_GRASSY:
-			message.emit("¡El campo se cubrió de hierba!")
-		TerrainId.TERRAIN_MISTY:
-			message.emit("¡El campo se cubrió de niebla misteriosa!")
-		TerrainId.TERRAIN_PSYCHIC:
-			message.emit("¡El campo se volvió extraño!")
-		_:
-			pass
-
 func set_weather(new_weather: int, turns: int, primal: bool = false) -> void:
-	# Clima primigenio solo lo quita otro primigenio / Air Lock fuerte, etc.
 	if weather_primal and not primal:
 		return
 	if weather == new_weather and weather_primal == primal:
 		return
+
 	weather = new_weather
 	weather_turns = turns
 	weather_primal = primal
+
 	match new_weather:
 		AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
 			message.emit("¡Empezó a llover!" if not primal else "¡Una lluvia torrencial azotó la zona!")
@@ -1566,12 +1552,56 @@ func set_weather(new_weather: int, turns: int, primal: bool = false) -> void:
 		AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM:
 			message.emit("¡Se levantó una tormenta de arena!")
 		AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
-			message.emit("¡Empezó a granizar!")
+			message.emit("¡Empezó a nevar!")
 		AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
-			if not primal:
-				message.emit("¡El clima volvió a la normalidad!")
+			message.emit("¡El clima volvió a la normalidad!")
 		_:
 			pass
+
+	weather_changed.emit(weather, weather_primal)
+
+
+func set_terrain(new_terrain: int, turns: int = 5) -> void:
+	if terrain == new_terrain:
+		return
+	terrain = new_terrain
+	terrain_turns = turns
+
+	match new_terrain:
+		TerrainId.TERRAIN_ELECTRIC:
+			message.emit("¡El campo se electrificó!")
+		TerrainId.TERRAIN_GRASSY:
+			message.emit("¡El campo se cubrió de hierba!")
+		TerrainId.TERRAIN_MISTY:
+			message.emit("¡El campo se cubrió de una niebla misteriosa!")
+		TerrainId.TERRAIN_PSYCHIC:
+			message.emit("¡El campo se volvió extraño!")
+		TerrainId.TERRAIN_NONE:
+			message.emit("¡El terreno volvió a la normalidad!")
+		_:
+			pass
+
+	terrain_changed.emit(terrain)
+
+
+func is_weather_suppressed() -> bool:
+	if player != null and (
+		AbilityRuntime.has(player, AbilityId.Id.AIR_LOCK)
+		or AbilityRuntime.has(player, AbilityId.Id.CLOUD_NINE)
+	):
+		return true
+	if enemy != null and (
+		AbilityRuntime.has(enemy, AbilityId.Id.AIR_LOCK)
+		or AbilityRuntime.has(enemy, AbilityId.Id.CLOUD_NINE)
+	):
+		return true
+	return false
+
+
+func get_effective_weather() -> int:
+	if is_weather_suppressed():
+		return AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+	return weather
 
 func _announce_passive_abilities(
 	actor: BattleBattler,

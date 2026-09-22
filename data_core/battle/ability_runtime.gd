@@ -232,6 +232,42 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 		AbilityId.Id.AIR_LOCK, AbilityId.Id.CLOUD_NINE:
 			await battle.ability_announce(battler)
 
+		AbilityId.Id.ELECTRIC_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_ELECTRIC, 5)
+
+		AbilityId.Id.GRASSY_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_GRASSY, 5)
+
+		AbilityId.Id.MISTY_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_MISTY, 5)
+
+		AbilityId.Id.PSYCHIC_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_PSYCHIC, 5)
+
+		AbilityId.Id.PRIMORDIAL_SEA:
+			await battle.ability_announce(battler)
+			battle.set_weather(
+				AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN, -1, true
+			)
+
+		AbilityId.Id.DESOLATE_LAND:
+			await battle.ability_announce(battler)
+			battle.set_weather(
+				AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT, -1, true
+			)
+
+		AbilityId.Id.DELTA_STREAM:
+			await battle.ability_announce(battler)
+			# Primigenio sin tipo de clima propio aún; no pisa con climas normales
+			battle.weather_primal = true
+			battle.message.emit("¡Corrientes de aire misteriosas protegen a los tipo Volador!")
+			await battle._wait(0.6)
+			battle.weather_changed.emit(battle.weather, true)
+
 		AbilityId.Id.TRACE:
 			if opponent != null and not opponent.is_fainted() and opponent.pokemon != null:
 				var opp_id: AbilityId.Id = opponent.pokemon.ability_id
@@ -306,38 +342,6 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 		AbilityId.Id.IMPOSTER:
 			if opponent != null and not opponent.is_fainted():
 				await _setup_imposter(battler, opponent, battle)
-
-		AbilityId.Id.ELECTRIC_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_ELECTRIC, 5)
-
-		AbilityId.Id.GRASSY_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_GRASSY, 5)
-
-		AbilityId.Id.MISTY_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_MISTY, 5)
-
-		AbilityId.Id.PSYCHIC_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_PSYCHIC, 5)
-
-		AbilityId.Id.PRIMORDIAL_SEA:
-			await battle.ability_announce(battler)
-			battle.set_weather(WeatherId.WEATHER_RAIN, -1, true)
-
-		AbilityId.Id.DESOLATE_LAND:
-			await battle.ability_announce(battler)
-			battle.set_weather(WeatherId.WEATHER_DROUGHT, -1, true)
-
-		AbilityId.Id.DELTA_STREAM:
-			await battle.ability_announce(battler)
-			# Si no tienes WEATHER_STRONG_WINDS, usa un id propio o reutiliza uno
-			# y trátalo como “vientos fuertes” en TypeChart (Flying no débil a Rock/Ice/Electric).
-			battle.set_weather(WeatherId.WEATHER_NONE, -1, true)  # ajusta al enum real
-			battle.message.emit("¡Se formaron misteriosas corrientes de aire!")
-			await battle._wait(0.7)
 
 ## ─── Contacto ───────────────────────────────────────────
 static func on_contact_hit(

@@ -117,6 +117,9 @@ var _battle_item_pending: bool = false
 var _force_switch_pending: bool = false
 var _battle_canvas_modulate: CanvasModulate = null
 
+var _default_bg_texture: Texture2D
+var _weather_container_parent: Node = null
+var _weather_attached: bool = false
 
 func _ready() -> void:
 	player_sprite_base_pos = player_sprite.position
@@ -162,6 +165,8 @@ func _ready() -> void:
 		if pdata != null:
 			party = pdata.party
 
+	_default_bg_texture = bg_sprite.texture
+
 	battle = BattleManager.new()
 	battle.message.connect(_on_battle_message)
 	battle.hp_changed.connect(_on_hp_changed)
@@ -177,6 +182,14 @@ func _ready() -> void:
 		battle.illusion_broken.connect(_on_illusion_broken)
 	if battle.has_signal("pokemon_entered_field"):
 		battle.pokemon_entered_field.connect(_on_pokemon_entered_field)
+	if battle.has_signal("terrain_changed"):
+		battle.terrain_changed.connect(_on_terrain_changed)
+	if battle.has_signal("weather_changed"):
+		battle.weather_changed.connect(_on_battle_weather_changed)
+
+	_attach_battle_weather()
+
+	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 
@@ -212,6 +225,14 @@ func _on_player_progress_changed() -> void:
 	player_level_label.text = str(player_pokemon.level)
 	_update_exp_bar()
 
+func _on_terrain_changed(terrain: int) -> void:
+	var path: String = AbilityBattleEffect.BG_TERRAIN_SPRITES.get(terrain, "")
+	if path.is_empty():
+		bg_sprite.texture = _default_bg_texture
+		return
+	var tex: Texture2D = load(path) as Texture2D
+	if tex != null:
+		bg_sprite.texture = tex
 
 func _process(delta: float) -> void:
 	if absf(player_hp_bar.size.x - player_hp_bar_target) > 0.5:
@@ -519,10 +540,11 @@ func _on_battle_ended(player_won: bool) -> void:
 	if _battle_closing:
 		return
 	_battle_closing = true
-
 	current_menu = MenuState.BUSY
 	action_menu.visible = false
 	fight_menu.visible = false
+
+	_detach_battle_weather()
 
 	var result: int = BattleSession.BattleResult.LOSE
 	if _ended_by_run:
@@ -1088,3 +1110,51 @@ func _play_cry(is_player: bool, mon: PokemonInstance = null) -> void:
 
 	player_node.stream = species.cry
 	player_node.play()
+
+func _attach_battle_weather() -> void:
+	if _weather_attached:
+		return
+	if WeatherManager == null:
+		return
+	var container: Node2D = WeatherManager.get_weather_container()
+	if container == null:
+		return
+	_weather_container_parent = container.get_parent()
+	container.reparent(self)
+	# Encima del BG, debajo de menús / Ability Bar (ajusta si hace falta)
+	container.z_index = bg_sprite.z_index
+	_weather_attached = true
+
+func _detach_battle_weather() -> void:
+	if not _weather_attached:
+		return
+	var container: Node2D = WeatherManager.get_weather_container()
+	if container != null and is_instance_valid(container):
+		# Apagar clima de combate
+		WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_NONE)
+		if _weather_container_parent != null and is_instance_valid(_weather_container_parent):
+			container.reparent(_weather_container_parent)
+		else:
+			WeatherManager.add_child(container)
+		container.z_index = bg_sprite.z_index
+	_weather_attached = false
+	_weather_container_parent = null
+
+func _on_battle_weather_changed(weather: int, _primal: bool) -> void:
+	if WeatherManager == null:
+		return
+	if battle != null and battle.is_weather_suppressed():
+		WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_NONE)
+		return
+
+	match weather:
+		AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
+			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_RAIN)
+		AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
+			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_SNOW)
+		AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM:
+			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_SANDSTORM)
+		AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
+			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_DROUGHT)
+		_:
+			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_NONE)
