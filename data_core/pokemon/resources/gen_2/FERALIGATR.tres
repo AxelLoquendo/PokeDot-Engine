@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_yf6cn")
 species_id = 1529
-form_id = &"feraligatr_mega"
+form_id = &"Mega"
 display_name = "Feraligatr"
 base_species_id = 160
 override_types = true
@@ -46,11 +46,8 @@ override_abilities = true
 ability_1 = 312
 hidden_ability = 312
 override_pokedex = true
-category_name = "Jaw doble"
-description = "Con sus brazos y su aleta capucha, este
-Pokémon forma un gigantesco conjunto de mandíbulas
-con un mordisco 10 veces más poderoso
-como las mandíbulas de Mega Feraligatr."
+category_name = "Double Jaw"
+description = "Al unir ambos brazos y la aleta que le cuelga al lomo cual capucha, crea una colosal mandíbula que multiplica por diez su potencia de mordida."
 height = 23
 weight = 1088
 tags = PackedStringArray("mega")
@@ -154,7 +151,7 @@ exp_yield = 239
 friendship = 70
 growth_rate = 3
 category_name = "Fauces"
-description = "Se suele mover lento, pero alcanza velocidades de vértigo al atacar y morder a sus enemigos."
+description = "Intimida a su rival abriendo sus grandes fauces. Al luchar, golpea el suelo con sus gruesas y fuertes patas traseras, y carga rápidamente contra el enemigo."
 height = 23
 weight = 888
 body_color = 1

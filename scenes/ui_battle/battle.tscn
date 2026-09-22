@@ -23,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://c5lt6p4qelcmk" path="res://graphics/status/sleep.png" id="15_qkdal"]
 [ext_resource type="Texture2D" uid="uid://csw0nagy2g81b" path="res://graphics/types/Tera/normal.png" id="16_yaib3"]
 [ext_resource type="Texture2D" uid="uid://d2fctsf11ue1w" path="res://graphics/ui_party_menu/icon_mega.png" id="18_ln23b"]
+[ext_resource type="Texture2D" uid="uid://bcsyl1tg00rft" path="res://graphics/battle_interface/ability_bar.png" id="24_y8am3"]
+[ext_resource type="Texture2D" uid="uid://wcfydsp13xu5" path="res://graphics/pokemon/icons/CHARIZARD_GMAX.png" id="25_wylot"]
+[ext_resource type="Texture2D" uid="uid://dsa3jbr712f3" path="res://graphics/pokemon/icons/TERAPAGOS_STELLAR.png" id="26_w7ur2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htemk"]
 font = ExtResource("3_pmg0a")
@@ -95,6 +98,187 @@ shadow_size = 0
 font = ExtResource("3_pmg0a")
 font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj0hq"]
+font = ExtResource("3_pmg0a")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+shadow_size = 0
+shadow_color = Color(0.26666668, 0.26666668, 0.26666668, 0.7176471)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="Animation" id="Animation_y8am3"]
+resource_name = "Entrada_Enemy"
+length = 0.39999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ability_Bar_Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(640, 88), Vector2(352, 88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ability_Bar_Enemy:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wylot"]
+resource_name = "Entrada_Player"
+length = 0.39999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ability_Bar_Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(-128, 152), Vector2(128, 152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ability_Bar_Player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w7ur2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ability_Bar_Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ability_Bar_Player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ability_Bar_Enemy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(352, 88)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ability_Bar_Enemy:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_noix1"]
+resource_name = "Salida_Enemy"
+length = 0.39999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ability_Bar_Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(352, 88), Vector2(640, 88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ability_Bar_Enemy:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jvsnx"]
+resource_name = "Salida_Player"
+length = 0.39999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ability_Bar_Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(128, 152), Vector2(-128, 152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ability_Bar_Player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2ddp"]
+_data = {
+&"Entrada_Enemy": SubResource("Animation_y8am3"),
+&"Entrada_Player": SubResource("Animation_wylot"),
+&"RESET": SubResource("Animation_w7ur2"),
+&"Salida_Enemy": SubResource("Animation_noix1"),
+&"Salida_Player": SubResource("Animation_jvsnx")
+}
 
 [node name="Battle" type="Node2D" unique_id=2072502865]
 script = ExtResource("1_axcis")
@@ -179,6 +363,7 @@ texture_normal = ExtResource("8_ln23b")
 texture_focused = ExtResource("9_w78s2")
 
 [node name="Overlay_Fight" type="Sprite2D" parent="." unique_id=2098993056]
+visible = false
 position = Vector2(240, 272)
 texture = ExtResource("11_ln23b")
 
@@ -403,3 +588,45 @@ visible = false
 position = Vector2(42, 4)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_ln23b")
+
+[node name="Ability_Bar_Player" type="Sprite2D" parent="." unique_id=1670984146]
+position = Vector2(128, 152)
+texture = ExtResource("24_y8am3")
+vframes = 2
+
+[node name="Ability_Name" type="Label" parent="Ability_Bar_Player" unique_id=1034184103]
+offset_left = -62.0
+offset_top = -33.0
+offset_right = 100.0
+offset_bottom = 31.0
+text = "[NAME_ABILITY]
+de [NAME_PKMN]"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Icon_Mon" type="Sprite2D" parent="Ability_Bar_Player" unique_id=1915550736]
+position = Vector2(-96, 0)
+texture = ExtResource("25_wylot")
+hframes = 2
+
+[node name="Ability_Bar_Enemy" type="Sprite2D" parent="." unique_id=815842023]
+position = Vector2(352, 88)
+texture = ExtResource("24_y8am3")
+vframes = 2
+frame = 1
+
+[node name="Ability_Name" type="Label" parent="Ability_Bar_Enemy" unique_id=80195452]
+offset_left = -98.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+text = "[NAME_ABILITY]
+de [NAME_PKMN]"
+label_settings = SubResource("LabelSettings_pj0hq")
+
+[node name="Icon_Mon" type="Sprite2D" parent="Ability_Bar_Enemy" unique_id=1893402351]
+position = Vector2(96, 0)
+texture = ExtResource("26_w7ur2")
+hframes = 2
+
+[node name="Animated_Ability_Bar" type="AnimationPlayer" parent="." unique_id=784373063]
+libraries/ = SubResource("AnimationLibrary_b2ddp")

@@ -3,6 +3,64 @@
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_rmot4"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://canaip61aor0e" path="res://graphics/pokemon/back/UNOWN_B.png" id="6_vc8qi"]
+[ext_resource type="Texture2D" uid="uid://dwkvugw52tmvl" path="res://graphics/pokemon/back_shiny/UNOWN_B.png" id="7_iee2d"]
+[ext_resource type="Texture2D" uid="uid://bawi1cu77bdw8" path="res://graphics/pokemon/front/UNOWN_B.png" id="8_cu4b1"]
+[ext_resource type="Texture2D" uid="uid://di28hefmvpka3" path="res://graphics/pokemon/front_shiny/UNOWN_B.png" id="9_gr3h1"]
+[ext_resource type="Texture2D" uid="uid://cul23koygkxil" path="res://graphics/pokemon/icons/UNOWN_B.png" id="10_xbagu"]
+[ext_resource type="Texture2D" uid="uid://ccyls74iqexcv" path="res://graphics/pokemon/follower/UNOWN_1.png" id="12_jxhq2"]
+[ext_resource type="Texture2D" uid="uid://dqbm0tmx4sdxi" path="res://graphics/pokemon/back/UNOWN_C.png" id="13_vmds3"]
+[ext_resource type="Texture2D" uid="uid://t4xv2jfjxg1r" path="res://graphics/pokemon/back_shiny/UNOWN_C.png" id="14_b1d4b"]
+[ext_resource type="Texture2D" uid="uid://b5qh4qs8pv4g2" path="res://graphics/pokemon/front/UNOWN_C.png" id="15_82spk"]
+[ext_resource type="Texture2D" uid="uid://cuthiwifpijyd" path="res://graphics/pokemon/front_shiny/UNOWN_C.png" id="16_4r804"]
+[ext_resource type="Texture2D" uid="uid://cw8gwtvhlxuel" path="res://graphics/pokemon/icons/UNOWN_C.png" id="17_casm5"]
+[ext_resource type="Texture2D" uid="uid://coanrax2vy6p6" path="res://graphics/pokemon/follower/UNOWN_2.png" id="18_oug22"]
+[ext_resource type="Texture2D" uid="uid://crfkhspu4p2n4" path="res://graphics/pokemon/back/UNOWN_D.png" id="19_ejjqy"]
+[ext_resource type="Texture2D" uid="uid://dwsm3iepjrecr" path="res://graphics/pokemon/back_shiny/UNOWN_D.png" id="20_ei24v"]
+[ext_resource type="Texture2D" uid="uid://cu27j61np0i4q" path="res://graphics/pokemon/front/UNOWN_D.png" id="21_1tic7"]
+[ext_resource type="Texture2D" uid="uid://x7vbvh0o4bx4" path="res://graphics/pokemon/front_shiny/UNOWN_D.png" id="22_mrgp5"]
+[ext_resource type="Texture2D" uid="uid://k6txd68yip5y" path="res://graphics/pokemon/icons/UNOWN_D.png" id="23_hjm28"]
+[ext_resource type="Texture2D" uid="uid://bdfrk4w0bc83k" path="res://graphics/pokemon/follower/UNOWN_3.png" id="24_nwb0k"]
+[ext_resource type="Texture2D" uid="uid://6f0mfv6rmute" path="res://graphics/pokemon/back/UNOWN_E.png" id="25_7fepr"]
+[ext_resource type="Texture2D" uid="uid://cjlb588383nod" path="res://graphics/pokemon/back_shiny/UNOWN_E.png" id="26_vrnc2"]
+[ext_resource type="Texture2D" uid="uid://0gr5kauhn645" path="res://graphics/pokemon/front/UNOWN_E.png" id="27_k8ixw"]
+[ext_resource type="Texture2D" uid="uid://b84s2ssg0qxj5" path="res://graphics/pokemon/front_shiny/UNOWN_E.png" id="28_fi06h"]
+[ext_resource type="Texture2D" uid="uid://o7b6m2gn5yvj" path="res://graphics/pokemon/icons/UNOWN_E.png" id="29_m4t4i"]
+[ext_resource type="Texture2D" uid="uid://bmmu3vxcb3j3e" path="res://graphics/pokemon/follower/UNOWN_4.png" id="30_fs4nn"]
+[ext_resource type="Texture2D" uid="uid://datc0niqe30ww" path="res://graphics/pokemon/back/UNOWN_F.png" id="31_nwb0k"]
+[ext_resource type="Texture2D" uid="uid://cjqrfjmvxvpqj" path="res://graphics/pokemon/back_shiny/UNOWN_F.png" id="32_7fepr"]
+[ext_resource type="Texture2D" uid="uid://c47fwbjpav7yi" path="res://graphics/pokemon/front/UNOWN_F.png" id="33_vrnc2"]
+[ext_resource type="Texture2D" uid="uid://c3w8h10rtwg40" path="res://graphics/pokemon/front_shiny/UNOWN_F.png" id="34_k8ixw"]
+[ext_resource type="Texture2D" uid="uid://c47s8hbn5m2p5" path="res://graphics/pokemon/follower/UNOWN_5.png" id="35_fi06h"]
+[ext_resource type="Texture2D" uid="uid://bbe7mnk7hjdk8" path="res://graphics/pokemon/back/UNOWN_G.png" id="36_3sogc"]
+[ext_resource type="Texture2D" uid="uid://c75dfaiaxvfk5" path="res://graphics/pokemon/back_shiny/UNOWN_G.png" id="37_1ee1n"]
+[ext_resource type="Texture2D" uid="uid://b4eqgq3t3l5yk" path="res://graphics/pokemon/front/UNOWN_G.png" id="38_5hvkt"]
+[ext_resource type="Texture2D" uid="uid://chdsvf048ssmi" path="res://graphics/pokemon/front_shiny/UNOWN_G.png" id="39_vujel"]
+[ext_resource type="Texture2D" uid="uid://btqsjv6m1usmo" path="res://graphics/pokemon/icons/UNOWN_G.png" id="40_pxylh"]
+[ext_resource type="Texture2D" uid="uid://dpapl7ktmesp" path="res://graphics/pokemon/follower/UNOWN_6.png" id="41_fe6tb"]
+[ext_resource type="Texture2D" uid="uid://bdgppty61v760" path="res://graphics/pokemon/back/UNOWN_H.png" id="42_djacl"]
+[ext_resource type="Texture2D" uid="uid://cm2i4u7ti61sq" path="res://graphics/pokemon/back_shiny/UNOWN_H.png" id="43_ya2we"]
+[ext_resource type="Texture2D" uid="uid://cqsb504luby64" path="res://graphics/pokemon/front/UNOWN_H.png" id="44_u7r43"]
+[ext_resource type="Texture2D" uid="uid://bgfp0627juwmp" path="res://graphics/pokemon/front_shiny/UNOWN_H.png" id="45_6cpci"]
+[ext_resource type="Texture2D" uid="uid://csy5nipwr04re" path="res://graphics/pokemon/icons/UNOWN_H.png" id="46_7h5fw"]
+[ext_resource type="Texture2D" uid="uid://ddusr0hkgqvge" path="res://graphics/pokemon/follower/UNOWN_7.png" id="47_ktbsr"]
+[ext_resource type="Texture2D" uid="uid://jj1g8xdrknsc" path="res://graphics/pokemon/back/UNOWN_I.png" id="48_6ki2v"]
+[ext_resource type="Texture2D" uid="uid://f4673dpvagom" path="res://graphics/pokemon/back_shiny/UNOWN_I.png" id="49_kpm21"]
+[ext_resource type="Texture2D" uid="uid://bljm7xy3nuhn3" path="res://graphics/pokemon/front/UNOWN_I.png" id="50_hq7w2"]
+[ext_resource type="Texture2D" uid="uid://bv3pmjnf7bwta" path="res://graphics/pokemon/front_shiny/UNOWN_I.png" id="51_4350i"]
+[ext_resource type="Texture2D" uid="uid://8r1vgsdnp6dh" path="res://graphics/pokemon/icons/UNOWN_I.png" id="52_g05oy"]
+[ext_resource type="Texture2D" uid="uid://du0m1arvjpk0k" path="res://graphics/pokemon/follower/UNOWN_8.png" id="53_xgklf"]
+[ext_resource type="Texture2D" uid="uid://dtyuoc2bs3hxi" path="res://graphics/pokemon/back/UNOWN_J.png" id="54_ga7te"]
+[ext_resource type="Texture2D" uid="uid://c77driwdxek5y" path="res://graphics/pokemon/back_shiny/UNOWN_J.png" id="55_ndn20"]
+[ext_resource type="Texture2D" uid="uid://dyxjd05c4ohct" path="res://graphics/pokemon/front/UNOWN_J.png" id="56_3yogs"]
+[ext_resource type="Texture2D" uid="uid://dawohmkawqk5u" path="res://graphics/pokemon/front_shiny/UNOWN_J.png" id="57_6e67t"]
+[ext_resource type="Texture2D" uid="uid://bx6t6f3uixn50" path="res://graphics/pokemon/icons/UNOWN_J.png" id="58_f7pic"]
+[ext_resource type="Texture2D" uid="uid://6t6ums5qyrct" path="res://graphics/pokemon/follower/UNOWN_9.png" id="59_rywxr"]
+[ext_resource type="Texture2D" uid="uid://dcxyvnpjg5e55" path="res://graphics/pokemon/back/UNOWN_K.png" id="60_ffx8e"]
+[ext_resource type="Texture2D" uid="uid://cwu6bn7tmhyxe" path="res://graphics/pokemon/back_shiny/UNOWN_K.png" id="61_5wvqc"]
+[ext_resource type="Texture2D" uid="uid://cr7rra8bohhw2" path="res://graphics/pokemon/front/UNOWN_K.png" id="62_2kn1j"]
+[ext_resource type="Texture2D" uid="uid://bxi4pcuto216j" path="res://graphics/pokemon/front_shiny/UNOWN_K.png" id="63_6c2wi"]
+[ext_resource type="Texture2D" uid="uid://be7778mr30qyx" path="res://graphics/pokemon/icons/UNOWN_K.png" id="64_wt0jg"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://b4day0jijmoe0" path="res://graphics/pokemon/front/UNOWN.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://rhbo64u6ibkt" path="res://graphics/pokemon/front_shiny/UNOWN.png" id="gfx101"]
@@ -15,7 +73,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_rmot4")
 species_id = 1024
-form_id = &"unown_b"
+form_id = &"B"
 display_name = "Unown B"
 base_species_id = 201
 override_types = true
@@ -27,13 +85,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("8_cu4b1")
+front_sprite_shiny = ExtResource("9_gr3h1")
+back_sprite = ExtResource("6_vc8qi")
+back_sprite_shiny = ExtResource("7_iee2d")
+icon_sprite = ExtResource("10_xbagu")
+overworld_scene = ExtResource("12_jxhq2")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 9)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -41,7 +107,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_1"]
 script = ExtResource("2_rmot4")
 species_id = 1025
-form_id = &"unown_c"
+form_id = &"C"
 display_name = "Unown C"
 base_species_id = 201
 override_types = true
@@ -53,13 +119,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("15_82spk")
+front_sprite_shiny = ExtResource("16_4r804")
+back_sprite = ExtResource("13_vmds3")
+back_sprite_shiny = ExtResource("14_b1d4b")
+icon_sprite = ExtResource("17_casm5")
+overworld_scene = ExtResource("18_oug22")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 6)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -67,7 +141,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_2"]
 script = ExtResource("2_rmot4")
 species_id = 1026
-form_id = &"unown_d"
+form_id = &"D"
 display_name = "Unown D"
 base_species_id = 201
 override_types = true
@@ -79,13 +153,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("21_1tic7")
+front_sprite_shiny = ExtResource("22_mrgp5")
+back_sprite = ExtResource("19_ejjqy")
+back_sprite_shiny = ExtResource("20_ei24v")
+icon_sprite = ExtResource("23_hjm28")
+overworld_scene = ExtResource("24_nwb0k")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 8)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -93,7 +175,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_3"]
 script = ExtResource("2_rmot4")
 species_id = 1027
-form_id = &"unown_e"
+form_id = &"E"
 display_name = "Unown E"
 base_species_id = 201
 override_types = true
@@ -105,13 +187,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("27_k8ixw")
+front_sprite_shiny = ExtResource("28_fi06h")
+back_sprite = ExtResource("25_7fepr")
+back_sprite_shiny = ExtResource("26_vrnc2")
+icon_sprite = ExtResource("29_m4t4i")
+overworld_scene = ExtResource("30_fs4nn")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 10)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -119,7 +209,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_4"]
 script = ExtResource("2_rmot4")
 species_id = 1028
-form_id = &"unown_f"
+form_id = &"F"
 display_name = "Unown F"
 base_species_id = 201
 override_types = true
@@ -131,13 +221,20 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("33_vrnc2")
+front_sprite_shiny = ExtResource("34_k8ixw")
+back_sprite = ExtResource("31_nwb0k")
+back_sprite_shiny = ExtResource("32_7fepr")
+icon_sprite = ExtResource("35_fi06h")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 10)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -145,7 +242,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_5"]
 script = ExtResource("2_rmot4")
 species_id = 1029
-form_id = &"unown_g"
+form_id = &"G"
 display_name = "Unown G"
 base_species_id = 201
 override_types = true
@@ -157,13 +254,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("38_5hvkt")
+front_sprite_shiny = ExtResource("39_vujel")
+back_sprite = ExtResource("36_3sogc")
+back_sprite_shiny = ExtResource("37_1ee1n")
+icon_sprite = ExtResource("40_pxylh")
+overworld_scene = ExtResource("41_fe6tb")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 5)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -171,7 +276,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_6"]
 script = ExtResource("2_rmot4")
 species_id = 1030
-form_id = &"unown_h"
+form_id = &"H"
 display_name = "Unown H"
 base_species_id = 201
 override_types = true
@@ -183,13 +288,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("44_u7r43")
+front_sprite_shiny = ExtResource("45_6cpci")
+back_sprite = ExtResource("42_djacl")
+back_sprite_shiny = ExtResource("43_ya2we")
+icon_sprite = ExtResource("46_7h5fw")
+overworld_scene = ExtResource("47_ktbsr")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 8)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -197,7 +310,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_7"]
 script = ExtResource("2_rmot4")
 species_id = 1031
-form_id = &"unown_i"
+form_id = &"I"
 display_name = "Unown I"
 base_species_id = 201
 override_types = true
@@ -209,13 +322,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("50_hq7w2")
+front_sprite_shiny = ExtResource("51_4350i")
+back_sprite = ExtResource("48_6ki2v")
+back_sprite_shiny = ExtResource("49_kpm21")
+icon_sprite = ExtResource("52_g05oy")
+overworld_scene = ExtResource("53_xgklf")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 7)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -223,7 +344,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_8"]
 script = ExtResource("2_rmot4")
 species_id = 1032
-form_id = &"unown_j"
+form_id = &"J"
 display_name = "Unown J"
 base_species_id = 201
 override_types = true
@@ -235,13 +356,21 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("56_3yogs")
+front_sprite_shiny = ExtResource("57_6e67t")
+back_sprite = ExtResource("54_ga7te")
+back_sprite_shiny = ExtResource("55_ndn20")
+icon_sprite = ExtResource("58_f7pic")
+overworld_scene = ExtResource("59_rywxr")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 9)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -249,7 +378,7 @@ tags = PackedStringArray()
 [sub_resource type="Resource" id="Resource_form_9"]
 script = ExtResource("2_rmot4")
 species_id = 1033
-form_id = &"unown_k"
+form_id = &"K"
 display_name = "Unown K"
 base_species_id = 201
 override_types = true
@@ -261,13 +390,20 @@ base_defense = 48
 base_speed = 48
 base_sp_attack = 72
 base_sp_defense = 48
+front_sprite = ExtResource("62_2kn1j")
+front_sprite_shiny = ExtResource("63_6c2wi")
+back_sprite = ExtResource("60_ffx8e")
+back_sprite_shiny = ExtResource("61_5wvqc")
+icon_sprite = ExtResource("64_wt0jg")
 cry = ExtResource("gfx106")
+front_sprite_offset = Vector2(0, 16)
+back_sprite_offset = Vector2(0, 7)
 override_graphics = true
 override_abilities = true
 ability_1 = 26
 override_pokedex = true
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 tags = PackedStringArray()
@@ -736,7 +872,7 @@ catch_rate = 225
 exp_yield = 118
 friendship = 70
 category_name = "Símbolo"
-description = "Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado."
+description = "Este Pokémon tiene forma de caracteres de textos antiguos. Aunque sigue la investigación, es un misterio cuál surgió primero: los escritos o los Unown."
 height = 5
 weight = 50
 body_color = 4

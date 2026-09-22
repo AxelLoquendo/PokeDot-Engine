@@ -21,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_tndg1")
 species_id = 921
-form_id = &"ampharos_mega"
+form_id = &"Mega"
 display_name = "Ampharos"
 base_species_id = 181
 override_types = true
@@ -48,10 +48,7 @@ ability_2 = 104
 hidden_ability = 104
 override_pokedex = true
 category_name = "Luz"
-description = "Cantidades masivas de energía intensamente
-estimular las células de Ampharos, aparentemente
-despertando a su dragón dormido
-sangre."
+description = "Una enorme cantidad de energía estimuló las células de Ampharos, despertando la sangre de dragón que llevaba largo tiempo dormida."
 height = 14
 weight = 615
 tags = PackedStringArray("mega")
@@ -174,7 +171,7 @@ exp_yield = 230
 friendship = 70
 growth_rate = 3
 category_name = "Luz"
-description = "La punta de su cola reluce brillantemente y puede ser vista desde lejos. Es usado como faro."
+description = "Desprende tanta luz que es posible verlo desde el espacio. Antes, la gente usaba su luz como sistema de comunicación con el que enviaba señales a gran distancia."
 height = 14
 weight = 615
 body_color = 2

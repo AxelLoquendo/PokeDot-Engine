@@ -9,6 +9,7 @@ const SPECIES_DOCK_SCRIPT: Script = preload("res://addons/species_editor/species
 const ABILITY_DOCK_SCRIPT: Script = preload("res://addons/ability_editor/ability_dock.gd")
 const MOVE_DOCK_SCRIPT: Script = preload("res://addons/move_editor/move_dock.gd")
 const ITEM_DOCK_SCRIPT: Script = preload("res://addons/item_editor/item_dock.gd")
+const WILD_ENCOUNTER_SCRIPT_PATH: String = "res://addons/wild_encounter_editor/wild_encounter_editor.gd"
 const WINDOW_SIZE: Vector2i = Vector2i(1420, 860)
 const WINDOW_MIN_SIZE: Vector2i = Vector2i(980, 620)
 const BACKGROUND: Color = Color("12161d")
@@ -141,7 +142,7 @@ func _build_shell() -> void:
 	nav_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	nav_hint.add_theme_color_override("font_color", MUTED)
 	nav.add_child(nav_hint)
-	var definitions: Array[Dictionary] = [{"id":"species", "label":"Species", "hint":"Especies, formas y gráficos"}, {"id":"abilities", "label":"Abilities", "hint":"Habilidades"}, {"id":"moves", "label":"Moves", "hint":"Movimientos"}, {"id":"items", "label":"Items", "hint":"Objetos"}]
+	var definitions: Array[Dictionary] = [{"id":"species", "label":"Species", "hint":"Especies, formas y gráficos"}, {"id":"abilities", "label":"Abilities", "hint":"Habilidades"}, {"id":"moves", "label":"Moves", "hint":"Movimientos"}, {"id":"items", "label":"Items", "hint":"Objetos"}, {"id":"wild_encounters", "label":"Wild Encounters", "hint":"Grass TileBehaviour encounters"}]
 	for definition: Dictionary in definitions:
 		var button: Button = Button.new()
 		button.text = str(definition["label"])
@@ -196,7 +197,7 @@ func _select_module(module_id: String) -> void:
 func _instantiate_module(module_id: String, token: int) -> void:
 	if token != loading_token or active_module != module_id or modules.has(module_id):
 		return
-	var script: Script = _script_for_module(module_id)
+	var script: Script = _load_module_script(module_id)
 	if script == null:
 		status_label.text = "No se pudo cargar %s" % _module_label(module_id)
 		return
@@ -212,12 +213,17 @@ func _instantiate_module(module_id: String, token: int) -> void:
 	_strip_ui_symbols(module_control)
 	status_label.text = "%s activo" % _module_label(module_id)
 
-func _script_for_module(module_id: String) -> Script:
+func _load_module_script(module_id: String) -> Script:
+	# Existing modules retain their current script references. Wild Encounters is
+	# deliberately loaded only after its navigation item is selected, so a
+	# missing optional encounter dependency cannot prevent Workspace startup.
 	match module_id:
 		"species": return SPECIES_DOCK_SCRIPT
 		"abilities": return ABILITY_DOCK_SCRIPT
 		"moves": return MOVE_DOCK_SCRIPT
 		"items": return ITEM_DOCK_SCRIPT
+		"wild_encounters":
+			return ResourceLoader.load(WILD_ENCOUNTER_SCRIPT_PATH, "Script") as Script
 	return null
 
 func _module_label(module_id: String) -> String:
@@ -225,6 +231,7 @@ func _module_label(module_id: String) -> String:
 		"abilities": return "Abilities"
 		"moves": return "Moves"
 		"items": return "Items"
+		"wild_encounters": return "Wild Encounters"
 		_: return "Species"
 
 func _strip_ui_symbols(root: Node) -> void:

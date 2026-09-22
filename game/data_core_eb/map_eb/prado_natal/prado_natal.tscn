@@ -37,9 +37,16 @@ script = ExtResource("3_cxnhx")
 species_id = 1323
 metadata/_custom_type_script = "uid://bbtorylwxpgih"
 
+[sub_resource type="Resource" id="Resource_58jqm"]
+script = ExtResource("3_cxnhx")
+species_id = 1433
+min_level = 5
+max_level = 7
+weight = 40
+
 [sub_resource type="Resource" id="Resource_ueygd"]
 script = ExtResource("4_8wtdx")
-entries = Array[ExtResource("3_cxnhx")]([SubResource("Resource_cxnhx"), SubResource("Resource_s65af"), SubResource("Resource_bneyt"), SubResource("Resource_q0yxb")])
+entries = Array[ExtResource("3_cxnhx")]([SubResource("Resource_cxnhx"), SubResource("Resource_s65af"), SubResource("Resource_bneyt"), SubResource("Resource_q0yxb"), SubResource("Resource_58jqm")])
 metadata/_custom_type_script = "uid://c2ffqk4spv6ta"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vq3b1"]
@@ -2357,7 +2364,7 @@ script = ExtResource("9_cxnhx")
 script_file_path = "res://game/data_core_eb/map_eb/prado_natal/npc_basico.txt"
 metadata/_custom_type_script = "uid://bwbh47vc5fymn"
 
-[sub_resource type="Resource" id="Resource_58jqm"]
+[sub_resource type="Resource" id="Resource_l1ftc"]
 resource_local_to_scene = true
 script = ExtResource("7_y0fca")
 nombre = "Kaida"
@@ -2429,4 +2436,4 @@ tile_set = SubResource("TileSet_hprgv")
 
 [node name="Npc" parent="EventObject" unique_id=1270542304 instance=ExtResource("4_d8013")]
 position = Vector2(152, 177)
-character_data = SubResource("Resource_58jqm")
+character_data = SubResource("Resource_l1ftc")

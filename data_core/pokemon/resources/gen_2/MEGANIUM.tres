@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_7wxk0")
 species_id = 1528
-form_id = &"meganium_mega"
+form_id = &"Mega"
 display_name = "Meganium"
 base_species_id = 154
 override_types = true
@@ -46,11 +46,8 @@ ability_1 = 315
 ability_2 = 315
 hidden_ability = 315
 override_pokedex = true
-category_name = "Herb"
-description = "Este Pokémon puede disparar tremendamente
-poderoso Beam Solar de sus cuatro
-flores. Otro nombre para esto es
-Mega Sol Cannon."
+category_name = "Hierba"
+description = "El poder del Rayo Solar que proyecta por sus cuatro flores es descomunal, por lo que también recibe el nombre de Megacañón Solar."
 height = 24
 weight = 2010
 tags = PackedStringArray("mega")
@@ -158,7 +155,7 @@ exp_yield = 236
 friendship = 70
 growth_rate = 3
 category_name = "Hierba"
-description = "El olor que desprenden sus pétalos contiene una sustancia que calma el instinto agresivo."
+description = "La fragancia de su flor aplaca y suaviza los ánimos. Al luchar, libera más cantidad de esencia calmante para anular el espíritu de combate de su oponente."
 height = 18
 weight = 1005
 body_color = 3
