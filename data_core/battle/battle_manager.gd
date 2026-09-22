@@ -580,7 +580,8 @@ func _process_end_of_turn() -> void:
 		if battler.is_fainted():
 			continue
 		if AbilityRuntime.has(battler, AbilityId.Id.POISON_HEAL) \
-				and (battler.pokemon.status == PokemonInstance.Status.POISON or battler.pokemon.status == PokemonInstance.Status.TOXIC):
+				and (battler.pokemon.status == PokemonInstance.Status.POISON \
+					or battler.pokemon.status == PokemonInstance.Status.TOXIC):
 			@warning_ignore("integer_division")
 			var heal: int = maxi(1, battler.get_max_hp() / 8)
 			battler.pokemon.apply_heal(heal)
@@ -601,7 +602,7 @@ func _process_end_of_turn() -> void:
 
 	for battler: BattleBattler in [player, enemy]:
 		if not battler.is_fainted():
-			AbilityRuntime.end_of_turn(battler, weather, self)
+			await AbilityRuntime.end_of_turn(battler, weather, self)
 
 	player_side.tick_down()
 	enemy_side.tick_down()
@@ -656,8 +657,10 @@ func _sort_actions(actions: Array[BattleAction]) -> Array[BattleAction]:
 	actions.sort_custom(func(a: BattleAction, b: BattleAction) -> bool:
 		if a.priority != b.priority:
 			return a.priority > b.priority
-		var sa: int = a.actor.get_effective_stat(PokemonInstance.Stat.SPEED)
-		var sb: int = b.actor.get_effective_stat(PokemonInstance.Stat.SPEED)
+		var sa: float = float(a.actor.get_effective_stat(PokemonInstance.Stat.SPEED)) \
+			* AbilityRuntime.speed_multiplier(a.actor, weather)
+		var sb: float = float(b.actor.get_effective_stat(PokemonInstance.Stat.SPEED)) \
+			* AbilityRuntime.speed_multiplier(b.actor, weather)
 		if sa != sb:
 			return sa > sb
 		return randf() < 0.5
@@ -687,7 +690,6 @@ func _execute_move(action: BattleAction) -> void:
 	if not check.message.is_empty():
 		message.emit(check.message)
 		await _wait(0.8)
-
 	if not check.can_act:
 		if check.is_confusion_hit:
 			var self_damage: int = StatusConditions.self_hit_confusion(actor)
@@ -755,6 +757,7 @@ func _execute_move(action: BattleAction) -> void:
 	var hit_count: int = DamageCalculator.roll_hit_count(move)
 	if move.is_multi_hit and AbilityRuntime.always_max_hits(actor):
 		hit_count = move.max_hits
+
 	var total_dealt: int = 0
 	var last_result: DamageCalculator.HitResult = null
 	var hits_landed: int = 0
@@ -764,7 +767,8 @@ func _execute_move(action: BattleAction) -> void:
 			break
 
 		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(
-			actor, target, move, weather, _side_for(target).has_screen(move.category == MoveStruct.DamageCategory.PHYSICAL)
+			actor, target, move, weather,
+			_side_for(target).has_screen(move.category == MoveStruct.DamageCategory.PHYSICAL)
 		)
 		last_result = result
 
@@ -799,6 +803,10 @@ func _execute_move(action: BattleAction) -> void:
 			message.emit("¡%s resistió el golpe!" % target.get_display_name())
 			await _wait(0.5)
 
+		# Weak Armor, Justified, Rattled, Stamina, Anger Point, Steam Engine, Water Compaction
+		if dealt > 0 and not target.is_fainted():
+			await AbilityRuntime.on_damaged_by_move(target, actor, move, result.critical, self)
+
 		if move.recoil_percent > 0 and not actor.is_fainted():
 			await _apply_recoil(actor, dealt, move.recoil_percent)
 			if actor.is_fainted():
@@ -811,21 +819,12 @@ func _execute_move(action: BattleAction) -> void:
 		if actor.is_fainted():
 			break
 
-		if result.critical and AbilityRuntime.has(target, AbilityId.Id.ANGER_POINT) and not target.is_fainted():
-			var boost: int = 6 - target.stage_attack
-			if boost > 0:
-				await ability_change_stat(target, PokemonInstance.Stat.ATTACK, boost)
-
-		if move.type == PokemonData.Type.TYPE_DARK and AbilityRuntime.has(target, AbilityId.Id.JUSTIFIED) and not target.is_fainted():
-			await ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
-
 		if target.is_fainted() and move.makes_contact and AbilityRuntime.has(target, AbilityId.Id.AFTERMATH):
 			@warning_ignore("integer_division")
 			var aftermath_dmg: int = maxi(1, actor.get_max_hp() / 4)
-			ability_deal_damage(actor, aftermath_dmg, target)
+			await ability_deal_damage(actor, aftermath_dmg, target)
 			if actor.is_fainted():
 				break
-
 
 	if last_result == null or last_result.ability_immunity != "" or last_result.effectiveness <= 0.0:
 		return
@@ -843,6 +842,7 @@ func _execute_move(action: BattleAction) -> void:
 
 	message.emit("Hizo %d PS de daño." % total_dealt)
 	await _wait(0.7)
+
 	await _apply_damaging_move_effect(actor, target, move, total_dealt)
 
 	if target.is_fainted():
@@ -858,7 +858,6 @@ func _execute_move(action: BattleAction) -> void:
 			chance = mini(100, chance * 2)
 		if randi_range(1, 100) <= chance:
 			await _apply_secondary_effect(actor, target, move)
-
 
 @warning_ignore("unused_parameter")
 func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: DamageCalculator.HitResult) -> void:
@@ -1404,6 +1403,7 @@ func ability_announce(battler: BattleBattler) -> void:
 	if name.is_empty():
 		return
 	message.emit("¡Se activó %s de %s!" % [name, battler.get_display_name()])
+	await _wait(0.4)
 
 func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
 	if caused_by_foe and stages < 0 and AbilityRuntime.blocks_foe_stat_drop(battler, stat):

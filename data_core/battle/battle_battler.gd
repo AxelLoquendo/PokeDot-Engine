@@ -35,6 +35,11 @@ var ability_active: bool = true
 ## un 50% sus propios movimientos de Fuego mientras siga en combate.
 var flash_fire_boosted: bool = false
 
+## Slow Start: 5 turnos con Atk/Spe a la mitad
+var slow_start_turns: int = 0
+## Unburden: se activa al perder el objeto en combate
+var unburden_active: bool = false
+
 func setup(p: PokemonInstance, player_side: bool) -> void:
 	pokemon = p
 	is_player_side = player_side
@@ -53,6 +58,8 @@ func _reset_stages() -> void:
 	flinched = false
 	ability_active = true
 	flash_fire_boosted = false
+	slow_start_turns = 0
+	unburden_active = false
 	protect_active = false
 	protect_kind = ProtectResolver.Kind.NONE
 	endure_active = false
@@ -102,8 +109,22 @@ func get_effective_stat(stat: PokemonInstance.Stat) -> int:
 			stage = stage_speed
 		_:
 			stage = 0
-	return maxi(1, int(floor(float(base) * _stage_multiplier(stage))))
+	var value: float = float(base) * _stage_multiplier(stage)
 
+	# Slow Start: Atk y Spe a la mitad
+	if slow_start_turns > 0:
+		if stat == PokemonInstance.Stat.ATTACK or stat == PokemonInstance.Stat.SPEED:
+			value *= 0.5
+
+	# Velocidad por habilidades de clima / estado (el weather lo pasa el manager al ordenar)
+	# Aquí solo Unburden / Quick Feet locales; Chlorophyll etc. vía AbilityRuntime.speed_multiplier
+	if stat == PokemonInstance.Stat.SPEED:
+		if AbilityRuntime.has(self, AbilityId.Id.QUICK_FEET) and pokemon.has_status():
+			value *= 1.5
+		if unburden_active and AbilityRuntime.has(self, AbilityId.Id.UNBURDEN):
+			value *= 2.0
+
+	return maxi(1, int(floor(value)))
 
 static func _stage_multiplier(stage: int) -> float:
 	stage = clampi(stage, -6, 6)

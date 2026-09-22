@@ -56,6 +56,11 @@ var _ability_bar_busy: bool = false
 const PARTY_SCENE: PackedScene = preload("res://scenes/ui_party_menu/party_menu.tscn")
 const BAG_SCENE: PackedScene = preload("res://scenes/ui_bag/bag.tscn")
 
+const ABILITY_POS_PLAYER_OFF: Vector2 = Vector2(-128, 152)
+const ABILITY_POS_PLAYER_ON: Vector2 = Vector2(128, 152)
+const ABILITY_POS_ENEMY_OFF: Vector2 = Vector2(640, 88)
+const ABILITY_POS_ENEMY_ON: Vector2 = Vector2(352, 88)
+
 var player_pokemon: PokemonInstance
 var enemy_pokemon: PokemonInstance
 var player_sprite_base_pos: Vector2
@@ -94,6 +99,7 @@ var _bag_ui: BagUI = null
 var _battle_item_pending: bool = false
 var _force_switch_pending: bool = false
 var _battle_canvas_modulate: CanvasModulate = null
+
 
 func _ready() -> void:
 	player_sprite_base_pos = player_sprite.position
@@ -161,10 +167,7 @@ func _ready() -> void:
 	action_menu.visible = false
 	current_menu = MenuState.BUSY
 
-	if ability_bar_player:
-		ability_bar_player.visible = false
-	if ability_bar_enemy:
-		ability_bar_enemy.visible = false
+	_reset_ability_bars()
 
 	await battle.start_battle_intro()
 
@@ -174,9 +177,11 @@ func _ready() -> void:
 	_update_action_focus()
 	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 
+
 func _on_player_progress_changed() -> void:
 	player_level_label.text = str(player_pokemon.level)
 	_update_exp_bar()
+
 
 func _process(delta: float) -> void:
 	if absf(player_hp_bar.size.x - player_hp_bar_target) > 0.5:
@@ -198,6 +203,7 @@ func _process(delta: float) -> void:
 
 	_animate_ability_icon(delta, ability_icon_player, true)
 	_animate_ability_icon(delta, ability_icon_enemy, false)
+
 
 func _input(event: InputEvent) -> void:
 	if current_menu == MenuState.BUSY:
@@ -381,6 +387,7 @@ func _update_ui() -> void:
 	_update_hp_bars()
 	_update_exp_bar()
 
+
 func _set_gender(label: Label, gender: PokemonData.Gender) -> void:
 	if label.label_settings == null:
 		label.label_settings = LabelSettings.new()
@@ -415,6 +422,7 @@ func _hp_color(ratio: float) -> Color:
 		return Color(0.95, 0.85, 0.2)
 	return Color(0.9, 0.2, 0.2)
 
+
 func _update_exp_bar() -> void:
 	var species: PokemonDataStruct = player_pokemon.get_species()
 	if species == null:
@@ -428,6 +436,7 @@ func _update_exp_bar() -> void:
 	var span: int = maxi(exp_next_level - exp_this_level, 1)
 	var progress: float = float(player_pokemon.experience - exp_this_level) / float(span)
 	player_exp_bar_target = PLAYER_EXP_BAR_MAX_WIDTH * clampf(progress, 0.0, 1.0)
+
 
 func _get_back_offset_px(pokemon: PokemonInstance) -> Vector2:
 	var species: PokemonDataStruct = pokemon.get_species()
@@ -551,6 +560,7 @@ func _on_pkmn_pressed() -> void:
 func _on_player_must_switch() -> void:
 	_ask_fainted_action()
 
+
 func _ask_fainted_action() -> void:
 	current_menu = MenuState.BUSY
 	_show_message_box("¿Qué hará el entrenador?")
@@ -585,11 +595,9 @@ func _abrir_party_batalla(forzar: bool) -> void:
 		return
 
 	_party_ui = PARTY_SCENE.instantiate() as PartyMenu
-	# Encima del overlay de batalla (layer 100)
 	_party_ui.layer = 120
 	_party_ui.visible = true
 
-	# Mejor como hijo del root/tree para no heredar rarezas del Node2D de batalla
 	var host: Node = get_tree().root
 	host.add_child(_party_ui)
 
@@ -597,6 +605,7 @@ func _abrir_party_batalla(forzar: bool) -> void:
 	_party_ui.battle_cancelled.connect(_on_party_cancelled)
 	_party_ui.party_closed.connect(_on_party_closed)
 	_party_ui.setup_battle(datos, player_pokemon, forzar)
+
 
 func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	var free_switch: bool = _force_switch_pending
@@ -617,6 +626,7 @@ func _on_party_cancelled() -> void:
 
 func _on_party_closed() -> void:
 	_party_ui = null
+
 
 func _on_battle_item_selected(item_id: Items.ItemId) -> void:
 	_battle_item_pending = true
@@ -641,6 +651,7 @@ func _on_battle_item_selected(item_id: Items.ItemId) -> void:
 	_battle_item_pending = false
 	if battle.is_running and current_menu == MenuState.BUSY:
 		_on_battle_bag_closed()
+
 
 func _on_battle_bag_closed() -> void:
 	_bag_ui = null
@@ -715,21 +726,28 @@ func _on_move_pressed(index: int) -> void:
 	await battle.player_choose_move(index)
 	_update_selected_move_info()
 
+
 # ============================================================
 # BARRA DE HABILIDAD
 # ============================================================
 
+func _reset_ability_bars() -> void:
+	if ability_bar_player != null:
+		ability_bar_player.visible = false
+		ability_bar_player.position = ABILITY_POS_PLAYER_OFF
+	if ability_bar_enemy != null:
+		ability_bar_enemy.visible = false
+		ability_bar_enemy.position = ABILITY_POS_ENEMY_OFF
+
+
 func _animate_ability_icon(delta: float, icon: Sprite2D, is_player: bool) -> void:
-	if icon == null or not icon.is_visible_in_tree() or icon.texture == null:
+	if icon == null or icon.texture == null:
 		return
-	# Solo animar si la barra padre está visible
 	var bar: Sprite2D = ability_bar_player if is_player else ability_bar_enemy
 	if bar == null or not bar.visible:
 		return
-
 	if icon.hframes < 2:
 		icon.hframes = 2
-
 	if is_player:
 		_ability_icon_timer_player += delta
 		if _ability_icon_timer_player >= ability_icon_frame_time:
@@ -743,21 +761,21 @@ func _animate_ability_icon(delta: float, icon: Sprite2D, is_player: bool) -> voi
 
 
 func _on_ability_announced(is_player: bool, mon: PokemonInstance) -> void:
-	# No bloqueamos el hilo del signal: lanzamos la corrutina
 	_run_ability_bar(is_player, mon)
 
 
 func _run_ability_bar(is_player: bool, mon: PokemonInstance) -> void:
 	await show_ability_activation(is_player, mon)
-	if battle:
+	if battle != null:
 		battle.ability_bar_finished.emit()
 
 
-## API pública: muestra entrada → hold → salida
 func show_ability_activation(is_player: bool, mon: PokemonInstance) -> void:
 	if mon == null or ability_anim == null:
+		if battle != null:
+			battle.ability_bar_finished.emit()
 		return
-	# Si ya hay una barra en pantalla, espera a que termine
+
 	while _ability_bar_busy:
 		await get_tree().process_frame
 
@@ -769,23 +787,23 @@ func show_ability_activation(is_player: bool, mon: PokemonInstance) -> void:
 	var anim_in: String = "Entrada_Player" if is_player else "Entrada_Enemy"
 	var anim_out: String = "Salida_Player" if is_player else "Salida_Enemy"
 
-	# --- Texto ---
 	var ability_name: String = "???"
 	if mon.ability_id != AbilityId.Id.NONE:
 		ability_name = AbilityDatabase.get_ability_name(mon.ability_id)
 
-	var pkmn_name: String = mon.get_display_name() if mon.has_method("get_display_name") else ""
+	var pkmn_name: String = ""
+	if mon.has_method("get_display_name"):
+		pkmn_name = String(mon.get_display_name())
 	if pkmn_name.is_empty():
-		var sp: PokemonDataStruct = mon.get_species()
-		pkmn_name = sp.species_name if sp else "???"
+		var sp0: PokemonDataStruct = mon.get_species()
+		pkmn_name = sp0.species_name if sp0 != null else "???"
 
-	if label:
+	if label != null:
 		label.text = "%s\nde %s" % [ability_name, pkmn_name]
 
-	# --- Icono (2 frames, como party/dex) ---
-	if icon:
+	if icon != null:
 		var sp: PokemonDataStruct = mon.get_species()
-		icon.texture = sp.icon_sprite if sp else null
+		icon.texture = sp.icon_sprite if sp != null else null
 		icon.hframes = 2
 		icon.vframes = 1
 		icon.frame = 0
@@ -794,24 +812,26 @@ func show_ability_activation(is_player: bool, mon: PokemonInstance) -> void:
 		else:
 			_ability_icon_timer_enemy = 0.0
 
-	# --- Frame de la barra (0 = player, 1 = enemy) ---
-	if bar:
+	# Anti-parpadeo: posición OFF → visible → animación de entrada
+	if bar != null:
 		bar.frame = 0 if is_player else 1
+		bar.position = ABILITY_POS_PLAYER_OFF if is_player else ABILITY_POS_ENEMY_OFF
 		bar.visible = true
 
-	# Entrada
 	if ability_anim.has_animation(anim_in):
 		ability_anim.play(anim_in)
 		await ability_anim.animation_finished
+	elif bar != null:
+		bar.position = ABILITY_POS_PLAYER_ON if is_player else ABILITY_POS_ENEMY_ON
 
 	await get_tree().create_timer(ability_bar_hold_time).timeout
 
-	# Salida
 	if ability_anim.has_animation(anim_out):
 		ability_anim.play(anim_out)
 		await ability_anim.animation_finished
 
-	if bar:
+	if bar != null:
 		bar.visible = false
+		bar.position = ABILITY_POS_PLAYER_OFF if is_player else ABILITY_POS_ENEMY_OFF
 
 	_ability_bar_busy = false
