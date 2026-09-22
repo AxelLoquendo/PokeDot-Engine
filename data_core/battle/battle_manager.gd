@@ -582,11 +582,12 @@ func _process_end_of_turn() -> void:
 		if AbilityRuntime.has(battler, AbilityId.Id.POISON_HEAL) \
 				and (battler.pokemon.status == PokemonInstance.Status.POISON \
 					or battler.pokemon.status == PokemonInstance.Status.TOXIC):
+			await ability_announce(battler)
 			@warning_ignore("integer_division")
 			var heal: int = maxi(1, battler.get_max_hp() / 8)
 			battler.pokemon.apply_heal(heal)
 			_emit_hp(battler.is_player_side)
-			message.emit("¡%s se recuperó un poco gracias a su habilidad!" % battler.get_display_name())
+			message.emit("¡%s se recuperó un poco!" % battler.get_display_name())
 			await _wait(0.6)
 			continue
 		var res: Dictionary = StatusConditions.end_of_turn_damage(battler)
@@ -796,7 +797,8 @@ func _execute_move(action: BattleAction) -> void:
 			await _wait(0.5)
 
 		if result.sturdy_activated:
-			message.emit("¡%s aguantó el golpe gracias a Sturdy!" % target.get_display_name())
+			await ability_announce(target)
+			message.emit("¡%s aguantó el golpe!" % target.get_display_name())
 			await _wait(0.5)
 
 		if target.endure_active and target.pokemon.current_hp == 1 and dealt > 0 and not result.sturdy_activated:
@@ -820,6 +822,7 @@ func _execute_move(action: BattleAction) -> void:
 			break
 
 		if target.is_fainted() and move.makes_contact and AbilityRuntime.has(target, AbilityId.Id.AFTERMATH):
+			await ability_announce(target)
 			@warning_ignore("integer_division")
 			var aftermath_dmg: int = maxi(1, actor.get_max_hp() / 4)
 			await ability_deal_damage(actor, aftermath_dmg, target)
@@ -861,31 +864,35 @@ func _execute_move(action: BattleAction) -> void:
 
 @warning_ignore("unused_parameter")
 func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: DamageCalculator.HitResult) -> void:
-	var ability_display: String = AbilityRuntime.ability_name(target)
+	await ability_announce(target)
+
 	match result.ability_immunity:
 		"immune":
-			message.emit("¡No afecta a %s por %s!" % [target.get_display_name(), ability_display])
+			message.emit("¡No afecta a %s!" % target.get_display_name())
 			await _wait(0.8)
+
 		"heal":
-			message.emit("¡%s absorbió el ataque gracias a %s!" % [target.get_display_name(), ability_display])
+			message.emit("¡%s absorbió el ataque!" % target.get_display_name())
 			await _wait(0.6)
 			@warning_ignore("integer_division")
 			await ability_heal(target, maxi(1, target.get_max_hp() / 4))
+
 		"spatk_up":
-			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
-			await _wait(0.6)
 			await ability_change_stat(target, PokemonInstance.Stat.SP_ATTACK, 1)
+
 		"atk_up":
-			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
-			await _wait(0.6)
 			await ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
+
 		"spe_up":
-			message.emit("¡%s de %s se activó!" % [ability_display, target.get_display_name()])
-			await _wait(0.6)
 			await ability_change_stat(target, PokemonInstance.Stat.SPEED, 1)
+
 		"flash_fire":
 			target.flash_fire_boosted = true
-			message.emit("¡%s de %s se activó! Sus movimientos de Fuego se potencian." % [ability_display, target.get_display_name()])
+			message.emit("¡Los movimientos de tipo Fuego de %s se potenciarán!" % target.get_display_name())
+			await _wait(0.8)
+
+		_:
+			message.emit("¡La habilidad de %s anuló el ataque!" % target.get_display_name())
 			await _wait(0.8)
 
 func _apply_recoil(actor: BattleBattler, damage_dealt: int, percent: int) -> void:
@@ -932,6 +939,7 @@ func _apply_drain(actor: BattleBattler, target: BattleBattler, damage_dealt: int
 	var amount: int = maxi(1, int(floor(float(damage_dealt) * float(percent) / 100.0)))
 
 	if AbilityRuntime.has(target, AbilityId.Id.LIQUID_OOZE):
+		await ability_announce(target)
 		var taken: int = actor.apply_damage(amount)
 		_emit_hp(actor.is_player_side)
 		message.emit("¡%s fue dañado por Liquid Ooze!" % actor.get_display_name())
@@ -1023,7 +1031,8 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 		var is_acc: bool = acc_eva[0] == "acc"
 		var stages: int = acc_eva[1]
 		if is_acc and stages < 0 and receiver == target and AbilityRuntime.blocks_foe_accuracy_drop(receiver):
-			message.emit("¡La habilidad de %s evitó la bajada de precisión!" % receiver.get_display_name())
+			await ability_announce(receiver)
+			message.emit("¡La precisión de %s no bajó!" % receiver.get_display_name())
 			await _wait(0.6)
 			return
 		var adjusted: int = AbilityRuntime.adjust_own_stage_change(receiver, stages)
@@ -1283,7 +1292,8 @@ func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stag
 		await _wait(0.6)
 		return
 	if caused_by_foe and stages < 0 and AbilityRuntime.blocks_foe_stat_drop(battler, stat):
-		message.emit("¡La habilidad de %s evitó la bajada de estadística!" % battler.get_display_name())
+		await ability_announce(battler)
+		message.emit("¡Las estadísticas de %s no bajaron!" % battler.get_display_name())
 		await _wait(0.6)
 		return
 
@@ -1300,7 +1310,8 @@ func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stag
 
 func _apply_status(battler: BattleBattler, status: PokemonInstance.Status) -> void:
 	if AbilityRuntime.blocks_status(battler, status):
-		message.emit("¡La habilidad de %s lo protegió!" % battler.get_display_name())
+		await ability_announce(battler)
+		message.emit("¡%s no se vio afectado!" % battler.get_display_name())
 		await _wait(0.6)
 		return
 	if battler.pokemon.apply_status(status):
@@ -1312,7 +1323,8 @@ func _apply_status(battler: BattleBattler, status: PokemonInstance.Status) -> vo
 
 func _apply_confusion(battler: BattleBattler) -> void:
 	if AbilityRuntime.blocks_confusion(battler):
-		message.emit("¡La habilidad de %s evita que se confunda!" % battler.get_display_name())
+		await ability_announce(battler)
+		message.emit("¡%s no se confundió!" % battler.get_display_name())
 		await _wait(0.6)
 		return
 	if battler.is_confused():
@@ -1407,7 +1419,8 @@ func ability_announce(battler: BattleBattler) -> void:
 
 func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
 	if caused_by_foe and stages < 0 and AbilityRuntime.blocks_foe_stat_drop(battler, stat):
-		message.emit("¡La habilidad de %s lo protegió del Intimidad!" % battler.get_display_name())
+		await ability_announce(battler)
+		message.emit("¡Las estadísticas de %s no bajaron!" % battler.get_display_name())
 		await _wait(0.6)
 		return
 	var adjusted: int = AbilityRuntime.adjust_own_stage_change(battler, stages)

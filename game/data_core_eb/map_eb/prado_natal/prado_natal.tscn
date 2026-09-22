@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://bbtorylwxpgih"
 
 [sub_resource type="Resource" id="Resource_58jqm"]
 script = ExtResource("3_cxnhx")
-species_id = 1433
+species_id = 1431
 min_level = 5
 max_level = 7
 weight = 40
