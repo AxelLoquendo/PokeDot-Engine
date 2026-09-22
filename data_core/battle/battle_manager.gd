@@ -832,6 +832,8 @@ func _execute_move(action: BattleAction) -> void:
 	if last_result == null or last_result.ability_immunity != "" or last_result.effectiveness <= 0.0:
 		return
 
+	await _announce_passive_abilities(actor, target, last_result)
+
 	if hits_landed > 1:
 		message.emit("¡Golpeó %d veces!" % hits_landed)
 		await _wait(0.5)
@@ -1488,3 +1490,18 @@ func set_weather(new_weather: int, turns: int) -> void:
 			message.emit("¡Empezó a granizar!")
 		_:
 			pass
+
+func _announce_passive_abilities(
+	actor: BattleBattler,
+	target: BattleBattler,
+	result: DamageCalculator.HitResult
+) -> void:
+	if result == null:
+		return
+	# Una vez por habilidad y por movimiento (no por cada multi-hit).
+	for ab_id: AbilityId.Id in result.activated_attacker:
+		if AbilityRuntime.get_id(actor) == ab_id:
+			await ability_announce(actor)
+	for ab_id: AbilityId.Id in result.activated_defender:
+		if AbilityRuntime.get_id(target) == ab_id:
+			await ability_announce(target)
