@@ -17,6 +17,8 @@ signal battler_appearance_changed(is_player: bool)
 ## Illusion se rompió: animación de “destello” + sprite real.
 signal illusion_broken(is_player: bool)
 
+signal pokemon_entered_field(is_player: bool)
+
 var player: BattleBattler
 var enemy: BattleBattler
 var is_running: bool = false
@@ -82,10 +84,12 @@ func start_battle_intro() -> void:
 		message.emit("¡El rival envía a %s!" % enemy.get_display_name())
 	else:
 		message.emit("¡Un %s salvaje apareció!" % enemy.get_display_name())
+	pokemon_entered_field.emit(false)
 	await _wait(1.0)
 	await AbilityRuntime.on_switch_in(enemy, player, self)
 
 	message.emit("¡Adelante, %s!" % player.get_display_name())
+	pokemon_entered_field.emit(true)
 	await _wait(0.8)
 	await AbilityRuntime.on_switch_in(player, enemy, self)
 
@@ -135,20 +139,20 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 		message.emit("¡%s, vuelve!" % saliente_nombre)
 		await _wait(0.6)
 
-	# Importante: des-transformar ANTES de setup del entrante
 	AbilityRuntime.revert_transform(player)
 
-	# 1) Datos
 	player.setup(nuevo, true)
-	# 2) Illusion silenciosa YA
 	AbilityRuntime.prepare_illusion(player, self)
-	# 3) UI al mismo tiempo (sprite + nombre + género)
 	_emit_hp(true)
 	battler_appearance_changed.emit(true)
 
-	# 4) Mensajes / habilidades que SÍ anuncian
+	# 1) Aviso de envío
 	message.emit("¡Adelante, %s!" % player.get_display_name())
+	# 2) Grito YA (UI lo oye; habilidades todavía no)
+	pokemon_entered_field.emit(true)
 	await _wait(0.8)
+
+	# 3) Habilidades de entrada (Ability Bar, etc.)
 	await AbilityRuntime.on_switch_in(player, enemy, self)
 	await _apply_hazards_on_switch_in(player)
 
@@ -304,12 +308,15 @@ func _handle_enemy_faint() -> void:
 		AbilityRuntime.prepare_illusion(enemy, self)
 		_emit_hp(false)
 		battler_appearance_changed.emit(false)
+
 		message.emit("¡El rival envía a %s!" % enemy.get_display_name())
+		pokemon_entered_field.emit(false)
 		await _wait(0.8)
+
 		await AbilityRuntime.on_switch_in(enemy, player, self)
 		await _apply_hazards_on_switch_in(enemy)
 		turn_ended.emit()
-		return  # ← sin esto dabas la pelea por ganada
+		return
 
 	await _check_battle_end_evolution()
 

@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var player_sprite: Sprite2D = $Pkmn_Player
 @onready var enemy_sprite: Sprite2D = $Pkmn_Enemy
+@onready var cry_player: AudioStreamPlayer = $Pkmn_Player/Cry_Mon_Player
+@onready var cry_enemy: AudioStreamPlayer = $Pkmn_Enemy/Cry_Mon_Enemy
+@onready var player_hp_box: Sprite2D = $PlayerHPBox
 
 @onready var player_name_label: Label = $PlayerHPBox/NamePkmnPlayer
 @onready var player_level_label: Label = $PlayerHPBox/Level
@@ -65,6 +68,20 @@ var player_pokemon: PokemonInstance
 var enemy_pokemon: PokemonInstance
 var player_sprite_base_pos: Vector2
 var enemy_sprite_base_pos: Vector2
+var player_hp_box_base_pos: Vector2
+
+var _player_sprite_species_offset_y: float = 0.0
+
+# Bob discreto e independiente
+var _bob_sprite_time: float = 0.0
+var _bob_box_time: float = 0.0
+var _bob_sprite_down: bool = false
+var _bob_box_down: bool = false
+
+const BOB_PIXELS: float = 2.0
+## Periodos distintos → no se sincronizan (estilo juegos oficiales)
+const BOB_SPRITE_HALF_PERIOD: float = 0.50
+const BOB_BOX_HALF_PERIOD: float = 0.55
 
 var battle: BattleManager
 
@@ -104,6 +121,7 @@ var _battle_canvas_modulate: CanvasModulate = null
 func _ready() -> void:
 	player_sprite_base_pos = player_sprite.position
 	enemy_sprite_base_pos = enemy_sprite.position
+	player_hp_box_base_pos = player_hp_box.position
 
 	_action_normals.clear()
 	_action_focused.clear()
@@ -157,17 +175,16 @@ func _ready() -> void:
 		battle.battler_appearance_changed.connect(_on_battler_appearance_changed)
 	if battle.has_signal("illusion_broken"):
 		battle.illusion_broken.connect(_on_illusion_broken)
+	if battle.has_signal("pokemon_entered_field"):
+		battle.pokemon_entered_field.connect(_on_pokemon_entered_field)
 
-	# start_battle debe llamar prepare_illusion internamente
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 
 	player_exp_bar.size.x = player_exp_bar_target
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
 
-	# 1) Base (HP, nivel, etc.)
 	_update_ui()
-	# 2) Apariencia real YA (Illusion lista en el battler)
 	_refresh_side_appearance(false)
 	_refresh_side_appearance(true)
 
@@ -179,8 +196,9 @@ func _ready() -> void:
 	current_menu = MenuState.BUSY
 	_reset_ability_bars()
 
+	# Gritos salen desde pokemon_entered_field dentro de start_battle_intro
 	await battle.start_battle_intro()
-	# Imposter / Trace / etc. pueden mutar en on_switch_in
+
 	_refresh_side_appearance(false)
 	_refresh_side_appearance(true)
 
@@ -216,6 +234,7 @@ func _process(delta: float) -> void:
 	_animate_ability_icon(delta, ability_icon_player, true)
 	_animate_ability_icon(delta, ability_icon_enemy, false)
 
+	_update_player_idle_bob(delta)
 
 func _input(event: InputEvent) -> void:
 	if current_menu == MenuState.BUSY:
@@ -372,9 +391,11 @@ func _update_ui() -> void:
 
 	var back_offset: Vector2 = _get_back_offset_px(player_pokemon)
 	var front_offset: Vector2 = _get_front_offset_px(enemy_pokemon)
+
+	_player_sprite_species_offset_y = back_offset.y   # ← AÑADIR
 	player_sprite.position = Vector2(
 		player_sprite_base_pos.x,
-		player_sprite_base_pos.y + back_offset.y
+		player_sprite_base_pos.y + _player_sprite_species_offset_y
 	)
 	enemy_sprite.position = Vector2(
 		enemy_sprite_base_pos.x,
@@ -628,7 +649,6 @@ func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	_update_exp_bar()
 	player_level_label.text = str(player_pokemon.level)
 
-
 func _on_party_cancelled() -> void:
 	_force_switch_pending = false
 	action_menu.visible = true
@@ -868,6 +888,10 @@ func _on_illusion_broken(is_player: bool) -> void:
 	_refresh_side_appearance(is_player)
 
 
+func _on_pokemon_entered_field(is_player: bool) -> void:
+	_play_cry(is_player)
+
+
 func _refresh_side_appearance(is_player: bool) -> void:
 	if battle == null:
 		return
@@ -914,9 +938,10 @@ func _refresh_side_appearance(is_player: bool) -> void:
 
 	if is_player:
 		player_sprite.texture = tex
+		_player_sprite_species_offset_y = offset.y
 		player_sprite.position = Vector2(
 			player_sprite_base_pos.x,
-			player_sprite_base_pos.y + offset.y
+			player_sprite_base_pos.y + _player_sprite_species_offset_y
 		)
 		if player_name_label.has_method("cambiar_texto"):
 			player_name_label.cambiar_texto(display_name)
@@ -977,3 +1002,89 @@ func _offset_for_species_id(species_id: Species.SpeciesID, back: bool) -> Vector
 	if back:
 		return species.get_back_sprite_offset_px()
 	return species.get_front_sprite_offset_px()
+
+# ============================================================
+# IDLE BOB (solo en menú de acciones / movimientos)
+# Estilo oficial: salto de 2 px, mon y caja independientes
+# ============================================================
+
+func _update_player_idle_bob(delta: float) -> void:
+	var should_bob: bool = (
+		current_menu == MenuState.ACTIONS or current_menu == MenuState.MOVES
+	)
+
+	if not should_bob:
+		_bob_sprite_time = 0.0
+		_bob_box_time = 0.0
+		_bob_sprite_down = false
+		_bob_box_down = false
+		_apply_sprite_bob(false)
+		_apply_box_bob(false)
+		return
+
+	# --- Sprite del jugador ---
+	_bob_sprite_time += delta
+	if _bob_sprite_time >= BOB_SPRITE_HALF_PERIOD:
+		_bob_sprite_time = 0.0
+		_bob_sprite_down = not _bob_sprite_down
+		_apply_sprite_bob(_bob_sprite_down)
+
+	# --- PlayerHPBox (ritmo distinto) ---
+	_bob_box_time += delta
+	if _bob_box_time >= BOB_BOX_HALF_PERIOD:
+		_bob_box_time = 0.0
+		_bob_box_down = not _bob_box_down
+		_apply_box_bob(_bob_box_down)
+
+
+func _apply_sprite_bob(down: bool) -> void:
+	var y_extra: float = BOB_PIXELS if down else 0.0
+	player_sprite.position = Vector2(
+		player_sprite_base_pos.x,
+		player_sprite_base_pos.y + _player_sprite_species_offset_y + y_extra
+	)
+
+
+func _apply_box_bob(down: bool) -> void:
+	var y_extra: float = BOB_PIXELS if down else 0.0
+	player_hp_box.position = Vector2(
+		player_hp_box_base_pos.x,
+		player_hp_box_base_pos.y + y_extra
+	)
+
+func _play_cry(is_player: bool, mon: PokemonInstance = null) -> void:
+	var player_node: AudioStreamPlayer = cry_player if is_player else cry_enemy
+	if player_node == null:
+		return
+
+	var target: PokemonInstance = mon
+	if target == null:
+		target = player_pokemon if is_player else enemy_pokemon
+	if target == null:
+		return
+
+	# Illusion: grito del disfraz (opcional; si prefieres el real, salta esto)
+	if battle != null:
+		var battler: BattleBattler = battle.player if is_player else battle.enemy
+		if battler != null and battler.illusion_active \
+				and battler.illusion_species_id != Species.SpeciesID.SPECIES_NONE:
+			var ill_sp: PokemonDataStruct = SpeciesDatabase.get_species(battler.illusion_species_id)
+			if ill_sp == null:
+				ill_sp = SpeciesDatabase.get_base_species(battler.illusion_species_id)
+			if ill_sp != null and ill_sp.cry != null:
+				player_node.stream = ill_sp.cry
+				player_node.play()
+				return
+
+	var form: PokemonFormData = PokemonFormResolver.get_form(target)
+	if form != null and form.override_graphics and "cry" in form and form.cry != null:
+		player_node.stream = form.cry
+		player_node.play()
+		return
+
+	var species: PokemonDataStruct = target.get_species()
+	if species == null or species.cry == null:
+		return
+
+	player_node.stream = species.cry
+	player_node.play()
