@@ -10,6 +10,7 @@ signal turn_ended
 signal player_must_switch
 signal player_evolved
 
+signal ability_announced(is_player: bool, pokemon: PokemonInstance)
 
 var player: BattleBattler
 var enemy: BattleBattler
@@ -1377,6 +1378,9 @@ func _wait(seconds: float) -> void:
 
 func ability_announce(battler: BattleBattler) -> void:
 	var name: String = AbilityRuntime.ability_name(battler)
+	if battler == null or battler.pokemon == null:
+		return
+	ability_announced.emit(battler.is_player_side, battler.pokemon)
 	if name.is_empty():
 		return
 	message.emit("¡Se activó %s de %s!" % [name, battler.get_display_name()])

@@ -38,6 +38,21 @@ extends Node2D
 
 @onready var bg_sprite: Sprite2D = $BG
 
+@onready var ability_bar_player: Sprite2D = $Ability_Bar_Player
+@onready var ability_bar_enemy: Sprite2D = $Ability_Bar_Enemy
+@onready var ability_label_player: Label = $Ability_Bar_Player/Ability_Name
+@onready var ability_label_enemy: Label = $Ability_Bar_Enemy/Ability_Name
+@onready var ability_icon_player: Sprite2D = $Ability_Bar_Player/Icon_Mon
+@onready var ability_icon_enemy: Sprite2D = $Ability_Bar_Enemy/Icon_Mon
+@onready var ability_anim: AnimationPlayer = $Animated_Ability_Bar
+
+@export var ability_icon_frame_time: float = 0.15
+@export var ability_bar_hold_time: float = 1.0
+
+var _ability_icon_timer_player: float = 0.0
+var _ability_icon_timer_enemy: float = 0.0
+var _ability_bar_busy: bool = false
+
 const PARTY_SCENE: PackedScene = preload("res://scenes/ui_party_menu/party_menu.tscn")
 const BAG_SCENE: PackedScene = preload("res://scenes/ui_bag/bag.tscn")
 
@@ -130,6 +145,8 @@ func _ready() -> void:
 	battle.battle_ended.connect(_on_battle_ended)
 	battle.turn_ended.connect(_on_turn_ended)
 	battle.player_must_switch.connect(_on_player_must_switch)
+	if battle.has_signal("ability_announced"):
+		battle.ability_announced.connect(_on_ability_announced)
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 	battle.player_evolved.connect(_update_ui)
 
@@ -157,6 +174,13 @@ func _ready() -> void:
 	_update_action_focus()
 	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
 
+	if ability_bar_player:
+		ability_bar_player.visible = false
+	if ability_bar_enemy:
+		ability_bar_enemy.visible = false
+	if ability_anim and ability_anim.has_animation("RESET"):
+		ability_anim.play("RESET")
+
 func _on_player_progress_changed() -> void:
 	player_level_label.text = str(player_pokemon.level)
 	_update_exp_bar()
@@ -178,6 +202,9 @@ func _process(delta: float) -> void:
 		player_exp_bar.size.x = move_toward(player_exp_bar.size.x, player_exp_bar_target, HP_ANIM_SPEED * delta)
 	else:
 		player_exp_bar.size.x = player_exp_bar_target
+
+	_animate_ability_icon(delta, ability_icon_player, true)
+	_animate_ability_icon(delta, ability_icon_enemy, false)
 
 func _input(event: InputEvent) -> void:
 	if current_menu == MenuState.BUSY:
@@ -694,3 +721,102 @@ func _on_move_pressed(index: int) -> void:
 	current_menu = MenuState.BUSY
 	await battle.player_choose_move(index)
 	_update_selected_move_info()
+
+# ============================================================
+# BARRA DE HABILIDAD
+# ============================================================
+
+func _animate_ability_icon(delta: float, icon: Sprite2D, is_player: bool) -> void:
+	if icon == null or not icon.is_visible_in_tree() or icon.texture == null:
+		return
+	# Solo animar si la barra padre está visible
+	var bar: Sprite2D = ability_bar_player if is_player else ability_bar_enemy
+	if bar == null or not bar.visible:
+		return
+
+	if icon.hframes < 2:
+		icon.hframes = 2
+
+	if is_player:
+		_ability_icon_timer_player += delta
+		if _ability_icon_timer_player >= ability_icon_frame_time:
+			_ability_icon_timer_player = 0.0
+			icon.frame = 1 - icon.frame
+	else:
+		_ability_icon_timer_enemy += delta
+		if _ability_icon_timer_enemy >= ability_icon_frame_time:
+			_ability_icon_timer_enemy = 0.0
+			icon.frame = 1 - icon.frame
+
+
+func _on_ability_announced(is_player: bool, mon: PokemonInstance) -> void:
+	# No bloqueamos el hilo del signal: lanzamos la corrutina
+	_run_ability_bar(is_player, mon)
+
+
+func _run_ability_bar(is_player: bool, mon: PokemonInstance) -> void:
+	await show_ability_activation(is_player, mon)
+
+
+## API pública: muestra entrada → hold → salida
+func show_ability_activation(is_player: bool, mon: PokemonInstance) -> void:
+	if mon == null or ability_anim == null:
+		return
+	# Si ya hay una barra en pantalla, espera a que termine
+	while _ability_bar_busy:
+		await get_tree().process_frame
+
+	_ability_bar_busy = true
+
+	var bar: Sprite2D = ability_bar_player if is_player else ability_bar_enemy
+	var label: Label = ability_label_player if is_player else ability_label_enemy
+	var icon: Sprite2D = ability_icon_player if is_player else ability_icon_enemy
+	var anim_in: String = "Entrada_Player" if is_player else "Entrada_Enemy"
+	var anim_out: String = "Salida_Player" if is_player else "Salida_Enemy"
+
+	# --- Texto ---
+	var ability_name: String = "???"
+	if mon.ability_id != AbilityId.Id.NONE:
+		ability_name = AbilityDatabase.get_ability_name(mon.ability_id)
+
+	var pkmn_name: String = mon.get_display_name() if mon.has_method("get_display_name") else ""
+	if pkmn_name.is_empty():
+		var sp: PokemonDataStruct = mon.get_species()
+		pkmn_name = sp.species_name if sp else "???"
+
+	if label:
+		label.text = "%s\nde %s" % [ability_name, pkmn_name]
+
+	# --- Icono (2 frames, como party/dex) ---
+	if icon:
+		var sp: PokemonDataStruct = mon.get_species()
+		icon.texture = sp.icon_sprite if sp else null
+		icon.hframes = 2
+		icon.vframes = 1
+		icon.frame = 0
+		if is_player:
+			_ability_icon_timer_player = 0.0
+		else:
+			_ability_icon_timer_enemy = 0.0
+
+	# --- Frame de la barra (0 = player, 1 = enemy) ---
+	if bar:
+		bar.frame = 0 if is_player else 1
+		bar.visible = true
+
+	# Entrada
+	if ability_anim.has_animation(anim_in):
+		ability_anim.play(anim_in)
+		await ability_anim.animation_finished
+
+	await get_tree().create_timer(ability_bar_hold_time).timeout
+
+	# Salida
+	if ability_anim.has_animation(anim_out):
+		ability_anim.play(anim_out)
+		await ability_anim.animation_finished
+
+	if bar:
+		bar.visible = false
+
+	_ability_bar_busy = false
