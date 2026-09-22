@@ -153,6 +153,11 @@ func _ready() -> void:
 	battle.player_must_switch.connect(_on_player_must_switch)
 	if battle.has_signal("ability_announced"):
 		battle.ability_announced.connect(_on_ability_announced)
+	if battle.has_signal("battler_appearance_changed"):
+		battle.battler_appearance_changed.connect(_on_battler_appearance_changed)
+	if battle.has_signal("illusion_broken"):
+		battle.illusion_broken.connect(_on_illusion_broken)
+
 	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
 
 	player_exp_bar.size.x = player_exp_bar_target
@@ -170,13 +175,15 @@ func _ready() -> void:
 	_reset_ability_bars()
 
 	await battle.start_battle_intro()
+	# Illusion / Imposter se aplican en on_switch_in
+	_refresh_side_appearance(false)
+	_refresh_side_appearance(true)
 
 	action_menu.visible = true
 	current_menu = MenuState.ACTIONS
 	selected_action = 0
 	_update_action_focus()
 	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
-
 
 func _on_player_progress_changed() -> void:
 	player_level_label.text = str(player_pokemon.level)
@@ -613,6 +620,7 @@ func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	player_pokemon = mon
 	await battle.player_choose_switch(mon, free_switch)
 	_update_ui()
+	_refresh_side_appearance(true)
 
 
 func _on_party_cancelled() -> void:
@@ -835,3 +843,131 @@ func show_ability_activation(is_player: bool, mon: PokemonInstance) -> void:
 		bar.position = ABILITY_POS_PLAYER_OFF if is_player else ABILITY_POS_ENEMY_OFF
 
 	_ability_bar_busy = false
+
+# ============================================================
+# APARIENCIA (Illusion / Imposter)
+# ============================================================
+
+func _on_battler_appearance_changed(is_player: bool) -> void:
+	_refresh_side_appearance(is_player)
+
+
+func _on_illusion_broken(is_player: bool) -> void:
+	var sprite: Sprite2D = player_sprite if is_player else enemy_sprite
+	if sprite != null:
+		var old_mod: Color = sprite.modulate
+		sprite.modulate = Color(1.6, 1.6, 1.6, 1.0)
+		await get_tree().create_timer(0.12).timeout
+		sprite.modulate = old_mod
+	_refresh_side_appearance(is_player)
+
+
+func _refresh_side_appearance(is_player: bool) -> void:
+	if battle == null:
+		return
+
+	var battler: BattleBattler = battle.player if is_player else battle.enemy
+	if battler == null or battler.pokemon == null:
+		return
+
+	if is_player:
+		player_pokemon = battler.pokemon
+	else:
+		enemy_pokemon = battler.pokemon
+
+	var mon: PokemonInstance = battler.pokemon
+	var tex: Texture2D
+	var offset: Vector2
+	var display_name: String
+	var gender: PokemonData.Gender
+
+	if battler.illusion_active and battler.illusion_species_id != Species.SpeciesID.SPECIES_NONE:
+		tex = _sprite_for_species_id(
+			battler.illusion_species_id,
+			battler.illusion_shiny,
+			is_player
+		)
+		offset = _offset_for_species_id(battler.illusion_species_id, is_player)
+		if not battler.illusion_nickname.is_empty():
+			display_name = battler.illusion_nickname
+		else:
+			display_name = battler.get_display_name()
+		gender = battler.illusion_gender
+	else:
+		var shiny: bool = false
+		if "shiny" in mon:
+			shiny = mon.shiny
+		if is_player:
+			tex = mon.get_back_sprite(shiny)
+			offset = _get_back_offset_px(mon)
+		else:
+			tex = mon.get_front_sprite(shiny)
+			offset = _get_front_offset_px(mon)
+		display_name = battler.get_display_name()
+		gender = mon.gender
+
+	if is_player:
+		player_sprite.texture = tex
+		player_sprite.position = Vector2(
+			player_sprite_base_pos.x,
+			player_sprite_base_pos.y + offset.y
+		)
+		if player_name_label.has_method("cambiar_texto"):
+			player_name_label.cambiar_texto(display_name)
+		else:
+			player_name_label.text = display_name
+		_set_gender(player_gender, gender)
+	else:
+		enemy_sprite.texture = tex
+		enemy_sprite.position = Vector2(
+			enemy_sprite_base_pos.x,
+			enemy_sprite_base_pos.y + offset.y
+		)
+		if enemy_name_label.has_method("cambiar_texto"):
+			enemy_name_label.cambiar_texto(display_name)
+		else:
+			enemy_name_label.text = display_name
+		_set_gender(enemy_gender, gender)
+
+
+func _sprite_for_species_id(
+	species_id: Species.SpeciesID,
+	shiny: bool,
+	back: bool
+) -> Texture2D:
+	var form: PokemonFormData = SpeciesDatabase.get_form(species_id)
+	if form != null and form.override_graphics:
+		var form_tex: Texture2D
+		if back:
+			form_tex = form.back_sprite_shiny if shiny else form.back_sprite
+		else:
+			form_tex = form.front_sprite_shiny if shiny else form.front_sprite
+		if form_tex != null:
+			return form_tex
+
+	var species: PokemonDataStruct = SpeciesDatabase.get_species(species_id)
+	if species == null:
+		species = SpeciesDatabase.get_base_species(species_id)
+	if species == null:
+		return null
+
+	if back:
+		return species.back_sprite_shiny if shiny else species.back_sprite
+	return species.front_sprite_shiny if shiny else species.front_sprite
+
+
+func _offset_for_species_id(species_id: Species.SpeciesID, back: bool) -> Vector2:
+	var form: PokemonFormData = SpeciesDatabase.get_form(species_id)
+	if form != null and form.override_graphics:
+		var off: Vector2 = form.back_sprite_offset if back else form.front_sprite_offset
+		return off * PokemonDataStruct.BATTLE_OFFSET_SCALE
+
+	var species: PokemonDataStruct = SpeciesDatabase.get_species(species_id)
+	if species == null:
+		species = SpeciesDatabase.get_base_species(species_id)
+	if species == null:
+		return Vector2.ZERO
+
+	if back:
+		return species.get_back_sprite_offset_px()
+	return species.get_front_sprite_offset_px()

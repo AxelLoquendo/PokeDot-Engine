@@ -40,11 +40,33 @@ var slow_start_turns: int = 0
 ## Unburden: se activa al perder el objeto en combate
 var unburden_active: bool = false
 
+## Illusion: se ve como otro Pokémon del equipo hasta que reciba daño.
+var illusion_active: bool = false
+var illusion_species_id: int = -1          # species_id del mon disfraz
+var illusion_nickname: String = ""
+var illusion_gender: int = 0               # PokemonData.Gender
+var illusion_shiny: bool = false
+var illusion_form_id: int = 0
+
+## Imposter: copia temporal del rival (Transform).
+var is_transformed: bool = false
+var transform_backup: Dictionary = {}      # para restaurar al salir si hace falta
+
 func setup(p: PokemonInstance, player_side: bool) -> void:
 	pokemon = p
 	is_player_side = player_side
 	_reset_stages()
+	clear_illusion()
+	is_transformed = false
+	transform_backup.clear()
 
+func clear_illusion() -> void:
+	illusion_active = false
+	illusion_species_id = -1
+	illusion_nickname = ""
+	illusion_gender = 0
+	illusion_shiny = false
+	illusion_form_id = 0
 
 func _reset_stages() -> void:
 	stage_attack = 0
@@ -70,6 +92,9 @@ func _reset_stages() -> void:
 	semi_invulnerable = false
 	must_recharge = false
 	focus_energy = false
+	clear_illusion()
+	is_transformed = false
+	transform_backup.clear()
 
 func is_fainted() -> bool:
 	return pokemon == null or pokemon.current_hp <= 0
@@ -146,7 +171,23 @@ func consume_pp(slot_index: int) -> bool:
 
 
 func get_display_name() -> String:
+	if illusion_active and not illusion_nickname.is_empty():
+		return illusion_nickname
 	return pokemon.get_display_name() if pokemon else "???"
+
+func get_visual_species_id() -> int:
+	if illusion_active and illusion_species_id >= 0:
+		return illusion_species_id
+	if pokemon == null:
+		return -1
+	return pokemon.species_id
+
+func get_visual_form_id() -> int:
+	if illusion_active:
+		return illusion_form_id
+	if pokemon == null:
+		return 0
+	return pokemon.form_id if "form_id" in pokemon else 0
 
 func is_confused() -> bool:
 	return confusion_turns > 0

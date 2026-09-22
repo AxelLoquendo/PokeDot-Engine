@@ -12,6 +12,10 @@ signal player_evolved
 
 signal ability_announced(is_player: bool, pokemon: PokemonInstance)
 signal ability_bar_finished
+## La UI debe cambiar sprite/nombre/barra del lado indicado.
+signal battler_appearance_changed(is_player: bool)
+## Illusion se rompió: animación de “destello” + sprite real.
+signal illusion_broken(is_player: bool)
 
 var player: BattleBattler
 var enemy: BattleBattler
@@ -29,6 +33,19 @@ var weather_turns: int = -1
 ## movimientos completos quiere aprender uno nuevo durante el combate.
 const MOVE_LEARN_SCENE: PackedScene = preload("res://scenes/ui_summary_screen/move_learn_screen.tscn")
 
+enum TerrainId {
+	TERRAIN_NONE,
+	TERRAIN_ELECTRIC,
+	TERRAIN_GRASSY,
+	TERRAIN_MISTY,
+	TERRAIN_PSYCHIC,
+}
+
+var terrain: int = TerrainId.TERRAIN_NONE
+var terrain_turns: int = 0
+## Clima primigenio: no lo pisan climas normales.
+var weather_primal: bool = false
+
 func start_battle(
 	player_pokemon: PokemonInstance,
 	enemy_pokemon: PokemonInstance,
@@ -45,6 +62,9 @@ func start_battle(
 	is_running = true
 	weather = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
 	weather_turns = -1
+	terrain = TerrainId.TERRAIN_NONE
+	terrain_turns = 0
+	weather_primal = false
 	_emit_hp(true)
 	_emit_hp(false)
 
@@ -613,6 +633,12 @@ func _process_end_of_turn() -> void:
 			weather = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
 			message.emit("¡El clima volvió a la normalidad!")
 			await _wait(0.6)
+	if terrain_turns > 0:
+		terrain_turns -= 1
+		if terrain_turns == 0:
+			terrain = TerrainId.TERRAIN_NONE
+			message.emit("¡El terreno volvió a la normalidad!")
+			await _wait(0.6)
 
 func _apply_weather_damage() -> void:
 	match weather:
@@ -791,6 +817,10 @@ func _execute_move(action: BattleAction) -> void:
 		total_dealt += dealt
 		hits_landed += 1
 		_emit_hp(target.is_player_side)
+
+		# Illusion se rompe con el primer daño real
+		if dealt > 0 and target.illusion_active:
+			await AbilityRuntime.break_illusion(target, self)
 
 		if result.critical:
 			message.emit("¡Un golpe crítico!")
@@ -1474,20 +1504,44 @@ func ability_cure_status(battler: BattleBattler) -> void:
 	battler.pokemon.cure_status()
 	message.emit("¡%s se curó gracias a su habilidad!" % battler.get_display_name())
 
-func set_weather(new_weather: int, turns: int) -> void:
-	if weather == new_weather:
+func set_terrain(new_terrain: int, turns: int = 5) -> void:
+	if terrain == new_terrain:
+		return
+	terrain = new_terrain
+	terrain_turns = turns
+	match new_terrain:
+		TerrainId.TERRAIN_ELECTRIC:
+			message.emit("¡El campo se electrificó!")
+		TerrainId.TERRAIN_GRASSY:
+			message.emit("¡El campo se cubrió de hierba!")
+		TerrainId.TERRAIN_MISTY:
+			message.emit("¡El campo se cubrió de niebla misteriosa!")
+		TerrainId.TERRAIN_PSYCHIC:
+			message.emit("¡El campo se volvió extraño!")
+		_:
+			pass
+
+func set_weather(new_weather: int, turns: int, primal: bool = false) -> void:
+	# Clima primigenio solo lo quita otro primigenio / Air Lock fuerte, etc.
+	if weather_primal and not primal:
+		return
+	if weather == new_weather and weather_primal == primal:
 		return
 	weather = new_weather
 	weather_turns = turns
+	weather_primal = primal
 	match new_weather:
 		AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
-			message.emit("¡Empezó a llover!")
+			message.emit("¡Empezó a llover!" if not primal else "¡Una lluvia torrencial azotó la zona!")
 		AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
-			message.emit("¡El sol brilla con fuerza!")
+			message.emit("¡El sol brilla con fuerza!" if not primal else "¡El sol se volvió extremadamente intenso!")
 		AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM:
 			message.emit("¡Se levantó una tormenta de arena!")
 		AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
 			message.emit("¡Empezó a granizar!")
+		AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
+			if not primal:
+				message.emit("¡El clima volvió a la normalidad!")
 		_:
 			pass
 

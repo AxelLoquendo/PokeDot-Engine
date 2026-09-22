@@ -109,10 +109,10 @@ func _ready() -> void:
 
 func _dar_party_debug(datos: CharacterPlayer) -> void:
 	var equipo: Array[PokemonInstance] = [
-		PokemonInstance.create(Species.SpeciesID.SPECIES_CERULEDGE, 5),
+		PokemonInstance.create(Species.SpeciesID.SPECIES_DITTO, 5),
 		PokemonInstance.create(Species.SpeciesID.SPECIES_WYRDEER, 15),
-		PokemonInstance.create(Species.SpeciesID.SPECIES_CHARMANDER, 11),
-		PokemonInstance.create(Species.SpeciesID.SPECIES_ANNIHILAPE, 36),
+		PokemonInstance.create(Species.SpeciesID.SPECIES_ZORUA, 11),
+		PokemonInstance.create(Species.SpeciesID.SPECIES_ZORUA_HISUI, 10),
 		PokemonInstance.create(Species.SpeciesID.SPECIES_GOLISOPOD, 36),
 		PokemonInstance.create(Species.SpeciesID.SPECIES_ETERNATUS, 36),
 	]

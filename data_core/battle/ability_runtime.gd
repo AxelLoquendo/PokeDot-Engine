@@ -298,6 +298,45 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 			await battle.ability_announce(battler)
 			battler.slow_start_turns = 5
 
+		AbilityId.Id.ILLUSION:
+			await _setup_illusion(battler, battle)
+
+		AbilityId.Id.IMPOSTER:
+			if opponent != null and not opponent.is_fainted():
+				await _setup_imposter(battler, opponent, battle)
+
+		AbilityId.Id.ELECTRIC_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_ELECTRIC, 5)
+
+		AbilityId.Id.GRASSY_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_GRASSY, 5)
+
+		AbilityId.Id.MISTY_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_MISTY, 5)
+
+		AbilityId.Id.PSYCHIC_SURGE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_PSYCHIC, 5)
+
+		AbilityId.Id.PRIMORDIAL_SEA:
+			await battle.ability_announce(battler)
+			battle.set_weather(WeatherId.WEATHER_RAIN, -1, true)
+
+		AbilityId.Id.DESOLATE_LAND:
+			await battle.ability_announce(battler)
+			battle.set_weather(WeatherId.WEATHER_DROUGHT, -1, true)
+
+		AbilityId.Id.DELTA_STREAM:
+			await battle.ability_announce(battler)
+			# Si no tienes WEATHER_STRONG_WINDS, usa un id propio o reutiliza uno
+			# y trátalo como “vientos fuertes” en TypeChart (Flying no débil a Rock/Ice/Electric).
+			battle.set_weather(WeatherId.WEATHER_NONE, -1, true)  # ajusta al enum real
+			battle.message.emit("¡Se formaron misteriosas corrientes de aire!")
+			await battle._wait(0.7)
+
 ## ─── Contacto ───────────────────────────────────────────
 static func on_contact_hit(
 	attacker: BattleBattler,
@@ -570,3 +609,105 @@ static func on_damaged_by_move(
 			if move.type == PokemonData.Type.TYPE_WATER:
 				await battle.ability_announce(defender)
 				await battle.ability_change_stat(defender, PokemonInstance.Stat.DEFENSE, 2)
+
+## Illusion: disfraza con el último Pokémon no debilitado del mismo equipo.
+static func _setup_illusion(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+
+	var party: Array[PokemonInstance] = battle.player_party if battler.is_player_side else battle.enemy_party
+	var disguise: PokemonInstance = null
+
+	# El disfraz es el último miembro del party que no sea el activo y no esté KO.
+	for i: int in range(party.size() - 1, -1, -1):
+		var mon: PokemonInstance = party[i]
+		if mon == null or mon == battler.pokemon:
+			continue
+		if mon.is_fainted():
+			continue
+		disguise = mon
+		break
+
+	if disguise == null:
+		return  # sin disfraz posible: no anuncia, Illusion “falla” en silencio como en los juegos
+
+	battler.illusion_active = true
+	battler.illusion_species_id = disguise.species_id
+	battler.illusion_nickname = disguise.get_display_name()
+	battler.illusion_gender = disguise.gender
+	battler.illusion_shiny = disguise.shiny if "shiny" in disguise else false
+	battler.illusion_form_id = disguise.form_id if "form_id" in disguise else 0
+
+	# No se anuncia Illusion al entrar: el truco es que no se note.
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+
+
+## Se llama al recibir daño real (HP baja).
+static func break_illusion(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or not battler.illusion_active:
+		return
+	battler.clear_illusion()
+	await battle.ability_announce(battler)
+	battle.illusion_broken.emit(battler.is_player_side)
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+	battle.message.emit("¡La ilusión de %s se disipó!" % battler.get_display_name())
+	await battle._wait(0.7)
+
+
+## Imposter = Transform completo del rival (stats base del transform, mismos moves, etc.).
+static func _setup_imposter(
+	battler: BattleBattler,
+	opponent: BattleBattler,
+	battle: BattleManager
+) -> void:
+	if battler == null or opponent == null or opponent.pokemon == null:
+		return
+
+	await battle.ability_announce(battler)
+
+	# Backup mínimo por si más adelante quieres des-transformar al cambiar.
+	battler.transform_backup = {
+		"species_id": battler.pokemon.species_id,
+		"ability_id": battler.pokemon.ability_id,
+		"moves": battler.pokemon.moves.duplicate(true),
+	}
+
+	# Copia visual + datos de combate del rival (HP/max HP se mantienen del original).
+	var src: PokemonInstance = opponent.pokemon
+	var dst: PokemonInstance = battler.pokemon
+
+	# Ajusta a tu API real de especie/forma:
+	dst.species_id = src.species_id
+	if "form_id" in dst and "form_id" in src:
+		dst.form_id = src.form_id
+	dst.ability_id = src.ability_id
+
+	# Moves: copia slots (PP al máximo del move copiado o PP actuales del rival; típico = PP del move).
+	dst.moves.clear()
+	for slot: PokemonMoveSlot in src.moves:
+		if slot == null or slot.is_empty():
+			continue
+		var copy: PokemonMoveSlot = PokemonMoveSlot.new()
+		copy.move_id = slot.move_id
+		copy.current_pp = slot.current_pp
+		copy.max_pp = slot.max_pp
+		dst.moves.append(copy)
+
+	# Stages del transform: se copian los del rival (comportamiento clásico de Transform).
+	battler.stage_attack = opponent.stage_attack
+	battler.stage_defense = opponent.stage_defense
+	battler.stage_sp_attack = opponent.stage_sp_attack
+	battler.stage_sp_defense = opponent.stage_sp_defense
+	battler.stage_speed = opponent.stage_speed
+	battler.stage_accuracy = opponent.stage_accuracy
+	battler.stage_evasion = opponent.stage_evasion
+
+	battler.is_transformed = true
+	battler.clear_illusion()  # por si acaso
+
+	battle.message.emit("¡%s se transformó en %s!" % [
+		battler.get_display_name(),
+		opponent.get_display_name()
+	])
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+	await battle._wait(0.9)
