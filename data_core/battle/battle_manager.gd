@@ -663,6 +663,10 @@ func _process_end_of_turn() -> void:
 		if not battler.is_fainted():
 			await AbilityRuntime.end_of_turn(battler, weather, self)
 
+	for battler: BattleBattler in [player, enemy]:
+		if not battler.is_fainted():
+			await AbilityRuntime.tick_perish(battler, self)
+
 	player_side.tick_down()
 	enemy_side.tick_down()
 	if weather_turns > 0:
@@ -749,6 +753,9 @@ func _execute_move(action: BattleAction) -> void:
 	if AbilityRuntime.should_skip_turn(action.actor):
 		await ability_announce(action.actor)
 		message.emit("¡%s holgazanea!" % action.actor.get_display_name())
+		await _wait(0.8)
+		return
+	if AbilityRuntime.check_infatuation_blocks_move(action.actor, self):
 		await _wait(0.8)
 		return
 	var actor: BattleBattler = action.actor
@@ -961,6 +968,9 @@ func _execute_move(action: BattleAction) -> void:
 					# IA simple: el manager ya tiene flujo de cambio enemigo si aplica
 					pass
 
+			await AbilityRuntime.try_zen_mode(target, self)
+			await AbilityRuntime.try_shields_down(target, self)
+
 		if move.recoil_percent > 0 and not actor.is_fainted():
 			await _apply_recoil(actor, dealt, move.recoil_percent)
 			if actor.is_fainted():
@@ -1027,6 +1037,12 @@ func _execute_move(action: BattleAction) -> void:
 		actor.charged = false
 
 	await _apply_damaging_move_effect(actor, target, move, total_dealt)
+
+	# Dancer: otros Pokémon con Dancer copian el baile
+	if move != null and move.dance_move:
+		for other: BattleBattler in [player, enemy]:
+			if other != null and other != actor and not other.is_fainted():
+				await AbilityRuntime.try_dancer(other, move, actor, self)
 
 	if target.is_fainted():
 		await _trigger_ko_ability(actor, target)

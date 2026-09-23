@@ -41,6 +41,17 @@ var slow_start_turns: int = 0
 var unburden_active: bool = false
 ## Última baya consumida (Harvest)
 var last_berry_id: int = 0  # Items.ItemId
+## Cute Charm / Attract: lado del Pokémon que causa atracción (-1 = libre)
+var infatuated_by_player_side: int = -1  # 1 player, 0 enemy, -1 none
+## Perish Body / Perish Song
+var perish_count: int = -1  # -1 inactivo; 3..0 cuenta atrás
+## Cud Chew: baya a re-comer el turno siguiente
+var cud_chew_berry_id: int = 0
+var cud_chew_pending: bool = false
+## Zero to Hero / forma combatiente
+var zero_to_hero_transformed: bool = false
+## Shields Down / Zen Mode tracking
+var form_ability_active: bool = false
 var truant_skip_turn: bool = false
 var just_switched_in: bool = false
 var battle_type_1: int = -1
@@ -89,6 +100,13 @@ func _reset_stages() -> void:
 	flash_fire_boosted = false
 	slow_start_turns = 0
 	unburden_active = false
+	infatuated_by_player_side = -1
+	perish_count = -1
+	cud_chew_berry_id = 0
+	cud_chew_pending = false
+	zero_to_hero_transformed = false
+	form_ability_active = false
+	last_berry_id = 0
 	truant_skip_turn = false
 	just_switched_in = true
 	battle_type_1 = -1
@@ -259,3 +277,11 @@ func set_battle_types(type_1: PokemonData.Type, type_2: PokemonData.Type = Pokem
 func clear_battle_types() -> void:
 	battle_type_1 = -1
 	battle_type_2 = -1
+
+
+func is_infatuated() -> bool:
+	return infatuated_by_player_side >= 0
+
+
+func clear_infatuation() -> void:
+	infatuated_by_player_side = -1

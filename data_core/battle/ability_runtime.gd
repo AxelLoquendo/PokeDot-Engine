@@ -235,6 +235,8 @@ static func should_survive_with_sturdy(defender: BattleBattler, incoming_damage:
 ## ─── Inmunidades a estados / confusión / retroceso ──────
 static func blocks_status(battler: BattleBattler, status: PokemonInstance.Status, weather: int = -1) -> bool:
 	var id: AbilityId.Id = get_id(battler)
+	if shields_down_blocks_status(battler):
+		return true
 	if id == AbilityId.Id.COMATOSE or id == AbilityId.Id.PURIFYING_SALT:
 		return true
 	if id == AbilityId.Id.LEAF_GUARD and weather == WeatherId.WEATHER_DROUGHT:
@@ -523,6 +525,27 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 		AbilityId.Id.MIMICRY:
 			await _apply_mimicry(battler, battle)
 
+		AbilityId.Id.PROTOSYNTHESIS, AbilityId.Id.QUARK_DRIVE:
+			await try_booster_energy_style(battler, battle.weather, battle.terrain, battle)
+
+		AbilityId.Id.TERA_SHIFT:
+			await try_tera_shift(battler, battle)
+
+		AbilityId.Id.TERAFORM_ZERO:
+			await try_teraform_zero(battler, battle)
+
+		AbilityId.Id.FORECAST:
+			await try_forecast(battler, battle.weather, battle)
+
+		AbilityId.Id.FLOWER_GIFT:
+			await try_flower_gift(battler, battle.weather, battle)
+
+		AbilityId.Id.SHIELDS_DOWN:
+			await try_shields_down(battler, battle)
+
+		AbilityId.Id.ZEN_MODE:
+			await try_zen_mode(battler, battle)
+
 
 ## ─── Contacto ───────────────────────────────────────────
 static func on_contact_hit(
@@ -620,6 +643,11 @@ static func on_contact_hit(
 				await battle._wait(0.5)
 
 
+
+	# Cute Charm (defensor) y Perish Body
+	await try_cute_charm(defender, attacker, move, battle)
+	await try_perish_body(defender, attacker, move, battle)
+
 ## ─── Fin de turno ───────────────────────────────────────
 static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
 	if battler == null or battler.is_fainted():
@@ -703,6 +731,26 @@ static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleMana
 
 		AbilityId.Id.HARVEST:
 			await try_harvest(battler, weather, battle)
+
+		AbilityId.Id.CUD_CHEW:
+			await try_cud_chew(battler, battle)
+
+		AbilityId.Id.FORECAST:
+			await try_forecast(battler, weather, battle)
+
+		AbilityId.Id.FLOWER_GIFT:
+			await try_flower_gift(battler, weather, battle)
+
+		AbilityId.Id.ZEN_MODE:
+			await try_zen_mode(battler, battle)
+
+		AbilityId.Id.SHIELDS_DOWN:
+			await try_shields_down(battler, battle)
+
+		AbilityId.Id.HEALER:
+			var ally: BattleBattler = get_ally(battler, battle)
+			await try_healer(battler, ally, battle)
+
 
 
 
@@ -1375,6 +1423,10 @@ static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void
 	battler.charged = false
 
 
+
+	if has(battler, AbilityId.Id.ZERO_TO_HERO):
+		await try_zero_to_hero(battler, battle)
+
 static func after_own_stat_drop(battler: BattleBattler, actual: int, caused_by_foe: bool, battle: BattleManager) -> void:
 	if not caused_by_foe or actual >= 0 or battler == null or battle == null:
 		return
@@ -1766,3 +1818,530 @@ static func try_hospitality(battler: BattleBattler, ally: BattleBattler, battle:
 	@warning_ignore("integer_division")
 	var heal_amt: int = maxi(1, ally.get_max_hp() / 4)
 	await battle.ability_heal(ally, heal_amt)
+
+
+## ─── Lote final de habilidades (28 restantes) ───
+## Ignora CUSTOM_314 y CUSTOM_317.
+
+## Overworld / post-combate ────────────────────────────────
+
+## Illuminate: multiplica la tasa de encuentro salvaje.
+static func wild_encounter_rate_multiplier(party: Array) -> float:
+	for mon: PokemonInstance in party:
+		if mon == null:
+			continue
+		var aid: AbilityId.Id = mon.ability_id if "ability_id" in mon else AbilityId.Id.NONE
+		if aid == AbilityId.Id.ILLUMINATE:
+			return 2.0
+	return 1.0
+
+
+## Pickup: tras el combate, chance de obtener un objeto (llamar desde overworld).
+static func try_pickup_after_battle(party: Array) -> Array:
+	var results: Array = []
+	for mon: PokemonInstance in party:
+		if mon == null or mon.is_fainted():
+			continue
+		if mon.ability_id != AbilityId.Id.PICKUP:
+			continue
+		if mon.held_item != Items.ItemId.ITEM_NONE:
+			continue
+		if randf() >= 0.1:
+			continue
+		var item: Items.ItemId = Items.ItemId.ITEM_POTION
+		mon.held_item = item
+		results.append({"pokemon": mon, "item": item})
+	return results
+
+
+## Honey Gather: similar a Pickup con miel (si existe el ítem).
+static func try_honey_gather_after_battle(party: Array) -> Array:
+	var results: Array = []
+	for mon: PokemonInstance in party:
+		if mon == null or mon.is_fainted():
+			continue
+		if mon.ability_id != AbilityId.Id.HONEY_GATHER:
+			continue
+		if mon.held_item != Items.ItemId.ITEM_NONE:
+			continue
+		if randf() >= 0.15:
+			continue
+		# Asigna Potion como placeholder si no hay miel en el catálogo de ítems
+		var item: Items.ItemId = Items.ItemId.ITEM_POTION
+		mon.held_item = item
+		results.append({"pokemon": mon, "item": item})
+	return results
+
+
+## Ball Fetch: recoge una Poké Ball fallida (llamar al fallar captura).
+static func try_ball_fetch(party: Array, ball_item: Items.ItemId) -> bool:
+	if ball_item == Items.ItemId.ITEM_NONE:
+		return false
+	for mon: PokemonInstance in party:
+		if mon == null or mon.is_fainted():
+			continue
+		if mon.ability_id != AbilityId.Id.BALL_FETCH:
+			continue
+		if mon.held_item != Items.ItemId.ITEM_NONE:
+			continue
+		mon.held_item = ball_item
+		return true
+	return false
+
+
+## Cute Charm / Attract ───────────────────────────────────
+
+static func try_cute_charm(
+	defender: BattleBattler,
+	attacker: BattleBattler,
+	move: MoveData,
+	battle: BattleManager
+) -> void:
+	if move == null or not move.makes_contact:
+		return
+	if defender == null or attacker == null or battle == null:
+		return
+	if not has(defender, AbilityId.Id.CUTE_CHARM):
+		return
+	if defender.is_fainted() or attacker.is_fainted():
+		return
+	if attacker.pokemon == null or defender.pokemon == null:
+		return
+	if attacker.is_infatuated():
+		return
+	var ag: PokemonData.Gender = attacker.pokemon.gender
+	var dg: PokemonData.Gender = defender.pokemon.gender
+	if ag == PokemonData.Gender.GENDERLESS or dg == PokemonData.Gender.GENDERLESS:
+		return
+	if ag == dg:
+		return
+	if randf() >= 0.3:
+		return
+	await battle.ability_announce(defender)
+	attacker.infatuated_by_player_side = 1 if defender.is_player_side else 0
+	battle.message.emit("¡%s se enamoró de %s!" % [
+		attacker.get_display_name(), defender.get_display_name()
+	])
+	await battle._wait(0.6)
+
+
+## true = el enamorado se queda sin actuar este turno (50%).
+static func check_infatuation_blocks_move(battler: BattleBattler, battle: BattleManager) -> bool:
+	if battler == null or not battler.is_infatuated():
+		return false
+	var crush_side: bool = battler.infatuated_by_player_side == 1
+	var crush: BattleBattler = battle.player if crush_side else battle.enemy
+	if crush == null or crush.is_fainted():
+		battler.clear_infatuation()
+		return false
+	if randf() < 0.5:
+		battle.message.emit("¡%s está enamorado y no puede atacar!" % battler.get_display_name())
+		return true
+	return false
+
+
+## Perish Body ────────────────────────────────────────────
+
+static func try_perish_body(
+	defender: BattleBattler,
+	attacker: BattleBattler,
+	move: MoveData,
+	battle: BattleManager
+) -> void:
+	if move == null or not move.makes_contact:
+		return
+	if defender == null or attacker == null or battle == null:
+		return
+	if not has(defender, AbilityId.Id.PERISH_BODY):
+		return
+	if defender.is_fainted():
+		return
+	await battle.ability_announce(defender)
+	for b: BattleBattler in [defender, attacker]:
+		if b == null or b.is_fainted():
+			continue
+		if b.perish_count < 0:
+			b.perish_count = 3
+	battle.message.emit("¡Ambos Pokémon perecerán en 3 turnos!")
+	await battle._wait(0.7)
+
+
+static func tick_perish(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.perish_count < 0 or battler.is_fainted():
+		return
+	battler.perish_count -= 1
+	if battler.perish_count > 0:
+		battle.message.emit("¡El contador de perdición de %s bajó a %d!" % [
+			battler.get_display_name(), battler.perish_count
+		])
+		await battle._wait(0.5)
+	else:
+		battle.message.emit("¡%s sucumbió a la perdición!" % battler.get_display_name())
+		await battle._wait(0.5)
+		if battler.pokemon != null:
+			battler.apply_damage(battler.pokemon.current_hp)
+			battle._emit_hp(battler.is_player_side)
+
+
+## Cud Chew ───────────────────────────────────────────────
+
+static func notify_berry_eaten(battler: BattleBattler, berry_id: int) -> void:
+	if battler == null:
+		return
+	battler.last_berry_id = berry_id
+	if has(battler, AbilityId.Id.CUD_CHEW) and berry_id != 0 and berry_id != Items.ItemId.ITEM_NONE:
+		battler.cud_chew_berry_id = berry_id
+		battler.cud_chew_pending = true
+
+
+static func try_cud_chew(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null or not battler.cud_chew_pending:
+		return
+	if not has(battler, AbilityId.Id.CUD_CHEW):
+		battler.cud_chew_pending = false
+		return
+	await battle.ability_announce(battler)
+	battle.message.emit("¡%s regurgitó y volvió a comer su baya!" % battler.get_display_name())
+	await battle._wait(0.5)
+	# Efecto genérico: curar 1/3 PS (las bayas específicas requerirían ItemUseResolver)
+	@warning_ignore("integer_division")
+	var heal_amt: int = maxi(1, battler.get_max_hp() / 3)
+	await battle.ability_heal(battler, heal_amt)
+	battler.cud_chew_pending = false
+	battler.cud_chew_berry_id = 0
+
+
+## Dobles / aliados (en individual el aliado es null → no-op) ─
+
+static func get_ally(battler: BattleBattler, battle: BattleManager) -> BattleBattler:
+	# Motor actual es 1v1: no hay aliado en campo.
+	return null
+
+
+static func plus_minus_spatk_multiplier(battler: BattleBattler, ally: BattleBattler) -> float:
+	if ally == null or ally.is_fainted():
+		return 1.0
+	var id: AbilityId.Id = get_id(battler)
+	var aid: AbilityId.Id = get_id(ally)
+	if id == AbilityId.Id.PLUS and (aid == AbilityId.Id.MINUS or aid == AbilityId.Id.PLUS):
+		return 1.5
+	if id == AbilityId.Id.MINUS and (aid == AbilityId.Id.PLUS or aid == AbilityId.Id.MINUS):
+		return 1.5
+	return 1.0
+
+
+static func friend_guard_multiplier(defender: BattleBattler, ally: BattleBattler) -> float:
+	if ally == null or ally.is_fainted():
+		return 1.0
+	if has(ally, AbilityId.Id.FRIEND_GUARD):
+		return 0.75
+	return 1.0
+
+
+static func telepathy_blocks_ally_damage(defender: BattleBattler, attacker: BattleBattler) -> bool:
+	if defender == null or attacker == null:
+		return false
+	if defender.is_player_side == attacker.is_player_side and has(defender, AbilityId.Id.TELEPATHY):
+		return true
+	return false
+
+
+static func battery_multiplier(attacker: BattleBattler, ally: BattleBattler, move: MoveData) -> float:
+	if move == null or move.category != MoveStruct.DamageCategory.SPECIAL:
+		return 1.0
+	if ally == null or ally.is_fainted():
+		return 1.0
+	if has(ally, AbilityId.Id.BATTERY):
+		return 1.3
+	return 1.0
+
+
+static func power_spot_multiplier(attacker: BattleBattler, ally: BattleBattler) -> float:
+	if ally == null or ally.is_fainted():
+		return 1.0
+	if has(ally, AbilityId.Id.POWER_SPOT):
+		return 1.3
+	return 1.0
+
+
+static func try_healer(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or ally == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.HEALER):
+		return
+	if ally.is_fainted() or ally.pokemon == null or not ally.pokemon.has_status():
+		return
+	if randf() >= 0.3:
+		return
+	await battle.ability_announce(battler)
+	await battle.ability_cure_status(ally)
+
+
+static func try_symbiosis(
+	giver: BattleBattler,
+	ally: BattleBattler,
+	battle: BattleManager
+) -> void:
+	if giver == null or ally == null or battle == null:
+		return
+	if not has(giver, AbilityId.Id.SYMBIOSIS):
+		return
+	if giver.pokemon == null or ally.pokemon == null:
+		return
+	if giver.pokemon.held_item == Items.ItemId.ITEM_NONE:
+		return
+	if ally.pokemon.held_item != Items.ItemId.ITEM_NONE:
+		return
+	await battle.ability_announce(giver)
+	ally.pokemon.held_item = giver.pokemon.held_item
+	giver.pokemon.held_item = Items.ItemId.ITEM_NONE
+	notify_item_lost(giver)
+	battle.message.emit("¡%s pasó su objeto a %s!" % [
+		giver.get_display_name(), ally.get_display_name()
+	])
+	await battle._wait(0.5)
+
+
+static func try_receiver_or_alchemy(
+	receiver: BattleBattler,
+	fainted_ally: BattleBattler,
+	battle: BattleManager
+) -> void:
+	if receiver == null or fainted_ally == null or battle == null:
+		return
+	var id: AbilityId.Id = get_id(receiver)
+	if id != AbilityId.Id.RECEIVER and id != AbilityId.Id.POWER_OF_ALCHEMY:
+		return
+	if fainted_ally.pokemon == null or receiver.pokemon == null:
+		return
+	var new_id: AbilityId.Id = fainted_ally.pokemon.ability_id
+	if not _is_traceable(new_id):
+		return
+	await battle.ability_announce(receiver)
+	receiver.pokemon.ability_id = new_id
+	battle.message.emit("¡%s recibió la habilidad de %s!" % [
+		receiver.get_display_name(), fainted_ally.get_display_name()
+	])
+	await battle._wait(0.6)
+
+
+static func try_curious_medicine(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or ally == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.CURIOUS_MEDICINE):
+		return
+	if ally.is_fainted():
+		return
+	await battle.ability_announce(battler)
+	ally._reset_stages()
+	battle.message.emit("¡Las estadísticas de %s se reiniciaron!" % ally.get_display_name())
+	await battle._wait(0.5)
+
+
+static func try_costar(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or ally == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.COSTAR):
+		return
+	if ally.is_fainted():
+		return
+	await battle.ability_announce(battler)
+	battler.stage_attack = ally.stage_attack
+	battler.stage_defense = ally.stage_defense
+	battler.stage_sp_attack = ally.stage_sp_attack
+	battler.stage_sp_defense = ally.stage_sp_defense
+	battler.stage_speed = ally.stage_speed
+	battler.stage_accuracy = ally.stage_accuracy
+	battler.stage_evasion = ally.stage_evasion
+	battle.message.emit("¡%s copió los cambios de estadística de %s!" % [
+		battler.get_display_name(), ally.get_display_name()
+	])
+	await battle._wait(0.6)
+
+
+## Commander (Tatsugiri + Dondozo): en 1v1 no aplica; stub documentado.
+static func try_commander(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or ally == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.COMMANDER):
+		return
+	# Requiere especies específicas y formato dobles; se deja el gancho.
+	await battle.ability_announce(battler)
+	await battle.ability_change_stat(ally, PokemonInstance.Stat.ATTACK, 2)
+	await battle.ability_change_stat(ally, PokemonInstance.Stat.DEFENSE, 2)
+	await battle.ability_change_stat(ally, PokemonInstance.Stat.SP_ATTACK, 2)
+	await battle.ability_change_stat(ally, PokemonInstance.Stat.SP_DEFENSE, 2)
+	await battle.ability_change_stat(ally, PokemonInstance.Stat.SPEED, 2)
+
+
+## Dancer: copia un movimiento de baile usado en el campo.
+static func try_dancer(
+	battler: BattleBattler,
+	move: MoveData,
+	user: BattleBattler,
+	battle: BattleManager
+) -> void:
+	if battler == null or move == null or battle == null:
+		return
+	if not move.dance_move:
+		return
+	if not has(battler, AbilityId.Id.DANCER):
+		return
+	if user == battler:
+		return
+	if battler.is_fainted():
+		return
+	await battle.ability_announce(battler)
+	battle.message.emit("¡%s copió el baile!" % battler.get_display_name())
+	await battle._wait(0.5)
+	# Ejecución simplificada: si es movimiento de stats, reutiliza el effect resolver vía señal
+	# En 1v1 el objetivo del baile suele ser uno mismo o el rival según el move.
+	var target: BattleBattler = battler
+	if move.category != MoveStruct.DamageCategory.STATUS:
+		target = battle.enemy if battler.is_player_side else battle.player
+	# Solo anuncia; la re-ejecución completa del move requiere Action extra.
+	# Marcamos un flag para que el manager pueda re-lanzar si lo desea.
+	battler.set_meta("dancer_copy_move", move)
+
+
+## Formas ─────────────────────────────────────────────────
+
+static func try_forecast(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.FORECAST):
+		return
+	var form: StringName = &"base"
+	match weather:
+		WeatherId.WEATHER_RAIN:
+			form = &"rainy"
+		WeatherId.WEATHER_DROUGHT:
+			form = &"sunny"
+		WeatherId.WEATHER_SNOW:
+			form = &"snowy"
+	if battler.pokemon.form_id == form:
+		return
+	if battler.pokemon.set_form(form):
+		await battle.ability_announce(battler)
+		battle.message.emit("¡%s cambió de forma!" % battler.get_display_name())
+		battle.battler_appearance_changed.emit(battler.is_player_side)
+		await battle._wait(0.5)
+
+
+static func try_flower_gift(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.FLOWER_GIFT):
+		return
+	var want: StringName = &"sunshine" if weather == WeatherId.WEATHER_DROUGHT else &"base"
+	if battler.pokemon.form_id == want:
+		return
+	if battler.pokemon.set_form(want):
+		await battle.ability_announce(battler)
+		battle.battler_appearance_changed.emit(battler.is_player_side)
+		await battle._wait(0.4)
+
+
+static func flower_gift_stat_multiplier(battler: BattleBattler, stat: PokemonInstance.Stat, weather: int) -> float:
+	if not has(battler, AbilityId.Id.FLOWER_GIFT):
+		return 1.0
+	if weather != WeatherId.WEATHER_DROUGHT:
+		return 1.0
+	if stat == PokemonInstance.Stat.ATTACK or stat == PokemonInstance.Stat.SP_DEFENSE:
+		return 1.5
+	return 1.0
+
+
+static func try_zen_mode(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.ZEN_MODE):
+		return
+	var half: float = float(battler.get_max_hp()) / 2.0
+	var want_zen: bool = float(battler.pokemon.current_hp) <= half
+	var form: StringName = &"zen" if want_zen else &"base"
+	if battler.pokemon.form_id == form:
+		return
+	if battler.pokemon.set_form(form):
+		await battle.ability_announce(battler)
+		battle.message.emit("¡%s cambió de forma!" % battler.get_display_name())
+		battle.battler_appearance_changed.emit(battler.is_player_side)
+		await battle._wait(0.5)
+
+
+static func try_shields_down(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.SHIELDS_DOWN):
+		return
+	var half: float = float(battler.get_max_hp()) / 2.0
+	# Meteor (protegido) con PS > 50%; Core bajo 50%
+	var want: StringName = &"core" if float(battler.pokemon.current_hp) <= half else &"meteor"
+	if battler.pokemon.form_id == want:
+		return
+	if battler.pokemon.set_form(want):
+		await battle.ability_announce(battler)
+		battle.battler_appearance_changed.emit(battler.is_player_side)
+		await battle._wait(0.5)
+
+
+## Shields Down: forma meteor es inmune a estados principales.
+static func shields_down_blocks_status(battler: BattleBattler) -> bool:
+	if not has(battler, AbilityId.Id.SHIELDS_DOWN):
+		return false
+	if battler.pokemon == null:
+		return false
+	return battler.pokemon.form_id == &"meteor" or battler.pokemon.form_id == &"base"
+
+
+static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.ZERO_TO_HERO):
+		return
+	# Al salir del combate (switch out) pasa a forma Hero una vez
+	if battler.zero_to_hero_transformed:
+		return
+	if battler.pokemon.set_form(&"hero"):
+		battler.zero_to_hero_transformed = true
+		await battle.ability_announce(battler)
+		battle.message.emit("¡%s adoptó su forma Heroe!" % battler.get_display_name())
+		battle.battler_appearance_changed.emit(battler.is_player_side)
+		await battle._wait(0.5)
+
+
+## Tera Shift: al entrar, cambia a forma Terastal (Terapagos).
+static func try_tera_shift(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.TERA_SHIFT):
+		return
+	if battler.pokemon.form_id == &"terastal":
+		return
+	if battler.pokemon.set_form(&"terastal"):
+		await battle.ability_announce(battler)
+		battle.message.emit("¡%s cambió a su forma Terastal!" % battler.get_display_name())
+		battle.battler_appearance_changed.emit(battler.is_player_side)
+		await battle._wait(0.5)
+
+
+## Teraform Zero: al entrar, elimina clima y terreno.
+static func try_teraform_zero(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.TERAFORM_ZERO):
+		return
+	await battle.ability_announce(battler)
+	var cleared: bool = false
+	if battle.weather != WeatherId.WEATHER_NONE:
+		battle.weather = WeatherId.WEATHER_NONE
+		battle.weather_turns = 0
+		cleared = true
+	if battle.terrain != BattleManager.TerrainId.TERRAIN_NONE:
+		battle.terrain = BattleManager.TerrainId.TERRAIN_NONE
+		battle.terrain_turns = 0
+		cleared = true
+	if cleared:
+		battle.message.emit("¡%s neutralizó el clima y el terreno!" % battler.get_display_name())
+		battle.weather_changed.emit(battle.weather, false)
+		await battle._wait(0.6)
