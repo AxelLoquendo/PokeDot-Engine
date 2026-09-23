@@ -615,6 +615,7 @@ static func on_contact_hit(
 				await battle.ability_announce(defender)
 				defender.pokemon.held_item = attacker.pokemon.held_item
 				attacker.pokemon.held_item = Items.ItemId.ITEM_NONE
+				notify_item_lost(attacker)
 				battle.message.emit("¡%s robó el objeto!" % defender.get_display_name())
 				await battle._wait(0.5)
 
@@ -699,6 +700,10 @@ static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleMana
 				await battle.ability_announce(battler)
 				@warning_ignore("integer_division")
 				await battle.ability_deal_damage(foe, maxi(1, foe.get_max_hp() / 8), battler)
+
+		AbilityId.Id.HARVEST:
+			await try_harvest(battler, weather, battle)
+
 
 
 static func is_immune_to_weather_damage(battler: BattleBattler, weather: int) -> bool:
@@ -967,6 +972,9 @@ static func on_damaged_by_move(
 				battle.message.emit("¡%s se cargó de electricidad!" % defender.get_display_name())
 				await battle._wait(0.5)
 
+		AbilityId.Id.CURSED_BODY:
+			await try_cursed_body(defender, attacker, move, battle)
+
 
 ## Illusion: disfraza con el último Pokémon no debilitado del mismo equipo.
 static func _setup_illusion(battler: BattleBattler, battle: BattleManager) -> void:
@@ -1172,6 +1180,9 @@ static func priority_bonus(battler: BattleBattler, move: MoveData) -> int:
 		AbilityId.Id.TRIAGE:
 			if move.healing_move:
 				return 3
+		AbilityId.Id.MYCELIUM_MIGHT:
+			if move.category == MoveStruct.DamageCategory.STATUS:
+				return -7
 	return 0
 
 
@@ -1217,6 +1228,12 @@ static func effective_move_type(attacker: BattleBattler, move: MoveData) -> Poke
 		AbilityId.Id.LIQUID_VOICE:
 			if move.sound_move:
 				return PokemonData.Type.TYPE_WATER
+		AbilityId.Id.DRAGONIZE:
+			if t == PokemonData.Type.TYPE_NORMAL:
+				return PokemonData.Type.TYPE_DRAGON
+		AbilityId.Id.EELEVATE:
+			if t == PokemonData.Type.TYPE_NORMAL:
+				return PokemonData.Type.TYPE_FLYING
 	return t
 
 
@@ -1225,7 +1242,8 @@ static func type_change_power_multiplier(attacker: BattleBattler, move: MoveData
 		return 1.0
 	match get_id(attacker):
 		AbilityId.Id.PIXILATE, AbilityId.Id.REFRIGERATE, \
-		AbilityId.Id.AERILATE, AbilityId.Id.GALVANIZE, AbilityId.Id.NORMALIZE:
+		AbilityId.Id.AERILATE, AbilityId.Id.GALVANIZE, AbilityId.Id.NORMALIZE, \
+		AbilityId.Id.DRAGONIZE, AbilityId.Id.EELEVATE:
 			return 1.2
 	return 1.0
 
@@ -1429,3 +1447,322 @@ static func ignores_protect_contact(attacker: BattleBattler, move: MoveData) -> 
 
 static func corrosion_can_poison(attacker: BattleBattler) -> bool:
 	return has(attacker, AbilityId.Id.CORROSION)
+
+
+## ─── Habilidades pendientes integradas (lote funcional) ───
+
+## Early Bird: reduce a la mitad los turnos de sueño al aplicarse.
+static func apply_early_bird_sleep(battler: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null:
+		return
+	if not has(battler, AbilityId.Id.EARLY_BIRD):
+		return
+	if battler.pokemon.status != PokemonInstance.Status.SLEEP:
+		return
+	# Mitad redondeando hacia abajo, mínimo 1 si aún dormía
+	battler.pokemon.status_counter = maxi(1, battler.pokemon.status_counter / 2)
+
+
+## Unburden: marcar velocidad x2 al perder el objeto en combate.
+static func notify_item_lost(battler: BattleBattler) -> void:
+	if battler == null:
+		return
+	if has(battler, AbilityId.Id.UNBURDEN):
+		battler.unburden_active = true
+
+
+## Klutz: el objeto equipado no tiene efecto.
+static func ignores_held_item(battler: BattleBattler) -> bool:
+	return has(battler, AbilityId.Id.KLUTZ)
+
+
+## Heavy Metal / Light Metal
+static func weight_multiplier(battler: BattleBattler) -> float:
+	match get_id(battler):
+		AbilityId.Id.HEAVY_METAL:
+			return 2.0
+		AbilityId.Id.LIGHT_METAL:
+			return 0.5
+	return 1.0
+
+
+## Gluttony: come bayas al 50% HP en vez de 25%.
+static func berry_hp_threshold(battler: BattleBattler) -> float:
+	if has(battler, AbilityId.Id.GLUTTONY):
+		return 0.5
+	return 0.25
+
+
+## Ripen: duplica efectos de bayas.
+static func berry_effect_multiplier(battler: BattleBattler) -> float:
+	return 2.0 if has(battler, AbilityId.Id.RIPEN) else 1.0
+
+
+## Cheek Pouch: curar 1/3 al comer una baya (llamar tras consumir baya).
+static func on_berry_eaten(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null or battler.is_fainted():
+		return
+	if has(battler, AbilityId.Id.CHEEK_POUCH):
+		await battle.ability_announce(battler)
+		@warning_ignore("integer_division")
+		var heal_amt: int = maxi(1, battler.get_max_hp() / 3)
+		await battle.ability_heal(battler, heal_amt)
+
+
+## Suction Cups / Anchor: no puede ser forzado a salir.
+static func blocks_forced_switch(battler: BattleBattler) -> bool:
+	return has(battler, AbilityId.Id.SUCTION_CUPS)
+
+
+## Stalwart / Propeller Tail: ignora redirección de movimientos.
+static func ignores_redirection(battler: BattleBattler) -> bool:
+	var id: AbilityId.Id = get_id(battler)
+	return id == AbilityId.Id.STALWART or id == AbilityId.Id.PROPELLER_TAIL
+
+
+## Aroma Veil: bloquea efectos mentales sobre el portador (y aliados en dobles).
+static func blocks_mental_effect(battler: BattleBattler) -> bool:
+	return has(battler, AbilityId.Id.AROMA_VEIL)
+
+
+## Mycelium Might: movimientos de estado ignoran habilidades del rival y van últimos.
+static func status_move_ignores_abilities(attacker: BattleBattler, move: MoveData) -> bool:
+	if move == null or move.category != MoveStruct.DamageCategory.STATUS:
+		return false
+	return has(attacker, AbilityId.Id.MYCELIUM_MIGHT)
+
+
+static func mycelium_goes_last(attacker: BattleBattler, move: MoveData) -> bool:
+	return status_move_ignores_abilities(attacker, move)
+
+
+## Quick Draw: 30% de actuar primero en su prioridad (desempate).
+static func quick_draw_wins_speed_tie(battler: BattleBattler) -> bool:
+	if not has(battler, AbilityId.Id.QUICK_DRAW):
+		return false
+	return randf() < 0.3
+
+
+## Mirror Armor: refleja bajadas de estadística del rival.
+static func reflects_stat_drop(battler: BattleBattler) -> bool:
+	return has(battler, AbilityId.Id.MIRROR_ARMOR)
+
+
+## Magician: roba el objeto del rival tras golpear con un movimiento.
+static func try_magician(
+	attacker: BattleBattler,
+	defender: BattleBattler,
+	battle: BattleManager
+) -> void:
+	if attacker == null or defender == null or battle == null:
+		return
+	if not has(attacker, AbilityId.Id.MAGICIAN):
+		return
+	if attacker.is_fainted() or defender.is_fainted():
+		return
+	if attacker.pokemon == null or defender.pokemon == null:
+		return
+	if attacker.pokemon.held_item != Items.ItemId.ITEM_NONE:
+		return
+	if defender.pokemon.held_item == Items.ItemId.ITEM_NONE:
+		return
+	if has(defender, AbilityId.Id.STICKY_HOLD):
+		return
+	await battle.ability_announce(attacker)
+	attacker.pokemon.held_item = defender.pokemon.held_item
+	defender.pokemon.held_item = Items.ItemId.ITEM_NONE
+	notify_item_lost(defender)
+	battle.message.emit("¡%s robó el objeto!" % attacker.get_display_name())
+	await battle._wait(0.5)
+
+
+## Cursed Body: 30% de "desactivar" el movimiento usado (requiere sistema Disable).
+## Mientras no exista Disable completo, se marca el slot con pp temporal 0 un turno vía flag.
+static func try_cursed_body(
+	defender: BattleBattler,
+	attacker: BattleBattler,
+	move: MoveData,
+	battle: BattleManager
+) -> void:
+	if defender == null or attacker == null or move == null or battle == null:
+		return
+	if not has(defender, AbilityId.Id.CURSED_BODY):
+		return
+	if defender.is_fainted() or attacker.is_fainted():
+		return
+	if randf() >= 0.3:
+		return
+	# Buscar el slot del movimiento y poner PP a 0 este combate si no hay disable real
+	if attacker.pokemon == null:
+		return
+	await battle.ability_announce(defender)
+	for i: int in range(attacker.pokemon.moves.size()):
+		var slot2: PokemonMoveSlot = attacker.pokemon.moves[i]
+		if slot2 == null or slot2.is_empty():
+			continue
+		var md: MoveData = MoveDatabase.get_move(slot2.move_id)
+		if md == null:
+			continue
+		if md == move or md.move_name == move.move_name:
+			slot2.current_pp = 0
+			battle.message.emit("¡El movimiento de %s fue desactivado!" % attacker.get_display_name())
+			await battle._wait(0.6)
+			return
+
+
+## Wimp Out / Emergency Exit: pedir cambio al cruzar la mitad de PS.
+static func check_wimp_or_emergency(
+	battler: BattleBattler,
+	hp_before: int,
+	battle: BattleManager
+) -> bool:
+	if battler == null or battler.pokemon == null or battle == null:
+		return false
+	var id: AbilityId.Id = get_id(battler)
+	if id != AbilityId.Id.WIMP_OUT and id != AbilityId.Id.EMERGENCY_EXIT:
+		return false
+	if battler.is_fainted():
+		return false
+	var max_hp: int = battler.get_max_hp()
+	if max_hp <= 0:
+		return false
+	var half: float = float(max_hp) / 2.0
+	if float(hp_before) > half and float(battler.pokemon.current_hp) <= half:
+		await battle.ability_announce(battler)
+		battle.message.emit("¡%s quiere retirarse!" % battler.get_display_name())
+		await battle._wait(0.6)
+		return true
+	return false
+
+
+## Protosynthesis / Quark Drive: sube la estadística más alta en sol / terreno eléctrico.
+static func try_booster_energy_style(
+	battler: BattleBattler,
+	weather: int,
+	terrain: int,
+	battle: BattleManager
+) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	var id: AbilityId.Id = get_id(battler)
+	var active: bool = false
+	if id == AbilityId.Id.PROTOSYNTHESIS and weather == WeatherId.WEATHER_DROUGHT:
+		active = true
+	elif id == AbilityId.Id.QUARK_DRIVE and terrain == BattleManager.TerrainId.TERRAIN_ELECTRIC:
+		active = true
+	if not active:
+		return
+	await battle.ability_announce(battler)
+	var best: PokemonInstance.Stat = PokemonInstance.Stat.ATTACK
+	var best_val: int = -1
+	for stat: PokemonInstance.Stat in [
+		PokemonInstance.Stat.ATTACK, PokemonInstance.Stat.DEFENSE,
+		PokemonInstance.Stat.SP_ATTACK, PokemonInstance.Stat.SP_DEFENSE,
+		PokemonInstance.Stat.SPEED
+	]:
+		var v: int = battler.get_effective_stat(stat)
+		if v > best_val:
+			best_val = v
+			best = stat
+	# +1 stage (aprox. del boost de 1.3x en games; stages es lo disponible)
+	await battle.ability_change_stat(battler, best, 1)
+
+
+## Opportunist: copia subidas de estadística del rival (llamar cuando el rival sube).
+static func try_opportunist(
+	battler: BattleBattler,
+	foe: BattleBattler,
+	stat: PokemonInstance.Stat,
+	stages: int,
+	battle: BattleManager
+) -> void:
+	if stages <= 0 or battler == null or foe == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.OPPORTUNIST):
+		return
+	if battler.is_fainted():
+		return
+	await battle.ability_announce(battler)
+	await battle.ability_change_stat(battler, stat, stages)
+
+
+## Poison Puppeteer: confunde al envenenar.
+static func try_poison_puppeteer(
+	attacker: BattleBattler,
+	defender: BattleBattler,
+	battle: BattleManager
+) -> void:
+	if attacker == null or defender == null or battle == null:
+		return
+	if not has(attacker, AbilityId.Id.POISON_PUPPETEER):
+		return
+	if defender.is_fainted():
+		return
+	if defender.pokemon == null:
+		return
+	if defender.pokemon.status != PokemonInstance.Status.POISON \
+			and defender.pokemon.status != PokemonInstance.Status.TOXIC:
+		return
+	if AbilityRuntime.blocks_confusion(defender):
+		return
+	await battle.ability_announce(attacker)
+	defender.confusion_turns = randi_range(2, 5)
+	battle.message.emit("¡%s se confundió!" % defender.get_display_name())
+	await battle._wait(0.5)
+
+
+## Harvest: 50% (100% en sol) de recuperar baya consumida al final del turno.
+static func try_harvest(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.HARVEST):
+		return
+	if battler.pokemon.held_item != Items.ItemId.ITEM_NONE:
+		return
+	# Requiere que se haya guardado la última baya consumida en el battler
+	var berry_id: int = battler.last_berry_id
+	if berry_id == 0 or berry_id == Items.ItemId.ITEM_NONE:
+		return
+	var chance: float = 1.0 if weather == WeatherId.WEATHER_DROUGHT else 0.5
+	if randf() >= chance:
+		return
+	await battle.ability_announce(battler)
+	battler.pokemon.held_item = berry_id as Items.ItemId
+	battler.last_berry_id = Items.ItemId.ITEM_NONE
+	battle.message.emit("¡%s recuperó su baya!" % battler.get_display_name())
+	await battle._wait(0.5)
+
+
+## Type-change style customs (Megas ZA placeholders)
+static func custom_type_change_power(attacker: BattleBattler, move: MoveData) -> float:
+	if move == null:
+		return 1.0
+	var id: AbilityId.Id = get_id(attacker)
+	# Misma idea que Aerilate/Pixilate: Normal -> tipo y x1.2
+	match id:
+		AbilityId.Id.DRAGONIZE:
+			if move.type == PokemonData.Type.TYPE_NORMAL:
+				return 1.2
+		AbilityId.Id.EELEVATE:
+			if move.type == PokemonData.Type.TYPE_NORMAL:
+				return 1.2
+		AbilityId.Id.PIERCING_DRILL:
+			# stub: más daño a tipos acero/roca si se implementa en type chart caller
+			return 1.0
+		AbilityId.Id.MEGA_SOL, AbilityId.Id.FIRE_MANE, AbilityId.Id.SPICY_SPRAY:
+			return 1.0
+	return 1.0
+
+
+## Hospitality (singles no-op; en dobles curaría al aliado al entrar)
+static func try_hospitality(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or ally == null or battle == null:
+		return
+	if not has(battler, AbilityId.Id.HOSPITALITY):
+		return
+	if ally.is_fainted():
+		return
+	await battle.ability_announce(battler)
+	@warning_ignore("integer_division")
+	var heal_amt: int = maxi(1, ally.get_max_hp() / 4)
+	await battle.ability_heal(ally, heal_amt)

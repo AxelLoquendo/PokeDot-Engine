@@ -733,6 +733,11 @@ func _sort_actions(actions: Array[BattleAction]) -> Array[BattleAction]:
 		var stall_b: bool = AbilityRuntime.has(b.actor, AbilityId.Id.STALL)
 		if stall_a != stall_b:
 			return not stall_a
+		# Quick Draw: 30% gana el desempate de velocidad
+		var qd_a: bool = AbilityRuntime.quick_draw_wins_speed_tie(a.actor)
+		var qd_b: bool = AbilityRuntime.quick_draw_wins_speed_tie(b.actor)
+		if qd_a != qd_b:
+			return qd_a
 		return randf() < 0.5
 	)
 	return actions
@@ -922,6 +927,7 @@ func _execute_move(action: BattleAction) -> void:
 		if target.endure_active and target.pokemon.current_hp > 1 and result.damage >= target.pokemon.current_hp:
 			result.damage = target.pokemon.current_hp - 1
 
+		var hp_before_hit: int = target.pokemon.current_hp if target.pokemon else 0
 		var dealt: int = target.apply_damage(result.damage)
 		total_dealt += dealt
 		hits_landed += 1
@@ -947,6 +953,13 @@ func _execute_move(action: BattleAction) -> void:
 		# Weak Armor, Justified, Rattled, Stamina, Anger Point, Steam Engine, Water Compaction
 		if dealt > 0 and not target.is_fainted():
 			await AbilityRuntime.on_damaged_by_move(target, actor, move, result.critical, self)
+			# Wimp Out / Emergency Exit
+			if await AbilityRuntime.check_wimp_or_emergency(target, hp_before_hit, self):
+				if target.is_player_side:
+					player_must_switch.emit()
+				else:
+					# IA simple: el manager ya tiene flujo de cambio enemigo si aplica
+					pass
 
 		if move.recoil_percent > 0 and not actor.is_fainted():
 			await _apply_recoil(actor, dealt, move.recoil_percent)
@@ -958,6 +971,8 @@ func _execute_move(action: BattleAction) -> void:
 
 		if AbilityRuntime.move_makes_contact(actor, move):
 			await AbilityRuntime.on_contact_hit(actor, target, move, self)
+		if not actor.is_fainted() and not target.is_fainted() and dealt > 0:
+			await AbilityRuntime.try_magician(actor, target, self)
 		if actor.is_fainted():
 			break
 
@@ -1598,6 +1613,16 @@ func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, sta
 		message.emit("¡Las estadísticas de %s no bajaron!" % battler.get_display_name())
 		await _wait(0.6)
 		return
+	# Mirror Armor: refleja bajadas del rival hacia el atacante (quien causó la bajada)
+	if caused_by_foe and stages < 0 and AbilityRuntime.reflects_stat_drop(battler):
+		await ability_announce(battler)
+		var foe: BattleBattler = enemy if battler.is_player_side else player
+		if foe != null and not foe.is_fainted():
+			message.emit("¡%s reflejó el cambio de estadística!" % battler.get_display_name())
+			await _wait(0.5)
+			# aplicar al rival sin caused_by_foe para no re-reflejar en bucle
+			await ability_change_stat(foe, stat, stages, false)
+		return
 	var adjusted: int = AbilityRuntime.adjust_own_stage_change(battler, stages)
 	var actual: int = battler.modify_stage(stat, adjusted)
 	if actual == 0:
@@ -1610,6 +1635,11 @@ func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, sta
 	await _wait(0.6)
 	if caused_by_foe and actual < 0:
 		await AbilityRuntime.after_own_stat_drop(battler, actual, true, self)
+	# Opportunist: el rival copia subidas
+	if actual > 0:
+		var opp: BattleBattler = enemy if battler.is_player_side else player
+		if opp != null and not opp.is_fainted():
+			await AbilityRuntime.try_opportunist(opp, battler, stat, actual, self)
 
 func ability_apply_status(battler: BattleBattler, status: PokemonInstance.Status, source: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null or battler.is_fainted():
@@ -1618,12 +1648,18 @@ func ability_apply_status(battler: BattleBattler, status: PokemonInstance.Status
 		return
 	if not battler.pokemon.apply_status(status):
 		return
+	# Early Bird: sueño más corto
+	if status == PokemonInstance.Status.SLEEP:
+		AbilityRuntime.apply_early_bird_sleep(battler)
 	message.emit("¡%s de %s afectó a %s: quedó %s!" % [
 		AbilityRuntime.ability_name(source),
 		source.get_display_name(),
 		battler.get_display_name(),
 		StatusConditions.status_name(status)
 	])
+	# Poison Puppeteer
+	if source != null and (status == PokemonInstance.Status.POISON or status == PokemonInstance.Status.TOXIC):
+		await AbilityRuntime.try_poison_puppeteer(source, battler, self)
 	if AbilityRuntime.has(battler, AbilityId.Id.SYNCHRONIZE) and source != null and source != battler:
 		await ability_announce(battler)
 		if not AbilityRuntime.blocks_status(source, status, weather):

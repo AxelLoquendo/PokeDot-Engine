@@ -39,6 +39,8 @@ var flash_fire_boosted: bool = false
 var slow_start_turns: int = 0
 ## Unburden: se activa al perder el objeto en combate
 var unburden_active: bool = false
+## Última baya consumida (Harvest)
+var last_berry_id: int = 0  # Items.ItemId
 var truant_skip_turn: bool = false
 var just_switched_in: bool = false
 var battle_type_1: int = -1
