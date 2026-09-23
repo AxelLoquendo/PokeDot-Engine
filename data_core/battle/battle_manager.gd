@@ -346,10 +346,18 @@ func player_choose_move(slot_index: int, actor_slot: int = 0, target_slot: int =
 		await _try_resolve_pending_turn()
 		return
 
-	var target: BattleBattler = _enemy_battler_at(target_slot)
-	if target == null:
-		var opps: Array[BattleBattler] = get_opponents(actor)
-		target = opps[0] if not opps.is_empty() else enemy
+	var target: BattleBattler = null
+	if target_slot == -2:
+		# Aliado (combates dobles: movimientos de apoyo / daño amistoso)
+		target = get_ally(actor)
+		if target == null:
+			message.emit("¡No hay aliado al que apuntar!")
+			return
+	else:
+		target = _enemy_battler_at(target_slot)
+		if target == null:
+			var opps: Array[BattleBattler] = get_opponents(actor)
+			target = opps[0] if not opps.is_empty() else enemy
 
 	var player_action: BattleAction
 	if actor.charging_move != null:
@@ -2229,7 +2237,7 @@ func _revert_party_mon_forms(mon: PokemonInstance) -> void:
 	if mon.has_meta("zero_to_hero_armed"):
 		mon.remove_meta("zero_to_hero_armed")
 	var fid: String = str(mon.form_id)
-	if fid in ["palafin_hero", "castform_sunny", "castform_rainy", "castform_snowy",
+	if fid in ["Hero", "castform_sunny", "castform_rainy", "castform_snowy",
 			"cherrim_sunshine", "darmanitan_zen", "darmanitan_zen_galar",
 			"terapagos_terastal"] or fid.begins_with("minior_core"):
 		if mon.has_method("set_form"):
