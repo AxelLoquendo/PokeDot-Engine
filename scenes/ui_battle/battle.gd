@@ -102,6 +102,27 @@ var selected_move: int = 0
 var player_hp_bar_target: float = 48.0
 var enemy_hp_bar_target: float = 48.0
 var player_current_hp: int = 0
+
+## ─── UI multi (1v2 / 2v1 / 2v2) ─────────────────────────
+## Duplicados de sprites/HP para el slot 1. Slot 0 = nodos originales.
+var _multi_ui_ready: bool = false
+var _input_actor_slot: int = 0
+var _input_target_slot: int = 0
+## Sprite2D / Sprite2D (HP box) del slot 1
+var player_sprite_b: Sprite2D = null
+var enemy_sprite_b: Sprite2D = null
+var player_hp_box_b: Sprite2D = null
+var enemy_hp_box_b: Sprite2D = null
+var player_sprite_b_base_pos: Vector2 = Vector2.ZERO
+var enemy_sprite_b_base_pos: Vector2 = Vector2.ZERO
+var player_hp_box_b_base_pos: Vector2 = Vector2.ZERO
+var enemy_hp_box_b_base_pos: Vector2 = Vector2.ZERO
+## Offsets relativos al original
+const MULTI_PLAYER_SPRITE_OFFSET: Vector2 = Vector2(-56, 8)
+const MULTI_ENEMY_SPRITE_OFFSET: Vector2 = Vector2(56, 8)
+const MULTI_HP_BOX_OFFSET: Vector2 = Vector2(0, -28)
+const MULTI_Z_FOCUS: int = 20
+const MULTI_Z_BACK: int = 5
 var enemy_current_hp: int = 0
 
 var _action_normals: Array[Texture2D] = []
@@ -193,9 +214,15 @@ func _ready() -> void:
 
 	_attach_battle_weather()
 
-	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
+	battle.start_battle(
+		player_pokemon, enemy_pokemon, party, BattleSession.enemy_party,
+		BattleSession.battle_format as BattleManager.BattleFormat
+	)
 
-	battle.start_battle(player_pokemon, enemy_pokemon, party, BattleSession.enemy_party)
+	battle.start_battle(
+		player_pokemon, enemy_pokemon, party, BattleSession.enemy_party,
+		BattleSession.battle_format as BattleManager.BattleFormat
+	)
 
 	player_exp_bar.size.x = player_exp_bar_target
 	player_current_hp = player_pokemon.current_hp
@@ -216,14 +243,13 @@ func _ready() -> void:
 	# Gritos salen desde pokemon_entered_field dentro de start_battle_intro
 	await battle.start_battle_intro()
 
+	_setup_multi_battle_ui()
 	_refresh_side_appearance(false)
 	_refresh_side_appearance(true)
+	_refresh_all_multi_appearances()
+	_apply_input_focus_layers()
 
-	action_menu.visible = true
-	current_menu = MenuState.ACTIONS
-	selected_action = 0
-	_update_action_focus()
-	_show_message_box("¿Qué debe hacer %s?" % battle.player.get_display_name())
+	_begin_player_command_phase()
 
 func _on_player_progress_changed() -> void:
 	player_level_label.text = str(player_pokemon.level)
@@ -342,6 +368,10 @@ func _handle_move_input(event: InputEvent) -> void:
 		current_menu = MenuState.ACTIONS
 		_update_action_focus()
 		_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
+		return
+	elif event.is_action_pressed("buttonX") or event.is_action_pressed("Select"):
+		# Cambiar objetivo entre rivales en multi
+		_cycle_target_slot()
 		return
 
 	if moved:
@@ -555,6 +585,9 @@ func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
 	else:
 		enemy_current_hp = current_hp
 	_update_hp_bars()
+	if _multi_ui_ready:
+		_update_multi_hp_boxes()
+		_refresh_all_multi_appearances()
 
 
 func _on_battle_ended(player_won: bool) -> void:
@@ -590,18 +623,24 @@ func _on_battle_ended(player_won: bool) -> void:
 
 func _on_turn_ended() -> void:
 	_update_status_icons()
-	if battle.player.charging_move != null or battle.player.must_recharge:
+	_refresh_all_multi_appearances()
+	# Recarga / carga del mon que está en input (o todos en multi)
+	if battle != null and battle.is_multi_battle():
+		for b: BattleBattler in battle.player_actives:
+			if b != null and not b.is_fainted() and (b.charging_move != null or b.must_recharge):
+				current_menu = MenuState.BUSY
+				action_menu.visible = false
+				fight_menu.visible = false
+				await battle.player_choose_move(0, b.slot_index, _input_target_slot)
+				return
+	elif battle.player.charging_move != null or battle.player.must_recharge:
 		current_menu = MenuState.BUSY
 		action_menu.visible = false
 		fight_menu.visible = false
 		await battle.player_choose_move(0)
 		return
 
-	action_menu.visible = true
-	current_menu = MenuState.ACTIONS
-	selected_action = 0
-	_update_action_focus()
-	_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
+	_begin_player_command_phase()
 
 
 func _on_fight_pressed() -> void:
@@ -790,7 +829,7 @@ func _fill_move_buttons() -> void:
 
 
 func _on_move_pressed(index: int) -> void:
-	if index < 0 or index >= player_pokemon.moves.size():
+	if player_pokemon == null or index < 0 or index >= player_pokemon.moves.size():
 		return
 
 	var slot: PokemonMoveSlot = player_pokemon.moves[index]
@@ -802,7 +841,7 @@ func _on_move_pressed(index: int) -> void:
 
 	fight_menu.visible = false
 	current_menu = MenuState.BUSY
-	await battle.player_choose_move(index)
+	await _submit_move_for_current_slot(index)
 	_update_selected_move_info()
 
 
@@ -921,6 +960,8 @@ func show_ability_activation(is_player: bool, mon: PokemonInstance) -> void:
 
 func _on_battler_appearance_changed(is_player: bool) -> void:
 	_refresh_side_appearance(is_player)
+	if _multi_ui_ready:
+		_refresh_all_multi_appearances()
 
 
 func _on_illusion_broken(is_player: bool) -> void:
@@ -1181,3 +1222,272 @@ func _on_battle_weather_changed(weather: int, _primal: bool) -> void:
 			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_DROUGHT)
 		_:
 			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_NONE)
+
+
+# ============================================================
+# MULTI BATTLE UI (duplicar sprites + HP boxes)
+# ============================================================
+
+func _setup_multi_battle_ui() -> void:
+	if _multi_ui_ready or battle == null or not battle.is_multi_battle():
+		return
+	_multi_ui_ready = true
+
+	if battle._player_slot_count() >= 2:
+		player_sprite_b = player_sprite.duplicate() as Sprite2D
+		player_sprite_b.name = "Pkmn_Player_B"
+		add_child(player_sprite_b)
+		player_sprite_b_base_pos = player_sprite_base_pos + MULTI_PLAYER_SPRITE_OFFSET
+		player_sprite_b.position = player_sprite_b_base_pos
+		player_sprite_b.z_index = MULTI_Z_BACK
+		player_sprite_b.visible = true
+
+		player_hp_box_b = player_hp_box.duplicate() as Sprite2D
+		player_hp_box_b.name = "PlayerHPBox_B"
+		add_child(player_hp_box_b)
+		player_hp_box_b_base_pos = player_hp_box_base_pos + MULTI_HP_BOX_OFFSET
+		player_hp_box_b.position = player_hp_box_b_base_pos
+		player_hp_box_b.z_index = MULTI_Z_BACK
+		player_hp_box_b.visible = true
+
+	if battle._enemy_slot_count() >= 2:
+		enemy_sprite_b = enemy_sprite.duplicate() as Sprite2D
+		enemy_sprite_b.name = "Pkmn_Enemy_B"
+		add_child(enemy_sprite_b)
+		enemy_sprite_b_base_pos = enemy_sprite_base_pos + MULTI_ENEMY_SPRITE_OFFSET
+		enemy_sprite_b.position = enemy_sprite_b_base_pos
+		enemy_sprite_b.z_index = MULTI_Z_BACK
+		enemy_sprite_b.visible = true
+
+		var enemy_box: Sprite2D = get_node_or_null("EnemyHPBox") as Sprite2D
+		if enemy_box != null:
+			enemy_hp_box_b = enemy_box.duplicate() as Sprite2D
+			enemy_hp_box_b.name = "EnemyHPBox_B"
+			add_child(enemy_hp_box_b)
+			enemy_hp_box_b_base_pos = enemy_box.position + MULTI_HP_BOX_OFFSET
+			enemy_hp_box_b.position = enemy_hp_box_b_base_pos
+			enemy_hp_box_b.z_index = MULTI_Z_BACK
+			enemy_hp_box_b.visible = true
+
+	_input_actor_slot = 0
+	_input_target_slot = 0
+
+
+func _begin_player_command_phase() -> void:
+	if battle == null:
+		return
+	_input_actor_slot = _next_conscious_player_slot(0)
+	if _input_actor_slot < 0:
+		_input_actor_slot = 0
+	_input_target_slot = _default_target_slot()
+	_apply_input_focus_layers()
+	_sync_player_pokemon_ref_from_slot()
+	action_menu.visible = true
+	fight_menu.visible = false
+	current_menu = MenuState.ACTIONS
+	selected_action = 0
+	_update_action_focus()
+	var pname: String = player_pokemon.get_display_name() if player_pokemon else "???"
+	_show_message_box("¿Qué debe hacer %s?" % pname)
+
+
+func _next_conscious_player_slot(from_slot: int) -> int:
+	if battle == null:
+		return 0
+	for i: int in range(from_slot, battle.player_actives.size()):
+		var b: BattleBattler = battle.player_actives[i]
+		if b != null and b.pokemon != null and not b.is_fainted():
+			return i
+	return -1
+
+
+func _default_target_slot() -> int:
+	if battle == null:
+		return 0
+	for i: int in range(battle.enemy_actives.size()):
+		var b: BattleBattler = battle.enemy_actives[i]
+		if b != null and b.pokemon != null and not b.is_fainted():
+			return i
+	return 0
+
+
+func _sync_player_pokemon_ref_from_slot() -> void:
+	if battle == null:
+		return
+	if _input_actor_slot < 0 or _input_actor_slot >= battle.player_actives.size():
+		if battle.player != null:
+			player_pokemon = battle.player.pokemon
+		return
+	var b: BattleBattler = battle.player_actives[_input_actor_slot]
+	if b != null and b.pokemon != null:
+		player_pokemon = b.pokemon
+
+
+func _apply_input_focus_layers() -> void:
+	if player_sprite != null:
+		player_sprite.z_index = MULTI_Z_FOCUS if _input_actor_slot == 0 else MULTI_Z_BACK
+	if player_hp_box != null:
+		player_hp_box.z_index = MULTI_Z_FOCUS if _input_actor_slot == 0 else MULTI_Z_BACK
+	if player_sprite_b != null:
+		player_sprite_b.z_index = MULTI_Z_FOCUS if _input_actor_slot == 1 else MULTI_Z_BACK
+	if player_hp_box_b != null:
+		player_hp_box_b.z_index = MULTI_Z_FOCUS if _input_actor_slot == 1 else MULTI_Z_BACK
+
+	if enemy_sprite != null:
+		enemy_sprite.z_index = MULTI_Z_FOCUS if _input_target_slot == 0 else MULTI_Z_BACK
+	var enemy_box: Sprite2D = get_node_or_null("EnemyHPBox") as Sprite2D
+	if enemy_box != null:
+		enemy_box.z_index = MULTI_Z_FOCUS if _input_target_slot == 0 else MULTI_Z_BACK
+	if enemy_sprite_b != null:
+		enemy_sprite_b.z_index = MULTI_Z_FOCUS if _input_target_slot == 1 else MULTI_Z_BACK
+	if enemy_hp_box_b != null:
+		enemy_hp_box_b.z_index = MULTI_Z_FOCUS if _input_target_slot == 1 else MULTI_Z_BACK
+
+
+func _cycle_target_slot() -> void:
+	if battle == null or not battle.is_multi_battle():
+		return
+	var n: int = battle.enemy_actives.size()
+	if n <= 1:
+		return
+	var start: int = _input_target_slot
+	for step: int in range(1, n + 1):
+		var cand: int = (start + step) % n
+		var b: BattleBattler = battle.enemy_actives[cand]
+		if b != null and b.pokemon != null and not b.is_fainted():
+			_input_target_slot = cand
+			_apply_input_focus_layers()
+			_show_message_box("Objetivo: %s" % b.get_display_name())
+			return
+
+
+func _refresh_all_multi_appearances() -> void:
+	if battle == null:
+		return
+	_refresh_slot_appearance(true, 0)
+	_refresh_slot_appearance(false, 0)
+	if _multi_ui_ready:
+		if battle._player_slot_count() >= 2:
+			_refresh_slot_appearance(true, 1)
+		if battle._enemy_slot_count() >= 2:
+			_refresh_slot_appearance(false, 1)
+	_update_multi_hp_boxes()
+
+
+func _sprite_for_slot(is_player: bool, slot: int) -> Sprite2D:
+	if is_player:
+		return player_sprite if slot == 0 else player_sprite_b
+	return enemy_sprite if slot == 0 else enemy_sprite_b
+
+
+func _hp_box_for_slot(is_player: bool, slot: int) -> Sprite2D:
+	if is_player:
+		return player_hp_box if slot == 0 else player_hp_box_b
+	if slot == 0:
+		return get_node_or_null("EnemyHPBox") as Sprite2D
+	return enemy_hp_box_b
+
+
+func _refresh_slot_appearance(is_player: bool, slot: int) -> void:
+	if battle == null:
+		return
+	var actives: Array = battle.player_actives if is_player else battle.enemy_actives
+	if slot < 0 or slot >= actives.size():
+		return
+	var battler: BattleBattler = actives[slot]
+	var sprite: Sprite2D = _sprite_for_slot(is_player, slot)
+	var box: Sprite2D = _hp_box_for_slot(is_player, slot)
+	if battler == null or battler.pokemon == null or battler.is_fainted():
+		if sprite != null:
+			sprite.visible = false
+		if box != null:
+			box.modulate = Color(1, 1, 1, 0.35)
+		return
+	if sprite != null:
+		sprite.visible = true
+		var mon: PokemonInstance = battler.pokemon
+		if is_player:
+			if mon.has_method("get_back_sprite"):
+				sprite.texture = mon.get_back_sprite()
+		else:
+			if mon.has_method("get_front_sprite"):
+				sprite.texture = mon.get_front_sprite()
+	if box != null:
+		box.visible = true
+		box.modulate = Color.WHITE
+		_fill_hp_box_labels(box, battler, is_player)
+
+
+func _fill_hp_box_labels(box: Sprite2D, battler: BattleBattler, is_player: bool) -> void:
+	if box == null or battler == null or battler.pokemon == null:
+		return
+	var mon: PokemonInstance = battler.pokemon
+	var name_l: Label = box.get_node_or_null("NamePkmnPlayer") as Label
+	if name_l == null:
+		name_l = box.get_node_or_null("NamePkmnEnemy") as Label
+	if name_l != null:
+		if name_l.has_method("cambiar_texto"):
+			name_l.cambiar_texto(battler.get_display_name())
+		else:
+			name_l.text = battler.get_display_name()
+	var level_l: Label = box.get_node_or_null("Level") as Label
+	if level_l != null:
+		level_l.text = str(mon.level)
+	var hp_l: Label = box.get_node_or_null("HP") as Label
+	if hp_l != null:
+		hp_l.text = "%d/%d" % [mon.current_hp, mon.max_hp]
+	var bar: ColorRect = box.get_node_or_null("HpBar") as ColorRect
+	if bar != null:
+		var max_w: float = PLAYER_HP_BAR_MAX_WIDTH if is_player else 48.0
+		var ratio: float = float(mon.current_hp) / float(maxi(mon.max_hp, 1))
+		bar.size.x = max_w * clampf(ratio, 0.0, 1.0)
+		bar.color = _hp_color(bar.size.x / maxf(max_w, 1.0))
+	var gender_l: Label = box.get_node_or_null("Genero") as Label
+	if gender_l != null:
+		_set_gender(gender_l, mon.gender)
+	var status_s: Sprite2D = box.get_node_or_null("Status") as Sprite2D
+	if status_s != null:
+		StatusConditions.apply_icon_from_pokemon(status_s, mon)
+
+
+func _update_multi_hp_boxes() -> void:
+	if battle == null:
+		return
+	for side_player: bool in [true, false]:
+		var actives: Array = battle.player_actives if side_player else battle.enemy_actives
+		for i: int in range(actives.size()):
+			var b: BattleBattler = actives[i]
+			if b != null and b.pokemon != null:
+				_fill_hp_box_labels(_hp_box_for_slot(side_player, i), b, side_player)
+
+
+func _submit_move_for_current_slot(move_index: int) -> void:
+	if battle == null:
+		return
+	current_menu = MenuState.BUSY
+	action_menu.visible = false
+	fight_menu.visible = false
+	await battle.player_choose_move(move_index, _input_actor_slot, _input_target_slot)
+
+	if not battle.is_running:
+		return
+	if not battle.is_multi_battle():
+		return
+
+	var needed: int = 0
+	for b: BattleBattler in battle.player_actives:
+		if b != null and b.pokemon != null and not b.is_fainted():
+			needed += 1
+	if battle._pending_player_actions.size() > 0 and battle._pending_player_actions.size() < needed:
+		var next_slot: int = _next_conscious_player_slot(_input_actor_slot + 1)
+		if next_slot >= 0:
+			_input_actor_slot = next_slot
+			_sync_player_pokemon_ref_from_slot()
+			_apply_input_focus_layers()
+			action_menu.visible = true
+			current_menu = MenuState.ACTIONS
+			selected_action = 0
+			_update_action_focus()
+			_show_message_box("¿Qué debe hacer %s?" % player_pokemon.get_display_name())
+			if fight_menu != null:
+				_fill_move_buttons()

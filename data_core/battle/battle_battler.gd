@@ -3,6 +3,7 @@ class_name BattleBattler
 
 var pokemon: PokemonInstance
 var is_player_side: bool = true
+var slot_index: int = 0
 
 var stage_attack: int = 0
 var stage_defense: int = 0
@@ -70,9 +71,10 @@ var illusion_form_id: int = 0
 var is_transformed: bool = false
 var transform_backup: Dictionary = {}      # para restaurar al salir si hace falta
 
-func setup(p: PokemonInstance, player_side: bool) -> void:
+func setup(p: PokemonInstance, player_side: bool, p_slot: int = 0) -> void:
 	pokemon = p
 	is_player_side = player_side
+	slot_index = p_slot
 	_reset_stages()
 	clear_illusion()
 	is_transformed = false

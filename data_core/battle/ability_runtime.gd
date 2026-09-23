@@ -2014,7 +2014,10 @@ static func try_cud_chew(battler: BattleBattler, battle: BattleManager) -> void:
 ## Dobles / aliados (en individual el aliado es null → no-op) ─
 
 static func get_ally(battler: BattleBattler, battle: BattleManager) -> BattleBattler:
-	# Motor actual es 1v1: no hay aliado en campo.
+	if battle == null:
+		return null
+	if battle.has_method("get_ally"):
+		return battle.get_ally(battler)
 	return null
 
 
@@ -2340,10 +2343,10 @@ static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> v
 		return
 	if battler.zero_to_hero_transformed:
 		return
-	if str(battler.pokemon.form_id) == "Hero":
+	if str(battler.pokemon.form_id) == "palafin_hero":
 		battler.zero_to_hero_transformed = true
 		return
-	if await _apply_form_change(battler, battle, &"Hero"):
+	if await _apply_form_change(battler, battle, &"palafin_hero"):
 		battler.zero_to_hero_transformed = true
 
 

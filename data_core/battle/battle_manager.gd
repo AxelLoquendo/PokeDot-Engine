@@ -50,16 +50,30 @@ var terrain: int = TerrainId.TERRAIN_NONE
 var terrain_turns: int = 0
 var weather_primal: bool = false
 
+## ─── Formato de combate (1v1 / 1v2 / 2v1 / 2v2) ─────────
+enum BattleFormat {
+	SINGLE,   ## 1 vs 1
+	ONE_V_TWO, ## 1 vs 2
+	TWO_V_ONE, ## 2 vs 1
+	DOUBLE,   ## 2 vs 2
+}
+
+var format: BattleFormat = BattleFormat.SINGLE
+## Pokémon activos en campo (índice 0 = principal).
+var player_actives: Array[BattleBattler] = []
+var enemy_actives: Array[BattleBattler] = []
+## Acciones del jugador pendientes en multi (una por slot activo).
+var _pending_player_actions: Array[BattleAction] = []
+
+
 func start_battle(
 	player_pokemon: PokemonInstance,
 	enemy_pokemon: PokemonInstance,
 	party: Array[PokemonInstance] = [],
-	enemy_trainer_party: Array[PokemonInstance] = []
+	enemy_trainer_party: Array[PokemonInstance] = [],
+	p_format: BattleFormat = BattleFormat.SINGLE
 ) -> void:
-	player = BattleBattler.new()
-	player.setup(player_pokemon, true)
-	enemy = BattleBattler.new()
-	enemy.setup(enemy_pokemon, false)
+	format = p_format
 	player_party = party
 	enemy_party = enemy_trainer_party
 	is_trainer_battle = not enemy_party.is_empty()
@@ -69,62 +83,345 @@ func start_battle(
 	terrain = TerrainId.TERRAIN_NONE
 	terrain_turns = 0
 	weather_primal = false
-	
-	# Disfraz listo ANTES de que la UI pinte
-	AbilityRuntime.prepare_illusion(player, self)
-	AbilityRuntime.prepare_illusion(enemy, self)
-	
+	_pending_player_actions.clear()
+	player_side = FieldSide.new()
+	enemy_side = FieldSide.new()
+
+	var player_slots: int = _player_slot_count()
+	var enemy_slots: int = _enemy_slot_count()
+
+	player_actives.clear()
+	enemy_actives.clear()
+
+	# Jugador: lead + siguientes del party no debilitados
+	var p_leads: Array[PokemonInstance] = _pick_leads_from_party(
+		[player_pokemon] if player_pokemon else [], party, player_slots
+	)
+	for i: int in range(player_slots):
+		var mon: PokemonInstance = p_leads[i] if i < p_leads.size() else null
+		var b: BattleBattler = BattleBattler.new()
+		if mon != null:
+			b.setup(mon, true, i)
+			AbilityRuntime.prepare_illusion(b, self)
+		player_actives.append(b)
+
+	# Rival
+	var e_pool: Array[PokemonInstance] = []
+	if enemy_pokemon != null:
+		e_pool.append(enemy_pokemon)
+	for m: PokemonInstance in enemy_trainer_party:
+		if m != null and m != enemy_pokemon:
+			e_pool.append(m)
+	var e_leads: Array[PokemonInstance] = _pick_leads_from_party(e_pool, enemy_trainer_party, enemy_slots)
+	for i: int in range(enemy_slots):
+		var mon2: PokemonInstance = e_leads[i] if i < e_leads.size() else null
+		var b2: BattleBattler = BattleBattler.new()
+		if mon2 != null:
+			b2.setup(mon2, false, i)
+			AbilityRuntime.prepare_illusion(b2, self)
+		enemy_actives.append(b2)
+
+	_sync_primary_refs()
 	_emit_hp(true)
 	_emit_hp(false)
+
+
+func _player_slot_count() -> int:
+	match format:
+		BattleFormat.DOUBLE, BattleFormat.TWO_V_ONE:
+			return 2
+		_:
+			return 1
+
+
+func _enemy_slot_count() -> int:
+	match format:
+		BattleFormat.DOUBLE, BattleFormat.ONE_V_TWO:
+			return 2
+		_:
+			return 1
+
+
+func _pick_leads_from_party(
+	preferred: Array,
+	party: Array,
+	count: int
+) -> Array[PokemonInstance]:
+	var out: Array[PokemonInstance] = []
+	for m: PokemonInstance in preferred:
+		if m != null and not m.is_fainted() and not out.has(m):
+			out.append(m)
+		if out.size() >= count:
+			return out
+	for m2: PokemonInstance in party:
+		if m2 != null and not m2.is_fainted() and not out.has(m2):
+			out.append(m2)
+		if out.size() >= count:
+			break
+	return out
+
+
+## Mantiene player/enemy apuntando al slot 0 (compat UI 1v1).
+func _sync_primary_refs() -> void:
+	player = player_actives[0] if not player_actives.is_empty() else null
+	enemy = enemy_actives[0] if not enemy_actives.is_empty() else null
+
+
+func is_multi_battle() -> bool:
+	return format != BattleFormat.SINGLE
+
+
+func get_all_actives() -> Array[BattleBattler]:
+	var out: Array[BattleBattler] = []
+	for b: BattleBattler in player_actives:
+		if b != null and b.pokemon != null and not b.is_fainted():
+			out.append(b)
+	for b2: BattleBattler in enemy_actives:
+		if b2 != null and b2.pokemon != null and not b2.is_fainted():
+			out.append(b2)
+	return out
+
+
+func get_side_actives(is_player_side: bool) -> Array[BattleBattler]:
+	var src: Array[BattleBattler] = player_actives if is_player_side else enemy_actives
+	var out: Array[BattleBattler] = []
+	for b: BattleBattler in src:
+		if b != null and b.pokemon != null and not b.is_fainted():
+			out.append(b)
+	return out
+
+
+func get_ally(battler: BattleBattler) -> BattleBattler:
+	if battler == null or not is_multi_battle():
+		return null
+	var src: Array[BattleBattler] = player_actives if battler.is_player_side else enemy_actives
+	for b: BattleBattler in src:
+		if b != null and b != battler and b.pokemon != null and not b.is_fainted():
+			return b
+	return null
+
+
+func get_opponents(battler: BattleBattler) -> Array[BattleBattler]:
+	if battler == null:
+		return []
+	return get_side_actives(not battler.is_player_side)
+
+
+## Resuelve objetivos de un movimiento según MoveTarget.
+func resolve_move_targets(
+	actor: BattleBattler,
+	move: MoveData,
+	chosen: BattleBattler = null
+) -> Array[BattleBattler]:
+	var out: Array[BattleBattler] = []
+	if actor == null or move == null:
+		return out
+	var foes: Array[BattleBattler] = get_opponents(actor)
+	var ally: BattleBattler = get_ally(actor)
+	match move.target:
+		MoveStruct.MoveTarget.TARGET_USER:
+			out.append(actor)
+		MoveStruct.MoveTarget.TARGET_ALLY:
+			if ally != null:
+				out.append(ally)
+		MoveStruct.MoveTarget.TARGET_USER_AND_ALLY, MoveStruct.MoveTarget.TARGET_USER_OR_ALLY:
+			out.append(actor)
+			if ally != null:
+				out.append(ally)
+		MoveStruct.MoveTarget.TARGET_BOTH, MoveStruct.MoveTarget.TARGET_OPPONENTS_FIELD:
+			for f: BattleBattler in foes:
+				out.append(f)
+		MoveStruct.MoveTarget.TARGET_FOES_AND_ALLY, MoveStruct.MoveTarget.TARGET_ALL_BATTLERS:
+			for f2: BattleBattler in foes:
+				out.append(f2)
+			if ally != null:
+				out.append(ally)
+			if move.target == MoveStruct.MoveTarget.TARGET_ALL_BATTLERS:
+				out.append(actor)
+		MoveStruct.MoveTarget.TARGET_FIELD:
+			pass  # efecto de campo, sin target de daño
+		MoveStruct.MoveTarget.TARGET_RANDOM:
+			if not foes.is_empty():
+				out.append(foes[randi() % foes.size()])
+		_:
+			# SELECTED / OPPONENT / SMART / DEPENDS / NONE
+			if chosen != null and not chosen.is_fainted():
+				out.append(chosen)
+			elif not foes.is_empty():
+				out.append(foes[0])
+	return out
+
+
+func side_has_conscious(is_player_side: bool) -> bool:
+	return not get_side_actives(is_player_side).is_empty()
+
+
+func party_has_reserve(is_player_side: bool) -> bool:
+	var party: Array[PokemonInstance] = player_party if is_player_side else enemy_party
+	var actives: Array[BattleBattler] = player_actives if is_player_side else enemy_actives
+	for mon: PokemonInstance in party:
+		if mon == null or mon.is_fainted():
+			continue
+		var on_field: bool = false
+		for b: BattleBattler in actives:
+			if b != null and b.pokemon == mon:
+				on_field = true
+				break
+		if not on_field:
+			return true
+	return false
 
 
 ## Secuencia de mensajes + habilidades de entrada. Se llama aparte de
 ## start_battle() para que la UI pueda mostrar sprites/HP antes de que
 ## empiecen los textos.
 func start_battle_intro() -> void:
+	_sync_primary_refs()
+	# Rivales primero
+	var enemy_names: PackedStringArray = PackedStringArray()
+	for b: BattleBattler in enemy_actives:
+		if b != null and b.pokemon != null and not b.is_fainted():
+			enemy_names.append(b.get_display_name())
 	if is_trainer_battle:
-		message.emit("¡El rival envía a %s!" % enemy.get_display_name())
+		message.emit("¡El rival envía a %s!" % ", ".join(enemy_names))
 	else:
-		message.emit("¡Un %s salvaje apareció!" % enemy.get_display_name())
+		if enemy_names.size() > 1:
+			message.emit("¡Aparecieron %s!" % " y ".join(enemy_names))
+		elif enemy_names.size() == 1:
+			message.emit("¡Un %s salvaje apareció!" % enemy_names[0])
 	pokemon_entered_field.emit(false)
 	await _wait(1.0)
-	await AbilityRuntime.on_switch_in(enemy, player, self)
+	for eb: BattleBattler in enemy_actives:
+		if eb == null or eb.pokemon == null or eb.is_fainted():
+			continue
+		var opp: BattleBattler = player_actives[0] if not player_actives.is_empty() else null
+		await AbilityRuntime.on_switch_in(eb, opp, self)
 
-	message.emit("¡Adelante, %s!" % player.get_display_name())
+	var player_names: PackedStringArray = PackedStringArray()
+	for pb: BattleBattler in player_actives:
+		if pb != null and pb.pokemon != null and not pb.is_fainted():
+			player_names.append(pb.get_display_name())
+	message.emit("¡Adelante, %s!" % ", ".join(player_names))
 	pokemon_entered_field.emit(true)
 	await _wait(0.8)
-	await AbilityRuntime.on_switch_in(player, enemy, self)
+	for pb2: BattleBattler in player_actives:
+		if pb2 == null or pb2.pokemon == null or pb2.is_fainted():
+			continue
+		var foe: BattleBattler = enemy_actives[0] if not enemy_actives.is_empty() else null
+		await AbilityRuntime.on_switch_in(pb2, foe, self)
 
 func _emit_hp(is_player_side: bool) -> void:
 	var b: BattleBattler = player if is_player_side else enemy
+	if b == null or b.pokemon == null:
+		return
 	hp_changed.emit(is_player_side, b.get_current_hp(), b.get_max_hp())
 
 
-func player_choose_move(slot_index: int) -> void:
+func _emit_hp_battler(battler: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null:
+		return
+	hp_changed.emit(battler.is_player_side, battler.get_current_hp(), battler.get_max_hp())
+
+
+## Compat 1v1 y multi: en multi, actor_slot indica qué mon del jugador actúa.
+## target_slot: rival elegido (0/1); -1 = primer rival vivo.
+func player_choose_move(slot_index: int, actor_slot: int = 0, target_slot: int = -1) -> void:
 	if not is_running:
 		return
-	if player.is_fainted() or enemy.is_fainted():
+	if not side_has_conscious(true) or not side_has_conscious(false):
 		return
 
-	if player.must_recharge:
-		player.must_recharge = false
-		message.emit("¡%s debe recargar energías!" % player.get_display_name())
-		await _wait(0.8)
-		var recharge_enemy_action: BattleAction = _enemy_choose_move()
-		await _resolve_turn(null, recharge_enemy_action)
+	var actor: BattleBattler = _player_battler_at(actor_slot)
+	if actor == null or actor.is_fainted():
 		return
+
+	if actor.must_recharge:
+		actor.must_recharge = false
+		message.emit("¡%s debe recargar energías!" % actor.get_display_name())
+		await _wait(0.8)
+		# En multi se cuenta como acción de este slot
+		_pending_player_actions.append(null)
+		await _try_resolve_pending_turn()
+		return
+
+	var target: BattleBattler = _enemy_battler_at(target_slot)
+	if target == null:
+		var opps: Array[BattleBattler] = get_opponents(actor)
+		target = opps[0] if not opps.is_empty() else enemy
 
 	var player_action: BattleAction
-	if player.charging_move != null:
-		player_action = _build_charge_release_action(player)
+	if actor.charging_move != null:
+		player_action = _build_charge_release_action(actor)
 	else:
-		player_action = _build_move_action(player, enemy, slot_index)
+		player_action = _build_move_action(actor, target, slot_index)
 	if player_action == null:
 		message.emit("¡No se puede usar ese movimiento!")
 		return
+	player_action.target_slot = target_slot
 
-	var enemy_action: BattleAction = _enemy_choose_move()
-	await _resolve_turn(player_action, enemy_action)
+	if not is_multi_battle() or _player_slot_count() <= 1:
+		var enemy_actions: Array[BattleAction] = _enemy_choose_all_moves()
+		var all_actions: Array[BattleAction] = [player_action]
+		all_actions.append_array(enemy_actions)
+		await _resolve_turn_actions(all_actions)
+		return
+
+	# Multi: acumular acciones del jugador
+	_pending_player_actions.append(player_action)
+	var needed: int = 0
+	for b: BattleBattler in player_actives:
+		if b != null and b.pokemon != null and not b.is_fainted():
+			needed += 1
+	if _pending_player_actions.size() < needed:
+		return  # esperar más elecciones de la UI
+	await _try_resolve_pending_turn()
+
+
+func _try_resolve_pending_turn() -> void:
+	var player_actions: Array[BattleAction] = []
+	for a: BattleAction in _pending_player_actions:
+		if a != null:
+			player_actions.append(a)
+	_pending_player_actions.clear()
+	var enemy_actions: Array[BattleAction] = _enemy_choose_all_moves()
+	var all_actions: Array[BattleAction] = []
+	all_actions.append_array(player_actions)
+	all_actions.append_array(enemy_actions)
+	await _resolve_turn_actions(all_actions)
+
+
+func _player_battler_at(slot: int) -> BattleBattler:
+	if slot < 0 or slot >= player_actives.size():
+		return player
+	return player_actives[slot]
+
+
+func _enemy_battler_at(slot: int) -> BattleBattler:
+	if slot < 0:
+		for b: BattleBattler in enemy_actives:
+			if b != null and b.pokemon != null and not b.is_fainted():
+				return b
+		return enemy
+	if slot >= enemy_actives.size():
+		return enemy
+	var b2: BattleBattler = enemy_actives[slot]
+	if b2 != null and not b2.is_fainted():
+		return b2
+	for b3: BattleBattler in enemy_actives:
+		if b3 != null and b3.pokemon != null and not b3.is_fainted():
+			return b3
+	return enemy
+
+
+func _enemy_choose_all_moves() -> Array[BattleAction]:
+	var out: Array[BattleAction] = []
+	for b: BattleBattler in enemy_actives:
+		if b == null or b.pokemon == null or b.is_fainted():
+			continue
+		var act: BattleAction = _enemy_choose_move_for(b)
+		if act != null:
+			out.append(act)
+	return out
 
 func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> void:
 	if not is_running:
@@ -562,79 +859,148 @@ func _build_charge_release_action(actor: BattleBattler) -> BattleAction:
 	return BattleAction.make_move(actor, target, move, slot_index)
 
 func _enemy_choose_move() -> BattleAction:
-	if enemy.must_recharge:
-		enemy.must_recharge = false
+	return _enemy_choose_move_for(enemy)
+
+
+func _enemy_choose_move_for(battler: BattleBattler) -> BattleAction:
+	if battler == null or battler.pokemon == null or battler.is_fainted():
 		return null
-	if enemy.charging_move != null:
-		return _build_charge_release_action(enemy)
+	if battler.must_recharge:
+		battler.must_recharge = false
+		return null
+	if battler.charging_move != null:
+		return _build_charge_release_action(battler)
+
+	var targets: Array[BattleBattler] = get_opponents(battler)
+	if targets.is_empty():
+		return null
+	var primary_target: BattleBattler = targets[0]
+
 	var valid_indices: Array[int] = []
-	for i: int in enemy.pokemon.moves.size():
-		if _build_move_action(enemy, player, i) != null:
+	for i: int in battler.pokemon.moves.size():
+		if _build_move_action(battler, primary_target, i) != null:
 			valid_indices.append(i)
 	if valid_indices.is_empty():
 		return null
 
 	var weighted: Array[int] = []
 	for i: int in valid_indices:
-		var slot: PokemonMoveSlot = enemy.pokemon.moves[i]
+		var slot: PokemonMoveSlot = battler.pokemon.moves[i]
 		var move_data: MoveData = MoveDatabase.get_move(slot.move_id)
 		var weight: int = 1
 		if move_data and move_data.category != MoveStruct.DamageCategory.STATUS:
-			var eff: float = TypeChart.get_effectiveness(
-				move_data.type, player.pokemon.get_type_1(), player.pokemon.get_type_2()
-			)
-			if eff > 1.0:
+			# Elegir el mejor rival para este move
+			var best_eff: float = 0.0
+			for tg: BattleBattler in targets:
+				if tg.pokemon == null:
+					continue
+				var eff: float = TypeChart.get_effectiveness(
+					move_data.type, tg.pokemon.get_type_1(), tg.pokemon.get_type_2()
+				)
+				if eff > best_eff:
+					best_eff = eff
+					primary_target = tg
+			if best_eff > 1.0:
 				weight = 3
-			elif eff <= 0.0:
+			elif best_eff <= 0.0:
 				weight = 0
 		for _n: int in weight:
 			weighted.append(i)
 
 	var pool: Array[int] = weighted if not weighted.is_empty() else valid_indices
-	return _build_move_action(enemy, player, pool[randi() % pool.size()])
+	return _build_move_action(battler, primary_target, pool[randi() % pool.size()])
 
 
 func _resolve_turn(player_action: BattleAction, enemy_action: BattleAction) -> void:
+	# Compat 1v1: empaqueta en lista multi
 	var actions: Array[BattleAction] = []
 	if player_action:
 		actions.append(player_action)
 	if enemy_action:
 		actions.append(enemy_action)
+	await _resolve_turn_actions(actions)
 
+
+func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 	actions = _sort_actions(actions)
 
-	for battler: BattleBattler in [player, enemy]:
+	for battler: BattleBattler in get_all_actives():
 		battler.protect_active = false
 		battler.protect_kind = ProtectResolver.Kind.NONE
 		battler.endure_active = false
 		battler.just_switched_in = false
 
 	for action: BattleAction in actions:
-		if action.actor.is_fainted():
+		if action == null or action.actor == null or action.actor.is_fainted():
 			continue
 		if action.kind == BattleAction.Kind.MOVE:
 			await _execute_move(action)
-		if player.is_fainted() or enemy.is_fainted():
-			break
+		elif action.kind == BattleAction.Kind.SWITCH:
+			await _execute_switch_action(action)
+		# Solo cortar si un bando quedó sin Pokémon conscientes en campo Y sin reservas se maneja después
+		if not side_has_conscious(true) or not side_has_conscious(false):
+			# seguir resolviendo acciones del otro bando si aún hay
+			pass
 
-	if not player.is_fainted() and not enemy.is_fainted():
+	if side_has_conscious(true) and side_has_conscious(false):
 		await _process_end_of_turn()
 
-	if enemy.is_fainted():
-		await _handle_enemy_faint()
+	# Rival sin activos
+	if not side_has_conscious(false):
+		if is_trainer_battle and party_has_reserve(false):
+			await _handle_enemy_faint()
+			return
+		message.emit("¡Has ganado!")
+		await _wait(1.0)
+		_cleanup_battle_pokemon()
+		is_running = false
+		battle_ended.emit(true)
 		return
 
-	if player.is_fainted():
+	# Jugador sin activos
+	if not side_has_conscious(true):
 		await _manejar_debilitacion_jugador()
 		return
 
+	# Reemplazos parciales (uno de dos se debilitó)
+	await _request_replacements_if_needed()
+
 	turn_ended.emit()
+
+
+func _execute_switch_action(action: BattleAction) -> void:
+	if action == null or action.switch_to == null or action.actor == null:
+		return
+	var side_player: bool = action.actor.is_player_side
+	var slot: int = action.actor.slot_index
+	await AbilityRuntime.on_switch_out(action.actor, self)
+	AbilityRuntime.revert_transform(action.actor)
+	action.actor.setup(action.switch_to, side_player, slot)
+	AbilityRuntime.prepare_illusion(action.actor, self)
+	_sync_primary_refs()
+	message.emit("¡%s, adelante!" % action.actor.get_display_name())
+	pokemon_entered_field.emit(side_player)
+	await _wait(0.6)
+	var opp: BattleBattler = null
+	var opps: Array[BattleBattler] = get_opponents(action.actor)
+	if not opps.is_empty():
+		opp = opps[0]
+	await AbilityRuntime.on_switch_in(action.actor, opp, self)
+	_emit_hp_battler(action.actor)
+
+
+func _request_replacements_if_needed() -> void:
+	# Si un slot del jugador está KO pero hay reservas y aún hay otro activo, pedir cambio
+	for b: BattleBattler in player_actives:
+		if b != null and (b.pokemon == null or b.is_fainted()) and party_has_reserve(true):
+			player_must_switch.emit()
+			return
 
 func _process_end_of_turn() -> void:
 	if weather != AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
 		await _apply_weather_damage()
 
-	for battler: BattleBattler in [player, enemy]:
+	for battler: BattleBattler in get_all_actives():
 		if battler.is_fainted():
 			continue
 		if AbilityRuntime.has(battler, AbilityId.Id.POISON_HEAL) \
@@ -659,11 +1025,11 @@ func _process_end_of_turn() -> void:
 				message.emit("¡%s se debilitó!" % battler.get_display_name())
 				await _wait(0.8)
 
-	for battler: BattleBattler in [player, enemy]:
+	for battler: BattleBattler in get_all_actives():
 		if not battler.is_fainted():
 			await AbilityRuntime.end_of_turn(battler, weather, self)
 
-	for battler: BattleBattler in [player, enemy]:
+	for battler: BattleBattler in get_all_actives():
 		if not battler.is_fainted():
 			await AbilityRuntime.tick_perish(battler, self)
 
@@ -692,7 +1058,7 @@ func _apply_weather_damage() -> void:
 			return
 	await _wait(0.6)
 
-	for battler: BattleBattler in [player, enemy]:
+	for battler: BattleBattler in get_all_actives():
 		if battler.is_fainted():
 			continue
 		if AbilityRuntime.is_immune_to_weather_damage(battler, weather) or AbilityRuntime.blocks_indirect_damage(battler):
@@ -762,6 +1128,18 @@ func _execute_move(action: BattleAction) -> void:
 	var target: BattleBattler = action.target
 	var move: MoveData = action.move
 
+	# Multi-combate: resolver lista de objetivos según MoveTarget
+	if move != null and is_multi_battle() and not action.has_meta("_multi_resolved"):
+		var multi_targets: Array[BattleBattler] = resolve_move_targets(actor, move, target)
+		if multi_targets.is_empty() and target != null and not target.is_fainted():
+			multi_targets.append(target)
+		if not multi_targets.is_empty():
+			target = multi_targets[0]
+			action.target = target
+			if multi_targets.size() > 1:
+				action.set_meta("_multi_rest", multi_targets.slice(1))
+		action.set_meta("_multi_resolved", true)
+
 	AbilityRuntime.try_protean(actor, move, self)
 
 	if target != null and AbilityRuntime.damp_blocks_explosion(target, move):
@@ -796,7 +1174,7 @@ func _execute_move(action: BattleAction) -> void:
 		actor.charging_target = null
 		actor.semi_invulnerable = false
 
-	if not is_charge_release:
+	if not is_charge_release and not bool(action.get_meta("_skip_pp", false)):
 		if not actor.consume_pp(action.move_slot_index):
 			message.emit("%s no tiene PP para usar %s!" % [actor.get_display_name(), move.move_name])
 			await _wait(0.8)
@@ -1001,6 +1379,7 @@ func _execute_move(action: BattleAction) -> void:
 				break
 
 	if last_result == null or last_result.ability_immunity != "" or last_result.effectiveness <= 0.0:
+		await _execute_multi_rest(action, actor, move)
 		return
 
 	if AbilityRuntime.has(actor, AbilityId.Id.PARENTAL_BOND) and not move.parental_bond_banned \
@@ -1040,15 +1419,17 @@ func _execute_move(action: BattleAction) -> void:
 
 	# Dancer: otros Pokémon con Dancer copian el baile
 	if move != null and move.dance_move:
-		for other: BattleBattler in [player, enemy]:
+		for other: BattleBattler in get_all_actives():
 			if other != null and other != actor and not other.is_fainted():
 				await AbilityRuntime.try_dancer(other, move, actor, self)
 
 	if target.is_fainted():
 		await _trigger_ko_ability(actor, target)
+		await _execute_multi_rest(action, actor, move)
 		return
 
 	if actor.is_fainted():
+		await _execute_multi_rest(action, actor, move)
 		return
 
 	if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE \
@@ -1058,6 +1439,27 @@ func _execute_move(action: BattleAction) -> void:
 			chance = mini(100, chance * 2)
 		if randi_range(1, 100) <= chance:
 			await _apply_secondary_effect(actor, target, move)
+
+	# Multi: mismo movimiento sobre el resto de objetivos (sin gastar PP)
+	await _execute_multi_rest(action, actor, move)
+
+
+func _execute_multi_rest(action: BattleAction, actor: BattleBattler, move: MoveData) -> void:
+	if action == null or actor == null or move == null:
+		return
+	if not action.has_meta("_multi_rest"):
+		return
+	var rest: Array = action.get_meta("_multi_rest")
+	action.remove_meta("_multi_rest")
+	for tg: BattleBattler in rest:
+		var tg_b: BattleBattler = tg as BattleBattler
+		if tg_b == null or tg_b.is_fainted() or actor.is_fainted():
+			continue
+		var follow: BattleAction = BattleAction.make_move(actor, tg_b, move, action.move_slot_index)
+		follow.set_meta("_skip_pp", true)
+		follow.set_meta("_multi_resolved", true)
+		await _execute_move(follow)
+
 
 @warning_ignore("unused_parameter")
 func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: DamageCalculator.HitResult) -> void:
@@ -1732,12 +2134,6 @@ func set_weather(new_weather: int, turns: int, primal: bool = false) -> void:
 			pass
 
 	weather_changed.emit(weather, weather_primal)
-
-	# Forecast / Flower Gift reaccionan al clima nuevo (Ability Bar incluido)
-	for battler: BattleBattler in [player, enemy]:
-		if battler != null and not battler.is_fainted():
-			await AbilityRuntime.try_forecast(battler, weather, self)
-			await AbilityRuntime.try_flower_gift(battler, weather, self)
 
 
 func set_terrain(new_terrain: int, turns: int = 5) -> void:

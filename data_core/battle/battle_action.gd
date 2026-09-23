@@ -10,6 +10,8 @@ var move: MoveData
 var move_slot_index: int = -1
 var priority: int = 0
 var switch_to: PokemonInstance = null
+## Slot del objetivo cuando hay varios rivales (0 o 1). -1 = auto.
+var target_slot: int = -1
 
 
 static func make_move(

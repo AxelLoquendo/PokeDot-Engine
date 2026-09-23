@@ -55,14 +55,42 @@ const BATTLE_MUSIC_BY_TYPE: Dictionary = {
 var battle_type: BattleType = BattleType.WILD
 var battle_music: SFXGame.BattleMusicID = SFXGame.BattleMusicID.BGM_BATTLE_WILD
 
+## Formato de campo (1v1 por defecto).
+var battle_format: int = 0  # BattleManager.BattleFormat.SINGLE
+var player_leads: Array[PokemonInstance] = []
+
 
 
 func preparar_salvaje(jugador: CharacterController, lead: PokemonInstance, salvaje: PokemonInstance, es_roaming: bool = false) -> void:
 	player_controller = jugador
 	player_pokemon = lead
 	enemy_pokemon = salvaje
+	player_leads = [lead] if lead else []
+	enemy_party = [salvaje] if salvaje else []
+	battle_format = 0  # SINGLE
 	is_wild = true
 	_configurar_combate(jugador, BattleType.ROAMING if es_roaming else BattleType.WILD)
+
+
+## 1v2 / 2v1 / 2v2: leads del jugador y rivales (hasta 2 por bando según formato).
+## format: 0 SINGLE, 1 ONE_V_TWO, 2 TWO_V_ONE, 3 DOUBLE
+func preparar_multi(
+	jugador: CharacterController,
+	leads_jugador: Array[PokemonInstance],
+	leads_rival: Array[PokemonInstance],
+	party_rival: Array[PokemonInstance] = [],
+	format: int = 3,
+	tipo: BattleType = BattleType.TRAINER,
+	salvaje: bool = false
+) -> void:
+	player_controller = jugador
+	player_leads = leads_jugador
+	player_pokemon = leads_jugador[0] if not leads_jugador.is_empty() else null
+	enemy_party = party_rival if not party_rival.is_empty() else leads_rival
+	enemy_pokemon = leads_rival[0] if not leads_rival.is_empty() else null
+	battle_format = format
+	is_wild = salvaje
+	_configurar_combate(jugador, tipo)
 
 func preparar_entrenador(jugador: CharacterController, lead: PokemonInstance, party_rival: Array[PokemonInstance], tipo: BattleType = BattleType.TRAINER) -> void:
 	player_controller = jugador
