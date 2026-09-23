@@ -41,6 +41,7 @@ var slow_start_turns: int = 0
 var unburden_active: bool = false
 ## Truant: alterna turnos de inacción
 var truant_skip_turn: bool = false
+var just_switched_in: bool = false
 ## Color Change / Protean: tipo temporal en combate (-1 = sin override)
 var battle_type_1: int = -1
 var battle_type_2: int = -1
@@ -88,6 +89,7 @@ func _reset_stages() -> void:
 	slow_start_turns = 0
 	unburden_active = false
 	truant_skip_turn = false
+	just_switched_in = true
 	battle_type_1 = -1
 	battle_type_2 = -1
 	protect_active = false

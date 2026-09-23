@@ -90,7 +90,8 @@ static func compute_hit(
 		return result
 
 	result.hit = true
-	result.contact = move.makes_contact
+	result.contact = AbilityRuntime.move_makes_contact(attacker, move)
+	var move_type: PokemonData.Type = AbilityRuntime.effective_move_type(attacker, move)
 
 	var ignore_defender_ability: bool = AbilityRuntime.ignores_defender_ability(attacker)
 	if ignore_defender_ability:
@@ -154,28 +155,33 @@ static func compute_hit(
 		_note_atk(result, AbilityId.Id.TECHNICIAN)
 	base *= tech
 
+	var type_chg: float = AbilityRuntime.type_change_power_multiplier(attacker, move)
+	if type_chg != 1.0:
+		_note_atk(result, AbilityRuntime.get_id(attacker))
+	base *= type_chg
+
 	match weather:
 		AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
-			if move.type == PokemonData.Type.TYPE_WATER:
+			if move_type == PokemonData.Type.TYPE_WATER:
 				base *= 1.5
-			elif move.type == PokemonData.Type.TYPE_FIRE:
+			elif move_type == PokemonData.Type.TYPE_FIRE:
 				base *= 0.5
 		AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
-			if move.type == PokemonData.Type.TYPE_FIRE:
+			if move_type == PokemonData.Type.TYPE_FIRE:
 				base *= 1.5
-			elif move.type == PokemonData.Type.TYPE_WATER:
+			elif move_type == PokemonData.Type.TYPE_WATER:
 				base *= 0.5
 
 	var stab: float = 1.0
 	var t1: PokemonData.Type = attacker.get_battle_type_1()
 	var t2: PokemonData.Type = attacker.get_battle_type_2()
-	if move.type == t1 or (t2 != PokemonData.Type.TYPE_NONE and move.type == t2):
+	if move_type == t1 or (t2 != PokemonData.Type.TYPE_NONE and move_type == t2):
 		stab = AbilityRuntime.stab_multiplier(attacker)
 		if AbilityRuntime.has(attacker, AbilityId.Id.ADAPTABILITY):
 			_note_atk(result, AbilityId.Id.ADAPTABILITY)
 
 	var eff: float = TypeChart.get_effectiveness(
-		move.type,
+		move_type,
 		defender.get_battle_type_1(),
 		defender.get_battle_type_2()
 	)
@@ -208,7 +214,7 @@ static func compute_hit(
 		1: crit_rate = 1.0 / 8.0
 		2: crit_rate = 1.0 / 2.0
 		3: crit_rate = 1.0
-	if move.always_critical:
+	if move.always_critical or AbilityRuntime.always_crits(attacker, defender):
 		crit_rate = 1.0
 	if not ignore_defender_ability and AbilityRuntime.blocks_critical(defender):
 		crit_rate = 0.0
@@ -235,6 +241,11 @@ static func compute_hit(
 	if riv != 1.0:
 		_note_atk(result, AbilityId.Id.RIVALRY)
 	damage = int(round(float(damage) * riv))
+
+	var stake: float = AbilityRuntime.stakeout_multiplier(attacker, defender)
+	if stake != 1.0:
+		_note_atk(result, AbilityId.Id.STAKEOUT)
+	damage = int(round(float(damage) * stake))
 
 	if not ignore_defender_ability:
 		var taken: float = AbilityRuntime.damage_taken_multiplier(defender, move, eff)

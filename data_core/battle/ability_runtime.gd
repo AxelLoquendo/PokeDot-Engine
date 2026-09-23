@@ -100,6 +100,8 @@ static func attack_stat_multiplier(attacker: BattleBattler, category: MoveStruct
 					mult *= 2.0
 				AbilityId.Id.HUSTLE:
 					mult *= 1.5
+				AbilityId.Id.GORILLA_TACTICS:
+					mult *= 1.5
 				AbilityId.Id.GUTS:
 					if attacker.pokemon.has_status():
 						mult *= 1.5
@@ -184,6 +186,10 @@ static func power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
 					or move.type == PokemonData.Type.TYPE_GROUND \
 					or move.type == PokemonData.Type.TYPE_STEEL:
 				mult *= 1.3
+		AbilityId.Id.SHEER_FORCE:
+			if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE \
+					or move.secondary_chance > 0:
+				mult *= 1.3
 	return mult
 
 
@@ -242,9 +248,11 @@ static func should_survive_with_sturdy(defender: BattleBattler, incoming_damage:
 
 
 ## ─── Inmunidades a estados / confusión / retroceso ──────
-static func blocks_status(battler: BattleBattler, status: PokemonInstance.Status) -> bool:
+static func blocks_status(battler: BattleBattler, status: PokemonInstance.Status, weather: int = -1) -> bool:
 	var id: AbilityId.Id = get_id(battler)
 	if id == AbilityId.Id.COMATOSE or id == AbilityId.Id.PURIFYING_SALT:
+		return true
+	if id == AbilityId.Id.LEAF_GUARD and weather == WeatherId.WEATHER_DROUGHT:
 		return true
 	match status:
 		PokemonInstance.Status.SLEEP:
@@ -470,6 +478,21 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 					battle.message.emit("¡La evasión de %s bajó!" % opponent.get_display_name())
 					await battle._wait(0.6)
 
+		AbilityId.Id.SCREEN_CLEANER:
+			await battle.ability_announce(battler)
+			battle.player_side.clear_screens()
+			battle.enemy_side.clear_screens()
+			battle.message.emit("¡Las pantallas desaparecieron!")
+			await battle._wait(0.5)
+
+		AbilityId.Id.HADRON_ENGINE:
+			await battle.ability_announce(battler)
+			battle.set_terrain(BattleManager.TerrainId.TERRAIN_ELECTRIC, 5)
+
+		AbilityId.Id.ORICHALCUM_PULSE:
+			await battle.ability_announce(battler)
+			battle.set_weather(WeatherId.WEATHER_DROUGHT, 5)
+
 
 ## ─── Contacto ───────────────────────────────────────────
 static func on_contact_hit(
@@ -528,6 +551,16 @@ static func on_contact_hit(
 				battle.message.emit("¡La habilidad de %s cambió!" % attacker.get_display_name())
 				await battle._wait(0.6)
 
+		AbilityId.Id.WANDERING_SPIRIT:
+			var atk_id2: AbilityId.Id = get_id(attacker)
+			if atk_id2 != AbilityId.Id.NONE and _is_traceable(atk_id2) and atk_id2 != AbilityId.Id.WANDERING_SPIRIT:
+				await battle.ability_announce(defender)
+				var def_id: AbilityId.Id = AbilityId.Id.WANDERING_SPIRIT
+				attacker.pokemon.ability_id = def_id
+				defender.pokemon.ability_id = atk_id2
+				battle.message.emit("¡%s intercambió su habilidad!" % defender.get_display_name())
+				await battle._wait(0.6)
+
 		AbilityId.Id.CUTE_CHARM:
 			# Sin sistema de atracción aún: no-op funcional reservado
 			pass
@@ -539,6 +572,21 @@ static func on_contact_hit(
 			if randf() < 0.3:
 				await battle.ability_announce(attacker)
 				await battle.ability_apply_status(defender, PokemonInstance.Status.POISON, attacker)
+		AbilityId.Id.TOXIC_CHAIN:
+			if randf() < 0.3:
+				await battle.ability_announce(attacker)
+				await battle.ability_apply_status(defender, PokemonInstance.Status.TOXIC, attacker)
+
+	# Pickpocket: el defensor roba el objeto del atacante al contacto
+	if not attacker.is_fainted() and has(defender, AbilityId.Id.PICKPOCKET):
+		if defender.pokemon.held_item == Items.ItemId.ITEM_NONE \
+				and attacker.pokemon.held_item != Items.ItemId.ITEM_NONE:
+			if not has(attacker, AbilityId.Id.STICKY_HOLD):
+				await battle.ability_announce(defender)
+				defender.pokemon.held_item = attacker.pokemon.held_item
+				attacker.pokemon.held_item = Items.ItemId.ITEM_NONE
+				battle.message.emit("¡%s robó el objeto!" % defender.get_display_name())
+				await battle._wait(0.5)
 
 ## ─── Fin de turno ───────────────────────────────────────
 static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
@@ -756,7 +804,7 @@ static func _is_traceable(id: AbilityId.Id) -> bool:
 	return true
 
 ## Velocidad por clima (llamar al calcular orden de turno)
-static func speed_multiplier(battler: BattleBattler, weather: int) -> float:
+static func speed_multiplier(battler: BattleBattler, weather: int, terrain: int = -1) -> float:
 	if battler == null:
 		return 1.0
 	match get_id(battler):
@@ -771,6 +819,9 @@ static func speed_multiplier(battler: BattleBattler, weather: int) -> float:
 				return 2.0
 		AbilityId.Id.SLUSH_RUSH:
 			if weather == WeatherId.WEATHER_SNOW:
+				return 2.0
+		AbilityId.Id.SURGE_SURFER:
+			if terrain == BattleManager.TerrainId.TERRAIN_ELECTRIC:
 				return 2.0
 	return 1.0
 
@@ -855,6 +906,21 @@ static func on_damaged_by_move(
 		AbilityId.Id.SEED_SOWER:
 			await battle.ability_announce(defender)
 			battle.set_terrain(BattleManager.TerrainId.TERRAIN_GRASSY, 5)
+
+		AbilityId.Id.BERSERK:
+			if defender.pokemon != null and defender.pokemon.max_hp > 0:
+				var ratio: float = float(defender.pokemon.current_hp) / float(defender.pokemon.max_hp)
+				if ratio <= 0.5:
+					await battle.ability_announce(defender)
+					await battle.ability_change_stat(defender, PokemonInstance.Stat.SP_ATTACK, 1)
+
+		AbilityId.Id.TOXIC_DEBRIS:
+			if move.category == MoveStruct.DamageCategory.PHYSICAL:
+				await battle.ability_announce(defender)
+				var foe_side: FieldSide = battle.enemy_side if defender.is_player_side else battle.player_side
+				foe_side.toxic_spikes_layers = mini(2, foe_side.toxic_spikes_layers + 1)
+				battle.message.emit("¡Se esparcieron Púas Tóxicas!")
+				await battle._wait(0.5)
 
 		AbilityId.Id.THERMAL_EXCHANGE:
 			if move.type == PokemonData.Type.TYPE_FIRE:
@@ -1091,3 +1157,202 @@ static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void
 			@warning_ignore("integer_division")
 			var heal: int = maxi(1, battler.get_max_hp() / 3)
 			battler.pokemon.apply_heal(heal)
+
+
+## ─── Prioridad (Prankster, Gale Wings, Triage) ───────────
+static func priority_bonus(battler: BattleBattler, move: MoveData) -> int:
+	if battler == null or move == null:
+		return 0
+	match get_id(battler):
+		AbilityId.Id.PRANKSTER:
+			if move.category == MoveStruct.DamageCategory.STATUS:
+				return 1
+		AbilityId.Id.GALE_WINGS:
+			if move.type == PokemonData.Type.TYPE_FLYING \
+					and battler.pokemon != null \
+					and battler.pokemon.current_hp == battler.pokemon.max_hp:
+				return 1
+		AbilityId.Id.TRIAGE:
+			if move.healing_move:
+				return 3
+	return 0
+
+
+## Bloquea movimientos con prioridad del rival (Dazzling / Queenly Majesty / Armor Tail)
+static func blocks_priority_move(defender: BattleBattler, move: MoveData) -> bool:
+	if defender == null or move == null:
+		return false
+	if move.priority <= 0:
+		return false
+	var id: AbilityId.Id = get_id(defender)
+	return id == AbilityId.Id.DAZZLING or id == AbilityId.Id.QUEENLY_MAJESTY \
+		or id == AbilityId.Id.ARMOR_TAIL
+
+
+## Good as Gold: inmune a movimientos de estado del rival
+static func blocks_status_move(defender: BattleBattler, move: MoveData) -> bool:
+	if defender == null or move == null:
+		return false
+	if move.category != MoveStruct.DamageCategory.STATUS:
+		return false
+	return has(defender, AbilityId.Id.GOOD_AS_GOLD)
+
+
+## Conversión de tipo del movimiento (Normalize / Pixilate / etc.)
+static func effective_move_type(attacker: BattleBattler, move: MoveData) -> PokemonData.Type:
+	if move == null:
+		return PokemonData.Type.TYPE_NONE
+	var t: PokemonData.Type = move.type
+	match get_id(attacker):
+		AbilityId.Id.NORMALIZE:
+			return PokemonData.Type.TYPE_NORMAL
+		AbilityId.Id.PIXILATE:
+			if t == PokemonData.Type.TYPE_NORMAL:
+				return PokemonData.Type.TYPE_FAIRY
+		AbilityId.Id.REFRIGERATE:
+			if t == PokemonData.Type.TYPE_NORMAL:
+				return PokemonData.Type.TYPE_ICE
+		AbilityId.Id.AERILATE:
+			if t == PokemonData.Type.TYPE_NORMAL:
+				return PokemonData.Type.TYPE_FLYING
+		AbilityId.Id.GALVANIZE:
+			if t == PokemonData.Type.TYPE_NORMAL:
+				return PokemonData.Type.TYPE_ELECTRIC
+		AbilityId.Id.LIQUID_VOICE:
+			if move.sound_move:
+				return PokemonData.Type.TYPE_WATER
+	return t
+
+
+## +20% si Pixilate/Refrigerate/Aerilate/Galvanize convierten Normal
+static func type_change_power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
+	if move == null or move.type != PokemonData.Type.TYPE_NORMAL:
+		return 1.0
+	match get_id(attacker):
+		AbilityId.Id.PIXILATE, AbilityId.Id.REFRIGERATE, \
+		AbilityId.Id.AERILATE, AbilityId.Id.GALVANIZE:
+			return 1.2
+		AbilityId.Id.NORMALIZE:
+			return 1.2  # gen 7+
+	return 1.0
+
+
+## Dark Aura / Fairy Aura / Aura Break
+static func aura_multiplier(_attacker: BattleBattler, _defender: BattleBattler, move_type: PokemonData.Type, battle: BattleManager) -> float:
+	if battle == null:
+		return 1.0
+	if move_type != PokemonData.Type.TYPE_DARK and move_type != PokemonData.Type.TYPE_FAIRY:
+		return 1.0
+	var has_dark: bool = false
+	var has_fairy: bool = false
+	var has_break: bool = false
+	for b: BattleBattler in [battle.player, battle.enemy]:
+		if b == null or b.is_fainted():
+			continue
+		match get_id(b):
+			AbilityId.Id.DARK_AURA:
+				has_dark = true
+			AbilityId.Id.FAIRY_AURA:
+				has_fairy = true
+			AbilityId.Id.AURA_BREAK:
+				has_break = true
+	var mult: float = 1.0
+	if move_type == PokemonData.Type.TYPE_DARK and has_dark:
+		mult = 0.75 if has_break else 1.33
+	elif move_type == PokemonData.Type.TYPE_FAIRY and has_fairy:
+		mult = 0.75 if has_break else 1.33
+	return mult
+
+
+## Ruin abilities: reducen stats del rival (Tablets=Atk, Sword=Def, Vessel=SpA, Beads=SpD)
+static func ruin_stat_multiplier(stat_owner: BattleBattler, stat: PokemonInstance.Stat, battle: BattleManager) -> float:
+	if battle == null or stat_owner == null:
+		return 1.0
+	var mult: float = 1.0
+	for b: BattleBattler in [battle.player, battle.enemy]:
+		if b == null or b.is_fainted() or b == stat_owner:
+			continue
+		match get_id(b):
+			AbilityId.Id.TABLETS_OF_RUIN:
+				if stat == PokemonInstance.Stat.ATTACK:
+					mult *= 0.75
+			AbilityId.Id.SWORD_OF_RUIN:
+				if stat == PokemonInstance.Stat.DEFENSE:
+					mult *= 0.75
+			AbilityId.Id.VESSEL_OF_RUIN:
+				if stat == PokemonInstance.Stat.SP_ATTACK:
+					mult *= 0.75
+			AbilityId.Id.BEADS_OF_RUIN:
+				if stat == PokemonInstance.Stat.SP_DEFENSE:
+					mult *= 0.75
+	return mult
+
+
+## Protean / Libero: cambia al tipo del movimiento al usarlo
+static func try_protean(battler: BattleBattler, move: MoveData, battle: BattleManager) -> void:
+	if battler == null or move == null or battle == null:
+		return
+	var id: AbilityId.Id = get_id(battler)
+	if id != AbilityId.Id.PROTEAN and id != AbilityId.Id.LIBERO:
+		return
+	var mt: PokemonData.Type = effective_move_type(battler, move)
+	if mt == PokemonData.Type.TYPE_NONE:
+		return
+	if battler.get_battle_type_1() == mt and battler.get_battle_type_2() == PokemonData.Type.TYPE_NONE:
+		return
+	battler.set_battle_types(mt)
+	# Anuncio ligero
+	battle.message.emit("¡%s cambió al tipo del movimiento!" % battler.get_display_name())
+
+
+## Merciless: crítico asegurado si el objetivo está envenenado
+static func always_crits(attacker: BattleBattler, defender: BattleBattler) -> bool:
+	if not has(attacker, AbilityId.Id.MERCILESS):
+		return false
+	if defender == null or defender.pokemon == null:
+		return false
+	var st: PokemonInstance.Status = defender.pokemon.status
+	return st == PokemonInstance.Status.POISON or st == PokemonInstance.Status.TOXIC
+
+
+## Long Reach: el movimiento no hace contacto a efectos de habilidades
+static func move_makes_contact(attacker: BattleBattler, move: MoveData) -> bool:
+	if move == null or not move.makes_contact:
+		return false
+	if has(attacker, AbilityId.Id.LONG_REACH):
+		return false
+	return true
+
+
+## Analytic: +30% si actúa después del objetivo este turno
+static func analytic_multiplier(attacker: BattleBattler, acted_after_target: bool) -> float:
+	if acted_after_target and has(attacker, AbilityId.Id.ANALYTIC):
+		return 1.3
+	return 1.0
+
+
+## Stakeout: x2 si el objetivo acaba de entrar
+static func stakeout_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
+	if has(attacker, AbilityId.Id.STAKEOUT) and defender != null and defender.just_switched_in:
+		return 2.0
+	return 1.0
+
+
+## Supreme Overlord: +10% por aliado debilitado (máx razonable)
+static func supreme_overlord_multiplier(attacker: BattleBattler, battle: BattleManager) -> float:
+	if not has(attacker, AbilityId.Id.SUPREME_OVERLORD) or battle == null:
+		return 1.0
+	var party: Array[PokemonInstance] = battle.player_party if attacker.is_player_side else battle.enemy_party
+	var fainted: int = 0
+	for mon: PokemonInstance in party:
+		if mon != null and mon.is_fainted():
+			fainted += 1
+	return 1.0 + 0.1 * float(mini(fainted, 5))
+
+
+static func on_flinched(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	if has(battler, AbilityId.Id.STEADFAST):
+		await battle.ability_announce(battler)
+		await battle.ability_change_stat(battler, PokemonInstance.Stat.SPEED, 1)
