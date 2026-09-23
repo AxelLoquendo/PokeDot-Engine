@@ -64,8 +64,16 @@ static func self_hit_confusion(battler: BattleBattler) -> int:
 static func end_of_turn_damage(battler: BattleBattler) -> Dictionary:
 	var mon: PokemonInstance = battler.pokemon
 	var result: Dictionary = {"damage": 0, "message": ""}
+
 	if mon == null or mon.is_fainted():
 		return result
+
+	if AbilityRuntime.blocks_indirect_damage(battler):
+		return result
+
+	if AbilityRuntime.has(battler, AbilityId.Id.POISON_HEAL):
+		if mon.status == PokemonInstance.Status.POISON or mon.status == PokemonInstance.Status.TOXIC:
+			return result
 
 	match mon.status:
 		PokemonInstance.Status.POISON:
@@ -81,9 +89,7 @@ static func end_of_turn_damage(battler: BattleBattler) -> Dictionary:
 			@warning_ignore("integer_division")
 			result.damage = maxi(1, mon.max_hp / 16)
 			result.message = "%s sufre por la quemadura." % battler.get_display_name()
-
 	return result
-
 
 static func status_name(status: PokemonInstance.Status) -> String:
 	match status:

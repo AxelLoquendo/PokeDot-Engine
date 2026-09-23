@@ -945,6 +945,9 @@ func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: Dam
 		"atk_up":
 			await ability_change_stat(target, PokemonInstance.Stat.ATTACK, 1)
 
+		"def_up_2":
+			await ability_change_stat(target, PokemonInstance.Stat.DEFENSE, 2)
+
 		"spe_up":
 			await ability_change_stat(target, PokemonInstance.Stat.SPEED, 1)
 
