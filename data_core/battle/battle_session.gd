@@ -61,13 +61,32 @@ var player_leads: Array[PokemonInstance] = []
 
 
 
-func preparar_salvaje(jugador: CharacterController, lead: PokemonInstance, salvaje: PokemonInstance, es_roaming: bool = false) -> void:
+## probabilidad_doble: 0.0–1.0. Si > 0 y hay 2º salvaje, puede ser 1v2 o 2v2.
+func preparar_salvaje(
+	jugador: CharacterController,
+	lead: PokemonInstance,
+	salvaje: PokemonInstance,
+	es_roaming: bool = false,
+	salvaje_2: PokemonInstance = null,
+	formato: int = 0
+) -> void:
 	player_controller = jugador
 	player_pokemon = lead
 	enemy_pokemon = salvaje
-	player_leads = [lead] if lead else []
-	enemy_party = [salvaje] if salvaje else []
-	battle_format = 0  # SINGLE
+	# Arrays tipados: construir y append (no literales sueltos)
+	var leads: Array[PokemonInstance] = []
+	if lead != null:
+		leads.append(lead)
+	player_leads = leads
+
+	var foes: Array[PokemonInstance] = []
+	if salvaje != null:
+		foes.append(salvaje)
+	if salvaje_2 != null:
+		foes.append(salvaje_2)
+	enemy_party = foes
+
+	battle_format = formato
 	is_wild = true
 	_configurar_combate(jugador, BattleType.ROAMING if es_roaming else BattleType.WILD)
 

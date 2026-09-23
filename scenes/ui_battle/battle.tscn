@@ -290,20 +290,35 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_c8v4i")
 
 [node name="Pkmn_Player" type="Sprite2D" parent="." unique_id=228095653]
-position = Vector2(128, 160)
+position = Vector2(84, 160)
 scale = Vector2(2, 2)
 texture = ExtResource("3_axcis")
 
 [node name="Cry_Mon_Player" type="AudioStreamPlayer" parent="Pkmn_Player" unique_id=1211535546]
 
+[node name="Pkmn_Player2" type="Sprite2D" parent="." unique_id=1381040863]
+position = Vector2(180, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("3_axcis")
+
+[node name="Cry_Mon_Player" type="AudioStreamPlayer" parent="Pkmn_Player2" unique_id=2121008718]
+
 [node name="Pkmn_Enemy" type="Sprite2D" parent="." unique_id=1376516171]
-position = Vector2(353, 80)
+position = Vector2(316, 80)
 scale = Vector2(2, 2)
 texture = ExtResource("4_3mhqk")
 
 [node name="Cry_Mon_Enemy" type="AudioStreamPlayer" parent="Pkmn_Enemy" unique_id=1335717857]
 
+[node name="Pkmn_Enemy2" type="Sprite2D" parent="." unique_id=1627766497]
+position = Vector2(408, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("4_3mhqk")
+
+[node name="Cry_Mon_Enemy" type="AudioStreamPlayer" parent="Pkmn_Enemy2" unique_id=1402047995]
+
 [node name="TextBox" type="ColorRect" parent="." unique_id=1853342013]
+z_index = 40
 offset_top = 224.0
 offset_right = 480.0
 offset_bottom = 320.0
@@ -331,6 +346,7 @@ label_settings = SubResource("LabelSettings_htemk")
 autowrap_mode = 2
 
 [node name="ActionBattle" type="Control" parent="." unique_id=1315055219]
+z_index = 40
 layout_mode = 3
 anchors_preset = 0
 offset_right = 116.0
@@ -369,6 +385,7 @@ texture_focused = ExtResource("9_w78s2")
 
 [node name="Overlay_Fight" type="Sprite2D" parent="." unique_id=2098993056]
 visible = false
+z_index = 40
 position = Vector2(240, 272)
 texture = ExtResource("11_ln23b")
 
@@ -480,7 +497,7 @@ position = Vector2(176, -11)
 texture = ExtResource("12_w78s2")
 
 [node name="PlayerHPBox" type="Sprite2D" parent="." unique_id=191641169]
-position = Vector2(368, 182)
+position = Vector2(368, 158)
 scale = Vector2(2, 2)
 texture = ExtResource("13_j8t3v")
 
@@ -544,8 +561,73 @@ position = Vector2(-58, 9)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_yaib3")
 
+[node name="PlayerHPBox2" type="Sprite2D" parent="." unique_id=1051304626]
+position = Vector2(368, 183)
+scale = Vector2(2, 2)
+texture = ExtResource("13_j8t3v")
+
+[node name="NamePkmnPlayer" type="Label" parent="PlayerHPBox2" unique_id=23334663]
+offset_left = -42.0
+offset_top = -17.0
+offset_right = 19.5
+offset_bottom = -3.0
+text = "Hydrapple"
+label_settings = SubResource("LabelSettings_14cdr")
+script = ExtResource("14_ymneq")
+
+[node name="HpBar" type="ColorRect" parent="PlayerHPBox2" unique_id=551894138]
+offset_left = -10.0
+offset_right = 38.0
+offset_bottom = 3.0
+color = Color(0.18431373, 0.92941177, 0.28627452, 1)
+
+[node name="ExpBar" type="ColorRect" parent="PlayerHPBox2" unique_id=1548827952]
+offset_left = -26.0
+offset_top = 16.0
+offset_right = 37.5
+offset_bottom = 18.0
+color = Color(0.12941177, 0.54901963, 0.9411765, 1)
+
+[node name="Genero" type="Label" parent="PlayerHPBox2" unique_id=1356851211]
+offset_left = 50.0
+offset_top = 3.0
+offset_right = 56.0
+offset_bottom = 17.0
+text = "♂"
+label_settings = SubResource("LabelSettings_ymneq")
+
+[node name="HP" type="Label" parent="PlayerHPBox2" unique_id=1679300506]
+offset_left = -15.0
+offset_top = 1.5
+offset_right = 39.0
+offset_bottom = 15.5
+text = "00/00"
+label_settings = SubResource("LabelSettings_2yyve")
+horizontal_alignment = 2
+
+[node name="Level" type="Label" parent="PlayerHPBox2" unique_id=476595311]
+texture_filter = 1
+offset_left = 31.0
+offset_top = -17.0
+offset_right = 49.0
+offset_bottom = -3.0
+text = "100"
+label_settings = SubResource("LabelSettings_w78s2")
+
+[node name="Status" type="Sprite2D" parent="PlayerHPBox2" unique_id=1492530819]
+visible = false
+position = Vector2(-39, 12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_qkdal")
+
+[node name="Indicador" type="Sprite2D" parent="PlayerHPBox2" unique_id=1035936160]
+visible = false
+position = Vector2(-58, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_yaib3")
+
 [node name="EnemyHPBox" type="Sprite2D" parent="." unique_id=407160177]
-position = Vector2(144, 64)
+position = Vector2(144, 34)
 scale = Vector2(2, 2)
 texture = ExtResource("14_axcis")
 
@@ -594,7 +676,58 @@ position = Vector2(42, 4)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_ln23b")
 
+[node name="EnemyHPBox2" type="Sprite2D" parent="." unique_id=1703910219]
+position = Vector2(144, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("14_axcis")
+
+[node name="NamePkmnEnemy" type="Label" parent="EnemyHPBox2" unique_id=743564280]
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 10.0
+offset_bottom = -1.5
+text = "Hydrapple"
+label_settings = SubResource("LabelSettings_14cdr")
+script = ExtResource("14_ymneq")
+
+[node name="HpBar" type="ColorRect" parent="EnemyHPBox2" unique_id=1616330331]
+offset_left = -18.0
+offset_top = 1.0
+offset_right = 30.0
+offset_bottom = 4.0
+color = Color(0.18431373, 0.92941177, 0.28627452, 1)
+
+[node name="Genero" type="Label" parent="EnemyHPBox2" unique_id=1821209777]
+offset_left = -55.5
+offset_top = -15.0
+offset_right = -49.5
+offset_bottom = -1.0
+text = "♂"
+label_settings = SubResource("LabelSettings_ymneq")
+
+[node name="Level" type="Label" parent="EnemyHPBox2" unique_id=397304020]
+texture_filter = 1
+offset_left = 20.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = -1.0
+text = "100"
+label_settings = SubResource("LabelSettings_6hh4c")
+
+[node name="Status" type="Sprite2D" parent="EnemyHPBox2" unique_id=145212481]
+visible = false
+position = Vector2(-43.5, 6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_qkdal")
+
+[node name="Indicador" type="Sprite2D" parent="EnemyHPBox2" unique_id=1853727385]
+visible = false
+position = Vector2(42, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_ln23b")
+
 [node name="Ability_Bar_Player" type="Sprite2D" parent="." unique_id=1670984146]
+z_index = 40
 position = Vector2(128, 152)
 texture = ExtResource("24_y8am3")
 vframes = 2
@@ -614,6 +747,7 @@ texture = ExtResource("25_wylot")
 hframes = 2
 
 [node name="Ability_Bar_Enemy" type="Sprite2D" parent="." unique_id=815842023]
+z_index = 40
 position = Vector2(352, 88)
 texture = ExtResource("24_y8am3")
 vframes = 2

@@ -71,12 +71,14 @@ func start_battle(
 	enemy_pokemon: PokemonInstance,
 	party: Array[PokemonInstance] = [],
 	enemy_trainer_party: Array[PokemonInstance] = [],
-	p_format: BattleFormat = BattleFormat.SINGLE
+	p_format: BattleFormat = BattleFormat.SINGLE,
+	p_is_wild: bool = false
 ) -> void:
 	format = p_format
 	player_party = party
 	enemy_party = enemy_trainer_party
-	is_trainer_battle = not enemy_party.is_empty()
+	# Salvaje aunque enemy_party tenga 1–2 mons (dobles salvajes)
+	is_trainer_battle = (not p_is_wild) and (not enemy_party.is_empty())
 	is_running = true
 	weather = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
 	weather_turns = -1

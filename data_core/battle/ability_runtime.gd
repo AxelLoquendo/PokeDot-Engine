@@ -2342,7 +2342,7 @@ static func shields_down_blocks_status(battler: BattleBattler) -> bool:
 static func _arm_zero_to_hero(battler: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null:
 		return
-	if str(battler.pokemon.form_id) == "palafin_hero":
+	if str(battler.pokemon.form_id) == "Hero":
 		battler.zero_to_hero_transformed = true
 		battler.pokemon.set_meta("zero_to_hero_armed", true)
 		return
@@ -2360,10 +2360,10 @@ static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> v
 		or bool(battler.pokemon.get_meta("zero_to_hero_armed", false))
 	if not armed:
 		return
-	if str(battler.pokemon.form_id) == "palafin_hero":
+	if str(battler.pokemon.form_id) == "Hero":
 		battler.zero_to_hero_transformed = true
 		return
-	if await _apply_form_change(battler, battle, &"palafin_hero"):
+	if await _apply_form_change(battler, battle, &"Hero"):
 		battler.zero_to_hero_transformed = true
 		battler.pokemon.set_meta("zero_to_hero_armed", true)
 
@@ -2375,7 +2375,7 @@ static func revert_battle_forms(battler: BattleBattler) -> void:
 	var fid: String = str(battler.pokemon.form_id)
 	var needs_base: bool = false
 	# Formas que solo existen durante el combate / se revierten al terminar
-	if fid in ["palafin_hero", "castform_sunny", "castform_rainy", "castform_snowy",
+	if fid in ["Hero", "castform_sunny", "castform_rainy", "castform_snowy",
 			"cherrim_sunshine", "darmanitan_zen", "darmanitan_zen_galar",
 			"minior_core", "minior_core_red", "minior_core_orange", "minior_core_yellow",
 			"minior_core_green", "minior_core_blue", "minior_core_indigo", "minior_core_violet",

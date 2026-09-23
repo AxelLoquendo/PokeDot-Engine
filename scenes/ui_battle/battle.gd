@@ -216,12 +216,14 @@ func _ready() -> void:
 
 	battle.start_battle(
 		player_pokemon, enemy_pokemon, party, BattleSession.enemy_party,
-		BattleSession.battle_format as BattleManager.BattleFormat
+		BattleSession.battle_format as BattleManager.BattleFormat,
+		BattleSession.is_wild
 	)
 
 	battle.start_battle(
 		player_pokemon, enemy_pokemon, party, BattleSession.enemy_party,
-		BattleSession.battle_format as BattleManager.BattleFormat
+		BattleSession.battle_format as BattleManager.BattleFormat,
+		BattleSession.is_wild
 	)
 
 	player_exp_bar.size.x = player_exp_bar_target

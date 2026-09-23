@@ -1,5 +1,8 @@
 extends Node
 
+## Probabilidad (0–1) de encuentro salvaje doble en hierba.
+const WILD_DOUBLE_CHANCE: float = 50.0
+
 var reproductor_salto: AudioStreamPlayer
 
 
@@ -177,7 +180,21 @@ func comportamiento_hierba(personaje: CharacterController) -> void:
 	if lead == null:
 		return
 
-	_iniciar_encuentro_salvaje(personaje, lead, salvaje)
+	# Chance de combate doble salvaje
+	var salvaje_2: PokemonInstance = null
+	var formato: int = 0  # BattleManager.BattleFormat.SINGLE
+	if randf() < WILD_DOUBLE_CHANCE:
+		salvaje_2 = mapa.grass_encounters.intentar_encuentro(1.0)
+		# Evitar null; si la tabla no tira otro mon, queda 1v1
+		if salvaje_2 != null:
+			var conscious: int = _contar_conscientes(data.party)
+			if conscious >= 2:
+				# 2v2: segundo lead del jugador
+				formato = 3  # DOUBLE
+			else:
+				formato = 1  # ONE_V_TWO
+
+	_iniciar_encuentro_salvaje(personaje, lead, salvaje, salvaje_2, formato)
 
 
 func _primer_pokemon_apto(party: Array[PokemonInstance]) -> PokemonInstance:
@@ -190,10 +207,20 @@ func _primer_pokemon_apto(party: Array[PokemonInstance]) -> PokemonInstance:
 func _iniciar_encuentro_salvaje(
 	personaje: CharacterController,
 	lead: PokemonInstance,
-	salvaje: PokemonInstance
+	salvaje: PokemonInstance,
+	salvaje_2: PokemonInstance = null,
+	formato: int = 0
 ) -> void:
-	BattleSession.preparar_salvaje(personaje, lead, salvaje)
+	BattleSession.preparar_salvaje(personaje, lead, salvaje, false, salvaje_2, formato)
 	_correr_transicion_batalla(personaje)
+
+
+func _contar_conscientes(party: Array[PokemonInstance]) -> int:
+	var n: int = 0
+	for mon: PokemonInstance in party:
+		if mon != null and not mon.is_fainted():
+			n += 1
+	return n
 
 
 func _correr_transicion_batalla(personaje: CharacterController) -> void:
