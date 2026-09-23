@@ -44,6 +44,18 @@ static func check_hit(move: MoveData, attacker: BattleBattler, defender: BattleB
 
 	if AbilityRuntime.has(attacker, AbilityId.Id.COMPOUND_EYES):
 		final_acc *= 1.3
+	if AbilityRuntime.has(attacker, AbilityId.Id.HUSTLE) \
+			and move.category == MoveStruct.DamageCategory.PHYSICAL:
+		final_acc *= 0.8
+	if AbilityRuntime.victory_star_active(attacker):
+		final_acc *= 1.1
+	# Wonder Skin: movimientos de estado al 50% de precisión máx.
+	if move.category == MoveStruct.DamageCategory.STATUS \
+			and AbilityRuntime.has(defender, AbilityId.Id.WONDER_SKIN):
+		final_acc = minf(final_acc, 50.0)
+	# Tangled Feet: +evasión si confundido (aprox. -20% precisión del rival)
+	if defender.is_confused() and AbilityRuntime.has(defender, AbilityId.Id.TANGLED_FEET):
+		final_acc *= 0.5
 
 	var final_acc_i: int = clampi(int(round(final_acc)), 1, 100)
 	return randi_range(1, 100) <= final_acc_i
@@ -98,8 +110,16 @@ static func compute_hit(
 	var atk: int
 	var def: int
 	if move.category == MoveStruct.DamageCategory.PHYSICAL:
-		atk = attacker.get_effective_stat(PokemonInstance.Stat.ATTACK)
-		def = defender.get_effective_stat(PokemonInstance.Stat.DEFENSE)
+		if AbilityRuntime.has(defender, AbilityId.Id.UNAWARE) and not ignore_defender_ability:
+			atk = maxi(attacker.pokemon.get_stat(PokemonInstance.Stat.ATTACK), 1)
+			_note_def(result, AbilityId.Id.UNAWARE)
+		else:
+			atk = attacker.get_effective_stat(PokemonInstance.Stat.ATTACK)
+		if AbilityRuntime.has(attacker, AbilityId.Id.UNAWARE):
+			def = maxi(defender.pokemon.get_stat(PokemonInstance.Stat.DEFENSE), 1)
+			_note_atk(result, AbilityId.Id.UNAWARE)
+		else:
+			def = defender.get_effective_stat(PokemonInstance.Stat.DEFENSE)
 		var guts_active: bool = AbilityRuntime.has(attacker, AbilityId.Id.GUTS)
 		if attacker.pokemon.status == PokemonInstance.Status.BURN and not guts_active:
 			@warning_ignore("integer_division")
@@ -109,8 +129,16 @@ static func compute_hit(
 			_note_atk(result, AbilityRuntime.get_id(attacker))
 		atk = int(round(float(atk) * atk_mult))
 	else:
-		atk = attacker.get_effective_stat(PokemonInstance.Stat.SP_ATTACK)
-		def = defender.get_effective_stat(PokemonInstance.Stat.SP_DEFENSE)
+		if AbilityRuntime.has(defender, AbilityId.Id.UNAWARE) and not ignore_defender_ability:
+			atk = maxi(attacker.pokemon.get_stat(PokemonInstance.Stat.SP_ATTACK), 1)
+			_note_def(result, AbilityId.Id.UNAWARE)
+		else:
+			atk = attacker.get_effective_stat(PokemonInstance.Stat.SP_ATTACK)
+		if AbilityRuntime.has(attacker, AbilityId.Id.UNAWARE):
+			def = maxi(defender.pokemon.get_stat(PokemonInstance.Stat.SP_DEFENSE), 1)
+			_note_atk(result, AbilityId.Id.UNAWARE)
+		else:
+			def = defender.get_effective_stat(PokemonInstance.Stat.SP_DEFENSE)
 
 	def = maxi(def, 1)
 
@@ -139,8 +167,8 @@ static func compute_hit(
 				base *= 0.5
 
 	var stab: float = 1.0
-	var t1: PokemonData.Type = attacker.pokemon.get_type_1()
-	var t2: PokemonData.Type = attacker.pokemon.get_type_2()
+	var t1: PokemonData.Type = attacker.get_battle_type_1()
+	var t2: PokemonData.Type = attacker.get_battle_type_2()
 	if move.type == t1 or (t2 != PokemonData.Type.TYPE_NONE and move.type == t2):
 		stab = AbilityRuntime.stab_multiplier(attacker)
 		if AbilityRuntime.has(attacker, AbilityId.Id.ADAPTABILITY):
@@ -148,13 +176,13 @@ static func compute_hit(
 
 	var eff: float = TypeChart.get_effectiveness(
 		move.type,
-		defender.pokemon.get_type_1(),
-		defender.pokemon.get_type_2()
+		defender.get_battle_type_1(),
+		defender.get_battle_type_2()
 	)
 
 	if eff <= 0.0 and AbilityRuntime.bypasses_ghost_immunity(attacker, move) \
-			and (defender.pokemon.get_type_1() == PokemonData.Type.TYPE_GHOST \
-				or defender.pokemon.get_type_2() == PokemonData.Type.TYPE_GHOST):
+			and (defender.get_battle_type_1() == PokemonData.Type.TYPE_GHOST \
+				or defender.get_battle_type_2() == PokemonData.Type.TYPE_GHOST):
 		eff = 1.0
 		_note_atk(result, AbilityId.Id.SCRAPPY)
 
@@ -182,6 +210,9 @@ static func compute_hit(
 		3: crit_rate = 1.0
 	if move.always_critical:
 		crit_rate = 1.0
+	if not ignore_defender_ability and AbilityRuntime.blocks_critical(defender):
+		crit_rate = 0.0
+		_note_def(result, AbilityRuntime.get_id(defender))
 	result.critical = randf() < crit_rate
 	var crit_mult: float = 1.0
 	if result.critical:

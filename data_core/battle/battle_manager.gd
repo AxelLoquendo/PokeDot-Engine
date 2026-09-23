@@ -135,12 +135,18 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 	if player.pokemon == nuevo:
 		message.emit("¡Ese Pokémon ya está en combate!")
 		return
+	if not free_switch and not player.is_fainted() and AbilityRuntime.prevents_escape(enemy, player):
+		await ability_announce(enemy)
+		message.emit("¡No se puede cambiar de Pokémon!")
+		await _wait(0.8)
+		return
 
 	var saliente_nombre: String = player.get_display_name()
 	if not player.is_fainted():
 		message.emit("¡%s, vuelve!" % saliente_nombre)
 		await _wait(0.6)
 
+	AbilityRuntime.on_switch_out(player, self)
 	AbilityRuntime.revert_transform(player)
 
 	player.setup(nuevo, true)
@@ -179,6 +185,11 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 
 func player_choose_run() -> void:
 	if not is_running:
+		return
+	if AbilityRuntime.prevents_escape(enemy, player):
+		await ability_announce(enemy)
+		message.emit("¡No se puede escapar!")
+		await _wait(0.8)
 		return
 	message.emit("¡Escapaste con éxito!")
 	_cleanup_battle_pokemon()
@@ -305,6 +316,7 @@ func _handle_enemy_faint() -> void:
 
 	if is_trainer_battle and _enemy_tiene_reemplazo():
 		var nuevo: PokemonInstance = _enemy_siguiente_reemplazo()
+		AbilityRuntime.on_switch_out(enemy, self)
 		AbilityRuntime.revert_transform(enemy)
 		enemy.setup(nuevo, false)
 		AbilityRuntime.prepare_illusion(enemy, self)
@@ -726,6 +738,13 @@ func _sort_actions(actions: Array[BattleAction]) -> Array[BattleAction]:
 
 
 func _execute_move(action: BattleAction) -> void:
+	if action == null or action.actor == null:
+		return
+	if AbilityRuntime.should_skip_turn(action.actor):
+		await ability_announce(action.actor)
+		message.emit("¡%s holgazanea!" % action.actor.get_display_name())
+		await _wait(0.8)
+		return
 	var actor: BattleBattler = action.actor
 	var target: BattleBattler = action.target
 	var move: MoveData = action.move
@@ -880,6 +899,7 @@ func _execute_move(action: BattleAction) -> void:
 		await AbilityRuntime.on_contact_hit(actor, target, move, self)
 		if actor.is_fainted():
 			break
+		await AbilityRuntime.on_hit_ability(actor, target, move, self)
 
 		if target.is_fainted() and move.makes_contact and AbilityRuntime.has(target, AbilityId.Id.AFTERMATH):
 			await ability_announce(target)
@@ -961,7 +981,7 @@ func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: Dam
 			await _wait(0.8)
 
 func _apply_recoil(actor: BattleBattler, damage_dealt: int, percent: int) -> void:
-	if damage_dealt <= 0 or AbilityRuntime.blocks_indirect_damage(actor):
+	if damage_dealt <= 0 or AbilityRuntime.blocks_indirect_damage(actor) or AbilityRuntime.blocks_recoil(actor):
 		return
 	var recoil: int = maxi(1, int(floor(float(damage_dealt) * float(percent) / 100.0)))
 	var taken: int = actor.apply_damage(recoil)
@@ -1372,6 +1392,8 @@ func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stag
 	else:
 		message.emit("¡%s de %s bajó!" % [name, battler.get_display_name()])
 	await _wait(0.6)
+	if caused_by_foe and actual < 0:
+		await AbilityRuntime.on_stat_lowered_by_foe(battler, self)
 
 func _apply_status(battler: BattleBattler, status: PokemonInstance.Status) -> void:
 	if AbilityRuntime.blocks_status(battler, status):
@@ -1498,6 +1520,8 @@ func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, sta
 	else:
 		message.emit("¡%s de %s bajó!" % [name, battler.get_display_name()])
 	await _wait(0.6)
+	if caused_by_foe and actual < 0:
+		await AbilityRuntime.on_stat_lowered_by_foe(battler, self)
 
 func ability_apply_status(battler: BattleBattler, status: PokemonInstance.Status, source: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null or battler.is_fainted():
@@ -1512,6 +1536,7 @@ func ability_apply_status(battler: BattleBattler, status: PokemonInstance.Status
 		battler.get_display_name(),
 		StatusConditions.status_name(status)
 	])
+	await AbilityRuntime.on_status_given(source, battler, status, self)
 
 func ability_deal_damage(battler: BattleBattler, amount: int, cause: BattleBattler) -> void:
 	var dealt: int = battler.apply_damage(amount)

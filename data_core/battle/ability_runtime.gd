@@ -179,6 +179,11 @@ static func power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
 		AbilityId.Id.PUNK_ROCK:
 			if move.sound_move:
 				mult *= 1.3
+		AbilityId.Id.SAND_FORCE:
+			if move.type == PokemonData.Type.TYPE_ROCK \
+					or move.type == PokemonData.Type.TYPE_GROUND \
+					or move.type == PokemonData.Type.TYPE_STEEL:
+				mult *= 1.3
 	return mult
 
 
@@ -219,6 +224,10 @@ static func damage_taken_multiplier(defender: BattleBattler, move: MoveData, eff
 		AbilityId.Id.PURIFYING_SALT:
 			if move.type == PokemonData.Type.TYPE_GHOST:
 				mult *= 0.5
+		AbilityId.Id.MARVEL_SCALE:
+			if defender.pokemon != null and defender.pokemon.has_status() \
+					and move.category == MoveStruct.DamageCategory.PHYSICAL:
+				mult *= 2.0 / 3.0
 	return mult
 
 
@@ -259,6 +268,58 @@ static func blocks_confusion(battler: BattleBattler) -> bool:
 
 static func blocks_flinch(battler: BattleBattler) -> bool:
 	return has(battler, AbilityId.Id.INNER_FOCUS)
+
+static func blocks_critical(defender: BattleBattler) -> bool:
+	var id: AbilityId.Id = get_id(defender)
+	return id == AbilityId.Id.SHELL_ARMOR or id == AbilityId.Id.BATTLE_ARMOR
+
+
+static func blocks_recoil(battler: BattleBattler) -> bool:
+	return has(battler, AbilityId.Id.ROCK_HEAD)
+
+
+static func victory_star_active(battler: BattleBattler) -> bool:
+	# Individual o aliado (en 1v1 solo el propio)
+	return has(battler, AbilityId.Id.VICTORY_STAR)
+
+
+static func prevents_escape(blocker: BattleBattler, runner: BattleBattler) -> bool:
+	if blocker == null or runner == null or blocker.is_fainted():
+		return false
+	if has(runner, AbilityId.Id.RUN_AWAY):
+		return false
+	# Ghosts escape trapping in modern gens
+	if runner.pokemon != null:
+		var t1: PokemonData.Type = runner.get_battle_type_1()
+		var t2: PokemonData.Type = runner.get_battle_type_2()
+		if t1 == PokemonData.Type.TYPE_GHOST or t2 == PokemonData.Type.TYPE_GHOST:
+			return false
+	match get_id(blocker):
+		AbilityId.Id.SHADOW_TAG:
+			return not has(runner, AbilityId.Id.SHADOW_TAG)
+		AbilityId.Id.ARENA_TRAP:
+			var rt1: PokemonData.Type = runner.get_battle_type_1()
+			var rt2: PokemonData.Type = runner.get_battle_type_2()
+			var flying: bool = rt1 == PokemonData.Type.TYPE_FLYING or rt2 == PokemonData.Type.TYPE_FLYING
+			return not flying and not has(runner, AbilityId.Id.LEVITATE)
+		AbilityId.Id.MAGNET_PULL:
+			var rt1b: PokemonData.Type = runner.get_battle_type_1()
+			var rt2b: PokemonData.Type = runner.get_battle_type_2()
+			return rt1b == PokemonData.Type.TYPE_STEEL or rt2b == PokemonData.Type.TYPE_STEEL
+	return false
+
+
+static func should_skip_turn(battler: BattleBattler) -> bool:
+	## Truant: salta un turno sí y otro no
+	if not has(battler, AbilityId.Id.TRUANT):
+		return false
+	if battler.truant_skip_turn:
+		battler.truant_skip_turn = false
+		return true
+	battler.truant_skip_turn = true
+	return false
+
+
 
 
 ## ─── Entrada en combate ─────────────────────────────────
@@ -458,13 +519,26 @@ static func on_contact_hit(
 			await battle.ability_announce(defender)
 			await battle.ability_change_stat(attacker, PokemonInstance.Stat.SPEED, -1, true)
 
-			if attacker.is_fainted():
-				return
-			match get_id(attacker):
-				AbilityId.Id.POISON_TOUCH:
-					if randf() < 0.3:
-						await battle.ability_announce(attacker)
-						await battle.ability_apply_status(defender, PokemonInstance.Status.POISON, attacker)
+		AbilityId.Id.MUMMY, AbilityId.Id.LINGERING_AROMA:
+			var atk_id: AbilityId.Id = get_id(attacker)
+			if atk_id != AbilityId.Id.NONE and atk_id != AbilityId.Id.MUMMY \
+					and atk_id != AbilityId.Id.LINGERING_AROMA and _is_traceable(atk_id):
+				await battle.ability_announce(defender)
+				attacker.pokemon.ability_id = get_id(defender)
+				battle.message.emit("¡La habilidad de %s cambió!" % attacker.get_display_name())
+				await battle._wait(0.6)
+
+		AbilityId.Id.CUTE_CHARM:
+			# Sin sistema de atracción aún: no-op funcional reservado
+			pass
+
+	if attacker.is_fainted():
+		return
+	match get_id(attacker):
+		AbilityId.Id.POISON_TOUCH:
+			if randf() < 0.3:
+				await battle.ability_announce(attacker)
+				await battle.ability_apply_status(defender, PokemonInstance.Status.POISON, attacker)
 
 ## ─── Fin de turno ───────────────────────────────────────
 static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
@@ -750,6 +824,25 @@ static func on_damaged_by_move(
 				await battle.ability_announce(defender)
 				await battle.ability_change_stat(defender, PokemonInstance.Stat.DEFENSE, 2)
 
+		AbilityId.Id.COLOR_CHANGE:
+			if move.type != PokemonData.Type.TYPE_NONE and move.power > 0:
+				if defender.get_battle_type_1() != move.type or defender.get_battle_type_2() != PokemonData.Type.TYPE_NONE:
+					await battle.ability_announce(defender)
+					defender.set_battle_types(move.type)
+					battle.message.emit("¡%s cambió al tipo %s!" % [defender.get_display_name(), _type_name(move.type)])
+					await battle._wait(0.5)
+
+		AbilityId.Id.ANGER_SHELL:
+			if defender.pokemon != null and defender.pokemon.max_hp > 0:
+				var ratio: float = float(defender.pokemon.current_hp) / float(defender.pokemon.max_hp)
+				if ratio <= 0.5:
+					await battle.ability_announce(defender)
+					await battle.ability_change_stat(defender, PokemonInstance.Stat.ATTACK, 1)
+					await battle.ability_change_stat(defender, PokemonInstance.Stat.SP_ATTACK, 1)
+					await battle.ability_change_stat(defender, PokemonInstance.Stat.SPEED, 1)
+					await battle.ability_change_stat(defender, PokemonInstance.Stat.DEFENSE, -1)
+					await battle.ability_change_stat(defender, PokemonInstance.Stat.SP_DEFENSE, -1)
+
 		AbilityId.Id.COTTON_DOWN:
 			if attacker != null and not attacker.is_fainted():
 				await battle.ability_announce(defender)
@@ -757,7 +850,7 @@ static func on_damaged_by_move(
 
 		AbilityId.Id.SAND_SPIT:
 			await battle.ability_announce(defender)
-			battle.set_weather(WeatherId.WEATHER_SANDSTORM, -1)
+			battle.set_weather(WeatherId.WEATHER_SANDSTORM, 5)
 
 		AbilityId.Id.SEED_SOWER:
 			await battle.ability_announce(defender)
@@ -927,3 +1020,74 @@ static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> b
 	battler.illusion_gender = disguise.gender
 	battler.illusion_shiny = disguise.shiny if "shiny" in disguise else false
 	return true
+
+
+static func _type_name(t: PokemonData.Type) -> String:
+	return str(t).replace("TYPE_", "").capitalize()
+
+
+## Tras bajar stats por el rival (Defiant / Competitive / Guard Dog)
+static func on_stat_lowered_by_foe(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.is_fainted() or battle == null:
+		return
+	match get_id(battler):
+		AbilityId.Id.DEFIANT, AbilityId.Id.GUARD_DOG:
+			await battle.ability_announce(battler)
+			await battle.ability_change_stat(battler, PokemonInstance.Stat.ATTACK, 2)
+		AbilityId.Id.COMPETITIVE:
+			await battle.ability_announce(battler)
+			await battle.ability_change_stat(battler, PokemonInstance.Stat.SP_ATTACK, 2)
+
+
+## Al aplicar un estado al rival (Synchronize)
+static func on_status_given(
+	source: BattleBattler,
+	target: BattleBattler,
+	status: PokemonInstance.Status,
+	battle: BattleManager
+) -> void:
+	if target == null or source == null or battle == null:
+		return
+	if not has(target, AbilityId.Id.SYNCHRONIZE):
+		return
+	if status != PokemonInstance.Status.POISON and status != PokemonInstance.Status.TOXIC \
+			and status != PokemonInstance.Status.BURN and status != PokemonInstance.Status.PARALYSIS:
+		return
+	if blocks_status(source, status):
+		return
+	await battle.ability_announce(target)
+	await battle.ability_apply_status(source, status, target)
+
+
+## Stench: 10% de hacer retroceder al golpear
+static func on_hit_ability(
+	attacker: BattleBattler,
+	defender: BattleBattler,
+	move: MoveData,
+	battle: BattleManager
+) -> void:
+	if attacker == null or defender == null or move == null or battle == null:
+		return
+	if defender.is_fainted() or move.category == MoveStruct.DamageCategory.STATUS:
+		return
+	match get_id(attacker):
+		AbilityId.Id.STENCH:
+			if randf() < 0.1 and not blocks_flinch(defender):
+				await battle.ability_announce(attacker)
+				defender.flinched = true
+				battle.message.emit("¡%s retrocedió!" % defender.get_display_name())
+				await battle._wait(0.4)
+
+
+## Al salir del campo
+static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null:
+		return
+	match get_id(battler):
+		AbilityId.Id.NATURAL_CURE:
+			if battler.pokemon.has_status():
+				battler.pokemon.cure_status()
+		AbilityId.Id.REGENERATOR:
+			@warning_ignore("integer_division")
+			var heal: int = maxi(1, battler.get_max_hp() / 3)
+			battler.pokemon.apply_heal(heal)
