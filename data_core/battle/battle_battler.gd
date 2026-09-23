@@ -173,10 +173,14 @@ func get_effective_stat(stat: PokemonInstance.Stat) -> int:
 		if stat == PokemonInstance.Stat.ATTACK or stat == PokemonInstance.Stat.SPEED:
 			value *= 0.5
 
-	# Velocidad por habilidades de clima / estado (el weather lo pasa el manager al ordenar)
-	# Aquí solo Unburden / Quick Feet locales; Chlorophyll etc. vía AbilityRuntime.speed_multiplier
+	# Velocidad: parálisis, Quick Feet, Unburden.
+	# Clima/terreno (Chlorophyll, Swift Swim, etc.) vía AbilityRuntime.speed_multiplier.
 	if stat == PokemonInstance.Stat.SPEED:
-		if AbilityRuntime.has(self, AbilityId.Id.QUICK_FEET) and pokemon.has_status():
+		var has_quick_feet: bool = AbilityRuntime.has(self, AbilityId.Id.QUICK_FEET)
+		# Parálisis ×0.5 salvo Quick Feet
+		if pokemon.status == PokemonInstance.Status.PARALYSIS and not has_quick_feet:
+			value *= 0.5
+		if has_quick_feet and pokemon.has_status():
 			value *= 1.5
 		if unburden_active and AbilityRuntime.has(self, AbilityId.Id.UNBURDEN):
 			value *= 2.0

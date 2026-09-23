@@ -7,7 +7,7 @@ enum weatherAbilityID {
 	WEATHER_SNOW,
 	WEATHER_SANDSTORM,
 	WEATHER_DROUGHT,
-	WEATHER_
+	WEATHER_STRONG_WINDS
 }
 
 enum terrainID{

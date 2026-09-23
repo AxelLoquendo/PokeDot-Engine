@@ -276,8 +276,17 @@ static func blocks_recoil(battler: BattleBattler) -> bool:
 	return has(battler, AbilityId.Id.ROCK_HEAD)
 
 
-static func victory_star_active(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.VICTORY_STAR)
+static func victory_star_active(battler: BattleBattler, battle: BattleManager = null) -> bool:
+	if battler == null:
+		return false
+	if has(battler, AbilityId.Id.VICTORY_STAR):
+		return true
+	# En dobles también cubre al aliado
+	if battle != null and battle.is_multi_battle():
+		var ally: BattleBattler = get_ally(battler, battle)
+		if ally != null and not ally.is_fainted() and has(ally, AbilityId.Id.VICTORY_STAR):
+			return true
+	return false
 
 
 static func prevents_escape(blocker: BattleBattler, runner: BattleBattler) -> bool:
@@ -316,18 +325,29 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 
 	match get_id(battler):
 		AbilityId.Id.INTIMIDATE:
-			if opponent != null and not opponent.is_fainted():
-				if _blocks_intimidate(opponent):
-					if has(opponent, AbilityId.Id.GUARD_DOG):
-						await battle.ability_announce(opponent)
-						await battle.ability_change_stat(opponent, PokemonInstance.Stat.ATTACK, 1)
+			# En multi afecta a todos los rivales activos; en singles solo al opponent.
+			var foes: Array[BattleBattler] = []
+			if battle.has_method("get_opponents") and battle.is_multi_battle():
+				foes = battle.get_opponents(battler)
+			elif opponent != null:
+				foes = [opponent]
+			var announced: bool = false
+			for foe: BattleBattler in foes:
+				if foe == null or foe.is_fainted():
+					continue
+				if _blocks_intimidate(foe):
+					if has(foe, AbilityId.Id.GUARD_DOG):
+						await battle.ability_announce(foe)
+						await battle.ability_change_stat(foe, PokemonInstance.Stat.ATTACK, 1)
 					else:
-						await battle.ability_announce(opponent)
-						battle.message.emit("¡%s no se intimidó!" % opponent.get_display_name())
+						await battle.ability_announce(foe)
+						battle.message.emit("¡%s no se intimidó!" % foe.get_display_name())
 						await battle._wait(0.5)
 				else:
-					await battle.ability_announce(battler)
-					await battle.ability_change_stat(opponent, PokemonInstance.Stat.ATTACK, -1, true)
+					if not announced:
+						await battle.ability_announce(battler)
+						announced = true
+					await battle.ability_change_stat(foe, PokemonInstance.Stat.ATTACK, -1, true)
 
 		AbilityId.Id.DRIZZLE:
 			await battle.ability_announce(battler)
@@ -482,6 +502,16 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 		AbilityId.Id.IMPOSTER:
 			if opponent != null and not opponent.is_fainted():
 				await _setup_imposter(battler, opponent, battle)
+
+		AbilityId.Id.HOSPITALITY:
+			var ally_h: BattleBattler = get_ally(battler, battle)
+			if ally_h != null and not ally_h.is_fainted():
+				await try_hospitality(battler, ally_h, battle)
+
+		AbilityId.Id.CURIOUS_MEDICINE:
+			var ally_cm: BattleBattler = get_ally(battler, battle)
+			if ally_cm != null and not ally_cm.is_fainted():
+				await try_curious_medicine(battler, ally_cm, battle)
 
 		AbilityId.Id.SCREEN_CLEANER:
 			await battle.ability_announce(battler)
@@ -2026,6 +2056,81 @@ static func try_cud_chew(battler: BattleBattler, battle: BattleManager) -> void:
 	battler.cud_chew_berry_id = 0
 
 
+
+## Redirección en dobles: Lightning Rod / Storm Drain / Sap Sipper / Follow Me-style.
+## Devuelve el battler que debe recibir el movimiento de objetivo único, o null si no cambia.
+static func redirect_single_target(
+	actor: BattleBattler,
+	chosen: BattleBattler,
+	move: MoveData,
+	battle: BattleManager
+) -> BattleBattler:
+	if actor == null or move == null or battle == null:
+		return chosen
+	if not battle.is_multi_battle():
+		return chosen
+	# Movimientos de campo / multi-objetivo no se redirigen
+	if move.target in [
+		MoveStruct.MoveTarget.TARGET_BOTH,
+		MoveStruct.MoveTarget.TARGET_OPPONENTS_FIELD,
+		MoveStruct.MoveTarget.TARGET_FOES_AND_ALLY,
+		MoveStruct.MoveTarget.TARGET_ALL_BATTLERS,
+		MoveStruct.MoveTarget.TARGET_USER,
+		MoveStruct.MoveTarget.TARGET_ALLY,
+		MoveStruct.MoveTarget.TARGET_USER_AND_ALLY,
+		MoveStruct.MoveTarget.TARGET_USER_OR_ALLY,
+		MoveStruct.MoveTarget.TARGET_FIELD,
+	]:
+		return chosen
+	if ignores_redirection(actor):
+		return chosen
+
+	var foes: Array[BattleBattler] = battle.get_opponents(actor)
+	if foes.is_empty():
+		return chosen
+
+	# Prioridad: habilidades de atracción por tipo sobre el bando rival
+	var type_redirectors: Array[AbilityId.Id] = []
+	var want_type: int = -1
+	match move.type:
+		PokemonData.Type.TYPE_ELECTRIC:
+			type_redirectors = [AbilityId.Id.LIGHTNING_ROD, AbilityId.Id.MOTOR_DRIVE]
+			want_type = int(PokemonData.Type.TYPE_ELECTRIC)
+		PokemonData.Type.TYPE_WATER:
+			type_redirectors = [AbilityId.Id.STORM_DRAIN]
+			want_type = int(PokemonData.Type.TYPE_WATER)
+		PokemonData.Type.TYPE_GRASS:
+			type_redirectors = [AbilityId.Id.SAP_SIPPER]
+			want_type = int(PokemonData.Type.TYPE_GRASS)
+		_:
+			pass
+
+	if not type_redirectors.is_empty():
+		for f: BattleBattler in foes:
+			if f == null or f.is_fainted():
+				continue
+			var fid: AbilityId.Id = get_id(f)
+			if fid in type_redirectors:
+				return f
+
+	# Follow Me / Rage Powder se modelan con flag en el battler si la UI/movimiento lo setea
+	for f2: BattleBattler in foes:
+		if f2 == null or f2.is_fainted():
+			continue
+		if f2.has_meta("drawing_attention") and bool(f2.get_meta("drawing_attention")):
+			# Rage Powder no afecta a tipo Bicho / Planta / Cobertura
+			if f2.has_meta("rage_powder") and bool(f2.get_meta("rage_powder")):
+				if actor.pokemon != null:
+					var t1: PokemonData.Type = actor.pokemon.get_type_1()
+					var t2: PokemonData.Type = actor.pokemon.get_type_2()
+					if t1 == PokemonData.Type.TYPE_BUG or t2 == PokemonData.Type.TYPE_BUG \
+							or t1 == PokemonData.Type.TYPE_GRASS or t2 == PokemonData.Type.TYPE_GRASS:
+						continue
+			return f2
+
+	return chosen
+
+
 ## Dobles / aliados (en individual el aliado es null → no-op) ─
 
 static func get_ally(battler: BattleBattler, battle: BattleManager) -> BattleBattler:
@@ -2279,10 +2384,20 @@ static func try_flower_gift(battler: BattleBattler, weather: int, battle: Battle
 	await _apply_form_change(battler, battle, form)
 
 
-static func flower_gift_stat_multiplier(battler: BattleBattler, stat: PokemonInstance.Stat, weather: int) -> float:
-	if not has(battler, AbilityId.Id.FLOWER_GIFT):
-		return 1.0
+static func flower_gift_stat_multiplier(
+	battler: BattleBattler,
+	stat: PokemonInstance.Stat,
+	weather: int,
+	battle: BattleManager = null
+) -> float:
 	if weather != WeatherId.WEATHER_DROUGHT:
+		return 1.0
+	var active: bool = has(battler, AbilityId.Id.FLOWER_GIFT)
+	if not active and battle != null and battle.is_multi_battle():
+		var ally: BattleBattler = get_ally(battler, battle)
+		if ally != null and not ally.is_fainted() and has(ally, AbilityId.Id.FLOWER_GIFT):
+			active = true
+	if not active:
 		return 1.0
 	if stat == PokemonInstance.Stat.ATTACK or stat == PokemonInstance.Stat.SP_DEFENSE:
 		return 1.5

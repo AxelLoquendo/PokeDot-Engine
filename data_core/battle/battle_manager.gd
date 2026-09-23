@@ -1281,6 +1281,23 @@ func _execute_move(action: BattleAction) -> void:
 				action.set_meta("_multi_rest", multi_targets.slice(1))
 		action.set_meta("_multi_resolved", true)
 
+	# Redirección (Lightning Rod / Storm Drain / Sap Sipper / Follow Me)
+	if is_multi_battle() and move != null and target != null:
+		var redirected: BattleBattler = AbilityRuntime.redirect_single_target(actor, target, move, self)
+		if redirected != null and redirected != target:
+			target = redirected
+			action.target = redirected
+			await ability_announce(redirected)
+			message.emit("¡%s atrajo el ataque!" % redirected.get_display_name())
+			await _wait(0.5)
+
+	# Telepathy: no daño de aliado
+	if target != null and AbilityRuntime.telepathy_blocks_ally_damage(target, actor):
+		await ability_announce(target)
+		message.emit("¡%s no siente el ataque de su aliado!" % target.get_display_name())
+		await _wait(0.6)
+		return
+
 	AbilityRuntime.try_protean(actor, move, self)
 
 	if target != null and AbilityRuntime.damp_blocks_explosion(target, move):
@@ -1428,6 +1445,20 @@ func _execute_move(action: BattleAction) -> void:
 			ctx_mult *= AbilityRuntime.hadron_orichalcum_multiplier(actor, move.category, weather, terrain)
 			if not AbilityRuntime.ignores_defender_ability(actor):
 				ctx_mult *= AbilityRuntime.grass_pelt_multiplier(target, move, terrain)
+			# Multi / aliados: Battery, Power Spot, Friend Guard, Plus/Minus
+			var ally_atk: BattleBattler = get_ally(actor)
+			var ally_def: BattleBattler = get_ally(target)
+			ctx_mult *= AbilityRuntime.battery_multiplier(actor, ally_atk, move)
+			ctx_mult *= AbilityRuntime.power_spot_multiplier(actor, ally_atk)
+			if move.category == MoveStruct.DamageCategory.PHYSICAL:
+				ctx_mult *= AbilityRuntime.flower_gift_stat_multiplier(actor, PokemonInstance.Stat.ATTACK, weather, self)
+			var fg_spd: float = AbilityRuntime.flower_gift_stat_multiplier(target, PokemonInstance.Stat.SP_DEFENSE, weather, self)
+			if fg_spd != 1.0 and move.category == MoveStruct.DamageCategory.SPECIAL:
+				ctx_mult /= fg_spd
+			if not AbilityRuntime.ignores_defender_ability(actor):
+				ctx_mult *= AbilityRuntime.friend_guard_multiplier(target, ally_def)
+			if move.category == MoveStruct.DamageCategory.SPECIAL:
+				ctx_mult *= AbilityRuntime.plus_minus_spatk_multiplier(actor, ally_atk)
 			var acted_after: bool = action.priority < 0 or (
 				target != null
 				and actor.get_effective_stat(PokemonInstance.Stat.SPEED)
@@ -1652,19 +1683,24 @@ func _apply_recoil(actor: BattleBattler, damage_dealt: int, percent: int) -> voi
 		message.emit("¡%s se debilitó!" % actor.get_display_name())
 		await _wait(0.8)
 
-func _trigger_ko_ability(actor: BattleBattler, _fainted_target: BattleBattler) -> void:
-	if actor.is_fainted():
-		return
-	match AbilityRuntime.get_id(actor):
-		AbilityId.Id.MOXIE, AbilityId.Id.CHILLING_NEIGH:
-			await ability_announce(actor)
-			await ability_change_stat(actor, PokemonInstance.Stat.ATTACK, 1)
-		AbilityId.Id.GRIM_NEIGH, AbilityId.Id.SOUL_HEART:
-			await ability_announce(actor)
-			await ability_change_stat(actor, PokemonInstance.Stat.SP_ATTACK, 1)
-		AbilityId.Id.BEAST_BOOST:
-			await ability_announce(actor)
-			await ability_change_stat(actor, _highest_stat(actor), 1)
+func _trigger_ko_ability(actor: BattleBattler, fainted_target: BattleBattler) -> void:
+	if actor != null and not actor.is_fainted():
+		match AbilityRuntime.get_id(actor):
+			AbilityId.Id.MOXIE, AbilityId.Id.CHILLING_NEIGH:
+				await ability_announce(actor)
+				await ability_change_stat(actor, PokemonInstance.Stat.ATTACK, 1)
+			AbilityId.Id.GRIM_NEIGH, AbilityId.Id.SOUL_HEART:
+				await ability_announce(actor)
+				await ability_change_stat(actor, PokemonInstance.Stat.SP_ATTACK, 1)
+			AbilityId.Id.BEAST_BOOST:
+				await ability_announce(actor)
+				await ability_change_stat(actor, _highest_stat(actor), 1)
+
+	# Receiver / Power of Alchemy: el aliado del debilitado puede heredar su habilidad
+	if fainted_target != null and is_multi_battle():
+		var ally: BattleBattler = get_ally(fainted_target)
+		if ally != null and not ally.is_fainted():
+			await AbilityRuntime.try_receiver_or_alchemy(ally, fainted_target, self)
 
 
 func _highest_stat(battler: BattleBattler) -> PokemonInstance.Stat:
