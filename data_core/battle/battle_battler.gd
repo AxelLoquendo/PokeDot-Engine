@@ -39,12 +39,11 @@ var flash_fire_boosted: bool = false
 var slow_start_turns: int = 0
 ## Unburden: se activa al perder el objeto en combate
 var unburden_active: bool = false
-## Truant: alterna turnos de inacción
 var truant_skip_turn: bool = false
 var just_switched_in: bool = false
-## Color Change / Protean: tipo temporal en combate (-1 = sin override)
 var battle_type_1: int = -1
 var battle_type_2: int = -1
+var charged: bool = false
 
 ## Illusion: se ve como otro Pokémon del equipo hasta que reciba daño.
 var illusion_active: bool = false
@@ -92,6 +91,7 @@ func _reset_stages() -> void:
 	just_switched_in = true
 	battle_type_1 = -1
 	battle_type_2 = -1
+	charged = false
 	protect_active = false
 	protect_kind = ProtectResolver.Kind.NONE
 	endure_active = false
@@ -151,10 +151,6 @@ func get_effective_stat(stat: PokemonInstance.Stat) -> int:
 		if stat == PokemonInstance.Stat.ATTACK or stat == PokemonInstance.Stat.SPEED:
 			value *= 0.5
 
-	if stat == PokemonInstance.Stat.DEFENSE:
-		if AbilityRuntime.has(self, AbilityId.Id.MARVEL_SCALE) and pokemon.has_status():
-			value *= 1.5
-
 	# Velocidad por habilidades de clima / estado (el weather lo pasa el manager al ordenar)
 	# Aquí solo Unburden / Quick Feet locales; Chlorophyll etc. vía AbilityRuntime.speed_multiplier
 	if stat == PokemonInstance.Stat.SPEED:
@@ -183,26 +179,6 @@ func consume_pp(slot_index: int) -> bool:
 	slot.current_pp -= 1
 	return true
 
-
-
-func get_battle_type_1() -> PokemonData.Type:
-	if battle_type_1 >= 0:
-		return battle_type_1 as PokemonData.Type
-	return pokemon.get_type_1() if pokemon else PokemonData.Type.TYPE_NONE
-
-
-func get_battle_type_2() -> PokemonData.Type:
-	if battle_type_1 >= 0:
-		# Override activo: monotipo salvo que type_2 también esté seteado
-		if battle_type_2 >= 0:
-			return battle_type_2 as PokemonData.Type
-		return PokemonData.Type.TYPE_NONE
-	return pokemon.get_type_2() if pokemon else PokemonData.Type.TYPE_NONE
-
-
-func set_battle_types(t1: PokemonData.Type, t2: PokemonData.Type = PokemonData.Type.TYPE_NONE) -> void:
-	battle_type_1 = int(t1)
-	battle_type_2 = int(t2) if t2 != PokemonData.Type.TYPE_NONE else -1
 
 func get_display_name() -> String:
 	if illusion_active and not illusion_nickname.is_empty():
@@ -257,3 +233,27 @@ func modify_evasion_stage(amount: int) -> int:
 	var before: int = stage_evasion
 	stage_evasion = clampi(before + amount, -6, 6)
 	return stage_evasion - before
+
+
+func get_battle_type_1() -> PokemonData.Type:
+	if battle_type_1 >= 0:
+		return battle_type_1 as PokemonData.Type
+	return pokemon.get_type_1() if pokemon else PokemonData.Type.TYPE_NONE
+
+
+func get_battle_type_2() -> PokemonData.Type:
+	if battle_type_1 >= 0:
+		if battle_type_2 >= 0:
+			return battle_type_2 as PokemonData.Type
+		return PokemonData.Type.TYPE_NONE
+	return pokemon.get_type_2() if pokemon else PokemonData.Type.TYPE_NONE
+
+
+func set_battle_types(type_1: PokemonData.Type, type_2: PokemonData.Type = PokemonData.Type.TYPE_NONE) -> void:
+	battle_type_1 = int(type_1)
+	battle_type_2 = int(type_2) if type_2 != PokemonData.Type.TYPE_NONE else -1
+
+
+func clear_battle_types() -> void:
+	battle_type_1 = -1
+	battle_type_2 = -1

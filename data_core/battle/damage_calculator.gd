@@ -44,18 +44,22 @@ static func check_hit(move: MoveData, attacker: BattleBattler, defender: BattleB
 
 	if AbilityRuntime.has(attacker, AbilityId.Id.COMPOUND_EYES):
 		final_acc *= 1.3
-	if AbilityRuntime.has(attacker, AbilityId.Id.HUSTLE) \
-			and move.category == MoveStruct.DamageCategory.PHYSICAL:
+	if AbilityRuntime.has(attacker, AbilityId.Id.HUSTLE) and move.category == MoveStruct.DamageCategory.PHYSICAL:
 		final_acc *= 0.8
 	if AbilityRuntime.victory_star_active(attacker):
 		final_acc *= 1.1
-	# Wonder Skin: movimientos de estado al 50% de precisión máx.
-	if move.category == MoveStruct.DamageCategory.STATUS \
-			and AbilityRuntime.has(defender, AbilityId.Id.WONDER_SKIN):
-		final_acc = minf(final_acc, 50.0)
-	# Tangled Feet: +evasión si confundido (aprox. -20% precisión del rival)
-	if defender.is_confused() and AbilityRuntime.has(defender, AbilityId.Id.TANGLED_FEET):
+	if AbilityRuntime.has(defender, AbilityId.Id.TANGLED_FEET) and defender.is_confused():
 		final_acc *= 0.5
+	if AbilityRuntime.has(defender, AbilityId.Id.WONDER_SKIN) and move.category == MoveStruct.DamageCategory.STATUS:
+		final_acc = minf(final_acc, 50.0)
+	if AbilityRuntime.has(attacker, AbilityId.Id.MINDS_EYE):
+		# ignora evasión del rival
+		var only_acc: int = clampi(attacker.stage_accuracy, -6, 6)
+		final_acc = float(acc) * BattleBattler._stage_multiplier(only_acc)
+		if AbilityRuntime.has(attacker, AbilityId.Id.COMPOUND_EYES):
+			final_acc *= 1.3
+		if AbilityRuntime.victory_star_active(attacker):
+			final_acc *= 1.1
 
 	var final_acc_i: int = clampi(int(round(final_acc)), 1, 100)
 	return randi_range(1, 100) <= final_acc_i
@@ -140,6 +144,10 @@ static func compute_hit(
 			_note_atk(result, AbilityId.Id.UNAWARE)
 		else:
 			def = defender.get_effective_stat(PokemonInstance.Stat.SP_DEFENSE)
+		var spatk_mult: float = AbilityRuntime.attack_stat_multiplier(attacker, move.category)
+		if spatk_mult != 1.0:
+			_note_atk(result, AbilityRuntime.get_id(attacker))
+		atk = int(round(float(atk) * spatk_mult))
 
 	def = maxi(def, 1)
 
@@ -155,40 +163,35 @@ static func compute_hit(
 		_note_atk(result, AbilityId.Id.TECHNICIAN)
 	base *= tech
 
-	var type_chg: float = AbilityRuntime.type_change_power_multiplier(attacker, move)
-	if type_chg != 1.0:
-		_note_atk(result, AbilityRuntime.get_id(attacker))
-	base *= type_chg
-
 	match weather:
 		AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
-			if move_type == PokemonData.Type.TYPE_WATER:
+			if move.type == PokemonData.Type.TYPE_WATER:
 				base *= 1.5
-			elif move_type == PokemonData.Type.TYPE_FIRE:
+			elif move.type == PokemonData.Type.TYPE_FIRE:
 				base *= 0.5
 		AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
-			if move_type == PokemonData.Type.TYPE_FIRE:
+			if move.type == PokemonData.Type.TYPE_FIRE:
 				base *= 1.5
-			elif move_type == PokemonData.Type.TYPE_WATER:
+			elif move.type == PokemonData.Type.TYPE_WATER:
 				base *= 0.5
 
 	var stab: float = 1.0
-	var t1: PokemonData.Type = attacker.get_battle_type_1()
-	var t2: PokemonData.Type = attacker.get_battle_type_2()
-	if move_type == t1 or (t2 != PokemonData.Type.TYPE_NONE and move_type == t2):
+	var t1: PokemonData.Type = attacker.pokemon.get_type_1()
+	var t2: PokemonData.Type = attacker.pokemon.get_type_2()
+	if move.type == t1 or (t2 != PokemonData.Type.TYPE_NONE and move.type == t2):
 		stab = AbilityRuntime.stab_multiplier(attacker)
 		if AbilityRuntime.has(attacker, AbilityId.Id.ADAPTABILITY):
 			_note_atk(result, AbilityId.Id.ADAPTABILITY)
 
 	var eff: float = TypeChart.get_effectiveness(
-		move_type,
-		defender.get_battle_type_1(),
-		defender.get_battle_type_2()
+		move.type,
+		defender.pokemon.get_type_1(),
+		defender.pokemon.get_type_2()
 	)
 
 	if eff <= 0.0 and AbilityRuntime.bypasses_ghost_immunity(attacker, move) \
-			and (defender.get_battle_type_1() == PokemonData.Type.TYPE_GHOST \
-				or defender.get_battle_type_2() == PokemonData.Type.TYPE_GHOST):
+			and (defender.pokemon.get_type_1() == PokemonData.Type.TYPE_GHOST \
+				or defender.pokemon.get_type_2() == PokemonData.Type.TYPE_GHOST):
 		eff = 1.0
 		_note_atk(result, AbilityId.Id.SCRAPPY)
 
@@ -196,6 +199,12 @@ static func compute_hit(
 			and AbilityRuntime.blocks_unless_super_effective(defender):
 		eff = 0.0
 		_note_def(result, AbilityId.Id.WONDER_GUARD)
+
+	if not ignore_defender_ability and AbilityRuntime.has(defender, AbilityId.Id.TERA_SHELL) \
+			and defender.pokemon != null and defender.pokemon.current_hp == defender.pokemon.max_hp \
+			and eff > 0.0 and eff <= 1.0:
+		eff = 0.5
+		_note_def(result, AbilityId.Id.TERA_SHELL)
 
 	result.effectiveness = eff
 	if eff <= 0.0:
@@ -246,6 +255,11 @@ static func compute_hit(
 	if stake != 1.0:
 		_note_atk(result, AbilityId.Id.STAKEOUT)
 	damage = int(round(float(damage) * stake))
+
+	var marvel: float = AbilityRuntime.marvel_scale_multiplier(defender, move)
+	if marvel != 1.0 and not ignore_defender_ability:
+		_note_def(result, AbilityId.Id.MARVEL_SCALE)
+		damage = int(round(float(damage) * marvel))
 
 	if not ignore_defender_ability:
 		var taken: float = AbilityRuntime.damage_taken_multiplier(defender, move, eff)
