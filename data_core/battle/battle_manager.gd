@@ -918,7 +918,25 @@ func _enemy_choose_move_for(battler: BattleBattler) -> BattleAction:
 			weighted.append(i)
 
 	var pool: Array[int] = weighted if not weighted.is_empty() else valid_indices
-	return _build_move_action(battler, primary_target, pool[randi() % pool.size()])
+	if pool.is_empty():
+		pool = valid_indices
+	var pick: int = pool[randi() % pool.size()]
+	# Re-evaluar mejor objetivo para el move elegido
+	var chosen_move: MoveData = MoveDatabase.get_move(battler.pokemon.moves[pick].move_id)
+	if chosen_move != null and chosen_move.category != MoveStruct.DamageCategory.STATUS:
+		var best_t: BattleBattler = primary_target
+		var best_e: float = -1.0
+		for tg2: BattleBattler in targets:
+			if tg2 == null or tg2.pokemon == null or tg2.is_fainted():
+				continue
+			var e2: float = TypeChart.get_effectiveness(
+				chosen_move.type, tg2.pokemon.get_type_1(), tg2.pokemon.get_type_2()
+			)
+			if e2 > best_e:
+				best_e = e2
+				best_t = tg2
+		primary_target = best_t
+	return _build_move_action(battler, primary_target, pick)
 
 
 func _resolve_turn(player_action: BattleAction, enemy_action: BattleAction) -> void:
@@ -975,6 +993,7 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 	# Reemplazos parciales (uno de dos se debilitó)
 	await _request_replacements_if_needed()
 
+	_pending_player_actions.clear()
 	turn_ended.emit()
 
 
@@ -2237,7 +2256,7 @@ func _revert_party_mon_forms(mon: PokemonInstance) -> void:
 	if mon.has_meta("zero_to_hero_armed"):
 		mon.remove_meta("zero_to_hero_armed")
 	var fid: String = str(mon.form_id)
-	if fid in ["Hero", "castform_sunny", "castform_rainy", "castform_snowy",
+	if fid in ["palafin_hero", "castform_sunny", "castform_rainy", "castform_snowy",
 			"cherrim_sunshine", "darmanitan_zen", "darmanitan_zen_galar",
 			"terapagos_terastal"] or fid.begins_with("minior_core"):
 		if mon.has_method("set_form"):

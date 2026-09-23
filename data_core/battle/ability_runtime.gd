@@ -1099,18 +1099,19 @@ static func _setup_imposter(
 	dst.form_id = src.form_id
 	dst.ability_id = src.ability_id
 
-	dst.moves.clear()
+	# Copias INDEPENDIENTES de movimientos (nunca compartir refs con el rival)
+	var new_moves: Array[PokemonMoveSlot] = []
 	for slot: PokemonMoveSlot in src.moves:
 		if slot == null or slot.is_empty():
 			continue
 		var copy: PokemonMoveSlot = PokemonMoveSlot.new()
 		copy.move_id = slot.move_id
 		copy.pp_ups = 0
-		# Transform clásico: 5 PP (o el máximo del move si es menor)
 		var md: MoveData = MoveDatabase.get_move(slot.move_id)
 		var base_pp: int = md.pp if md != null else 5
 		copy.current_pp = mini(5, base_pp)
-		dst.moves.append(copy)
+		new_moves.append(copy)
+	dst.moves = new_moves
 
 	battler.stage_attack = opponent.stage_attack
 	battler.stage_defense = opponent.stage_defense
@@ -1122,6 +1123,8 @@ static func _setup_imposter(
 
 	battler.is_transformed = true
 	battler.clear_illusion()
+	if dst.has_method("recalculate_stats"):
+		dst.recalculate_stats()
 
 	battle.message.emit("¡%s se transformó en %s!" % [
 		battler.get_display_name(),
@@ -1166,6 +1169,12 @@ static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> b
 	var party: Array[PokemonInstance] = (
 		battle.player_party if battler.is_player_side else battle.enemy_party
 	)
+	# Si el party está vacío, usar los activos del bando como referencia de equipo
+	if party.is_empty() and battle.has_method("get_side_actives"):
+		for b: BattleBattler in battle.player_actives if battler.is_player_side else battle.enemy_actives:
+			if b != null and b.pokemon != null and not party.has(b.pokemon):
+				party.append(b.pokemon)
+
 	var disguise: PokemonInstance = null
 	for i: int in range(party.size() - 1, -1, -1):
 		var mon: PokemonInstance = party[i]
@@ -1181,10 +1190,14 @@ static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> b
 		return false
 
 	battler.illusion_active = true
-	battler.illusion_species_id = disguise.species_id
+	battler.illusion_species_id = int(disguise.species_id)
 	battler.illusion_nickname = disguise.get_display_name()
 	battler.illusion_gender = disguise.gender
-	battler.illusion_shiny = disguise.shiny if "shiny" in disguise else false
+	battler.illusion_shiny = bool(disguise.shiny) if "shiny" in disguise else false
+	if "form_id" in disguise:
+		battler.illusion_form_id = disguise.form_id if typeof(disguise.form_id) == TYPE_INT else 0
+	else:
+		battler.illusion_form_id = 0
 	return true
 
 static func _blocks_intimidate(battler: BattleBattler) -> bool:
@@ -2363,7 +2376,7 @@ static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> v
 	if str(battler.pokemon.form_id) == "Hero":
 		battler.zero_to_hero_transformed = true
 		return
-	if await _apply_form_change(battler, battle, &"Hero"):
+	if await _apply_form_change(battler, battle, &"palafin_hero"):
 		battler.zero_to_hero_transformed = true
 		battler.pokemon.set_meta("zero_to_hero_armed", true)
 

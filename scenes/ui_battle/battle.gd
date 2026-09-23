@@ -615,8 +615,18 @@ func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
 	else:
 		enemy_current_hp = current_hp
 	_update_hp_bars()
+	_update_multi_hp_boxes()
+	# KO: grito + animación (cualquier modo)
+	if current_hp <= 0 and battle != null:
+		var actives: Array = battle.player_actives if is_player else battle.enemy_actives
+		for i: int in range(actives.size()):
+			var b: BattleBattler = actives[i]
+			if b != null and b.pokemon != null and b.is_fainted():
+				var key: String = ("p" if is_player else "e") + str(i)
+				if not bool(_faint_animating.get(key, false)):
+					_faint_animating[key] = true
+					_play_faint_animation(is_player, i, b)
 	if _multi_ui_ready:
-		_update_multi_hp_boxes()
 		_refresh_all_multi_appearances()
 
 
@@ -654,6 +664,7 @@ func _on_battle_ended(player_won: bool) -> void:
 func _on_turn_ended() -> void:
 	_update_status_icons()
 	_refresh_all_multi_appearances()
+	_pending_move_index = -1
 	# Recarga / carga del mon que está en input (o todos en multi)
 	if battle != null and battle.is_multi_battle():
 		for b: BattleBattler in battle.player_actives:
@@ -1011,14 +1022,18 @@ func show_ability_activation(is_player: bool, mon: PokemonInstance) -> void:
 func _on_battler_appearance_changed(is_player: bool) -> void:
 	_refresh_side_appearance(is_player)
 	_refresh_all_multi_appearances()
-	# Cualquier cambio de forma / apariencia: reproducir grito
-	if battle != null:
-		var actives: Array = battle.player_actives if is_player else battle.enemy_actives  # Array[BattleBattler]
-		for i: int in range(actives.size()):
-			var b: BattleBattler = actives[i]
-			if b != null and b.pokemon != null and not b.is_fainted():
-				_play_cry_slot(is_player, i, b.pokemon, 1.0)
-				break  # el que cambió suele ser el activo principal; en multi se refresca todo
+	# Grito solo si NO es solo Illusion (el disfraz no debe delatarse con el grito real)
+	if battle == null:
+		return
+	var actives: Array = battle.player_actives if is_player else battle.enemy_actives
+	for i: int in range(actives.size()):
+		var b: BattleBattler = actives[i]
+		if b == null or b.pokemon == null or b.is_fainted():
+			continue
+		if b.illusion_active:
+			continue  # Illusion: sin grito al poner el disfraz
+		_play_cry_slot(is_player, i, b.pokemon, 1.0)
+		break
 
 
 func _on_illusion_broken(is_player: bool) -> void:
@@ -1434,7 +1449,11 @@ func _animate_tracked_hp_bars(delta: float) -> void:
 func _apply_actor_focus() -> void:
 	_clear_all_focus_mods()
 	_reset_hp_box_layers()
-	if not _multi_ui_ready:
+	# 1v1: resaltar la HP box del jugador
+	if battle == null or not battle.is_multi_battle():
+		if player_hp_box != null:
+			player_hp_box.modulate = FOCUS_MOD
+			player_hp_box.z_index = Z_HP_FOCUS
 		return
 	for slot: int in range(2):
 		var box: Sprite2D = _hp_box_for_slot(true, slot)
@@ -1627,13 +1646,25 @@ func _refresh_slot_appearance(is_player: bool, slot: int) -> void:
 		sprite.visible = true
 		var mon: PokemonInstance = battler.pokemon
 		var offset: Vector2 = Vector2.ZERO
-		if is_player:
-			sprite.texture = mon.get_back_sprite() if mon.has_method("get_back_sprite") else null
+		var tex: Texture2D = null
+		# Illusion: sprite/offset del disfraz
+		if battler.illusion_active and battler.illusion_species_id >= 0:
+			tex = _sprite_for_species_id(
+				battler.illusion_species_id as Species.SpeciesID,
+				battler.illusion_shiny,
+				is_player
+			)
+			offset = _offset_for_species_id(
+				battler.illusion_species_id as Species.SpeciesID,
+				is_player
+			)
+		elif is_player:
+			tex = mon.get_back_sprite() if mon.has_method("get_back_sprite") else null
 			offset = _get_back_offset_px(mon)
 		else:
-			sprite.texture = mon.get_front_sprite() if mon.has_method("get_front_sprite") else null
+			tex = mon.get_front_sprite() if mon.has_method("get_front_sprite") else null
 			offset = _get_front_offset_px(mon)
-		# X = layout (1v1/doble); Y = base de escena + offset del .tres
+		sprite.texture = tex
 		var base: Vector2 = _sprite_base_pos(is_player, slot)
 		sprite.position = Vector2(base.x, base.y + offset.y)
 		if is_player and slot == 0:
