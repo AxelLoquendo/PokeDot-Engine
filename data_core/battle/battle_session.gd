@@ -117,6 +117,14 @@ func finalizar(result: int) -> void:
 
 	is_active = false
 
+	# Pickup / Honey Gather al terminar el combate (si hubo victoria o captura)
+	if result == BattleResult.WIN or result == BattleResult.CAUGHT:
+		if player_controller != null and is_instance_valid(player_controller):
+			var data: CharacterPlayer = player_controller.character_data as CharacterPlayer
+			if data != null and data.party != null:
+				AbilityRuntime.try_pickup_after_battle(data.party)
+				AbilityRuntime.try_honey_gather_after_battle(data.party)
+
 	if player_controller != null and is_instance_valid(player_controller):
 		player_controller.ejecutando_evento = false
 		var mapa: MapAttributes = player_controller.mapa_raiz as MapAttributes

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://camf3xau3l3oc" path="res://data_core/pokemon/pokemon_form_data.gd" id="2_ip2mn"]
 [ext_resource type="Script" uid="uid://b00aahsyax0e2" path="res://data_core/pokemon/learnset.gd" id="2_learn"]
 [ext_resource type="Script" uid="uid://cjnm63p0uiewj" path="res://data_core/pokemon/pokemon_data_struct.gd" id="3_struct"]
+[ext_resource type="Texture2D" uid="uid://btn24ehxouvx5" path="res://graphics/pokemon/icons/PALAFIN_HERO.png" id="10_tj3vi"]
+[ext_resource type="Texture2D" uid="uid://bx0uwpvm7uaij" path="res://graphics/pokemon/follower/PALAFIN_1.png" id="12_6jn51"]
 [ext_resource type="Script" uid="uid://fwqa6w5k5vsg" path="res://data_core/pokemon/evolution_data.gd" id="ext_evo"]
 [ext_resource type="Texture2D" uid="uid://bud53ygo2de57" path="res://graphics/pokemon/front/PALAFIN.png" id="gfx100"]
 [ext_resource type="Texture2D" uid="uid://d3vee105wy306" path="res://graphics/pokemon/front_shiny/PALAFIN.png" id="gfx101"]
@@ -19,7 +21,7 @@
 [sub_resource type="Resource" id="Resource_form_0"]
 script = ExtResource("2_ip2mn")
 species_id = 1353
-form_id = &"palafin_hero"
+form_id = &"Hero"
 display_name = "Palafin"
 base_species_id = 1352
 override_types = true
@@ -35,8 +37,8 @@ front_sprite = ExtResource("gfx107")
 front_sprite_shiny = ExtResource("gfx108")
 back_sprite = ExtResource("gfx109")
 back_sprite_shiny = ExtResource("gfx110")
-icon_sprite = ExtResource("gfx104")
-overworld_scene = ExtResource("gfx105")
+icon_sprite = ExtResource("10_tj3vi")
+overworld_scene = ExtResource("12_6jn51")
 cry = ExtResource("gfx106")
 back_sprite_offset = Vector2(0, 1)
 override_graphics = true
@@ -136,7 +138,7 @@ move = 762
 [resource]
 script = ExtResource("3_struct")
 national_dex_number = 964
-species_name = "Palafin-Zero"
+species_name = "Palafin"
 species_id = 1352
 base_hp = 100
 base_attack = 70

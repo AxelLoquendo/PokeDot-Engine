@@ -12,12 +12,13 @@ func esta_vacia() -> bool:
 	return entries.is_empty()
 
 
-func intentar_encuentro() -> PokemonInstance:
+## rate_multiplier: Illuminate (y similares) multiplica la tasa de encuentro.
+func intentar_encuentro(rate_multiplier: float = 1.0) -> PokemonInstance:
 	if esta_vacia():
 		return null
-	# El intervalo 0..99 hace que encounter_rate sea un porcentaje exacto:
-	# 12 produce 12 resultados favorables de 100, no una aproximación.
-	if randi_range(0, 99) >= encounter_rate:
+	var rate: int = clampi(int(round(float(encounter_rate) * rate_multiplier)), 0, 100)
+	# El intervalo 0..99 hace que rate sea un porcentaje exacto.
+	if randi_range(0, 99) >= rate:
 		return null
 	return _elegir_pokemon()
 

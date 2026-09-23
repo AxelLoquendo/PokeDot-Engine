@@ -163,11 +163,16 @@ func comportamiento_hierba(personaje: CharacterController) -> void:
 	if mapa == null or mapa.grass_encounters == null:
 		return
 
-	var salvaje: PokemonInstance = mapa.grass_encounters.intentar_encuentro()
+	var data: CharacterPlayer = personaje.character_data as CharacterPlayer
+	if data == null:
+		return
+
+	# Illuminate (y habilidades de tasa de encuentro) del equipo
+	var rate_mult: float = AbilityRuntime.wild_encounter_rate_multiplier(data.party)
+	var salvaje: PokemonInstance = mapa.grass_encounters.intentar_encuentro(rate_mult)
 	if salvaje == null:
 		return
 
-	var data: CharacterPlayer = personaje.character_data as CharacterPlayer
 	var lead: PokemonInstance = _primer_pokemon_apto(data.party)
 	if lead == null:
 		return

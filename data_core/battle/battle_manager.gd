@@ -1733,6 +1733,12 @@ func set_weather(new_weather: int, turns: int, primal: bool = false) -> void:
 
 	weather_changed.emit(weather, weather_primal)
 
+	# Forecast / Flower Gift reaccionan al clima nuevo (Ability Bar incluido)
+	for battler: BattleBattler in [player, enemy]:
+		if battler != null and not battler.is_fainted():
+			await AbilityRuntime.try_forecast(battler, weather, self)
+			await AbilityRuntime.try_flower_gift(battler, weather, self)
+
 
 func set_terrain(new_terrain: int, turns: int = 5) -> void:
 	if terrain == new_terrain:

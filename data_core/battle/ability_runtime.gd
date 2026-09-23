@@ -2204,7 +2204,37 @@ static func try_dancer(
 	battler.set_meta("dancer_copy_move", move)
 
 
+
 ## Formas ─────────────────────────────────────────────────
+## Los form_id coinciden con los de los .tres de especie.
+
+## Cambia forma: siempre Ability Bar → set_form → stats → apariencia.
+static func _apply_form_change(
+	battler: BattleBattler,
+	battle: BattleManager,
+	new_form_id: StringName,
+	announce: bool = true
+) -> bool:
+	if battler == null or battler.pokemon == null or battle == null:
+		return false
+	if battler.pokemon.form_id == new_form_id:
+		return false
+	if announce:
+		await battle.ability_announce(battler)
+	var ok: bool = false
+	if new_form_id == &"base" or new_form_id.is_empty():
+		battler.pokemon.reset_form()
+		ok = true
+	else:
+		ok = battler.pokemon.set_form(new_form_id)
+	if not ok:
+		return false
+	battler.pokemon.recalculate_stats()
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+	battle.message.emit("¡%s cambió de forma!" % battler.get_display_name())
+	await battle._wait(0.55)
+	return true
+
 
 static func try_forecast(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
 	if battler == null or battler.pokemon == null or battle == null:
@@ -2214,18 +2244,12 @@ static func try_forecast(battler: BattleBattler, weather: int, battle: BattleMan
 	var form: StringName = &"base"
 	match weather:
 		WeatherId.WEATHER_RAIN:
-			form = &"rainy"
+			form = &"castform_rainy"
 		WeatherId.WEATHER_DROUGHT:
-			form = &"sunny"
+			form = &"castform_sunny"
 		WeatherId.WEATHER_SNOW:
-			form = &"snowy"
-	if battler.pokemon.form_id == form:
-		return
-	if battler.pokemon.set_form(form):
-		await battle.ability_announce(battler)
-		battle.message.emit("¡%s cambió de forma!" % battler.get_display_name())
-		battle.battler_appearance_changed.emit(battler.is_player_side)
-		await battle._wait(0.5)
+			form = &"castform_snowy"
+	await _apply_form_change(battler, battle, form)
 
 
 static func try_flower_gift(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
@@ -2233,13 +2257,8 @@ static func try_flower_gift(battler: BattleBattler, weather: int, battle: Battle
 		return
 	if not has(battler, AbilityId.Id.FLOWER_GIFT):
 		return
-	var want: StringName = &"sunshine" if weather == WeatherId.WEATHER_DROUGHT else &"base"
-	if battler.pokemon.form_id == want:
-		return
-	if battler.pokemon.set_form(want):
-		await battle.ability_announce(battler)
-		battle.battler_appearance_changed.emit(battler.is_player_side)
-		await battle._wait(0.4)
+	var form: StringName = &"cherrim_sunshine" if weather == WeatherId.WEATHER_DROUGHT else &"base"
+	await _apply_form_change(battler, battle, form)
 
 
 static func flower_gift_stat_multiplier(battler: BattleBattler, stat: PokemonInstance.Stat, weather: int) -> float:
@@ -2259,14 +2278,14 @@ static func try_zen_mode(battler: BattleBattler, battle: BattleManager) -> void:
 		return
 	var half: float = float(battler.get_max_hp()) / 2.0
 	var want_zen: bool = float(battler.pokemon.current_hp) <= half
-	var form: StringName = &"zen" if want_zen else &"base"
-	if battler.pokemon.form_id == form:
-		return
-	if battler.pokemon.set_form(form):
-		await battle.ability_announce(battler)
-		battle.message.emit("¡%s cambió de forma!" % battler.get_display_name())
-		battle.battler_appearance_changed.emit(battler.is_player_side)
-		await battle._wait(0.5)
+	var current: StringName = battler.pokemon.form_id
+	var form: StringName = &"base"
+	# Galar Zen ↔ Galar Standard
+	if current == &"darmanitan_galar_standard" or current == &"darmanitan_galar_zen":
+		form = &"darmanitan_galar_zen" if want_zen else &"darmanitan_galar_standard"
+	else:
+		form = &"darmanitan_zen" if want_zen else &"base"
+	await _apply_form_change(battler, battle, form)
 
 
 static func try_shields_down(battler: BattleBattler, battle: BattleManager) -> void:
@@ -2275,23 +2294,43 @@ static func try_shields_down(battler: BattleBattler, battle: BattleManager) -> v
 	if not has(battler, AbilityId.Id.SHIELDS_DOWN):
 		return
 	var half: float = float(battler.get_max_hp()) / 2.0
-	# Meteor (protegido) con PS > 50%; Core bajo 50%
-	var want: StringName = &"core" if float(battler.pokemon.current_hp) <= half else &"meteor"
-	if battler.pokemon.form_id == want:
-		return
-	if battler.pokemon.set_form(want):
-		await battle.ability_announce(battler)
-		battle.battler_appearance_changed.emit(battler.is_player_side)
-		await battle._wait(0.5)
+	var want_core: bool = float(battler.pokemon.current_hp) <= half
+	var current: String = str(battler.pokemon.form_id)
+	var form: StringName = &"base"
+	if want_core:
+		if "meteor" in current:
+			form = StringName(current.replace("meteor", "core"))
+		elif "core" in current:
+			form = battler.pokemon.form_id
+		else:
+			# Especie base = meteor rojo
+			form = &"minior_core_red"
+	else:
+		# Volver a meteor: core_red → base; otros core_X → meteor_X
+		if current == "minior_core_red":
+			form = &"base"
+		elif "core" in current:
+			var meteor_id: String = current.replace("core", "meteor")
+			# No existe minior_meteor_red en el catálogo
+			if meteor_id == "minior_meteor_red":
+				form = &"base"
+			else:
+				form = StringName(meteor_id)
+		elif "meteor" in current or current == "base" or current == "":
+			form = battler.pokemon.form_id if current != "" else &"base"
+		else:
+			form = &"base"
+	await _apply_form_change(battler, battle, form)
 
 
-## Shields Down: forma meteor es inmune a estados principales.
 static func shields_down_blocks_status(battler: BattleBattler) -> bool:
 	if not has(battler, AbilityId.Id.SHIELDS_DOWN):
 		return false
 	if battler.pokemon == null:
 		return false
-	return battler.pokemon.form_id == &"meteor" or battler.pokemon.form_id == &"base"
+	var fid: String = str(battler.pokemon.form_id)
+	# Forma meteor (o base = meteor rojo) bloquea estados
+	return "meteor" in fid or fid == "base" or fid == ""
 
 
 static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> void:
@@ -2299,33 +2338,25 @@ static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> v
 		return
 	if not has(battler, AbilityId.Id.ZERO_TO_HERO):
 		return
-	# Al salir del combate (switch out) pasa a forma Hero una vez
 	if battler.zero_to_hero_transformed:
 		return
-	if battler.pokemon.set_form(&"hero"):
+	if str(battler.pokemon.form_id) == "Hero":
 		battler.zero_to_hero_transformed = true
-		await battle.ability_announce(battler)
-		battle.message.emit("¡%s adoptó su forma Heroe!" % battler.get_display_name())
-		battle.battler_appearance_changed.emit(battler.is_player_side)
-		await battle._wait(0.5)
+		return
+	if await _apply_form_change(battler, battle, &"Hero"):
+		battler.zero_to_hero_transformed = true
 
 
-## Tera Shift: al entrar, cambia a forma Terastal (Terapagos).
 static func try_tera_shift(battler: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or battler.pokemon == null or battle == null:
 		return
 	if not has(battler, AbilityId.Id.TERA_SHIFT):
 		return
-	if battler.pokemon.form_id == &"terastal":
+	if str(battler.pokemon.form_id) == "terapagos_terastal":
 		return
-	if battler.pokemon.set_form(&"terastal"):
-		await battle.ability_announce(battler)
-		battle.message.emit("¡%s cambió a su forma Terastal!" % battler.get_display_name())
-		battle.battler_appearance_changed.emit(battler.is_player_side)
-		await battle._wait(0.5)
+	await _apply_form_change(battler, battle, &"terapagos_terastal")
 
 
-## Teraform Zero: al entrar, elimina clima y terreno.
 static func try_teraform_zero(battler: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or battle == null:
 		return
@@ -2343,5 +2374,6 @@ static func try_teraform_zero(battler: BattleBattler, battle: BattleManager) -> 
 		cleared = true
 	if cleared:
 		battle.message.emit("¡%s neutralizó el clima y el terreno!" % battler.get_display_name())
-		battle.weather_changed.emit(battle.weather, false)
+		if battle.has_signal("weather_changed"):
+			battle.weather_changed.emit(battle.weather, false)
 		await battle._wait(0.6)
