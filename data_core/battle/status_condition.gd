@@ -100,3 +100,51 @@ static func status_name(status: PokemonInstance.Status) -> String:
 		PokemonInstance.Status.SLEEP: return "dormido"
 		PokemonInstance.Status.FREEZE: return "congelado"
 		_: return ""
+
+
+## Rutas de iconos de estado (graphics/status/).
+const STATUS_ICON_PATHS: Dictionary = {
+	1: "res://graphics/status/poison.png",       # POISON
+	2: "res://graphics/status/badly_poisoned.png", # TOXIC
+	3: "res://graphics/status/burn.png",         # BURN
+	4: "res://graphics/status/paralysis.png",    # PARALYSIS
+	5: "res://graphics/status/sleep.png",        # SLEEP
+	6: "res://graphics/status/freeze.png",       # FREEZE
+}
+
+static var _icon_cache: Dictionary = {}
+
+
+static func icon_texture(status: PokemonInstance.Status) -> Texture2D:
+	if status == PokemonInstance.Status.NONE:
+		return null
+	var cache_key: int = int(status)
+	if _icon_cache.has(cache_key):
+		return _icon_cache[cache_key] as Texture2D
+	var key: int = int(status)
+	var path: String = str(STATUS_ICON_PATHS.get(key, ""))
+	if path.is_empty() or not ResourceLoader.exists(path):
+		return null
+	var tex: Texture2D = load(path) as Texture2D
+	_icon_cache[key] = tex
+	return tex
+
+
+## Aplica el icono de estado a un Sprite2D. Oculta el sprite si no hay estado.
+static func apply_icon(sprite: Sprite2D, status: PokemonInstance.Status) -> void:
+	if sprite == null:
+		return
+	var tex: Texture2D = icon_texture(status)
+	if tex == null:
+		sprite.texture = null
+		sprite.visible = false
+		return
+	sprite.texture = tex
+	sprite.visible = true
+
+
+static func apply_icon_from_pokemon(sprite: Sprite2D, mon: PokemonInstance) -> void:
+	if mon == null:
+		apply_icon(sprite, PokemonInstance.Status.NONE)
+		return
+	apply_icon(sprite, mon.status)

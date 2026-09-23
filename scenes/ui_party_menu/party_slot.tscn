@@ -49,6 +49,10 @@ caja_chico_normal = ExtResource("1_vp6ju")
 caja_chico_focused = ExtResource("2_d510d")
 caja_chica_normal = ExtResource("4_bljkr")
 caja_chica_focused = ExtResource("5_kmkxw")
+hp_color_normal = null
+hp_color_low = null
+hp_color_critical = null
+genero_macho_color = null
 genero_hembra_color = Color(0.95798296, 0.5515131, 1, 1)
 icon_frame_time = 0.15
 

@@ -11,11 +11,13 @@ extends Node2D
 @onready var player_hp_label: Label = $PlayerHPBox/HP
 @onready var player_hp_bar: ColorRect = $PlayerHPBox/HpBar
 @onready var player_gender: Label = $PlayerHPBox/Genero
+@onready var player_status: Sprite2D = $PlayerHPBox/Status
 
 @onready var enemy_name_label: Label = $EnemyHPBox/NamePkmnEnemy
 @onready var enemy_level_label: Label = $EnemyHPBox/Level
 @onready var enemy_hp_bar: ColorRect = $EnemyHPBox/HpBar
 @onready var enemy_gender: Label = $EnemyHPBox/Genero
+@onready var enemy_status: Sprite2D = $EnemyHPBox/Status
 
 @onready var action_menu: Control = $ActionBattle
 @onready var fight_menu: Sprite2D = $Overlay_Fight
@@ -170,6 +172,8 @@ func _ready() -> void:
 	battle = BattleManager.new()
 	battle.message.connect(_on_battle_message)
 	battle.hp_changed.connect(_on_hp_changed)
+	if battle.has_signal("status_changed"):
+		battle.status_changed.connect(_on_status_changed)
 	battle.player_progress_changed.connect(_on_player_progress_changed)
 	battle.battle_ended.connect(_on_battle_ended)
 	battle.turn_ended.connect(_on_turn_ended)
@@ -439,6 +443,7 @@ func _update_ui() -> void:
 	_set_gender(player_gender, player_pokemon.gender)
 	_set_gender(enemy_gender, enemy_pokemon.gender)
 	_update_hp_bars()
+	_update_status_icons()
 	_update_exp_bar()
 
 
@@ -467,6 +472,22 @@ func _update_hp_bars() -> void:
 	enemy_hp_bar_target = ENEMY_HP_BAR_MAX_WIDTH * (
 		float(enemy_current_hp) / float(maxi(enemy_pokemon.max_hp, 1))
 	)
+
+
+func _update_status_icons() -> void:
+	if player_pokemon != null:
+		StatusConditions.apply_icon_from_pokemon(player_status, player_pokemon)
+	else:
+		StatusConditions.apply_icon(player_status, PokemonInstance.Status.NONE)
+	if enemy_pokemon != null:
+		StatusConditions.apply_icon_from_pokemon(enemy_status, enemy_pokemon)
+	else:
+		StatusConditions.apply_icon(enemy_status, PokemonInstance.Status.NONE)
+
+
+func _on_status_changed(_is_player: bool) -> void:
+	_update_status_icons()
+
 
 
 func _hp_color(ratio: float) -> Color:
@@ -568,6 +589,7 @@ func _on_battle_ended(player_won: bool) -> void:
 
 
 func _on_turn_ended() -> void:
+	_update_status_icons()
 	if battle.player.charging_move != null or battle.player.must_recharge:
 		current_menu = MenuState.BUSY
 		action_menu.visible = false
@@ -668,6 +690,7 @@ func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	player_pokemon = mon
 	await battle.player_choose_switch(mon, free_switch)
 	_update_hp_bars()
+	_update_status_icons()
 	_update_exp_bar()
 	player_level_label.text = str(player_pokemon.level)
 

@@ -36,6 +36,7 @@ const FRAME_ACTIVE: int = 1
 @onready var poke_name: Label = $Info_0/Name
 @onready var gender_label: Label = $Info_0/Gender
 @onready var level_label: Label = $Info_0/Level
+@onready var status_sprite: Sprite2D = $Info_0/Status
 @onready var item_held: Sprite2D = $Info_1/Held
 @onready var item_name: Label = $Info_1/Item/Name_Item
 
@@ -158,6 +159,7 @@ func _actualizar_ui() -> void:
 	_actualizar_nombre()
 	_actualizar_nivel()
 	_actualizar_genero()
+	_actualizar_estado()
 	_actualizar_item()
 
 
@@ -209,6 +211,10 @@ func _actualizar_genero() -> void:
 		gender_label.label_settings.font_color = color
 	else:
 		gender_label.add_theme_color_override("font_color", color)
+
+
+func _actualizar_estado() -> void:
+	StatusConditions.apply_icon_from_pokemon(status_sprite, pokemon)
 
 
 func _actualizar_item() -> void:

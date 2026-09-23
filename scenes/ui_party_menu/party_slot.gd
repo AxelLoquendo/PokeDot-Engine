@@ -183,6 +183,10 @@ func _limpiar() -> void:
 		sprite_objeto.visible = false
 		sprite_objeto.texture = null
 
+	if sprite_estado != null:
+		sprite_estado.visible = false
+		sprite_estado.texture = null
+
 	if label_genero != null:
 
 		label_genero.text = ""
@@ -227,6 +231,7 @@ func _actualizar_ui() -> void:
 	_actualizar_hp()
 	_actualizar_icono()
 	_actualizar_genero()
+	_actualizar_estado()
 	_actualizar_held()
 
 
@@ -351,6 +356,10 @@ func _actualizar_genero() -> void:
 	label_genero.self_modulate = Color.WHITE
 
 #	print(pokemon.get_display_name(), " gender=", pokemon.gender, " color=", color)
+
+func _actualizar_estado() -> void:
+	StatusConditions.apply_icon_from_pokemon(sprite_estado, pokemon)
+
 
 func _actualizar_held() -> void:
 	if sprite_objeto == null:

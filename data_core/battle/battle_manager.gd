@@ -3,6 +3,7 @@ class_name BattleManager
 
 signal message(text: String)
 signal hp_changed(is_player: bool, current_hp: int, max_hp: int)
+signal status_changed(is_player: bool)
 signal player_progress_changed
 signal battle_ended(player_won: bool)
 signal turn_ended
@@ -571,6 +572,7 @@ func _enemy_choose_move() -> BattleAction:
 		return null
 	if enemy.charging_move != null:
 		return _build_charge_release_action(enemy)
+
 	var valid_indices: Array[int] = []
 	for i: int in enemy.pokemon.moves.size():
 		if _build_move_action(enemy, player, i) != null:
@@ -578,24 +580,102 @@ func _enemy_choose_move() -> BattleAction:
 	if valid_indices.is_empty():
 		return null
 
-	var weighted: Array[int] = []
+	var best_score: float = -99999.0
+	var best_indices: Array[int] = []
 	for i: int in valid_indices:
-		var slot: PokemonMoveSlot = enemy.pokemon.moves[i]
-		var move_data: MoveData = MoveDatabase.get_move(slot.move_id)
-		var weight: int = 1
-		if move_data and move_data.category != MoveStruct.DamageCategory.STATUS:
-			var eff: float = TypeChart.get_effectiveness(
-				move_data.type, player.pokemon.get_type_1(), player.pokemon.get_type_2()
-			)
-			if eff > 1.0:
-				weight = 3
-			elif eff <= 0.0:
-				weight = 0
-		for _n: int in weight:
-			weighted.append(i)
+		var score: float = _score_enemy_move(i)
+		if score > best_score + 0.01:
+			best_score = score
+			best_indices = [i]
+		elif absf(score - best_score) <= 0.01:
+			best_indices.append(i)
 
-	var pool: Array[int] = weighted if not weighted.is_empty() else valid_indices
-	return _build_move_action(enemy, player, pool[randi() % pool.size()])
+	var chosen: int = best_indices[randi() % best_indices.size()]
+	# 12% de variedad entre opciones decentes
+	if valid_indices.size() > 1 and randf() < 0.12:
+		var runner_up: int = chosen
+		var runner_score: float = -99999.0
+		for i: int in valid_indices:
+			if i == chosen:
+				continue
+			var s: float = _score_enemy_move(i)
+			if s > runner_score:
+				runner_score = s
+				runner_up = i
+		if runner_score > best_score * 0.55:
+			chosen = runner_up
+	return _build_move_action(enemy, player, chosen)
+
+
+## Heurística de IA: efectividad, STAB, KO potencial, curación y estados.
+func _score_enemy_move(slot_index: int) -> float:
+	if enemy == null or enemy.pokemon == null or player == null or player.pokemon == null:
+		return 0.0
+	if slot_index < 0 or slot_index >= enemy.pokemon.moves.size():
+		return -1000.0
+	var slot: PokemonMoveSlot = enemy.pokemon.moves[slot_index]
+	if slot == null or slot.is_empty() or slot.current_pp <= 0:
+		return -1000.0
+	var move: MoveData = MoveDatabase.get_move(slot.move_id)
+	if move == null:
+		return -1000.0
+
+	var t1: PokemonData.Type = player.pokemon.get_type_1()
+	var t2: PokemonData.Type = player.pokemon.get_type_2()
+	var eff: float = TypeChart.get_effectiveness(move.type, t1, t2)
+	var self_hp: float = float(enemy.pokemon.current_hp) / float(maxi(enemy.pokemon.max_hp, 1))
+	var foe_hp: float = float(player.pokemon.current_hp) / float(maxi(player.pokemon.max_hp, 1))
+
+	# Movimientos de daño
+	if move.category != MoveStruct.DamageCategory.STATUS and move.power > 0:
+		if eff <= 0.0:
+			return -500.0
+		var stab: float = 1.0
+		var et1: PokemonData.Type = enemy.pokemon.get_type_1()
+		var et2: PokemonData.Type = enemy.pokemon.get_type_2()
+		if move.type == et1 or (et2 != PokemonData.Type.TYPE_NONE and move.type == et2):
+			stab = 1.5
+		var score: float = float(move.power) * eff * stab
+		if eff > 1.0:
+			score *= 1.3
+		elif eff < 1.0:
+			score *= 0.5
+		# Prioriza acabar al rival herido
+		if foe_hp < 0.35:
+			score *= 1.35
+		elif foe_hp < 0.55:
+			score *= 1.1
+		# Prioridad cuando conviene
+		if move.priority > 0 and (self_hp < 0.4 or foe_hp < 0.3):
+			score *= 1.15 + 0.08 * float(move.priority)
+		if move.accuracy > 0 and move.accuracy < 90:
+			score *= float(move.accuracy) / 100.0
+		score += randf_range(-2.5, 2.5)
+		return score
+
+	# Movimientos de estado / soporte
+	var score_s: float = 12.0
+	var player_has_status: bool = player.pokemon.has_status()
+	# Curación
+	if move.healing_move:
+		if self_hp < 0.35:
+			score_s = 48.0
+		elif self_hp < 0.55:
+			score_s = 28.0
+		else:
+			score_s = 3.0
+	elif not player_has_status:
+		# Intentar statusear si el rival está sano
+		score_s = 26.0 if foe_hp > 0.45 else 14.0
+	else:
+		# Ya tiene estado: preferir daño salvo setup temprano
+		score_s = 6.0 if self_hp > 0.7 else 4.0
+
+	if move.accuracy > 0 and move.accuracy < 80:
+		score_s *= float(move.accuracy) / 100.0
+	score_s += randf_range(-2.0, 2.0)
+	return score_s
+
 
 
 func _resolve_turn(player_action: BattleAction, enemy_action: BattleAction) -> void:
@@ -1403,6 +1483,7 @@ func _apply_status(battler: BattleBattler, status: PokemonInstance.Status) -> vo
 		return
 	if battler.pokemon.apply_status(status):
 		message.emit("¡%s quedó %s!" % [battler.get_display_name(), StatusConditions.status_name(status)])
+		status_changed.emit(battler.is_player_side)
 	else:
 		message.emit("¡No tuvo efecto!")
 	await _wait(0.6)
@@ -1536,6 +1617,7 @@ func ability_apply_status(battler: BattleBattler, status: PokemonInstance.Status
 		battler.get_display_name(),
 		StatusConditions.status_name(status)
 	])
+	status_changed.emit(battler.is_player_side)
 	await AbilityRuntime.on_status_given(source, battler, status, self)
 
 func ability_deal_damage(battler: BattleBattler, amount: int, cause: BattleBattler) -> void:
@@ -1560,6 +1642,7 @@ func ability_cure_status(battler: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null or not battler.pokemon.has_status():
 		return
 	battler.pokemon.cure_status()
+	status_changed.emit(battler.is_player_side)
 	message.emit("¡%s se curó gracias a su habilidad!" % battler.get_display_name())
 
 func set_weather(new_weather: int, turns: int, primal: bool = false) -> void:
