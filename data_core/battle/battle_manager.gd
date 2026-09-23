@@ -2194,9 +2194,45 @@ func _announce_passive_abilities(
 			await ability_announce(target)
 
 func _cleanup_battle_pokemon() -> void:
+	# Todos los activos del campo
+	for b: BattleBattler in player_actives:
+		if b != null:
+			AbilityRuntime.revert_transform(b)
+			AbilityRuntime.revert_battle_forms(b)
+			b.clear_illusion()
+	for b2: BattleBattler in enemy_actives:
+		if b2 != null:
+			AbilityRuntime.revert_transform(b2)
+			AbilityRuntime.revert_battle_forms(b2)
+			b2.clear_illusion()
+	# Por si player/enemy no están en los arrays (1v1 antiguo)
 	if player != null:
 		AbilityRuntime.revert_transform(player)
+		AbilityRuntime.revert_battle_forms(player)
 		player.clear_illusion()
 	if enemy != null:
 		AbilityRuntime.revert_transform(enemy)
+		AbilityRuntime.revert_battle_forms(enemy)
 		enemy.clear_illusion()
+	# Party completo: formas armadas sin estar en campo (p.ej. Palafin Hero en banca)
+	for mon: PokemonInstance in player_party:
+		_revert_party_mon_forms(mon)
+	for mon2: PokemonInstance in enemy_party:
+		_revert_party_mon_forms(mon2)
+
+
+func _revert_party_mon_forms(mon: PokemonInstance) -> void:
+	if mon == null:
+		return
+	if mon.has_meta("zero_to_hero_armed"):
+		mon.remove_meta("zero_to_hero_armed")
+	var fid: String = str(mon.form_id)
+	if fid in ["palafin_hero", "castform_sunny", "castform_rainy", "castform_snowy",
+			"cherrim_sunshine", "darmanitan_zen", "darmanitan_zen_galar",
+			"terapagos_terastal"] or fid.begins_with("minior_core"):
+		if mon.has_method("set_form"):
+			mon.set_form(&"base")
+		else:
+			mon.form_id = &"base"
+		if mon.has_method("recalculate_stats"):
+			mon.recalculate_stats()

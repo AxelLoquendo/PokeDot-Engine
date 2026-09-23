@@ -531,6 +531,9 @@ static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle
 		AbilityId.Id.TERA_SHIFT:
 			await try_tera_shift(battler, battle)
 
+		AbilityId.Id.ZERO_TO_HERO:
+			await try_zero_to_hero(battler, battle)
+
 		AbilityId.Id.TERAFORM_ZERO:
 			await try_teraform_zero(battler, battle)
 
@@ -1422,10 +1425,9 @@ static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void
 	battler.clear_battle_types()
 	battler.charged = false
 
-
-
+	# Zero to Hero: se "arma" al salir; la forma Hero se aplica al VOLVER al campo.
 	if has(battler, AbilityId.Id.ZERO_TO_HERO):
-		await try_zero_to_hero(battler, battle)
+		_arm_zero_to_hero(battler)
 
 static func after_own_stat_drop(battler: BattleBattler, actual: int, caused_by_foe: bool, battle: BattleManager) -> void:
 	if not caused_by_foe or actual >= 0 or battler == null or battle == null:
@@ -2336,18 +2338,62 @@ static func shields_down_blocks_status(battler: BattleBattler) -> bool:
 	return "meteor" in fid or fid == "base" or fid == ""
 
 
+## Marca a Palafin para transformarse la próxima vez que entre al campo.
+static func _arm_zero_to_hero(battler: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null:
+		return
+	if str(battler.pokemon.form_id) == "palafin_hero":
+		battler.zero_to_hero_transformed = true
+		battler.pokemon.set_meta("zero_to_hero_armed", true)
+		return
+	battler.zero_to_hero_transformed = true
+	battler.pokemon.set_meta("zero_to_hero_armed", true)
+
+
+## Aplica forma Hero al reentrar (tras haberse ido al menos una vez).
 static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or battler.pokemon == null or battle == null:
 		return
 	if not has(battler, AbilityId.Id.ZERO_TO_HERO):
 		return
-	if battler.zero_to_hero_transformed:
+	var armed: bool = battler.zero_to_hero_transformed \
+		or bool(battler.pokemon.get_meta("zero_to_hero_armed", false))
+	if not armed:
 		return
 	if str(battler.pokemon.form_id) == "palafin_hero":
 		battler.zero_to_hero_transformed = true
 		return
 	if await _apply_form_change(battler, battle, &"palafin_hero"):
 		battler.zero_to_hero_transformed = true
+		battler.pokemon.set_meta("zero_to_hero_armed", true)
+
+
+## Restaura formas temporales de combate (Zero to Hero, Forecast, Zen, etc.).
+static func revert_battle_forms(battler: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null:
+		return
+	var fid: String = str(battler.pokemon.form_id)
+	var needs_base: bool = false
+	# Formas que solo existen durante el combate / se revierten al terminar
+	if fid in ["palafin_hero", "castform_sunny", "castform_rainy", "castform_snowy",
+			"cherrim_sunshine", "darmanitan_zen", "darmanitan_zen_galar",
+			"minior_core", "minior_core_red", "minior_core_orange", "minior_core_yellow",
+			"minior_core_green", "minior_core_blue", "minior_core_indigo", "minior_core_violet",
+			"terapagos_terastal"]:
+		needs_base = true
+	# Minior core genérico / meteor
+	if fid.begins_with("minior_core"):
+		needs_base = true
+	if needs_base:
+		if battler.pokemon.has_method("set_form"):
+			battler.pokemon.set_form(&"base")
+		else:
+			battler.pokemon.form_id = &"base"
+		if battler.pokemon.has_method("recalculate_stats"):
+			battler.pokemon.recalculate_stats()
+	battler.zero_to_hero_transformed = false
+	if battler.pokemon.has_meta("zero_to_hero_armed"):
+		battler.pokemon.remove_meta("zero_to_hero_armed")
 
 
 static func try_tera_shift(battler: BattleBattler, battle: BattleManager) -> void:
