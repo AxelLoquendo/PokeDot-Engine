@@ -47,6 +47,7 @@ extends Node2D
 	$Overlay_Fight/Moves/GridContainer/Move4
 ]
 @onready var player_exp_bar: ColorRect = $PlayerHPBox/ExpBar
+@onready var player_exp_bar_2: ColorRect = get_node_or_null("PlayerHPBox2/ExpBar") as ColorRect
 
 @onready var bg_sprite: Sprite2D = $BG
 
@@ -103,6 +104,7 @@ const HP_ANIM_SPEED: float = 96.0  # gradual pero rápido
 
 const PLAYER_EXP_BAR_MAX_WIDTH: float = 63.5
 var player_exp_bar_target: float = 0.0
+var player_exp_bar_2_target: float = 0.0
 
 enum MenuState { ACTIONS, MOVES, TARGET, BUSY }
 var current_menu: MenuState = MenuState.ACTIONS
@@ -254,6 +256,8 @@ func _ready() -> void:
 	)
 
 	player_exp_bar.size.x = player_exp_bar_target
+	if player_exp_bar_2 != null:
+		player_exp_bar_2.size.x = player_exp_bar_2_target
 	player_current_hp = player_pokemon.current_hp
 	enemy_current_hp = enemy_pokemon.current_hp
 
@@ -280,7 +284,15 @@ func _ready() -> void:
 	_begin_player_command_phase()
 
 func _on_player_progress_changed() -> void:
-	player_level_label.text = str(player_pokemon.level)
+	# Niveles y EXP de ambos slots del jugador
+	var m0: PokemonInstance = _mon_for_player_slot(0)
+	var m1: PokemonInstance = _mon_for_player_slot(1)
+	if m0 != null and player_level_label != null:
+		player_level_label.text = str(m0.level)
+	if m1 != null and player_hp_box_2 != null:
+		var lvl2: Label = player_hp_box_2.get_node_or_null("Level") as Label
+		if lvl2 != null:
+			lvl2.text = str(m1.level)
 	_update_exp_bar()
 
 func _on_terrain_changed(terrain: int) -> void:
@@ -313,6 +325,11 @@ func _process(delta: float) -> void:
 		player_exp_bar.size.x = move_toward(player_exp_bar.size.x, player_exp_bar_target, HP_ANIM_SPEED * delta)
 	else:
 		player_exp_bar.size.x = player_exp_bar_target
+	if player_exp_bar_2 != null and player_exp_bar_2.visible:
+		if absf(player_exp_bar_2.size.x - player_exp_bar_2_target) > 0.5:
+			player_exp_bar_2.size.x = move_toward(player_exp_bar_2.size.x, player_exp_bar_2_target, HP_ANIM_SPEED * delta)
+		else:
+			player_exp_bar_2.size.x = player_exp_bar_2_target
 
 	_animate_ability_icon(delta, ability_icon_player, true)
 	_animate_ability_icon(delta, ability_icon_enemy, false)
@@ -559,18 +576,35 @@ func _hp_color(ratio: float) -> Color:
 
 
 func _update_exp_bar() -> void:
-	var species: PokemonDataStruct = player_pokemon.get_species()
+	# Slot 0
+	player_exp_bar_target = _exp_progress_width(_mon_for_player_slot(0))
+	# Slot 1 (dobles)
+	player_exp_bar_2_target = _exp_progress_width(_mon_for_player_slot(1))
+
+
+func _mon_for_player_slot(slot: int) -> PokemonInstance:
+	if battle != null and slot < battle.player_actives.size():
+		var b: BattleBattler = battle.player_actives[slot]
+		if b != null and b.pokemon != null:
+			return b.pokemon
+	if slot == 0:
+		return player_pokemon
+	return null
+
+
+func _exp_progress_width(mon: PokemonInstance) -> float:
+	if mon == null:
+		return 0.0
+	var species: PokemonDataStruct = mon.get_species()
 	if species == null:
-		player_exp_bar_target = 0.0
-		return
-	if player_pokemon.level >= ExperienceSystem.MAX_LEVEL:
-		player_exp_bar_target = PLAYER_EXP_BAR_MAX_WIDTH
-		return
-	var exp_this_level: int = ExperienceSystem.get_total_exp_for_level(player_pokemon.level, species.growth_rate)
-	var exp_next_level: int = ExperienceSystem.get_total_exp_for_level(player_pokemon.level + 1, species.growth_rate)
+		return 0.0
+	if mon.level >= ExperienceSystem.MAX_LEVEL:
+		return PLAYER_EXP_BAR_MAX_WIDTH
+	var exp_this_level: int = ExperienceSystem.get_total_exp_for_level(mon.level, species.growth_rate)
+	var exp_next_level: int = ExperienceSystem.get_total_exp_for_level(mon.level + 1, species.growth_rate)
 	var span: int = maxi(exp_next_level - exp_this_level, 1)
-	var progress: float = float(player_pokemon.experience - exp_this_level) / float(span)
-	player_exp_bar_target = PLAYER_EXP_BAR_MAX_WIDTH * clampf(progress, 0.0, 1.0)
+	var progress: float = float(mon.experience - exp_this_level) / float(span)
+	return PLAYER_EXP_BAR_MAX_WIDTH * clampf(progress, 0.0, 1.0)
 
 
 func _get_back_offset_px(pokemon: PokemonInstance) -> Vector2:
@@ -761,18 +795,68 @@ func _abrir_party_batalla(forzar: bool) -> void:
 	_party_ui.battle_pokemon_selected.connect(_on_party_pokemon_selected)
 	_party_ui.battle_cancelled.connect(_on_party_cancelled)
 	_party_ui.party_closed.connect(_on_party_closed)
-	_party_ui.setup_battle(datos, player_pokemon, forzar)
+	# Mon del slot que está eligiendo (o el KO forzado)
+	var active_for_party: PokemonInstance = player_pokemon
+	if battle != null:
+		var slot_p: int = _input_actor_slot
+		if forzar:
+			for i2: int in range(battle.player_actives.size()):
+				var bk: BattleBattler = battle.player_actives[i2]
+				if bk != null and (bk.pokemon == null or bk.is_fainted()):
+					slot_p = i2
+					break
+		var ba: BattleBattler = battle.player_actives[slot_p] if slot_p < battle.player_actives.size() else null
+		if ba != null and ba.pokemon != null:
+			active_for_party = ba.pokemon
+	_party_ui.setup_battle(datos, active_for_party, forzar)
 
 
 func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	var free_switch: bool = _force_switch_pending
 	_force_switch_pending = false
-	player_pokemon = mon
-	await battle.player_choose_switch(mon, free_switch)
+	var switch_slot: int = _input_actor_slot
+	if free_switch and battle != null:
+		# Sustituir el primer slot KO
+		for i: int in range(battle.player_actives.size()):
+			var b: BattleBattler = battle.player_actives[i]
+			if b != null and (b.pokemon == null or b.is_fainted()):
+				switch_slot = i
+				break
+
+	await battle.player_choose_switch(mon, free_switch, switch_slot)
+
+	_sync_player_pokemon_ref_from_slot()
+	_refresh_all_multi_appearances()
 	_update_hp_bars()
 	_update_status_icons()
 	_update_exp_bar()
-	player_level_label.text = str(player_pokemon.level)
+	if player_pokemon != null and player_level_label != null:
+		player_level_label.text = str(player_pokemon.level)
+
+	if not battle.is_running:
+		return
+
+	# En multi voluntario: igual que tras un ataque, pasar al siguiente mon
+	if not free_switch and battle.is_multi_battle():
+		var needed: int = 0
+		for b2: BattleBattler in battle.player_actives:
+			if b2 != null and b2.pokemon != null and not b2.is_fainted():
+				needed += 1
+		if battle._pending_player_actions.size() > 0 and battle._pending_player_actions.size() < needed:
+			var next_slot: int = _next_conscious_player_slot(switch_slot + 1)
+			if next_slot >= 0:
+				_input_actor_slot = next_slot
+				_sync_player_pokemon_ref_from_slot()
+				_apply_actor_focus()
+				action_menu.visible = true
+				current_menu = MenuState.ACTIONS
+				selected_action = 0
+				_update_action_focus()
+				_show_message_box("¿Qué debe hacer %s?" % (
+					player_pokemon.get_display_name() if player_pokemon else "???"
+				))
+				return
+	# Turno resuelto o 1v1: el turn_ended / busy se encargan
 
 func _on_party_cancelled() -> void:
 	_force_switch_pending = false
@@ -1257,22 +1341,83 @@ func _attach_battle_weather() -> void:
 		return
 	_weather_container_parent = container.get_parent()
 	container.reparent(self)
-	# Encima del BG, debajo de menús / Ability Bar (ajusta si hace falta)
-	container.z_index = bg_sprite.z_index
+	_fit_weather_to_battle(container)
 	_weather_attached = true
+
+
+## El clima del overworld está pensado para el mapa/cámara.
+## En batalla lo anclamos al origen y lo escalamos al tamaño de la escena de combate.
+func _fit_weather_to_battle(container: Node2D) -> void:
+	if container == null:
+		return
+	container.position = Vector2.ZERO
+	container.rotation = 0.0
+	# Encima del fondo, debajo de sprites/UI (BG suele ser bajo)
+	var bg_z: int = bg_sprite.z_index if bg_sprite != null else 0
+	container.z_index = bg_z + 1
+
+	# Área de batalla: preferir el tamaño del BG o del viewport del combate
+	var battle_size: Vector2 = Vector2(480, 270)  # fallback típico
+	if bg_sprite != null and bg_sprite.texture != null:
+		var tex_size: Vector2 = Vector2(bg_sprite.texture.get_width(), bg_sprite.texture.get_height())
+		if tex_size.x > 1.0 and tex_size.y > 1.0:
+			battle_size = tex_size * bg_sprite.scale
+	else:
+		var vr: Rect2 = get_viewport().get_visible_rect()
+		if vr.size.x > 1.0 and vr.size.y > 1.0:
+			battle_size = vr.size
+
+	# Si el contenedor (o un hijo tipo ColorRect/Particle) tiene un tamaño base conocido, escalar
+	var base: Vector2 = Vector2.ZERO
+	if container.has_method("get_rect"):
+		var r: Variant = container.call("get_rect")
+		if r is Rect2:
+			base = (r as Rect2).size
+	# Buscar ColorRect / GPUParticles2D hijos que cubran pantalla en overworld
+	for child: Node in container.get_children():
+		if child is ColorRect:
+			var cr: ColorRect = child as ColorRect
+			base = cr.size if cr.size.x > base.x else base
+			cr.position = Vector2.ZERO
+			cr.size = battle_size
+		elif child is CPUParticles2D:
+			var p: CPUParticles2D = child as CPUParticles2D
+			p.position = battle_size * 0.5
+			p.visibility_rect = Rect2(-battle_size * 0.5, battle_size)
+			# emission_rect_extents cubre toda el área
+			p.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+			p.emission_rect_extents = battle_size * 0.5
+		elif child is GPUParticles2D:
+			var gp: GPUParticles2D = child as GPUParticles2D
+			gp.position = battle_size * 0.5
+			gp.visibility_rect = Rect2(-battle_size * 0.5, battle_size)
+
+	# Escala del contenedor si tiene tamaño intrínseco distinto
+	if base.x > 1.0 and base.y > 1.0:
+		container.scale = Vector2(battle_size.x / base.x, battle_size.y / base.y)
+	else:
+		container.scale = Vector2.ONE
+
+	# Visible y al frente del BG en el árbol
+	container.visible = true
+	move_child(container, bg_sprite.get_index() + 1 if bg_sprite != null else 0)
+
 
 func _detach_battle_weather() -> void:
 	if not _weather_attached:
 		return
-	var container: Node2D = WeatherManager.get_weather_container()
+	var container: Node2D = WeatherManager.get_weather_container() if WeatherManager != null else null
 	if container != null and is_instance_valid(container):
-		# Apagar clima de combate
 		WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_NONE)
+		# Restaurar transform por si el overworld lo necesita limpio
+		container.position = Vector2.ZERO
+		container.scale = Vector2.ONE
 		if _weather_container_parent != null and is_instance_valid(_weather_container_parent):
 			container.reparent(_weather_container_parent)
 		else:
 			WeatherManager.add_child(container)
-		container.z_index = bg_sprite.z_index
+		if bg_sprite != null:
+			container.z_index = bg_sprite.z_index
 	_weather_attached = false
 	_weather_container_parent = null
 
@@ -1294,6 +1439,12 @@ func _on_battle_weather_changed(weather: int, _primal: bool) -> void:
 			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_DROUGHT)
 		_:
 			WeatherManager.set_weather(WeatherEffect.WeatherID.WEATHER_NONE)
+
+	# Tras cambiar el clima, reajustar cobertura a toda la pantalla de batalla
+	if _weather_attached:
+		var container: Node2D = WeatherManager.get_weather_container()
+		if container != null:
+			_fit_weather_to_battle(container)
 
 
 # ============================================================
@@ -1719,6 +1870,8 @@ func _update_multi_hp_boxes() -> void:
 			var b: BattleBattler = actives[i]
 			if b != null and b.pokemon != null and not b.is_fainted():
 				_fill_hp_box_labels(_hp_box_for_slot(side_player, i), b, side_player)
+
+	_update_exp_bar()
 
 
 func _play_cry_slot(is_player: bool, slot: int, mon: PokemonInstance = null, pitch: float = 1.0) -> void:

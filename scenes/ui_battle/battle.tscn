@@ -282,6 +282,8 @@ _data = {
 
 [node name="Battle" type="Node2D" unique_id=2072502865]
 script = ExtResource("1_axcis")
+ability_icon_frame_time = null
+ability_bar_hold_time = null
 
 [node name="BG" type="Sprite2D" parent="." unique_id=2015925737]
 z_index = -1

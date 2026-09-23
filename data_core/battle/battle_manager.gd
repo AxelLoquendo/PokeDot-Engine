@@ -442,53 +442,93 @@ func _enemy_choose_all_moves() -> Array[BattleAction]:
 			out.append(act)
 	return out
 
-func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> void:
+## slot_index: qué mon del jugador se cambia (0/1 en dobles). -1 = auto (forzado KO o slot 0).
+func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slot_index: int = -1) -> void:
 	if not is_running:
 		return
 	if nuevo == null or nuevo.is_fainted():
 		message.emit("¡No puede combatir!")
 		return
-	if player.pokemon == nuevo:
-		message.emit("¡Ese Pokémon ya está en combate!")
+
+	# No sacar a alguien que ya está en el campo
+	for b_check: BattleBattler in player_actives:
+		if b_check != null and b_check.pokemon == nuevo and not b_check.is_fainted():
+			message.emit("¡Ese Pokémon ya está en combate!")
+			return
+
+	# Resolver slot del mon que se retira
+	var actor: BattleBattler = null
+	if slot_index >= 0:
+		actor = _player_battler_at(slot_index)
+	elif free_switch:
+		# Primer slot debilitado con necesidad de reemplazo
+		for b_ko: BattleBattler in player_actives:
+			if b_ko != null and (b_ko.pokemon == null or b_ko.is_fainted()):
+				actor = b_ko
+				slot_index = b_ko.slot_index
+				break
+	if actor == null:
+		actor = player
+		slot_index = actor.slot_index if actor != null else 0
+	if actor == null:
 		return
 
-	var saliente_nombre: String = player.get_display_name()
-	if not player.is_fainted():
+	# Cambio voluntario en multi: encolar como acción del turno (independiente por slot)
+	if not free_switch and is_multi_battle() and _player_slot_count() > 1:
+		var switch_action: BattleAction = BattleAction.make_switch(actor, nuevo)
+		mark_exp_participant(nuevo)
+		_pending_player_actions.append(switch_action)
+		var needed: int = 0
+		for b_n: BattleBattler in player_actives:
+			if b_n != null and b_n.pokemon != null and not b_n.is_fainted():
+				needed += 1
+		if _pending_player_actions.size() < needed:
+			return
+		await _try_resolve_pending_turn()
+		return
+
+	# Cambio inmediato (1v1, o free_switch forzado)
+	var saliente_nombre: String = actor.get_display_name()
+	if actor.pokemon != null and not actor.is_fainted():
 		message.emit("¡%s, vuelve!" % saliente_nombre)
 		await _wait(0.6)
-		await AbilityRuntime.on_switch_out(player, self)
+		await AbilityRuntime.on_switch_out(actor, self)
 
-	AbilityRuntime.revert_transform(player)
-
-	player.setup(nuevo, true)
+	AbilityRuntime.revert_transform(actor)
+	actor.setup(nuevo, true, slot_index)
 	mark_exp_participant(nuevo)
-	AbilityRuntime.prepare_illusion(player, self)
+	AbilityRuntime.prepare_illusion(actor, self)
+	_sync_primary_refs()
 	_emit_hp(true)
 	battler_appearance_changed.emit(true)
 
-	# 1) Aviso de envío
-	message.emit("¡Adelante, %s!" % player.get_display_name())
-	# 2) Grito YA (UI lo oye; habilidades todavía no)
+	message.emit("¡Adelante, %s!" % actor.get_display_name())
 	pokemon_entered_field.emit(true)
 	await _wait(0.8)
 
-	# 3) Habilidades de entrada (Ability Bar, etc.)
-	await AbilityRuntime.on_switch_in(player, enemy, self)
-	await _apply_hazards_on_switch_in(player)
+	var opp: BattleBattler = enemy
+	var opps: Array[BattleBattler] = get_opponents(actor)
+	if not opps.is_empty():
+		opp = opps[0]
+	await AbilityRuntime.on_switch_in(actor, opp, self)
+	await _apply_hazards_on_switch_in(actor)
 
 	if free_switch:
 		turn_ended.emit()
 		return
 
-	var enemy_action: BattleAction = _enemy_choose_move()
-	if enemy_action != null:
-		await _execute_move(enemy_action)
+	# 1v1: el rival actúa tras el cambio
+	var enemy_actions: Array[BattleAction] = _enemy_choose_all_moves()
+	for ea: BattleAction in enemy_actions:
+		if ea != null:
+			await _execute_move(ea)
+			if not is_running:
+				return
 
-	if enemy.is_fainted():
+	if not side_has_conscious(false):
 		await _handle_enemy_faint()
 		return
-
-	if player.is_fainted():
+	if not side_has_conscious(true):
 		await _manejar_debilitacion_jugador()
 		return
 
@@ -1067,19 +1107,26 @@ func _execute_switch_action(action: BattleAction) -> void:
 		return
 	var side_player: bool = action.actor.is_player_side
 	var slot: int = action.actor.slot_index
+	var name_out: String = action.actor.get_display_name()
+	if action.actor.pokemon != null and not action.actor.is_fainted():
+		message.emit("¡%s, vuelve!" % name_out)
+		await _wait(0.45)
 	await AbilityRuntime.on_switch_out(action.actor, self)
 	AbilityRuntime.revert_transform(action.actor)
 	action.actor.setup(action.switch_to, side_player, slot)
+	mark_exp_participant(action.switch_to)
 	AbilityRuntime.prepare_illusion(action.actor, self)
 	_sync_primary_refs()
-	message.emit("¡%s, adelante!" % action.actor.get_display_name())
+	message.emit("¡Adelante, %s!" % action.actor.get_display_name())
 	pokemon_entered_field.emit(side_player)
+	battler_appearance_changed.emit(side_player)
 	await _wait(0.6)
 	var opp: BattleBattler = null
 	var opps: Array[BattleBattler] = get_opponents(action.actor)
 	if not opps.is_empty():
 		opp = opps[0]
 	await AbilityRuntime.on_switch_in(action.actor, opp, self)
+	await _apply_hazards_on_switch_in(action.actor)
 	_emit_hp_battler(action.actor)
 
 

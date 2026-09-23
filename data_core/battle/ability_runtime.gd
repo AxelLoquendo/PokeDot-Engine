@@ -2376,7 +2376,7 @@ static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> v
 	if str(battler.pokemon.form_id) == "Hero":
 		battler.zero_to_hero_transformed = true
 		return
-	if await _apply_form_change(battler, battle, &"palafin_hero"):
+	if await _apply_form_change(battler, battle, &"Hero"):
 		battler.zero_to_hero_transformed = true
 		battler.pokemon.set_meta("zero_to_hero_armed", true)
 
