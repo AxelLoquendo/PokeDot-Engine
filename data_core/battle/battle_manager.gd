@@ -64,6 +64,9 @@ var player_actives: Array[BattleBattler] = []
 var enemy_actives: Array[BattleBattler] = []
 ## Acciones del jugador pendientes en multi (una por slot activo).
 var _pending_player_actions: Array[BattleAction] = []
+## Pokémon del jugador que participaron (cambio / ataque) para repartir EXP.
+var exp_participants: Array[PokemonInstance] = []
+var _exp_awarded_to: Dictionary = {}  # instance_id mon enemigo -> true
 
 
 func start_battle(
@@ -86,6 +89,8 @@ func start_battle(
 	terrain_turns = 0
 	weather_primal = false
 	_pending_player_actions.clear()
+	exp_participants.clear()
+	_exp_awarded_to.clear()
 	player_side = FieldSide.new()
 	enemy_side = FieldSide.new()
 
@@ -124,6 +129,9 @@ func start_battle(
 		enemy_actives.append(b2)
 
 	_sync_primary_refs()
+	for pb: BattleBattler in player_actives:
+		if pb != null and pb.pokemon != null:
+			mark_exp_participant(pb.pokemon)
 	_emit_hp(true)
 	_emit_hp(false)
 
@@ -368,6 +376,7 @@ func player_choose_move(slot_index: int, actor_slot: int = 0, target_slot: int =
 		message.emit("¡No se puede usar ese movimiento!")
 		return
 	player_action.target_slot = target_slot
+	mark_exp_participant(actor.pokemon)
 
 	if not is_multi_battle() or _player_slot_count() <= 1:
 		var enemy_actions: Array[BattleAction] = _enemy_choose_all_moves()
@@ -452,6 +461,7 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false) -> 
 	AbilityRuntime.revert_transform(player)
 
 	player.setup(nuevo, true)
+	mark_exp_participant(nuevo)
 	AbilityRuntime.prepare_illusion(player, self)
 	_emit_hp(true)
 	battler_appearance_changed.emit(true)
@@ -695,38 +705,88 @@ func _check_battle_end_evolution() -> void:
 	if result != null:
 		await _apply_evolution(player, result, context)
 
-func _award_experience() -> void:
-	if player.pokemon == null or enemy.pokemon == null:
+func mark_exp_participant(mon: PokemonInstance) -> void:
+	if mon == null:
 		return
-	var species: PokemonDataStruct = enemy.pokemon.get_species()
+	if not exp_participants.has(mon):
+		exp_participants.append(mon)
+
+
+## Reparte EXP de un enemigo debilitado entre los participantes no debilitados.
+func _award_experience_from(fainted_enemy: BattleBattler) -> void:
+	if fainted_enemy == null or fainted_enemy.pokemon == null:
+		return
+	var eid: int = fainted_enemy.pokemon.get_instance_id()
+	if bool(_exp_awarded_to.get(eid, false)):
+		return
+	_exp_awarded_to[eid] = true
+
+	var species: PokemonDataStruct = fainted_enemy.pokemon.get_species()
 	if species == null:
 		return
+	var base_yield: int = 0
+	if "exp_yield" in species:
+		base_yield = int(species.exp_yield)
+	if base_yield <= 0:
+		base_yield = 1
 
 	var trainer_mult: float = 1.5 if is_trainer_battle else 1.0
-	var exp_gained: int = maxi(
+	# Participantes: los que entraron/atacaron y aún no están KO (estilo clásico)
+	var recipients: Array[PokemonInstance] = []
+	for mon: PokemonInstance in exp_participants:
+		if mon != null and not mon.is_fainted():
+			recipients.append(mon)
+	# Fallback: mon activo del jugador
+	if recipients.is_empty() and player != null and player.pokemon != null and not player.is_fainted():
+		recipients.append(player.pokemon)
+	if recipients.is_empty():
+		return
+
+	var s: int = recipients.size()
+	# Fórmula genérica: (a * b * L) / (7 * s)
+	var total: int = maxi(
 		1,
-		int(floor(float(species.exp_yield * enemy.pokemon.level) / 7.0 * trainer_mult))
+		int(floor(float(base_yield * fainted_enemy.pokemon.level) / 7.0 * trainer_mult))
 	)
+	var each: int = maxi(1, int(floor(float(total) / float(s))))
 
-	message.emit("¡%s ganó %d puntos de experiencia!" % [player.get_display_name(), exp_gained])
-	await _wait(0.8)
+	for mon2: PokemonInstance in recipients:
+		message.emit("¡%s ganó %d puntos de experiencia!" % [mon2.get_display_name(), each])
+		await _wait(0.55)
+		var result: Dictionary = mon2.gain_exp(each)
+		# Actualizar UI si es el activo
+		if player != null and player.pokemon == mon2:
+			_emit_hp(true)
+			player_progress_changed.emit()
+		if result.get("levels_gained", 0) > 0:
+			message.emit("¡%s subió a nivel %d!" % [mon2.get_display_name(), mon2.level])
+			await _wait(0.8)
+			if player != null and player.pokemon == mon2:
+				_emit_hp(true)
+			for move_id: Moves.MoveId in result.get("learned_moves", []):
+				var move_data: MoveData = MoveDatabase.get_move(move_id)
+				message.emit("¡%s aprendió %s!" % [
+					mon2.get_display_name(),
+					move_data.move_name if move_data else "un movimiento"
+				])
+				await _wait(0.75)
+			for move_id2: Moves.MoveId in result.get("pending_moves", []):
+				await _try_learn_move_interactive(mon2, move_id2)
+			# Evolución solo si está en campo como battler
+			var battler_evo: BattleBattler = null
+			for pb: BattleBattler in player_actives:
+				if pb != null and pb.pokemon == mon2:
+					battler_evo = pb
+					break
+			if battler_evo != null:
+				await _check_evolution(battler_evo)
+		player_progress_changed.emit()
 
-	var result: Dictionary = player.pokemon.gain_exp(exp_gained)
-	if result.get("levels_gained", 0) > 0:
-		message.emit("¡%s subió a nivel %d!" % [player.get_display_name(), player.pokemon.level])
-		_emit_hp(true)
-		await _wait(0.9)
-		for move_id: Moves.MoveId in result.get("learned_moves", []):
-			var move_data: MoveData = MoveDatabase.get_move(move_id)
-			message.emit("¡%s aprendió %s!" % [
-				player.get_display_name(),
-				move_data.move_name if move_data else "un movimiento"
-			])
-			await _wait(0.9)
-		for move_id: Moves.MoveId in result.get("pending_moves", []):
-			await _try_learn_move_interactive(player.pokemon, move_id)
-		await _check_evolution(player)
-	player_progress_changed.emit()
+
+func _award_experience() -> void:
+	# Compat: otorga EXP del enemigo primario (slot 0)
+	if enemy != null:
+		await _award_experience_from(enemy)
 
 
 ## Se llama cuando un Pokémon ya tiene 4 movimientos y quiere aprender uno
@@ -975,9 +1035,14 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 
 	# Rival sin activos
 	if not side_has_conscious(false):
+		# EXP de todos los enemigos que acaban de caer y aún no se otorgó
+		for eb: BattleBattler in enemy_actives:
+			if eb != null and eb.pokemon != null and eb.is_fainted():
+				await _award_experience_from(eb)
 		if is_trainer_battle and party_has_reserve(false):
 			await _handle_enemy_faint()
 			return
+		await _check_battle_end_evolution()
 		message.emit("¡Has ganado!")
 		await _wait(1.0)
 		_cleanup_battle_pokemon()
@@ -1454,6 +1519,8 @@ func _execute_move(action: BattleAction) -> void:
 
 	if target.is_fainted():
 		await _trigger_ko_ability(actor, target)
+		if not target.is_player_side:
+			await _award_experience_from(target)
 		await _execute_multi_rest(action, actor, move)
 		return
 
@@ -2256,7 +2323,7 @@ func _revert_party_mon_forms(mon: PokemonInstance) -> void:
 	if mon.has_meta("zero_to_hero_armed"):
 		mon.remove_meta("zero_to_hero_armed")
 	var fid: String = str(mon.form_id)
-	if fid in ["palafin_hero", "castform_sunny", "castform_rainy", "castform_snowy",
+	if fid in ["Hero", "castform_sunny", "castform_rainy", "castform_snowy",
 			"cherrim_sunshine", "darmanitan_zen", "darmanitan_zen_galar",
 			"terapagos_terastal"] or fid.begins_with("minior_core"):
 		if mon.has_method("set_form"):

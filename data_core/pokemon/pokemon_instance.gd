@@ -54,6 +54,7 @@ const STAT_COUNT: int = 6
 @export var nature: PokemonData.Nature = PokemonData.Nature.NATURE_HARDY
 @export var gender: PokemonData.Gender = PokemonData.Gender.GENDERLESS
 @export var personality_value: int = 0
+@export var shiny: bool = false
 
 ## IVs y EVs en orden: HP, Atk, Def, Spe, SpAtk, SpDef
 @export var ivs: Array[int] = [0, 0, 0, 0, 0, 0]
@@ -122,11 +123,13 @@ func get_active_form() -> PokemonFormData:
 func get_form_species_id() -> Species.SpeciesID:
 	return PokemonFormResolver.get_form_species_id(self)
 
-func get_front_sprite(shiny: bool = false) -> Texture2D:
-	return PokemonFormResolver.get_front_sprite(self, shiny)
+func get_front_sprite(p_shiny: bool = false) -> Texture2D:
+	var use_shiny: bool = p_shiny or shiny
+	return PokemonFormResolver.get_front_sprite(self, use_shiny)
 
-func get_back_sprite(shiny: bool = false) -> Texture2D:
-	return PokemonFormResolver.get_back_sprite(self, shiny)
+func get_back_sprite(p_shiny: bool = false) -> Texture2D:
+	var use_shiny: bool = p_shiny or shiny
+	return PokemonFormResolver.get_back_sprite(self, use_shiny)
 
 func get_icon_sprite() -> Texture2D:
 	return PokemonFormResolver.get_icon_sprite(self)
@@ -461,8 +464,10 @@ static func create(species: Species.SpeciesID, initial_level: int = 5) -> Pokemo
 	pokemon.gender = _roll_gender(data.gender_ratio, pokemon.personality_value)
 	pokemon.friendship = clampi(data.friendship, 0, 255)
 
-	# Habilidad (por ahora siempre ability_1; luego puedes usar PID)
-	pokemon.ability_id = data.ability_1
+	# Shiny: 1/4096 (Gen 6+ sin charms)
+	pokemon.shiny = _roll_shiny()
+	# Habilidad: 1 vs 2 según PID; oculta con rareza de encuentro especial (~1/512 en salvaje)
+	pokemon.ability_id = _roll_wild_ability(data, pokemon.personality_value)
 	# Tera Type: por defecto el tipo primario de la especie
 	pokemon.tera_type = data.type_1
 	pokemon.tera_type = _roll_tera_type(data)
@@ -491,6 +496,37 @@ static func _roll_tera_type(species: PokemonDataStruct) -> PokemonData.Type:
 		return PokemonData.Type.TYPE_NONE
 	# Default oficial: tipo primario
 	return species.type_1
+
+
+## Probabilidad shiny base Gen 6+ (sin Shiny Charm / Masuda).
+const SHINY_ODDS: int = 4096
+## HA en salvaje: rareza alta (~encuentros especiales).
+const HIDDEN_ABILITY_ODDS: int = 512
+
+
+static func _roll_shiny() -> bool:
+	return randi_range(0, SHINY_ODDS - 1) == 0
+
+
+## Personality elige ability_1 o ability_2; HA con tirada rara.
+static func _roll_wild_ability(data: PokemonDataStruct, personality: int) -> AbilityId.Id:
+	if data == null:
+		return AbilityId.Id.NONE
+	var a1: AbilityId.Id = data.ability_1
+	var a2: AbilityId.Id = AbilityId.Id.NONE
+	var ah: AbilityId.Id = AbilityId.Id.NONE
+	if "ability_2" in data:
+		a2 = data.ability_2 as AbilityId.Id
+	if "hidden_ability" in data:
+		ah = data.hidden_ability as AbilityId.Id
+	if ah != AbilityId.Id.NONE and randi_range(0, HIDDEN_ABILITY_ODDS - 1) == 0:
+		return ah
+	if a2 != AbilityId.Id.NONE and (personality & 1) == 1:
+		return a2
+	if a1 != AbilityId.Id.NONE:
+		return a1
+	return a2
+
 
 # ============================================================
 # INTERNOS
@@ -609,6 +645,7 @@ func to_dict() -> Dictionary:
 		"nature": int(nature),
 		"gender": int(gender),
 		"personality_value": personality_value,
+		"shiny": shiny,
 		"ivs": ivs.duplicate(),
 		"evs": evs.duplicate(),
 		"stats": stats.duplicate(),
@@ -637,6 +674,7 @@ static func from_dict(data: Dictionary) -> PokemonInstance:
 	pokemon.nature = int(data.get("nature", 0)) as PokemonData.Nature
 	pokemon.gender = int(data.get("gender", 0)) as PokemonData.Gender
 	pokemon.personality_value = int(data.get("personality_value", 0))
+	pokemon.shiny = bool(data.get("shiny", false))
 	pokemon.met_date = str(data.get("met_date", ""))
 	pokemon.met_location = str(data.get("met_location", ""))
 	pokemon.met_level = clampi(int(data.get("met_level", pokemon.level)), 1, 100)

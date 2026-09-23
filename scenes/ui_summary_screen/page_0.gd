@@ -43,6 +43,10 @@ func _actualizar_dex() -> void:
 		return
 	dex_number.text = "%04d" % species.national_dex_number
 
+	if pokemon.shiny:
+		dex_number.add_theme_color_override("font_color", Color(0.92, 0.78, 0.28, 1.0))
+	else:
+		dex_number.remove_theme_color_override("font_color")
 
 func _actualizar_especie() -> void:
 	if specie_name == null:

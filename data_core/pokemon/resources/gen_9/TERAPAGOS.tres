@@ -186,5 +186,7 @@ is_legendary = true
 egg_group_1 = 15
 egg_cycles = 5
 hatch_species = 1431
+front_sprite_offset = Vector2(0, 10)
+back_sprite_offset = Vector2(0, 9)
 gender_ratio = 3
 cry = ExtResource("gfx106")

@@ -1752,8 +1752,12 @@ func _play_cry_slot(is_player: bool, slot: int, mon: PokemonInstance = null, pit
 func _play_faint_animation(is_player: bool, slot: int, battler: BattleBattler) -> void:
 	var sprite: Sprite2D = _sprite_for_slot(is_player, slot)
 	var box: Sprite2D = _hp_box_for_slot(is_player, slot)
+	# 1) Esperar a que la barra de PS llegue a 0 visualmente
+	await _wait_hp_bar_drained(is_player, slot)
+	# 2) Grito (un poco más lento) y esperar a que termine
 	if battler != null and battler.pokemon != null:
-		_play_cry_slot(is_player, slot, battler.pokemon, 0.88)  # un poco más lento
+		await _play_cry_slot_and_wait(is_player, slot, battler.pokemon, 0.88)
+	# 3) Animación: baja y desaparece
 	if sprite != null:
 		var start_y: float = sprite.position.y
 		var tween: Tween = create_tween()
@@ -1765,6 +1769,44 @@ func _play_faint_animation(is_player: bool, slot: int, battler: BattleBattler) -
 		sprite.position.y = start_y
 	if box != null:
 		box.visible = false
+
+
+func _wait_hp_bar_drained(is_player: bool, slot: int) -> void:
+	var box: Sprite2D = _hp_box_for_slot(is_player, slot)
+	var bar: ColorRect = null
+	if box != null:
+		bar = box.get_node_or_null("HpBar") as ColorRect
+	if bar == null:
+		if is_player and slot == 0:
+			bar = player_hp_bar
+		elif (not is_player) and slot == 0:
+			bar = enemy_hp_bar
+	if bar == null:
+		await get_tree().create_timer(0.15).timeout
+		return
+	# Esperar hasta que la barra visual esté ~0 (máx 2s)
+	var elapsed: float = 0.0
+	while bar.size.x > 0.75 and elapsed < 2.0:
+		await get_tree().process_frame
+		elapsed += get_process_delta_time()
+	await get_tree().create_timer(0.08).timeout
+
+
+func _play_cry_slot_and_wait(is_player: bool, slot: int, mon: PokemonInstance, pitch: float = 1.0) -> void:
+	_play_cry_slot(is_player, slot, mon, pitch)
+	var node: AudioStreamPlayer = _cry_for_slot(is_player, slot)
+	if node == null:
+		node = cry_player if is_player else cry_enemy
+	if node == null or node.stream == null:
+		await get_tree().create_timer(0.35).timeout
+		return
+	# Duración del stream / pitch
+	var dur: float = 0.5
+	if node.stream is AudioStream:
+		var st: AudioStream = node.stream
+		if st.has_method("get_length"):
+			dur = maxf(0.25, float(st.get_length()) / maxf(pitch, 0.01))
+	await get_tree().create_timer(dur + 0.05).timeout
 
 
 func _submit_move_for_current_slot(move_index: int) -> void:
