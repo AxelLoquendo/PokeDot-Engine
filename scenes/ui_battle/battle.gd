@@ -542,13 +542,18 @@ func _set_gender(label: Label, gender: PokemonData.Gender) -> void:
 
 
 func _update_hp_bars() -> void:
-	player_hp_label.text = "%d/%d" % [player_current_hp, player_pokemon.max_hp]
-	player_hp_bar_target = PLAYER_HP_BAR_MAX_WIDTH * (
-		float(player_current_hp) / float(maxi(player_pokemon.max_hp, 1))
-	)
-	enemy_hp_bar_target = ENEMY_HP_BAR_MAX_WIDTH * (
-		float(enemy_current_hp) / float(maxi(enemy_pokemon.max_hp, 1))
-	)
+	var p_max: int = player_pokemon.max_hp if player_pokemon != null else 1
+	var e_max: int = enemy_pokemon.max_hp if enemy_pokemon != null else 1
+	if player_hp_label != null and player_pokemon != null:
+		player_hp_label.text = "%d/%d" % [player_current_hp, p_max]
+	if player_hp_bar != null:
+		player_hp_bar_target = PLAYER_HP_BAR_MAX_WIDTH * (
+			float(player_current_hp) / float(maxi(p_max, 1))
+		)
+	if enemy_hp_bar != null:
+		enemy_hp_bar_target = ENEMY_HP_BAR_MAX_WIDTH * (
+			float(enemy_current_hp) / float(maxi(e_max, 1))
+		)
 
 
 func _update_status_icons() -> void:
@@ -737,7 +742,7 @@ func _on_bag_pressed() -> void:
 	current_menu = MenuState.BUSY
 	action_menu.visible = false
 	_bag_ui = BAG_SCENE.instantiate() as BagUI
-	_bag_ui.layer = 100  # por debajo del Multichoice (200)
+	_bag_ui.layer = 120
 	get_tree().root.add_child(_bag_ui)
 	_bag_ui.setup(data, BagUI.BagMode.BATTLE)
 	_bag_ui.battle_item_selected.connect(_on_battle_item_selected)
@@ -1848,10 +1853,13 @@ func _fill_hp_box_labels(box: Sprite2D, battler: BattleBattler, is_player: bool)
 		var max_w: float = PLAYER_HP_BAR_MAX_WIDTH if is_player else ENEMY_HP_BAR_MAX_WIDTH
 		var ratio: float = float(mon.current_hp) / float(maxi(mon.max_hp, 1))
 		var target_w: float = max_w * clampf(ratio, 0.0, 1.0)
-		_hp_bar_anim_targets[bar.get_instance_id()] = target_w
-		# Si es la primera vez (ancho 0 o casi), saltar animación
-		if bar.size.x <= 0.01 or absf(bar.size.x - target_w) > max_w * 0.95:
+		# Solo saltar animación al inicializar (barra vacía).
+		# Antes también saltaba en golpes grandes (>95%) y no se veía bajar.
+		if bar.size.x <= 0.01:
 			bar.size.x = target_w
+			_hp_bar_anim_targets.erase(bar.get_instance_id())
+		else:
+			_hp_bar_anim_targets[bar.get_instance_id()] = target_w
 		bar.color = _hp_color(bar.size.x / maxf(max_w, 1.0))
 	var gender_l: Label = box.get_node_or_null("Genero") as Label
 	if gender_l != null:

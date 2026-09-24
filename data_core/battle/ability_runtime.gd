@@ -2531,7 +2531,12 @@ static func try_tera_shift(battler: BattleBattler, battle: BattleManager) -> voi
 		return
 	if str(battler.pokemon.form_id) == "terapagos_terastal":
 		return
-	await _apply_form_change(battler, battle, &"terapagos_terastal")
+	var changed: bool = await _apply_form_change(battler, battle, &"terapagos_terastal")
+	# set_form aplica ability de la forma; refuerzo si el .tres no tenía override
+	if changed and battler.pokemon != null:
+		if battler.pokemon.ability_id == AbilityId.Id.TERA_SHIFT \
+				or battler.pokemon.ability_id == AbilityId.Id.NONE:
+			battler.pokemon.ability_id = AbilityId.Id.TERA_SHELL
 
 
 static func try_teraform_zero(battler: BattleBattler, battle: BattleManager) -> void:

@@ -93,8 +93,28 @@ func set_form(new_form_id: StringName) -> bool:
 			if form.species_id != Species.SpeciesID.SPECIES_NONE:
 				species_id = form.species_id
 			form_id = new_form_id
+			_apply_form_abilities(form)
 			return true
 	return false
+
+
+## Aplica habilidades de la forma si override_abilities (p. ej. Tera Shift → Tera Shell).
+func _apply_form_abilities(form: PokemonFormData) -> void:
+	if form == null or not form.override_abilities:
+		return
+	var base: PokemonDataStruct = get_species()
+	var was_ha: bool = false
+	if base != null and "hidden_ability" in base:
+		var base_ha: AbilityId.Id = base.hidden_ability as AbilityId.Id
+		was_ha = base_ha != AbilityId.Id.NONE and ability_id == base_ha
+	if was_ha and form.hidden_ability != AbilityId.Id.NONE:
+		ability_id = form.hidden_ability
+		return
+	if form.ability_1 != AbilityId.Id.NONE:
+		ability_id = form.ability_1
+	elif form.ability_2 != AbilityId.Id.NONE:
+		ability_id = form.ability_2
+
 
 ## Cambia a una forma usando el SpeciesID declarado en species.gd.
 func set_form_species_id(new_form_species_id: Species.SpeciesID) -> bool:
@@ -109,6 +129,7 @@ func set_form_species_id(new_form_species_id: Species.SpeciesID) -> bool:
 			return false
 	species_id = new_form_species_id
 	form_id = form.form_id
+	_apply_form_abilities(form)
 	return true
 
 func reset_form() -> void:
@@ -116,6 +137,22 @@ func reset_form() -> void:
 	if base_species != null:
 		species_id = base_species.species_id
 	form_id = &"base"
+	# Restaurar habilidad de la especie base
+	if base_species == null:
+		return
+	var a1: AbilityId.Id = base_species.ability_1 if "ability_1" in base_species else AbilityId.Id.NONE
+	var a2: AbilityId.Id = AbilityId.Id.NONE
+	var ah: AbilityId.Id = AbilityId.Id.NONE
+	if "ability_2" in base_species:
+		a2 = base_species.ability_2 as AbilityId.Id
+	if "hidden_ability" in base_species:
+		ah = base_species.hidden_ability as AbilityId.Id
+	if ah != AbilityId.Id.NONE and ability_id == ah:
+		ability_id = ah
+	elif a1 != AbilityId.Id.NONE:
+		ability_id = a1
+	elif a2 != AbilityId.Id.NONE:
+		ability_id = a2
 
 func get_active_form() -> PokemonFormData:
 	return PokemonFormResolver.get_form(self)
