@@ -12,6 +12,8 @@ var spikes_layers: int = 0
 var toxic_spikes_layers: int = 0
 var stealth_rock: bool = false
 var sticky_web: bool = false
+var tailwind_turns: int = 0
+var lucky_chant_turns: int = 0
 
 
 func has_screen(is_physical: bool) -> bool:
@@ -26,6 +28,8 @@ func tick_down() -> void:
 	aurora_veil_turns = maxi(aurora_veil_turns - 1, 0)
 	mist_turns = maxi(mist_turns - 1, 0)
 	safeguard_turns = maxi(safeguard_turns - 1, 0)
+	tailwind_turns = maxi(tailwind_turns - 1, 0)
+	lucky_chant_turns = maxi(lucky_chant_turns - 1, 0)
 
 
 func clear_screens() -> void:

@@ -58,6 +58,24 @@ var is_cursed: bool = false
 var last_move_used_id: int = -1
 var used_protect_this_turn: bool = false
 
+## Stockpile capas (0-3).
+var stockpile_count: int = 0
+## Ingrain / Aqua Ring.
+var has_ingrain: bool = false
+var has_aqua_ring: bool = false
+## Magnet Rise / Telekinesis turns.
+var magnet_rise_turns: int = 0
+## No Retreat / Octolock.
+var no_retreat: bool = false
+var octolocked: bool = false
+## Foresight / Odor Sleuth / Miracle Eye.
+var is_identified: bool = false
+## Laser Focus: próximo golpe crítico garantizado.
+var laser_focus: bool = false
+## Wish recibido (turnos hasta curar, -1 inactivo).
+var wish_turns: int = -1
+var wish_hp: int = 0
+
 ## ─── Habilidades (ver ability_runtime.gd) ────────────────
 ## Si es false, la habilidad de este Pokémon no tiene ningún efecto
 ## en combate (p. ej. tras Gas Neutralizante / Mold Breaker, a futuro).
@@ -171,6 +189,16 @@ func _reset_stages() -> void:
 	is_cursed = false
 	last_move_used_id = -1
 	used_protect_this_turn = false
+	stockpile_count = 0
+	has_ingrain = false
+	has_aqua_ring = false
+	magnet_rise_turns = 0
+	no_retreat = false
+	octolocked = false
+	is_identified = false
+	laser_focus = false
+	wish_turns = -1
+	wish_hp = 0
 	clear_illusion()
 	is_transformed = false
 	transform_backup.clear()

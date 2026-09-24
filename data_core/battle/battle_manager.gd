@@ -54,6 +54,10 @@ var battle_turn_count: int = 0
 ## Último movimiento usado en el campo (Mirror Move / Copycat).
 var last_move_used_field: MoveData = null
 var last_move_user_was_player: bool = false
+var trick_room_turns: int = 0
+var wonder_room_turns: int = 0
+var magic_room_turns: int = 0
+var gravity_turns: int = 0
 ## Contexto opcional de captura (el encuentro/mapa puede setearlos).
 var is_underwater: bool = false
 var is_dark_place: bool = false
@@ -1230,6 +1234,10 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 		battler.endure_active = false
 		battler.destiny_bond_active = false  # Destiny Bond solo dura el turno
 		battler.just_switched_in = false
+		if battler.has_meta("follow_me"):
+			battler.remove_meta("follow_me")
+		if battler.has_meta("helping_hand"):
+			battler.remove_meta("helping_hand")
 
 	for action: BattleAction in actions:
 		if action == null or action.actor == null or action.actor.is_fainted():
@@ -1342,6 +1350,29 @@ func _process_end_of_turn() -> void:
 				continue
 		if not battler.is_fainted() and battler.leech_seeded:
 			await _apply_leech_seed_tick(battler)
+		if not battler.is_fainted() and (battler.has_ingrain or battler.has_aqua_ring):
+			@warning_ignore("integer_division")
+			var ring_heal: int = maxi(1, int(battler.get_max_hp() / 16))
+			if battler.heal_block_turns <= 0:
+				battler.pokemon.apply_heal(ring_heal)
+				_emit_hp(battler.is_player_side)
+				var src: String = "Arraigo" if battler.has_ingrain else "Acua Aro"
+				message.emit("¡%s recuperó PS con %s!" % [battler.get_display_name(), src])
+				await _wait(0.45)
+		if not battler.is_fainted() and battler.wish_turns >= 0:
+			battler.wish_turns -= 1
+			if battler.wish_turns < 0 and battler.wish_hp > 0:
+				if battler.heal_block_turns <= 0:
+					battler.pokemon.apply_heal(battler.wish_hp)
+					_emit_hp(battler.is_player_side)
+					message.emit("¡El deseo de %s se cumplió!" % battler.get_display_name())
+					await _wait(0.55)
+				battler.wish_hp = 0
+		if not battler.is_fainted() and battler.octolocked:
+			await _apply_stat_change(battler, PokemonInstance.Stat.DEFENSE, -1, true)
+			await _apply_stat_change(battler, PokemonInstance.Stat.SP_DEFENSE, -1, true)
+		if battler.magnet_rise_turns > 0:
+			battler.magnet_rise_turns -= 1
 		if not battler.is_fainted() and battler.has_nightmare:
 			if battler.pokemon != null and battler.pokemon.status == PokemonInstance.Status.SLEEP:
 				@warning_ignore("integer_division")
@@ -1380,6 +1411,14 @@ func _process_end_of_turn() -> void:
 				battler.encore_move_id = -1
 		if battler.heal_block_turns > 0:
 			battler.heal_block_turns -= 1
+		if battler.has_meta("yawn_turns"):
+			var yt: int = int(battler.get_meta("yawn_turns"))
+			if yt <= 0:
+				battler.remove_meta("yawn_turns")
+				if battler.pokemon != null and not battler.pokemon.has_status():
+					await _apply_status(battler, PokemonInstance.Status.SLEEP)
+			else:
+				battler.set_meta("yawn_turns", yt - 1)
 
 	for battler: BattleBattler in get_all_actives():
 		if not battler.is_fainted():
@@ -1391,6 +1430,26 @@ func _process_end_of_turn() -> void:
 
 	player_side.tick_down()
 	enemy_side.tick_down()
+	if trick_room_turns > 0:
+		trick_room_turns -= 1
+		if trick_room_turns == 0:
+			message.emit("¡El Espacio Raro se disipó!")
+			await _wait(0.5)
+	if wonder_room_turns > 0:
+		wonder_room_turns -= 1
+		if wonder_room_turns == 0:
+			message.emit("¡El Mundo Maravilla se disipó!")
+			await _wait(0.5)
+	if magic_room_turns > 0:
+		magic_room_turns -= 1
+		if magic_room_turns == 0:
+			message.emit("¡El Zona Extraña se disipó!")
+			await _wait(0.5)
+	if gravity_turns > 0:
+		gravity_turns -= 1
+		if gravity_turns == 0:
+			message.emit("¡La gravedad volvió a la normalidad!")
+			await _wait(0.5)
 	if weather_turns > 0:
 		weather_turns -= 1
 		if weather_turns == 0:
@@ -1453,7 +1512,14 @@ func _sort_actions(actions: Array[BattleAction]) -> Array[BattleAction]:
 			* AbilityRuntime.speed_multiplier(a.actor, weather, terrain)
 		var sb: float = float(b.actor.get_effective_stat(PokemonInstance.Stat.SPEED)) \
 			* AbilityRuntime.speed_multiplier(b.actor, weather, terrain)
+		if _side_for(a.actor).tailwind_turns > 0:
+			sa *= 2.0
+		if _side_for(b.actor).tailwind_turns > 0:
+			sb *= 2.0
 		if sa != sb:
+			# Trick Room: el más lento actúa primero
+			if trick_room_turns > 0:
+				return sa < sb
 			return sa > sb
 		var stall_a: bool = AbilityRuntime.has(a.actor, AbilityId.Id.STALL)
 		var stall_b: bool = AbilityRuntime.has(b.actor, AbilityId.Id.STALL)
@@ -1594,6 +1660,9 @@ func _execute_move(action: BattleAction) -> void:
 			message.emit("¡No surtirá efecto!")
 			await _wait(0.7)
 			return
+	if actor.laser_focus:
+		actor.focus_energy = true  # sube crit stage de forma simple
+		actor.laser_focus = false
 	if move != null:
 		actor.last_move_used_id = int(move.move_id)
 		if actor.torment_active:
@@ -2863,6 +2932,452 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			await _wait(0.7)
 			return
 
+		MoveStruct.MoveEffect.EFFECT_DO_NOTHING, MoveStruct.MoveEffect.EFFECT_HOLD_HANDS, \
+		MoveStruct.MoveEffect.EFFECT_CELEBRATE, MoveStruct.MoveEffect.EFFECT_HAPPY_HOUR:
+			message.emit("¡%s está celebrando!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TRICK_ROOM:
+			if trick_room_turns > 0:
+				trick_room_turns = 0
+				message.emit("¡El Espacio Raro se disipó!")
+			else:
+				trick_room_turns = 5
+				message.emit("¡Las dimensiones se distorsionaron!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_WONDER_ROOM:
+			wonder_room_turns = 5 if wonder_room_turns <= 0 else 0
+			message.emit("¡Defensa y Def. Especial se intercambiaron!" if wonder_room_turns > 0 else "¡Mundo Maravilla se disipó!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_MAGIC_ROOM:
+			magic_room_turns = 5 if magic_room_turns <= 0 else 0
+			message.emit("¡Los objetos perdieron su efecto!" if magic_room_turns > 0 else "¡Zona Extraña se disipó!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_GRAVITY:
+			gravity_turns = 5
+			message.emit("¡La gravedad se intensificó!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TAILWIND:
+			var tw: FieldSide = _side_for(actor)
+			tw.tailwind_turns = 4
+			message.emit("¡El Viento Afín sopla a favor del equipo de %s!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ELECTRIC_TERRAIN:
+			set_terrain(TerrainId.TERRAIN_ELECTRIC, 5)
+			await _wait(0.5)
+			return
+		MoveStruct.MoveEffect.EFFECT_GRASSY_TERRAIN:
+			set_terrain(TerrainId.TERRAIN_GRASSY, 5)
+			await _wait(0.5)
+			return
+		MoveStruct.MoveEffect.EFFECT_MISTY_TERRAIN:
+			set_terrain(TerrainId.TERRAIN_MISTY, 5)
+			await _wait(0.5)
+			return
+		MoveStruct.MoveEffect.EFFECT_PSYCHIC_TERRAIN:
+			set_terrain(TerrainId.TERRAIN_PSYCHIC, 5)
+			await _wait(0.5)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_PAIN_SPLIT:
+			if target == null or target.is_fainted() or actor.pokemon == null or target.pokemon == null:
+				return
+			var total: int = actor.get_current_hp() + target.get_current_hp()
+			@warning_ignore("integer_division")
+			var mid: int = int(total / 2)
+			actor.pokemon.current_hp = mini(actor.get_max_hp(), mid)
+			target.pokemon.current_hp = mini(target.get_max_hp(), mid)
+			_emit_hp(actor.is_player_side)
+			_emit_hp(target.is_player_side)
+			message.emit("¡Los PS se repartieron!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_PSYCH_UP:
+			if target == null:
+				return
+			actor.stage_attack = target.stage_attack
+			actor.stage_defense = target.stage_defense
+			actor.stage_sp_attack = target.stage_sp_attack
+			actor.stage_sp_defense = target.stage_sp_defense
+			actor.stage_speed = target.stage_speed
+			actor.stage_accuracy = target.stage_accuracy
+			actor.stage_evasion = target.stage_evasion
+			message.emit("¡%s copió los cambios de estadísticas!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_MEMENTO:
+			if target != null and not target.is_fainted():
+				await _apply_stat_change(target, PokemonInstance.Stat.ATTACK, -2, true)
+				await _apply_stat_change(target, PokemonInstance.Stat.SP_ATTACK, -2, true)
+			actor.apply_damage(actor.get_current_hp())
+			_emit_hp(actor.is_player_side)
+			message.emit("¡%s se debilitó!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HEALING_WISH, MoveStruct.MoveEffect.EFFECT_LUNAR_DANCE:
+			actor.apply_damage(actor.get_current_hp())
+			_emit_hp(actor.is_player_side)
+			message.emit("¡%s se sacrificó por el equipo!" % actor.get_display_name())
+			await _wait(0.7)
+			# El entrante recibirá curación vía wish_turns en el slot
+			actor.wish_turns = 0
+			actor.wish_hp = actor.get_max_hp()  # se aplica al nuevo mon si UI reusa slot
+			if actor.is_player_side:
+				player_must_switch.emit()
+			return
+
+		MoveStruct.MoveEffect.EFFECT_WISH:
+			@warning_ignore("integer_division")
+			actor.wish_hp = maxi(1, int(actor.get_max_hp() / 2))
+			actor.wish_turns = 1  # se cumple al final del próximo turno
+			message.emit("¡%s pidió un deseo!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_STOCKPILE:
+			if actor.stockpile_count >= 3:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.6)
+				return
+			actor.stockpile_count += 1
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 1)
+			message.emit("¡%s acumuló energía (%d)!" % [actor.get_display_name(), actor.stockpile_count])
+			await _wait(0.5)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SWALLOW:
+			if actor.stockpile_count <= 0:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.6)
+				return
+			var frac: float = [0.0, 0.25, 0.5, 1.0][clampi(actor.stockpile_count, 0, 3)]
+			var heal_sw: int = maxi(1, int(actor.get_max_hp() * frac))
+			if actor.heal_block_turns > 0:
+				message.emit("¡%s no puede curarse!" % actor.get_display_name())
+			else:
+				actor.pokemon.apply_heal(heal_sw)
+				_emit_hp(actor.is_player_side)
+				message.emit("¡%s recuperó PS!" % actor.get_display_name())
+			actor.stockpile_count = 0
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_INGRAIN:
+			actor.has_ingrain = true
+			actor.cannot_escape = true
+			message.emit("¡%s echó raíces!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_AQUA_RING:
+			actor.has_aqua_ring = true
+			message.emit("¡%s se envolvió en un velo de agua!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_MAGNET_RISE:
+			actor.magnet_rise_turns = 5
+			message.emit("¡%s levita con electromagnetismo!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_NO_RETREAT:
+			if actor.no_retreat:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.6)
+				return
+			actor.no_retreat = true
+			actor.cannot_escape = true
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 1)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_OCTOLOCK:
+			if target == null:
+				return
+			target.octolocked = true
+			target.cannot_escape = true
+			message.emit("¡%s quedó atrapado por Octopresa!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FORESIGHT, MoveStruct.MoveEffect.EFFECT_MIRACLE_EYE:
+			if target == null:
+				return
+			target.is_identified = true
+			message.emit("¡%s fue identificado!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_MINIMIZE:
+			actor.stage_evasion = clampi(actor.stage_evasion + 2, -6, 6)
+			message.emit("¡La Evasión de %s subió mucho!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_DEFENSE_CURL:
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_LASER_FOCUS:
+			actor.laser_focus = true
+			message.emit("¡%s se concentró al máximo!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_CHARGE:
+			actor.charged = true
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 1)
+			message.emit("¡%s cargó energía!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TRICK:
+			if actor.pokemon == null or target == null or target.pokemon == null:
+				return
+			if magic_room_turns > 0:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			var item_a: int = actor.pokemon.held_item
+			var item_b: int = target.pokemon.held_item
+			actor.pokemon.held_item = item_b
+			target.pokemon.held_item = item_a
+			message.emit("¡%s intercambió los objetos!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ROLE_PLAY:
+			if target == null or target.pokemon == null or actor.pokemon == null:
+				return
+			actor.pokemon.ability_id = target.pokemon.ability_id
+			message.emit("¡%s copió la habilidad!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SKILL_SWAP:
+			if target == null or target.pokemon == null or actor.pokemon == null:
+				return
+			var ab: int = actor.pokemon.ability_id
+			actor.pokemon.ability_id = target.pokemon.ability_id
+			target.pokemon.ability_id = ab
+			message.emit("¡Se intercambiaron las habilidades!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_GASTRO_ACID:
+			if target == null:
+				return
+			target.ability_active = false
+			message.emit("¡La habilidad de %s fue neutralizada!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SOAK:
+			if target == null:
+				return
+			target.battle_type_1 = int(PokemonData.Type.TYPE_WATER)
+			target.battle_type_2 = -1
+			message.emit("¡%s se empapó y ahora es de tipo Agua!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_REFLECT_TYPE:
+			if target == null:
+				return
+			target.battle_type_1 = actor.battle_type_1 if actor.battle_type_1 >= 0 else int(actor.pokemon.get_type_1())
+			target.battle_type_2 = actor.battle_type_2 if actor.battle_type_2 >= 0 else int(actor.pokemon.get_type_2())
+			# Actually Reflect Type: user copies target's types
+			actor.battle_type_1 = target.battle_type_1 if target.battle_type_1 >= 0 else int(target.pokemon.get_type_1())
+			actor.battle_type_2 = target.battle_type_2 if target.battle_type_2 >= 0 else int(target.pokemon.get_type_2())
+			message.emit("¡%s copió el tipo!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_POWER_TRICK:
+			var tmp: int = actor.stage_attack
+			actor.stage_attack = actor.stage_defense
+			actor.stage_defense = tmp
+			# Also swap base effective by stages is enough for stage-based; full power trick swaps stats
+			message.emit("¡%s intercambió Ataque y Defensa!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HEART_SWAP:
+			if target == null:
+				return
+			var s: Dictionary = _snapshot_baton_pass(actor)
+			_apply_baton_pass(actor, _snapshot_baton_pass(target))
+			_apply_baton_pass(target, s)
+			message.emit("¡Se intercambiaron los cambios de estadísticas!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_POWER_SWAP:
+			if target == null:
+				return
+			var a1: int = actor.stage_attack
+			var a2: int = actor.stage_sp_attack
+			actor.stage_attack = target.stage_attack
+			actor.stage_sp_attack = target.stage_sp_attack
+			target.stage_attack = a1
+			target.stage_sp_attack = a2
+			message.emit("¡Se intercambiaron cambios de Ataque!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_GUARD_SWAP:
+			if target == null:
+				return
+			var d1: int = actor.stage_defense
+			var d2: int = actor.stage_sp_defense
+			actor.stage_defense = target.stage_defense
+			actor.stage_sp_defense = target.stage_sp_defense
+			target.stage_defense = d1
+			target.stage_sp_defense = d2
+			message.emit("¡Se intercambiaron cambios de Defensa!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SPEED_SWAP:
+			if target == null:
+				return
+			var sp: int = actor.stage_speed
+			actor.stage_speed = target.stage_speed
+			target.stage_speed = sp
+			message.emit("¡Se intercambiaron las velocidades!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_STRENGTH_SAP:
+			if target == null:
+				return
+			var atk_stage: int = target.stage_attack
+			await _apply_stat_change(target, PokemonInstance.Stat.ATTACK, -1, true)
+			if actor.heal_block_turns <= 0:
+				# Cura según Atk efectivo del rival (aprox)
+				var heal_ss: int = maxi(1, target.get_effective_stat(PokemonInstance.Stat.ATTACK))
+				actor.pokemon.apply_heal(heal_ss)
+				_emit_hp(actor.is_player_side)
+				message.emit("¡%s absorbió fuerza!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FILLET_AWAY:
+			if actor.get_current_hp() <= int(actor.get_max_hp() / 2):
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.6)
+				return
+			@warning_ignore("integer_division")
+			actor.apply_damage(int(actor.get_max_hp() / 2))
+			_emit_hp(actor.is_player_side)
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 2)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TIDY_UP:
+			player_side.clear_hazards()
+			enemy_side.clear_hazards()
+			actor.substitute_hp = 0
+			# clear substitutes on field lightly
+			for b: BattleBattler in get_all_actives():
+				if b != null:
+					b.substitute_hp = 0
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 1)
+			message.emit("¡El campo se limpió!")
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_COURT_CHANGE:
+			var tmp_side: FieldSide = player_side
+			player_side = enemy_side
+			enemy_side = tmp_side
+			message.emit("¡Se intercambiaron los efectos de ambos lados!")
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SHED_TAIL:
+			@warning_ignore("integer_division")
+			var st_cost: int = maxi(1, int(actor.get_max_hp() / 2))
+			if actor.get_current_hp() <= st_cost:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.6)
+				return
+			actor.apply_damage(st_cost)
+			_emit_hp(actor.is_player_side)
+			actor.substitute_hp = maxi(1, int(actor.get_max_hp() / 4))
+			await _request_pivot_out(actor, true)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_STEEL_ROLLER, MoveStruct.MoveEffect.EFFECT_ICE_SPINNER:
+			# Limpia terreno (el daño se hace por power si no es status)
+			if terrain != TerrainId.TERRAIN_NONE:
+				terrain = TerrainId.TERRAIN_NONE
+				terrain_turns = 0
+				message.emit("¡El terreno desapareció!")
+				await _wait(0.5)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_KNOCK_OFF:
+			if target != null and target.pokemon != null and target.pokemon.held_item != Items.ItemId.ITEM_NONE:
+				target.pokemon.held_item = Items.ItemId.ITEM_NONE
+				message.emit("¡%s perdió su objeto!" % target.get_display_name())
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_STEAL_ITEM:
+			if target == null or target.pokemon == null or actor.pokemon == null:
+				return
+			if target.pokemon.held_item != Items.ItemId.ITEM_NONE and actor.pokemon.held_item == Items.ItemId.ITEM_NONE:
+				actor.pokemon.held_item = target.pokemon.held_item
+				target.pokemon.held_item = Items.ItemId.ITEM_NONE
+				message.emit("¡%s robó el objeto!" % actor.get_display_name())
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_YAWN:
+			if target == null or target.pokemon == null or target.pokemon.has_status():
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.6)
+				return
+			target.set_meta("yawn_turns", 1)
+			message.emit("¡%s bostezó!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FOLLOW_ME:
+			actor.set_meta("follow_me", true)
+			message.emit("¡%s se convirtió en el centro de atención!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HELPING_HAND:
+			if target != null:
+				target.set_meta("helping_hand", true)
+				message.emit("¡%s está listo para ayudar!" % actor.get_display_name())
+				await _wait(0.7)
+			return
+
 	message.emit("¡Pero no tuvo ningún efecto todavía!")
 	await _wait(0.8)
 
@@ -3299,6 +3814,30 @@ func _apply_damaging_move_effect(actor: BattleBattler, target: BattleBattler, mo
 			# U-turn / Volt Switch / Flip Turn: pivot tras golpear
 			if not actor.is_fainted():
 				await _request_pivot_out(actor)
+		MoveStruct.MoveEffect.EFFECT_KNOCK_OFF:
+			if target.pokemon != null and target.pokemon.held_item != Items.ItemId.ITEM_NONE:
+				target.pokemon.held_item = Items.ItemId.ITEM_NONE
+				message.emit("¡%s perdió su objeto!" % target.get_display_name())
+				await _wait(0.5)
+		MoveStruct.MoveEffect.EFFECT_STEAL_ITEM:
+			if target.pokemon != null and actor.pokemon != null \
+					and target.pokemon.held_item != Items.ItemId.ITEM_NONE \
+					and actor.pokemon.held_item == Items.ItemId.ITEM_NONE:
+				actor.pokemon.held_item = target.pokemon.held_item
+				target.pokemon.held_item = Items.ItemId.ITEM_NONE
+				message.emit("¡%s robó el objeto!" % actor.get_display_name())
+				await _wait(0.5)
+		MoveStruct.MoveEffect.EFFECT_STEEL_ROLLER, MoveStruct.MoveEffect.EFFECT_ICE_SPINNER:
+			if terrain != TerrainId.TERRAIN_NONE:
+				terrain = TerrainId.TERRAIN_NONE
+				terrain_turns = 0
+				message.emit("¡El terreno desapareció!")
+				await _wait(0.5)
+		MoveStruct.MoveEffect.EFFECT_SMACK_DOWN:
+			target.magnet_rise_turns = 0
+			target.semi_invulnerable = false
+			message.emit("¡%s fue derribado!" % target.get_display_name())
+			await _wait(0.45)
 
 func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
 	if caused_by_foe and stages < 0 and _side_for(battler).mist_turns > 0:
