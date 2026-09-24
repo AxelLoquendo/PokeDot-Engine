@@ -110,12 +110,16 @@ static func compute_hit(
 			return result
 
 	var level: int = attacker.pokemon.level
-	var power: int = maxi(move.power, 1)
+	var power: int = maxi(MovePowerResolver.effective_power(attacker, defender, move, weather), 1)
 
 	var atk: int
 	var def: int
 	if move.category == MoveStruct.DamageCategory.PHYSICAL:
-		if AbilityRuntime.has(defender, AbilityId.Id.UNAWARE) and not ignore_defender_ability:
+		if MovePowerResolver.uses_defense_as_attack(move):
+			atk = attacker.get_effective_stat(PokemonInstance.Stat.DEFENSE)
+		elif MovePowerResolver.uses_target_attack(move):
+			atk = defender.get_effective_stat(PokemonInstance.Stat.ATTACK)
+		elif AbilityRuntime.has(defender, AbilityId.Id.UNAWARE) and not ignore_defender_ability:
 			atk = maxi(attacker.pokemon.get_stat(PokemonInstance.Stat.ATTACK), 1)
 			_note_def(result, AbilityId.Id.UNAWARE)
 		else:
@@ -139,7 +143,9 @@ static func compute_hit(
 			_note_def(result, AbilityId.Id.UNAWARE)
 		else:
 			atk = attacker.get_effective_stat(PokemonInstance.Stat.SP_ATTACK)
-		if AbilityRuntime.has(attacker, AbilityId.Id.UNAWARE):
+		if MovePowerResolver.uses_defense_vs_special(move):
+			def = defender.get_effective_stat(PokemonInstance.Stat.DEFENSE)
+		elif AbilityRuntime.has(attacker, AbilityId.Id.UNAWARE):
 			def = maxi(defender.pokemon.get_stat(PokemonInstance.Stat.SP_DEFENSE), 1)
 			_note_atk(result, AbilityId.Id.UNAWARE)
 		else:
@@ -189,11 +195,12 @@ static func compute_hit(
 		defender.pokemon.get_type_2()
 	)
 
-	if eff <= 0.0 and AbilityRuntime.bypasses_ghost_immunity(attacker, move) \
+	if eff <= 0.0 and (AbilityRuntime.bypasses_ghost_immunity(attacker, move) or defender.is_identified) \
 			and (defender.pokemon.get_type_1() == PokemonData.Type.TYPE_GHOST \
 				or defender.pokemon.get_type_2() == PokemonData.Type.TYPE_GHOST):
 		eff = 1.0
-		_note_atk(result, AbilityId.Id.SCRAPPY)
+		if AbilityRuntime.bypasses_ghost_immunity(attacker, move):
+			_note_atk(result, AbilityId.Id.SCRAPPY)
 
 	if not ignore_defender_ability and eff > 0.0 and eff <= 1.0 \
 			and AbilityRuntime.blocks_unless_super_effective(defender):
