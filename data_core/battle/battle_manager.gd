@@ -470,6 +470,15 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 	if nuevo == null or nuevo.is_fainted():
 		message.emit("¡No puede combatir!")
 		return
+	# Mean Look etc.: no cambiar salvo cambio forzado (KO / free_switch)
+	if not free_switch:
+		var blocker: BattleBattler = player
+		if slot_index >= 0 and slot_index < player_actives.size():
+			blocker = player_actives[slot_index]
+		if blocker != null and blocker.cannot_escape:
+			message.emit("¡%s no puede ser cambiado!" % blocker.get_display_name())
+			await _wait(0.8)
+			return
 
 	# No sacar a alguien que ya está en el campo
 	for b_check: BattleBattler in player_actives:
@@ -558,6 +567,10 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 
 func player_choose_run() -> void:
 	if not is_running:
+		return
+	if player != null and player.cannot_escape:
+		message.emit("¡No puedes escapar!")
+		await _wait(0.8)
 		return
 	if AbilityRuntime.prevents_escape(enemy, player):
 		message.emit("¡No puedes escapar!")
@@ -1199,9 +1212,14 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 	actions = _sort_actions(actions)
 
 	for battler: BattleBattler in get_all_actives():
+		# Si no usó Protect/Endure el turno anterior, reinicia la racha
+		if not battler.used_protect_this_turn:
+			battler.protect_counter = 0
+		battler.used_protect_this_turn = false
 		battler.protect_active = false
 		battler.protect_kind = ProtectResolver.Kind.NONE
 		battler.endure_active = false
+		battler.destiny_bond_active = false  # Destiny Bond solo dura el turno
 		battler.just_switched_in = false
 
 	for action: BattleAction in actions:
@@ -1315,6 +1333,44 @@ func _process_end_of_turn() -> void:
 				continue
 		if not battler.is_fainted() and battler.leech_seeded:
 			await _apply_leech_seed_tick(battler)
+		if not battler.is_fainted() and battler.has_nightmare:
+			if battler.pokemon != null and battler.pokemon.status == PokemonInstance.Status.SLEEP:
+				@warning_ignore("integer_division")
+				var nm: int = maxi(1, int(battler.get_max_hp() / 4))
+				battler.apply_damage(nm)
+				_emit_hp(battler.is_player_side)
+				message.emit("¡%s está atrapado en una pesadilla!" % battler.get_display_name())
+				await _wait(0.55)
+				if battler.is_fainted():
+					message.emit("¡%s se debilitó!" % battler.get_display_name())
+					await _wait(0.7)
+					continue
+			else:
+				battler.has_nightmare = false
+		if not battler.is_fainted() and battler.is_cursed:
+			@warning_ignore("integer_division")
+			var cd: int = maxi(1, int(battler.get_max_hp() / 4))
+			battler.apply_damage(cd)
+			_emit_hp(battler.is_player_side)
+			message.emit("¡%s es consumido por la maldición!" % battler.get_display_name())
+			await _wait(0.55)
+			if battler.is_fainted():
+				message.emit("¡%s se debilitó!" % battler.get_display_name())
+				await _wait(0.7)
+				continue
+		# Contadores de control
+		if battler.taunt_turns > 0:
+			battler.taunt_turns -= 1
+		if battler.disable_turns > 0:
+			battler.disable_turns -= 1
+			if battler.disable_turns <= 0:
+				battler.disable_move_id = -1
+		if battler.encore_turns > 0:
+			battler.encore_turns -= 1
+			if battler.encore_turns <= 0:
+				battler.encore_move_id = -1
+		if battler.heal_block_turns > 0:
+			battler.heal_block_turns -= 1
 
 	for battler: BattleBattler in get_all_actives():
 		if not battler.is_fainted():
@@ -1419,6 +1475,12 @@ func _execute_move(action: BattleAction) -> void:
 	var target: BattleBattler = action.target
 	var move: MoveData = action.move
 
+	# Control de movimiento (Taunt / Disable / Encore / Torment)
+	if move != null and not _move_allowed_by_volatiles(actor, move):
+		message.emit("¡%s no puede usar %s!" % [actor.get_display_name(), move.move_name])
+		await _wait(0.8)
+		return
+
 	# Multi-combate: resolver lista de objetivos según MoveTarget
 	if move != null and is_multi_battle() and not action.has_meta("_multi_resolved"):
 		var multi_targets: Array[BattleBattler] = resolve_move_targets(actor, move, target)
@@ -1518,6 +1580,10 @@ func _execute_move(action: BattleAction) -> void:
 
 	message.emit("%s usó %s!" % [actor.get_display_name(), move.move_name])
 	await _wait(0.9)
+	if move != null:
+		actor.last_move_used_id = int(move.move_id)
+		if actor.torment_active:
+			actor.torment_last_move_id = int(move.move_id)
 
 	if TwoTurnResolver.is_recharge_move(move):
 		actor.must_recharge = true
@@ -1555,20 +1621,26 @@ func _execute_move(action: BattleAction) -> void:
 
 	# Movimientos de estado:
 	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
-		if not DamageCalculator.check_hit(move, actor, target):
+		var status_hits: bool = _is_locked_on(actor, target) or DamageCalculator.check_hit(move, actor, target)
+		if _is_locked_on(actor, target):
+			target.locked_on_by_side = -1
+		if not status_hits:
 			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
 			await _wait(0.8)
 			return
 		await _apply_status_move_effect(actor, target, move)
 		return
 
-	if not DamageCalculator.check_hit(move, actor, target):
+	var locked: bool = _is_locked_on(actor, target)
+	if not (locked or DamageCalculator.check_hit(move, actor, target)):
 		if move.effect == MoveStruct.MoveEffect.EFFECT_RECOIL_IF_MISS:
 			await _apply_crash_damage(actor)
 		else:
 			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
 			await _wait(0.8)
 		return
+	if locked:
+		target.locked_on_by_side = -1
 
 	var hit_count: int = DamageCalculator.roll_hit_count(move)
 	if move.is_multi_hit and AbilityRuntime.always_max_hits(actor):
@@ -1647,7 +1719,7 @@ func _execute_move(action: BattleAction) -> void:
 			result.damage = target.pokemon.current_hp - 1
 
 		var hp_before_hit: int = target.pokemon.current_hp if target.pokemon else 0
-		var dealt: int = target.apply_damage(result.damage)
+		var dealt: int = _apply_damage_to_target(target, result.damage)
 		total_dealt += dealt
 		hits_landed += 1
 		_emit_hp(target.is_player_side)
@@ -1864,7 +1936,7 @@ func _execute_special_or_standard_damage(
 			return
 		message.emit("¡Es un golpe fulminante!")
 		await _wait(0.5)
-		var ohko_dealt: int = target.apply_damage(ohko_dmg)
+		var ohko_dealt: int = _apply_damage_to_target(target, ohko_dmg)
 		_emit_hp(target.is_player_side)
 		message.emit("Hizo %d PS de daño." % ohko_dealt)
 		await _wait(0.6)
@@ -1895,7 +1967,7 @@ func _execute_special_or_standard_damage(
 		if probe.effectiveness <= 0.0 or not probe.ability_immunity.is_empty():
 			await _handle_ability_immunity(target, move, probe)
 			return
-		var dealt_f: int = target.apply_damage(fixed)
+		var dealt_f: int = _apply_damage_to_target(target, fixed)
 		_emit_hp(target.is_player_side)
 		message.emit("Hizo %d PS de daño." % dealt_f)
 		await _wait(0.6)
@@ -2025,6 +2097,17 @@ func _apply_recoil(actor: BattleBattler, damage_dealt: int, percent: int) -> voi
 		await _wait(0.8)
 
 func _trigger_ko_ability(actor: BattleBattler, fainted_target: BattleBattler) -> void:
+	# Destiny Bond: el debilitado tenía el vínculo activo → el atacante cae
+	if fainted_target != null and fainted_target.destiny_bond_active and actor != null and not actor.is_fainted():
+		message.emit("¡%s se llevó a %s con él!" % [
+			fainted_target.get_display_name(), actor.get_display_name()
+		])
+		await _wait(0.7)
+		actor.apply_damage(actor.get_current_hp())
+		_emit_hp(actor.is_player_side)
+		message.emit("¡%s se debilitó!" % actor.get_display_name())
+		await _wait(0.8)
+		fainted_target.destiny_bond_active = false
 	if actor != null and not actor.is_fainted():
 		match AbilityRuntime.get_id(actor):
 			AbilityId.Id.MOXIE, AbilityId.Id.CHILLING_NEIGH:
@@ -2088,6 +2171,7 @@ func _resolve_protect_move(actor: BattleBattler, move: MoveData) -> void:
 		return
 
 	actor.protect_counter += 1
+	actor.used_protect_this_turn = true
 
 	if move.effect == MoveStruct.MoveEffect.EFFECT_ENDURE:
 		actor.endure_active = true
@@ -2510,8 +2594,218 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			await _wait(0.7)
 			return
 
+		MoveStruct.MoveEffect.EFFECT_MEAN_LOOK:
+			if target == null or target.is_fainted():
+				return
+			if target.cannot_escape:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			# Ghost type often immune to trapping - classic rule
+			var ml_t1: PokemonData.Type = target.pokemon.get_type_1() if target.pokemon else PokemonData.Type.TYPE_NONE
+			var ml_t2: PokemonData.Type = target.pokemon.get_type_2() if target.pokemon else PokemonData.Type.TYPE_NONE
+			if ml_t1 == PokemonData.Type.TYPE_GHOST or ml_t2 == PokemonData.Type.TYPE_GHOST:
+				message.emit("¡No afectó a %s!" % target.get_display_name())
+				await _wait(0.7)
+				return
+			target.cannot_escape = true
+			message.emit("¡%s no puede escapar!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_PERISH_SONG:
+			var any_set: bool = false
+			for b: BattleBattler in get_all_actives():
+				if b == null or b.is_fainted():
+					continue
+				# Soundproof
+				if AbilityRuntime.has(b, AbilityId.Id.SOUNDPROOF):
+					continue
+				if b.perish_count < 0:
+					b.perish_count = 3
+					any_set = true
+			if any_set:
+				message.emit("¡Todos los Pokémon que oyeron la canción perecerán en 3 turnos!")
+			else:
+				message.emit("¡Pero falló!")
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_DESTINY_BOND:
+			actor.destiny_bond_active = true
+			message.emit("¡%s intenta llevarse a su enemigo consigo!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TAUNT:
+			if target == null or target.is_fainted():
+				return
+			if target.taunt_turns > 0:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			target.taunt_turns = 3
+			message.emit("¡%s cayó en la trampa de Provocación!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TORMENT:
+			if target == null or target.is_fainted():
+				return
+			target.torment_active = true
+			message.emit("¡%s fue víctima de Tormento!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_DISABLE:
+			if target == null or target.is_fainted() or target.last_move_used_id < 0:
+				message.emit("¡Pero falló!")
+				await _wait(0.7)
+				return
+			target.disable_move_id = target.last_move_used_id
+			target.disable_turns = 4
+			message.emit("¡Se anuló el último movimiento de %s!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ENCORE:
+			if target == null or target.is_fainted() or target.last_move_used_id < 0:
+				message.emit("¡Pero falló!")
+				await _wait(0.7)
+				return
+			target.encore_move_id = target.last_move_used_id
+			target.encore_turns = 3
+			message.emit("¡%s recibió un Otra Vez!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HEAL_BLOCK:
+			if target == null or target.is_fainted():
+				return
+			target.heal_block_turns = 5
+			message.emit("¡%s no podrá curarse!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_LOCK_ON:
+			if target == null or target.is_fainted():
+				return
+			target.locked_on_by_side = 1 if actor.is_player_side else 0
+			message.emit("¡%s se fijó en %s!" % [actor.get_display_name(), target.get_display_name()])
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SUBSTITUTE:
+			@warning_ignore("integer_division")
+			var sub_cost: int = maxi(1, int(actor.get_max_hp() / 4))
+			if actor.get_current_hp() <= sub_cost or actor.substitute_hp > 0:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			actor.apply_damage(sub_cost)
+			_emit_hp(actor.is_player_side)
+			actor.substitute_hp = sub_cost
+			message.emit("¡%s creó un sustituto!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_NIGHTMARE:
+			if target == null or target.pokemon == null:
+				return
+			if target.pokemon.status != PokemonInstance.Status.SLEEP:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			target.has_nightmare = true
+			message.emit("¡%s empezó a tener pesadillas!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_CURSE:
+			# Ghost: curse target; else +Atk +Def -Spe
+			var c1: PokemonData.Type = actor.pokemon.get_type_1() if actor.pokemon else PokemonData.Type.TYPE_NONE
+			var c2: PokemonData.Type = actor.pokemon.get_type_2() if actor.pokemon else PokemonData.Type.TYPE_NONE
+			var is_ghost: bool = c1 == PokemonData.Type.TYPE_GHOST or c2 == PokemonData.Type.TYPE_GHOST
+			if is_ghost:
+				if target == null or target.is_fainted() or target.is_cursed:
+					message.emit("¡No surtirá efecto!")
+					await _wait(0.7)
+					return
+				@warning_ignore("integer_division")
+				var curse_cost: int = maxi(1, int(actor.get_max_hp() / 2))
+				actor.apply_damage(curse_cost)
+				_emit_hp(actor.is_player_side)
+				target.is_cursed = true
+				message.emit("¡%s maldijo a %s!" % [actor.get_display_name(), target.get_display_name()])
+				await _wait(0.7)
+			else:
+				await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, -1)
+				await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+				await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SPITE:
+			if target == null or target.pokemon == null or target.last_move_used_id < 0:
+				message.emit("¡Pero falló!")
+				await _wait(0.7)
+				return
+			var spite_done: bool = false
+			for slot: PokemonMoveSlot in target.pokemon.moves:
+				if slot != null and int(slot.move_id) == target.last_move_used_id:
+					slot.current_pp = maxi(0, slot.current_pp - 4)
+					spite_done = true
+					break
+			if spite_done:
+				message.emit("¡Los PP del último movimiento de %s bajaron!" % target.get_display_name())
+			else:
+				message.emit("¡Pero falló!")
+			await _wait(0.7)
+			return
+
 	message.emit("¡Pero no tuvo ningún efecto todavía!")
 	await _wait(0.8)
+
+
+
+
+## Daño al mon o a su sustituto. Devuelve daño real al cuerpo (0 si solo el sub).
+func _apply_damage_to_target(target: BattleBattler, amount: int) -> int:
+	if target == null or amount <= 0:
+		return 0
+	if target.substitute_hp > 0:
+		var absorbed: int = mini(target.substitute_hp, amount)
+		target.substitute_hp -= absorbed
+		if target.substitute_hp <= 0:
+			target.substitute_hp = 0
+			message.emit("¡El sustituto de %s se debilitó!" % target.get_display_name())
+		else:
+			message.emit("¡El sustituto de %s absorbió el daño!" % target.get_display_name())
+		return 0
+	return target.apply_damage(amount)
+
+
+func _move_allowed_by_volatiles(actor: BattleBattler, move: MoveData) -> bool:
+	if actor == null or move == null:
+		return false
+	var mid: int = int(move.move_id)
+	if actor.taunt_turns > 0 and move.category == MoveStruct.DamageCategory.STATUS:
+		return false
+	if actor.disable_turns > 0 and actor.disable_move_id == mid:
+		return false
+	if actor.encore_turns > 0 and actor.encore_move_id >= 0 and mid != actor.encore_move_id:
+		return false
+	if actor.torment_active and actor.torment_last_move_id == mid and actor.last_move_used_id == mid:
+		# Torment: no repetir el mismo que el turno anterior; last se actualiza al usar
+		# Al inicio del turno, torment_last_move_id es el del turno pasado
+		return false
+	return true
+
+
+func _is_locked_on(actor: BattleBattler, target: BattleBattler) -> bool:
+	if actor == null or target == null:
+		return false
+	var side: int = 1 if actor.is_player_side else 0
+	return target.locked_on_by_side == side
 
 
 func _apply_leech_seed_tick(battler: BattleBattler) -> void:
@@ -2546,6 +2840,10 @@ func _apply_leech_seed_tick(battler: BattleBattler) -> void:
 func _heal_move_target(target: BattleBattler, move: MoveData) -> void:
 	if target == null or target.pokemon == null or target.is_fainted() or target.get_current_hp() >= target.get_max_hp():
 		message.emit("¡No surtirá efecto!")
+		await _wait(0.7)
+		return
+	if target.heal_block_turns > 0:
+		message.emit("¡%s no puede curarse!" % target.get_display_name())
 		await _wait(0.7)
 		return
 	var fraction: float = 0.5

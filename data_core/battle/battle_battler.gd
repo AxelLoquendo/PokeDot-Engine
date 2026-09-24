@@ -29,6 +29,34 @@ var must_recharge: bool = false
 var focus_energy: bool = false
 ## Drenadoras: pierde 1/8 PS al final del turno; cura al sembrador del lado rival.
 var leech_seeded: bool = false
+## Mean Look / Block / Spider Web: no puede huir ni cambiar (salvo efectos de forzado).
+var cannot_escape: bool = false
+## Destiny Bond: si el usuario debilita a este mon el mismo turno... se debilita el atacante.
+var destiny_bond_active: bool = false
+## Taunt: solo puede usar movimientos de daño (turnos restantes).
+var taunt_turns: int = 0
+## Torment: no puede repetir el mismo movimiento.
+var torment_active: bool = false
+var torment_last_move_id: int = -1
+## Disable: un move_id bloqueado N turnos.
+var disable_turns: int = 0
+var disable_move_id: int = -1
+## Encore: obligado a un movimiento.
+var encore_turns: int = 0
+var encore_move_id: int = -1
+## Heal Block: no puede curar.
+var heal_block_turns: int = 0
+## Lock-On / Mind Reader: el siguiente ataque del marcador siempre acierta.
+var locked_on_by_side: int = -1  # 1 = player marcó a este, 0 = enemy
+## Substitute HP (0 = sin sustituto).
+var substitute_hp: int = 0
+## Nightmare (solo si duerme).
+var has_nightmare: bool = false
+## Curse (Ghost): pierde PS al final del turno.
+var is_cursed: bool = false
+## Último movimiento usado este combate (para Disable/Encore/Torment).
+var last_move_used_id: int = -1
+var used_protect_this_turn: bool = false
 
 ## ─── Habilidades (ver ability_runtime.gd) ────────────────
 ## Si es false, la habilidad de este Pokémon no tiene ningún efecto
@@ -127,6 +155,22 @@ func _reset_stages() -> void:
 	must_recharge = false
 	focus_energy = false
 	leech_seeded = false
+	cannot_escape = false
+	destiny_bond_active = false
+	taunt_turns = 0
+	torment_active = false
+	torment_last_move_id = -1
+	disable_turns = 0
+	disable_move_id = -1
+	encore_turns = 0
+	encore_move_id = -1
+	heal_block_turns = 0
+	locked_on_by_side = -1
+	substitute_hp = 0
+	has_nightmare = false
+	is_cursed = false
+	last_move_used_id = -1
+	used_protect_this_turn = false
 	clear_illusion()
 	is_transformed = false
 	transform_backup.clear()
