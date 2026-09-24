@@ -1235,6 +1235,8 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 		battler.destiny_bond_active = false  # Destiny Bond solo dura el turno
 		battler.just_switched_in = false
 		battler.set_meta("acted_this_turn", false)
+		battler.beak_blast_armed = false
+		# shell trap se mantiene hasta activarse o fin de turno
 		battler.set_meta("took_damage_this_turn", false)
 		battler.set_meta("stats_dropped_this_turn", false)
 		if battler.has_meta("follow_me"):
@@ -1353,6 +1355,22 @@ func _process_end_of_turn() -> void:
 				continue
 		if not battler.is_fainted() and battler.leech_seeded:
 			await _apply_leech_seed_tick(battler)
+		if not battler.is_fainted() and battler.future_sight_turns >= 0:
+			battler.future_sight_turns -= 1
+			if battler.future_sight_turns < 0 and battler.future_sight_damage > 0:
+				var fsd: int = battler.future_sight_damage
+				battler.future_sight_damage = 0
+				message.emit("¡¡%s fue alcanzado por un ataque del pasado!!" % battler.get_display_name())
+				await _wait(0.5)
+				_apply_damage_to_target(battler, fsd)
+				_emit_hp(battler.is_player_side)
+				await _wait(0.55)
+				if battler.is_fainted():
+					message.emit("¡%s se debilitó!" % battler.get_display_name())
+					await _wait(0.7)
+					continue
+		if battler.uproar_turns > 0:
+			battler.uproar_turns -= 1
 		if not battler.is_fainted() and (battler.has_ingrain or battler.has_aqua_ring):
 			@warning_ignore("integer_division")
 			var ring_heal: int = maxi(1, int(battler.get_max_hp() / 16))
@@ -1449,6 +1467,9 @@ func _process_end_of_turn() -> void:
 			message.emit("¡El Zona Extraña se disipó!")
 			await _wait(0.5)
 	if gravity_turns > 0:
+		for _gb: BattleBattler in get_all_actives():
+			if _gb != null:
+				_gb.set_meta("gravity_active", true)
 		gravity_turns -= 1
 		if gravity_turns == 0:
 			message.emit("¡La gravedad volvió a la normalidad!")
@@ -1663,6 +1684,51 @@ func _execute_move(action: BattleAction) -> void:
 			message.emit("¡No surtirá efecto!")
 			await _wait(0.7)
 			return
+
+	# ─── Chequeos de efectos especiales pre-daño ───
+	if move.effect == MoveStruct.MoveEffect.EFFECT_FOCUS_PUNCH:
+		if bool(actor.get_meta("took_damage_this_turn", false)):
+			message.emit("¡%s perdió la concentración!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+	if move.effect == MoveStruct.MoveEffect.EFFECT_SUCKER_PUNCH:
+		# Falla si el objetivo no iba a usar un movimiento de daño
+		if target != null and bool(target.get_meta("acted_this_turn", false)):
+			message.emit("¡Pero falló!")
+			await _wait(0.6)
+			return
+		if target != null and bool(target.get_meta("chose_status_move", false)):
+			message.emit("¡Pero falló!")
+			await _wait(0.6)
+			return
+	if move.effect == MoveStruct.MoveEffect.EFFECT_BELCH:
+		if actor.last_berry_id == 0:
+			message.emit("¡No surtirá efecto!")
+			await _wait(0.6)
+			return
+	if move.effect == MoveStruct.MoveEffect.EFFECT_FIRST_TURN_ONLY:
+		if not actor.just_switched_in:
+			message.emit("¡Pero falló!")
+			await _wait(0.6)
+			return
+	if move.effect == MoveStruct.MoveEffect.EFFECT_POLTERGEIST:
+		if target == null or target.pokemon == null or target.pokemon.held_item == Items.ItemId.ITEM_NONE:
+			message.emit("¡Pero falló!")
+			await _wait(0.6)
+			return
+	if move.effect == MoveStruct.MoveEffect.EFFECT_LAST_RESORT:
+		# Requiere que todos los otros moves se hayan usado al menos una vez (simplificado: meta)
+		if not bool(actor.get_meta("last_resort_ok", false)):
+			message.emit("¡Pero falló!")
+			await _wait(0.6)
+			return
+	if move.effect == MoveStruct.MoveEffect.EFFECT_UPPER_HAND:
+		# Solo funciona si el rival usa prioridad (simplificado)
+		if target != null and not bool(target.get_meta("chose_priority_move", false)):
+			message.emit("¡Pero falló!")
+			await _wait(0.6)
+			return
+
 	if actor.laser_focus:
 		actor.focus_energy = true  # sube crit stage de forma simple
 		actor.laser_focus = false
@@ -1859,7 +1925,15 @@ func _execute_move(action: BattleAction) -> void:
 			await _apply_drain(actor, target, dealt, move.drain_percent)
 
 		if AbilityRuntime.move_makes_contact(actor, move):
+			if target.beak_blast_armed:
+				await _apply_status(actor, PokemonInstance.Status.BURN)
+				target.beak_blast_armed = false
 			await AbilityRuntime.on_contact_hit(actor, target, move, self)
+			if target.shell_trap_armed and move.category == MoveStruct.DamageCategory.PHYSICAL:
+				target.shell_trap_armed = false
+				message.emit("¡La trampa de concha de %s se activó!" % target.get_display_name())
+				await _wait(0.4)
+
 		if not actor.is_fainted() and not target.is_fainted() and dealt > 0:
 			await AbilityRuntime.try_magician(actor, target, self)
 		if actor.is_fainted():
@@ -2139,7 +2213,15 @@ func _execute_special_or_standard_damage(
 		if move.recoil_percent > 0 and not actor.is_fainted():
 			await _apply_recoil(actor, dealt, move.recoil_percent)
 		if AbilityRuntime.move_makes_contact(actor, move):
+			if target.beak_blast_armed:
+				await _apply_status(actor, PokemonInstance.Status.BURN)
+				target.beak_blast_armed = false
 			await AbilityRuntime.on_contact_hit(actor, target, move, self)
+			if target.shell_trap_armed and move.category == MoveStruct.DamageCategory.PHYSICAL:
+				target.shell_trap_armed = false
+				message.emit("¡La trampa de concha de %s se activó!" % target.get_display_name())
+				await _wait(0.4)
+
 		if dealt > 0 and not target.is_fainted():
 			await AbilityRuntime.on_damaged_by_move(target, actor, move, result.critical, self)
 
@@ -2970,6 +3052,9 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 
 		MoveStruct.MoveEffect.EFFECT_GRAVITY:
 			gravity_turns = 5
+			for _g2: BattleBattler in get_all_actives():
+				if _g2 != null:
+					_g2.set_meta("gravity_active", true)
 			message.emit("¡La gravedad se intensificó!")
 			await _wait(0.7)
 			return
@@ -3704,6 +3789,353 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			return
 
 
+
+		MoveStruct.MoveEffect.EFFECT_PROTECT, MoveStruct.MoveEffect.EFFECT_MAT_BLOCK, MoveStruct.MoveEffect.EFFECT_RECHARGE:
+			# Protect/Endure vía ProtectResolver; Recharge vía TwoTurnResolver
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SOLAR_BEAM, MoveStruct.MoveEffect.EFFECT_SKY_DROP:
+			# Carga vía TwoTurnResolver
+			return
+
+		MoveStruct.MoveEffect.EFFECT_BIDE:
+			if actor.bide_turns < 0:
+				actor.bide_turns = 2
+				actor.bide_damage = 0
+				message.emit("¡%s está contando energía!" % actor.get_display_name())
+				await _wait(0.7)
+			else:
+				var bd: int = actor.bide_damage * 2
+				actor.bide_turns = -1
+				actor.bide_damage = 0
+				if target != null and bd > 0:
+					_apply_damage_to_target(target, bd)
+					_emit_hp(target.is_player_side)
+					message.emit("¡%s liberó energía!" % actor.get_display_name())
+					await _wait(0.7)
+				else:
+					message.emit("¡Pero falló!")
+					await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FUTURE_SIGHT:
+			if target == null:
+				return
+			if target.future_sight_turns >= 0:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			# Daño diferido aproximado
+			var fs_probe: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, weather, false)
+			target.future_sight_damage = maxi(1, fs_probe.damage)
+			target.future_sight_turns = 2
+			target.future_sight_from_player = actor.is_player_side
+			message.emit("¡%s previó un ataque!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_UPROAR:
+			actor.uproar_turns = 3
+			if actor.pokemon != null and actor.pokemon.status == PokemonInstance.Status.SLEEP:
+				actor.pokemon.cure_status()
+			message.emit("¡%s armó un alboroto!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_BEAK_BLAST:
+			actor.beak_blast_armed = true
+			message.emit("¡%s está cargando Beak Blast!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SHELL_TRAP:
+			actor.shell_trap_armed = true
+			message.emit("¡%s preparó una trampa de concha!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_DARK_VOID:
+			if target != null:
+				await _apply_status(target, PokemonInstance.Status.SLEEP)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_REVIVAL_BLESSING:
+			message.emit("¡%s rezó por un aliado caído!" % actor.get_display_name())
+			await _wait(0.7)
+			# UI debe elegir mon KO; aquí intentamos el primero del party
+			var party: Array = player_party if actor.is_player_side else enemy_party
+			for mon: PokemonInstance in party:
+				if mon != null and mon.is_fainted():
+					mon.current_hp = maxi(1, int(mon.max_hp / 2))
+					message.emit("¡%s recuperó la conciencia!" % mon.get_display_name())
+					await _wait(0.7)
+					break
+			return
+
+		MoveStruct.MoveEffect.EFFECT_PSYCHO_SHIFT:
+			if actor.pokemon == null or target == null or target.pokemon == null:
+				return
+			if not actor.pokemon.has_status() or target.pokemon.has_status():
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.6)
+				return
+			var st: PokemonInstance.Status = actor.pokemon.status
+			actor.pokemon.cure_status()
+			await _apply_status(target, st)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_BESTOW:
+			if actor.pokemon == null or target == null or target.pokemon == null:
+				return
+			if actor.pokemon.held_item == Items.ItemId.ITEM_NONE or target.pokemon.held_item != Items.ItemId.ITEM_NONE:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			target.pokemon.held_item = actor.pokemon.held_item
+			actor.pokemon.held_item = Items.ItemId.ITEM_NONE
+			message.emit("¡%s entregó su objeto!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_AFTER_YOU:
+			if target != null:
+				target.set_meta("quash_priority", 99)
+				message.emit("¡%s dejará pasar a %s!" % [actor.get_display_name(), target.get_display_name()])
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_QUASH:
+			if target != null:
+				target.set_meta("quash_priority", -99)
+				message.emit("¡%s fue aplazado!" % target.get_display_name())
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ION_DELUGE:
+			set_meta("ion_deluge", true)
+			message.emit("¡Una lluvia de iones electrificó el campo!")
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ELECTRIFY:
+			if target != null:
+				target.set_meta("electrify", true)
+				message.emit("¡Los movimientos de %s serán Eléctricos!" % target.get_display_name())
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_POWDER:
+			if target != null:
+				target.set_meta("powder", true)
+				message.emit("¡%s fue cubierto de polvo!" % target.get_display_name())
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_MAGIC_COAT:
+			actor.set_meta("magic_coat", true)
+			message.emit("¡%s esperó con Capa Mágica!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SNATCH:
+			actor.set_meta("snatch", true)
+			message.emit("¡%s espera para robar un efecto!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ASSIST:
+			await _apply_metronome(actor, target)  # pool del party sería ideal
+			return
+
+		MoveStruct.MoveEffect.EFFECT_NATURE_POWER:
+			# Usa un move según terreno
+			var np: MoveData = move
+			message.emit("¡Poder Natural se convirtió en un ataque!")
+			await _wait(0.5)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ME_FIRST:
+			await _apply_copy_last_move(actor, target, true)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_INSTRUCT:
+			if target == null or target.last_move_used_id < 0:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			var im: MoveData = MoveDatabase.get_move(target.last_move_used_id as Moves.MoveId)
+			if im == null:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			var ia: BattleAction = BattleAction.make_move(target, actor, im, -1)
+			ia.set_meta("_skip_pp", true)
+			ia.set_meta("_multi_resolved", true)
+			await _execute_move(ia)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_THIRD_TYPE:
+			if target == null:
+				return
+			# Tipo extra (simplificado: Grass como Forest's Curse default data-driven)
+			target.battle_type_2 = int(PokemonData.Type.TYPE_GRASS)
+			message.emit("¡%s ganó el tipo Planta!" % target.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_REVELATION_DANCE:
+			# Tipo = tipo primario del usuario (AbilityRuntime.effective_move_type suele cubrirlo)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HIDDEN_POWER:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_CONVERSION_2:
+			if target == null or target.last_move_used_id < 0:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			var c2: MoveData = MoveDatabase.get_move(target.last_move_used_id as Moves.MoveId)
+			if c2 != null:
+				actor.battle_type_1 = int(c2.type)
+				actor.battle_type_2 = -1
+				message.emit("¡%s cambió de tipo!" % actor.get_display_name())
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_AURA_WHEEL:
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 1)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_EXTREME_EVOBOOST:
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 2)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 2)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_RAGING_BULL:
+			# Rompe screens del rival
+			_side_for(target if target else enemy).clear_screens()
+			message.emit("¡Las barreras del rival se rompieron!")
+			await _wait(0.5)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_PHOTON_GEYSER:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_STRUGGLE:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_RECOIL:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TERRAIN_BOOST:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FUSION_COMBO:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_REFLECT_DAMAGE:
+			# Counter/Mirror Coat style - needs last damage taken
+			if actor.get_meta("last_physical_damage", 0) > 0 and target != null:
+				var rd: int = int(actor.get_meta("last_physical_damage")) * 2
+				_apply_damage_to_target(target, rd)
+				_emit_hp(target.is_player_side)
+				message.emit("¡%s devolvió el golpe!" % actor.get_display_name())
+				await _wait(0.7)
+			else:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TRIPLE_KICK:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_PURSUIT:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_EARTHQUAKE:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_BEAT_UP:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FOCUS_PUNCH:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_PLEDGE:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FLING:
+			if actor.pokemon == null or actor.pokemon.held_item == Items.ItemId.ITEM_NONE:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			actor.pokemon.held_item = Items.ItemId.ITEM_NONE
+			message.emit("¡%s lanzó su objeto!" % actor.get_display_name())
+			await _wait(0.6)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_NATURAL_GIFT:
+			if actor.pokemon == null or actor.pokemon.held_item == Items.ItemId.ITEM_NONE:
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			actor.pokemon.held_item = Items.ItemId.ITEM_NONE
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ROUND:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SUCKER_PUNCH:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SUPER_EFFECTIVE_ON_ARG:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TWO_TYPED_MOVE:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_CHANGE_TYPE_ON_ITEM:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SYNCHRONOISE:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FAIL_IF_NOT_ARG_TYPE:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_GRASSY_GLIDE:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SNIPE_SHOT:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_HYPERSPACE_FURY:
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, -1)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_POPULATION_BOMB:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_IVY_CUDGEL:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FICKLE_BEAM:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_UPPER_HAND:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SHELL_SIDE_ARM:
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SPECIES_POWER_OVERRIDE:
+			return
+
+
 	message.emit("¡Pero no tuvo ningún efecto todavía!")
 	await _wait(0.8)
 
@@ -3715,6 +4147,8 @@ func _apply_damage_to_target(target: BattleBattler, amount: int) -> int:
 	if target == null or amount <= 0:
 		return 0
 	target.set_meta("took_damage_this_turn", true)
+	if target.bide_turns > 0:
+		target.bide_damage += amount
 	target.set_meta("times_hit", int(target.get_meta("times_hit", 0)) + 1)
 	if target.substitute_hp > 0:
 		var absorbed: int = mini(target.substitute_hp, amount)

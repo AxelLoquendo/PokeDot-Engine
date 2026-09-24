@@ -75,6 +75,18 @@ var laser_focus: bool = false
 ## Wish recibido (turnos hasta curar, -1 inactivo).
 var wish_turns: int = -1
 var wish_hp: int = 0
+## Bide: turnos restantes (-1 inactivo), daño acumulado.
+var bide_turns: int = -1
+var bide_damage: int = 0
+## Future Sight / Doom Desire pendientes sobre este mon.
+var future_sight_turns: int = -1
+var future_sight_damage: int = 0
+var future_sight_from_player: bool = true
+## Beak Blast / Shell Trap armado este turno.
+var beak_blast_armed: bool = false
+var shell_trap_armed: bool = false
+## Uproar turns.
+var uproar_turns: int = 0
 
 ## ─── Habilidades (ver ability_runtime.gd) ────────────────
 ## Si es false, la habilidad de este Pokémon no tiene ningún efecto
@@ -199,6 +211,13 @@ func _reset_stages() -> void:
 	laser_focus = false
 	wish_turns = -1
 	wish_hp = 0
+	bide_turns = -1
+	bide_damage = 0
+	future_sight_turns = -1
+	future_sight_damage = 0
+	beak_blast_armed = false
+	shell_trap_armed = false
+	uproar_turns = 0
 	clear_illusion()
 	is_transformed = false
 	transform_backup.clear()

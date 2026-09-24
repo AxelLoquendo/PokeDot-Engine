@@ -242,6 +242,20 @@ static func compute_hit(
 		if AbilityRuntime.has(attacker, AbilityId.Id.SNIPER):
 			_note_atk(result, AbilityId.Id.SNIPER)
 
+	# Efectos de daño especiales (fase restante)
+	if move.effect == MoveStruct.MoveEffect.EFFECT_COLLISION_COURSE and eff > 1.0:
+		base *= 1.3333
+	if move.effect == MoveStruct.MoveEffect.EFFECT_HYDRO_STEAM \
+			and weather == AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
+		base *= 1.5  # sol potencia Hydro Steam en vez de cortar Agua
+	if move.effect == MoveStruct.MoveEffect.EFFECT_GRAV_APPLE and attacker.get_meta("gravity_active", false):
+		base *= 1.5
+	if move.effect == MoveStruct.MoveEffect.EFFECT_TERRAIN_PULSE:
+		# tipo/potencia de terreno se dejan; potencia ya puede venir x2 del resolver
+		pass
+	if defender.get_meta("tar_shot", false) and move.type == PokemonData.Type.TYPE_FIRE:
+		base *= 2.0
+
 	var random: float = randf_range(0.85, 1.0)
 	var damage: int = int(floor(base * stab * eff * crit_mult * random))
 

@@ -105,6 +105,21 @@ static func effective_power(
 			return mini(350, base + 50 * int(actor.get_meta("times_hit", 0)))
 		MoveStruct.MoveEffect.EFFECT_TRUMP_CARD:
 			return 40
+		MoveStruct.MoveEffect.EFFECT_GRAV_APPLE:
+			# x1.5 en gravedad
+			return int(base * 1.5) if false else base  # gravity se aplica en BM via meta
+		MoveStruct.MoveEffect.EFFECT_HYDRO_STEAM:
+			return base  # clima en calculador
+		MoveStruct.MoveEffect.EFFECT_COLLISION_COURSE:
+			return base  # SE se aplica en calculador x1.333
+		MoveStruct.MoveEffect.EFFECT_FICKLE_BEAM:
+			return base * 2 if randi_range(1, 100) <= 30 else base
+		MoveStruct.MoveEffect.EFFECT_TERRAIN_PULSE:
+			return base * 2  # si hay terreno; BM/calc ajusta
+		MoveStruct.MoveEffect.EFFECT_CHLOROBLAST:
+			return base  # recoil por flag
+		MoveStruct.MoveEffect.EFFECT_SHELL_SIDE_ARM:
+			return base
 		_:
 			return base
 
