@@ -1544,6 +1544,15 @@ func _execute_move(action: BattleAction) -> void:
 		await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 2)
 		return
 
+	# Daño especial (OHKO, fijo, nivel, etc.) — no usa la fórmula normal
+	if FixedDamageResolver.is_special_damage_effect(move.effect) \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_FALSE_SWIPE \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_DREAM_EATER \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_ABSORB:
+		await _execute_special_or_standard_damage(actor, target, move, action)
+		await _execute_multi_rest(action, actor, move)
+		return
+
 	# Movimientos de estado:
 	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
 		if not DamageCalculator.check_hit(move, actor, target):
@@ -1554,8 +1563,11 @@ func _execute_move(action: BattleAction) -> void:
 		return
 
 	if not DamageCalculator.check_hit(move, actor, target):
-		message.emit("¡El ataque de %s falló!" % actor.get_display_name())
-		await _wait(0.8)
+		if move.effect == MoveStruct.MoveEffect.EFFECT_RECOIL_IF_MISS:
+			await _apply_crash_damage(actor)
+		else:
+			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
+			await _wait(0.8)
 		return
 
 	var hit_count: int = DamageCalculator.roll_hit_count(move)
@@ -1820,6 +1832,185 @@ func _handle_ability_immunity(target: BattleBattler, move: MoveData, result: Dam
 		_:
 			message.emit("¡La habilidad de %s anuló el ataque!" % target.get_display_name())
 			await _wait(0.8)
+
+
+## OHKO / daño fijo / potencia variable + False Swipe / Dream Eater / Absorb.
+func _execute_special_or_standard_damage(
+	actor: BattleBattler,
+	target: BattleBattler,
+	move: MoveData,
+	action: BattleAction
+) -> void:
+	if actor == null or target == null or move == null:
+		return
+
+	# Dream Eater: solo dormidos
+	if move.effect == MoveStruct.MoveEffect.EFFECT_DREAM_EATER:
+		if target.pokemon == null or target.pokemon.status != PokemonInstance.Status.SLEEP:
+			message.emit("¡No surtirá efecto!")
+			await _wait(0.7)
+			return
+
+	# OHKO: precisión propia
+	if move.effect == MoveStruct.MoveEffect.EFFECT_OHKO:
+		if not FixedDamageResolver.ohko_hits(actor, target):
+			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+		var ohko_dmg: int = FixedDamageResolver.compute_fixed(actor, target, move)
+		if ohko_dmg < 0:
+			message.emit("¡No surtirá efecto!")
+			await _wait(0.7)
+			return
+		message.emit("¡Es un golpe fulminante!")
+		await _wait(0.5)
+		var ohko_dealt: int = target.apply_damage(ohko_dmg)
+		_emit_hp(target.is_player_side)
+		message.emit("Hizo %d PS de daño." % ohko_dealt)
+		await _wait(0.6)
+		if target.is_fainted():
+			message.emit("¡%s se debilitó!" % target.get_display_name())
+			await _wait(0.8)
+			await _trigger_ko_ability(actor, target)
+		return
+
+	# Fijo puro (sin fórmula)
+	if move.effect == MoveStruct.MoveEffect.EFFECT_FIXED_PERCENT_DAMAGE \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_FIXED_HP_DAMAGE \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_LEVEL_DAMAGE \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_PSYWAVE \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_ENDEAVOR \
+			or move.effect == MoveStruct.MoveEffect.EFFECT_FINAL_GAMBIT:
+		if not DamageCalculator.check_hit(move, actor, target):
+			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+		var fixed: int = FixedDamageResolver.compute_fixed(actor, target, move)
+		if fixed <= 0:
+			message.emit("¡No surtirá efecto!")
+			await _wait(0.7)
+			return
+		# Tipo inmunidad básica vía compute_hit type check: si effectiveness 0, fallar
+		var probe: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, weather, false)
+		if probe.effectiveness <= 0.0 or not probe.ability_immunity.is_empty():
+			await _handle_ability_immunity(target, move, probe)
+			return
+		var dealt_f: int = target.apply_damage(fixed)
+		_emit_hp(target.is_player_side)
+		message.emit("Hizo %d PS de daño." % dealt_f)
+		await _wait(0.6)
+		if move.effect == MoveStruct.MoveEffect.EFFECT_FINAL_GAMBIT:
+			actor.apply_damage(actor.get_current_hp())
+			_emit_hp(actor.is_player_side)
+			message.emit("¡%s se debilitó por su propio ataque!" % actor.get_display_name())
+			await _wait(0.7)
+		if target.is_fainted():
+			message.emit("¡%s se debilitó!" % target.get_display_name())
+			await _wait(0.8)
+			await _trigger_ko_ability(actor, target)
+		if actor.is_fainted():
+			message.emit("¡%s se debilitó!" % actor.get_display_name())
+			await _wait(0.8)
+		return
+
+	# Flail / Return / Frustration / Absorb / Dream Eater / False Swipe: fórmula con potencia o flags
+	if not DamageCalculator.check_hit(move, actor, target):
+		if move.effect == MoveStruct.MoveEffect.EFFECT_RECOIL_IF_MISS:
+			await _apply_crash_damage(actor)
+		else:
+			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
+			await _wait(0.8)
+		return
+
+	var hit_count: int = DamageCalculator.roll_hit_count(move)
+	if move.is_multi_hit and AbilityRuntime.always_max_hits(actor):
+		hit_count = move.max_hits
+	var total_dealt: int = 0
+	var last_result: DamageCalculator.HitResult = null
+	var hits_landed: int = 0
+	var saved_power: int = move.power
+	var var_pow: int = FixedDamageResolver.variable_power(actor, move)
+	if var_pow > 0:
+		move.power = var_pow
+
+	for i: int in hit_count:
+		if target.is_fainted() or actor.is_fainted():
+			break
+		var screens: bool = _side_for(target).has_screen(move.category == MoveStruct.DamageCategory.PHYSICAL)
+		if AbilityRuntime.has(actor, AbilityId.Id.INFILTRATOR):
+			screens = false
+		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(
+			actor, target, move, weather, screens
+		)
+		last_result = result
+		if result.effectiveness <= 0.0 or not result.ability_immunity.is_empty():
+			if i == 0:
+				await _handle_ability_immunity(target, move, result)
+			break
+		var dealt: int = result.damage
+		if move.effect == MoveStruct.MoveEffect.EFFECT_FALSE_SWIPE and dealt >= target.get_current_hp():
+			dealt = maxi(0, target.get_current_hp() - 1)
+		if dealt <= 0:
+			continue
+		dealt = target.apply_damage(dealt)
+		total_dealt += dealt
+		hits_landed += 1
+		_emit_hp(target.is_player_side)
+		if result.critical:
+			message.emit("¡Un golpe crítico!")
+			await _wait(0.35)
+		if move.is_multi_hit:
+			message.emit("¡Golpe %d!" % hits_landed)
+			await _wait(0.25)
+		else:
+			message.emit("Hizo %d PS de daño." % dealt)
+			await _wait(0.45)
+		if move.drain_percent > 0 or move.effect == MoveStruct.MoveEffect.EFFECT_ABSORB \
+				or move.effect == MoveStruct.MoveEffect.EFFECT_DREAM_EATER:
+			var drain_pct: int = move.drain_percent if move.drain_percent > 0 else 50
+			await _apply_drain(actor, target, dealt, drain_pct)
+		if move.recoil_percent > 0 and not actor.is_fainted():
+			await _apply_recoil(actor, dealt, move.recoil_percent)
+		if AbilityRuntime.move_makes_contact(actor, move):
+			await AbilityRuntime.on_contact_hit(actor, target, move, self)
+		if dealt > 0 and not target.is_fainted():
+			await AbilityRuntime.on_damaged_by_move(target, actor, move, result.critical, self)
+
+	if var_pow > 0:
+		move.power = saved_power
+
+	if hits_landed > 1:
+		message.emit("¡%d veces!" % hits_landed)
+		await _wait(0.5)
+	if target.is_fainted():
+		message.emit("¡%s se debilitó!" % target.get_display_name())
+		await _wait(0.8)
+		await _trigger_ko_ability(actor, target)
+	if actor.is_fainted():
+		message.emit("¡%s se debilitó!" % actor.get_display_name())
+		await _wait(0.8)
+	await _apply_damaging_move_effect(actor, target, move, total_dealt)
+	if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE \
+			and move.secondary_chance > 0 and not target.is_fainted() and hits_landed > 0:
+		if randi_range(1, 100) <= move.secondary_chance:
+			await _apply_secondary_effect(actor, target, move)
+
+
+func _apply_crash_damage(actor: BattleBattler) -> void:
+	if actor == null or actor.is_fainted():
+		return
+	message.emit("¡El ataque de %s falló!" % actor.get_display_name())
+	await _wait(0.5)
+	@warning_ignore("integer_division")
+	var crash: int = maxi(1, int(actor.get_max_hp() / 2))
+	actor.apply_damage(crash)
+	_emit_hp(actor.is_player_side)
+	message.emit("¡%s se hizo daño al fallar!" % actor.get_display_name())
+	await _wait(0.7)
+	if actor.is_fainted():
+		message.emit("¡%s se debilitó!" % actor.get_display_name())
+		await _wait(0.8)
+
 
 func _apply_recoil(actor: BattleBattler, damage_dealt: int, percent: int) -> void:
 	if damage_dealt <= 0 or AbilityRuntime.blocks_indirect_damage(actor) or AbilityRuntime.blocks_recoil(actor):
