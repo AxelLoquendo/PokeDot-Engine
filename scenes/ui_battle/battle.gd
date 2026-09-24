@@ -737,7 +737,7 @@ func _on_bag_pressed() -> void:
 	current_menu = MenuState.BUSY
 	action_menu.visible = false
 	_bag_ui = BAG_SCENE.instantiate() as BagUI
-	_bag_ui.layer = 120
+	_bag_ui.layer = 100  # por debajo del Multichoice (200)
 	get_tree().root.add_child(_bag_ui)
 	_bag_ui.setup(data, BagUI.BagMode.BATTLE)
 	_bag_ui.battle_item_selected.connect(_on_battle_item_selected)

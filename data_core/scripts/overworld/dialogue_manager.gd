@@ -8,13 +8,19 @@ var _multichoice_layer: CanvasLayer = null
 func _ready() -> void:
 	call_deferred("_ensure_multichoice")
 
+## Capa por encima de Bag (120), Party, etc. Evita que el menú de acciones
+## quede invisible aunque el input siga funcionando.
+const MULTICHOICE_LAYER: int = 200
+
 func _ensure_multichoice() -> MultichoiceBox:
 	if _multichoice_layer != null and is_instance_valid(_multichoice_layer):
+		_multichoice_layer.layer = MULTICHOICE_LAYER
 		return _multichoice_layer.get_node_or_null("MultichoiceBox") as MultichoiceBox
 	var tree: SceneTree = get_tree()
 	if tree == null or tree.root == null:
 		return null
 	_multichoice_layer = MULTICHOICE_SCENE.instantiate() as CanvasLayer
+	_multichoice_layer.layer = MULTICHOICE_LAYER
 	tree.root.add_child(_multichoice_layer)
 	return _multichoice_layer.get_node_or_null("MultichoiceBox") as MultichoiceBox
 

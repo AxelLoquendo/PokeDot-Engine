@@ -49,6 +49,12 @@ enum TerrainId {
 var terrain: int = TerrainId.TERRAIN_NONE
 var terrain_turns: int = 0
 var weather_primal: bool = false
+## Turnos transcurridos (1 en el primer turno de acciones; Quick/Timer Ball).
+var battle_turn_count: int = 0
+## Contexto opcional de captura (el encuentro/mapa puede setearlos).
+var is_underwater: bool = false
+var is_dark_place: bool = false
+var is_fishing: bool = false
 
 ## ─── Formato de combate (1v1 / 1v2 / 2v1 / 2v2) ─────────
 enum BattleFormat {
@@ -88,6 +94,10 @@ func start_battle(
 	terrain = TerrainId.TERRAIN_NONE
 	terrain_turns = 0
 	weather_primal = false
+	battle_turn_count = 0
+	is_underwater = false
+	is_dark_place = false
+	is_fishing = false
 	_pending_player_actions.clear()
 	exp_participants.clear()
 	_exp_awarded_to.clear()
@@ -562,6 +572,11 @@ func player_choose_item(item_id: Items.ItemId, target: PokemonInstance = null, m
 	if item == null:
 		message.emit("¡Ese objeto no tiene datos válidos!")
 		return
+	# Balls: battle_usage CAPTURE o effect THROW_BALL
+	if item.battle_usage == Items.BattleUsage.CAPTURE \
+			or item.effect == Items.EffectItem.EFFECT_ITEM_THROW_BALL:
+		await _attempt_capture(item, data)
+		return
 	if await _try_use_battle_field_item(item, data):
 		return
 	var recipient: PokemonInstance = target if target != null else player.pokemon
@@ -589,8 +604,109 @@ func player_choose_item(item_id: Items.ItemId, target: PokemonInstance = null, m
 ## concreto. Devuelve true cuando el objeto fue reconocido, incluso si no pudo
 ## surtir efecto, para impedir que el resolvedor de objetos de equipo lo trate
 ## como un objeto de curación.
+
+## Intento de captura (solo combates salvajes). Sin animación: mensajes + sacudidas lógicas.
+
+## Nombre del mapa actual para met_location (summary screen).
+func _current_map_display_name() -> String:
+	var controller: CharacterController = BattleSession.player_controller
+	if controller == null:
+		return "Desconocido"
+	var mapa: MapAttributes = controller.mapa_raiz as MapAttributes
+	if mapa != null and not mapa.map_name.is_empty():
+		return mapa.map_name
+	return "Desconocido"
+
+func _attempt_capture(item: ItemData, data: CharacterPlayer) -> void:
+	if item == null or data == null:
+		return
+	if is_trainer_battle:
+		message.emit("¡El entrenador bloqueó la Poké Ball!")
+		await _wait(0.8)
+		return
+	var target: BattleBattler = enemy
+	if target == null or target.pokemon == null or target.is_fainted():
+		message.emit("¡No hay ningún Pokémon al que lanzar la Ball!")
+		await _wait(0.7)
+		return
+	if data.party.size() >= 6:
+		message.emit("¡Tu equipo está completo! No puedes capturar más Pokémon.")
+		await _wait(0.9)
+		return
+
+	var ball_id: Items.ItemId = item.item_id
+	var ball_name: String = item.item_name if not item.item_name.is_empty() else "Poké Ball"
+	message.emit("¡Usaste una %s!" % ball_name)
+	await _wait(0.6)
+
+	# Consumir siempre (éxito o fallo)
+	if not item.not_consumed:
+		data.bag.remove_item(ball_id)
+
+	var already_owned: bool = false
+	if data.pokedex != null:
+		already_owned = data.pokedex.is_owned(int(target.pokemon.species_id))
+
+	var turn_for_ball: int = maxi(1, battle_turn_count)
+	var cap: CaptureResolver.Result = CaptureResolver.attempt(
+		ball_id,
+		target.pokemon,
+		self,
+		turn_for_ball,
+		already_owned,
+		player
+	)
+
+	if not cap.success:
+		for _s: int in range(cap.shakes):
+			message.emit("…")
+			await _wait(0.35)
+		message.emit(cap.message)
+		await _wait(0.8)
+		if AbilityRuntime.try_ball_fetch(data.party, ball_id):
+			message.emit("¡Ball Fetch recuperó la Ball!")
+			await _wait(0.6)
+		await _resolve_item_enemy_turn()
+		return
+
+	for _s2: int in range(3):
+		message.emit("…")
+		await _wait(0.35)
+	message.emit("¡Listo! ¡%s atrapado!" % target.get_display_name())
+	await _wait(0.9)
+
+	var caught: PokemonInstance = CaptureResolver.clone_for_party(target.pokemon, ball_id)
+	if caught == null:
+		message.emit("Error al guardar el Pokémon capturado.")
+		await _wait(0.7)
+		await _resolve_item_enemy_turn()
+		return
+
+	caught.set_provenance(_current_map_display_name(), caught.level)
+	if not data.add_pokemon(caught):
+		message.emit("¡Tu equipo está completo!")
+		await _wait(0.8)
+		message.emit("No hay espacio. El Pokémon se escapó al no poder guardarlo.")
+		await _wait(0.8)
+		await _resolve_item_enemy_turn()
+		return
+
+	var dex: PokedexData = data.ensure_pokedex()
+	dex.set_owned(int(caught.species_id))
+
+	message.emit("¡%s se unió a tu equipo!" % caught.get_display_name())
+	await _wait(0.9)
+
+	_cleanup_battle_pokemon()
+	is_running = false
+	battle_ended.emit(true)
+
+
 func _try_use_battle_field_item(item: ItemData, data: CharacterPlayer) -> bool:
 	match item.effect:
+		Items.EffectItem.EFFECT_ITEM_THROW_BALL:
+			await _attempt_capture(item, data)
+			return true
 		Items.EffectItem.EFFECT_ITEM_SET_MIST:
 			var side: FieldSide = _side_for(player)
 			if side.mist_turns > 0:
@@ -1138,6 +1254,7 @@ func _request_replacements_if_needed() -> void:
 			return
 
 func _process_end_of_turn() -> void:
+	battle_turn_count += 1
 	if weather != AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
 		await _apply_weather_damage()
 
