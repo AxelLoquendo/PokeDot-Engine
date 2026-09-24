@@ -27,6 +27,8 @@ var semi_invulnerable: bool = false
 var must_recharge: bool = false
 ## Focus Energy aumenta dos niveles la probabilidad de golpe crítico.
 var focus_energy: bool = false
+## Drenadoras: pierde 1/8 PS al final del turno; cura al sembrador del lado rival.
+var leech_seeded: bool = false
 
 ## ─── Habilidades (ver ability_runtime.gd) ────────────────
 ## Si es false, la habilidad de este Pokémon no tiene ningún efecto
@@ -124,6 +126,7 @@ func _reset_stages() -> void:
 	semi_invulnerable = false
 	must_recharge = false
 	focus_energy = false
+	leech_seeded = false
 	clear_illusion()
 	is_transformed = false
 	transform_backup.clear()

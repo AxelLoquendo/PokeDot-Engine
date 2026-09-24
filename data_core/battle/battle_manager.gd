@@ -1312,6 +1312,9 @@ func _process_end_of_turn() -> void:
 			if battler.is_fainted():
 				message.emit("¡%s se debilitó!" % battler.get_display_name())
 				await _wait(0.8)
+				continue
+		if not battler.is_fainted() and battler.leech_seeded:
+			await _apply_leech_seed_tick(battler)
 
 	for battler: BattleBattler in get_all_actives():
 		if not battler.is_fainted():
@@ -1945,6 +1948,16 @@ func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: 
 		await _apply_confusion(target)
 		return
 
+	if move.secondary_effect == MoveStruct.SecondaryEffect.MOVE_EFFECT_LEECH_SEED:
+		if target != null and not target.is_fainted() and not target.leech_seeded:
+			var t1: PokemonData.Type = target.pokemon.get_type_1() if target.pokemon else PokemonData.Type.TYPE_NONE
+			var t2: PokemonData.Type = target.pokemon.get_type_2() if target.pokemon else PokemonData.Type.TYPE_NONE
+			if t1 != PokemonData.Type.TYPE_GRASS and t2 != PokemonData.Type.TYPE_GRASS:
+				target.leech_seeded = true
+				message.emit("¡%s fue infectado por Drenadoras!" % target.get_display_name())
+				await _wait(0.55)
+		return
+
 	var status_value: int = MoveEffectResolver.get_secondary_status(move.secondary_effect)
 	if status_value >= 0:
 		await _apply_status(target, status_value as PokemonInstance.Status)
@@ -2151,8 +2164,192 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			await _wait(0.8)
 			return
 
+		MoveStruct.MoveEffect.EFFECT_MIST:
+			var mist_side: FieldSide = _side_for(actor)
+			if mist_side.mist_turns > 0:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			mist_side.mist_turns = 5
+			message.emit("¡El equipo de %s quedó envuelto en neblina!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FOCUS_ENERGY:
+			if actor.focus_energy:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			actor.focus_energy = true
+			message.emit("¡%s se concentró!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SAFEGUARD:
+			var sg: FieldSide = _side_for(actor)
+			if sg.safeguard_turns > 0:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			sg.safeguard_turns = 5
+			message.emit("¡El equipo de %s quedó protegido por Velo Sagrado!" % actor.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_LEECH_SEED:
+			if target == null or target.is_fainted():
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			if target.leech_seeded:
+				message.emit("¡%s ya está drenado!" % target.get_display_name())
+				await _wait(0.7)
+				return
+			var seed_t1: PokemonData.Type = target.pokemon.get_type_1() if target.pokemon else PokemonData.Type.TYPE_NONE
+			var seed_t2: PokemonData.Type = target.pokemon.get_type_2() if target.pokemon else PokemonData.Type.TYPE_NONE
+			if seed_t1 == PokemonData.Type.TYPE_GRASS or seed_t2 == PokemonData.Type.TYPE_GRASS:
+				message.emit("¡No afectó a %s!" % target.get_display_name())
+				await _wait(0.7)
+				return
+			target.leech_seeded = true
+			message.emit("¡%s fue infectado por Drenadoras!" % target.get_display_name())
+			await _wait(0.7)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_GROWTH:
+			var g_stages: int = 2 if weather == AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT else 1
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, g_stages)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, g_stages)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_COIL:
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			var coil_acc: int = AbilityRuntime.adjust_own_stage_change(actor, 1)
+			var coil_actual: int = actor.modify_accuracy_stage(coil_acc)
+			if coil_actual > 0:
+				message.emit("¡La Precisión de %s subió!" % actor.get_display_name())
+			elif coil_actual == 0:
+				message.emit("¡La Precisión de %s ya no puede cambiar más!" % actor.get_display_name())
+			await _wait(0.5)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TICKLE:
+			await _apply_stat_change(target, PokemonInstance.Stat.ATTACK, -1, true)
+			await _apply_stat_change(target, PokemonInstance.Stat.DEFENSE, -1, true)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_NOBLE_ROAR:
+			await _apply_stat_change(target, PokemonInstance.Stat.ATTACK, -1, true)
+			await _apply_stat_change(target, PokemonInstance.Stat.SP_ATTACK, -1, true)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_VENOM_DRENCH:
+			if target == null or target.pokemon == null:
+				return
+			var vd_st: PokemonInstance.Status = target.pokemon.status
+			if vd_st != PokemonInstance.Status.POISON and vd_st != PokemonInstance.Status.TOXIC:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			await _apply_stat_change(target, PokemonInstance.Stat.ATTACK, -1, true)
+			await _apply_stat_change(target, PokemonInstance.Stat.SP_ATTACK, -1, true)
+			await _apply_stat_change(target, PokemonInstance.Stat.SPEED, -1, true)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TOXIC_THREAD:
+			await _apply_stat_change(target, PokemonInstance.Stat.SPEED, -1, true)
+			await _apply_status(target, PokemonInstance.Status.POISON)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SWAGGER:
+			await _apply_stat_change(target, PokemonInstance.Stat.ATTACK, 2, true)
+			await _apply_confusion(target)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_FLATTER:
+			await _apply_stat_change(target, PokemonInstance.Stat.SP_ATTACK, 1, true)
+			await _apply_confusion(target)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_BELLY_DRUM:
+			if actor.get_current_hp() <= int(actor.get_max_hp() / 2) or actor.get_current_hp() <= 1:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			var drum_cost: int = int(actor.get_max_hp() / 2)
+			actor.apply_damage(drum_cost)
+			_emit_hp(actor.is_player_side)
+			actor.stage_attack = 6
+			message.emit("¡%s redujo sus PS y maximizó su Ataque!" % actor.get_display_name())
+			await _wait(0.8)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_VICTORY_DANCE:
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, 1)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TAKE_HEART:
+			if actor.pokemon != null and actor.pokemon.has_status():
+				actor.pokemon.cure_status()
+				message.emit("¡%s se curó del problema de estado!" % actor.get_display_name())
+				await _wait(0.6)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 1)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, 1)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_DECORATE:
+			await _apply_stat_change(receiver, PokemonInstance.Stat.ATTACK, 2)
+			await _apply_stat_change(receiver, PokemonInstance.Stat.SP_ATTACK, 2)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ATTRACT:
+			if target == null or target.pokemon == null or actor.pokemon == null:
+				return
+			var ag: PokemonData.Gender = actor.pokemon.gender
+			var tg: PokemonData.Gender = target.pokemon.gender
+			if ag == PokemonData.Gender.GENDERLESS or tg == PokemonData.Gender.GENDERLESS or ag == tg:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			target.infatuated_by_player_side = 1 if actor.is_player_side else 0
+			message.emit("¡%s se enamoró de %s!" % [target.get_display_name(), actor.get_display_name()])
+			await _wait(0.7)
+			return
+
 	message.emit("¡Pero no tuvo ningún efecto todavía!")
 	await _wait(0.8)
+
+
+func _apply_leech_seed_tick(battler: BattleBattler) -> void:
+	if battler == null or battler.is_fainted() or not battler.leech_seeded:
+		return
+	var dmg: int = maxi(1, int(battler.get_max_hp() / 8))
+	battler.apply_damage(dmg)
+	_emit_hp(battler.is_player_side)
+	message.emit("¡Las Drenadoras restaron PS a %s!" % battler.get_display_name())
+	await _wait(0.55)
+	var healers: Array[BattleBattler] = get_side_actives(not battler.is_player_side)
+	if not healers.is_empty():
+		var healer: BattleBattler = healers[0]
+		if healer != null and not healer.is_fainted() and healer.pokemon != null:
+			if AbilityRuntime.has(healer, AbilityId.Id.LIQUID_OOZE):
+				healer.apply_damage(dmg)
+				_emit_hp(healer.is_player_side)
+				await ability_announce(healer)
+				message.emit("¡%s resultó herido por Lodo Líquido!" % healer.get_display_name())
+			else:
+				var room: int = healer.get_max_hp() - healer.get_current_hp()
+				if room > 0:
+					healer.pokemon.apply_heal(mini(dmg, room))
+					_emit_hp(healer.is_player_side)
+					message.emit("¡%s recuperó PS con Drenadoras!" % healer.get_display_name())
+			await _wait(0.5)
+	if battler.is_fainted():
+		message.emit("¡%s se debilitó!" % battler.get_display_name())
+		await _wait(0.7)
 
 
 func _heal_move_target(target: BattleBattler, move: MoveData) -> void:
@@ -2202,6 +2399,10 @@ func _apply_damaging_move_effect(actor: BattleBattler, target: BattleBattler, mo
 	match move.effect:
 		MoveStruct.MoveEffect.EFFECT_RAPID_SPIN:
 			_side_for(actor).clear_hazards()
+			if actor.leech_seeded:
+				actor.leech_seeded = false
+				message.emit("¡%s se liberó de las Drenadoras!" % actor.get_display_name())
+				await _wait(0.45)
 			message.emit("¡%s eliminó los peligros de su lado!" % actor.get_display_name())
 			await _wait(0.5)
 		MoveStruct.MoveEffect.EFFECT_STONE_AXE:

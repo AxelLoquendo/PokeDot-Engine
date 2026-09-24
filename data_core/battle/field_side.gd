@@ -6,6 +6,8 @@ var light_screen_turns: int = 0
 var aurora_veil_turns: int = 0
 ## Evita que el rival reduzca estadísticas durante cinco turnos.
 var mist_turns: int = 0
+## Evita status no volátiles del rival durante 5 turnos.
+var safeguard_turns: int = 0
 var spikes_layers: int = 0
 var toxic_spikes_layers: int = 0
 var stealth_rock: bool = false
@@ -23,6 +25,7 @@ func tick_down() -> void:
 	light_screen_turns = maxi(light_screen_turns - 1, 0)
 	aurora_veil_turns = maxi(aurora_veil_turns - 1, 0)
 	mist_turns = maxi(mist_turns - 1, 0)
+	safeguard_turns = maxi(safeguard_turns - 1, 0)
 
 
 func clear_screens() -> void:

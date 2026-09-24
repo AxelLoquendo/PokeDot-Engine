@@ -96,3 +96,52 @@ static func is_confuse_effect(effect: MoveStruct.MoveEffect, secondary: MoveStru
 
 static func is_flinch_effect(secondary: MoveStruct.SecondaryEffect) -> bool:
 	return secondary == MoveStruct.SecondaryEffect.MOVE_EFFECT_FLINCH
+
+
+## Varios stages a la vez (fase 1). Cada entrada: [Stat, stages].
+static func get_multi_stat_effect(effect: MoveStruct.MoveEffect) -> Array:
+	match effect:
+		MoveStruct.MoveEffect.EFFECT_COIL:
+			return [
+				[PokemonInstance.Stat.ATTACK, 1],
+				[PokemonInstance.Stat.DEFENSE, 1],
+			]
+		MoveStruct.MoveEffect.EFFECT_TICKLE:
+			return [
+				[PokemonInstance.Stat.ATTACK, -1],
+				[PokemonInstance.Stat.DEFENSE, -1],
+			]
+		MoveStruct.MoveEffect.EFFECT_NOBLE_ROAR:
+			return [
+				[PokemonInstance.Stat.ATTACK, -1],
+				[PokemonInstance.Stat.SP_ATTACK, -1],
+			]
+		MoveStruct.MoveEffect.EFFECT_VENOM_DRENCH:
+			return [
+				[PokemonInstance.Stat.ATTACK, -1],
+				[PokemonInstance.Stat.SP_ATTACK, -1],
+				[PokemonInstance.Stat.SPEED, -1],
+			]
+		MoveStruct.MoveEffect.EFFECT_GROWTH:
+			return [
+				[PokemonInstance.Stat.ATTACK, 1],
+				[PokemonInstance.Stat.SP_ATTACK, 1],
+			]
+		MoveStruct.MoveEffect.EFFECT_VICTORY_DANCE:
+			return [
+				[PokemonInstance.Stat.ATTACK, 1],
+				[PokemonInstance.Stat.DEFENSE, 1],
+				[PokemonInstance.Stat.SPEED, 1],
+			]
+		MoveStruct.MoveEffect.EFFECT_TAKE_HEART:
+			return [
+				[PokemonInstance.Stat.SP_ATTACK, 1],
+				[PokemonInstance.Stat.SP_DEFENSE, 1],
+			]
+		MoveStruct.MoveEffect.EFFECT_DECORATE:
+			return [
+				[PokemonInstance.Stat.ATTACK, 2],
+				[PokemonInstance.Stat.SP_ATTACK, 2],
+			]
+		_:
+			return []
