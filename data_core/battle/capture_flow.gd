@@ -53,20 +53,18 @@ static func _species_display_name(mon: PokemonInstance) -> String:
 	return mon.get_display_name()
 
 
-## ¿Ponerle un mote? → LineEdit; Enter acepta (vacío = nombre de especie).
+## ¿Ponerle un mote? → LineEdit + botón Aceptar (PC, Android y teclado virtual).
 static func prompt_nickname(tree: SceneTree, mon: PokemonInstance) -> void:
 	if tree == null or mon == null:
 		return
 
 	var species_name: String = _species_display_name(mon)
 
-	# Multichoice: Sí / No
 	var choice: int = await DialogueManager.choose(
 		["Sí", "No"],
 		Vector2(468, 280)
 	)
 	if choice != 0:
-		# No: dejar sin mote (nombre de especie)
 		mon.nickname = ""
 		return
 
@@ -77,7 +75,7 @@ static func prompt_nickname(tree: SceneTree, mon: PokemonInstance) -> void:
 	tree.root.add_child(layer)
 
 	var panel: PanelContainer = PanelContainer.new()
-	panel.custom_minimum_size = Vector2(440, 140)
+	panel.custom_minimum_size = Vector2(440, 180)
 	layer.add_child(panel)
 
 	var margin: MarginContainer = MarginContainer.new()
@@ -88,7 +86,7 @@ static func prompt_nickname(tree: SceneTree, mon: PokemonInstance) -> void:
 	panel.add_child(margin)
 
 	var vbox: VBoxContainer = VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 8)
+	vbox.add_theme_constant_override("separation", 10)
 	margin.add_child(vbox)
 
 	var title: Label = Label.new()
@@ -99,46 +97,60 @@ static func prompt_nickname(tree: SceneTree, mon: PokemonInstance) -> void:
 	var edit: LineEdit = LineEdit.new()
 	edit.max_length = NAME_MAX_LEN
 	edit.placeholder_text = species_name
-	edit.custom_minimum_size = Vector2(380, 36)
+	edit.custom_minimum_size = Vector2(380, 40)
 	edit.clear_button_enabled = true
+	edit.virtual_keyboard_enabled = true
+	edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_DEFAULT
 	vbox.add_child(edit)
 
 	var hint: Label = Label.new()
-	hint.text = "Enter: aceptar   (vacío = nombre de la especie)"
+	hint.text = "Vacío = nombre de la especie"
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(hint)
+
+	var btn_row: HBoxContainer = HBoxContainer.new()
+	btn_row.alignment = BoxContainer.ALIGNMENT_CENTER
+	btn_row.add_theme_constant_override("separation", 16)
+	vbox.add_child(btn_row)
+
+	var btn_ok: Button = Button.new()
+	btn_ok.text = "Aceptar"
+	btn_ok.custom_minimum_size = Vector2(140, 44)
+	btn_row.add_child(btn_ok)
 
 	await tree.process_frame
 	var vp: Vector2 = tree.root.get_viewport().get_visible_rect().size
 	panel.position = Vector2(
 		(vp.x - panel.size.x) * 0.5,
-		(vp.y - panel.size.y) * 0.38
+		(vp.y - panel.size.y) * 0.32
 	)
 	edit.grab_focus()
-	edit.caret_column = edit.text.length()
 
 	var finished: bool = false
 	var submitted_text: String = ""
 
 	edit.text_submitted.connect(func(text: String) -> void:
-		if finished:
-			return
-		finished = true
-		submitted_text = text
+		if not finished:
+			finished = true
+			submitted_text = text
+	)
+	btn_ok.pressed.connect(func() -> void:
+		if not finished:
+			finished = true
+			submitted_text = edit.text
 	)
 
 	while not finished:
 		await tree.process_frame
-		# Enter vía ui_accept por si el LineEdit no dispara text_submitted
-		if edit.has_focus() and Input.is_action_just_pressed("ui_accept"):
+		if edit.has_focus() and (
+				Input.is_action_just_pressed("ui_accept")
+				or Input.is_action_just_pressed("buttonA")
+		):
 			finished = true
 			submitted_text = edit.text
 
 	var nick: String = submitted_text.strip_edges()
-	if nick.is_empty():
-		mon.nickname = ""
-	else:
-		mon.nickname = nick
+	mon.nickname = "" if nick.is_empty() else nick
 
 	if is_instance_valid(layer):
 		layer.queue_free()
