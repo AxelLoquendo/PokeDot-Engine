@@ -295,7 +295,18 @@ func party_has_reserve(is_player_side: bool) -> bool:
 ## Secuencia de mensajes + habilidades de entrada. Se llama aparte de
 ## start_battle() para que la UI pueda mostrar sprites/HP antes de que
 ## empiecen los textos.
+func _register_encounter_dex() -> void:
+	var controller: CharacterController = BattleSession.player_controller
+	if controller == null:
+		return
+	var data: CharacterPlayer = controller.character_data as CharacterPlayer
+	if data == null:
+		return
+	CaptureFlow.register_encounter_seen(data, self)
+
+
 func start_battle_intro() -> void:
+	_register_encounter_dex()
 	_sync_primary_refs()
 	# Rivales primero
 	var enemy_names: PackedStringArray = PackedStringArray()
@@ -691,14 +702,33 @@ func _attempt_capture(item: ItemData, data: CharacterPlayer) -> void:
 		await _resolve_item_enemy_turn()
 		return
 
-	var dex: PokedexData = data.ensure_pokedex()
-	dex.set_owned(int(caught.species_id))
+	var first_owned: bool = CaptureFlow.register_owned(data, caught)
+	CaptureFlow.register_seen(data, caught)
+
+	var species_label: String = caught.get_display_name()
+	message.emit("¡%s atrapado!" % species_label)
+	await _wait(0.85)
+
+	# 1) Registro en la dex (solo primera vez de la especie)
+	if first_owned:
+		message.emit("Los datos de %s se registraron en la Pokédex." % species_label)
+		await _wait(1.1)
+
+	# 2) ¿Mote?  3) Entrada de dex si es nuevo
+	message.emit("¿Quieres ponerle un mote a %s?" % species_label)
+	await _wait(0.55)
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	if tree != null:
+		await CaptureFlow.run_after_capture(tree, data, caught, first_owned)
 
 	message.emit("¡%s se unió a tu equipo!" % caught.get_display_name())
-	await _wait(0.9)
+	await _wait(0.8)
 
 	_cleanup_battle_pokemon()
 	is_running = false
+	# true = jugador “gana” el encuentro; la UI puede mapear a CAUGHT si _ended_by_capture
+	if has_meta("ended_by_capture") or true:
+		set_meta("ended_by_capture", true)
 	battle_ended.emit(true)
 
 

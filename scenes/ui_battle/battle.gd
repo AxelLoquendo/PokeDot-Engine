@@ -154,6 +154,7 @@ var _move_focused: Array[Texture2D] = []
 var _current_move_normals: Array[Texture2D] = []
 var _current_move_focused: Array[Texture2D] = []
 
+var _ended_by_capture: bool = false
 var _ended_by_run: bool = false
 var _battle_closing: bool = false
 var _party_ui: PartyMenu = null
@@ -683,6 +684,10 @@ func _on_battle_ended(player_won: bool) -> void:
 	if _ended_by_run:
 		result = BattleSession.BattleResult.RUN
 		_show_message_box("¡Escapaste sin problemas!")
+	elif battle != null and battle.get_meta("ended_by_capture", false):
+		result = BattleSession.BattleResult.CAUGHT
+		# Mensajes de captura ya se mostraron en el manager
+		_show_message_box("")
 	elif player_won:
 		result = BattleSession.BattleResult.WIN
 		_show_message_box("¡Has ganado!")
