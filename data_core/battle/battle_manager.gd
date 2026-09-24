@@ -51,6 +51,9 @@ var terrain_turns: int = 0
 var weather_primal: bool = false
 ## Turnos transcurridos (1 en el primer turno de acciones; Quick/Timer Ball).
 var battle_turn_count: int = 0
+## Último movimiento usado en el campo (Mirror Move / Copycat).
+var last_move_used_field: MoveData = null
+var last_move_user_was_player: bool = false
 ## Contexto opcional de captura (el encuentro/mapa puede setearlos).
 var is_underwater: bool = false
 var is_dark_place: bool = false
@@ -524,8 +527,14 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 		await _wait(0.6)
 		await AbilityRuntime.on_switch_out(actor, self)
 
+	var baton: Dictionary = {}
+	if actor.get_meta("baton_pass", false):
+		baton = _snapshot_baton_pass(actor)
+		actor.remove_meta("baton_pass")
 	AbilityRuntime.revert_transform(actor)
 	actor.setup(nuevo, true, slot_index)
+	if not baton.is_empty():
+		_apply_baton_pass(actor, baton)
 	mark_exp_participant(nuevo)
 	AbilityRuntime.prepare_illusion(actor, self)
 	_sync_primary_refs()
@@ -1580,10 +1589,19 @@ func _execute_move(action: BattleAction) -> void:
 
 	message.emit("%s usó %s!" % [actor.get_display_name(), move.move_name])
 	await _wait(0.9)
+	if move.effect == MoveStruct.MoveEffect.EFFECT_SNORE:
+		if actor.pokemon == null or actor.pokemon.status != PokemonInstance.Status.SLEEP:
+			message.emit("¡No surtirá efecto!")
+			await _wait(0.7)
+			return
 	if move != null:
 		actor.last_move_used_id = int(move.move_id)
 		if actor.torment_active:
 			actor.torment_last_move_id = int(move.move_id)
+		# No registrar movimientos de copia como el "último" del campo
+		if move.effect != MoveStruct.MoveEffect.EFFECT_MIRROR_MOVE 				and move.effect != MoveStruct.MoveEffect.EFFECT_COPYCAT 				and move.effect != MoveStruct.MoveEffect.EFFECT_METRONOME 				and move.effect != MoveStruct.MoveEffect.EFFECT_SLEEP_TALK:
+			last_move_used_field = move
+			last_move_user_was_player = actor.is_player_side
 
 	if TwoTurnResolver.is_recharge_move(move):
 		actor.must_recharge = true
@@ -2762,6 +2780,89 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			await _wait(0.7)
 			return
 
+		MoveStruct.MoveEffect.EFFECT_PARTING_SHOT:
+			if target != null and not target.is_fainted():
+				await _apply_stat_change(target, PokemonInstance.Stat.ATTACK, -1, true)
+				await _apply_stat_change(target, PokemonInstance.Stat.SP_ATTACK, -1, true)
+			await _request_pivot_out(actor)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_BATON_PASS:
+			# Conserva stages y algunos volatiles al cambiar
+			await _request_pivot_out(actor, true)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TELEPORT:
+			if is_trainer_battle:
+				await _request_pivot_out(actor)
+			else:
+				message.emit("¡%s huyó del combate!" % actor.get_display_name())
+				await _wait(0.8)
+				_cleanup_battle_pokemon()
+				is_running = false
+				battle_ended.emit(actor.is_player_side)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_ROAR:
+			# Fuerza el cambio del rival (o huida en salvaje)
+			await _force_switch_out(target if target != null else (
+				enemy if actor.is_player_side else player
+			))
+			return
+
+		MoveStruct.MoveEffect.EFFECT_TRANSFORM:
+			await _apply_transform(actor, target)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_MIMIC:
+			await _apply_mimic(actor, target)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SKETCH:
+			await _apply_sketch(actor, target)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_MIRROR_MOVE:
+			await _apply_copy_last_move(actor, target, true)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_COPYCAT:
+			await _apply_copy_last_move(actor, target, false)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_METRONOME:
+			await _apply_metronome(actor, target)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SLEEP_TALK:
+			await _apply_sleep_talk(actor, target)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_SNORE:
+			# Solo si duerme; luego daño vía power (si power>0 no llega aquí)
+			if actor.pokemon == null or actor.pokemon.status != PokemonInstance.Status.SLEEP:
+				message.emit("¡No surtirá efecto!")
+				await _wait(0.7)
+				return
+			message.emit("¡%s ronca fuerte!" % actor.get_display_name())
+			await _wait(0.5)
+			return
+
+		MoveStruct.MoveEffect.EFFECT_CONVERSION:
+			if actor.pokemon == null or actor.pokemon.moves.is_empty():
+				return
+			var first_slot: PokemonMoveSlot = actor.pokemon.moves[0]
+			if first_slot == null:
+				return
+			var md0: MoveData = MoveDatabase.get_move(first_slot.move_id)
+			if md0 == null:
+				return
+			actor.battle_type_1 = int(md0.type)
+			actor.battle_type_2 = -1
+			message.emit("¡%s se convirtió al tipo %s!" % [actor.get_display_name(), str(md0.type)])
+			await _wait(0.7)
+			return
+
 	message.emit("¡Pero no tuvo ningún efecto todavía!")
 	await _wait(0.8)
 
@@ -2806,6 +2907,293 @@ func _is_locked_on(actor: BattleBattler, target: BattleBattler) -> bool:
 		return false
 	var side: int = 1 if actor.is_player_side else 0
 	return target.locked_on_by_side == side
+
+
+
+## Pivot voluntario (U-turn / Parting Shot / Baton Pass / Teleport entrenador).
+func _request_pivot_out(actor: BattleBattler, baton_pass: bool = false) -> void:
+	if actor == null or actor.is_fainted():
+		return
+	if actor.cannot_escape and not baton_pass:
+		# Mean Look bloquea pivot salvo Baton Pass (que es el propio usuario saliendo)
+		pass
+	if actor.is_player_side:
+		if not party_has_reserve(true):
+			message.emit("¡No hay más Pokémon para salir!")
+			await _wait(0.6)
+			return
+		if baton_pass:
+			actor.set_meta("baton_pass", true)
+		message.emit("¿A qué Pokémon quieres sacar?")
+		await _wait(0.4)
+		player_must_switch.emit()
+	else:
+		# IA: primer reserva no debilitada
+		var reserve: PokemonInstance = _first_reserve(false)
+		if reserve == null:
+			return
+		message.emit("¡%s regresó!" % actor.get_display_name())
+		await _wait(0.45)
+		await AbilityRuntime.on_switch_out(actor, self)
+		var keep_stages: bool = baton_pass
+		var stages: Dictionary = {}
+		if keep_stages:
+			stages = _snapshot_baton_pass(actor)
+		AbilityRuntime.revert_transform(actor)
+		actor.setup(reserve, false, actor.slot_index)
+		if keep_stages:
+			_apply_baton_pass(actor, stages)
+		AbilityRuntime.prepare_illusion(actor, self)
+		_sync_primary_refs()
+		message.emit("¡Adelante, %s!" % actor.get_display_name())
+		pokemon_entered_field.emit(false)
+		battler_appearance_changed.emit(false)
+		await _wait(0.55)
+		var opp: BattleBattler = player
+		var opps: Array[BattleBattler] = get_opponents(actor)
+		if not opps.is_empty():
+			opp = opps[0]
+		await AbilityRuntime.on_switch_in(actor, opp, self)
+		await _apply_hazards_on_switch_in(actor)
+		_emit_hp_battler(actor)
+
+
+func _first_reserve(is_player_side: bool) -> PokemonInstance:
+	var party: Array = player_party if is_player_side else enemy_party
+	var actives: Array[BattleBattler] = player_actives if is_player_side else enemy_actives
+	var active_ids: Array = []
+	for b: BattleBattler in actives:
+		if b != null and b.pokemon != null:
+			active_ids.append(b.pokemon.get_instance_id())
+	for mon: PokemonInstance in party:
+		if mon == null or mon.is_fainted():
+			continue
+		if mon.get_instance_id() in active_ids:
+			continue
+		return mon
+	return null
+
+
+func _snapshot_baton_pass(actor: BattleBattler) -> Dictionary:
+	return {
+		"atk": actor.stage_attack,
+		"def": actor.stage_defense,
+		"spa": actor.stage_sp_attack,
+		"spd": actor.stage_sp_defense,
+		"spe": actor.stage_speed,
+		"acc": actor.stage_accuracy,
+		"eva": actor.stage_evasion,
+		"focus": actor.focus_energy,
+		"seed": actor.leech_seeded,
+		"sub": actor.substitute_hp,
+		"cursed": actor.is_cursed,
+	}
+
+
+func _apply_baton_pass(actor: BattleBattler, data: Dictionary) -> void:
+	if actor == null or data.is_empty():
+		return
+	actor.stage_attack = int(data.get("atk", 0))
+	actor.stage_defense = int(data.get("def", 0))
+	actor.stage_sp_attack = int(data.get("spa", 0))
+	actor.stage_sp_defense = int(data.get("spd", 0))
+	actor.stage_speed = int(data.get("spe", 0))
+	actor.stage_accuracy = int(data.get("acc", 0))
+	actor.stage_evasion = int(data.get("eva", 0))
+	actor.focus_energy = bool(data.get("focus", false))
+	actor.leech_seeded = bool(data.get("seed", false))
+	actor.substitute_hp = int(data.get("sub", 0))
+	actor.is_cursed = bool(data.get("cursed", false))
+
+
+## Roar / Whirlwind: fuerza salida del objetivo.
+func _force_switch_out(target: BattleBattler) -> void:
+	if target == null or target.is_fainted():
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	if target.cannot_escape:
+		# Suction Cups / Ingrain would block - Mean Look does NOT block Roar in main series
+		pass
+	if AbilityRuntime.has(target, AbilityId.Id.SUCTION_CUPS):
+		await ability_announce(target)
+		message.emit("¡%s ancló su cuerpo y no se movió!" % target.get_display_name())
+		await _wait(0.7)
+		return
+	if not is_trainer_battle:
+		message.emit("¡%s fue soplado por el viento!" % target.get_display_name())
+		await _wait(0.7)
+		_cleanup_battle_pokemon()
+		is_running = false
+		battle_ended.emit(not target.is_player_side)
+		return
+	var reserve: PokemonInstance = _first_reserve(target.is_player_side)
+	if reserve == null:
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	message.emit("¡%s fue obligado a retirarse!" % target.get_display_name())
+	await _wait(0.55)
+	await AbilityRuntime.on_switch_out(target, self)
+	AbilityRuntime.revert_transform(target)
+	target.setup(reserve, target.is_player_side, target.slot_index)
+	AbilityRuntime.prepare_illusion(target, self)
+	_sync_primary_refs()
+	message.emit("¡Adelante, %s!" % target.get_display_name())
+	pokemon_entered_field.emit(target.is_player_side)
+	battler_appearance_changed.emit(target.is_player_side)
+	await _wait(0.55)
+	var opp: BattleBattler = null
+	var opps: Array[BattleBattler] = get_opponents(target)
+	if not opps.is_empty():
+		opp = opps[0]
+	await AbilityRuntime.on_switch_in(target, opp, self)
+	await _apply_hazards_on_switch_in(target)
+	_emit_hp_battler(target)
+
+
+func _apply_transform(actor: BattleBattler, target: BattleBattler) -> void:
+	if actor == null or target == null or target.pokemon == null or actor.pokemon == null:
+		return
+	if actor.is_transformed:
+		message.emit("¡No surtirá efecto!")
+		await _wait(0.6)
+		return
+	# Reutiliza la lógica de Imposter
+	await AbilityRuntime._setup_imposter(actor, target, self)
+
+
+func _apply_mimic(actor: BattleBattler, target: BattleBattler) -> void:
+	if actor == null or target == null or actor.pokemon == null:
+		return
+	if target.last_move_used_id < 0:
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	var md: MoveData = MoveDatabase.get_move(target.last_move_used_id as Moves.MoveId)
+	if md == null:
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	# Reemplaza el slot de Mimic (busca MIMIC o el slot usado)
+	for slot: PokemonMoveSlot in actor.pokemon.moves:
+		if slot == null:
+			continue
+		var slot_md: MoveData = MoveDatabase.get_move(slot.move_id)
+		if slot_md != null and slot_md.effect == MoveStruct.MoveEffect.EFFECT_MIMIC:
+			slot.move_id = md.move_id
+			slot.current_pp = mini(5, md.pp)
+			message.emit("¡%s aprendió %s!" % [actor.get_display_name(), md.move_name])
+			await _wait(0.7)
+			return
+	message.emit("¡Pero falló!")
+	await _wait(0.6)
+
+
+func _apply_sketch(actor: BattleBattler, target: BattleBattler) -> void:
+	# Permanente en la instancia (como Mimic pero no se pierde al salir)
+	await _apply_mimic(actor, target)
+
+
+func _apply_copy_last_move(actor: BattleBattler, target: BattleBattler, mirror: bool) -> void:
+	var src: MoveData = null
+	if mirror:
+		# Mirror Move: último move del objetivo
+		if target != null and target.last_move_used_id >= 0:
+			src = MoveDatabase.get_move(target.last_move_used_id as Moves.MoveId)
+	else:
+		# Copycat: último del campo
+		src = last_move_used_field
+	if src == null:
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	if src.effect == MoveStruct.MoveEffect.EFFECT_MIRROR_MOVE \
+			or src.effect == MoveStruct.MoveEffect.EFFECT_COPYCAT \
+			or src.effect == MoveStruct.MoveEffect.EFFECT_METRONOME:
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	message.emit("¡%s usó %s!" % [actor.get_display_name(), src.move_name])
+	await _wait(0.55)
+	var action: BattleAction = BattleAction.make_move(actor, target, src, -1)
+	action.set_meta("_skip_pp", true)
+	action.set_meta("_multi_resolved", true)
+	await _execute_move(action)
+
+
+func _apply_metronome(actor: BattleBattler, target: BattleBattler) -> void:
+	var pick: MoveData = null
+	var pool: Array = []
+	if MoveDatabase.has_method("get_all_moves"):
+		pool = MoveDatabase.get_all_moves()
+	var banned: Array = [
+		MoveStruct.MoveEffect.EFFECT_METRONOME,
+		MoveStruct.MoveEffect.EFFECT_MIRROR_MOVE,
+		MoveStruct.MoveEffect.EFFECT_COPYCAT,
+		MoveStruct.MoveEffect.EFFECT_SLEEP_TALK,
+		MoveStruct.MoveEffect.EFFECT_SKETCH,
+	]
+	var candidates: Array[MoveData] = []
+	for md: MoveData in pool:
+		if md == null:
+			continue
+		if md.effect in banned:
+			continue
+		candidates.append(md)
+	if not candidates.is_empty():
+		pick = candidates[randi() % candidates.size()]
+	elif actor.pokemon != null:
+		for slot: PokemonMoveSlot in actor.pokemon.moves:
+			if slot == null or slot.is_empty():
+				continue
+			var md2: MoveData = MoveDatabase.get_move(slot.move_id)
+			if md2 != null and md2.effect != MoveStruct.MoveEffect.EFFECT_METRONOME:
+				pick = md2
+				break
+	if pick == null:
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	message.emit("¡Metrónomo eligió %s!" % pick.move_name)
+	await _wait(0.55)
+	var action: BattleAction = BattleAction.make_move(actor, target, pick, -1)
+	action.set_meta("_skip_pp", true)
+	action.set_meta("_multi_resolved", true)
+	await _execute_move(action)
+
+
+func _apply_sleep_talk(actor: BattleBattler, target: BattleBattler) -> void:
+	if actor == null or actor.pokemon == null:
+		return
+	if actor.pokemon.status != PokemonInstance.Status.SLEEP:
+		message.emit("¡No surtirá efecto!")
+		await _wait(0.6)
+		return
+	var candidates: Array[MoveData] = []
+	for slot: PokemonMoveSlot in actor.pokemon.moves:
+		if slot == null or slot.is_empty() or slot.current_pp <= 0:
+			continue
+		var md: MoveData = MoveDatabase.get_move(slot.move_id)
+		if md == null:
+			continue
+		if md.effect == MoveStruct.MoveEffect.EFFECT_SLEEP_TALK \
+				or md.effect == MoveStruct.MoveEffect.EFFECT_TWO_TURNS_ATTACK \
+				or md.effect == MoveStruct.MoveEffect.EFFECT_SEMI_INVULNERABLE:
+			continue
+		candidates.append(md)
+	if candidates.is_empty():
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+	var pick: MoveData = candidates[randi() % candidates.size()]
+	message.emit("¡%s usó %s mientras dormía!" % [actor.get_display_name(), pick.move_name])
+	await _wait(0.55)
+	var action: BattleAction = BattleAction.make_move(actor, target, pick, -1)
+	action.set_meta("_skip_pp", true)
+	action.set_meta("_multi_resolved", true)
+	# Permitir actuar aunque StatusConditions diga sleep - el move ya pasó el check del Sleep Talk
+	await _execute_move(action)
 
 
 func _apply_leech_seed_tick(battler: BattleBattler) -> void:
@@ -2907,6 +3295,10 @@ func _apply_damaging_move_effect(actor: BattleBattler, target: BattleBattler, mo
 		MoveStruct.MoveEffect.EFFECT_FELL_STINGER:
 			if target.is_fainted():
 				await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, 3)
+		MoveStruct.MoveEffect.EFFECT_HIT_SWITCH_TARGET:
+			# U-turn / Volt Switch / Flip Turn: pivot tras golpear
+			if not actor.is_fainted():
+				await _request_pivot_out(actor)
 
 func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
 	if caused_by_foe and stages < 0 and _side_for(battler).mist_turns > 0:
