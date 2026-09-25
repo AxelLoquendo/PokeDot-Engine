@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bq3vvw2e3pu8g" path="res://scenes/npc/npc.tscn" id="6_mpdc6"]
 [ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="7_pdpdf"]
 [ext_resource type="Script" uid="uid://bwbh47vc5fymn" path="res://data_core/scripts/scripting/script_cmd_text_file.gd" id="8_pdpdf"]
+[ext_resource type="Script" uid="uid://bvg5mqfyatjp8" path="res://scenes/overworld/trigger_map/trigger_map.gd" id="9_q1ycd"]
 
 [sub_resource type="Resource" id="Resource_ougem"]
 script = ExtResource("2_orvve")
@@ -413,7 +414,7 @@ script = ExtResource("8_pdpdf")
 script_file_path = "res://game/data_core_eb/map_eb/pueblo_alba/prof_oak.txt"
 metadata/_custom_type_script = "uid://bwbh47vc5fymn"
 
-[sub_resource type="Resource" id="Resource_q1ycd"]
+[sub_resource type="Resource" id="Resource_1q05q"]
 resource_local_to_scene = true
 script = ExtResource("7_pdpdf")
 nombre = "Prof. Oak"
@@ -466,5 +467,14 @@ tile_map_data = PackedByteArray("AAD+//7/AAAAAAQAAAD+////AAAAAAUAAAD+/ygAAAAAAAQ
 tile_set = SubResource("TileSet_pdpdf")
 
 [node name="Npc" parent="EventObject" parent_id_path=PackedInt32Array(1934673071) index="0" unique_id=1270542304 instance=ExtResource("6_mpdc6")]
-position = Vector2(122, 304)
-character_data = SubResource("Resource_q1ycd")
+position = Vector2(120, 304)
+character_data = SubResource("Resource_1q05q")
+
+[node name="TriggerMap" type="Node2D" parent="EventObject" parent_id_path=PackedInt32Array(1934673071) index="1" unique_id=186789887]
+z_index = 100
+position = Vector2(144, 288)
+script = ExtResource("9_q1ycd")
+kind = 0
+dest_map = 1
+dest_tile_fallback = Vector2i(10, 14)
+metadata/_custom_type_script = "uid://bvg5mqfyatjp8"

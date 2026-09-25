@@ -7,7 +7,7 @@ class_name MapEvent
 ## En el editor, la posición se ajusta sola a la cuadrícula 16×16.
 
 enum Kind {
-	WARP,   ## Al pisar → teletransporte
+	WARP,   ## Al pisar → teletransporte (enlazado a otro warp por id)
 	COORD,  ## Al pisar → script si se cumple la condición
 	BG,     ## Al pulsar A mirando la casilla → cartel / objeto oculto
 }
@@ -25,9 +25,14 @@ const TILE_SIZE: int = 16
 @export var show_debug: bool = true
 
 @export_group("Warp")
-## Nombre MAPSEC_* como en ScriptCmdWarp (ej. MAPSEC_PETALBURG_CITY).
-@export var dest_map: String = ""
-@export var dest_tile: Vector2i = Vector2i.ZERO
+## Id local de ESTE warp en el mapa (0, 1, 2…). El otro mapa apunta aquí con dest_warp_id.
+@export var warp_id: int = 0
+## Mapa destino (enum MapSection; ya está ligado a la escena).
+@export var dest_map: MapSection.SectionId = MapSection.SectionId.MAPSEC_NONE
+## Id del warp de llegada en el mapa destino (no coordenadas).
+@export var dest_warp_id: int = 0
+## Solo si no hay warp destino: casilla fija de respaldo. Preferir dest_warp_id.
+@export var dest_tile_fallback: Vector2i = Vector2i.ZERO
 @export_range(0.05, 5.0, 0.05) var warp_fade_duration: float = 0.5
 ## Marca centros / puntos de cura para Escape Rope (futuro).
 @export var is_heal_point: bool = false
@@ -67,7 +72,6 @@ func _process(_delta: float) -> void:
 func _snap_to_tile_grid() -> void:
 	if _snap_lock:
 		return
-	# Origen arriba-izquierda del tile (coincide con get_tile y el rect de debug).
 	var snapped_pos: Vector2 = Vector2(
 		floorf(position.x / float(TILE_SIZE)) * float(TILE_SIZE),
 		floorf(position.y / float(TILE_SIZE)) * float(TILE_SIZE)
@@ -92,6 +96,8 @@ func _draw() -> void:
 		Kind.BG:
 			color = Color(1.0, 0.85, 0.2, 0.35)
 	draw_rect(Rect2(Vector2.ZERO, Vector2(TILE_SIZE, TILE_SIZE)), color)
+	if kind == Kind.WARP and Engine.is_editor_hint():
+		draw_string(ThemeDB.fallback_font, Vector2(2, 12), "W%d" % warp_id, HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color.WHITE)
 
 
 func get_tile() -> Vector2i:
