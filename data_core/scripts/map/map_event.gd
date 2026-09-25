@@ -4,6 +4,7 @@ class_name MapEvent
 
 ## Evento de casilla al estilo pokeemerald (sin Object/NPC).
 ## Colócalo como hijo del mapa y ajústalo en el inspector.
+## En el editor, la posición se ajusta sola a la cuadrícula 16×16.
 
 enum Kind {
 	WARP,   ## Al pisar → teletransporte
@@ -41,17 +42,40 @@ const TILE_SIZE: int = 16
 @export var hidden_item_id: Items.ItemId = Items.ItemId.ITEM_NONE
 @export var hidden_item_flag: StringName = &""
 
+var _snap_lock: bool = false
+
 
 func _ready() -> void:
 	add_to_group("map_events")
 	z_index = 100
 	if Engine.is_editor_hint():
+		set_notify_transform(true)
+		_snap_to_tile_grid()
 		queue_redraw()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSFORM_CHANGED and Engine.is_editor_hint():
+		_snap_to_tile_grid()
 
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		queue_redraw()
+
+
+func _snap_to_tile_grid() -> void:
+	if _snap_lock:
+		return
+	# Origen arriba-izquierda del tile (coincide con get_tile y el rect de debug).
+	var snapped_pos: Vector2 = Vector2(
+		floorf(position.x / float(TILE_SIZE)) * float(TILE_SIZE),
+		floorf(position.y / float(TILE_SIZE)) * float(TILE_SIZE)
+	)
+	if position != snapped_pos:
+		_snap_lock = true
+		position = snapped_pos
+		_snap_lock = false
 
 
 func _draw() -> void:

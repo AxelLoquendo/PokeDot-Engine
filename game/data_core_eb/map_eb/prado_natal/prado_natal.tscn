@@ -10,6 +10,7 @@
 [ext_resource type="TileSet" uid="uid://b0t3ardhy4uf1" path="res://data_core/map/map_base/Colisiones.tres" id="5_yd4tm"]
 [ext_resource type="Script" uid="uid://d1j7qa7rbivcw" path="res://data_core/scripts/character/character_npc_generic.gd" id="7_y0fca"]
 [ext_resource type="Script" uid="uid://bwbh47vc5fymn" path="res://data_core/scripts/scripting/script_cmd_text_file.gd" id="9_cxnhx"]
+[ext_resource type="PackedScene" uid="uid://y8caso3ya6vb" path="res://scenes/overworld/trigger_map/trigger_map.tscn" id="11_8wtdx"]
 
 [sub_resource type="Resource" id="Resource_8wtdx"]
 script = ExtResource("2_ueygd")
@@ -2437,3 +2438,9 @@ tile_set = SubResource("TileSet_hprgv")
 [node name="Npc" parent="EventObject" unique_id=1270542304 instance=ExtResource("4_d8013")]
 position = Vector2(152, 177)
 character_data = SubResource("Resource_l1ftc")
+
+[node name="Trigger_map" parent="EventObject" unique_id=132195317 instance=ExtResource("11_8wtdx")]
+z_index = 100
+position = Vector2(176, 224)
+kind = 2
+script_file = "res://game/data_core_eb/map_eb/prado_natal/trigger_hola_mundo.txt"

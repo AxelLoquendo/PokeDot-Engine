@@ -1,0 +1,4 @@
+lock
+text "Hola mundo" MSGBOX_SIGN
+release
+return

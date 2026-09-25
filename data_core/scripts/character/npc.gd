@@ -15,6 +15,9 @@ var _autonomous_running: bool = false
 
 func _ready() -> void:
 	super._ready()
+	if Engine.is_editor_hint():
+		set_notify_transform(true)
+		_snap_to_tile_grid()
 
 	mapa_dueño = get_parent().get_parent() as MapAttributes
 
@@ -236,3 +239,25 @@ func procesar_seguir_jugador() -> void:
 		intentar_mover(direccion)
 	tiempo_espera_restante = 0.1
 
+
+var _editor_snap_lock: bool = false
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSFORM_CHANGED and Engine.is_editor_hint():
+		_snap_to_tile_grid()
+
+
+## En el editor, alinea el NPC a la misma cuadrícula que el movimiento (centro X).
+func _snap_to_tile_grid() -> void:
+	if _editor_snap_lock:
+		return
+	var ts: float = float(TILE_SIZE)
+	var snapped_pos: Vector2 = Vector2(
+		floorf(position.x / ts) * ts + ts * 0.5,
+		floorf(position.y / ts) * ts
+	)
+	if position != snapped_pos:
+		_editor_snap_lock = true
+		position = snapped_pos
+		_editor_snap_lock = false
