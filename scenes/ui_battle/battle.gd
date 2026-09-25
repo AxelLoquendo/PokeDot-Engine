@@ -250,6 +250,7 @@ func _ready() -> void:
 
 	_attach_battle_weather()
 
+	battle.trainer_name = BattleSession.trainer_name
 	battle.start_battle(
 		player_pokemon, enemy_pokemon, party, BattleSession.enemy_party,
 		BattleSession.battle_format as BattleManager.BattleFormat,
@@ -690,7 +691,10 @@ func _on_battle_ended(player_won: bool) -> void:
 		_show_message_box("")
 	elif player_won:
 		result = BattleSession.BattleResult.WIN
-		_show_message_box("¡Has ganado!")
+		if BattleSession.trainer_money > 0 and not BattleSession.is_wild:
+			_show_message_box("¡Has ganado! Recibes ₽%d." % BattleSession.trainer_money)
+		else:
+			_show_message_box("¡Has ganado!")
 	else:
 		_show_message_box("...")
 
@@ -920,6 +924,9 @@ func _on_battle_bag_closed() -> void:
 
 
 func _on_run_pressed() -> void:
+	if battle.is_trainer_battle:
+		_show_message("¡No puedes huir de un combate contra un entrenador!")
+		return
 	current_menu = MenuState.BUSY
 	_ended_by_run = true
 	battle.player_choose_run()

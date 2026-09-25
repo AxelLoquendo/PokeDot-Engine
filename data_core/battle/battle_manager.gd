@@ -27,6 +27,8 @@ var enemy_party: Array[PokemonInstance] = []
 var player_side: FieldSide = FieldSide.new()
 var enemy_side: FieldSide = FieldSide.new()
 var is_trainer_battle: bool = false
+## Nombre del entrenador rival para los mensajes ("Cazabichos Rocío").
+var trainer_name: String = ""
 
 var weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
 var weather_turns: int = -1
@@ -321,7 +323,8 @@ func start_battle_intro() -> void:
 		if b != null and b.pokemon != null and not b.is_fainted():
 			enemy_names.append(b.get_display_name())
 	if is_trainer_battle:
-		message.emit("¡El rival envía a %s!" % ", ".join(enemy_names))
+		var sender: String = trainer_name if not trainer_name.is_empty() else "El rival"
+		message.emit("¡%s envía a %s!" % [sender, ", ".join(enemy_names)])
 	else:
 		if enemy_names.size() > 1:
 			message.emit("¡Aparecieron %s!" % " y ".join(enemy_names))
@@ -580,6 +583,10 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 
 func player_choose_run() -> void:
 	if not is_running:
+		return
+	if is_trainer_battle:
+		message.emit("¡No puedes huir de un combate contra un entrenador!")
+		await _wait(0.8)
 		return
 	if player != null and player.cannot_escape:
 		message.emit("¡No puedes escapar!")

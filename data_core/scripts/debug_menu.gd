@@ -38,7 +38,13 @@ func _show(screen: String) -> void:
 		"player":
 			DialogueManager.show_texts(["Jugador"], "", null, ["Cambiar sprite", "Curar PP", "Marcar dex demo", "Rellenar Dex", "Volver"])
 		"world":
-			DialogueManager.show_texts(["Mundo"], "", null, ["Clima", "Warp Prado Natal", "Warp Pueblo Alba", "Volver"])
+			DialogueManager.show_texts(["Mundo"], "", null, ["Clima", "Warp a mapa", "Volver"])
+		"warp":
+			var map_names: Array[String] = []
+			for section_id: int in MapSection.get_registered_ids():
+				map_names.append(MapSection.get_map_name(section_id))
+			map_names.append("Volver")
+			DialogueManager.show_texts(["Warp a mapa"], "", null, map_names)
 		"weather":
 			DialogueManager.show_texts(["Clima"], "", null, ["Ninguno", "Lluvia", "Nieve", "Tormenta arena", "Neblina horizontal", "Neblina diagonal", "Soleado"])
 		"items":
@@ -77,11 +83,16 @@ func _handle_choice() -> void:
 			if _choice == "0":
 				_show("weather")
 			elif _choice == "1":
-				_warp(MapSection.SectionId.MAPSEC_PRADO_NATAL)
-			elif _choice == "2":
-				_warp(MapSection.SectionId.MAPSEC_PUEBLO_ALBA)
+				_show("warp")
 			else:
 				_show("root")
+		"warp":
+			var ids: Array[int] = MapSection.get_registered_ids()
+			var map_index: int = _choice.to_int()
+			if map_index >= 0 and map_index < ids.size():
+				_warp(ids[map_index])
+			else:
+				_show("world")
 		"weather":
 			var climates: Array[WeatherEffect.WeatherID] = [
 				WeatherEffect.WeatherID.WEATHER_NONE,
@@ -141,10 +152,11 @@ func _add_potions() -> void:
 		if data.bag == null: data.bag = Bag.new()
 		data.bag.add_item(Items.ItemId.ITEM_POTION, 10)
 
-func _warp(section: MapSection.SectionId) -> void:
+## Aparece sobre el warp 0 del mapa si lo tiene; si no, en la casilla (7, 11).
+func _warp(section_id: int) -> void:
 	var player: CharacterController = _player()
 	if player and player.map_manager:
-		player.map_manager.warp_player_to_section(section, Vector2i(7, 11))
+		player.map_manager.warp_player_to_section(section_id, Vector2i(7, 11), 0)
 	_open = false
 
 func _debug_info() -> String:

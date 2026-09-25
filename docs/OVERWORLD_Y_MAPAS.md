@@ -6,6 +6,22 @@ El nodo raíz de una escena de mapa usa `MapAttributes`. Configura `map_name`, `
 
 El campo legacy `map_script` se conserva para mapas existentes y se ejecuta en `ON_LOAD`. Para contenido nuevo usa `map_scripts`.
 
+## Crear y registrar mapas
+
+Usa **Proyecto → Herramientas → 🗺️ Crear nuevo mapa** y elige dónde guardarlo
+(por defecto en `res://game/`). El nombre del archivo decide el resto:
+`ruta_1.tscn` crea el mapa "Ruta 1" con la sección `MAPSEC_RUTA_1`, que se
+añade sola al enum de `MapSection`. No hace falta editar ningún script.
+
+El registro que une cada `MAPSEC` con su escena (`data_core/generated/map_registry.gd`)
+se genera solo cada vez que guardas un mapa en el editor, así que puedes
+cambiar `map_id_section` o mover la escena de carpeta sin romper warps ni
+partidas. Si lo necesitas a mano: **Proyecto → Herramientas → 🗺️ Actualizar
+registro de mapas**. No edites ese archivo: se sobrescribe.
+
+Los números de `MapSection.SectionId` se guardan en las escenas y en las
+partidas; no los cambies ni los reutilices.
+
 ## NPC
 
 Las instancias de NPC usan `CharacterNpc` como datos y un `Npc`/`CharacterController` como nodo. Asigna un `npc_id` único por mapa si quieres referenciarlo desde scripts:
@@ -37,3 +53,6 @@ El clima visual usa `WeatherEffect.WeatherID` y se cambia desde `WeatherManager`
 ## Menú de depuración
 
 Pulsa `buttonX + buttonSelect`. Si no existen esas acciones separadas, usa `buttonB + buttonSelected`. Permite probar sprite de jugador, PP, Pokédex, clima, warps, objetos, flags y guardado. Es una herramienta interna, no lógica de juego final.
+
+**Mundo → Warp a mapa** lista todos los mapas registrados. El jugador aparece
+sobre el warp con `warp_id = 0` del mapa, o en la casilla (7, 11) si no tiene.

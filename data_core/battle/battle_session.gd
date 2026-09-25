@@ -59,6 +59,11 @@ var battle_music: SFXGame.BattleMusicID = SFXGame.BattleMusicID.BGM_BATTLE_WILD
 var battle_format: int = 0  # BattleManager.BattleFormat.SINGLE
 var player_leads: Array[PokemonInstance] = []
 
+## Entrenador rival ("Cazabichos Rocío") y dinero que recibe el jugador si
+## gana. Vacío en combates salvajes.
+var trainer_name: String = ""
+var trainer_money: int = 0
+
 
 
 ## probabilidad_doble: 0.0–1.0. Si > 0 y hay 2º salvaje, puede ser 1v2 o 2v2.
@@ -88,6 +93,8 @@ func preparar_salvaje(
 
 	battle_format = formato
 	is_wild = true
+	trainer_name = ""
+	trainer_money = 0
 	_configurar_combate(jugador, BattleType.ROAMING if es_roaming else BattleType.WILD)
 
 
@@ -118,6 +125,34 @@ func preparar_entrenador(jugador: CharacterController, lead: PokemonInstance, pa
 	enemy_pokemon = party_rival[0] if not party_rival.is_empty() else null
 	is_wild = false
 	_configurar_combate(jugador, tipo)
+
+
+## Prepara un combate contra un entrenador de TrainerDatabase. Si es doble y
+## el jugador solo tiene un Pokémon consciente, se juega 1 contra 2.
+func preparar_desde_entrenador(jugador: CharacterController, trainer: TrainerData) -> bool:
+	var datos: CharacterPlayer = jugador.character_data as CharacterPlayer if jugador else null
+	if datos == null:
+		push_error("BattleSession: el jugador no tiene datos de partida")
+		return false
+	var disponibles: Array[PokemonInstance] = []
+	for mon: PokemonInstance in datos.party:
+		if mon != null and not mon.is_fainted():
+			disponibles.append(mon)
+	var rivales: Array[PokemonInstance] = trainer.build_party()
+	if disponibles.is_empty() or rivales.is_empty():
+		push_warning("BattleSession: %s no puede combatir (equipo vacío)" % trainer.trainer_id)
+		return false
+
+	var tipo: BattleType = trainer.battle_type as BattleType
+	if trainer.double_battle and rivales.size() >= 2:
+		var formato: int = 3 if disponibles.size() >= 2 else 1  # DOUBLE / ONE_V_TWO
+		preparar_multi(jugador, disponibles.slice(0, 2 if formato == 3 else 1), rivales.slice(0, 2), rivales, formato, tipo)
+	else:
+		battle_format = 0
+		preparar_entrenador(jugador, disponibles[0], rivales, tipo)
+	trainer_name = trainer.get_display_name()
+	trainer_money = trainer.money
+	return true
 
 func _obtener_escenario(jugador: CharacterController) -> BattleBackground.Background:
 	if jugador == null:
@@ -171,6 +206,8 @@ func finalizar(result: int) -> void:
 			if data != null and data.party != null:
 				AbilityRuntime.try_pickup_after_battle(data.party)
 				AbilityRuntime.try_honey_gather_after_battle(data.party)
+				if result == BattleResult.WIN and not is_wild:
+					data.money += trainer_money
 
 	if player_controller != null and is_instance_valid(player_controller):
 		player_controller.ejecutando_evento = false
@@ -182,6 +219,8 @@ func finalizar(result: int) -> void:
 	enemy_pokemon = null
 	enemy_party = []
 	player_controller = null
+	trainer_name = ""
+	trainer_money = 0
 
 	battle_finished.emit(result)
 

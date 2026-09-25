@@ -17,7 +17,7 @@ func _ready() -> void:
 
 	var escena_mapa: PackedScene = mapa_inicial
 	if not datos_guardados.is_empty():
-		var ruta_mapa: String = str(MapSection.SECTION_TO_SCENE.get(int(datos_guardados.get("map_section", 0)), ""))
+		var ruta_mapa: String = MapSection.get_scene_path(int(datos_guardados.get("map_section", 0)))
 		if not ruta_mapa.is_empty() and ResourceLoader.exists(ruta_mapa):
 			escena_mapa = load(ruta_mapa) as PackedScene
 		else:

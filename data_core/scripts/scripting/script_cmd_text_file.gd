@@ -270,13 +270,14 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 			if args.size() > 1 and args[1].is_valid_int():
 				cmd.amount = int(args[1])
 			return cmd
-		
+
 		"trainerbattle":
-			var cmd: ScriptCmdTrainerBattle = ScriptCmdTrainerBattle.new()
+			const CMD_TRAINER_BATTLE: GDScript = preload("res://data_core/scripts/scripting/script_cmd_trainer_battle.gd")
+			var cmd: ScriptCommand = CMD_TRAINER_BATTLE.new() as ScriptCommand
 			if not args.is_empty():
-			# Limpiamos espacios alrededor del ID (por si el .txt tiene "trainerbattle   TRAINER_ID")
-				cmd.trainer_id = args[0].strip_edges()
+				cmd.set("trainer_id", args[0])
 			return cmd
+
 
 		"sound":
 			var cmd: ScriptCmdSound = ScriptCmdSound.new()
