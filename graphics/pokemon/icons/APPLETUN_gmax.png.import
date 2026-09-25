@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3t0veekr3rmj"
-path="res://.godot/imported/APPLETUN_gmax.png-d3e9f3996e7bc898b3de53750c401081.ctex"
+path="res://.godot/imported/APPLETUN_GMAX.png-06c51c2e081c314c97201df4dcb8e342.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/APPLETUN_gmax.png"
-dest_files=["res://.godot/imported/APPLETUN_gmax.png-d3e9f3996e7bc898b3de53750c401081.ctex"]
+source_file="res://graphics/pokemon/icons/APPLETUN_GMAX.png"
+dest_files=["res://.godot/imported/APPLETUN_GMAX.png-06c51c2e081c314c97201df4dcb8e342.ctex"]
 
 [params]
 

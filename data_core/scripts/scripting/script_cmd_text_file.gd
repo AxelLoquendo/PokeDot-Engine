@@ -271,6 +271,13 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 				cmd.amount = int(args[1])
 			return cmd
 		
+		"trainerbattle":
+			var cmd: ScriptCmdTrainerBattle = ScriptCmdTrainerBattle.new()
+			if not args.is_empty():
+			# Limpiamos espacios alrededor del ID (por si el .txt tiene "trainerbattle   TRAINER_ID")
+				cmd.trainer_id = args[0].strip_edges()
+			return cmd
+
 		"sound":
 			var cmd: ScriptCmdSound = ScriptCmdSound.new()
 			if not args.is_empty():

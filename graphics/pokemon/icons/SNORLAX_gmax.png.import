@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dassv1ue6uwq0"
-path="res://.godot/imported/SNORLAX_gmax.png-5e2ccd28d348c14d73984f78df71b7f9.ctex"
+path="res://.godot/imported/SNORLAX_GMAX.png-8982be354857b473057bb35e9589a5d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/SNORLAX_gmax.png"
-dest_files=["res://.godot/imported/SNORLAX_gmax.png-5e2ccd28d348c14d73984f78df71b7f9.ctex"]
+source_file="res://graphics/pokemon/icons/SNORLAX_GMAX.png"
+dest_files=["res://.godot/imported/SNORLAX_GMAX.png-8982be354857b473057bb35e9589a5d8.ctex"]
 
 [params]
 

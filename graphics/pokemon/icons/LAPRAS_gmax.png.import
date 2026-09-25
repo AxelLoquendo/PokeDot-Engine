@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgtkxah3e2cv8"
-path="res://.godot/imported/LAPRAS_gmax.png-9ccb79437e7fca164244893fc35e1fdb.ctex"
+path="res://.godot/imported/LAPRAS_GMAX.png-cdc0c3763e21dc095c3c06100bc6e625.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/LAPRAS_gmax.png"
-dest_files=["res://.godot/imported/LAPRAS_gmax.png-9ccb79437e7fca164244893fc35e1fdb.ctex"]
+source_file="res://graphics/pokemon/icons/LAPRAS_GMAX.png"
+dest_files=["res://.godot/imported/LAPRAS_GMAX.png-cdc0c3763e21dc095c3c06100bc6e625.ctex"]
 
 [params]
 

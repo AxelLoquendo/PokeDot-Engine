@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6ccfgpjuh248"
-path="res://.godot/imported/EEVEE_gmax.png-88792d028f32728d6127e9aa3a549935.ctex"
+path="res://.godot/imported/EEVEE_GMAX.png-2b5b9eb417f6565083e0625b50209453.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/EEVEE_gmax.png"
-dest_files=["res://.godot/imported/EEVEE_gmax.png-88792d028f32728d6127e9aa3a549935.ctex"]
+source_file="res://graphics/pokemon/icons/EEVEE_GMAX.png"
+dest_files=["res://.godot/imported/EEVEE_GMAX.png-2b5b9eb417f6565083e0625b50209453.ctex"]
 
 [params]
 
