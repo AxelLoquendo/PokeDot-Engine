@@ -271,6 +271,12 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 				cmd.amount = int(args[1])
 			return cmd
 		
+		"trainerbattle":
+			var cmd: ScriptCmdTrainerBattle = ScriptCmdTrainerBattle.new()
+			if not args.is_empty():
+				cmd.trainer_id = args[0]
+			return cmd
+
 		"sound":
 			var cmd: ScriptCmdSound = ScriptCmdSound.new()
 			if not args.is_empty():

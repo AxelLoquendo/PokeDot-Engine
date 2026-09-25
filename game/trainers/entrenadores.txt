@@ -1,0 +1,49 @@
+# Entrenadores del juego. Formato completo en docs/ENTRENADORES.md.
+#
+# Cada entrenador empieza con "=== TRAINER_ID ===" y sus datos. Después de
+# una línea en blanco van sus Pokémon en formato Showdown: se puede pegar un
+# equipo exportado desde Pokémon Showdown tal cual.
+# Para combatir desde un script:  trainerbattle TRAINER_ROCIO
+
+=== TRAINER_ROCIO ===
+Name: Rocío
+Class: Cazabichos
+Money: 160
+Music: Trainer
+
+Wurmple
+Level: 4
+- Tackle
+- String Shot
+
+Caterpie (M)
+Level: 5
+
+=== TRAINER_EJEMPLO_SHOWDOWN ===
+Name: Brenda
+Class: Entrenadora Guay
+Money: 2400
+Music: Gym Leader
+Double Battle: Yes
+
+Garchomp (F) @ Choice Scarf
+Ability: Rough Skin
+Level: 50
+Tera Type: Steel
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Earthquake
+- Outrage
+- Stone Edge
+- Fire Fang
+
+Lavadora (Rotom-Wash) @ Leftovers
+Ability: Levitate
+Level: 50
+EVs: 252 HP / 252 Def / 4 SpA
+Bold Nature
+IVs: 0 Atk
+- Hydro Pump
+- Will-O-Wisp
+- Volt Switch
+- Protect
