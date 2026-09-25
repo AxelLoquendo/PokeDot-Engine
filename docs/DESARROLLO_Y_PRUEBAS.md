@@ -38,3 +38,17 @@ requieren integración adicional.
 ## Comprobación de scripts
 
 Abre el proyecto en Godot y revisa Output después de modificar clases, recursos o enums. El escaneo debe terminar sin `Parser Error` ni `Compilation failed`. Un aviso de mecánica sin regla es una señal para implementarla, no para ocultarla.
+
+## Revisar contenido
+
+**Proyecto → Herramientas → 🔎 Revisar contenido** revisa el juego sin
+ejecutarlo y muestra la lista en la pestaña Salida:
+
+- Flags que se comprueban pero nada activa (normalmente una errata; sugiere la
+  flag parecida que sí existe) y flags que se activan pero nunca se comprueban.
+- Errores de los archivos de `res://game/trainers/` y `trainerbattle` que
+  apuntan a un entrenador que no existe.
+- `warp`, warps de mapa y conexiones que apuntan a un `MAPSEC` sin escena, y
+  mapas con el mismo `MAPSEC`.
+
+Pásalo antes de subir cambios de contenido.

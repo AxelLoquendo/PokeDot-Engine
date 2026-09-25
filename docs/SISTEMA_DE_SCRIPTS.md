@@ -177,6 +177,7 @@ end
 | `savegame` | `savegame` | Abre la selección y confirmación de una ranura. |
 | `giveitem` | `giveitem ITEM_ID [cantidad]` | Añade un objeto a la mochila. |
 | `checkitem` | `checkitem ITEM_ID [cantidad]` | Actualiza `last_result` y `last_item_count`. |
+| `trainerbattle` | `trainerbattle TRAINER_ID` | Combate contra un entrenador y espera a que acabe. Al ganar activa la flag `TRAINER_ID`; `last_result` indica si ganó. Ver [ENTRENADORES.md](ENTRENADORES.md). |
 | `waitbutton` | `waitbutton` | Espera la acción `buttonA`. |
 | `label` | `label nombre` | Declara un destino de salto. |
 | `goto` | `goto nombre` | Salta incondicionalmente. |
@@ -445,8 +446,11 @@ end
   `goto`, `ifchoice`, `ifflag` y `compare`.
 - Las variables temporales solo viven mientras el `ScriptRunner` está activo.
   Para persistir decisiones entre mapas o sesiones usa flags.
-- No existe aún un comando de quitar objetos, iniciar combate, aplicar una
-  evolución o modificar dinero desde texto.
+- No existe aún un comando de quitar objetos, iniciar un combate salvaje,
+  aplicar una evolución o modificar dinero desde texto. Los combates contra
+  entrenadores se inician con `trainerbattle`.
+- Las flags son texto libre: una errata crea otra flag distinta sin avisar al
+  jugar. **Proyecto → Herramientas → 🔎 Revisar contenido** las detecta.
 - `giveitem` añade objetos sin comprobar un límite de capacidad de mochila.
 
 ## Selector de opciones independiente
