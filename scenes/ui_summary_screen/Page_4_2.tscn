@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cshn61of64ha7" path="res://scenes/ui_summary_screen/page_4_2.gd" id="1_vuvwv"]
 [ext_resource type="Texture2D" uid="uid://56rurvfvbut7" path="res://graphics/ui_summary_screen/moves/move_0.png" id="2_vuvwv"]
 [ext_resource type="Texture2D" uid="uid://bqub6yo80gqp6" path="res://graphics/ui_summary_screen/movelearned/movelearned_0.png" id="3_xh5nl"]
-[ext_resource type="Texture2D" uid="uid://c3y4gvv0ueed4" path="res://graphics/pokemon/icons/TERAPAGOS.png" id="4_at72v"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="5_1qja2"]
+[ext_resource type="Texture2D" uid="uid://dluemvqbm0ges" path="res://graphics/pokemon/icons/MEGA_ZYGARDE.png" id="5_xh5nl"]
 [ext_resource type="Texture2D" uid="uid://8ce62eotmjuh" path="res://graphics/ui_summary_screen/physical.png" id="6_svcj4"]
 [ext_resource type="Texture2D" uid="uid://fe1cjij3j2f8" path="res://graphics/ui_summary_screen/movelearned/movelearned_1.png" id="7_k4561"]
 [ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="8_p84gl"]
@@ -76,7 +76,7 @@ texture = ExtResource("3_xh5nl")
 
 [node name="Icon" type="Sprite2D" parent="MoveInfo" unique_id=1905461451]
 position = Vector2(-64, -106)
-texture = ExtResource("4_at72v")
+texture = ExtResource("5_xh5nl")
 hframes = 2
 
 [node name="Category" type="Label" parent="MoveInfo" unique_id=344918068]

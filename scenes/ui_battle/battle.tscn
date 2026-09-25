@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://c32c4cujica21" path="res://graphics/battle_interface/fight.png" id="2_k0gm8"]
 [ext_resource type="Texture2D" uid="uid://dnmd3xk7383pl" path="res://graphics/pokemon/back/CHARIZARD_GMAX.png" id="3_axcis"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="3_pmg0a"]
+[ext_resource type="Texture2D" uid="uid://b7lftbn5vfcss" path="res://graphics/pokemon/back/MEGA_DRAGALGE.png" id="3_w7ur2"]
 [ext_resource type="Texture2D" uid="uid://bwyevulw2cvp4" path="res://graphics/battle_interface/fight_focus.png" id="3_ymneq"]
 [ext_resource type="Texture2D" uid="uid://b4vii3402655x" path="res://graphics/battle_interface/bag.png" id="4_2yyve"]
-[ext_resource type="Texture2D" uid="uid://fl8flujc8ngo" path="res://graphics/pokemon/front_shiny/TERAPAGOS_STELLAR.png" id="4_3mhqk"]
 [ext_resource type="Texture2D" uid="uid://cyuvmrmwgpog8" path="res://graphics/battle_interface/bag_focus.png" id="5_6hh4c"]
+[ext_resource type="Texture2D" uid="uid://cs6sqfvgfdnk7" path="res://graphics/pokemon/front/TERAPAGOS_STELLAR.png" id="5_noix1"]
+[ext_resource type="Texture2D" uid="uid://bn20bhhr7wx20" path="res://graphics/pokemon/front/MEGA_ZYGARDE.png" id="6_jvsnx"]
 [ext_resource type="Texture2D" uid="uid://db424c1qusthy" path="res://graphics/battle_interface/pokemon.png" id="6_qkdal"]
 [ext_resource type="Texture2D" uid="uid://b42mql7j55yo5" path="res://graphics/battle_interface/pokemon_focus.png" id="7_yaib3"]
 [ext_resource type="Texture2D" uid="uid://c8c0604oi6fct" path="res://graphics/battle_interface/run.png" id="8_ln23b"]
@@ -24,8 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://csw0nagy2g81b" path="res://graphics/types/Tera/normal.png" id="16_yaib3"]
 [ext_resource type="Texture2D" uid="uid://d2fctsf11ue1w" path="res://graphics/ui_party_menu/icon_mega.png" id="18_ln23b"]
 [ext_resource type="Texture2D" uid="uid://bcsyl1tg00rft" path="res://graphics/battle_interface/ability_bar.png" id="24_y8am3"]
-[ext_resource type="Texture2D" uid="uid://wcfydsp13xu5" path="res://graphics/pokemon/icons/CHARIZARD_GMAX.png" id="25_wylot"]
-[ext_resource type="Texture2D" uid="uid://dsa3jbr712f3" path="res://graphics/pokemon/icons/TERAPAGOS_STELLAR.png" id="26_w7ur2"]
+[ext_resource type="Texture2D" uid="uid://2k0c1od1d808" path="res://graphics/pokemon/icons/CHARIZARD_GMAX.png" id="25_wylot"]
+[ext_resource type="Texture2D" uid="uid://r2a8tmhkiaq6" path="res://graphics/pokemon/icons/TERAPAGOS_STELLAR.png" id="26_w7ur2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htemk"]
 font = ExtResource("3_pmg0a")
@@ -292,7 +294,7 @@ texture = ExtResource("1_c8v4i")
 [node name="Pkmn_Player" type="Sprite2D" parent="." unique_id=228095653]
 position = Vector2(84, 160)
 scale = Vector2(2, 2)
-texture = ExtResource("3_axcis")
+texture = ExtResource("3_w7ur2")
 
 [node name="Cry_Mon_Player" type="AudioStreamPlayer" parent="Pkmn_Player" unique_id=1211535546]
 
@@ -306,14 +308,14 @@ texture = ExtResource("3_axcis")
 [node name="Pkmn_Enemy" type="Sprite2D" parent="." unique_id=1376516171]
 position = Vector2(316, 80)
 scale = Vector2(2, 2)
-texture = ExtResource("4_3mhqk")
+texture = ExtResource("5_noix1")
 
 [node name="Cry_Mon_Enemy" type="AudioStreamPlayer" parent="Pkmn_Enemy" unique_id=1335717857]
 
 [node name="Pkmn_Enemy2" type="Sprite2D" parent="." unique_id=1627766497]
 position = Vector2(408, 80)
 scale = Vector2(2, 2)
-texture = ExtResource("4_3mhqk")
+texture = ExtResource("6_jvsnx")
 
 [node name="Cry_Mon_Enemy" type="AudioStreamPlayer" parent="Pkmn_Enemy2" unique_id=1402047995]
 

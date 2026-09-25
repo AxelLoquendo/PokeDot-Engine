@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://d11o1oa0dayuy" path="res://graphics/ui_summary_screen/cursor_move.png" id="1_iwsvc"]
 [ext_resource type="Script" uid="uid://bghwqmf1ojc0u" path="res://scenes/ui_summary_screen/page_4_1.gd" id="1_tkh7q"]
 [ext_resource type="Texture2D" uid="uid://d206ajpqojm85" path="res://graphics/ui_summary_screen/movedetail/movedetail_0.png" id="2_tkh7q"]
-[ext_resource type="Texture2D" uid="uid://c3y4gvv0ueed4" path="res://graphics/pokemon/icons/TERAPAGOS.png" id="3_ib0ax"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="4_5u7pi"]
+[ext_resource type="Texture2D" uid="uid://s13mdmjya1hl" path="res://graphics/pokemon/icons/MEGA_GRENINJA.png" id="4_tkh7q"]
 [ext_resource type="Texture2D" uid="uid://8ce62eotmjuh" path="res://graphics/ui_summary_screen/physical.png" id="5_g7b3u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5hl2m"]
@@ -68,7 +68,7 @@ texture = ExtResource("2_tkh7q")
 
 [node name="Icon" type="Sprite2D" parent="Move_Detail" unique_id=943734086]
 position = Vector2(-63, -107)
-texture = ExtResource("3_ib0ax")
+texture = ExtResource("4_tkh7q")
 hframes = 2
 
 [node name="Category" type="Label" parent="Move_Detail" unique_id=303676922]
