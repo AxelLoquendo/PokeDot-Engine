@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://comyooly35kwe"
+path="res://.godot/imported/Vs sword.ogg-4afc023d3603798c0c72bb56d9409882.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/Vs sword.ogg"
+dest_files=["res://.godot/imported/Vs sword.ogg-4afc023d3603798c0c72bb56d9409882.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

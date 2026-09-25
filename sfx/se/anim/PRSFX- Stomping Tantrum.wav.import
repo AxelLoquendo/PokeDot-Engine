@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://eglyirg1e86i"
+path="res://.godot/imported/PRSFX- Stomping Tantrum.wav-04f5acd4910f33562c09923228808049.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Stomping Tantrum.wav"
+dest_files=["res://.godot/imported/PRSFX- Stomping Tantrum.wav-04f5acd4910f33562c09923228808049.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

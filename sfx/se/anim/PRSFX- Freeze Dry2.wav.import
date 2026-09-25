@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cct1y65elf74l"
+path="res://.godot/imported/PRSFX- Freeze Dry2.wav-7df2339331623c5fa5d6d1d34f638085.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Freeze Dry2.wav"
+dest_files=["res://.godot/imported/PRSFX- Freeze Dry2.wav-7df2339331623c5fa5d6d1d34f638085.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

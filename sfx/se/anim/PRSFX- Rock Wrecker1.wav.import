@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbsrp442gh2lt"
+path="res://.godot/imported/PRSFX- Rock Wrecker1.wav-7a85f7c32c54904ed56e9cdc60975a7b.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Rock Wrecker1.wav"
+dest_files=["res://.godot/imported/PRSFX- Rock Wrecker1.wav-7a85f7c32c54904ed56e9cdc60975a7b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

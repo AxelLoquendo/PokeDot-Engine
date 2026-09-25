@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dju2i3q5l5jv4"
+path="res://.godot/imported/PRSFX- Magnet Bomb2.wav-c3f9b2d95104e4807c2098f278190512.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Magnet Bomb2.wav"
+dest_files=["res://.godot/imported/PRSFX- Magnet Bomb2.wav-c3f9b2d95104e4807c2098f278190512.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

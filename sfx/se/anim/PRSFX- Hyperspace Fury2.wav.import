@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3iymuj0wuhg6"
+path="res://.godot/imported/PRSFX- Hyperspace Fury2.wav-b6435b3567f78fb0d254719ea955c8ff.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Hyperspace Fury2.wav"
+dest_files=["res://.godot/imported/PRSFX- Hyperspace Fury2.wav-b6435b3567f78fb0d254719ea955c8ff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1nc5w0shi2eq"
+path="res://.godot/imported/PRSFX- Corkscrew Crash1.ogg-45f81573f60131c481784ef81f80abb0.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Corkscrew Crash1.ogg"
+dest_files=["res://.godot/imported/PRSFX- Corkscrew Crash1.ogg-45f81573f60131c481784ef81f80abb0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

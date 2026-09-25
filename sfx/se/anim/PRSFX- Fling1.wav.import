@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbhfnksjj5j08"
+path="res://.godot/imported/PRSFX- Fling1.wav-f6f7c934b412e56f9a844b70785e2fcd.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Fling1.wav"
+dest_files=["res://.godot/imported/PRSFX- Fling1.wav-f6f7c934b412e56f9a844b70785e2fcd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

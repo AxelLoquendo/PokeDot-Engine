@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1uwyxh0tqk86"
+path="res://.godot/imported/PRSFX- Hammer Arm1.wav-b3003cf01251334c2778e5f85feb6178.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Hammer Arm1.wav"
+dest_files=["res://.godot/imported/PRSFX- Hammer Arm1.wav-b3003cf01251334c2778e5f85feb6178.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

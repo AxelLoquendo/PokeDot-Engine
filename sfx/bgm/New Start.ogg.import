@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdix5qscfrbcd"
+path="res://.godot/imported/New Start.ogg-f85d712e0600a47a8679ec6a235302b2.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/New Start.ogg"
+dest_files=["res://.godot/imported/New Start.ogg-f85d712e0600a47a8679ec6a235302b2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

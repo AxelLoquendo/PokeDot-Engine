@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://4ahj2vr5tqah"
+path="res://.godot/imported/Raid (Basic) battle v2.ogg-56ec8cb1e32aa9cf8452a01220b0f461.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Raid (Basic) battle v2.ogg"
+dest_files=["res://.godot/imported/Raid (Basic) battle v2.ogg-56ec8cb1e32aa9cf8452a01220b0f461.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgtsgwdfamk74"
+path="res://.godot/imported/PRSFX- Synthesis.wav-c006f9aca54b5598e92cf4883a0a1a92.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Synthesis.wav"
+dest_files=["res://.godot/imported/PRSFX- Synthesis.wav-c006f9aca54b5598e92cf4883a0a1a92.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

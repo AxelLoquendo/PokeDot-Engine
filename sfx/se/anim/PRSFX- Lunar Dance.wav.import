@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://quhjek8iosh1"
+path="res://.godot/imported/PRSFX- Lunar Dance.wav-131d0723968409e912afcd4f06bd476a.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Lunar Dance.wav"
+dest_files=["res://.godot/imported/PRSFX- Lunar Dance.wav-131d0723968409e912afcd4f06bd476a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

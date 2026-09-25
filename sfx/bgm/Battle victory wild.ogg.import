@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://evfr3ts8siqf"
+path="res://.godot/imported/Battle victory wild.ogg-bcf29a6710d3e41a4cfebeb79753bd22.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Battle victory wild.ogg"
+dest_files=["res://.godot/imported/Battle victory wild.ogg-bcf29a6710d3e41a4cfebeb79753bd22.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

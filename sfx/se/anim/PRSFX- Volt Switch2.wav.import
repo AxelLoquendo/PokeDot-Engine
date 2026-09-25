@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://qdfm5tsdeo2m"
+path="res://.godot/imported/PRSFX- Volt Switch2.wav-30b181e2e7e36741f4b059580f6fe0fc.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Volt Switch2.wav"
+dest_files=["res://.godot/imported/PRSFX- Volt Switch2.wav-30b181e2e7e36741f4b059580f6fe0fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

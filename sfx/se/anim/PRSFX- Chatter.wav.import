@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://p7gav74vrrpi"
+path="res://.godot/imported/PRSFX- Chatter.wav-dc709109da75a94b629440d9343b3b72.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Chatter.wav"
+dest_files=["res://.godot/imported/PRSFX- Chatter.wav-dc709109da75a94b629440d9343b3b72.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

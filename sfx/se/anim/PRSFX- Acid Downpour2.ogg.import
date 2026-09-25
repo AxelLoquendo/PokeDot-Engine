@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmfw070o26x6m"
+path="res://.godot/imported/PRSFX- Acid Downpour2.ogg-6842468805dae91d434d6a504c04b1df.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Acid Downpour2.ogg"
+dest_files=["res://.godot/imported/PRSFX- Acid Downpour2.ogg-6842468805dae91d434d6a504c04b1df.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

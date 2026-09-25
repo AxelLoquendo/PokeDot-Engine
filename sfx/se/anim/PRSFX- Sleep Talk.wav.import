@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://desap00xv1662"
+path="res://.godot/imported/PRSFX- Sleep Talk.wav-1ad7650749c3a6a67bc7a12d7302e725.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Sleep Talk.wav"
+dest_files=["res://.godot/imported/PRSFX- Sleep Talk.wav-1ad7650749c3a6a67bc7a12d7302e725.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

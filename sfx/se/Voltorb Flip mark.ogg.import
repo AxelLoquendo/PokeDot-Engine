@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1ewxk6as60fj"
+path="res://.godot/imported/Voltorb Flip mark.ogg-e6ad4d28430cd70ba542e35a1ca2dac6.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/Voltorb Flip mark.ogg"
+dest_files=["res://.godot/imported/Voltorb Flip mark.ogg-e6ad4d28430cd70ba542e35a1ca2dac6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

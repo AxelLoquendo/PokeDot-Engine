@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bh8dte7av7xui"
+path="res://.godot/imported/PRSFX- Spike Cannon.wav-ced7a0e20a55f01a481b72322b43c415.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Spike Cannon.wav"
+dest_files=["res://.godot/imported/PRSFX- Spike Cannon.wav-ced7a0e20a55f01a481b72322b43c415.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

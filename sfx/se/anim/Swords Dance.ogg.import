@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cqfvjqdjdntae"
+path="res://.godot/imported/Swords Dance.ogg-d0ab89f69d51bc2c17b5f9584a1090cf.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Swords Dance.ogg"
+dest_files=["res://.godot/imported/Swords Dance.ogg-d0ab89f69d51bc2c17b5f9584a1090cf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

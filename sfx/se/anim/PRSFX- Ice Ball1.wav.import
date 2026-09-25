@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ve3narnrn7ma"
+path="res://.godot/imported/PRSFX- Ice Ball1.wav-5c9a02e3ea0d07e02619c6d582c98737.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Ice Ball1.wav"
+dest_files=["res://.godot/imported/PRSFX- Ice Ball1.wav-5c9a02e3ea0d07e02619c6d582c98737.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

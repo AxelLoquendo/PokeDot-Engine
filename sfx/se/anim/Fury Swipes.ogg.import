@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dek47uhs3bh8l"
+path="res://.godot/imported/Fury Swipes.ogg-f992ca38c2cc2f5986481fc83b5ac0ec.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Fury Swipes.ogg"
+dest_files=["res://.godot/imported/Fury Swipes.ogg-f992ca38c2cc2f5986481fc83b5ac0ec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

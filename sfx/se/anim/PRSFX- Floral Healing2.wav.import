@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cob36xou5kgar"
+path="res://.godot/imported/PRSFX- Floral Healing2.wav-9fd2afa2e8e2ae5a0fc6d60e3e94ac85.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Floral Healing2.wav"
+dest_files=["res://.godot/imported/PRSFX- Floral Healing2.wav-9fd2afa2e8e2ae5a0fc6d60e3e94ac85.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

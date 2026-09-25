@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://o6iaqos13y2s"
+path="res://.godot/imported/PRSFX- Dragon Pulse.wav-ac34a9c26501e8868fce598c70019daa.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Dragon Pulse.wav"
+dest_files=["res://.godot/imported/PRSFX- Dragon Pulse.wav-ac34a9c26501e8868fce598c70019daa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

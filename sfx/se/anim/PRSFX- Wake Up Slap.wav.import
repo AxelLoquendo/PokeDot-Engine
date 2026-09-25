@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbcgci8oxv73c"
+path="res://.godot/imported/PRSFX- Wake Up Slap.wav-a785722c34cbd3bc9e186ef8a11d4739.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Wake Up Slap.wav"
+dest_files=["res://.godot/imported/PRSFX- Wake Up Slap.wav-a785722c34cbd3bc9e186ef8a11d4739.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvskrkfxon5te"
+path="res://.godot/imported/PRSFX- Rock Slide.wav-82c684b2e3c9f99a07ae7b309c16a9b1.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Rock Slide.wav"
+dest_files=["res://.godot/imported/PRSFX- Rock Slide.wav-82c684b2e3c9f99a07ae7b309c16a9b1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

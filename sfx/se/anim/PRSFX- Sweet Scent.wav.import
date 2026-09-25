@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bg4su00jqacel"
+path="res://.godot/imported/PRSFX- Sweet Scent.wav-047b96182cee3a9edb3d02f8eb8f10b2.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Sweet Scent.wav"
+dest_files=["res://.godot/imported/PRSFX- Sweet Scent.wav-047b96182cee3a9edb3d02f8eb8f10b2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

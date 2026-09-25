@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7k82j354iyrp"
+path="res://.godot/imported/Psych Up.mp3-6aa27f6a1c50a315045dbbe172a4edd0.mp3str"
+
+[deps]
+
+source_file="res://sfx/se/anim/Psych Up.mp3"
+dest_files=["res://.godot/imported/Psych Up.mp3-6aa27f6a1c50a315045dbbe172a4edd0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

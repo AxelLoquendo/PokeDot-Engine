@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bfwov3w5wpltl"
+path="res://.godot/imported/Battle jump to ball.ogg-eb5bc12df72ece8e31a6b294ce7085aa.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/Battle jump to ball.ogg"
+dest_files=["res://.godot/imported/Battle jump to ball.ogg-eb5bc12df72ece8e31a6b294ce7085aa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

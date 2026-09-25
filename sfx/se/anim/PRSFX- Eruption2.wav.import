@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://barx0uudotgs0"
+path="res://.godot/imported/PRSFX- Eruption2.wav-e0abe8dd8712721edf137bf20e34dffb.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Eruption2.wav"
+dest_files=["res://.godot/imported/PRSFX- Eruption2.wav-e0abe8dd8712721edf137bf20e34dffb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

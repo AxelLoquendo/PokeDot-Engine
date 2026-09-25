@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnwjb7ulsq3ah"
+path="res://.godot/imported/PRSFX- Mirror Shatter.wav-ff7e72fb903a7454bf0d1036a1ea652c.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Mirror Shatter.wav"
+dest_files=["res://.godot/imported/PRSFX- Mirror Shatter.wav-ff7e72fb903a7454bf0d1036a1ea652c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

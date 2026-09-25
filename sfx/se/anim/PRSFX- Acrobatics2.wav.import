@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://u2mwau101f2t"
+path="res://.godot/imported/PRSFX- Acrobatics2.wav-02a3297b8d424477ed56113dcdfe81fc.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Acrobatics2.wav"
+dest_files=["res://.godot/imported/PRSFX- Acrobatics2.wav-02a3297b8d424477ed56113dcdfe81fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

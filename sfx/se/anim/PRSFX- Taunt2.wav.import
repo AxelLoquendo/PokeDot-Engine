@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://eju54ri86w4m"
+path="res://.godot/imported/PRSFX- Taunt2.wav-bbc8f3252a37cd0b17a5fa3e1b052b05.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Taunt2.wav"
+dest_files=["res://.godot/imported/PRSFX- Taunt2.wav-bbc8f3252a37cd0b17a5fa3e1b052b05.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

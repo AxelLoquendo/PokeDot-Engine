@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjpnii7ccbx61"
+path="res://.godot/imported/PRSFX- Horn Drill3_1.mp3-b45c1717755b45a63e958a738d025590.mp3str"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Horn Drill3_1.mp3"
+dest_files=["res://.godot/imported/PRSFX- Horn Drill3_1.mp3-b45c1717755b45a63e958a738d025590.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

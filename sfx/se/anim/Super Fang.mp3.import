@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://donw3px0axgh"
+path="res://.godot/imported/Super Fang.mp3-e9c80b001110280f40b7f2ac7a787984.mp3str"
+
+[deps]
+
+source_file="res://sfx/se/anim/Super Fang.mp3"
+dest_files=["res://.godot/imported/Super Fang.mp3-e9c80b001110280f40b7f2ac7a787984.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

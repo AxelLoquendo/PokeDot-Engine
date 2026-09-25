@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bnd64tq3uwrs4"
+path="res://.godot/imported/Radio - March.ogg-fe87da2fc4e36985c724d26ea91d994d.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Radio - March.ogg"
+dest_files=["res://.godot/imported/Radio - March.ogg-fe87da2fc4e36985c724d26ea91d994d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

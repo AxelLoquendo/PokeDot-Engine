@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bodfxp0ug5fli"
+path="res://.godot/imported/PRSFX- Steam Eruption1.wav-efb46711d9f570a019ee447cd45321fa.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Steam Eruption1.wav"
+dest_files=["res://.godot/imported/PRSFX- Steam Eruption1.wav-efb46711d9f570a019ee447cd45321fa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

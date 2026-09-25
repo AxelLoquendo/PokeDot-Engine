@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2ec0n4wm1wdw"
+path="res://.godot/imported/PRSFX- Ingrain1.wav-3b9efb9c2ba31009f038d48aa0ccbf2e.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Ingrain1.wav"
+dest_files=["res://.godot/imported/PRSFX- Ingrain1.wav-3b9efb9c2ba31009f038d48aa0ccbf2e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

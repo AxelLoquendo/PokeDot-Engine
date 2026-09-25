@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ene1uc1ad4bt"
+path="res://.godot/imported/PRSFX- Arm Thrust.wav-1f8737c7607bb0e1d017df10f732f420.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Arm Thrust.wav"
+dest_files=["res://.godot/imported/PRSFX- Arm Thrust.wav-1f8737c7607bb0e1d017df10f732f420.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

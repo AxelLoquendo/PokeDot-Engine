@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://qkh2th5sq53f"
+path="res://.godot/imported/PRSFX- Head Smash.wav-1af4d620759700c06ca56d9357ede8e8.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Head Smash.wav"
+dest_files=["res://.godot/imported/PRSFX- Head Smash.wav-1af4d620759700c06ca56d9357ede8e8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

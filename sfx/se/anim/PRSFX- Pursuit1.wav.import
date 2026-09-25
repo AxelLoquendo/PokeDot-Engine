@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://opdb6cpy8olg"
+path="res://.godot/imported/PRSFX- Pursuit1.wav-abe358b4f80cd81872475cbe1bae8d3e.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Pursuit1.wav"
+dest_files=["res://.godot/imported/PRSFX- Pursuit1.wav-abe358b4f80cd81872475cbe1bae8d3e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

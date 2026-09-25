@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4ogks8u770wv"
+path="res://.godot/imported/PRSFX- Power Up Punch2.wav-845a503e0538d00310352d49b43ab5ab.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Power Up Punch2.wav"
+dest_files=["res://.godot/imported/PRSFX- Power Up Punch2.wav-845a503e0538d00310352d49b43ab5ab.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

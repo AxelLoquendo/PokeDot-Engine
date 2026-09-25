@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t3lk8dhffgjk"
+path="res://.godot/imported/PRSFX- Theif1.wav-e28542c1b737dc73ff41e28ed9fa83db.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Theif1.wav"
+dest_files=["res://.godot/imported/PRSFX- Theif1.wav-e28542c1b737dc73ff41e28ed9fa83db.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

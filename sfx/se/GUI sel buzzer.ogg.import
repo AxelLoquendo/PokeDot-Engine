@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b0o7o0qsoglrj"
+path="res://.godot/imported/GUI sel buzzer.ogg-2836f5022ee0c08b13171443fb508b30.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/GUI sel buzzer.ogg"
+dest_files=["res://.godot/imported/GUI sel buzzer.ogg-2836f5022ee0c08b13171443fb508b30.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

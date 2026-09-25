@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cckjms3gqim3b"
+path="res://.godot/imported/PRSFX- Clamp2.wav-447464d55a0187669b1b1c62eec4b884.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Clamp2.wav"
+dest_files=["res://.godot/imported/PRSFX- Clamp2.wav-447464d55a0187669b1b1c62eec4b884.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

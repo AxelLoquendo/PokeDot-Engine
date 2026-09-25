@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1feeh4lghesw"
+path="res://.godot/imported/PRSFX- Noble Roar2.wav-8d34d527535103bf88f9f5da08eed01d.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Noble Roar2.wav"
+dest_files=["res://.godot/imported/PRSFX- Noble Roar2.wav-8d34d527535103bf88f9f5da08eed01d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

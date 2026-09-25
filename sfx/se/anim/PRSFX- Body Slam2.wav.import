@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bk2n80u1irly0"
+path="res://.godot/imported/PRSFX- Body Slam2.wav-a63eabbea821f0844a79a467bea9c67e.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Body Slam2.wav"
+dest_files=["res://.godot/imported/PRSFX- Body Slam2.wav-a63eabbea821f0844a79a467bea9c67e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

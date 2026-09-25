@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ds8vl24rawh63"
+path="res://.godot/imported/PRSFX- Confusion.wav-57493a298f2b12f651d4c3c353fbb4a6.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Confusion.wav"
+dest_files=["res://.godot/imported/PRSFX- Confusion.wav-57493a298f2b12f651d4c3c353fbb4a6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

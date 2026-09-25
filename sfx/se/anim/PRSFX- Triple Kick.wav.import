@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2x2gt5juawrr"
+path="res://.godot/imported/PRSFX- Triple Kick.wav-1ff55c88d5f3fbb2e99a410761b19cdc.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Triple Kick.wav"
+dest_files=["res://.godot/imported/PRSFX- Triple Kick.wav-1ff55c88d5f3fbb2e99a410761b19cdc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://oda03d5itybp"
+path="res://.godot/imported/PRSFX- Fell Stinger2.wav-18461fb9914b1283e1a583c29bafa079.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Fell Stinger2.wav"
+dest_files=["res://.godot/imported/PRSFX- Fell Stinger2.wav-18461fb9914b1283e1a583c29bafa079.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

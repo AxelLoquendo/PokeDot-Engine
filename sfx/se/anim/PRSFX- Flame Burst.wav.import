@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tddjplrdtybc"
+path="res://.godot/imported/PRSFX- Flame Burst.wav-849b4b0943f0e71e11306dc8aeef4f14.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Flame Burst.wav"
+dest_files=["res://.godot/imported/PRSFX- Flame Burst.wav-849b4b0943f0e71e11306dc8aeef4f14.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

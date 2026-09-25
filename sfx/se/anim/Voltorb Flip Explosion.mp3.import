@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ppbjv4wusjcj"
+path="res://.godot/imported/Voltorb Flip Explosion.mp3-d33096d1c070b534d36ea648aaaa84de.mp3str"
+
+[deps]
+
+source_file="res://sfx/se/anim/Voltorb Flip Explosion.mp3"
+dest_files=["res://.godot/imported/Voltorb Flip Explosion.mp3-d33096d1c070b534d36ea648aaaa84de.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dh5f31ug766gx"
+path="res://.godot/imported/Raid (Max) battle v1.ogg-ec89a78f172b935bbdf5881bea917de3.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Raid (Max) battle v1.ogg"
+dest_files=["res://.godot/imported/Raid (Max) battle v1.ogg-ec89a78f172b935bbdf5881bea917de3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

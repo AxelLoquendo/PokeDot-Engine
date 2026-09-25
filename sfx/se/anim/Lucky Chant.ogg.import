@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cniakt78yr2wi"
+path="res://.godot/imported/Lucky Chant.ogg-19a5cd5725404aa8a3adca4f29f13abc.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Lucky Chant.ogg"
+dest_files=["res://.godot/imported/Lucky Chant.ogg-19a5cd5725404aa8a3adca4f29f13abc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

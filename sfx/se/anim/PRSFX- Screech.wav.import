@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4lr2lou1fi55"
+path="res://.godot/imported/PRSFX- Screech.wav-c2b7ad87c149b7ce7da78cb09fc3edda.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Screech.wav"
+dest_files=["res://.godot/imported/PRSFX- Screech.wav-c2b7ad87c149b7ce7da78cb09fc3edda.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfp5wfiy5hvi"
+path="res://.godot/imported/PRSFX- Soak.wav-0d5bb7efd8ae0be7332020a08e715a4d.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Soak.wav"
+dest_files=["res://.godot/imported/PRSFX- Soak.wav-0d5bb7efd8ae0be7332020a08e715a4d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

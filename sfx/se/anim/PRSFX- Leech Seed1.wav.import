@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8ese4wdgq8tf"
+path="res://.godot/imported/PRSFX- Leech Seed1.wav-b4616ddf9a4af2621a1918d8c37c77c6.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Leech Seed1.wav"
+dest_files=["res://.godot/imported/PRSFX- Leech Seed1.wav-b4616ddf9a4af2621a1918d8c37c77c6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

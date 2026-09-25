@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://37tjw83aygqq"
+path="res://.godot/imported/Slots win.ogg-d0c0664a779fa47390fda704f38c3793.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/me/Slots win.ogg"
+dest_files=["res://.godot/imported/Slots win.ogg-d0c0664a779fa47390fda704f38c3793.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

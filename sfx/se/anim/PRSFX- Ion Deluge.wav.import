@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1he1edc0bmam"
+path="res://.godot/imported/PRSFX- Ion Deluge.wav-eb707397fc7fe5d9fe8288eb5951a641.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Ion Deluge.wav"
+dest_files=["res://.godot/imported/PRSFX- Ion Deluge.wav-eb707397fc7fe5d9fe8288eb5951a641.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
