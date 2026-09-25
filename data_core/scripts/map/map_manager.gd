@@ -139,17 +139,22 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 	_setup_jugador_en_mapa(current_map)
 	_post_cambio_mapa()
 
-## Warp desde script.
-func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
+## Warp desde script. Si dest_warp_id >= 0 y el mapa destino tiene un WARP
+## con ese warp_id, el jugador aparece sobre él en lugar de en target_tile.
+func warp_player_to_section(section_id: int, target_tile: Vector2i, dest_warp_id: int = -1) -> bool:
 	if jugador == null:
 		push_error("MapManager: no hay jugador para ejecutar warp")
 		return false
 
 	var target: MapAttributes = mapas_cargados.get(section_id) as MapAttributes
 	if target == null:
-		var scene_path: String = str(MapSection.SECTION_TO_SCENE.get(section_id, ""))
+		var scene_path: String = MapSection.get_scene_path(section_id)
 		if scene_path.is_empty() or not ResourceLoader.exists(scene_path):
-			push_error("MapManager: no se encontró escena para section_id %s" % section_id)
+			push_error(
+				"MapManager: %s no tiene escena registrada. Guarda el mapa en el editor o usa "
+				% str(MapSection.SectionId.find_key(section_id))
+				+ "Proyecto → Herramientas → Actualizar registro de mapas."
+			)
 			return false
 		var escena: PackedScene = load(scene_path) as PackedScene
 		if escena == null:
@@ -165,6 +170,11 @@ func warp_player_to_section(section_id: int, target_tile: Vector2i) -> bool:
 	current_map.position = Vector2.ZERO
 	current_map.activo = true
 	activar_contenido_mapa(current_map)
+
+	if dest_warp_id >= 0:
+		var llegada: MapEvent = MapEventResolver.find_warp_by_id(current_map, dest_warp_id)
+		if llegada != null:
+			target_tile = llegada.get_tile()
 
 	# Posicionar jugador en la casilla objetivo
 	var tile_size: float = float(current_map.tile_size)

@@ -23,7 +23,7 @@ signal connection_changed
 
 
 func get_scene_path() -> String:
-	return str(MapSection.SECTION_TO_SCENE.get(target_section, ""))
+	return MapSection.get_scene_path(target_section)
 
 
 func get_scene() -> PackedScene:
