@@ -95,6 +95,8 @@ func _ready() -> void:
 	actualizar_nivel_suelo(global_position)
 	EventObjects.registrar_casilla(casilla_actual, self)
 
+	ReflejoAgua.agregar_a(self, anim_player)
+
 	var mapa: Node = self
 	while mapa and not (mapa is MapAttributes):
 		mapa = mapa.get_parent()

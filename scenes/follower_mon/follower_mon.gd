@@ -54,6 +54,7 @@ func _ready() -> void:
 		sombra.visible = false
 		sombra.z_as_relative = true
 		sombra.z_index = -1
+	ReflejoAgua.agregar_a(self, anim)
 
 
 func _aplicar_textura(textura: Texture2D) -> bool:
