@@ -517,6 +517,11 @@ func complete_move() -> void:
 	actualizar_nivel_suelo(global_position)
 
 	if character_data is CharacterPlayer:
+		# 1) Triggers de casilla (COORD + WARP)
+		if MapEventResolver.try_step(self):
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+			return
 		revisar_conexion_mapa()
 
 	for capa: TileBehaviourLayer in capas_comportamiento:

@@ -6,11 +6,7 @@ func _ready() -> void:
 	add_to_group("tile_behaviour")
 
 
-func comprobar_casilla(
-	casilla: Vector2i,
-	personaje: CharacterController,
-	direccion: Vector2
-) -> bool:
+func comprobar_casilla(casilla: Vector2i, personaje: CharacterController, direccion: Vector2) -> bool:
 	var tile_data: TileData = get_cell_tile_data(casilla)
 	if tile_data == null:
 		return false
