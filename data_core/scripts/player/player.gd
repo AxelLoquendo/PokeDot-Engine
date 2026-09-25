@@ -199,14 +199,13 @@ func obtener_casilla_frontal() -> Vector2i:
 			return casilla_actual + Vector2i.RIGHT
 	return casilla_actual
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if start_menu and start_menu.is_open:
 		return
 	if DialogueBox.activo:
 		return
-
 	if event.is_action_pressed("buttonA"):
+		# 1) NPC delante
 		var personaje: CharacterController = EventObjects.obtener_personaje_en_casilla(obtener_casilla_frontal())
 		if personaje and personaje.character_data is CharacterNpc:
 			if personaje.has_method("interact"):
@@ -214,7 +213,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				personaje.interact()
 				get_viewport().set_input_as_handled()
 				return
-
+		# 2) BG event (cartel / objeto oculto) en la casilla de delante
+		if not is_moving and MapEventResolver.try_interact(self):
+			get_viewport().set_input_as_handled()
+			return
 	if event.is_action_pressed("buttonStart") and start_menu and start_menu.has_method("toggle_menu"):
 		start_menu.toggle_menu()
 		get_viewport().set_input_as_handled()

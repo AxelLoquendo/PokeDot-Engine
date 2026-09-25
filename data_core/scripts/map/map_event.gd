@@ -1,6 +1,6 @@
 @tool
 extends Node2D
-class_name TriggerMap
+class_name MapEvent
 
 ## Evento de casilla al estilo pokeemerald (sin Object/NPC).
 ## Colócalo como hijo del mapa y ajústalo en el inspector.
