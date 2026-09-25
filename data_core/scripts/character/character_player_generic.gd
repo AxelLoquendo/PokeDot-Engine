@@ -16,6 +16,10 @@ class_name CharacterPlayer
 @export var created_at: String = ""
 @export var trainer_id: int = 0
 @export var registered_item: Items.ItemId = Items.ItemId.ITEM_NONE
+## Pasos restantes de Repel / Super Repel / Max Repel.
+var repel_steps: int = 0
+## Multiplicador de tasa de encuentros (flautas). 1.0 = normal.
+var encounter_rate_modifier: float = 1.0
 
 var _sprite_overworld: EventObjects.PlayerID = EventObjects.PlayerID.NONE
 @export_group("Apariencia")

@@ -153,7 +153,24 @@ func comportamiento_puerta(_personaje: CharacterController) -> void:
 	pass
 
 
+
+## Resta un paso de repelente al completar un movimiento del jugador.
+func tick_repel(personaje: CharacterController) -> void:
+	if personaje == null:
+		return
+	if not (personaje.character_data is CharacterPlayer):
+		return
+	var data: CharacterPlayer = personaje.character_data as CharacterPlayer
+	if data == null or data.repel_steps <= 0:
+		return
+	data.repel_steps -= 1
+	if data.repel_steps == 0:
+		# El mensaje lo puede mostrar la UI del overworld si se conecta después.
+		pass
+
+
 func comportamiento_hierba(personaje: CharacterController) -> void:
+	tick_repel(personaje)
 	# Solo se evalúa al completar el paso
 	if not personaje.is_moving:
 		return
@@ -170,8 +187,20 @@ func comportamiento_hierba(personaje: CharacterController) -> void:
 	if data == null:
 		return
 
-	# Illuminate (y habilidades de tasa de encuentro) del equipo
+	# Honey / forzar encuentro
+	var force: bool = bool(data.get_meta("force_wild_encounter", false))
+	if force:
+		data.set_meta("force_wild_encounter", false)
+
+	# Repel activo: no hay encuentros salvajes (salvo forzado)
+	if data.repel_steps > 0 and not force:
+		return
+
+	# Illuminate + flautas (encounter_rate_modifier del jugador)
 	var rate_mult: float = AbilityRuntime.wild_encounter_rate_multiplier(data.party)
+	rate_mult *= data.encounter_rate_modifier
+	if force:
+		rate_mult = 999.0
 	var salvaje: PokemonInstance = mapa.grass_encounters.intentar_encuentro(rate_mult)
 	if salvaje == null:
 		return

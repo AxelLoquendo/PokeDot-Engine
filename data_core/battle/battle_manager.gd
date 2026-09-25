@@ -1355,6 +1355,42 @@ func _process_end_of_turn() -> void:
 				continue
 		if not battler.is_fainted() and battler.leech_seeded:
 			await _apply_leech_seed_tick(battler)
+		if not battler.is_fainted():
+			var hold_eot: Dictionary = HoldItemRuntime.end_of_turn_effect(battler)
+			if int(hold_eot.get("heal", 0)) > 0 and battler.heal_block_turns <= 0:
+				battler.pokemon.apply_heal(int(hold_eot["heal"]))
+				_emit_hp(battler.is_player_side)
+				if str(hold_eot.get("message", "")) != "":
+					message.emit(str(hold_eot["message"]))
+					await _wait(0.45)
+			if int(hold_eot.get("damage", 0)) > 0:
+				_apply_damage_to_target(battler, int(hold_eot["damage"]))
+				_emit_hp(battler.is_player_side)
+				if str(hold_eot.get("message", "")) != "":
+					message.emit(str(hold_eot["message"]))
+					await _wait(0.45)
+			if int(hold_eot.get("status", -1)) >= 0:
+				await _apply_status(battler, int(hold_eot["status"]) as PokemonInstance.Status)
+			if bool(hold_eot.get("consume", false)):
+				HoldItemRuntime.consume_held(battler)
+			# Pinch berries
+			var pinch: Dictionary = HoldItemRuntime.try_pinch_berry(battler)
+			if bool(pinch.get("cure_status", false)):
+				battler.pokemon.cure_status()
+				message.emit(str(pinch.get("message", "")))
+				await _wait(0.45)
+				HoldItemRuntime.consume_held(battler)
+			elif bool(pinch.get("cure_confusion", false)):
+				battler.confusion_turns = 0
+				message.emit(str(pinch.get("message", "")))
+				await _wait(0.45)
+				HoldItemRuntime.consume_held(battler)
+			elif int(pinch.get("stat", -1)) >= 0:
+				await _apply_stat_change(battler, int(pinch["stat"]) as PokemonInstance.Stat, int(pinch.get("stat_stages", 1)))
+				if str(pinch.get("message", "")) != "":
+					message.emit(str(pinch["message"]))
+					await _wait(0.4)
+				HoldItemRuntime.consume_held(battler)
 		if not battler.is_fainted() and battler.future_sight_turns >= 0:
 			battler.future_sight_turns -= 1
 			if battler.future_sight_turns < 0 and battler.future_sight_damage > 0:
@@ -1533,9 +1569,11 @@ func _sort_actions(actions: Array[BattleAction]) -> Array[BattleAction]:
 		if a.priority != b.priority:
 			return a.priority > b.priority
 		var sa: float = float(a.actor.get_effective_stat(PokemonInstance.Stat.SPEED)) \
-			* AbilityRuntime.speed_multiplier(a.actor, weather, terrain)
+			* AbilityRuntime.speed_multiplier(a.actor, weather, terrain) \
+			* HoldItemRuntime.speed_multiplier(a.actor)
 		var sb: float = float(b.actor.get_effective_stat(PokemonInstance.Stat.SPEED)) \
-			* AbilityRuntime.speed_multiplier(b.actor, weather, terrain)
+			* AbilityRuntime.speed_multiplier(b.actor, weather, terrain) \
+			* HoldItemRuntime.speed_multiplier(b.actor)
 		if _side_for(a.actor).tailwind_turns > 0:
 			sa *= 2.0
 		if _side_for(b.actor).tailwind_turns > 0:
@@ -1929,6 +1967,12 @@ func _execute_move(action: BattleAction) -> void:
 				await _apply_status(actor, PokemonInstance.Status.BURN)
 				target.beak_blast_armed = false
 			await AbilityRuntime.on_contact_hit(actor, target, move, self)
+			var rh: int = HoldItemRuntime.rocky_helmet_damage(target, actor)
+			if rh > 0 and not actor.is_fainted():
+				actor.apply_damage(rh)
+				_emit_hp(actor.is_player_side)
+				message.emit("¡%s fue herido por el Casco Dentado!" % actor.get_display_name())
+				await _wait(0.4)
 			if target.shell_trap_armed and move.category == MoveStruct.DamageCategory.PHYSICAL:
 				target.shell_trap_armed = false
 				message.emit("¡La trampa de concha de %s se activó!" % target.get_display_name())
@@ -1989,6 +2033,21 @@ func _execute_move(action: BattleAction) -> void:
 	await _wait(0.7)
 	if actor.charged and total_dealt > 0:
 		actor.charged = false
+
+	# Hold: Shell Bell / Life Orb
+	if total_dealt > 0 and not actor.is_fainted():
+		var sb_heal: int = HoldItemRuntime.shell_bell_heal(actor, total_dealt)
+		if sb_heal > 0 and actor.heal_block_turns <= 0:
+			actor.pokemon.apply_heal(sb_heal)
+			_emit_hp(actor.is_player_side)
+			message.emit("¡%s recuperó PS con su objeto!" % actor.get_display_name())
+			await _wait(0.4)
+		var lo_rec: int = HoldItemRuntime.life_orb_recoil(actor, true)
+		if lo_rec > 0 and not AbilityRuntime.blocks_recoil(actor):
+			actor.apply_damage(lo_rec)
+			_emit_hp(actor.is_player_side)
+			message.emit("¡%s es herido por su objeto!" % actor.get_display_name())
+			await _wait(0.4)
 
 	await _apply_damaging_move_effect(actor, target, move, total_dealt)
 
@@ -2217,6 +2276,12 @@ func _execute_special_or_standard_damage(
 				await _apply_status(actor, PokemonInstance.Status.BURN)
 				target.beak_blast_armed = false
 			await AbilityRuntime.on_contact_hit(actor, target, move, self)
+			var rh: int = HoldItemRuntime.rocky_helmet_damage(target, actor)
+			if rh > 0 and not actor.is_fainted():
+				actor.apply_damage(rh)
+				_emit_hp(actor.is_player_side)
+				message.emit("¡%s fue herido por el Casco Dentado!" % actor.get_display_name())
+				await _wait(0.4)
 			if target.shell_trap_armed and move.category == MoveStruct.DamageCategory.PHYSICAL:
 				target.shell_trap_armed = false
 				message.emit("¡La trampa de concha de %s se activó!" % target.get_display_name())
@@ -2322,6 +2387,7 @@ func _apply_drain(actor: BattleBattler, target: BattleBattler, damage_dealt: int
 	if damage_dealt <= 0 or actor.pokemon == null:
 		return
 	var amount: int = maxi(1, int(floor(float(damage_dealt) * float(percent) / 100.0)))
+	amount = int(round(float(amount) * HoldItemRuntime.big_root_multiplier(actor)))
 
 	if AbilityRuntime.has(target, AbilityId.Id.LIQUID_OOZE):
 		await ability_announce(target)
@@ -4173,6 +4239,8 @@ func _move_allowed_by_volatiles(actor: BattleBattler, move: MoveData) -> bool:
 	if actor.encore_turns > 0 and actor.encore_move_id >= 0 and mid != actor.encore_move_id:
 		return false
 	if actor.torment_active and actor.torment_last_move_id == mid and actor.last_move_used_id == mid:
+		return false
+	if HoldItemRuntime.is_choice_item(actor) and actor.last_move_used_id >= 0 and mid != actor.last_move_used_id:
 		return false
 	# Imprison: el rival selló moves compartidos
 	for opp: BattleBattler in get_opponents(actor):

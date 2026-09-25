@@ -67,6 +67,7 @@ NPC=""
 dialogue_box=""
 Player=""
 multichoice_box=""
+Objeto="Diseñado para Triggers de mapa"
 
 [input]
 

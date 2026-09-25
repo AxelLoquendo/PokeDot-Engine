@@ -41,6 +41,7 @@ static func check_hit(move: MoveData, attacker: BattleBattler, defender: BattleB
 	var acc_stage: int = clampi(attacker.stage_accuracy - defender.stage_evasion, -6, 6)
 	var stage_mult: float = BattleBattler._stage_multiplier(acc_stage)
 	var final_acc: float = float(acc) * stage_mult
+	final_acc *= HoldItemRuntime.accuracy_multiplier(attacker, defender)
 
 	if AbilityRuntime.has(attacker, AbilityId.Id.COMPOUND_EYES):
 		final_acc *= 1.3
@@ -160,6 +161,7 @@ static func compute_hit(
 	var base: float = ((2.0 * float(level) / 5.0 + 2.0) * float(power) * float(atk) / float(def)) / 50.0 + 2.0
 
 	var pow_mult: float = AbilityRuntime.power_multiplier(attacker, move)
+	pow_mult *= HoldItemRuntime.attacker_power_multiplier(attacker, move, 1.0)
 	if pow_mult != 1.0:
 		_note_atk(result, AbilityRuntime.get_id(attacker))
 	base *= pow_mult
@@ -221,6 +223,7 @@ static func compute_hit(
 	var crit_stage: int = move.crit_stage
 	if attacker.focus_energy:
 		crit_stage += 2
+	crit_stage += HoldItemRuntime.crit_stage_bonus(attacker)
 	if AbilityRuntime.has(attacker, AbilityId.Id.SUPER_LUCK):
 		crit_stage += 1
 		_note_atk(result, AbilityId.Id.SUPER_LUCK)
@@ -290,11 +293,24 @@ static func compute_hit(
 
 	result.damage = maxi(damage, 1)
 
+	# Expert Belt / hold items que dependen de efectividad
+	if get_hold_effect_safe(attacker) == HoldEffects.HoldEffect.HOLD_EFFECT_EXPERT_BELT and eff > 1.0:
+		result.damage = int(round(float(result.damage) * 1.2))
+	var def_hold_mult: float = HoldItemRuntime.defender_damage_multiplier(defender, move)
+	if def_hold_mult != 1.0:
+		result.damage = maxi(1, int(round(float(result.damage) * def_hold_mult)))
+
+	# Focus Sash / Focus Band
+	result.damage = HoldItemRuntime.try_endure_ko(defender, result.damage)
+
 	if not ignore_defender_ability and AbilityRuntime.should_survive_with_sturdy(defender, result.damage):
 		result.damage = defender.pokemon.current_hp - 1
 		result.sturdy_activated = true
 
 	return result
+
+static func get_hold_effect_safe(b: BattleBattler) -> HoldEffects.HoldEffect:
+	return HoldItemRuntime.get_hold_effect(b)
 
 ## Mantiene compatibilidad: comprueba accuracy Y calcula el primer golpe.
 static func calculate(

@@ -598,6 +598,8 @@ func _open_item_actions() -> void:
 				if bag_mode == BagMode.BATTLE:
 					battle_item_selected.emit(item_id)
 					close_bag()
+				elif FieldItemResolver.is_field_tool(item):
+					await _use_field_item(item_id, item)
 				elif _is_key_item(item):
 					_use_key_item(item)
 				else:
@@ -635,6 +637,8 @@ func _is_battle_only_item(item: ItemData) -> bool:
 
 
 func _is_field_usable_item(item: ItemData) -> bool:
+	if FieldItemResolver.is_field_tool(item):
+		return true
 	return item.item_type == Items.ItemType.ITEM_USE_PARTY_MENU \
 		or item.item_type == Items.ItemType.ITEM_USE_FIELD \
 		or item.item_type == Items.ItemType.ITEM_USE_PARTY_MENU_MOVES
@@ -642,6 +646,20 @@ func _is_field_usable_item(item: ItemData) -> bool:
 
 func _use_key_item(item: ItemData) -> void:
 	label_descripcion.text = "%s aún no tiene una acción de campo implementada." % item.item_name
+
+
+func _use_field_item(item_id: Items.ItemId, item: ItemData) -> void:
+	if player_data == null:
+		return
+	var result: FieldItemResolver.Result = FieldItemResolver.use_on_player(item, player_data)
+	if result.success and result.consume_item:
+		player_data.bag.remove_item(item_id)
+	label_descripcion.text = result.message
+	_update_ui()
+	# Honey: forzar encuentro si estamos en hierba (TileBehavioursManager lo evaluará al moverse;
+	# aquí solo marcamos el flag para el siguiente paso en hierba).
+	if result.force_encounter:
+		player_data.set_meta("force_wild_encounter", true)
 
 
 func _use_item_on_party(item_id: Items.ItemId, item: ItemData) -> void:

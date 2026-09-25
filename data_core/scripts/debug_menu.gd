@@ -98,7 +98,7 @@ func _handle_choice() -> void:
 			_show("world")
 		"items":
 			if _choice == "0":
-				_add_potions()
+				_add_all_items()  # antes era _add_potions()
 			elif _choice == "1":
 				ScriptExecutionContext.global_flags["FLAG_DEBUG"] = not bool(
 					ScriptExecutionContext.global_flags.get("FLAG_DEBUG", false)
@@ -190,3 +190,16 @@ func _fill_pokedex_owned() -> void:
 		data.pokedex.owned_count(),
 		index.size()
 	])
+
+func _add_all_items() -> void:
+	var player: CharacterController = _player()
+	var data: CharacterPlayer = player.character_data as CharacterPlayer if player else null
+	if data == null:
+		return
+	if data.bag == null:
+		data.bag = Bag.new()
+	# Todos los ItemData cargados en ItemDatabase
+	for item: ItemData in ItemDatabase.get_all_items():
+		if item == null or item.item_id == Items.ItemId.ITEM_NONE:
+			continue
+		data.bag.add_item(item.item_id, 99)

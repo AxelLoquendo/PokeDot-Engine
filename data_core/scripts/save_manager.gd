@@ -145,6 +145,8 @@ func restore_player_collection(player_data: CharacterPlayer, saved: Dictionary) 
 	player_data.created_at = str(saved.get("created_at", player_data.created_at))  
 	player_data.trainer_id = int(saved.get("player_trainer_id", player_data.trainer_id))  
 	player_data.registered_item = int(saved.get("registered_item", player_data.registered_item)) as Items.ItemId
+	player_data.repel_steps = int(saved.get("repel_steps", 0))
+	player_data.encounter_rate_modifier = float(saved.get("encounter_rate_modifier", 1.0))
 	if player_data.bag == null:  
 		player_data.bag = Bag.new()
 	player_data.bag.quantities.clear()
@@ -195,6 +197,8 @@ func save_game(tree: SceneTree) -> bool:
 		"player_gender": player_data.gender if player_data else 0,  
 		"player_sprite_overworld": int(player_data.sprite_overworld) if player_data else 0,
 		"registered_item": int(player_data.registered_item) if player_data else int(Items.ItemId.ITEM_NONE),
+		"repel_steps": player_data.repel_steps if player_data else 0,
+		"encounter_rate_modifier": player_data.encounter_rate_modifier if player_data else 1.0,
 		"map_name": map.map_name if map else "",
 		"map_section": int(map.map_id_section) if map else 0,
 		"flags": ScriptExecutionContext.global_flags,
