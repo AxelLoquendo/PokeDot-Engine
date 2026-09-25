@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6ch2nydtne15"
+path="res://.godot/imported/PRSFX- Present1.wav-3c4dd5d9b9c3b32c5e583693b5535465.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Present1.wav"
+dest_files=["res://.godot/imported/PRSFX- Present1.wav-3c4dd5d9b9c3b32c5e583693b5535465.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

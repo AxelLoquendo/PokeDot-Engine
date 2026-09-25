@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dg3ipxaxv7p08"
+path="res://.godot/imported/Comet Punch.mp3-898ffa0747d34ceb254dbbe6d33c61f3.mp3str"
+
+[deps]
+
+source_file="res://sfx/se/anim/Comet Punch.mp3"
+dest_files=["res://.godot/imported/Comet Punch.mp3-898ffa0747d34ceb254dbbe6d33c61f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

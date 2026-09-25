@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1gcgpt24suoi"
+path="res://.godot/imported/PRSFX- Foul Play1.wav-dd92b6b34edc4bc2e2b78cfa11c44f76.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Foul Play1.wav"
+dest_files=["res://.godot/imported/PRSFX- Foul Play1.wav-dd92b6b34edc4bc2e2b78cfa11c44f76.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkkj6skx8xt0s"
+path="res://.godot/imported/PRSFX- Frustration1.wav-a19da94ed823ef259a4038b6104faf3d.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Frustration1.wav"
+dest_files=["res://.godot/imported/PRSFX- Frustration1.wav-a19da94ed823ef259a4038b6104faf3d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

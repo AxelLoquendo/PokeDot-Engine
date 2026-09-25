@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbsn2c3u21qgs"
+path="res://.godot/imported/PRSFX- Teleport.wav-37290876231346008b23f864ac8b18e4.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Teleport.wav"
+dest_files=["res://.godot/imported/PRSFX- Teleport.wav-37290876231346008b23f864ac8b18e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

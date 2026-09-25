@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsl3nkwsdpkd3"
+path="res://.godot/imported/PRSFX- Sparkling Aria2.wav-4598d82840517a3d48dbf4b802cae25b.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Sparkling Aria2.wav"
+dest_files=["res://.godot/imported/PRSFX- Sparkling Aria2.wav-4598d82840517a3d48dbf4b802cae25b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

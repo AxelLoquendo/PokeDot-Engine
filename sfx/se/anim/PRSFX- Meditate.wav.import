@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://fusafnasc75b"
+path="res://.godot/imported/PRSFX- Meditate.wav-44d0c8806e66b2a573fc9ee25c12d7cf.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Meditate.wav"
+dest_files=["res://.godot/imported/PRSFX- Meditate.wav-44d0c8806e66b2a573fc9ee25c12d7cf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

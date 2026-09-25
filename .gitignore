@@ -9,8 +9,8 @@
 /build/
 
 # Archivos temporales y generados automáticamente
-*.uid
-*.import
+# Nota: *.uid y *.import SÍ se versionan (Godot 4.4+): las escenas y los
+# autoloads referencian recursos por UID y deben ser iguales en cada clon.
 *.remap
 *.translation
 *.cache

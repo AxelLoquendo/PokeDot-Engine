@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ck5m30rlft2hb"
+path="res://.godot/imported/PRSFX- Frost Breath1.wav-9967a9874c99db82e622d07032288594.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Frost Breath1.wav"
+dest_files=["res://.godot/imported/PRSFX- Frost Breath1.wav-9967a9874c99db82e622d07032288594.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

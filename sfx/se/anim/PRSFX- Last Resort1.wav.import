@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1m5e0mc2mjxr"
+path="res://.godot/imported/PRSFX- Last Resort1.wav-f110aff31612cb53175e6631f1faa3c5.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Last Resort1.wav"
+dest_files=["res://.godot/imported/PRSFX- Last Resort1.wav-f110aff31612cb53175e6631f1faa3c5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

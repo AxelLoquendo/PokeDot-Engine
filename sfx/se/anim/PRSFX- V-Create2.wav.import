@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bdhhxsx4lii1h"
+path="res://.godot/imported/PRSFX- V-Create2.wav-a9d6fce659a2b7e3676198bb39b3b07d.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- V-Create2.wav"
+dest_files=["res://.godot/imported/PRSFX- V-Create2.wav-a9d6fce659a2b7e3676198bb39b3b07d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

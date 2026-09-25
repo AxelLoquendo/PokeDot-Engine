@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://btwlkp1xvvr3p"
+path="res://.godot/imported/PRSFX- Splintered Stormshards1.ogg-66570d952ab3e62e302b25470b9fba56.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Splintered Stormshards1.ogg"
+dest_files=["res://.godot/imported/PRSFX- Splintered Stormshards1.ogg-66570d952ab3e62e302b25470b9fba56.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

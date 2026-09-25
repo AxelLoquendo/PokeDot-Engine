@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbgx8n58ieqol"
+path="res://.godot/imported/PRSFX- Brave Bird1.wav-585f690de41933db36b3167cc7c676a3.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Brave Bird1.wav"
+dest_files=["res://.godot/imported/PRSFX- Brave Bird1.wav-585f690de41933db36b3167cc7c676a3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

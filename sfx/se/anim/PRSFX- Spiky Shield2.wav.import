@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhb7x0oywr3n"
+path="res://.godot/imported/PRSFX- Spiky Shield2.wav-d76a75967c98338def532028fcb445e2.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Spiky Shield2.wav"
+dest_files=["res://.godot/imported/PRSFX- Spiky Shield2.wav-d76a75967c98338def532028fcb445e2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

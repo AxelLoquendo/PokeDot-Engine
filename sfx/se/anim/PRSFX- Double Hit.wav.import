@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0g53g8l8mbqf"
+path="res://.godot/imported/PRSFX- Double Hit.wav-74e1813562355561b4d4845f2bcd9fb0.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Double Hit.wav"
+dest_files=["res://.godot/imported/PRSFX- Double Hit.wav-74e1813562355561b4d4845f2bcd9fb0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

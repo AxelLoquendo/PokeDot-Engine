@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dm7lc8cl86vog"
+path="res://.godot/imported/Regalo Misterioso.ogg-cfdd0d31e74819333ac267536445a94a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Regalo Misterioso.ogg"
+dest_files=["res://.godot/imported/Regalo Misterioso.ogg-cfdd0d31e74819333ac267536445a94a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

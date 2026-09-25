@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bovbucvdjglny"
+path="res://.godot/imported/PRSFX- Psycho Shift.wav-7fdf36e867d4afe4984b297d1a654ce0.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Psycho Shift.wav"
+dest_files=["res://.godot/imported/PRSFX- Psycho Shift.wav-7fdf36e867d4afe4984b297d1a654ce0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

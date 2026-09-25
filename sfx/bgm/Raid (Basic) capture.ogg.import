@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crajswt41xyq7"
+path="res://.godot/imported/Raid (Basic) capture.ogg-f61fb6662225bca79f24d9875e1103a3.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Raid (Basic) capture.ogg"
+dest_files=["res://.godot/imported/Raid (Basic) capture.ogg-f61fb6662225bca79f24d9875e1103a3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

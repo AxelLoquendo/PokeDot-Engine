@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcofug1clirlq"
+path="res://.godot/imported/PRSFX- Anchor Shot.wav-bcd9d762494cd1f4aa72639c8dd1f502.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Anchor Shot.wav"
+dest_files=["res://.godot/imported/PRSFX- Anchor Shot.wav-bcd9d762494cd1f4aa72639c8dd1f502.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

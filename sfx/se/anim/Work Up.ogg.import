@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://f60qcgc34uy0"
+path="res://.godot/imported/Work Up.ogg-d03cedf09173c1e52059b1060161eadd.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Work Up.ogg"
+dest_files=["res://.godot/imported/Work Up.ogg-d03cedf09173c1e52059b1060161eadd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

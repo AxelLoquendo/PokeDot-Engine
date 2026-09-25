@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1jo12doxxe3t"
+path="res://.godot/imported/PRSFX- Stealth Rocks.wav-96e55ee64ea9ce6840367c71a152884f.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Stealth Rocks.wav"
+dest_files=["res://.godot/imported/PRSFX- Stealth Rocks.wav-96e55ee64ea9ce6840367c71a152884f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

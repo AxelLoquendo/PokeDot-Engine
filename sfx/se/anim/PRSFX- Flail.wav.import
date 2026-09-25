@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://doy2htc7hp47r"
+path="res://.godot/imported/PRSFX- Flail.wav-b6062ea50c0b7aaf6ce2ceee8966b948.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Flail.wav"
+dest_files=["res://.godot/imported/PRSFX- Flail.wav-b6062ea50c0b7aaf6ce2ceee8966b948.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

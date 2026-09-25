@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbr6liypjmqd"
+path="res://.godot/imported/PRSFX- Thundershock.wav-e0297142b5fb7583cbccbd90b2dac3ff.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Thundershock.wav"
+dest_files=["res://.godot/imported/PRSFX- Thundershock.wav-e0297142b5fb7583cbccbd90b2dac3ff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

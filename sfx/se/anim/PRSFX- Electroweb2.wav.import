@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1nm86sn0s25"
+path="res://.godot/imported/PRSFX- Electroweb2.wav-047ee706d3df981c30c4bc430de50df4.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Electroweb2.wav"
+dest_files=["res://.godot/imported/PRSFX- Electroweb2.wav-047ee706d3df981c30c4bc430de50df4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

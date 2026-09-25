@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cci3bh6klu5su"
+path="res://.godot/imported/Shiny sparkle.ogg-8ac8aac0d1a886409f1c184e450074ec.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Shiny sparkle.ogg"
+dest_files=["res://.godot/imported/Shiny sparkle.ogg-8ac8aac0d1a886409f1c184e450074ec.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://doa0kju83d8hy"
+path="res://.godot/imported/GUI summary change page.ogg-e046e4541ecfc277e178fc3e2aca757f.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/GUI summary change page.ogg"
+dest_files=["res://.godot/imported/GUI summary change page.ogg-e046e4541ecfc277e178fc3e2aca757f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

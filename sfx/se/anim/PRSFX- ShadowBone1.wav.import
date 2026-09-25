@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnmx4h8bd0okm"
+path="res://.godot/imported/PRSFX- ShadowBone1.wav-aee454cbd3753811fa00164b5aaca429.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- ShadowBone1.wav"
+dest_files=["res://.godot/imported/PRSFX- ShadowBone1.wav-aee454cbd3753811fa00164b5aaca429.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

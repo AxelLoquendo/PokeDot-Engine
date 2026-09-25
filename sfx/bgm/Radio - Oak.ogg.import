@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1ggyw6rfg8c"
+path="res://.godot/imported/Radio - Oak.ogg-7e03d1d37ef9e3e78624a8f125cfc02a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Radio - Oak.ogg"
+dest_files=["res://.godot/imported/Radio - Oak.ogg-7e03d1d37ef9e3e78624a8f125cfc02a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

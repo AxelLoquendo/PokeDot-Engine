@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x5syrxrb8xvw"
+path="res://.godot/imported/PRSFX- Dark Pulse2.wav-bd4dbacf36928893931206a0136e55d4.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Dark Pulse2.wav"
+dest_files=["res://.godot/imported/PRSFX- Dark Pulse2.wav-bd4dbacf36928893931206a0136e55d4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

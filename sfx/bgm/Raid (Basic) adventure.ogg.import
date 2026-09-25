@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://t3aprfm5dk3w"
+path="res://.godot/imported/Raid (Basic) adventure.ogg-31e71fca53c49c4f4044c389d6eef5ce.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Raid (Basic) adventure.ogg"
+dest_files=["res://.godot/imported/Raid (Basic) adventure.ogg-31e71fca53c49c4f4044c389d6eef5ce.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

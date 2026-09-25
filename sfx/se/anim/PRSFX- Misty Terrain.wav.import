@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b64u404h5s6vp"
+path="res://.godot/imported/PRSFX- Misty Terrain.wav-104b193f6ce07d57ac4efd926a2496d2.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Misty Terrain.wav"
+dest_files=["res://.godot/imported/PRSFX- Misty Terrain.wav-104b193f6ce07d57ac4efd926a2496d2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

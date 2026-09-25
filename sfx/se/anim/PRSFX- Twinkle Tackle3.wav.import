@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d30n68j6a7x34"
+path="res://.godot/imported/PRSFX- Twinkle Tackle3.wav-9efe9645f02d3bb0c43d6798e0b575e4.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Twinkle Tackle3.wav"
+dest_files=["res://.godot/imported/PRSFX- Twinkle Tackle3.wav-9efe9645f02d3bb0c43d6798e0b575e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

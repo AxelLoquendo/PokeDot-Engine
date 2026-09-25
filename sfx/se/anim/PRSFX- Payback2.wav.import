@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtrytgqftcs7t"
+path="res://.godot/imported/PRSFX- Payback2.wav-04383e70a6f5a0cbea84e6f190184417.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Payback2.wav"
+dest_files=["res://.godot/imported/PRSFX- Payback2.wav-04383e70a6f5a0cbea84e6f190184417.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

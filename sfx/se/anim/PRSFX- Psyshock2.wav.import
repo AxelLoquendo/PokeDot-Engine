@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c548fjj5duncv"
+path="res://.godot/imported/PRSFX- Psyshock2.wav-d63189d985bdef93ec6b85481aa44343.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Psyshock2.wav"
+dest_files=["res://.godot/imported/PRSFX- Psyshock2.wav-d63189d985bdef93ec6b85481aa44343.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

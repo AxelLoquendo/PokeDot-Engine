@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hgcwhhsnqfqc"
+path="res://.godot/imported/Voltorb Flip point.ogg-f84c51ff3179dd9391c17e930b4f56d1.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/Voltorb Flip point.ogg"
+dest_files=["res://.godot/imported/Voltorb Flip point.ogg-f84c51ff3179dd9391c17e930b4f56d1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

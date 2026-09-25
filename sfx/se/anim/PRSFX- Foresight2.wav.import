@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://brq326mnkmrlf"
+path="res://.godot/imported/PRSFX- Foresight2.wav-92218127daf04fec3e48112f7696d67f.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Foresight2.wav"
+dest_files=["res://.godot/imported/PRSFX- Foresight2.wav-92218127daf04fec3e48112f7696d67f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

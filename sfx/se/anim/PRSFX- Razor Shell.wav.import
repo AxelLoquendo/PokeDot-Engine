@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m3143b8pmrnf"
+path="res://.godot/imported/PRSFX- Razor Shell.wav-c3b563bfb9ed4bd32bcda5c30bd98cde.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Razor Shell.wav"
+dest_files=["res://.godot/imported/PRSFX- Razor Shell.wav-c3b563bfb9ed4bd32bcda5c30bd98cde.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

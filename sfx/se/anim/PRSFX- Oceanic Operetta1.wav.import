@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwxtcyx4eobm1"
+path="res://.godot/imported/PRSFX- Oceanic Operetta1.wav-026ada299c8deadf8ff751a43c0977dd.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Oceanic Operetta1.wav"
+dest_files=["res://.godot/imported/PRSFX- Oceanic Operetta1.wav-026ada299c8deadf8ff751a43c0977dd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

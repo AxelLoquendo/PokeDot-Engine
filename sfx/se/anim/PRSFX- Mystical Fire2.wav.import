@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djnqse75oj8a4"
+path="res://.godot/imported/PRSFX- Mystical Fire2.wav-f51023899cacc4b260cc3fa7d2ae0b63.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Mystical Fire2.wav"
+dest_files=["res://.godot/imported/PRSFX- Mystical Fire2.wav-f51023899cacc4b260cc3fa7d2ae0b63.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

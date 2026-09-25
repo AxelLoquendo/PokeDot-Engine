@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0rbblk7bmqht"
+path="res://.godot/imported/PRSFX- Stun Spore.wav-1cf64e6915f884347e8e4f091d084675.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Stun Spore.wav"
+dest_files=["res://.godot/imported/PRSFX- Stun Spore.wav-1cf64e6915f884347e8e4f091d084675.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

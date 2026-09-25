@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://l7x5ljboggv7"
+path="res://.godot/imported/PRSFX- Weather Ball1.wav-282753e1276f90f7e243d952345b7175.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Weather Ball1.wav"
+dest_files=["res://.godot/imported/PRSFX- Weather Ball1.wav-282753e1276f90f7e243d952345b7175.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

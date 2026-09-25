@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4324v8l7msu6"
+path="res://.godot/imported/PRSFX- Ancient Power2.wav-bd2c018ec87d597851d2e8aff11b4b0b.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Ancient Power2.wav"
+dest_files=["res://.godot/imported/PRSFX- Ancient Power2.wav-bd2c018ec87d597851d2e8aff11b4b0b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

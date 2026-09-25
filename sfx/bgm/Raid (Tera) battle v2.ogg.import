@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bopld6o0bhtjw"
+path="res://.godot/imported/Raid (Tera) battle v2.ogg-c936b8d0ce1b452792c95e5a24784df7.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Raid (Tera) battle v2.ogg"
+dest_files=["res://.godot/imported/Raid (Tera) battle v2.ogg-c936b8d0ce1b452792c95e5a24784df7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

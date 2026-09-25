@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://q3wy740y0l7n"
+path="res://.godot/imported/PRSFX- Cross Poison2.wav-00a7eb318e70ce64e01f92d185b43b94.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Cross Poison2.wav"
+dest_files=["res://.godot/imported/PRSFX- Cross Poison2.wav-00a7eb318e70ce64e01f92d185b43b94.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://beyj6q7ogtpgr"
+path="res://.godot/imported/PRSFX- Iron Tail2.wav-7d269f8db52709b3377b8ee7f429ee7b.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Iron Tail2.wav"
+dest_files=["res://.godot/imported/PRSFX- Iron Tail2.wav-7d269f8db52709b3377b8ee7f429ee7b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

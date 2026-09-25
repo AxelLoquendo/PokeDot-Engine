@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brfxoov7rhtf8"
+path="res://.godot/imported/Mining pick.ogg-b31c4978a2742b01bfb70dae70f30e12.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/Mining pick.ogg"
+dest_files=["res://.godot/imported/Mining pick.ogg-b31c4978a2742b01bfb70dae70f30e12.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

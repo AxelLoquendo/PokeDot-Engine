@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dyov4qenrvudu"
+path="res://.godot/imported/PRSFX- Facade1.wav-c3d90045c64c03bdfdead62e25429ee2.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Facade1.wav"
+dest_files=["res://.godot/imported/PRSFX- Facade1.wav-c3d90045c64c03bdfdead62e25429ee2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

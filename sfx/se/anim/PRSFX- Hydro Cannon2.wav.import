@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://qj46cx5p8xak"
+path="res://.godot/imported/PRSFX- Hydro Cannon2.wav-73a9b871c0c4e493cddaedb677f2b4c8.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Hydro Cannon2.wav"
+dest_files=["res://.godot/imported/PRSFX- Hydro Cannon2.wav-73a9b871c0c4e493cddaedb677f2b4c8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

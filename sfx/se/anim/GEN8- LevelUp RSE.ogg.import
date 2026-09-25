@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjsn0n4bvbflr"
+path="res://.godot/imported/GEN8- LevelUp RSE.ogg-f3173eff0c6639c1817903fc048b9573.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/GEN8- LevelUp RSE.ogg"
+dest_files=["res://.godot/imported/GEN8- LevelUp RSE.ogg-f3173eff0c6639c1817903fc048b9573.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

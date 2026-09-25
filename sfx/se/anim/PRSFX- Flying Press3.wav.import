@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cu0c845dqpmmo"
+path="res://.godot/imported/PRSFX- Flying Press3.wav-ab4413a44fef9a2c28ccb6daa0ffc415.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Flying Press3.wav"
+dest_files=["res://.godot/imported/PRSFX- Flying Press3.wav-ab4413a44fef9a2c28ccb6daa0ffc415.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

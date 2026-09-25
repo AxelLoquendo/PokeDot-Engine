@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crstaa48nirnm"
+path="res://.godot/imported/PRSFX- Psystrike2.wav-c2ff3ae21b624c3fd0529f01a8dadd18.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Psystrike2.wav"
+dest_files=["res://.godot/imported/PRSFX- Psystrike2.wav-c2ff3ae21b624c3fd0529f01a8dadd18.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

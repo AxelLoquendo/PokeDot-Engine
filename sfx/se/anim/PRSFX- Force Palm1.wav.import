@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chhp31pfqqlt3"
+path="res://.godot/imported/PRSFX- Force Palm1.wav-c641a362a2e2e770d7863f228fa70930.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Force Palm1.wav"
+dest_files=["res://.godot/imported/PRSFX- Force Palm1.wav-c641a362a2e2e770d7863f228fa70930.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
