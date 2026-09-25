@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wetcd32bihkk"
+path="res://.godot/imported/PRSFX- Spirit Shackle3.wav-0c379142b95d140e6370ebe002160408.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Spirit Shackle3.wav"
+dest_files=["res://.godot/imported/PRSFX- Spirit Shackle3.wav-0c379142b95d140e6370ebe002160408.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

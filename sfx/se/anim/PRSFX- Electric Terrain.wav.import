@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ys17wi6cmlvx"
+path="res://.godot/imported/PRSFX- Electric Terrain.wav-57c8a6dc351fa5ab9cb6683067c99668.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Electric Terrain.wav"
+dest_files=["res://.godot/imported/PRSFX- Electric Terrain.wav-57c8a6dc351fa5ab9cb6683067c99668.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

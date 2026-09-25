@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjtkpnf6qt4v1"
+path="res://.godot/imported/GEN8- Exclaim.wav-2c3f8716f3c5a8992284626479151f07.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/GEN8- Exclaim.wav"
+dest_files=["res://.godot/imported/GEN8- Exclaim.wav-2c3f8716f3c5a8992284626479151f07.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

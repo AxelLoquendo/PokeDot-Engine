@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buxmi35x35h8a"
+path="res://.godot/imported/PRSFX- Sonic Boom1.wav-ff98795496716171c29827b23d55e8f5.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Sonic Boom1.wav"
+dest_files=["res://.godot/imported/PRSFX- Sonic Boom1.wav-ff98795496716171c29827b23d55e8f5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

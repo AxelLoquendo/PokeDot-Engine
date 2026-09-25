@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6h53hjnvhvu6"
+path="res://.godot/imported/PRSFX- Ice Hammer1.wav-00d56369669806b649afce4fe55da4c9.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Ice Hammer1.wav"
+dest_files=["res://.godot/imported/PRSFX- Ice Hammer1.wav-00d56369669806b649afce4fe55da4c9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

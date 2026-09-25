@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dowii3vvir5h6"
+path="res://.godot/imported/PRSFX- Smokescreen.wav-aa2294d83e0b2f5df53fbf9c0a1ab30f.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Smokescreen.wav"
+dest_files=["res://.godot/imported/PRSFX- Smokescreen.wav-aa2294d83e0b2f5df53fbf9c0a1ab30f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

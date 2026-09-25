@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dj346rxefpgf0"
+path="res://.godot/imported/PRSFX- Malicious Moonsault4.ogg-aa4d40e6844356d7da4539a4e26df89c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Malicious Moonsault4.ogg"
+dest_files=["res://.godot/imported/PRSFX- Malicious Moonsault4.ogg-aa4d40e6844356d7da4539a4e26df89c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

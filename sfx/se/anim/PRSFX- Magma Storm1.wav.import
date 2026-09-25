@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ifreqst1u65p"
+path="res://.godot/imported/PRSFX- Magma Storm1.wav-5822739a76d8984dc094b05a5609bf5e.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Magma Storm1.wav"
+dest_files=["res://.godot/imported/PRSFX- Magma Storm1.wav-5822739a76d8984dc094b05a5609bf5e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

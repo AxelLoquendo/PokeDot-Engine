@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxauvee0vc5ju"
+path="res://.godot/imported/PRSFX- Pin Missile.wav-f58b14314a2cf7fe4f49d979d7c5c06a.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Pin Missile.wav"
+dest_files=["res://.godot/imported/PRSFX- Pin Missile.wav-f58b14314a2cf7fe4f49d979d7c5c06a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

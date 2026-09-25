@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://i60exxjf4ap6"
+path="res://.godot/imported/PRSFX- Rock Tomb.wav-cd212ff9e5fb0af2d6b786f5f0abc1ed.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Rock Tomb.wav"
+dest_files=["res://.godot/imported/PRSFX- Rock Tomb.wav-cd212ff9e5fb0af2d6b786f5f0abc1ed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

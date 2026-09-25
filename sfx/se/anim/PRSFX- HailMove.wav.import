@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxnn5rl537wbm"
+path="res://.godot/imported/PRSFX- HailMove.wav-a9197633e33a10ac097bc73aa620c935.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- HailMove.wav"
+dest_files=["res://.godot/imported/PRSFX- HailMove.wav-a9197633e33a10ac097bc73aa620c935.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

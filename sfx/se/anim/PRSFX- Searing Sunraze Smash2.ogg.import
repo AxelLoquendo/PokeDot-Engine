@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c64d3080vtvm1"
+path="res://.godot/imported/PRSFX- Searing Sunraze Smash2.ogg-5352f42d29bd10e32f7b21381dffd08c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Searing Sunraze Smash2.ogg"
+dest_files=["res://.godot/imported/PRSFX- Searing Sunraze Smash2.ogg-5352f42d29bd10e32f7b21381dffd08c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

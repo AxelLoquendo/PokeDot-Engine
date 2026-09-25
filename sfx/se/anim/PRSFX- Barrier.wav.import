@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjp2k182qv503"
+path="res://.godot/imported/PRSFX- Barrier.wav-4095f75346abc9ee72da0dd428f3435d.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Barrier.wav"
+dest_files=["res://.godot/imported/PRSFX- Barrier.wav-4095f75346abc9ee72da0dd428f3435d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

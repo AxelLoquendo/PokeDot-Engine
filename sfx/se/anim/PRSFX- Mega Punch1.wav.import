@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dry8tflknflh8"
+path="res://.godot/imported/PRSFX- Mega Punch1.wav-96600db5d320007e882f542f02e4c82d.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Mega Punch1.wav"
+dest_files=["res://.godot/imported/PRSFX- Mega Punch1.wav-96600db5d320007e882f542f02e4c82d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

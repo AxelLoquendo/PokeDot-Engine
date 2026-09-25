@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6infkr5ni2ly"
+path="res://.godot/imported/PRSFX- Poison Tail1.wav-e91965007713a34ad4d51d69ed08a441.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Poison Tail1.wav"
+dest_files=["res://.godot/imported/PRSFX- Poison Tail1.wav-e91965007713a34ad4d51d69ed08a441.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

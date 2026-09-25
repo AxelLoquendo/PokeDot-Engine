@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvoq840q1sv3f"
+path="res://.godot/imported/PRSFX- Leer.wav-9ed51c1b2e3d82c5b11e1ac82f1e18b5.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Leer.wav"
+dest_files=["res://.godot/imported/PRSFX- Leer.wav-9ed51c1b2e3d82c5b11e1ac82f1e18b5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5bxlldhiv2j4"
+path="res://.godot/imported/PRSFX- Guard Split.wav-97b1dfbf9ec6684e7cba879a8164979d.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Guard Split.wav"
+dest_files=["res://.godot/imported/PRSFX- Guard Split.wav-97b1dfbf9ec6684e7cba879a8164979d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

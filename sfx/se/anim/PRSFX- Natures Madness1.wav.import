@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bofvbn8ft51cb"
+path="res://.godot/imported/PRSFX- Natures Madness1.wav-56d55e8a10c5305fc72c3261c7e347a7.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Natures Madness1.wav"
+dest_files=["res://.godot/imported/PRSFX- Natures Madness1.wav-56d55e8a10c5305fc72c3261c7e347a7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

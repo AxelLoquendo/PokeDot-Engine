@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dro5ki10t7xct"
+path="res://.godot/imported/PRSFX- Smart Strike3.wav-201afb1d834497209f1085aab915426a.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Smart Strike3.wav"
+dest_files=["res://.godot/imported/PRSFX- Smart Strike3.wav-201afb1d834497209f1085aab915426a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

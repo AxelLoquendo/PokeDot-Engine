@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwif1w0dt72xa"
+path="res://.godot/imported/PRSFX- Sky Drop3.wav-afd3525bd486b6ac83af4fe2ccf78cef.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Sky Drop3.wav"
+dest_files=["res://.godot/imported/PRSFX- Sky Drop3.wav-afd3525bd486b6ac83af4fe2ccf78cef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

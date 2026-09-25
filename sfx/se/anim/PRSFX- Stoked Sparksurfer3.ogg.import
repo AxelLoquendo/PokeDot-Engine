@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dm3p7b4tsl18i"
+path="res://.godot/imported/PRSFX- Stoked Sparksurfer3.ogg-e5b29fe26ca05e71f129d36425df88a6.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Stoked Sparksurfer3.ogg"
+dest_files=["res://.godot/imported/PRSFX- Stoked Sparksurfer3.ogg-e5b29fe26ca05e71f129d36425df88a6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

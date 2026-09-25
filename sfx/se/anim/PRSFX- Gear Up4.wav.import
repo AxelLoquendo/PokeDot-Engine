@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbhlwjfs8qa1u"
+path="res://.godot/imported/PRSFX- Gear Up4.wav-63cd8d381f32d5fa3781d92e8c6d786f.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Gear Up4.wav"
+dest_files=["res://.godot/imported/PRSFX- Gear Up4.wav-63cd8d381f32d5fa3781d92e8c6d786f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cn22cx7w3x8ah"
+path="res://.godot/imported/Lock On.ogg-ca9c2c41c0cc86f7db0f3f39065b056f.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Lock On.ogg"
+dest_files=["res://.godot/imported/Lock On.ogg-ca9c2c41c0cc86f7db0f3f39065b056f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

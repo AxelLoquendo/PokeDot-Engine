@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2027gbflwla0"
+path="res://.godot/imported/PRSFX- Inferno Overdrive2.wav-7e3923b8e578c8cebc9c732bdc88d383.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Inferno Overdrive2.wav"
+dest_files=["res://.godot/imported/PRSFX- Inferno Overdrive2.wav-7e3923b8e578c8cebc9c732bdc88d383.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hqgnkrrewutc"
+path="res://.godot/imported/Routé 1.ogg-583efbabf0c3b5de0e6b3a1e88497ced.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Routé 1.ogg"
+dest_files=["res://.godot/imported/Routé 1.ogg-583efbabf0c3b5de0e6b3a1e88497ced.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

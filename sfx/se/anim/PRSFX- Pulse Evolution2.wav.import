@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bj3luac3xor4k"
+path="res://.godot/imported/PRSFX- Pulse Evolution2.wav-6d3ed9ad8719cf397e89c23b2f09c884.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Pulse Evolution2.wav"
+dest_files=["res://.godot/imported/PRSFX- Pulse Evolution2.wav-6d3ed9ad8719cf397e89c23b2f09c884.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

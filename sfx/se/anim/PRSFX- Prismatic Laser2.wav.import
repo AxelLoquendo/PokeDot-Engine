@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://csi4sp6wwhbl8"
+path="res://.godot/imported/PRSFX- Prismatic Laser2.wav-7377a2470f0e4e3b757d81c3114a0237.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Prismatic Laser2.wav"
+dest_files=["res://.godot/imported/PRSFX- Prismatic Laser2.wav-7377a2470f0e4e3b757d81c3114a0237.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

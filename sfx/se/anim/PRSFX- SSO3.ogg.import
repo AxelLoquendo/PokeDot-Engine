@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cbjtoim5oflfg"
+path="res://.godot/imported/PRSFX- SSO3.ogg-4c7374f1cfbb1b94ac1995345079000b.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- SSO3.ogg"
+dest_files=["res://.godot/imported/PRSFX- SSO3.ogg-4c7374f1cfbb1b94ac1995345079000b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

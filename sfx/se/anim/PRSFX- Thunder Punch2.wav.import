@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0blyv60hk4cc"
+path="res://.godot/imported/PRSFX- Thunder Punch2.wav-234ad18aff2a5cec6180d09447a5c9bc.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Thunder Punch2.wav"
+dest_files=["res://.godot/imported/PRSFX- Thunder Punch2.wav-234ad18aff2a5cec6180d09447a5c9bc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

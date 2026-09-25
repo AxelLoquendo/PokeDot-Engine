@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ihyun5kaiom3"
+path="res://.godot/imported/Mega Punch.ogg-2c342a9689a32c3fbb9fe8128368c6c2.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Mega Punch.ogg"
+dest_files=["res://.godot/imported/Mega Punch.ogg-2c342a9689a32c3fbb9fe8128368c6c2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

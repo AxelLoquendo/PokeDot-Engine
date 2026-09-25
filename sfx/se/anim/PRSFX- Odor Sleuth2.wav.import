@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ca4c2y60333bc"
+path="res://.godot/imported/PRSFX- Odor Sleuth2.wav-a96535f7b5d849bd13257b4fa11f7f24.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Odor Sleuth2.wav"
+dest_files=["res://.godot/imported/PRSFX- Odor Sleuth2.wav-a96535f7b5d849bd13257b4fa11f7f24.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

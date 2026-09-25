@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btd1vpg8rehd0"
+path="res://.godot/imported/PRSFX- Bounce2.wav-37a1d0f74511285b35787c5d929d00be.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Bounce2.wav"
+dest_files=["res://.godot/imported/PRSFX- Bounce2.wav-37a1d0f74511285b35787c5d929d00be.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://q6ua1ctehu8r"
+path="res://.godot/imported/PRSFX- Vice Grip.wav-ae8c15933c30d04ac7f85b32235275e5.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Vice Grip.wav"
+dest_files=["res://.godot/imported/PRSFX- Vice Grip.wav-ae8c15933c30d04ac7f85b32235275e5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://caxq4yopteohp"
+path="res://.godot/imported/PRSFX- Dragon Dance.wav-3b60064f7fd6d04330c14b264def7064.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Dragon Dance.wav"
+dest_files=["res://.godot/imported/PRSFX- Dragon Dance.wav-3b60064f7fd6d04330c14b264def7064.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

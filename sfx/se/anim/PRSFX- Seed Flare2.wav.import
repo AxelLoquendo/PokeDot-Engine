@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dm3anlv60qsb4"
+path="res://.godot/imported/PRSFX- Seed Flare2.wav-2451620a2f2b4729883d4f08e78f702b.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Seed Flare2.wav"
+dest_files=["res://.godot/imported/PRSFX- Seed Flare2.wav-2451620a2f2b4729883d4f08e78f702b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

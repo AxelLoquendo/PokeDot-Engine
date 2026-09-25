@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://lr5il1raarfo"
+path="res://.godot/imported/PRSFX- Bullet Punch.wav-1719843e17f849d66c269d589973cfeb.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Bullet Punch.wav"
+dest_files=["res://.godot/imported/PRSFX- Bullet Punch.wav-1719843e17f849d66c269d589973cfeb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

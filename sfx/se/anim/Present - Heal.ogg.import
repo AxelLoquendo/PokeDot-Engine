@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkihb7hq1om6p"
+path="res://.godot/imported/Present - Heal.ogg-6b4db0cf2632ddb1fa30b4a3399bbc0f.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Present - Heal.ogg"
+dest_files=["res://.godot/imported/Present - Heal.ogg-6b4db0cf2632ddb1fa30b4a3399bbc0f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

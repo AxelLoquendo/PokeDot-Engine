@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b51dylmx1c0c2"
+path="res://.godot/imported/PRSFX- Seed Bomb2.wav-ac70baa277b8764e9f56edc530fd032a.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Seed Bomb2.wav"
+dest_files=["res://.godot/imported/PRSFX- Seed Bomb2.wav-ac70baa277b8764e9f56edc530fd032a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1wvsn6m5nhx2"
+path="res://.godot/imported/PRSFX- Hyper Fang.wav-4ac836e787a7e25f92bc2811cea26cf1.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Hyper Fang.wav"
+dest_files=["res://.godot/imported/PRSFX- Hyper Fang.wav-4ac836e787a7e25f92bc2811cea26cf1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

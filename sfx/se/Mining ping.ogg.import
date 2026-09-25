@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1ulyu762iy3a"
+path="res://.godot/imported/Mining ping.ogg-645eac868ad0d6393203b5ab5879bf8a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/Mining ping.ogg"
+dest_files=["res://.godot/imported/Mining ping.ogg-645eac868ad0d6393203b5ab5879bf8a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

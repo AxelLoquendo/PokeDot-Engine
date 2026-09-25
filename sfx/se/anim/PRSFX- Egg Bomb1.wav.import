@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjrnk7rtray4g"
+path="res://.godot/imported/PRSFX- Egg Bomb1.wav-e8756291f5ef6eda33e788e43e3c9461.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Egg Bomb1.wav"
+dest_files=["res://.godot/imported/PRSFX- Egg Bomb1.wav-e8756291f5ef6eda33e788e43e3c9461.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

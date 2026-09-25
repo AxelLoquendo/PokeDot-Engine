@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chec1jb3pipm"
+path="res://.godot/imported/PRSFX- King's Shield1.wav-81614a6c337ce9784c2136185e1c034c.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- King's Shield1.wav"
+dest_files=["res://.godot/imported/PRSFX- King's Shield1.wav-81614a6c337ce9784c2136185e1c034c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

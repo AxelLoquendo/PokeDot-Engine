@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://e1xdbmafi33v"
+path="res://.godot/imported/Trump Card.ogg-f078189d4da6f646c06a584ee266e571.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/Trump Card.ogg"
+dest_files=["res://.godot/imported/Trump Card.ogg-f078189d4da6f646c06a584ee266e571.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

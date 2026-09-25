@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bm66pad2v01ii"
+path="res://.godot/imported/PRSFX- Heal Order1.wav-1cf41b9624934bd9b5387f8b93068350.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Heal Order1.wav"
+dest_files=["res://.godot/imported/PRSFX- Heal Order1.wav-1cf41b9624934bd9b5387f8b93068350.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckfixy8fjmi41"
+path="res://.godot/imported/PRSFX- Genesis Supernova8.ogg-d07b748ef128cd75e2bccbe0d669c839.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Genesis Supernova8.ogg"
+dest_files=["res://.godot/imported/PRSFX- Genesis Supernova8.ogg-d07b748ef128cd75e2bccbe0d669c839.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

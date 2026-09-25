@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://baoxp8nnnbqxc"
+path="res://.godot/imported/PRSFX- SSO13.ogg-c673b5e87c74d9b99808cb2052ef1769.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- SSO13.ogg"
+dest_files=["res://.godot/imported/PRSFX- SSO13.ogg-c673b5e87c74d9b99808cb2052ef1769.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

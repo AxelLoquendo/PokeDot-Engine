@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3wd0d403f75i"
+path="res://.godot/imported/PRSFX- Stat Up.wav-f93d280c6574939a80d0d3814c2c8283.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Stat Up.wav"
+dest_files=["res://.godot/imported/PRSFX- Stat Up.wav-f93d280c6574939a80d0d3814c2c8283.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

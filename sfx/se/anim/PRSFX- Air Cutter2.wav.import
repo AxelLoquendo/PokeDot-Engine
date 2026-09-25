@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dyaw8tdlm3q3o"
+path="res://.godot/imported/PRSFX- Air Cutter2.wav-1bcda4c37a30272d1035166feb4f8b07.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Air Cutter2.wav"
+dest_files=["res://.godot/imported/PRSFX- Air Cutter2.wav-1bcda4c37a30272d1035166feb4f8b07.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5h4rywojkhgd"
+path="res://.godot/imported/PRSFX- Heavy Slam2.wav-d93e91c02fa8ad9c2ee6e9f620420edb.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Heavy Slam2.wav"
+dest_files=["res://.godot/imported/PRSFX- Heavy Slam2.wav-d93e91c02fa8ad9c2ee6e9f620420edb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

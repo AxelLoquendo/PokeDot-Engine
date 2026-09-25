@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuko3bxknshro"
+path="res://.godot/imported/PRSFX- Bullet Seed.wav-63e46e12b1b772065cb911f01d7dc1f0.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Bullet Seed.wav"
+dest_files=["res://.godot/imported/PRSFX- Bullet Seed.wav-63e46e12b1b772065cb911f01d7dc1f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

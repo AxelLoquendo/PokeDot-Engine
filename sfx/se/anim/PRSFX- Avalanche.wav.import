@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bl42hqj5eq0er"
+path="res://.godot/imported/PRSFX- Avalanche.wav-f198da6d462135c85e48de2e290c8edd.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Avalanche.wav"
+dest_files=["res://.godot/imported/PRSFX- Avalanche.wav-f198da6d462135c85e48de2e290c8edd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

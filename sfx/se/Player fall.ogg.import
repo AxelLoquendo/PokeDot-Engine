@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cleswq7d6ly07"
+path="res://.godot/imported/Player fall.ogg-de92361fc289edfb82fb2fe423a5178d.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/se/Player fall.ogg"
+dest_files=["res://.godot/imported/Player fall.ogg-de92361fc289edfb82fb2fe423a5178d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

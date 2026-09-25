@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://beesvsxas8a7b"
+path="res://.godot/imported/PRSFX- Doom Desire2.wav-6fece3d570e2fd142792576fcb9664c0.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Doom Desire2.wav"
+dest_files=["res://.godot/imported/PRSFX- Doom Desire2.wav-6fece3d570e2fd142792576fcb9664c0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

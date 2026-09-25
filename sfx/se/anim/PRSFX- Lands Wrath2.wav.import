@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1o8haa1uya8i"
+path="res://.godot/imported/PRSFX- Lands Wrath2.wav-1753452c15f86cb12fc94d877860f5c0.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Lands Wrath2.wav"
+dest_files=["res://.godot/imported/PRSFX- Lands Wrath2.wav-1753452c15f86cb12fc94d877860f5c0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

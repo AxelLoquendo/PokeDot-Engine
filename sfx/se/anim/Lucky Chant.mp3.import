@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpx44f3kcw7w5"
+path="res://.godot/imported/Lucky Chant.mp3-4885b55d815eb6c979f711f7666b03b3.mp3str"
+
+[deps]
+
+source_file="res://sfx/se/anim/Lucky Chant.mp3"
+dest_files=["res://.godot/imported/Lucky Chant.mp3-4885b55d815eb6c979f711f7666b03b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

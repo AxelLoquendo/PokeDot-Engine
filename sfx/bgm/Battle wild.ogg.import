@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c5wq536hets2q"
+path="res://.godot/imported/Battle wild.ogg-13cc7e95df4a509ff4e1ecd8e0034cea.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/bgm/Battle wild.ogg"
+dest_files=["res://.godot/imported/Battle wild.ogg-13cc7e95df4a509ff4e1ecd8e0034cea.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

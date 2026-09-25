@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://qycar2f7hscd"
+path="res://.godot/imported/PRSFX- Shadow Sneak1.wav-e37df33d4a70d507f092451e492f11c8.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Shadow Sneak1.wav"
+dest_files=["res://.godot/imported/PRSFX- Shadow Sneak1.wav-e37df33d4a70d507f092451e492f11c8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

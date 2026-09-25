@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dq067cevkttpx"
+path="res://.godot/imported/PRSFX- Charm.wav-1375ac8cbfb5baa61b120f33b29979ae.sample"
+
+[deps]
+
+source_file="res://sfx/se/anim/PRSFX- Charm.wav"
+dest_files=["res://.godot/imported/PRSFX- Charm.wav-1375ac8cbfb5baa61b120f33b29979ae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
