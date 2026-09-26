@@ -18,6 +18,14 @@ var _personaje: CharacterController = null
 var _mapa: MapAttributes = null
 var _material: ShaderMaterial = null
 
+## Umbrales del test b-r según la hora (compensa el CanvasModulate).
+const UMBRAL_DIA: float = 0.0
+const UMBRAL_DUSK: float = -0.08
+const UMBRAL_NOCHE: float = -0.18
+
+const TINTE_DIA: Color = Color(0.55, 0.7, 0.95, 1.0)
+const TINTE_DUSK: Color = Color(0.72, 0.48, 0.42, 1.0)
+const TINTE_NOCHE: Color = Color(0.38, 0.42, 0.78, 1.0)
 
 ## Solo en juego, no en el editor.
 static func agregar_a(padre: Node, sprite: AnimatedSprite2D) -> ReflejoAgua:
@@ -102,6 +110,7 @@ func _process(_delta: float) -> void:
 		_material.set_shader_parameter("mascara_tamano", Vector2(mapa.map_size))
 		_material.set_shader_parameter("tile_size", float(mapa.tile_size))
 	_material.set_shader_parameter("mascara_origen", mapa.global_position)
+	_aplicar_hora()
 	visible = _hay_agua_debajo(mapa, mascara["imagen"])
 
 
@@ -149,3 +158,30 @@ func _hay_agua_debajo(mapa: MapAttributes, imagen: Image) -> bool:
 			if imagen.get_pixel(x, y).r > 0.5:
 				return true
 	return false
+
+func _aplicar_hora() -> void:
+	if _material == null:
+		return
+
+	var mod: Color = DnsManager.canvas_modulate.color
+	_material.set_shader_parameter("modulate_color", Vector3(mod.r, mod.g, mod.b))
+	_material.set_shader_parameter("umbral_azul", UMBRAL_DIA)
+
+	var tinte: Color = TINTE_DIA
+	var opacidad: float = 0.5
+
+	match DnsManager.current_time_state:
+		TiempoManager.TimeOfDay.MORNING:
+			tinte = Color(0.62, 0.72, 0.88, 1.0)
+			opacidad = 0.48
+		TiempoManager.TimeOfDay.DUSK:
+			tinte = TINTE_DUSK
+			opacidad = 0.45
+		TiempoManager.TimeOfDay.NIGHT:
+			tinte = TINTE_NOCHE
+			opacidad = 0.4
+		_:
+			pass
+
+	_material.set_shader_parameter("tinte", tinte)
+	_material.set_shader_parameter("opacidad", opacidad)

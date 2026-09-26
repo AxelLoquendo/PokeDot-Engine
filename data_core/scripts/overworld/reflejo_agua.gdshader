@@ -1,22 +1,20 @@
 shader_type canvas_item;
 
-// Lo usa ReflejoAgua (el sprite ya llega invertido).
-
-// Un píxel por casilla, blanco = agua.
 uniform sampler2D mascara : filter_nearest, repeat_disable;
 uniform vec2 mascara_origen = vec2(0.0);
 uniform vec2 mascara_tamano = vec2(1.0);
 uniform float tile_size = 16.0;
 
-// No pinta sobre tierra, hierba ni madera. -1.0 si el agua no es azul.
 uniform sampler2D fondo : hint_screen_texture, filter_nearest;
 uniform float umbral_azul : hint_range(-1.0, 1.0) = 0.0;
+
+// Color actual del CanvasModulate (DnsManager)
+uniform vec3 modulate_color = vec3(1.0);
 
 uniform vec4 tinte : source_color = vec4(0.55, 0.7, 0.95, 1.0);
 uniform float fuerza_tinte : hint_range(0.0, 1.0) = 0.35;
 uniform float opacidad : hint_range(0.0, 1.0) = 0.5;
 
-// Onda opcional, en píxeles enteros.
 uniform float amplitud_px : hint_range(0.0, 4.0, 1.0) = 0.0;
 uniform float filas_por_onda = 16.0;
 uniform float velocidad = 2.0;
@@ -39,9 +37,13 @@ void fragment() {
 	}
 
 	vec3 debajo = texture(fondo, SCREEN_UV).rgb;
-	float es_agua = step(umbral_azul, debajo.b - debajo.r);
 
-	// Opaco y mezclado con el fondo: así un reflejo no se ve a través de otro.
+	// Quitar el tinte del DNS para medir azul como de día
+	vec3 mod_safe = max(modulate_color, vec3(0.001));
+	vec3 debajo_raw = debajo / mod_safe;
+
+	float es_agua = step(umbral_azul, debajo_raw.b - debajo_raw.r);
+
 	vec3 rgb = mix(color.rgb, tinte.rgb, fuerza_tinte);
 	COLOR = vec4(mix(debajo, rgb, opacidad), step(0.5, color.a) * step(0.5, agua) * es_agua);
 }

@@ -414,7 +414,7 @@ script = ExtResource("8_pdpdf")
 script_file_path = "res://game/data_core_eb/map_eb/pueblo_alba/prof_oak.txt"
 metadata/_custom_type_script = "uid://bwbh47vc5fymn"
 
-[sub_resource type="Resource" id="Resource_1q05q"]
+[sub_resource type="Resource" id="Resource_q1ycd"]
 resource_local_to_scene = true
 script = ExtResource("7_pdpdf")
 nombre = "Prof. Oak"
@@ -468,7 +468,7 @@ tile_set = SubResource("TileSet_pdpdf")
 
 [node name="Npc" parent="EventObject" parent_id_path=PackedInt32Array(1934673071) index="0" unique_id=1270542304 instance=ExtResource("6_mpdc6")]
 position = Vector2(120, 304)
-character_data = SubResource("Resource_1q05q")
+character_data = SubResource("Resource_q1ycd")
 
 [node name="TriggerMap" type="Node2D" parent="EventObject" parent_id_path=PackedInt32Array(1934673071) index="1" unique_id=186789887]
 z_index = 100
