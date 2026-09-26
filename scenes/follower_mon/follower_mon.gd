@@ -1,3 +1,4 @@
+
 extends Node2D
 class_name FollowerPokemon
 
@@ -40,9 +41,18 @@ var _siguiendo_paso_actual: bool = false
 ## true mientras salta rampa o se desliza por escalera
 var en_secuencia_especial: bool = false
 
+## Rampa: ir al borde, esperar aterrizaje libre, saltar.
+var _rampa_esperando: bool = false
+var _rampa_direccion: Vector2 = Vector2.ZERO
+var _rampa_casilla_aterrizaje: Vector2i = Vector2i(-999, -999)
+var _rampa_casilla_despegue: Vector2i = Vector2i(-999, -999)
+var _rampa_yendo_al_borde: bool = false
+
 @export var idle_anim_speed: float = 2.5  ## frames por segundo del “respirar”
 var _idle_timer: float = 0.0
 var _idle_usando_first: bool = true
+var cry_player: AudioStreamPlayer = null
+
 
 func _ready() -> void:
 	top_level = true
@@ -54,7 +64,11 @@ func _ready() -> void:
 		sombra.visible = false
 		sombra.z_as_relative = true
 		sombra.z_index = -1
+	cry_player = AudioStreamPlayer.new()
+	cry_player.name = "Cry"
+	add_child(cry_player)
 	ReflejoAgua.agregar_a(self, anim)
+
 
 
 func _aplicar_textura(textura: Texture2D) -> bool:
@@ -146,6 +160,66 @@ func _exit_tree() -> void:
 		tween_mov.kill()
 
 
+func casilla_actual() -> Vector2i:
+	return _global_a_casilla(global_position)
+
+
+## A: el jugador mira al follower → grito + saltito.
+func interact() -> void:
+	if not activo or mon_actual == null:
+		return
+	if en_secuencia_especial or _rampa_esperando:
+		return
+	_play_cry()
+	_saltito_interact()
+
+
+func _play_cry() -> void:
+	if cry_player == null:
+		return
+	var stream: AudioStream = _obtener_cry()
+	if stream == null:
+		return
+	cry_player.stop()
+	cry_player.stream = stream
+	cry_player.pitch_scale = 1.0
+	cry_player.play()
+
+
+func _obtener_cry() -> AudioStream:
+	if mon_actual == null:
+		return null
+	var form: Variant = null
+	if mon_actual.has_method("get_form"):
+		form = mon_actual.get_form()
+	if form != null and form.override_graphics and "cry" in form and form.cry != null:
+		return form.cry as AudioStream
+	var sp: PokemonDataStruct = mon_actual.get_species() if mon_actual.has_method("get_species") else null
+	if sp != null and sp.cry != null:
+		return sp.cry
+	return null
+
+
+func _saltito_interact() -> void:
+	if anim == null:
+		return
+	if tween_mov != null and tween_mov.is_valid() and tween_mov.is_running():
+		return
+	var offset_base: Vector2 = _offset_actual()
+	var hop: Tween = create_tween()
+	hop.tween_method(
+		func(t: float) -> void:
+			anim.offset = offset_base + Vector2(0.0, sin(t * PI) * -6.0),
+		0.0,
+		1.0,
+		0.22
+	)
+	hop.finished.connect(func() -> void:
+		if anim != null:
+			anim.offset = offset_base
+	, CONNECT_ONE_SHOT)
+
+
 func _process(_delta: float) -> void:
 	if not activo or jugador == null:
 		return
@@ -153,6 +227,10 @@ func _process(_delta: float) -> void:
 	z_index = int(global_position.y) - 1
 
 	if en_secuencia_especial:
+		return
+
+	if _rampa_esperando:
+		_procesar_espera_rampa()
 		return
 
 	if jugador.is_moving:
@@ -164,6 +242,39 @@ func _process(_delta: float) -> void:
 		_siguiendo_paso_actual = false
 		_corregir_si_quedo_lejos()
 		_actualizar_idle_animado(_delta)
+
+
+func _procesar_espera_rampa() -> void:
+	var casilla_f: Vector2i = _global_a_casilla(global_position)
+
+	# 1) Llegar al tile de despegue (borde de la rampa)
+	if casilla_f != _rampa_casilla_despegue:
+		if tween_mov != null and tween_mov.is_valid() and tween_mov.is_running():
+			return
+		if not _rampa_yendo_al_borde:
+			_rampa_yendo_al_borde = true
+			var vel: float = 4.0
+			if jugador.has_method("obtener_velocidad_movimiento"):
+				vel = jugador.obtener_velocidad_movimiento()
+			_mover_a_casilla(_rampa_casilla_despegue, vel)
+		return
+
+	_rampa_yendo_al_borde = false
+
+	# 2) Esperar a que el jugador desocupe el aterrizaje
+	if jugador.ejecutando_evento:
+		return
+	if jugador.casilla_actual == _rampa_casilla_aterrizaje:
+		return
+
+	# 3) Saltar desde el borde
+	var dir: Vector2 = _rampa_direccion
+	_rampa_esperando = false
+	_rampa_direccion = Vector2.ZERO
+	_rampa_casilla_aterrizaje = Vector2i(-999, -999)
+	_rampa_casilla_despegue = Vector2i(-999, -999)
+	saltar_rampa(dir)
+
 
 func _actualizar_idle_animado(delta: float) -> void:
 	if anim == null or anim.sprite_frames == null:
@@ -196,11 +307,17 @@ func _reproducir_idle_paso() -> void:
 	elif anim.sprite_frames.has_animation(idle_actual):
 		anim.play(idle_actual)
 
+
 func _corregir_si_quedo_lejos() -> void:
+	if _rampa_esperando:
+		return
 	var casilla_follower: Vector2i = _global_a_casilla(global_position)
 	var casilla_jugador: Vector2i = jugador.casilla_actual
-	var dist: int = absi(casilla_follower.x - casilla_jugador.x) + absi(casilla_follower.y - casilla_jugador.y)
-	# > 1 = no está en la casilla de atrás (rampa salta 2, escalera diagonal, warp…)
+	# Chebyshev: un paso diagonal cuenta como 1 (no teletransportar en escalera).
+	var dist: int = maxi(
+		absi(casilla_follower.x - casilla_jugador.x),
+		absi(casilla_follower.y - casilla_jugador.y)
+	)
 	if dist > 1:
 		resetear_seguimiento()
 
@@ -238,6 +355,7 @@ func refrescar_desde_party() -> void:
 	visible = true
 	_sincronizar_posicion_inicial()
 
+
 func _offset_actual() -> Vector2:
 	if mon_actual == null:
 		return sprite_offset
@@ -247,6 +365,7 @@ func _offset_actual() -> Vector2:
 	var celda: int = _tamano_celda(tex)
 	var extra_y: float = -float(celda - 32) * 0.5
 	return sprite_offset + Vector2(0.0, extra_y)
+
 
 func _elegir_mon(party: Array[PokemonInstance]) -> PokemonInstance:
 	for mon: PokemonInstance in party:
@@ -289,6 +408,7 @@ func _nombre_archivo_especie(sp: PokemonDataStruct) -> String:
 	if key.begins_with("SPECIES_"):
 		return key.substr(8)
 	return key
+
 
 func _limpiar_anim() -> void:
 	if anim == null:
@@ -425,9 +545,34 @@ func resetear_seguimiento() -> void:
 		tween_mov.kill()
 	en_secuencia_especial = false
 	_siguiendo_paso_actual = false
+	_rampa_esperando = false
+	_rampa_direccion = Vector2.ZERO
+	_rampa_casilla_aterrizaje = Vector2i(-999, -999)
+	_rampa_casilla_despegue = Vector2i(-999, -999)
+	_rampa_yendo_al_borde = false
 	if anim != null:
 		anim.offset = _offset_actual()
 	_sincronizar_posicion_inicial()
+
+
+## El jugador inicia el salto de rampa.
+## Follower: 1) camina al despegue 2) espera aterrizaje libre 3) salta.
+func notificar_rampa_jugador(
+	direccion: Vector2,
+	casilla_despegue: Vector2i,
+	casilla_aterrizaje: Vector2i
+) -> void:
+	if not activo:
+		return
+	_rampa_esperando = true
+	_rampa_direccion = direccion
+	_rampa_casilla_despegue = casilla_despegue
+	_rampa_casilla_aterrizaje = casilla_aterrizaje
+	_rampa_yendo_al_borde = false
+	_siguiendo_paso_actual = false
+	if tween_mov != null and tween_mov.is_valid():
+		tween_mov.kill()
+
 
 ## Misma parábola que el jugador (2 casillas en `direccion`).
 func saltar_rampa(direccion: Vector2) -> void:

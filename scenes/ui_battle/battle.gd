@@ -143,6 +143,8 @@ const Z_HP_BACK: int = 12
 const Z_HP_NORMAL: int = 20
 ## Evitar repetir animación de KO
 var _faint_animating: Dictionary = {}  # "p0","p1","e0","e1" -> true
+## HP de reemplazo diferido mientras corre la animación de KO (evita barra llena a mitad).
+var _pending_hp_after_faint: Dictionary = {}  # key -> {"hp": int, "max": int}
 ## ColorRect -> ancho objetivo (animación suave de HP multi)
 var _hp_bar_anim_targets: Dictionary = {}  # int (instance_id) -> float (ancho)
 var enemy_current_hp: int = 0
@@ -651,14 +653,32 @@ func _on_battle_message(text: String) -> void:
 
 
 func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
+	# Durante el KO solo diferimos SUBIDAS de PS (reemplazo a barra llena).
+	# Una BAJADA es daño al mon nuevo: hay que soltar el flag o la barra del
+	# segundo KO no anima y luego se vacía de golpe.
+	var primary_key: String = ("p" if is_player else "e") + "0"
+	var prev_hp: int = player_current_hp if is_player else enemy_current_hp
+	if bool(_faint_animating.get(primary_key, false)):
+		if current_hp > prev_hp:
+			_pending_hp_after_faint[primary_key] = {"hp": current_hp, "max": _max_hp}
+			return
+		if current_hp > 0 and current_hp < prev_hp:
+			_faint_animating[primary_key] = false
+			_pending_hp_after_faint.erase(primary_key)
+
 	if is_player:
 		player_current_hp = current_hp
 	else:
 		enemy_current_hp = current_hp
 	_update_hp_bars()
 	_update_multi_hp_boxes()
-	# KO: grito + animación (cualquier modo)
+
+	# KO: objetivo a 0 (lo anima _process; sin snap brusco)
 	if current_hp <= 0 and battle != null:
+		if is_player:
+			player_hp_bar_target = 0.0
+		else:
+			enemy_hp_bar_target = 0.0
 		var actives: Array = battle.player_actives if is_player else battle.enemy_actives
 		for i: int in range(actives.size()):
 			var b: BattleBattler = actives[i]
@@ -667,7 +687,7 @@ func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
 				if not bool(_faint_animating.get(key, false)):
 					_faint_animating[key] = true
 					_play_faint_animation(is_player, i, b)
-	if _multi_ui_ready:
+	if _multi_ui_ready and current_hp > 0:
 		_refresh_all_multi_appearances()
 
 
@@ -1923,25 +1943,42 @@ func _play_cry_slot(is_player: bool, slot: int, mon: PokemonInstance = null, pit
 
 
 func _play_faint_animation(is_player: bool, slot: int, battler: BattleBattler) -> void:
+	var key: String = ("p" if is_player else "e") + str(slot)
 	var sprite: Sprite2D = _sprite_for_slot(is_player, slot)
 	var box: Sprite2D = _hp_box_for_slot(is_player, slot)
 	# 1) Esperar a que la barra de PS llegue a 0 visualmente
 	await _wait_hp_bar_drained(is_player, slot)
+	if not is_instance_valid(self) or _battle_closing:
+		_faint_animating[key] = false
+		return
 	# 2) Grito (un poco más lento) y esperar a que termine
 	if battler != null and battler.pokemon != null:
 		await _play_cry_slot_and_wait(is_player, slot, battler.pokemon, 0.88)
+	if not is_instance_valid(self) or _battle_closing:
+		_faint_animating[key] = false
+		return
 	# 3) Animación: baja y desaparece
-	if sprite != null:
+	if sprite != null and is_instance_valid(sprite):
 		var start_y: float = sprite.position.y
 		var tween: Tween = create_tween()
 		tween.tween_property(sprite, "position:y", start_y + 48.0, 0.45)
 		tween.parallel().tween_property(sprite, "modulate:a", 0.0, 0.45)
 		await tween.finished
-		sprite.visible = false
-		sprite.modulate.a = 1.0
-		sprite.position.y = start_y
-	if box != null:
+		if is_instance_valid(sprite):
+			sprite.visible = false
+			sprite.modulate.a = 1.0
+			sprite.position.y = start_y
+	if box != null and is_instance_valid(box):
 		box.visible = false
+
+	_faint_animating[key] = false
+	# Aplicar HP del reemplazo diferido (si el manager ya envió al siguiente)
+	if _pending_hp_after_faint.has(key):
+		var pending: Dictionary = _pending_hp_after_faint[key]
+		_pending_hp_after_faint.erase(key)
+		_on_hp_changed(is_player, int(pending.get("hp", 0)), int(pending.get("max", 1)))
+		if _multi_ui_ready:
+			_refresh_all_multi_appearances()
 
 
 func _wait_hp_bar_drained(is_player: bool, slot: int) -> void:
@@ -1952,16 +1989,26 @@ func _wait_hp_bar_drained(is_player: bool, slot: int) -> void:
 	if bar == null:
 		if is_player and slot == 0:
 			bar = player_hp_bar
+			player_hp_bar_target = 0.0
 		elif (not is_player) and slot == 0:
 			bar = enemy_hp_bar
+			enemy_hp_bar_target = 0.0
 	if bar == null:
 		await get_tree().create_timer(0.15).timeout
 		return
-	# Esperar hasta que la barra visual esté ~0 (máx 2s)
+	# Objetivo a 0; dejar que _process anime (no forzar tamaño al instante).
+	if is_player and slot == 0:
+		player_hp_bar_target = 0.0
+	elif (not is_player) and slot == 0:
+		enemy_hp_bar_target = 0.0
+	# Tiempo máximo generoso: barra llena → 0 a HP_ANIM_SPEED (~0.5s)
 	var elapsed: float = 0.0
-	while bar.size.x > 0.75 and elapsed < 2.0:
+	while bar.size.x > 0.75 and elapsed < 1.5:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
+	# Solo forzar si se quedó atascada de verdad
+	if bar.size.x > 0.75:
+		bar.size.x = 0.0
 	await get_tree().create_timer(0.08).timeout
 
 

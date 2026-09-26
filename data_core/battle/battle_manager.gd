@@ -840,7 +840,9 @@ func _resolve_item_enemy_turn() -> void:
 
 func _handle_enemy_faint() -> void:
 	message.emit("¡%s se debilitó!" % enemy.get_display_name())
-	await _wait(1.0)
+	# Tiempo extra para barra → grito → caída antes de enviar al siguiente
+	# o de cerrar el combate (si no, la barra se queda llena / no hay animación).
+	await _wait(1.35)
 
 	await _award_experience()
 
@@ -1929,6 +1931,12 @@ func _execute_move(action: BattleAction) -> void:
 		total_dealt += dealt
 		hits_landed += 1
 		_emit_hp(target.is_player_side)
+		# Dar tiempo a la UI: animar la barra y, si es KO, grito + caída.
+		# Sin esto, un reemplazo o el fin del combate rellenan la barra y cancelan el KO.
+		if target.is_fainted():
+			await _wait(0.85)
+		elif dealt > 0:
+			await _wait(0.2)
 
 		# Illusion se rompe con el primer daño real
 		if dealt > 0 and target.illusion_active:

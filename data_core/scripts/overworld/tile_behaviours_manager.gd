@@ -33,42 +33,9 @@ func ejecutar_comportamiento(
 			comportamiento_hierba(personaje)
 			return false
 
-		"stairs_right":
-			var dir: Vector2 = _direccion_escalera_subida_right(direccion)
-			if dir != Vector2.ZERO:
-				personaje.ultima_escalera = personaje.casilla_actual
-				_mover_escalera(personaje, dir)
-				return true
-			return false
-
-		"stairs_left":
-			var dir: Vector2 = _direccion_escalera_subida_left(direccion)
-			if dir != Vector2.ZERO:
-				personaje.ultima_escalera = personaje.casilla_actual
-				_mover_escalera(personaje, dir)
-				return true
-			return false
-
-		"stairs_end_right":
-			if direccion == Vector2.LEFT:
-				_mover_escalera(personaje, Vector2(-1, 1))
-				return true
-			var dir: Vector2 = _direccion_escalera_bajada_right(direccion)
-			if dir != Vector2.ZERO:
-				personaje.ultima_escalera = obtener_stairs_right(personaje.casilla_actual)
-				_mover_escalera(personaje, dir)
-				return true
-			return false
-
-		"stairs_end_left":
-			if direccion == Vector2.RIGHT:
-				_mover_escalera(personaje, Vector2(1, 1))
-				return true
-			var dir: Vector2 = _direccion_escalera_bajada_left(direccion)
-			if dir != Vector2.ZERO:
-				personaje.ultima_escalera = obtener_stairs_left(personaje.casilla_actual)
-				_mover_escalera(personaje, dir)
-				return true
+		# Escalera lateral: el paso diagonal solo se dispara en try_stairs_step
+		# al ENTRAR al tile. Si ya estás encima, no hacer nada aquí (movimiento normal).
+		"stairs_right", "stairs_end_right", "stairs_left", "stairs_end_left":
 			return false
 
 	return false
@@ -109,15 +76,18 @@ func salto_rampa(personaje: CharacterController, direccion: Vector2) -> void:
 	if reproductor_salto:
 		reproductor_salto.play()
 
-	var follower: FollowerPokemon = _obtener_follower(personaje)
-	if follower:
-		follower.saltar_rampa(direccion)
-
 	var inicio: Vector2 = personaje.position
 	var distancia: float = float(personaje.TILE_SIZE * 2)
 	var final: Vector2 = inicio + direccion * distancia
 	var duracion: float = 0.4
 	var altura: float = -16.0
+	var casilla_despegue: Vector2i = personaje.casilla_actual
+	var casilla_aterrizaje: Vector2i = personaje.posicion_a_casilla(final)
+
+	# Follower: primero al borde (despegue), luego salta cuando el aterrizaje quede libre.
+	var follower: FollowerPokemon = _obtener_follower(personaje)
+	if follower and follower.has_method("notificar_rampa_jugador"):
+		follower.notificar_rampa_jugador(direccion, casilla_despegue, casilla_aterrizaje)
 
 	var tween: Tween = create_tween()
 	tween.tween_method(
@@ -142,7 +112,7 @@ func salto_rampa(personaje: CharacterController, direccion: Vector2) -> void:
 		EventObjects.registrar_casilla(personaje.casilla_actual, personaje)
 
 		personaje.ejecutando_evento = false
-		_avisar_follower(personaje)
+		# No resetear_seguimiento: el follower saltará solo cuando se desocupe esta casilla.
 	)
 
 
@@ -269,71 +239,112 @@ func _correr_transicion_batalla(personaje: CharacterController) -> void:
 		await TransicionManager.fade_in(0.25)
 
 
-# ====================== ESCALERAS ======================
+# ====================== ESCALERAS (recta / función lineal) ======================
+#
+# Cada tramo es una recta de pendiente ±1 en el grid:
+#   stairs_right:  y = -x + b   (subir →, bajar ←)
+#   stairs_left:   y =  x + b   (subir ←, bajar →)
+#
+# Un “paso” = un escalón de esa recta. Sin ultima_escalera ni tweens.
 
-func _direccion_escalera_subida_left(direccion: Vector2) -> Vector2:
-	if direccion != Vector2.LEFT:
-		return Vector2.ZERO
-	return Vector2(-1, -1)
+## Dado el tipo de escalera y la tecla horizontal, devuelve el vector del peldaño.
+static func stairs_step_for(behaviour: String, direccion: Vector2) -> Vector2:
+	match behaviour:
+		"stairs_right", "stairs_end_right":
+			# Pendiente -1: derecha sube, izquierda baja
+			if direccion == Vector2.RIGHT:
+				return Vector2(1, -1)
+			if direccion == Vector2.LEFT:
+				return Vector2(-1, 1)
+		"stairs_left", "stairs_end_left":
+			# Pendiente +1: izquierda sube, derecha baja
+			if direccion == Vector2.LEFT:
+				return Vector2(-1, -1)
+			if direccion == Vector2.RIGHT:
+				return Vector2(1, 1)
+	return Vector2.ZERO
 
 
-func _direccion_escalera_subida_right(direccion: Vector2) -> Vector2:
-	if direccion != Vector2.RIGHT:
-		return Vector2.ZERO
-	return Vector2(1, -1)
+## Solo al ENTRAR a un tile de escalera (desde fuera).
+## Si ya estás encima, ←/→ es movimiento normal: no vuelve a subir/bajar en diagonal.
+func try_stairs_step(personaje: CharacterController, direccion: Vector2) -> bool:
+	if personaje == null:
+		return false
+	if direccion != Vector2.LEFT and direccion != Vector2.RIGHT:
+		return false
+	# Ya sobre un tile de escalera → no forzar diagonal
+	if _casilla_es_escalera(personaje, personaje.casilla_actual):
+		return false
+	# Entrar: la casilla horizontal vecina tiene escalera
+	var vecina: Vector2i = personaje.casilla_actual + Vector2i(direccion)
+	var step: Vector2 = _stairs_step_en_casilla(personaje, vecina, direccion)
+	if step == Vector2.ZERO:
+		return false
+	return _mover_escalera(personaje, step)
 
 
-func _direccion_escalera_bajada_left(direccion: Vector2) -> Vector2:
-	if direccion != Vector2.RIGHT:
-		return Vector2.ZERO
-	return Vector2(1, 1)
-
-
-func _direccion_escalera_bajada_right(direccion: Vector2) -> Vector2:
-	if direccion != Vector2.LEFT:
-		return Vector2.ZERO
-	return Vector2(-1, 1)
-
-
-func _mover_escalera(personaje: CharacterController, desplazamiento: Vector2) -> void:
-	personaje.ejecutando_evento = true
-
-	var follower: FollowerPokemon = _obtener_follower(personaje)
-	if follower:
-		follower.deslizar_escalera(desplazamiento)
-
-	var inicio: Vector2 = personaje.global_position
-	var destino: Vector2 = inicio + desplazamiento * float(personaje.TILE_SIZE)
-
-	personaje.casilla_reservada = personaje.posicion_a_casilla(destino)
-	EventObjects.reservar_casilla(personaje.casilla_reservada, personaje)
-
-	var tween: Tween = create_tween()
-	tween.tween_property(personaje, "global_position", destino, 0.30).set_trans(Tween.TRANS_LINEAR)
-
-	tween.finished.connect(func() -> void:
-		var casilla_vieja: Vector2i = personaje.casilla_actual
-		var casilla_nueva: Vector2i = personaje.posicion_a_casilla(destino)
-
-		personaje.global_position = destino
-		personaje.casilla_actual = casilla_nueva
-		personaje.casilla_reservada = casilla_nueva
-
-		EventObjects.liberar_casilla(casilla_vieja)
-		EventObjects.liberar_reserva(casilla_nueva)
-		EventObjects.registrar_casilla(casilla_nueva, personaje)
-
-		personaje.ejecutando_evento = false
-		_avisar_follower(personaje)
+func _casilla_es_escalera(personaje: CharacterController, casilla: Vector2i) -> bool:
+	return (
+		_stairs_step_en_casilla(personaje, casilla, Vector2.RIGHT) != Vector2.ZERO
+		or _stairs_step_en_casilla(personaje, casilla, Vector2.LEFT) != Vector2.ZERO
 	)
 
 
-func obtener_stairs_right(casilla: Vector2i) -> Vector2i:
-	return casilla + Vector2i(-1, 1)
+func _stairs_step_en_casilla(
+	personaje: CharacterController,
+	casilla: Vector2i,
+	direccion: Vector2
+) -> Vector2:
+	for capa: TileBehaviourLayer in personaje.capas_comportamiento:
+		if not is_instance_valid(capa):
+			continue
+		var tile_data: TileData = capa.get_cell_tile_data(casilla)
+		if tile_data == null or not tile_data.has_custom_data("behaviour"):
+			continue
+		var beh: String = str(tile_data.get_custom_data("behaviour"))
+		var step: Vector2 = stairs_step_for(beh, direccion)
+		if step != Vector2.ZERO:
+			return step
+	return Vector2.ZERO
 
 
-func obtener_stairs_left(casilla: Vector2i) -> Vector2i:
-	return casilla + Vector2i(1, 1)
+## Inicia un peldaño diagonal con el movimiento normal del personaje.
+## Devuelve true si el paso arrancó (para que intentar_mover no siga).
+func _mover_escalera(personaje: CharacterController, desplazamiento: Vector2) -> bool:
+	if personaje == null or desplazamiento == Vector2.ZERO:
+		return false
+	if personaje.is_moving or personaje.ejecutando_evento:
+		return false
+
+	var casilla_destino: Vector2i = personaje.casilla_actual + Vector2i(desplazamiento)
+	if EventObjects.hay_otro_en_casilla(casilla_destino, personaje):
+		return false
+
+	var destino_global: Vector2 = (
+		personaje.position + desplazamiento * float(personaje.TILE_SIZE)
+	)
+	# Respetar colisión de mapa en la casilla destino del peldaño
+	if personaje.has_method("casilla_permitida") and not personaje.casilla_permitida(destino_global):
+		return false
+	if personaje.has_method("hay_personaje_en") and personaje.hay_personaje_en(destino_global):
+		return false
+
+	personaje.input_direction = desplazamiento
+	personaje.initial_position = personaje.position
+	personaje.casilla_reservada = casilla_destino
+	EventObjects.reservar_casilla(casilla_destino, personaje)
+	personaje.percent_moved_to_next_tile = 0.0
+	personaje.is_moving = true
+
+	if desplazamiento.x > 0.0:
+		personaje.current_direction = CharacterController.Direction.EAST
+	elif desplazamiento.x < 0.0:
+		personaje.current_direction = CharacterController.Direction.WEST
+
+	if personaje.has_method("reproducir_paso"):
+		personaje.reproducir_paso()
+	personaje.is_first_step = not personaje.is_first_step
+	return true
 
 
 # ====================== HELPERS ======================

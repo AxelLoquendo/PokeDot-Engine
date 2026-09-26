@@ -1,3 +1,4 @@
+
 extends Node2D
 class_name CharacterController
 
@@ -302,18 +303,11 @@ func intentar_mover(direccion: Vector2) -> bool:
 	input_direction = direccion
 	var casilla_destino: Vector2i = casilla_actual + Vector2i(input_direction)
 
-	# Si tenemos una escalera registrada, comprobamos si el jugador
-	# intenta volver exactamente a esa casilla.
-	if ultima_escalera != Vector2i(-999, -999):
-		var desplazamiento: Vector2i = ultima_escalera - casilla_actual
-
-		# Solo aceptamos un desplazamiento diagonal de una casilla.
-		if abs(desplazamiento.x) == 1 and abs(desplazamiento.y) == 1:
-			# Si el jugador pulsa la dirección horizontal correcta,
-			# convertimos el movimiento en diagonal.
-			if direccion.x == desplazamiento.x:
-				input_direction = Vector2(desplazamiento)
-				casilla_destino = ultima_escalera
+	# Escalera lateral = recta (pendiente ±1). ←/→ se convierten en un peldaño
+	# diagonal usando la casilla actual o la vecina. Sin ultima_escalera.
+	if (direccion == Vector2.LEFT or direccion == Vector2.RIGHT) and TileBehavioursManager != null:
+		if TileBehavioursManager.try_stairs_step(self, direccion):
+			return true
 
 	# Primero comprobar transición de piso
 	var posicion_destino_global: Vector2 = (global_position + input_direction * TILE_SIZE)
@@ -376,7 +370,14 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
+	# Durante un evento se bloquea la entrada, pero se deja terminar el paso
+	# en curso. Si se corta move() a medias, la animación de caminar se congela
+	# y cancelar_movimiento() empuja al personaje una casilla atrás.
 	if ejecutando_evento:
+		if is_moving:
+			move(_delta)
+			if not is_moving and has_method("reproducir_idle"):
+				reproducir_idle()
 		return
 	if !is_moving:
 		process_input()
@@ -518,11 +519,18 @@ func complete_move() -> void:
 	EventObjects.registrar_casilla(casilla_actual, self)
 	actualizar_nivel_suelo(global_position)
 
+	# TileBehavioursManager.comportamiento_hierba SOLO lanza encuentros si
+	# personaje.is_moving == true. No poner is_moving = false antes de
+	# comprobar_casilla o no salen salvajes.
+
 	if character_data is CharacterPlayer:
 		# 1) Triggers de casilla (COORD + WARP)
 		if MapEventResolver.try_step(self):
+			# Scripts de mapa: soltar paso + idle para que lock no deje
+			# la animación de caminar congelada.
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
+			reproducir_idle()
 			return
 		revisar_conexion_mapa()
 
@@ -532,6 +540,7 @@ func complete_move() -> void:
 
 	percent_moved_to_next_tile = 0.0
 	is_moving = false
+	reproducir_idle()
 
 	if map_manager:
 		map_manager.comprobar_transicion()

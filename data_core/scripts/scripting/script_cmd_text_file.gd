@@ -75,23 +75,42 @@ func _convert_parsed_commands(parsed: Array, context: ScriptExecutionContext) ->
 		var command_name: String = cmd_dict.get("command", "") as String
 		if command_name == "text":
 			var args: Array[String] = cmd_dict.get("args", []) as Array[String]
-			if args.size() > 1 and ScriptTextParser.MSGBOX_MAP.has(args[1]):
+			var message_text: String = args[0] if not args.is_empty() else ""
+			var msgbox_name: String = ""
+			var speaker_token: String = ""
+
+			# text "msg" | text "msg" MSGBOX_NPC | text "msg" KAIDA | text "msg" MSGBOX_NPC KAIDA
+			if args.size() > 1:
+				if ScriptTextParser.MSGBOX_MAP.has(args[1]):
+					msgbox_name = args[1]
+					if args.size() > 2:
+						speaker_token = args[2]
+				else:
+					speaker_token = args[1]
+
+			if not msgbox_name.is_empty() or not speaker_token.is_empty():
 				var typed_text: ScriptCmdText = ScriptCmdText.new()
 				typed_text.messages = pending_texts.duplicate()
-				typed_text.messages.append(args[0])
-				typed_text.message = args[0]
-				_configure_msgbox(typed_text, args[1])
+				typed_text.messages.append(message_text)
+				typed_text.message = message_text
+				if not msgbox_name.is_empty():
+					_configure_msgbox(typed_text, msgbox_name)
+				if not speaker_token.is_empty():
+					typed_text.speaker_id = StringName(speaker_token)
 				commands.append(typed_text)
 				pending_texts.clear()
 			else:
-				pending_texts.append(args[0] if not args.is_empty() else "")
+				pending_texts.append(message_text)
 			continue
 
 		_append_text_command(commands, pending_texts)
 		pending_texts.clear()
 
-		if command_name == "end":
-			break
+		# "end" y "return" terminan la ejecución en runtime, pero NO el parseo:
+		# hace falta seguir convirtiendo labels posteriores (gano, ya_vencida…).
+		if command_name == "end" or command_name == "return":
+			commands.append(ScriptCmdReturn.new())
+			continue
 
 		var command: ScriptCommand = _create_command_from_dict(cmd_dict, context)
 		if command:
@@ -129,7 +148,13 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 		"text":
 			var cmd: ScriptCmdText = ScriptCmdText.new()
 			if not args.is_empty():
-				cmd.message = " ".join(args)
+				cmd.message = args[0]
+			if args.size() > 1 and ScriptTextParser.MSGBOX_MAP.has(args[1]):
+				_configure_msgbox(cmd, args[1])
+				if args.size() > 2:
+					cmd.speaker_id = StringName(args[2])
+			elif args.size() > 1:
+				cmd.speaker_id = StringName(args[1])
 			return cmd
 		
 		"waitbutton":
@@ -285,12 +310,8 @@ func _create_command_from_dict(cmd_dict: Dictionary[String, Variant], _context: 
 				cmd.sound_path = args[0]
 			return cmd
 
-		"return":
+		"return", "end":
 			return ScriptCmdReturn.new()
-		
-		"end":
-			# Fin del script
-			return null
 		
 		_:
 			push_warning("ScriptCmdTextFile: Comando no implementado '%s'" % command_name)
