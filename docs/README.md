@@ -22,7 +22,7 @@ Title Screen → Main Menu → GestorInicio → mapa activo
 | [SISTEMA_DE_SCRIPTS.md](SISTEMA_DE_SCRIPTS.md) | Lenguaje `.txt` para NPC y scripts de mapa. |
 | [DATOS_POKEMON.md](DATOS_POKEMON.md) | Crear especies, formas, movimientos, habilidades e ítems. |
 | [COMBATE_Y_EVOLUCIONES.md](COMBATE_Y_EVOLUCIONES.md) | Flujo de combate, evolución y uso de objetos. |
-| [ENTRENADORES.md](ENTRENADORES.md) | Definir entrenadores en texto (formato Showdown) y combatir con `trainerbattle`. |
+| [TRAINER.md](TRAINER.md) | Definir entrenadores en texto (formato Showdown) y combatir con `trainerbattle`. |
 | [DESARROLLO_Y_PRUEBAS.md](DESARROLLO_Y_PRUEBAS.md) | Convenciones, depuración y límites actuales. |
 
 ## Carpetas principales

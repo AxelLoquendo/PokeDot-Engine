@@ -177,7 +177,7 @@ end
 | `savegame` | `savegame` | Abre la selección y confirmación de una ranura. |
 | `giveitem` | `giveitem ITEM_ID [cantidad]` | Añade un objeto a la mochila. |
 | `checkitem` | `checkitem ITEM_ID [cantidad]` | Actualiza `last_result` y `last_item_count`. |
-| `trainerbattle` | `trainerbattle TRAINER_ID` | Combate contra un entrenador y espera a que acabe. Al ganar activa la flag `TRAINER_ID`; `last_result` indica si ganó. Ver [ENTRENADORES.md](ENTRENADORES.md). |
+| `trainerbattle` | `trainerbattle TRAINER_ID` | Combate contra un entrenador y espera a que acabe. Al ganar activa la flag `TRAINER_ID`; `last_result` indica si ganó. Ver [TRAINER.md](TRAINER.md). |
 | `waitbutton` | `waitbutton` | Espera la acción `buttonA`. |
 | `label` | `label nombre` | Declara un destino de salto. |
 | `goto` | `goto nombre` | Salta incondicionalmente. |
