@@ -44,6 +44,17 @@ El comando hace fundido, carga el destino, reposiciona al jugador, reconstruye d
 
 `TileBehaviourLayer` y `TileBehavioursManager` interpretan los custom data layers del tileset. Los comportamientos de suelo, altura, rampas y colisiones deben vivir en el gestor para que jugador, NPC y seguidor compartan reglas.
 
+## Reflejos en el agua
+
+Jugador, NPC y seguidor se reflejan en las casillas de `Behaviours/Collisions`
+pintadas con el tile de colisión que tiene `surf` (el del agua). No hace falta
+configurar nada más, tampoco en los puentes.
+
+Ajustes en `data_core/scripts/overworld/reflejo_agua.gdshader`: `tinte`,
+`fuerza_tinte`, `opacidad`, `umbral_azul` (`-1.0` si el agua no es azul) y
+`amplitud_px` para una onda (0 por defecto). Si un sprite tiene margen bajo
+los pies, ajusta `ajuste_y` en su nodo `ReflejoAgua`.
+
 ## Clima y encuentros
 
 El clima visual usa `WeatherEffect.WeatherID` y se cambia desde `WeatherManager` o `weather` en un script. `DnsManager` controla hora ambiental y `MusicManager` la música.

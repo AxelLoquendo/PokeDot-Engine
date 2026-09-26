@@ -67,6 +67,7 @@ func _ready() -> void:
 	cry_player = AudioStreamPlayer.new()
 	cry_player.name = "Cry"
 	add_child(cry_player)
+	ReflejoAgua.agregar_a(self, anim)
 
 
 
