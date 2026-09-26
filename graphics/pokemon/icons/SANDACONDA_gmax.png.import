@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djh347nu0udcf"
-path="res://.godot/imported/SANDACONDA_gmax.png-cf121e68bd49924a57588d9e4f6b6498.ctex"
+uid="uid://fv3lmo8qvukl"
+path="res://.godot/imported/SANDACONDA_GMAX.png-213824b37cadb0f76f510bec2a9e2f44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/SANDACONDA_gmax.png"
-dest_files=["res://.godot/imported/SANDACONDA_gmax.png-cf121e68bd49924a57588d9e4f6b6498.ctex"]
+source_file="res://graphics/pokemon/icons/SANDACONDA_GMAX.png"
+dest_files=["res://.godot/imported/SANDACONDA_GMAX.png-213824b37cadb0f76f510bec2a9e2f44.ctex"]
 
 [params]
 

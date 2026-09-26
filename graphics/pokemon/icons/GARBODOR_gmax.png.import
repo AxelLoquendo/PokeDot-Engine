@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o04yk4ouhyht"
-path="res://.godot/imported/GARBODOR_gmax.png-bca3ab7728e158138ab9562ee7fa1f82.ctex"
+uid="uid://4co0nm1bmkru"
+path="res://.godot/imported/GARBODOR_GMAX.png-68cc69011ef8ecd20b71bcd02800c8c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/GARBODOR_gmax.png"
-dest_files=["res://.godot/imported/GARBODOR_gmax.png-bca3ab7728e158138ab9562ee7fa1f82.ctex"]
+source_file="res://graphics/pokemon/icons/GARBODOR_GMAX.png"
+dest_files=["res://.godot/imported/GARBODOR_GMAX.png-68cc69011ef8ecd20b71bcd02800c8c9.ctex"]
 
 [params]
 

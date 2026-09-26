@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fs0hg1ytn3v5"
-path="res://.godot/imported/CINDERACE_gmax.png-cacda21a3439067f8887812bc159e5ff.ctex"
+uid="uid://c78nwkrwbcpi8"
+path="res://.godot/imported/CINDERACE_GMAX.png-984a32348f08b546fa58922356871250.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/CINDERACE_gmax.png"
-dest_files=["res://.godot/imported/CINDERACE_gmax.png-cacda21a3439067f8887812bc159e5ff.ctex"]
+source_file="res://graphics/pokemon/icons/CINDERACE_GMAX.png"
+dest_files=["res://.godot/imported/CINDERACE_GMAX.png-984a32348f08b546fa58922356871250.ctex"]
 
 [params]
 

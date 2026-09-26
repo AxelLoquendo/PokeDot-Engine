@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cht5x8pmae3eb" path="res://graphics/ui_pokedex/bg_forms.png" id="1_axxcx"]
 [ext_resource type="Script" uid="uid://yrt63cf8hs7k" path="res://scenes/ui_pokedex/page_2.gd" id="1_qgtf4"]
-[ext_resource type="Texture2D" uid="uid://fl8flujc8ngo" path="res://graphics/pokemon/front_shiny/TERAPAGOS_STELLAR.png" id="2_brbdn"]
-[ext_resource type="Texture2D" uid="uid://01ibo1tjwfnc" path="res://graphics/pokemon/back/TERAPAGOS_STELLAR.png" id="3_0xjgl"]
-[ext_resource type="Texture2D" uid="uid://dsa3jbr712f3" path="res://graphics/pokemon/icons/TERAPAGOS_STELLAR.png" id="4_1a7nf"]
+[ext_resource type="Texture2D" uid="uid://bn20bhhr7wx20" path="res://graphics/pokemon/front/MEGA_ZYGARDE.png" id="3_qgtf4"]
+[ext_resource type="Texture2D" uid="uid://cdeny7in51pbk" path="res://graphics/pokemon/back/MEGA_ZYGARDE.png" id="4_4rsue"]
 [ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="5_b6v8v"]
+[ext_resource type="Texture2D" uid="uid://dluemvqbm0ges" path="res://graphics/pokemon/icons/MEGA_ZYGARDE.png" id="5_tqd36"]
 [ext_resource type="Texture2D" uid="uid://c7fbhvt61gwj7" path="res://graphics/text_window/up_arrow.png" id="6_qgtf4"]
 [ext_resource type="Texture2D" uid="uid://ck416673h52uk" path="res://graphics/text_window/down_arrow.png" id="7_4rsue"]
 
@@ -27,16 +27,16 @@ texture = ExtResource("1_axxcx")
 [node name="Front" type="Sprite2D" parent="." unique_id=1261376193]
 position = Vector2(121, 132)
 scale = Vector2(2, 2)
-texture = ExtResource("2_brbdn")
+texture = ExtResource("3_qgtf4")
 
 [node name="Back" type="Sprite2D" parent="." unique_id=1291419266]
 position = Vector2(359, 150)
 scale = Vector2(2, 2)
-texture = ExtResource("3_0xjgl")
+texture = ExtResource("4_4rsue")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=15506446]
 position = Vector2(80, 273)
-texture = ExtResource("4_1a7nf")
+texture = ExtResource("5_tqd36")
 hframes = 2
 
 [node name="Specie" type="Label" parent="." unique_id=853060472]

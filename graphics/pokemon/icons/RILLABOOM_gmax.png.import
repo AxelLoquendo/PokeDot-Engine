@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmge8uino4c7t"
-path="res://.godot/imported/RILLABOOM_gmax.png-39888cff49d851b6c960300d5f2e453f.ctex"
+uid="uid://bcmwp2pjkf62x"
+path="res://.godot/imported/RILLABOOM_GMAX.png-776018b521824f027da7152f3de3d9b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/RILLABOOM_gmax.png"
-dest_files=["res://.godot/imported/RILLABOOM_gmax.png-39888cff49d851b6c960300d5f2e453f.ctex"]
+source_file="res://graphics/pokemon/icons/RILLABOOM_GMAX.png"
+dest_files=["res://.godot/imported/RILLABOOM_GMAX.png-776018b521824f027da7152f3de3d9b4.ctex"]
 
 [params]
 

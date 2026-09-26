@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://20ckga075uww"
-path="res://.godot/imported/MACHAMP_gmax.png-99277c549bf26d4a88107ec920b45bb6.ctex"
+uid="uid://15tya7ee7j4f"
+path="res://.godot/imported/MACHAMP_GMAX.png-c53f2490f0453b852d1fb95a89500e99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/MACHAMP_gmax.png"
-dest_files=["res://.godot/imported/MACHAMP_gmax.png-99277c549bf26d4a88107ec920b45bb6.ctex"]
+source_file="res://graphics/pokemon/icons/MACHAMP_GMAX.png"
+dest_files=["res://.godot/imported/MACHAMP_GMAX.png-c53f2490f0453b852d1fb95a89500e99.ctex"]
 
 [params]
 

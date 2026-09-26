@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j8n34v552yqj"
-path="res://.godot/imported/TOXTRICITY_gmax.png-085aa38649ff83f1838cc13e890b17db.ctex"
+uid="uid://ce6tjn1mh1bu5"
+path="res://.godot/imported/TOXTRICITY_GMAX.png-a720143a8c6a2b7a6813308a93a68a8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/TOXTRICITY_gmax.png"
-dest_files=["res://.godot/imported/TOXTRICITY_gmax.png-085aa38649ff83f1838cc13e890b17db.ctex"]
+source_file="res://graphics/pokemon/icons/TOXTRICITY_GMAX.png"
+dest_files=["res://.godot/imported/TOXTRICITY_GMAX.png-a720143a8c6a2b7a6813308a93a68a8c.ctex"]
 
 [params]
 

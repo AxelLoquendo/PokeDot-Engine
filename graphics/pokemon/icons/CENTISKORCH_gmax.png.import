@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1urd3qfecfs2"
-path="res://.godot/imported/CENTISKORCH_gmax.png-daba4a8013c8f8183983230eb048d24d.ctex"
+uid="uid://d2wkaaaap4qiy"
+path="res://.godot/imported/CENTISKORCH_GMAX.png-55b5b1004a3f1c7372eb019237b6c2b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/CENTISKORCH_gmax.png"
-dest_files=["res://.godot/imported/CENTISKORCH_gmax.png-daba4a8013c8f8183983230eb048d24d.ctex"]
+source_file="res://graphics/pokemon/icons/CENTISKORCH_GMAX.png"
+dest_files=["res://.godot/imported/CENTISKORCH_GMAX.png-55b5b1004a3f1c7372eb019237b6c2b8.ctex"]
 
 [params]
 

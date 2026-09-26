@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxuusoy3waou7"
-path="res://.godot/imported/MELMETAL_gmax.png-aed85b86455d13ddb8eaf7b9be6aa68a.ctex"
+uid="uid://brcvu7h4m07kg"
+path="res://.godot/imported/MELMETAL_GMAX.png-2b7433662695cd1f42ae95b321b23f02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/MELMETAL_gmax.png"
-dest_files=["res://.godot/imported/MELMETAL_gmax.png-aed85b86455d13ddb8eaf7b9be6aa68a.ctex"]
+source_file="res://graphics/pokemon/icons/MELMETAL_GMAX.png"
+dest_files=["res://.godot/imported/MELMETAL_GMAX.png-2b7433662695cd1f42ae95b321b23f02.ctex"]
 
 [params]
 

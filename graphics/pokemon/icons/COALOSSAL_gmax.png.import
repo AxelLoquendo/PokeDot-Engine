@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lslkv6ud76sk"
-path="res://.godot/imported/COALOSSAL_gmax.png-27e4252db0486817cd8ca8b957df2090.ctex"
+uid="uid://dpwdgt2jjfvdh"
+path="res://.godot/imported/COALOSSAL_GMAX.png-fe9794edafe08badcf651de089ef0cb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/COALOSSAL_gmax.png"
-dest_files=["res://.godot/imported/COALOSSAL_gmax.png-27e4252db0486817cd8ca8b957df2090.ctex"]
+source_file="res://graphics/pokemon/icons/COALOSSAL_GMAX.png"
+dest_files=["res://.godot/imported/COALOSSAL_GMAX.png-fe9794edafe08badcf651de089ef0cb6.ctex"]
 
 [params]
 

@@ -6,9 +6,9 @@ Motor de RPG inspirado en Pokémon, construido con Godot 4.7. El proyecto separa
 
 ```text
 Title Screen → Main Menu → GestorInicio → mapa activo
-                                      ├─ scripts / diálogos / NPC
-                                      ├─ menús de pausa, mochila, equipo y dex
-                                      └─ combate como overlay → regreso al mapa
+									  ├─ scripts / diálogos / NPC
+									  ├─ menús de pausa, mochila, equipo y dex
+									  └─ combate como overlay → regreso al mapa
 ```
 
 `SaveManager` conserva tres ranuras. Una partida contiene jugador, posición, mapa, tiempo jugado, banderas, mochila, equipo Pokémon y Pokédex.

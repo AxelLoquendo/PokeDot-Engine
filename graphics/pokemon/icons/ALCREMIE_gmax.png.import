@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://02g74coxd8qm"
-path="res://.godot/imported/ALCREMIE_gmax.png-b46142337d0fb61ce9334bd70abb641e.ctex"
+uid="uid://camtml0hsfcwt"
+path="res://.godot/imported/ALCREMIE_GMAX.png-6a7488ff61b5dd8b13a60c04c3a6f77a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/ALCREMIE_gmax.png"
-dest_files=["res://.godot/imported/ALCREMIE_gmax.png-b46142337d0fb61ce9334bd70abb641e.ctex"]
+source_file="res://graphics/pokemon/icons/ALCREMIE_GMAX.png"
+dest_files=["res://.godot/imported/ALCREMIE_GMAX.png-6a7488ff61b5dd8b13a60c04c3a6f77a.ctex"]
 
 [params]
 

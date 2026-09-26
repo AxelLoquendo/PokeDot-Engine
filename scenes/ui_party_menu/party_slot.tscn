@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://pu240bc240fm" path="res://game/graphics_eb/ui_party_menu/box_male_switch.png" id="6_kmkxw"]
 [ext_resource type="Texture2D" uid="uid://c5lt6p4qelcmk" path="res://graphics/status/sleep.png" id="8_bljkr"]
 [ext_resource type="Texture2D" uid="uid://dui8qbvpsk2al" path="res://graphics/ui_party_menu/icon_item.png" id="8_kmkxw"]
-[ext_resource type="Texture2D" uid="uid://ysos3w0d5hgp" path="res://graphics/pokemon/icons/ARMAROUGE.png" id="8_t2hga"]
+[ext_resource type="Texture2D" uid="uid://cmm7l0b1gwu3w" path="res://graphics/pokemon/icons/CERULEDGE.png" id="8_t2hga"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bljkr"]
 font = ExtResource("4_i1e4l")

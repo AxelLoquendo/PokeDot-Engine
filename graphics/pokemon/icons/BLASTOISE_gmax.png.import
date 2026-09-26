@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2c7hyeiysnw2"
-path="res://.godot/imported/BLASTOISE_gmax.png-b5f594d69479bde7a96b38b5acd5d636.ctex"
+uid="uid://ggsd17pas43b"
+path="res://.godot/imported/BLASTOISE_GMAX.png-06072d4f5423be12dbb24656525d6174.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/BLASTOISE_gmax.png"
-dest_files=["res://.godot/imported/BLASTOISE_gmax.png-b5f594d69479bde7a96b38b5acd5d636.ctex"]
+source_file="res://graphics/pokemon/icons/BLASTOISE_GMAX.png"
+dest_files=["res://.godot/imported/BLASTOISE_GMAX.png-06072d4f5423be12dbb24656525d6174.ctex"]
 
 [params]
 

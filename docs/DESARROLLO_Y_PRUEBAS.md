@@ -39,6 +39,7 @@ requieren integración adicional.
 
 Abre el proyecto en Godot y revisa Output después de modificar clases, recursos o enums. El escaneo debe terminar sin `Parser Error` ni `Compilation failed`. Un aviso de mecánica sin regla es una señal para implementarla, no para ocultarla.
 
+
 ## Revisar contenido
 
 **Proyecto → Herramientas → 🔎 Revisar contenido** revisa el juego sin

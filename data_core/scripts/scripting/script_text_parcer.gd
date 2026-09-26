@@ -31,7 +31,8 @@ const COMANDOS_VALIDOS: Array[String] = [
 	"giveitem",
 	"sound",
 	"return",
-	"end"
+	"end",
+	"trainerbattle"
 ]
 
 
@@ -183,8 +184,9 @@ func _tokenize_arguments(source: String, line_number: int) -> Array[String]:
 		push_error(error_message)
 		return []
 	if not current.is_empty():
-		args.append(current)
+		args.append(current.replace("\r", "")) 
 	return args
+
 
 
 ## Carga y parsea un archivo de script desde una ruta

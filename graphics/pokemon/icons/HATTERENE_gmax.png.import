@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm0etn5pe3g3h"
-path="res://.godot/imported/HATTERENE_gmax.png-673c5763a64867d85cc68335ba08c185.ctex"
+uid="uid://cd11yexhpw3h2"
+path="res://.godot/imported/HATTERENE_GMAX.png-d81298772a18abff33163af40a04406d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/HATTERENE_gmax.png"
-dest_files=["res://.godot/imported/HATTERENE_gmax.png-673c5763a64867d85cc68335ba08c185.ctex"]
+source_file="res://graphics/pokemon/icons/HATTERENE_GMAX.png"
+dest_files=["res://.godot/imported/HATTERENE_GMAX.png-d81298772a18abff33163af40a04406d.ctex"]
 
 [params]
 

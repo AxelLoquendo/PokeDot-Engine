@@ -27,7 +27,6 @@ enum RegionId {
 	REGION_PALDEA,
 }
 
-
 ## Ruta de la escena del mapa. Sale de MapRegistry (data_core/generated),
 ## que se regenera al guardar un mapa en el editor.
 static func get_scene_path(section_id: int) -> String:

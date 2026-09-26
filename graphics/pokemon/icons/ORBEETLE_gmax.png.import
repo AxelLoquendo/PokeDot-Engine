@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csgyql5luilqp"
-path="res://.godot/imported/ORBEETLE_gmax.png-ee1910207af86f7ec8ed32d4d870b48c.ctex"
+uid="uid://dvlbjqm3pf5tr"
+path="res://.godot/imported/ORBEETLE_GMAX.png-9a5deabb81a207ded54778249c29fb56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/pokemon/icons/ORBEETLE_gmax.png"
-dest_files=["res://.godot/imported/ORBEETLE_gmax.png-ee1910207af86f7ec8ed32d4d870b48c.ctex"]
+source_file="res://graphics/pokemon/icons/ORBEETLE_GMAX.png"
+dest_files=["res://.godot/imported/ORBEETLE_GMAX.png-9a5deabb81a207ded54778249c29fb56.ctex"]
 
 [params]
 

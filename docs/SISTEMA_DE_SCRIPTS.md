@@ -463,11 +463,11 @@ Desde código, usa:
 
 ```gdscript
 var result: int = await DialogueManager.choose(
-    ["Sí", "No"], Vector2(468, 308)
+	["Sí", "No"], Vector2(468, 308)
 )
 if result == 0:
-    # primera opción
-    pass
+	# primera opción
+	pass
 ```
 
 Devuelve el índice de la opción, o `-1` al cancelar. Para abrirlo sin esperar,

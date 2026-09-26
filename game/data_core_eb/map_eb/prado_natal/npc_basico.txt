@@ -1,26 +1,19 @@
 lock
 faceplayer
-giveitem ITEM_POKE_BALL 2
-giveitem ITEM_GREAT_BALL 6
-giveitem ITEM_ULTRA_BALL 88
-giveitem ITEM_MASTER_BALL 32
-giveitem ITEM_PREMIER_BALL 123
-giveitem ITEM_HEAL_BALL 999
-giveitem ITEM_NET_BALL 1
-giveitem ITEM_POTION 1
-giveitem ITEM_DYNAMAX_BAND 1
-text "¿Deseas ir a Pueblo Alba?, recuerda, aun no esta terminado." MSGBOX_YESNO
+ifflag TRAINER_ROCIO ya_vencida
+text "¡Los bichos son lo mejor!" MSGBOX_NPC
+trainerbattle TRAINER_ROCIO
+compare variable last_result == true gano
+text "Vuelve cuando seas más fuerte."
+release
+end
 
-ifchoice 0 ir_pueblo_alba
-goto rechazar
+label gano
+text "Mis bichos… ¡qué derrota!"
+release
+end
 
-label ir_pueblo_alba
-warp MAPSEC_PUEBLO_ALBA 9 18
-goto final
-
-label rechazar
-text "Esta bien, no hay problema, Kael"
-
-label final
+label ya_vencida
+text "Sigo entrenando a mis bichos."
 release
 end
