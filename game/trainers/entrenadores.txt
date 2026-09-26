@@ -1,9 +1,6 @@
-# Entrenadores del juego. Formato completo en docs/ENTRENADORES.md.
-#
-# Cada entrenador empieza con "=== TRAINER_ID ===" y sus datos. Después de
-# una línea en blanco van sus Pokémon en formato Showdown: se puede pegar un
-# equipo exportado desde Pokémon Showdown tal cual.
-# Para combatir desde un script:  trainerbattle TRAINER_ROCIO
+# Entrenadores del juego (formato en docs/TRAINER.md).
+# Los equipos se pueden pegar desde Showdown.
+# Desde un script: trainerbattle TRAINER_ROCIO
 
 === TRAINER_ROCIO ===
 Name: Rocío

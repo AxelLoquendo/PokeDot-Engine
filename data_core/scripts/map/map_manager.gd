@@ -139,8 +139,7 @@ func cambiar_mapa(nuevo: MapAttributes, _direccion: MapAttributes.ConnectionDire
 	_setup_jugador_en_mapa(current_map)
 	_post_cambio_mapa()
 
-## Warp desde script. Si dest_warp_id >= 0 y el mapa destino tiene un WARP
-## con ese warp_id, el jugador aparece sobre él en lugar de en target_tile.
+## Warp desde script. Con dest_warp_id >= 0 aparece sobre ese warp si existe.
 func warp_player_to_section(section_id: int, target_tile: Vector2i, dest_warp_id: int = -1) -> bool:
 	if jugador == null:
 		push_error("MapManager: no hay jugador para ejecutar warp")

@@ -3,9 +3,7 @@ extends ScriptCommand
 class_name ScriptCmdTrainerBattle
 
 ## trainerbattle TRAINER_ID
-## Combate contra un entrenador de res://game/trainers/ y espera a que acabe.
-## Si gana el jugador, activa la flag TRAINER_ID y deja last_result = true.
-## Si ya estaba derrotado, no hay combate y last_result = true.
+## Al ganar activa la flag TRAINER_ID. Si ya estaba derrotado no hay combate.
 @export var trainer_id: String = ""
 
 
@@ -29,7 +27,7 @@ func execute(context: ScriptExecutionContext) -> bool:
 	if not BattleSession.preparar_desde_entrenador(player, trainer):
 		return true
 
-	# BattleSession libera al jugador al terminar; se respeta el lock del script.
+	# Devolver el lock que tenía el script
 	var was_locked: bool = player.ejecutando_evento
 	context.is_waiting = true
 	BattleSession.battle_finished.connect(func(result: int) -> void:
@@ -45,7 +43,7 @@ func execute(context: ScriptExecutionContext) -> bool:
 	return false
 
 
-## Misma entrada que un encuentro salvaje: música, transición y overlay.
+## Igual que un encuentro salvaje.
 func _start_battle(player: CharacterController) -> void:
 	player.ejecutando_evento = true
 	MusicManager.reproducir_batalla(BattleSession.battle_music)

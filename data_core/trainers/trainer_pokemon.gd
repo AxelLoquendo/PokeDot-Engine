@@ -1,8 +1,7 @@
 extends Resource
 class_name TrainerPokemon
 
-## Un Pokémon del equipo de un entrenador tal como se escribe en su archivo
-## (formato Showdown). create_instance() lo convierte en un PokemonInstance.
+## Pokémon de un entrenador tal como está en su archivo.
 
 @export var species_id: Species.SpeciesID = Species.SpeciesID.SPECIES_NONE
 @export var nickname: String = ""
@@ -10,7 +9,7 @@ class_name TrainerPokemon
 @export var held_item: Items.ItemId = Items.ItemId.ITEM_NONE
 ## NONE = primera habilidad de la especie.
 @export var ability_id: AbilityId.Id = AbilityId.Id.NONE
-## Showdown usa Serious cuando no se indica naturaleza.
+## Serious si no se indica.
 @export var nature: PokemonData.Nature = PokemonData.Nature.NATURE_SERIOUS
 ## -1 = según la especie.
 @export_enum("Según especie:-1", "Macho:0", "Hembra:1") var gender: int = -1
@@ -19,10 +18,10 @@ class_name TrainerPokemon
 @export_range(-1, 255) var friendship: int = -1
 ## NONE = el tipo Tera por defecto.
 @export var tera_type: PokemonData.Type = PokemonData.Type.TYPE_NONE
-## Orden: HP, Atk, Def, Spe, SpAtk, SpDef (igual que PokemonInstance).
+## HP, Atk, Def, Spe, SpAtk, SpDef.
 @export var ivs: Array[int] = [31, 31, 31, 31, 31, 31]
 @export var evs: Array[int] = [0, 0, 0, 0, 0, 0]
-## Vacío = los movimientos que tendría por nivel.
+## Vacío = los de su nivel.
 @export var moves: Array[Moves.MoveId] = []
 
 

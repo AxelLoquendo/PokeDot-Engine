@@ -3,9 +3,8 @@ extends RefCounted
 
 class_name MapRegistryGenerator
 
-## Genera map_registry.gd (MAPSEC → escena) buscando en todo el proyecto las
-## escenas cuyo nodo raíz define map_id_section. Así un mapa nuevo queda
-## registrado solo con asignarle su MAPSEC y guardarlo.
+## Genera map_registry.gd (MAPSEC -> escena) con las escenas cuyo nodo raíz
+## tiene map_id_section.
 
 const OUTPUT_PATH: String = "res://data_core/generated/map_registry.gd"
 const SECTION_SCRIPT_PATH: String = "res://data_core/scripts/map/map_section.gd"
@@ -14,7 +13,7 @@ const ACCENTS: Dictionary = {
 	"Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U", "Ü": "U", "Ñ": "N",
 }
 
-## Avisos de la última generación (IDs repetidos, MAPSEC inexistentes…).
+## Avisos de la última generación.
 var warnings: Array[String] = []
 
 
@@ -57,8 +56,7 @@ func generate() -> Error:
 	return OK
 
 
-## Lee MAPSEC_* = N del enum SectionId directamente del archivo, para no
-## depender de que el editor haya recargado el script tras añadir una entrada.
+## Se lee del archivo porque el editor puede no haber recargado el script.
 static func read_section_enum() -> Dictionary:
 	var result: Dictionary = {}
 	var text: String = FileAccess.get_file_as_string(SECTION_SCRIPT_PATH)
@@ -74,8 +72,7 @@ static func read_section_enum() -> Dictionary:
 	return result
 
 
-## Añade una entrada al enum SectionId con el siguiente número libre.
-## Devuelve su valor (el existente si ya estaba) o -1 si no pudo escribir.
+## Devuelve el valor asignado, el existente si ya estaba, o -1.
 static func add_section(key: String) -> int:
 	var sections: Dictionary = read_section_enum()
 	if sections.has(key):
@@ -98,7 +95,7 @@ static func add_section(key: String) -> int:
 	return next_value
 
 
-## Convierte un nombre como "Ruta 1" o "Cueva Ámbar" en MAPSEC_RUTA_1 / MAPSEC_CUEVA_AMBAR.
+## "Cueva Ámbar" = MAPSEC_CUEVA_AMBAR
 static func make_section_key(display_name: String) -> String:
 	var plain: String = display_name.to_upper()
 	for accented: String in ACCENTS.keys():
@@ -114,8 +111,7 @@ static func make_section_key(display_name: String) -> String:
 	return "" if result.is_empty() else "MAPSEC_" + result
 
 
-## Lee map_id_section y map_name del nodo raíz de una escena de texto.
-## Devuelve {} si la escena no es un mapa con MAPSEC propio.
+## {} si la escena no es un mapa con MAPSEC.
 static func read_map_root(path: String) -> Dictionary:
 	var text: String = FileAccess.get_file_as_string(path)
 	if not text.contains("map_id_section"):
