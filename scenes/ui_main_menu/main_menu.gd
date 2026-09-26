@@ -107,9 +107,17 @@ func actualizar_info_ranura() -> void:
 	lbl_mapa.text = str(datos.get("map_name", "Sin mapa"))  
 	lbl_tiempo.text = "%02d:%02d:%02d" % [segundos / 3600.0, (segundos % 3600) / 60.0, segundos % 60]  
 	lbl_nombre.text = str(datos.get("player_name", "Sin nombre"))  
-	lbl_dex.text = "Dex ---"  
+	lbl_dex.text = _formato_dex_slot(datos)
 	lbl_medallas.text = "Badges ---"  
 	_aplicar_texturas_genero(int(datos.get("player_gender", 0)))
+
+
+func _formato_dex_slot(datos: Dictionary) -> String:
+	var pokedex_val: Variant = datos.get("pokedex", {})
+	if not (pokedex_val is Dictionary):
+		return "Dex ---"
+	var seen_arr: Array = (pokedex_val as Dictionary).get("seen", []) as Array
+	return "Dex %d" % [seen_arr.size()]
   
 func _aplicar_texturas_genero(gender: int) -> void:  
 	if gender == 0:  

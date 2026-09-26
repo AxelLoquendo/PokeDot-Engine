@@ -17,11 +17,33 @@ func execute(context: ScriptExecutionContext) -> bool:
 func _run_movement(target: CharacterController, context: ScriptExecutionContext) -> void:
 	var previous_event_state: bool = target.ejecutando_evento
 	target.ejecutando_evento = true
+	
 	for instruction: String in movement_script.split(";"):
-		var action: Dictionary = _parse_instruction(instruction.strip_edges())
-		if not action.is_empty(): await MovementExecutor.execute_action(target, action)
+		var trimmed: String = instruction.strip_edges()
+		if trimmed.is_empty(): continue
+		
+		# Extraemos si hay un número de pasos al final de la instrucción (ej: "walk down 3")
+		var parts: PackedStringArray = trimmed.split(" ", false)
+		var repeticiones: int = 1
+		
+		# Si tiene 3 partes (comando, dirección, cantidad), el último podría ser el número de pasos
+		if parts.size() >= 3 and parts[parts.size() - 1].is_valid_int():
+			repeticiones = parts[parts.size() - 1].to_int()
+			# Reconstruimos la instrucción quitándole el número del final para que el parser no se confunda
+			var limpia: String = ""
+			for i: int in range(parts.size() - 1):
+				limpia += parts[i] + " "
+			trimmed = limpia.strip_edges()
+		
+		var action: Dictionary = _parse_instruction(trimmed)
+		if not action.is_empty():
+			# Ejecutamos la acción tantas veces como pasos se hayan especificado
+			for paso: int in range(repeticiones):
+				await MovementExecutor.execute_action(target, action)
+				
 	target.ejecutando_evento = previous_event_state
 	context.complete_async()
+
 
 func _parse_instruction(instruction: String) -> Dictionary:
 	var parts: PackedStringArray = instruction.split(" ", false)

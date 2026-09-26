@@ -1,3 +1,4 @@
+
 extends Node2D
 class_name CharacterController
 
@@ -374,7 +375,14 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
+	# Durante un evento se bloquea la entrada, pero se deja terminar el paso
+	# en curso. Si se corta move() a medias, la animación de caminar se congela
+	# y cancelar_movimiento() empuja al personaje una casilla atrás.
 	if ejecutando_evento:
+		if is_moving:
+			move(_delta)
+			if not is_moving and has_method("reproducir_idle"):
+				reproducir_idle()
 		return
 	if !is_moving:
 		process_input()
@@ -516,11 +524,18 @@ func complete_move() -> void:
 	EventObjects.registrar_casilla(casilla_actual, self)
 	actualizar_nivel_suelo(global_position)
 
+	# TileBehavioursManager.comportamiento_hierba SOLO lanza encuentros si
+	# personaje.is_moving == true. No poner is_moving = false antes de
+	# comprobar_casilla o no salen salvajes.
+
 	if character_data is CharacterPlayer:
 		# 1) Triggers de casilla (COORD + WARP)
 		if MapEventResolver.try_step(self):
+			# Scripts de mapa: soltar paso + idle para que lock no deje
+			# la animación de caminar congelada.
 			percent_moved_to_next_tile = 0.0
 			is_moving = false
+			reproducir_idle()
 			return
 		revisar_conexion_mapa()
 
@@ -530,6 +545,7 @@ func complete_move() -> void:
 
 	percent_moved_to_next_tile = 0.0
 	is_moving = false
+	reproducir_idle()
 
 	if map_manager:
 		map_manager.comprobar_transicion()
