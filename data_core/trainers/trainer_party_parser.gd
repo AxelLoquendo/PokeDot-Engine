@@ -1,11 +1,8 @@
 extends RefCounted
 class_name TrainerPartyParser
 
-## Lee entrenadores con el formato de pokeemerald-expansion (trainers.party):
-## una cabecera "=== TRAINER_ID ===" con campos "Clave: valor", una línea en
-## blanco y después cada Pokémon en formato Showdown, separados por líneas en
-## blanco. Los nombres van en inglés, como los exporta Showdown, o como la
-## constante del enum (SPECIES_GARCHOMP, ITEM_LEFTOVERS…).
+## Lee archivos de entrenadores (formato trainers.party, Pokémon en formato
+## Showdown). Nombres en inglés o como constante del enum.
 
 const MAX_PARTY_SIZE: int = 6
 const MAX_MOVES: int = 4
@@ -13,14 +10,14 @@ const MAX_EV_TOTAL: int = 510
 
 const TRAINER_FIELDS: Array[String] = ["name", "class", "pic", "money", "reward", "double battle", "music"]
 const MON_FIELDS: Array[String] = ["level", "ability", "shiny", "happiness", "friendship", "tera type", "evs", "ivs"]
-## Campos de expansion que se aceptan pero aún no tienen efecto.
+## Se aceptan pero todavía no hacen nada.
 const UNUSED_TRAINER_FIELDS: Array[String] = ["gender", "items", "ai", "mugshot", "starting status", "party size"]
 const UNUSED_MON_FIELDS: Array[String] = ["ball", "pokeball", "dynamax level", "gigantamax", "hidden power"]
 
-## Showdown escribe HP / Atk / Def / SpA / SpD / Spe; índice en PokemonInstance.
+## Stat de Showdown -> índice en PokemonInstance.
 const STAT_INDEX: Dictionary = {"HP": 0, "ATK": 1, "DEF": 2, "SPE": 3, "SPA": 4, "SPD": 5}
 
-## Valores de BattleSession.BattleType para el campo "Music".
+## Music -> BattleSession.BattleType.
 const MUSIC_TYPES: Dictionary = {
 	"TRAINER": 2, "ENTRENADOR": 2,
 	"GYM LEADER": 3, "LIDER": 3, "LIDER DE GIMNASIO": 3,
@@ -161,9 +158,8 @@ func _finish_trainer(trainer: TrainerData) -> void:
 # Pokémon
 # ------------------------------------------------------------
 
-## "Apodo (Especie) (M) @ Objeto", con apodo, género y objeto opcionales.
-## Si la especie no existe devuelve el Pokémon igual, pero sin añadirlo al
-## equipo, para que las líneas siguientes también se revisen.
+## "Apodo (Especie) (M) @ Objeto". Si la especie no existe no se añade al
+## equipo, pero sus líneas se siguen revisando.
 func _start_pokemon(trainer: TrainerData, line: String, line_number: int) -> TrainerPokemon:
 	if trainer.party.size() >= MAX_PARTY_SIZE:
 		_error(line_number, "%s ya tiene %d Pokémon; este se ignora." % [trainer.trainer_id, MAX_PARTY_SIZE])
@@ -200,7 +196,7 @@ func _parse_pokemon_field(mon: TrainerPokemon, line: String, line_number: int) -
 		if mon.moves.size() >= MAX_MOVES:
 			_error(line_number, "un Pokémon solo puede tener %d movimientos." % MAX_MOVES)
 			return
-		# "Hidden Power [Fire]" → Hidden Power
+		# Quita el tipo de "Hidden Power [Fire]"
 		var move_name: String = line.substr(1).get_slice("[", 0)
 		var move: int = _resolve(Moves.MoveId, "MOVE_", move_name, "Movimiento desconocido", line_number)
 		if move >= 0:
@@ -261,7 +257,7 @@ func _finish_pokemon(mon: TrainerPokemon) -> void:
 		_warning(_mon_line, "sin \"Level:\"; se usa nivel %d como en Showdown." % mon.level)
 
 
-## "252 Atk / 4 SpD / 252 Spe": solo cambia las stats que aparecen.
+## Solo cambia las stats que aparecen.
 func _parse_stat_spread(target: Array[int], value: String, max_value: int, line_number: int) -> void:
 	for part: String in value.split("/"):
 		var pieces: PackedStringArray = part.strip_edges().split(" ", false)
@@ -286,11 +282,10 @@ func _parse_yes_no(value: String, line_number: int) -> bool:
 
 
 # ------------------------------------------------------------
-# Nombres → enums
+# Nombres a enums
 # ------------------------------------------------------------
 
-## "Farfetch'd" → FARFETCHD, "Mr. Mime" → MR_MIME, "Nidoran♀" → NIDORAN_F,
-## "Flabébé" → FLABEBE, "Heavy-Duty Boots" → HEAVY_DUTY_BOOTS.
+## Ej.: "Mr. Mime" = MR_MIME, "Nidoran♀" = NIDORAN_F.
 static func to_constant(text: String) -> String:
 	var value: String = _plain_upper(text.replace("♀", "-F").replace("♂", "-M"))
 	value = value.replace("'", "").replace("’", "").replace(".", "")
@@ -311,9 +306,7 @@ static func _plain_upper(text: String) -> String:
 	return value
 
 
-## Busca el nombre en el enum: primero exacto, luego ignorando los "_"
-## (Softboiled → SOFT_BOILED). Si no existe, propone los más parecidos.
-## unknown_label es la frase del error ("Especie desconocida").
+## Exacto o sin "_" (Softboiled = SOFT_BOILED). unknown_label va en el error.
 func _resolve(enum_values: Dictionary, prefix: String, name: String, unknown_label: String, line_number: int) -> int:
 	var constant: String = to_constant(name)
 	if constant.is_empty():

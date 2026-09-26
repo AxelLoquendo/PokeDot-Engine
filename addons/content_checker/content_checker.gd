@@ -2,15 +2,14 @@
 extends RefCounted
 class_name ContentChecker
 
-## Revisa el contenido del juego sin ejecutarlo: flags, entrenadores y mapas.
-## Cada problema es "res://ruta:línea: mensaje".
+## Revisa flags, entrenadores y mapas sin ejecutar el juego.
 
 const SKIPPED_DIRS: Array[String] = ["res://addons", "res://.godot", "res://graphics", "res://sfx"]
 
 var errors: Array[String] = []
 var warnings: Array[String] = []
 
-## flag → lista de "ruta:línea" donde se activa / se comprueba.
+## flag -> ["ruta:línea", ...]
 var _flag_setters: Dictionary = {}
 var _flag_readers: Dictionary = {}
 var _trainer_refs: Array[Array] = []  # [trainer_id, "ruta:línea"]
@@ -51,7 +50,6 @@ func get_report() -> String:
 # Lectura
 # ------------------------------------------------------------
 
-## Scripts .txt de NPC y mapas.
 func _scan_script(path: String) -> void:
 	var lines: PackedStringArray = FileAccess.get_file_as_string(path).replace("\r", "").split("\n")
 	for index: int in lines.size():
@@ -80,7 +78,6 @@ func _scan_script(path: String) -> void:
 					errors.append("%s: warp a %s, que no tiene escena registrada." % [where, section])
 
 
-## Propiedades de flag y destinos de mapa guardados en escenas y recursos.
 func _scan_resource_text(path: String) -> void:
 	var text: String = FileAccess.get_file_as_string(path)
 	if not text.contains("flag") and not text.contains("dest_map") and not text.contains("target_section"):
@@ -97,8 +94,7 @@ func _scan_resource_text(path: String) -> void:
 				"condition_flag", "required_flag":
 					_add(_flag_readers, flag, where)
 				_:
-					# hidden_item_flag se activa y se comprueba; flag_name puede
-					# ser de ScriptCmdSetFlag o de ScriptCmdIfFlag.
+					# hidden_item_flag o flag_name: cuentan como ambas cosas
 					_add(_flag_setters, flag, where)
 					_add(_flag_readers, flag, where)
 			continue
@@ -111,7 +107,7 @@ func _scan_resource_text(path: String) -> void:
 				])
 
 
-## Flags con nombre fijo en el código (global_flags["FLAG_X"]).
+## global_flags["FLAG_X"] en el código.
 func _scan_code(path: String) -> void:
 	var text: String = FileAccess.get_file_as_string(path)
 	if not text.contains("global_flag"):

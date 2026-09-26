@@ -59,8 +59,7 @@ var battle_music: SFXGame.BattleMusicID = SFXGame.BattleMusicID.BGM_BATTLE_WILD
 var battle_format: int = 0  # BattleManager.BattleFormat.SINGLE
 var player_leads: Array[PokemonInstance] = []
 
-## Entrenador rival ("Cazabichos Rocío") y dinero que recibe el jugador si
-## gana. Vacío en combates salvajes.
+## Vacíos en combates salvajes.
 var trainer_name: String = ""
 var trainer_money: int = 0
 
@@ -127,8 +126,7 @@ func preparar_entrenador(jugador: CharacterController, lead: PokemonInstance, pa
 	_configurar_combate(jugador, tipo)
 
 
-## Prepara un combate contra un entrenador de TrainerDatabase. Si es doble y
-## el jugador solo tiene un Pokémon consciente, se juega 1 contra 2.
+## Doble con un solo Pokémon en pie del jugador = 1 contra 2.
 func preparar_desde_entrenador(jugador: CharacterController, trainer: TrainerData) -> bool:
 	var datos: CharacterPlayer = jugador.character_data as CharacterPlayer if jugador else null
 	if datos == null:

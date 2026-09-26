@@ -152,7 +152,7 @@ func _add_potions() -> void:
 		if data.bag == null: data.bag = Bag.new()
 		data.bag.add_item(Items.ItemId.ITEM_POTION, 10)
 
-## Aparece sobre el warp 0 del mapa si lo tiene; si no, en la casilla (7, 11).
+## Sobre el warp 0 si existe; si no, en (7, 11).
 func _warp(section_id: int) -> void:
 	var player: CharacterController = _player()
 	if player and player.map_manager:

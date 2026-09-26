@@ -27,7 +27,7 @@ var enemy_party: Array[PokemonInstance] = []
 var player_side: FieldSide = FieldSide.new()
 var enemy_side: FieldSide = FieldSide.new()
 var is_trainer_battle: bool = false
-## Nombre del entrenador rival para los mensajes ("Cazabichos Rocío").
+## Para los mensajes ("Cazabichos Rocío").
 var trainer_name: String = ""
 
 var weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE

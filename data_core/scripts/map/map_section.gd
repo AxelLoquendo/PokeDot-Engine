@@ -1,9 +1,8 @@
 extends Node
 class_name MapSection
 
-## Cada número queda guardado en las escenas (.tscn) y en las partidas:
-## no cambies ni reutilices un valor ya asignado.
-## "Proyecto → Herramientas → Crear nuevo mapa" añade las entradas nuevas solo.
+## Los números se guardan en escenas y partidas: no cambiarlos ni reutilizarlos.
+## "Crear nuevo mapa" añade las entradas solo.
 enum SectionId {
 	MAPSEC_NONE = 0,
 	# Valtherion
@@ -27,8 +26,7 @@ enum RegionId {
 	REGION_PALDEA,
 }
 
-## Ruta de la escena del mapa. Sale de MapRegistry (data_core/generated),
-## que se regenera al guardar un mapa en el editor.
+## Sale de MapRegistry (se regenera al guardar un mapa).
 static func get_scene_path(section_id: int) -> String:
 	var entry: Dictionary = MapRegistry.MAPS.get(section_id, {})
 	return str(entry.get("path", ""))
@@ -43,7 +41,7 @@ static func is_registered(section_id: int) -> bool:
 	return MapRegistry.MAPS.has(section_id)
 
 
-## IDs de todos los mapas con escena, en orden numérico.
+## Mapas con escena, ordenados.
 static func get_registered_ids() -> Array[int]:
 	var ids: Array[int] = []
 	for id: int in MapRegistry.MAPS.keys():

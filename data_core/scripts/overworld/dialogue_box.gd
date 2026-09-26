@@ -66,6 +66,13 @@ func _ready() -> void:
 		caja_nombre.visible = false
 
 
+# Si se cambia de escena mientras se cierra, cerrar() no termina y activo se
+# queda en true (el jugador no se mueve tras crear personaje).
+func _exit_tree() -> void:
+	if dialogo_abierto or cerrando:
+		activo = false
+
+
 func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: CharacterController = null) -> void:
 	_desconectar_selector()
 	npc_actual = _npc

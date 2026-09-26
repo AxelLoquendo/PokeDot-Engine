@@ -1,8 +1,7 @@
 extends RefCounted
 class_name TrainerDatabase
 
-## Entrenadores de todos los .txt de TRAINERS_DIR (y sus subcarpetas).
-## Se leen la primera vez que se piden; reload() los vuelve a leer.
+## Entrenadores de los .txt de TRAINERS_DIR. Se cargan la primera vez.
 
 const TRAINERS_DIR: String = "res://game/trainers/"
 
@@ -31,7 +30,7 @@ static func get_trainer_ids() -> Array[String]:
 	return ids
 
 
-## Errores de la última carga, en formato "archivo:línea: mensaje".
+## "archivo:línea: mensaje"
 static func get_errors() -> Array[String]:
 	_ensure_loaded()
 	return _errors.duplicate()

@@ -21,8 +21,7 @@ func _exit_tree() -> void:
 		scene_saved.disconnect(_on_scene_saved)
 
 
-## Al guardar un mapa (o una escena que ya estaba registrada) se regenera
-## el registro, así cambiar map_id_section o mover la escena no rompe nada.
+# Regenera el registro al guardar un mapa.
 func _on_scene_saved(ruta: String) -> void:
 	if MapRegistryGenerator.read_map_root(ruta).is_empty() and not _esta_registrada(ruta):
 		return
@@ -61,8 +60,7 @@ func _abrir_dialogo() -> void:
 	dialogo.popup_file_dialog()
 
 
-## Crea la escena heredando de map_base, le asigna un MAPSEC nuevo sacado
-## del nombre del archivo (ruta_1.tscn → MAPSEC_RUTA_1) y la registra.
+# ruta_1.tscn -> MAPSEC_RUTA_1
 func _crear_mapa(ruta: String) -> void:
 	if load(RUTA_PLANTILLA) == null:
 		EditorInterface.get_editor_toaster().push_toast("No se encontró la plantilla " + RUTA_PLANTILLA, EditorToaster.SEVERITY_ERROR)
@@ -113,7 +111,7 @@ func _esta_registrada(ruta: String) -> bool:
 	return false
 
 
-## El editor no relee solo un script que modificamos desde aquí.
+# El editor no recarga solo un script editado desde aquí.
 func _recargar_script(ruta: String) -> void:
 	var script: GDScript = load(ruta) as GDScript
 	if script == null:

@@ -41,7 +41,7 @@ Level: 5
 | `Pic` | `Pic: res://…/rocio.png` | Se guarda, pero todavía no se muestra en combate. |
 
 `Gender`, `Items`, `AI`, `Mugshot`, `Starting Status` y `Party Size` se aceptan
-para poder pegar archivos de expansion, pero aún no tienen efecto.
+para poder pegar archivos `.party` existentes, pero aún no tienen efecto.
 
 ## Datos de cada Pokémon
 
