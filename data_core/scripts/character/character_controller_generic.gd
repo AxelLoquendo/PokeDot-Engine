@@ -301,18 +301,11 @@ func intentar_mover(direccion: Vector2) -> bool:
 	input_direction = direccion
 	var casilla_destino: Vector2i = casilla_actual + Vector2i(input_direction)
 
-	# Si tenemos una escalera registrada, comprobamos si el jugador
-	# intenta volver exactamente a esa casilla.
-	if ultima_escalera != Vector2i(-999, -999):
-		var desplazamiento: Vector2i = ultima_escalera - casilla_actual
-
-		# Solo aceptamos un desplazamiento diagonal de una casilla.
-		if abs(desplazamiento.x) == 1 and abs(desplazamiento.y) == 1:
-			# Si el jugador pulsa la dirección horizontal correcta,
-			# convertimos el movimiento en diagonal.
-			if direccion.x == desplazamiento.x:
-				input_direction = Vector2(desplazamiento)
-				casilla_destino = ultima_escalera
+	# Escalera lateral = recta (pendiente ±1). ←/→ se convierten en un peldaño
+	# diagonal usando la casilla actual o la vecina. Sin ultima_escalera.
+	if (direccion == Vector2.LEFT or direccion == Vector2.RIGHT) and TileBehavioursManager != null:
+		if TileBehavioursManager.try_stairs_step(self, direccion):
+			return true
 
 	# Primero comprobar transición de piso
 	var posicion_destino_global: Vector2 = (global_position + input_direction * TILE_SIZE)
