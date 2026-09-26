@@ -1,4 +1,7 @@
 lock
-text "Hola mundo" MSGBOX_SIGN
+applymovement KAIDA "walk down 3; face right; wait 0.25"
+applymovement LOCALID_PLAYER "face left"
+text "Supongo que el evento funciona." MSGBOX_NPC LOCALID_PLAYER
+applymovement KAIDA "face up; walk up 3; face down"
 release
 return

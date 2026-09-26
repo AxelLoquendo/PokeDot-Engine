@@ -54,7 +54,7 @@ func _rellenar_datos_desde_jugador(datos_jugador: CharacterPlayer, segundos: flo
 	$Name.text = "Nombre: %s" % (datos_jugador.name if datos_jugador else "---")  
 	$Money.text = "Dinero: ₽%d" % (datos_jugador.money if datos_jugador else 0)  
 	$Time.text = "Tiempo: %02d:%02d:%02d" % [seg / 3600.0, (seg % 3600) / 60.0, seg % 60]  
-	$Pokedex.text = "Pokedex: ---"  
+	$Pokedex.text = "Pokédex: %s" % _formato_pokedex_jugador(datos_jugador)
 	$Start.text = "Comienzo: %s" % (datos_jugador.created_at if datos_jugador else "---")  
 	var id_entero: int = datos_jugador.trainer_id if datos_jugador else 0  
 	$ID.text = "NoID %05d" % id_entero
@@ -64,7 +64,29 @@ func _rellenar_datos(datos: Dictionary) -> void:
 	$Name.text = "Nombre: %s" % str(datos.get("player_name", "---"))  
 	$Money.text = "Dinero: %d" % int(datos.get("player_money", 0))  
 	$Time.text = "Tiempo: %02d:%02d:%02d" % [segundos / 3600.0, (segundos % 3600) / 60.0, segundos % 60]  
-	$Pokedex.text = "Pokedex: ---"
+	$Pokedex.text = "Pokédex: %s" % _formato_pokedex_dict(datos)
 	$Start.text = "Comienzo: %s" % str(datos.get("created_at", "---"))
 	var id_entero: int = int(datos.get("player_trainer_id", 0))
 	$ID.text = "NoID %05d" % id_entero
+
+
+func _formato_pokedex_jugador(datos: CharacterPlayer) -> String:
+	if datos == null:
+		return "---"
+	var dex: PokedexData = null
+	if datos.has_method("ensure_pokedex"):
+		dex = datos.ensure_pokedex()
+	else:
+		dex = datos.pokedex
+	if dex == null:
+		return "---"
+	return " %d" % [dex.seen_count()]
+
+
+func _formato_pokedex_dict(datos: Dictionary) -> String:
+	var pokedex_val: Variant = datos.get("pokedex", {})
+	if not (pokedex_val is Dictionary):
+		return "---"
+	var seen_arr: Array = (pokedex_val as Dictionary).get("seen", []) as Array
+	var owned_arr: Array = (pokedex_val as Dictionary).get("owned", []) as Array
+	return "%d vistos / %d capt." % [seen_arr.size(), owned_arr.size()]

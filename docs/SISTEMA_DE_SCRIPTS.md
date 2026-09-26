@@ -27,12 +27,36 @@ text "Lee los carteles cuando explores."
 end
 ```
 
-Tipos disponibles en el segundo argumento de `text`:
+Tipos disponibles tras el mensaje:
 
-- `MSGBOX_NPC`: diálogo normal de NPC.
+- `MSGBOX_NPC`: diálogo normal de NPC (muestra caja de nombre si hay hablante).
 - `MSGBOX_DEFAULT`: diálogo normal sin comportamiento especial.
 - `MSGBOX_SIGN`: texto de cartel, sin nombre de personaje.
 - `MSGBOX_YESNO`: muestra las opciones Sí y No. La respuesta queda en `last_choice`: `0` para Sí y `1` para No.
+
+### Hablante por ID (map scripts y triggers)
+
+En interacciones de NPC el nombre sale del dueño del script. En **map scripts**
+o triggers no hay dueño, así que puedes indicar el `npc_id` (el mismo que en
+`applymovement`) para mostrar la caja de nombre de ese personaje:
+
+```text
+text "Supongo que el evento funciona." MSGBOX_NPC KAIDA
+text "También vale sin tipo de caja." KAIDA
+```
+
+Formas válidas:
+
+| Sintaxis | Efecto |
+| --- | --- |
+| `text "msg"` | Texto; nombre del NPC dueño si existe. |
+| `text "msg" MSGBOX_NPC` | Igual, con estilo NPC. |
+| `text "msg" KAIDA` | Nombre del personaje con `npc_id` `KAIDA`. |
+| `text "msg" MSGBOX_NPC KAIDA` | Estilo NPC + hablante `KAIDA`. |
+| `text "msg" MSGBOX_SIGN` | Cartel, sin caja de nombre. |
+
+El ID se resuelve con `find_character_by_id` (NPCs por `npc_id` y jugador por
+`LOCALID_PLAYER` / `PLAYER_ID` según corresponda).
 
 `MSGBOX_AUTOCLOSE` y `MSGBOX_GETINPUT` están reconocidos por el parser, pero
 por ahora se comportan como una caja de texto normal. No los uses para una

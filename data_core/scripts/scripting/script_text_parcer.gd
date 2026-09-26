@@ -83,8 +83,8 @@ func parse_script(script_text: String) -> Array:
 		
 		if not command_dict.is_empty():
 			parsed_commands.append(command_dict)
-			if command_dict["command"] == "end":
-				break
+			# No cortar en "end": las etiquetas posteriores (label gano, etc.)
+			# deben seguir parseándose para que goto/compare/ifflag puedan saltar.
 	
 	return parsed_commands
 

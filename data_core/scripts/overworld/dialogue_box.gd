@@ -58,6 +58,12 @@ func _ready() -> void:
 	texto.text = ""
 	nombre.text = ""
 	flecha_dialogo.visible = false
+	# Estado inicial fuera de pantalla (evita un frame visible en la posición del editor).
+	if caja:
+		caja.position = Vector2(0, 320)
+	if caja_nombre:
+		caja_nombre.position = Vector2(-208, 176)
+		caja_nombre.visible = false
 
 
 func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: CharacterController = null) -> void:
@@ -77,6 +83,17 @@ func iniciar(_dialogo: Dialogue, _nombre_personaje: String = "", _npc: Character
 	texto_completo = ""
 	flecha_dialogo.visible = false
 	_ocultar_opciones()
+
+	# Colocar las cajas en el fotograma 0 de "inicio" ANTES de hacer visible
+	# el CanvasLayer. Si no, un frame se pinta en la posición del editor/RESET
+	# y produce el parpadeo al abrir por primera vez.
+	caja.position = Vector2(0, 320)
+	caja.visible = true
+	if mostrar_caja_nombre:
+		caja_nombre.position = Vector2(-208, 176)
+		caja_nombre.visible = true
+	else:
+		caja_nombre.visible = false
 
 	visible = true
 	animaciones.play("inicio")
@@ -333,7 +350,8 @@ func cerrar() -> void:
 
 	# El runner puede abrir otro diálogo inmediatamente.
 	# Por eso toda la limpieza debe terminar antes de notificar al NPC.
-	if npc_a_notificar != null:
+	# El jugador (LOCALID_PLAYER) no implementa terminar_dialogo.
+	if npc_a_notificar != null and npc_a_notificar.has_method("terminar_dialogo"):
 		npc_a_notificar.terminar_dialogo()
 
 	dialogue_closed.emit()

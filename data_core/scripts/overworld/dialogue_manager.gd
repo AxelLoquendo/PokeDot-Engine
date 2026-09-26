@@ -61,10 +61,14 @@ func start(dialogue: Dialogue, speaker_name: String = "", speaker: CharacterCont
 	if caja == null:
 		return
 
-	if speaker:
+	# Solo NPCs implementan preparar_dialogo (mirar al jugador, pausar AI).
+	# LOCALID_PLAYER / CharacterPlayer no tiene ese método.
+	if speaker and speaker.has_method("preparar_dialogo"):
 		var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
-		var look_target: Vector2 = player.global_position if player else speaker.global_position
-		speaker.preparar_dialogo(look_target)
+		# Si el hablante es el propio jugador, no hace falta orientarlo.
+		if player == null or speaker != player:
+			var look_target: Vector2 = player.global_position if player else speaker.global_position
+			speaker.preparar_dialogo(look_target)
 
 	caja.iniciar(dialogue, speaker_name, speaker)
 

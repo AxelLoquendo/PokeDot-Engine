@@ -2371,7 +2371,6 @@ script = ExtResource("7_y0fca")
 nombre = "Kaida"
 npc_id = &"KAIDA"
 sprite_overworld = 3
-comportamiento = 31
 scripts = SubResource("Resource_y0fca")
 shadow_size = 2
 shadow_offset_y = 11.0
@@ -2442,7 +2441,6 @@ character_data = SubResource("Resource_l1ftc")
 [node name="Trigger_map" parent="EventObject" unique_id=132195317 instance=ExtResource("11_8wtdx")]
 z_index = 100
 position = Vector2(160, 224)
-kind = 0
 dest_map = 2
 dest_tile_fallback = Vector2i(9, 18)
 script_file = "res://game/data_core_eb/map_eb/prado_natal/trigger_hola_mundo.txt"

@@ -169,6 +169,24 @@ func _configurar_combate(jugador: CharacterController, tipo: BattleType) -> void
 	var mapa: MapAttributes = jugador.mapa_raiz as MapAttributes if jugador else null
 	battle_background = mapa.battle_scene if mapa != null else BattleBackground.Background.BG_LONG_GRASS
 
+	# Registrar especies rivales como "vistas" en la Pokédex del jugador.
+	_registrar_vistos(jugador)
+
+
+## Marca como vistas las especies del equipo rival (salvaje o entrenador).
+func _registrar_vistos(jugador: CharacterController) -> void:
+	if jugador == null:
+		return
+	var data: CharacterPlayer = jugador.character_data as CharacterPlayer
+	if data == null:
+		return
+	var dex: PokedexData = data.ensure_pokedex()
+	for mon: PokemonInstance in enemy_party:
+		if mon != null:
+			dex.set_seen(int(mon.species_id))
+	if enemy_pokemon != null:
+		dex.set_seen(int(enemy_pokemon.species_id))
+
 func iniciar_como_overlay(parent: Node) -> void:
 	if is_active:
 		return

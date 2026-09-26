@@ -1,3 +1,4 @@
+
 @tool
 extends CharacterController
 class_name Player
@@ -211,6 +212,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			if personaje.has_method("interact"):
 				cancelar_movimiento()
 				personaje.interact()
+				get_viewport().set_input_as_handled()
+				return
+		# 1b) Follower delante → grito
+		if follower and follower.activo and not is_moving:
+			if follower.casilla_actual() == obtener_casilla_frontal():
+				if follower.has_method("interact"):
+					follower.interact()
 				get_viewport().set_input_as_handled()
 				return
 		# 2) BG event (cartel / objeto oculto) en la casilla de delante
