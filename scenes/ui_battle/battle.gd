@@ -100,7 +100,7 @@ var battle: BattleManager
 
 const PLAYER_HP_BAR_MAX_WIDTH: float = 48.0
 const ENEMY_HP_BAR_MAX_WIDTH: float = 48.0
-const HP_ANIM_SPEED: float = 96.0  # gradual pero rápido
+const HP_ANIM_SPEED: float = 64.0  # gradual y visible
 
 const PLAYER_EXP_BAR_MAX_WIDTH: float = 63.5
 var player_exp_bar_target: float = 0.0
@@ -693,8 +693,8 @@ func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
 				if not bool(_faint_animating.get(key, false)):
 					_faint_animating[key] = true
 					_play_faint_animation(is_player, i, b)
-	if _multi_ui_ready and current_hp > 0:
-		_refresh_all_multi_appearances()
+	# No refrescar apariencias en cada tick de PS (rompe la animación de barra).
+	# La apariencia se actualiza en switch / illusion break / entrada.
 
 
 func _on_battle_ended(player_won: bool) -> void:
@@ -1921,6 +1921,10 @@ func _fill_hp_box_labels(box: Sprite2D, battler: BattleBattler, is_player: bool)
 
 func _update_multi_hp_boxes() -> void:
 	if battle == null:
+		return
+	# En 1v1 las barras primarias las anima _process vía player/enemy_hp_bar_target.
+	# Rellenar aquí también provocaba saltos (target doble / size forzado).
+	if not battle.is_multi_battle():
 		return
 	for side_player: bool in [true, false]:
 		var actives: Array = battle.player_actives if side_player else battle.enemy_actives

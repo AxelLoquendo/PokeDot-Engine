@@ -842,42 +842,209 @@ static func check_infatuation_blocks_move(battler: BattleBattler, battle: Battle
 	return AbilitySystem.query_bool("on_infatuation_block", ctx)
 
 
+## Activa Illusion en silencio (sin Ability Bar). Disfraz = último del party no KO.
 static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> bool:
-	if battler == null or battle == null:
+	if battler == null or battler.pokemon == null or battle == null:
 		return false
-	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
-	ctx.query_bool = false
-	AbilitySystem.query("on_prepare_illusion", ctx)
-	return ctx.query_bool or battler.illusion_active
+	if get_id(battler) != AbilityId.Id.ILLUSION:
+		return false
+	if battler.illusion_active:
+		return true
+
+	var party: Array[PokemonInstance] = (
+		battle.player_party if battler.is_player_side else battle.enemy_party
+	)
+	var disguise: PokemonInstance = null
+	for i: int in range(party.size() - 1, -1, -1):
+		var mon: PokemonInstance = party[i]
+		if mon == null or mon == battler.pokemon:
+			continue
+		if mon.is_fainted():
+			continue
+		disguise = mon
+		break
+
+	if disguise == null:
+		battler.clear_illusion()
+		return false
+
+	battler.illusion_active = true
+	battler.illusion_species_id = int(disguise.species_id)
+	battler.illusion_nickname = disguise.get_display_name()
+	battler.illusion_gender = disguise.gender
+	if "shiny" in disguise:
+		battler.illusion_shiny = bool(disguise.shiny)
+	if "form_id" in disguise:
+		battler.illusion_form_id = int(disguise.form_id)
+	# Sin announce: el truco es que no se note al entrar
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+	return true
 
 
+## Solo al recibir daño real: anuncia, limpia disfraz y avisa a la UI.
 static func break_illusion(battler: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or not battler.illusion_active or battle == null:
 		return
-	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
-	await AbilitySystem.on_event("on_break_illusion", ctx)
+	battler.clear_illusion()
+	await battle.ability_announce(battler)
+	if battle.has_signal("illusion_broken"):
+		battle.illusion_broken.emit(battler.is_player_side)
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+	battle.message.emit("¡La ilusión de %s se disipó!" % battler.get_display_name())
+	await battle._wait(0.7)
+
+
+static func _setup_imposter(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
+	## Imposter (habilidad): anuncia y transforma al entrar.
+	await apply_transform(battler, opponent, battle, true)
+
+
+## Transformación completa (movimiento Transform o habilidad Imposter).
+## announce_ability: true solo para Imposter (barra de habilidad).
+static func apply_transform(
+	battler: BattleBattler,
+	opponent: BattleBattler,
+	battle: BattleManager,
+	announce_ability: bool = false
+) -> void:
+	if battler == null or opponent == null or opponent.pokemon == null or battle == null:
+		return
+	if battler.pokemon == null:
+		return
+	if battler.is_transformed:
+		if battle.has_method("_wait"):
+			battle.message.emit("¡No surtirá efecto!")
+			await battle._wait(0.55)
+		return
+	# No transformarse en alguien ya transformado / sin datos
+	if opponent.is_transformed and opponent.transform_backup.is_empty():
+		pass  # aún tiene species del disfraz; válido
+	if announce_ability:
+		await battle.ability_announce(battler)
+
+	var src: PokemonInstance = opponent.pokemon
+	var dst: PokemonInstance = battler.pokemon
+
+	# Backup de identidad real (Ditto, etc.)
+	var moves_copy: Array = []
+	for slot: Variant in dst.moves:
+		if slot is PokemonMoveSlot:
+			var s: PokemonMoveSlot = slot as PokemonMoveSlot
+			var c: PokemonMoveSlot = PokemonMoveSlot.new()
+			c.move_id = s.move_id
+			c.pp_ups = s.pp_ups
+			c.current_pp = s.current_pp
+			moves_copy.append(c)
+	battler.transform_backup = {
+		"species_id": dst.species_id,
+		"form_id": dst.form_id if "form_id" in dst else 0,
+		"ability_id": dst.ability_id,
+		"moves": moves_copy,
+		"max_hp": dst.max_hp,
+		"current_hp": dst.current_hp,
+	}
+
+	# Conservar PS del usuario (Transform no cambia HP actual/máx)
+	var keep_hp: int = dst.current_hp
+	var keep_max: int = dst.max_hp
+
+	dst.species_id = src.species_id
+	if "form_id" in src and "form_id" in dst:
+		dst.form_id = src.form_id
+	dst.ability_id = src.ability_id
+
+	# Movimientos independientes, 5 PP cada uno
+	var new_moves: Array[PokemonMoveSlot] = []
+	for slot2: Variant in src.moves:
+		var src_slot: PokemonMoveSlot = slot2 as PokemonMoveSlot
+		if src_slot == null:
+			continue
+		var mid: int = int(src_slot.move_id)
+		if mid <= 0:
+			continue
+		var copy2: PokemonMoveSlot = PokemonMoveSlot.new()
+		copy2.move_id = src_slot.move_id
+		copy2.pp_ups = 0
+		var md: MoveData = MoveDatabase.get_move(src_slot.move_id)
+		var base_pp: int = md.pp if md != null else 5
+		copy2.current_pp = mini(5, base_pp)
+		new_moves.append(copy2)
+	dst.moves = new_moves
+
+	# Stages del objetivo
+	battler.stage_attack = opponent.stage_attack
+	battler.stage_defense = opponent.stage_defense
+	battler.stage_sp_attack = opponent.stage_sp_attack
+	battler.stage_sp_defense = opponent.stage_sp_defense
+	battler.stage_speed = opponent.stage_speed
+	battler.stage_accuracy = opponent.stage_accuracy
+	battler.stage_evasion = opponent.stage_evasion
+
+	# Tipos de combate = tipos del objetivo
+	if battler.has_method("set_battle_types"):
+		battler.set_battle_types(opponent.get_battle_type_1(), opponent.get_battle_type_2())
+
+	battler.is_transformed = true
+	battler.clear_illusion()
+
+	# Stats de combate según nueva especie, pero HP intacto
+	if dst.has_method("recalculate_stats"):
+		dst.recalculate_stats()
+	dst.max_hp = keep_max
+	dst.current_hp = mini(keep_hp, keep_max)
+
+	battle.message.emit("¡%s se transformó en %s!" % [
+		battler.get_display_name(), opponent.get_display_name()
+	])
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+	if battle.has_method("_wait"):
+		await battle._wait(0.85)
 
 
 static func revert_transform(battler: BattleBattler) -> void:
 	if battler == null or not battler.is_transformed:
 		return
-	if battler.pokemon == null or battler.transform_backup.is_empty():
+	if battler.pokemon == null:
 		battler.is_transformed = false
 		battler.transform_backup.clear()
 		return
 	var dst: PokemonInstance = battler.pokemon
 	var bak: Dictionary = battler.transform_backup
+	if bak.is_empty():
+		battler.is_transformed = false
+		return
+
 	dst.species_id = bak.get("species_id", dst.species_id)
-	dst.form_id = bak.get("form_id", dst.form_id)
+	if "form_id" in dst:
+		dst.form_id = bak.get("form_id", dst.form_id)
 	dst.ability_id = bak.get("ability_id", dst.ability_id)
+
 	var moves_bak: Variant = bak.get("moves", null)
 	if moves_bak is Array:
 		dst.moves.clear()
-		for slot: Variant in moves_bak:
-			if slot is PokemonMoveSlot:
-				dst.moves.append(slot as PokemonMoveSlot)
+		for slot3: Variant in moves_bak:
+			if slot3 is PokemonMoveSlot:
+				dst.moves.append(slot3 as PokemonMoveSlot)
+
+	# Restaurar HP máximos reales; conservar ratio de PS actuales si es posible
+	var old_max: int = int(bak.get("max_hp", dst.max_hp))
+	var cur: int = dst.current_hp
+	if dst.has_method("recalculate_stats"):
+		dst.recalculate_stats()
+	# Tras KO, current_hp es 0; tras salir del campo, restaurar max del mon real
+	if old_max > 0:
+		dst.max_hp = old_max
+	if cur <= 0:
+		dst.current_hp = 0
+	else:
+		dst.current_hp = mini(cur, dst.max_hp)
+
+	if battler.has_method("clear_battle_types"):
+		battler.clear_battle_types()
+
 	battler.is_transformed = false
 	battler.transform_backup.clear()
+	# Reset stages al salir (salvo baton pass — el BM decide)
 
 
 static func try_forecast(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
@@ -962,52 +1129,6 @@ static func _all_actives(battle: BattleManager) -> Array[BattleBattler]:
 # ═══════════════════════════════════════════════════════════
 # API requerida por BattleManager / overworld / session
 # ═══════════════════════════════════════════════════════════
-
-static func _setup_imposter(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or opponent == null or opponent.pokemon == null or battle == null:
-		return
-	if battler.is_transformed:
-		return
-	await battle.ability_announce(battler)
-	var src: PokemonInstance = opponent.pokemon
-	var dst: PokemonInstance = battler.pokemon
-	battler.transform_backup = {
-		"species_id": dst.species_id,
-		"form_id": dst.form_id,
-		"ability_id": dst.ability_id,
-		"moves": dst.moves.duplicate(true),
-	}
-	dst.species_id = src.species_id
-	dst.form_id = src.form_id
-	dst.ability_id = src.ability_id
-	var new_moves: Array[PokemonMoveSlot] = []
-	for slot: PokemonMoveSlot in src.moves:
-		if slot == null or slot.is_empty():
-			continue
-		var copy: PokemonMoveSlot = PokemonMoveSlot.new()
-		copy.move_id = slot.move_id
-		copy.pp_ups = 0
-		var md: MoveData = MoveDatabase.get_move(slot.move_id)
-		var base_pp: int = md.pp if md != null else 5
-		copy.current_pp = mini(5, base_pp)
-		new_moves.append(copy)
-	dst.moves = new_moves
-	battler.stage_attack = opponent.stage_attack
-	battler.stage_defense = opponent.stage_defense
-	battler.stage_sp_attack = opponent.stage_sp_attack
-	battler.stage_sp_defense = opponent.stage_sp_defense
-	battler.stage_speed = opponent.stage_speed
-	battler.stage_accuracy = opponent.stage_accuracy
-	battler.stage_evasion = opponent.stage_evasion
-	battler.is_transformed = true
-	battler.clear_illusion()
-	if dst.has_method("recalculate_stats"):
-		dst.recalculate_stats()
-	battle.message.emit("¡%s se transformó en %s!" % [
-		battler.get_display_name(), opponent.get_display_name()
-	])
-	battle.battler_appearance_changed.emit(battler.is_player_side)
-	await battle._wait(0.9)
 
 
 static func try_poison_puppeteer(attacker: BattleBattler, defender: BattleBattler, battle: BattleManager) -> void:

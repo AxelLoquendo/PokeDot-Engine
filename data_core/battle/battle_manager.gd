@@ -937,6 +937,8 @@ func mark_exp_participant(mon: PokemonInstance) -> void:
 
 ## Reparte EXP de un enemigo debilitado entre los participantes no debilitados.
 func _award_experience_from(fainted_enemy: BattleBattler) -> void:
+	if fainted_enemy != null and fainted_enemy.is_transformed:
+		AbilityRuntime.revert_transform(fainted_enemy)
 	if fainted_enemy == null or fainted_enemy.pokemon == null:
 		return
 	var eid: int = fainted_enemy.pokemon.get_instance_id()
@@ -1950,12 +1952,11 @@ func _execute_move(action: BattleAction) -> void:
 		total_dealt += dealt
 		hits_landed += 1
 		_emit_hp(target.is_player_side)
-		# Dar tiempo a la UI: animar la barra y, si es KO, grito + caída.
-		# Sin esto, un reemplazo o el fin del combate rellenan la barra y cancelan el KO.
+		# Dar tiempo a la UI a animar la barra (no cortar el move_toward del _process).
 		if target.is_fainted():
-			await _wait(0.85)
+			await _wait(1.0)
 		elif dealt > 0:
-			await _wait(0.2)
+			await _wait(0.45)
 
 		# Illusion se rompe con el primer daño real
 		if dealt > 0 and target.illusion_active:
@@ -2059,9 +2060,14 @@ func _execute_move(action: BattleAction) -> void:
 	if last_result.effectiveness > 1.0:
 		message.emit("¡Es muy efectivo!")
 		await _wait(0.6)
-	elif last_result.effectiveness < 1.0:
+	elif last_result.effectiveness < 1.0 and last_result.effectiveness > 0.0:
 		message.emit("No es muy efectivo...")
 		await _wait(0.6)
+
+	# Anunciar pasivas del defensor que modificaron el golpe (Tera Shell, etc.)
+	if last_result.activated_defender.has(AbilityId.Id.TERA_SHELL):
+		await ability_announce(target)
+		await _wait(0.35)
 
 	message.emit("Hizo %d PS de daño." % total_dealt)
 	await _wait(0.7)
@@ -2102,6 +2108,9 @@ func _execute_move(action: BattleAction) -> void:
 			if chance_ko >= 100 or randi_range(1, 100) <= chance_ko:
 				await _apply_secondary_effect(actor, target, move, true)
 		await _trigger_ko_ability(actor, target)
+		if target != null and target.is_transformed:
+			AbilityRuntime.revert_transform(target)
+			battler_appearance_changed.emit(target.is_player_side)
 		if not target.is_player_side:
 			await _award_experience_from(target)
 		await _execute_multi_rest(action, actor, move)
@@ -4549,12 +4558,12 @@ func _force_switch_out(target: BattleBattler) -> void:
 func _apply_transform(actor: BattleBattler, target: BattleBattler) -> void:
 	if actor == null or target == null or target.pokemon == null or actor.pokemon == null:
 		return
-	if actor.is_transformed:
+	if target.is_fainted():
 		message.emit("¡No surtirá efecto!")
-		await _wait(0.6)
+		await _wait(0.55)
 		return
-	# Reutiliza la lógica de Imposter
-	await AbilityRuntime._setup_imposter(actor, target, self)
+	# Movimiento Transform: sin Ability Bar (announce_ability = false)
+	await AbilityRuntime.apply_transform(actor, target, self, false)
 
 
 func _apply_mimic(actor: BattleBattler, target: BattleBattler) -> void:

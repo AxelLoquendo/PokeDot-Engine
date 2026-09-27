@@ -1,3 +1,4 @@
+# Illusion — disfraz del último del party.
+# NO se anuncia al entrar. Solo al romperse (AbilityRuntime.break_illusion).
 on_switch_in:
-  announce
   setup_illusion

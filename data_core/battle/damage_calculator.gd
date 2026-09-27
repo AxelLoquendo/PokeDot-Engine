@@ -210,8 +210,11 @@ static func compute_hit(
 		_note_def(result, AbilityId.Id.WONDER_GUARD)
 
 	if not ignore_defender_ability and AbilityRuntime.has(defender, AbilityId.Id.TERA_SHELL) \
-			and defender.pokemon != null and defender.pokemon.current_hp == defender.pokemon.max_hp \
-			and eff > 0.0 and eff <= 1.0:
+			and defender.pokemon != null \
+			and defender.pokemon.current_hp >= defender.pokemon.max_hp \
+			and defender.pokemon.max_hp > 0 \
+			and eff > 0.0:
+		# A PS llenos todo golpe que conecte es poco eficaz (×0.5), incluso si era muy eficaz
 		eff = 0.5
 		_note_def(result, AbilityId.Id.TERA_SHELL)
 
