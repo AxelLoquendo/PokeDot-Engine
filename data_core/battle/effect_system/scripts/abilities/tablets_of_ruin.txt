@@ -1,4 +1,4 @@
 on_ruin_stat:
-  if stat ATTACK
-    multiply ruin 0.75
+  if stat ATK
+    multiply 0.75
   endif

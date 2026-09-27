@@ -2,4 +2,3 @@ on_sturdy:
   if hp_full
     block
   endif
-

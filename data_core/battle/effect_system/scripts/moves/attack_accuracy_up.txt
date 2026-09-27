@@ -1,0 +1,4 @@
+# attack_accuracy_up
+on_use:
+  raise_stat ATK 1 target=user
+  special accuracy_stage 1 target=user

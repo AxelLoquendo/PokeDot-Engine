@@ -1,0 +1,3 @@
+# stealth_rock
+on_use:
+  side stealth_rock opponent

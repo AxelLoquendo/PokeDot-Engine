@@ -1,0 +1,3 @@
+# gastro_acid
+on_use:
+  special gastro_acid

@@ -1,3 +1,2 @@
-# Golpea dos veces (flag para el calc).
 on_parental_bond:
   block

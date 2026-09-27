@@ -1,4 +1,3 @@
-# +50% velocidad con estado.
 on_speed:
   if has_status
     multiply speed 1.5

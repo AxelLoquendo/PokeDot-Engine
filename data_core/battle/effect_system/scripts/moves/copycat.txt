@@ -1,0 +1,3 @@
+# copycat
+on_use:
+  special copycat

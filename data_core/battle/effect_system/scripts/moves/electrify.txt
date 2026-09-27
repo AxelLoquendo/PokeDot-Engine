@@ -1,0 +1,3 @@
+# electrify
+on_use:
+  special electrify

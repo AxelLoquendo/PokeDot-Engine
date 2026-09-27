@@ -1335,34 +1335,29 @@ func _request_replacements_if_needed() -> void:
 
 func _process_end_of_turn() -> void:
 	battle_turn_count += 1
-	if weather != AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
+	if get_effective_weather() != AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
 		await _apply_weather_damage()
 
 	for battler: BattleBattler in get_all_actives():
 		if battler.is_fainted():
 			continue
-		if AbilityRuntime.has(battler, AbilityId.Id.POISON_HEAL) \
+		# Poison Heal: sin daño de veneno; cura en AbilityRuntime.end_of_turn (script)
+		var skip_status_dmg: bool = AbilityRuntime.has(battler, AbilityId.Id.POISON_HEAL) \
+				and battler.pokemon != null \
 				and (battler.pokemon.status == PokemonInstance.Status.POISON \
-					or battler.pokemon.status == PokemonInstance.Status.TOXIC):
-			await ability_announce(battler)
-			@warning_ignore("integer_division")
-			var heal: int = maxi(1, battler.get_max_hp() / 8)
-			battler.pokemon.apply_heal(heal)
-			_emit_hp(battler.is_player_side)
-			message.emit("¡%s se recuperó un poco!" % battler.get_display_name())
-			await _wait(0.6)
-			continue
-		var res: Dictionary = StatusConditions.end_of_turn_damage(battler)
-		if res.damage > 0:
-			message.emit(res.message)
-			await _wait(0.6)
-			battler.apply_damage(res.damage)
-			_emit_hp(battler.is_player_side)
-			await _wait(0.6)
-			if battler.is_fainted():
-				message.emit("¡%s se debilitó!" % battler.get_display_name())
-				await _wait(0.8)
-				continue
+					or battler.pokemon.status == PokemonInstance.Status.TOXIC)
+		if not skip_status_dmg:
+			var res: Dictionary = StatusConditions.end_of_turn_damage(battler)
+			if res.damage > 0:
+				message.emit(res.message)
+				await _wait(0.6)
+				battler.apply_damage(res.damage)
+				_emit_hp(battler.is_player_side)
+				await _wait(0.6)
+				if battler.is_fainted():
+					message.emit("¡%s se debilitó!" % battler.get_display_name())
+					await _wait(0.8)
+					continue
 		if not battler.is_fainted() and battler.leech_seeded:
 			await _apply_leech_seed_tick(battler)
 		if not battler.is_fainted():
@@ -1383,8 +1378,10 @@ func _process_end_of_turn() -> void:
 				await _apply_status(battler, int(hold_eot["status"]) as PokemonInstance.Status)
 			if bool(hold_eot.get("consume", false)):
 				HoldItemRuntime.consume_held(battler)
-			# Pinch berries
-			var pinch: Dictionary = HoldItemRuntime.try_pinch_berry(battler)
+			# Pinch berries (Unnerve impide comer bayas)
+			var pinch: Dictionary = {}
+			if not AbilityRuntime.unnerve_active(battler, self):
+				pinch = HoldItemRuntime.try_pinch_berry(battler)
 			if bool(pinch.get("cure_status", false)):
 				battler.pokemon.cure_status()
 				message.emit(str(pinch.get("message", "")))
@@ -1534,7 +1531,8 @@ func _process_end_of_turn() -> void:
 			await _wait(0.6)
 
 func _apply_weather_damage() -> void:
-	match weather:
+	var eff_weather: int = get_effective_weather()
+	match eff_weather:
 		AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM:
 			message.emit("¡La tormenta de arena azota el campo!")
 		AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
@@ -1546,7 +1544,7 @@ func _apply_weather_damage() -> void:
 	for battler: BattleBattler in get_all_actives():
 		if battler.is_fainted():
 			continue
-		if AbilityRuntime.is_immune_to_weather_damage(battler, weather) or AbilityRuntime.blocks_indirect_damage(battler):
+		if AbilityRuntime.is_immune_to_weather_damage(battler, eff_weather) or AbilityRuntime.blocks_indirect_damage(battler):
 			continue
 		@warning_ignore("integer_division")
 		var dmg: int = maxi(1, battler.get_max_hp() / 16)
@@ -1678,11 +1676,20 @@ func _execute_move(action: BattleAction) -> void:
 			await _wait(0.8)
 			return
 
-	if target != null and AbilityRuntime.blocks_status_move(target, move) \
+	if target != null and move != null \
+			and move.category == MoveStruct.DamageCategory.STATUS \
+			and AbilityRuntime.blocks_status_move(target, move) \
 			and move.target != MoveStruct.MoveTarget.TARGET_USER:
 		await ability_announce(target)
-		message.emit("¡No afecta a %s!" % target.get_display_name())
-		await _wait(0.8)
+		if AbilityRuntime.reflects_status_move(target):
+			message.emit("¡%s devolvió el movimiento!" % target.get_display_name())
+			await _wait(0.6)
+			# Evitar bucle Magic Bounce ↔ Magic Bounce
+			if actor != null and not AbilityRuntime.reflects_status_move(actor):
+				await _apply_status_move_effect(target, actor, move)
+		else:
+			message.emit("¡No afecta a %s!" % target.get_display_name())
+			await _wait(0.8)
 		return
 
 	var is_charge_release: bool = actor.charging_move != null
@@ -1696,6 +1703,16 @@ func _execute_move(action: BattleAction) -> void:
 			message.emit("%s no tiene PP para usar %s!" % [actor.get_display_name(), move.move_name])
 			await _wait(0.8)
 			return
+		# Pressure: +1 PP extra por cada rival con Pressure
+		var extra_pp: int = 0
+		for foe_p: BattleBattler in get_opponents(actor):
+			if foe_p != null and not foe_p.is_fainted():
+				extra_pp += AbilityRuntime.extra_pp_cost(foe_p)
+		if extra_pp > 0 and action.move_slot_index >= 0 and actor.pokemon != null \
+				and action.move_slot_index < actor.pokemon.moves.size():
+			var slot_pp: PokemonMoveSlot = actor.pokemon.moves[action.move_slot_index]
+			if slot_pp != null:
+				slot_pp.current_pp = maxi(0, slot_pp.current_pp - extra_pp)
 
 	var check: StatusConditions.ActionCheck = StatusConditions.check_can_act(actor)
 	actor.flinched = false
@@ -2366,17 +2383,16 @@ func _trigger_ko_ability(actor: BattleBattler, fainted_target: BattleBattler) ->
 		message.emit("¡%s se debilitó!" % actor.get_display_name())
 		await _wait(0.8)
 		fainted_target.destiny_bond_active = false
+	# Scripts de habilidad: on_ko / on_faint / on_any_faint
 	if actor != null and not actor.is_fainted():
-		match AbilityRuntime.get_id(actor):
-			AbilityId.Id.MOXIE, AbilityId.Id.CHILLING_NEIGH:
-				await ability_announce(actor)
-				await ability_change_stat(actor, PokemonInstance.Stat.ATTACK, 1)
-			AbilityId.Id.GRIM_NEIGH, AbilityId.Id.SOUL_HEART:
-				await ability_announce(actor)
-				await ability_change_stat(actor, PokemonInstance.Stat.SP_ATTACK, 1)
-			AbilityId.Id.BEAST_BOOST:
-				await ability_announce(actor)
-				await ability_change_stat(actor, _highest_stat(actor), 1)
+		await AbilityRuntime.on_ko(actor, fainted_target, self)
+
+	if fainted_target != null:
+		await AbilityRuntime.on_faint(fainted_target, actor, self)
+
+	for obs: BattleBattler in get_all_actives():
+		if obs != null and not obs.is_fainted() and obs != actor:
+			await AbilityRuntime.on_any_faint(obs, fainted_target, self)
 
 	# Receiver / Power of Alchemy: el aliado del debilitado puede heredar su habilidad
 	if fainted_target != null and is_multi_battle():
@@ -2466,6 +2482,11 @@ func _resolve_protect_contact(actor: BattleBattler, target: BattleBattler, move:
 func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: MoveData) -> void:
 	if AbilityRuntime.has(target, AbilityId.Id.SHIELD_DUST):
 		return
+	# Script on_secondary del movimiento (si existe)
+	if move != null and MoveSystem.has_script(int(move.effect)):
+		var sec_ok: bool = await MoveSystem.run_on_secondary(actor, target, move, self)
+		if sec_ok:
+			return
 	var stat_effect: Array = MoveEffectResolver.get_secondary_stat_effect(move.secondary_effect)
 	if not stat_effect.is_empty():
 		var receiver: BattleBattler = actor if stat_effect[1] > 0 else target
@@ -2498,6 +2519,12 @@ func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: 
 
 
 func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move: MoveData) -> void:
+	# Scripts .txt de movimientos (MoveSystem) — si existe on_use, no usa el match legacy
+	if move != null and MoveSystem.has_script(int(move.effect)):
+		var handled: bool = await MoveSystem.run_on_use(actor, target, move, self)
+		if handled:
+			return
+
 	var receiver: BattleBattler = actor if move.target == MoveStruct.MoveTarget.TARGET_USER else target
 
 	var stat_effect: Array = MoveEffectResolver.get_primary_stat_effect(move.effect)
@@ -3669,11 +3696,45 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 		MoveStruct.MoveEffect.EFFECT_POWER_SPLIT:
 			if target == null or actor.pokemon == null or target.pokemon == null:
 				return
+			var ua: int = actor.get_effective_stat(PokemonInstance.Stat.ATTACK)
+			var ta: int = target.get_effective_stat(PokemonInstance.Stat.ATTACK)
+			var us: int = actor.get_effective_stat(PokemonInstance.Stat.SP_ATTACK)
+			var ts: int = target.get_effective_stat(PokemonInstance.Stat.SP_ATTACK)
+			@warning_ignore("integer_division")
+			var avg_a: int = int((ua + ta) / 2)
+			@warning_ignore("integer_division")
+			var avg_s: int = int((us + ts) / 2)
+			var ou: Dictionary = actor.get_meta("split_stat_override", {}) if actor.has_meta("split_stat_override") else {}
+			var ot: Dictionary = target.get_meta("split_stat_override", {}) if target.has_meta("split_stat_override") else {}
+			ou[int(PokemonInstance.Stat.ATTACK)] = avg_a
+			ou[int(PokemonInstance.Stat.SP_ATTACK)] = avg_s
+			ot[int(PokemonInstance.Stat.ATTACK)] = avg_a
+			ot[int(PokemonInstance.Stat.SP_ATTACK)] = avg_s
+			actor.set_meta("split_stat_override", ou)
+			target.set_meta("split_stat_override", ot)
 			message.emit("¡Se promediaron Ataque y At. Esp.!")
 			await _wait(0.7)
 			return
 
 		MoveStruct.MoveEffect.EFFECT_GUARD_SPLIT:
+			if target == null or actor.pokemon == null or target.pokemon == null:
+				return
+			var ud: int = actor.get_effective_stat(PokemonInstance.Stat.DEFENSE)
+			var td: int = target.get_effective_stat(PokemonInstance.Stat.DEFENSE)
+			var usd: int = actor.get_effective_stat(PokemonInstance.Stat.SP_DEFENSE)
+			var tsd: int = target.get_effective_stat(PokemonInstance.Stat.SP_DEFENSE)
+			@warning_ignore("integer_division")
+			var avg_d: int = int((ud + td) / 2)
+			@warning_ignore("integer_division")
+			var avg_sd: int = int((usd + tsd) / 2)
+			var ou2: Dictionary = actor.get_meta("split_stat_override", {}) if actor.has_meta("split_stat_override") else {}
+			var ot2: Dictionary = target.get_meta("split_stat_override", {}) if target.has_meta("split_stat_override") else {}
+			ou2[int(PokemonInstance.Stat.DEFENSE)] = avg_d
+			ou2[int(PokemonInstance.Stat.SP_DEFENSE)] = avg_sd
+			ot2[int(PokemonInstance.Stat.DEFENSE)] = avg_d
+			ot2[int(PokemonInstance.Stat.SP_DEFENSE)] = avg_sd
+			actor.set_meta("split_stat_override", ou2)
+			target.set_meta("split_stat_override", ot2)
 			message.emit("¡Se promediaron Defensa y Def. Esp.!")
 			await _wait(0.7)
 			return
@@ -4638,6 +4699,10 @@ func _set_weather_from_move(move: MoveData) -> void:
 func _apply_damaging_move_effect(actor: BattleBattler, target: BattleBattler, move: MoveData, damage_dealt: int) -> void:
 	if damage_dealt <= 0 or actor.is_fainted():
 		return
+	if move != null and MoveSystem.has_script(int(move.effect)):
+		var hit_ok: bool = await MoveSystem.run_on_hit(actor, target, move, self, damage_dealt)
+		if hit_ok:
+			return
 	match move.effect:
 		MoveStruct.MoveEffect.EFFECT_RAPID_SPIN:
 			_side_for(actor).clear_hazards()
@@ -4819,6 +4884,8 @@ func _wait(seconds: float) -> void:
 func ability_announce(battler: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null:
 		return
+	if battler.is_fainted():
+		return
 	var name: String = AbilityRuntime.ability_name(battler)
 	ability_announced.emit(battler.is_player_side, battler.pokemon)
 	if ability_announced.get_connections().size() > 0:
@@ -4964,16 +5031,12 @@ func set_terrain(new_terrain: int, turns: int = 5) -> void:
 
 
 func is_weather_suppressed() -> bool:
-	if player != null and (
-		AbilityRuntime.has(player, AbilityId.Id.AIR_LOCK)
-		or AbilityRuntime.has(player, AbilityId.Id.CLOUD_NINE)
-	):
-		return true
-	if enemy != null and (
-		AbilityRuntime.has(enemy, AbilityId.Id.AIR_LOCK)
-		or AbilityRuntime.has(enemy, AbilityId.Id.CLOUD_NINE)
-	):
-		return true
+	for b: BattleBattler in get_all_actives():
+		if b == null or b.is_fainted():
+			continue
+		if AbilityRuntime.has(b, AbilityId.Id.AIR_LOCK) \
+				or AbilityRuntime.has(b, AbilityId.Id.CLOUD_NINE):
+			return true
 	return false
 
 

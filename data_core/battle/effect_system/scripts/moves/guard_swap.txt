@@ -1,0 +1,3 @@
+# guard_swap
+on_use:
+  special guard_swap

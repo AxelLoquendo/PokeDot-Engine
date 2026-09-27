@@ -1,0 +1,3 @@
+# light_screen
+on_use:
+  side light_screen 5

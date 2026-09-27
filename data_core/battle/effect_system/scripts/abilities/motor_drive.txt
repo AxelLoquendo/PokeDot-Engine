@@ -1,3 +1,2 @@
 on_immunity:
-  immunity spe_up ELECTRIC
-
+  immunity boost_speed ELECTRIC

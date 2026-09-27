@@ -1,0 +1,3 @@
+# toxic_spikes
+on_use:
+  side toxic_spikes opponent

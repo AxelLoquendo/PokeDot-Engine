@@ -1,0 +1,3 @@
+# uproar
+on_use:
+  volatile uproar 3

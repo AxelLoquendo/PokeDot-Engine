@@ -1,0 +1,3 @@
+# baton_pass
+on_use:
+  pivot baton_pass

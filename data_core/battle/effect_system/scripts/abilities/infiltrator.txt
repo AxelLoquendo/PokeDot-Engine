@@ -1,3 +1,2 @@
-# Ignora sustituto y pantallas del rival.
 on_infiltrator:
   block

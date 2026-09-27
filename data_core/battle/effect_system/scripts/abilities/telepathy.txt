@@ -1,3 +1,2 @@
-# Inmune al daño de aliados.
 on_telepathy:
   block

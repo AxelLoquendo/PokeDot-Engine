@@ -1,0 +1,3 @@
+# teatime
+on_use:
+  special teatime

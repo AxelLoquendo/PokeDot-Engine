@@ -1,0 +1,4 @@
+# shed_tail
+on_use:
+  volatile substitute
+  pivot baton_pass

@@ -1,0 +1,3 @@
+# swallow
+on_use:
+  special swallow

@@ -1,3 +1,2 @@
 on_immunity:
-  immunity spatk_up ELECTRIC
-
+  immunity boost_spatk ELECTRIC

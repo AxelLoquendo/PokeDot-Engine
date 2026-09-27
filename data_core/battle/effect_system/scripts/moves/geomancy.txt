@@ -1,0 +1,5 @@
+# geomancy
+on_use:
+  raise_stat SPATK 2 target=user
+  raise_stat SPDEF 2 target=user
+  raise_stat SPEED 2 target=user

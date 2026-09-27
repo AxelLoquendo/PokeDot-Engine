@@ -1,0 +1,3 @@
+# quash
+on_use:
+  special quash

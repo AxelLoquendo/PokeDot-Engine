@@ -1,0 +1,3 @@
+# trick_room
+on_use:
+  room trick_room 5

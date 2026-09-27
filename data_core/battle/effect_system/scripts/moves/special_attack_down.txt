@@ -1,0 +1,3 @@
+# special_attack_down
+on_use:
+  lower_stat SPATK 1 target=opponent caused_by_foe

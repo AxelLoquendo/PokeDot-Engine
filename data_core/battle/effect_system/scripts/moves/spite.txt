@@ -1,0 +1,3 @@
+# spite
+on_use:
+  special spite

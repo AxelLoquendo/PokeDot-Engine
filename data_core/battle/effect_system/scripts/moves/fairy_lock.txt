@@ -1,0 +1,3 @@
+# fairy_lock
+on_use:
+  special fairy_lock

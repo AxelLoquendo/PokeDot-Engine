@@ -2,4 +2,3 @@ on_power:
   if move_flag recoil
     multiply 1.2
   endif
-

@@ -1,0 +1,3 @@
+# attract
+on_use:
+  infatuate target=opponent

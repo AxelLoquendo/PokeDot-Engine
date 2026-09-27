@@ -1,0 +1,3 @@
+# fell_stinger
+on_hit:
+  special fell_stinger

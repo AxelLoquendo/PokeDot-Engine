@@ -1,0 +1,3 @@
+# imprison
+on_use:
+  volatile imprison

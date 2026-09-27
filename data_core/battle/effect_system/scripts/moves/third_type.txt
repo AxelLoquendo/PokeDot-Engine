@@ -1,0 +1,3 @@
+# third_type
+on_use:
+  special third_type

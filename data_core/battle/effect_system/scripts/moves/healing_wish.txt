@@ -1,0 +1,3 @@
+# healing_wish
+on_use:
+  special healing_wish

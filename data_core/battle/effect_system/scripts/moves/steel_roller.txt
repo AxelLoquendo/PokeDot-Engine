@@ -1,0 +1,3 @@
+# steel_roller
+on_hit:
+  special clear_terrain

@@ -1,4 +1,4 @@
 on_aura:
   if move_type FAIRY
-    multiply aura 1.33
+    multiply 1.33
   endif

@@ -168,7 +168,7 @@ static func _foreach_list(what: String, ctx: EffectContext) -> Array[BattleBattl
 			var foes: Array = ctx.battle.get_opponents(ctx.user)
 			for f: Variant in foes:
 				var b: BattleBattler = f as BattleBattler
-				if b != null:
+				if b != null and b.pokemon != null and not b.is_fainted():
 					out.append(b)
 		elif ctx.target != null:
 			out.append(ctx.target)

@@ -1,0 +1,3 @@
+# power_trick
+on_use:
+  special power_trick

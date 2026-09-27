@@ -1,0 +1,3 @@
+# ice_spinner
+on_hit:
+  special clear_terrain

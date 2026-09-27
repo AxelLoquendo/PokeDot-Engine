@@ -1,0 +1,3 @@
+# morning_sun
+on_use:
+  heal_percent 50 target=user

@@ -1,0 +1,3 @@
+# power_swap
+on_use:
+  special power_swap

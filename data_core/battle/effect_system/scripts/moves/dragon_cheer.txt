@@ -1,0 +1,3 @@
+# dragon_cheer
+on_use:
+  volatile focus_energy target=target

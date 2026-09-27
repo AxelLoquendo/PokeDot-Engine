@@ -1,7 +1,11 @@
-# Aegislash cambia de forma al atacar/defender.
+on_switch_in:
+  announce
+  change_form shield
+
 on_move_use:
-  if not category STATUS
+  if category STATUS
+    change_form shield
+  else
+    announce
     change_form blade
   endif
-on_switch_in:
-  change_form shield

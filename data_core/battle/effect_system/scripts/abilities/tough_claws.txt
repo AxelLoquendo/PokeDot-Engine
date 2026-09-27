@@ -1,5 +1,4 @@
 on_power:
-  if move_flag makes_contact
+  if is_contact
     multiply 1.3
   endif
-

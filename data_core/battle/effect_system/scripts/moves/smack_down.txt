@@ -1,0 +1,3 @@
+# smack_down
+on_hit:
+  special smack_down

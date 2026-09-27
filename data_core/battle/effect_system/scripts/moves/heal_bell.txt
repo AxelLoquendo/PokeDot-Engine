@@ -1,0 +1,3 @@
+# heal_bell
+on_use:
+  special heal_bell

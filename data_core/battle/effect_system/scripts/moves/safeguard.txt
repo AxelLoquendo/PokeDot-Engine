@@ -1,0 +1,3 @@
+# safeguard
+on_use:
+  side safeguard 5

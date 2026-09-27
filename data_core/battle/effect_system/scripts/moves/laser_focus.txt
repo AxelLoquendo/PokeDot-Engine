@@ -1,0 +1,3 @@
+# laser_focus
+on_use:
+  volatile laser_focus

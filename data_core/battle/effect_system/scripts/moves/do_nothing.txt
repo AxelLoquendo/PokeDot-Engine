@@ -1,0 +1,3 @@
+# do_nothing
+on_use:
+  message "{user} está celebrando!"

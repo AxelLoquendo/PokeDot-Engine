@@ -1,0 +1,3 @@
+# follow_me
+on_use:
+  volatile follow_me

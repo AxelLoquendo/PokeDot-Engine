@@ -1,2 +1,3 @@
+# Pressure: el rival gasta 1 PP extra (AbilityRuntime.extra_pp_cost / has PRESSURE).
 on_switch_in:
   announce

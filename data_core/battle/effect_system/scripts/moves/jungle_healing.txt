@@ -1,0 +1,4 @@
+# jungle_healing
+on_use:
+  heal_percent 25 target=user
+  cure_status target=user

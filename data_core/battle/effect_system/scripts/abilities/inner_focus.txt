@@ -1,3 +1,4 @@
 on_blocks_flinch:
   block
-
+on_blocks_intimidate:
+  block

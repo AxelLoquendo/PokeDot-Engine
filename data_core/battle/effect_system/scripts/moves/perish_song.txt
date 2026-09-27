@@ -1,0 +1,3 @@
+# perish_song
+on_use:
+  volatile perish_song

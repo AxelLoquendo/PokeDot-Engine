@@ -1,3 +1,2 @@
-# Duplica la probabilidad de efectos secundarios (flag para el calc).
 on_secondary_chance:
   multiply secondary_chance 2.0

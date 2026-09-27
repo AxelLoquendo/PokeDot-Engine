@@ -1,0 +1,4 @@
+# shift_gear
+on_use:
+  raise_stat ATK 1 target=user
+  raise_stat SPEED 2 target=user

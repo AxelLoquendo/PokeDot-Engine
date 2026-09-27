@@ -1,0 +1,3 @@
+# grassy_terrain
+on_use:
+  set_terrain GRASSY 5

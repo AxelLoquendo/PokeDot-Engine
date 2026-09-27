@@ -1,3 +1,2 @@
 on_immunity:
-  immunity atk_up GRASS
-
+  immunity boost_atk GRASS

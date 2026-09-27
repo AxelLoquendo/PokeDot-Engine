@@ -1,3 +1,3 @@
-# Sin efecto durante el combate. Recoge miel al final del combate (overworld).
+# Overworld / post-combate (try_honey_gather_after_battle).
 on_end_turn:
   # no-op

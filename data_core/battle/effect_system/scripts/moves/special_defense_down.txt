@@ -1,0 +1,3 @@
+# special_defense_down
+on_use:
+  lower_stat SPDEF 1 target=opponent caused_by_foe

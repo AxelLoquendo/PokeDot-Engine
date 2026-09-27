@@ -1,7 +1,4 @@
 on_attack_stat:
-  if category PHYSICAL
-    if has_status
-      multiply 1.5
-    endif
+  if has_status
+    multiply 1.5
   endif
-

@@ -1,0 +1,3 @@
+# evasion_up_2
+on_use:
+  special evasion_stage 2 target=user

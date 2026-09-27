@@ -1,0 +1,3 @@
+# future_sight
+on_use:
+  special future_sight

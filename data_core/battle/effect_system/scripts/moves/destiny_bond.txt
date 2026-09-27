@@ -1,0 +1,3 @@
+# destiny_bond
+on_use:
+  volatile destiny_bond

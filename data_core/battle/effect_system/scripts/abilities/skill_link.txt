@@ -1,3 +1,2 @@
 on_always_max_hits:
   block
-

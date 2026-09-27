@@ -1,0 +1,3 @@
+# embargo
+on_use:
+  volatile embargo 5 target=opponent

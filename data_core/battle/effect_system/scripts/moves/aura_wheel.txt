@@ -1,0 +1,3 @@
+# aura_wheel
+on_hit:
+  raise_stat SPEED 1 target=user

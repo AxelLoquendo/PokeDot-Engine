@@ -1,0 +1,3 @@
+# hit_switch_target (U-turn / Volt Switch)
+on_hit:
+  pivot

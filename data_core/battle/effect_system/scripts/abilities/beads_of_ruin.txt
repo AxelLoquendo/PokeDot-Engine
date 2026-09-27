@@ -1,4 +1,4 @@
 on_ruin_stat:
-  if stat SP_DEFENSE
-    multiply ruin 0.75
+  if stat SP_DEF
+    multiply 0.75
   endif

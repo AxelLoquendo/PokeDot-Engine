@@ -1,0 +1,3 @@
+# lucky_chant
+on_use:
+  side lucky_chant 5

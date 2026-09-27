@@ -1,0 +1,3 @@
+# tailwind
+on_use:
+  side tailwind 4

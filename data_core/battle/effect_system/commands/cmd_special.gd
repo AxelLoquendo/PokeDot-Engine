@@ -721,3 +721,17 @@ func _schooling(b: BattleBattler, battle: BattleManager) -> void:
 	if battle.has_signal("battler_appearance_changed"):
 		battle.battler_appearance_changed.emit(b.is_player_side)
 	await battle._wait(0.5)
+
+## ─── Specials de movimientos ─────────────────────────────
+
+
+
+
+
+
+
+
+
+
+
+

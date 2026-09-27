@@ -1,0 +1,3 @@
+# heart_swap
+on_use:
+  special heart_swap

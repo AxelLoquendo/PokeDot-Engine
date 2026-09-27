@@ -1,0 +1,3 @@
+# tidy_up — limpia hazards + substitutes, +1 Atk/Spe
+on_use:
+  special tidy_up

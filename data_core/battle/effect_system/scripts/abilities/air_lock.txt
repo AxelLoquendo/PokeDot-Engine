@@ -1,2 +1,3 @@
+# Air Lock: anula el clima (BattleManager.is_weather_suppressed).
 on_switch_in:
   announce

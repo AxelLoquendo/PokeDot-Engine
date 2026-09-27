@@ -1,0 +1,3 @@
+# weather
+on_use:
+  special weather_from_move

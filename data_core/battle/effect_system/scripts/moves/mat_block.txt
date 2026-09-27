@@ -1,0 +1,3 @@
+# mat_block
+on_use:
+  special resolve_protect

@@ -2,4 +2,3 @@ on_damage_taken:
   if hp_full
     multiply 0.5
   endif
-

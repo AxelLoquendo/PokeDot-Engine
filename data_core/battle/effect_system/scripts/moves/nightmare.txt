@@ -1,0 +1,3 @@
+# nightmare
+on_use:
+  volatile nightmare target=opponent

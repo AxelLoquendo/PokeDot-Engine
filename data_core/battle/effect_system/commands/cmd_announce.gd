@@ -15,7 +15,7 @@ func execute(ctx: EffectContext) -> bool:
 		if a.begins_with("target="):
 			mode = a.substr(7)
 	var who: BattleBattler = _resolve(ctx, mode)
-	if who == null:
+	if who == null or who.pokemon == null or who.is_fainted():
 		return true
 	await ctx.battle.ability_announce(who)
 	return true

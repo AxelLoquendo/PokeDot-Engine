@@ -47,6 +47,12 @@ static func register_all() -> void:
 	EffectParser.register_command("set_move_type", _c_set_move_type)
 	EffectParser.register_command("set_type", _c_set_type)
 	EffectParser.register_command("priority", _c_priority)
+	EffectParser.register_command("side", _c_side)
+	EffectParser.register_command("volatile", _c_volatile)
+	EffectParser.register_command("confuse", _c_confuse)
+	EffectParser.register_command("room", _c_room)
+	EffectParser.register_command("pivot", _c_pivot)
+	EffectParser.register_command("force_switch", _c_force_switch)
 
 	var specials: Array[String] = [
 		"download_boost", "trace_ability", "frisk", "anticipation", "forewarn",
@@ -62,6 +68,28 @@ static func register_all() -> void:
 	]
 	for s: String in specials:
 		EffectParser.register_command(s, _c_special.bind(s))
+
+	var move_specials: Array[String] = [
+		"weather_from_move", "rest", "haze_reset", "resolve_protect", "belly_drum",
+		"court_change", "clear_terrain", "knock_off", "steal_item", "topsy_turvy",
+		"self_ko", "apply_move_status", "accuracy_stage", "evasion_stage", "transform",
+		"mimic", "sketch", "metronome", "mirror_move", "copycat", "sleep_talk",
+		"nature_power", "conversion", "conversion_2", "pain_split", "psych_up",
+		"heart_swap", "power_swap", "guard_swap", "speed_swap", "power_trick",
+		"power_split", "guard_split", "role_play", "skill_swap", "entrainment",
+		"overwrite_ability", "gastro_acid", "trick", "bestow", "recycle", "spite",
+		"heal_bell", "reflect_type", "camouflage", "third_type", "curse", "swallow",
+		"spit_up", "strength_sap", "acupressure", "flower_shield", "rototiller",
+		"gear_up", "magnetic_flux", "ally_switch", "healing_wish", "revival_blessing",
+		"psycho_shift", "instruct", "future_sight", "bide", "present", "telekinesis",
+		"fairy_lock", "ion_deluge", "electrify", "powder", "after_you", "quash",
+		"teatime", "corrosive_gas", "stuff_cheeks", "fling", "natural_gift", "snore",
+		"fell_stinger", "clear_leech_seed", "smack_down", "tidy_up", "fillet_away",
+	]
+	for ms: String in move_specials:
+		EffectParser.register_command(ms, _c_move_special.bind(ms))
+	EffectParser.register_command("special", _c_special_router)
+
 
 
 static func _c_chance(a: PackedStringArray) -> EffectCommand:
@@ -142,3 +170,60 @@ static func _c_priority(a: PackedStringArray) -> EffectCommand:
 	return CmdPriority.new(a)
 static func _c_special(sname: String, a: PackedStringArray) -> EffectCommand:
 	return CmdSpecial.new(sname, a)
+
+static func _c_side(a: PackedStringArray) -> EffectCommand:
+	return CmdSide.new("side", a)
+
+
+static func _c_volatile(a: PackedStringArray) -> EffectCommand:
+	return CmdVolatile.new("volatile", a)
+
+
+static func _c_confuse(a: PackedStringArray) -> EffectCommand:
+	return CmdConfuse.new(a)
+
+
+static func _c_room(a: PackedStringArray) -> EffectCommand:
+	return CmdRoom.new(a)
+
+
+static func _c_pivot(a: PackedStringArray) -> EffectCommand:
+	return CmdPivot.new(a)
+
+
+static func _c_force_switch(a: PackedStringArray) -> EffectCommand:
+	return CmdForceSwitch.new(a)
+
+
+static func _c_move_special(sname: String, a: PackedStringArray) -> EffectCommand:
+	return CmdMoveSpecial.new(sname, a)
+
+
+static func _c_special_router(a: PackedStringArray) -> EffectCommand:
+	var sname: String = a[0] if a.size() > 0 else ""
+	var rest: PackedStringArray = a.slice(1) if a.size() > 1 else PackedStringArray()
+	if _is_move_special(sname):
+		return CmdMoveSpecial.new(sname, rest)
+	return CmdSpecial.new(sname, rest)
+
+
+static func _is_move_special(sname: String) -> bool:
+	var move_names: PackedStringArray = [
+		"weather_from_move", "rest", "haze_reset", "resolve_protect", "belly_drum",
+		"court_change", "clear_terrain", "knock_off", "steal_item", "topsy_turvy",
+		"self_ko", "apply_move_status", "accuracy_stage", "evasion_stage", "transform",
+		"mimic", "sketch", "metronome", "mirror_move", "copycat", "sleep_talk",
+		"nature_power", "conversion", "conversion_2", "pain_split", "psych_up",
+		"heart_swap", "power_swap", "guard_swap", "speed_swap", "power_trick",
+		"power_split", "guard_split", "role_play", "skill_swap", "entrainment",
+		"overwrite_ability", "gastro_acid", "trick", "bestow", "recycle", "spite",
+		"heal_bell", "reflect_type", "camouflage", "third_type", "curse", "swallow",
+		"spit_up", "strength_sap", "acupressure", "flower_shield", "rototiller",
+		"gear_up", "magnetic_flux", "ally_switch", "healing_wish", "revival_blessing",
+		"psycho_shift", "instruct", "future_sight", "bide", "present", "telekinesis",
+		"fairy_lock", "ion_deluge", "electrify", "powder", "after_you", "quash",
+		"teatime", "corrosive_gas", "stuff_cheeks", "fling", "natural_gift", "snore",
+		"fell_stinger", "clear_leech_seed", "smack_down", "tidy_up", "fillet_away",
+	]
+	return sname in move_names
+

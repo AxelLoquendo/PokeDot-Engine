@@ -1,0 +1,3 @@
+# psych_up
+on_use:
+  special psych_up

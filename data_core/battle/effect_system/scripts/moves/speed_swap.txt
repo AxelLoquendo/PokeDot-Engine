@@ -1,0 +1,3 @@
+# speed_swap
+on_use:
+  special speed_swap

@@ -1,3 +1,2 @@
-# El drenaje hace daño al atacante en vez de curar (flag).
 on_liquid_ooze:
   block

@@ -1,7 +1,6 @@
 on_attack_stat:
-  if category PHYSICAL
-    if has_status POISON TOXIC
+  if has_status POISON TOXIC
+    if category PHYSICAL
       multiply 1.5
     endif
   endif
-

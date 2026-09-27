@@ -1,3 +1,2 @@
 on_wonder_guard:
   block
-

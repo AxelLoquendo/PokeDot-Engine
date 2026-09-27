@@ -1,3 +1,2 @@
-# Bloquea efectos secundarios del rival.
 on_blocks_secondary:
   block

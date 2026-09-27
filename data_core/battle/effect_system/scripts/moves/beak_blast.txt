@@ -1,0 +1,3 @@
+# beak_blast
+on_use:
+  volatile beak_blast

@@ -1,0 +1,3 @@
+# magnet_rise
+on_use:
+  volatile magnet_rise 5

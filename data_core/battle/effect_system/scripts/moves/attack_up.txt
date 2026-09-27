@@ -1,0 +1,3 @@
+# attack_up
+on_use:
+  raise_stat ATK 1 target=user

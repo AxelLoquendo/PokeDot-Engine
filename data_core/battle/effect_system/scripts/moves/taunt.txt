@@ -1,0 +1,3 @@
+# taunt
+on_use:
+  volatile taunt 3 target=opponent

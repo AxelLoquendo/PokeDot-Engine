@@ -1,0 +1,3 @@
+# belly_drum
+on_use:
+  special belly_drum

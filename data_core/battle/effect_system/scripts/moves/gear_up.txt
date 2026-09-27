@@ -1,0 +1,3 @@
+# gear_up
+on_use:
+  special gear_up

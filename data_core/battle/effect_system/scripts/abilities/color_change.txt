@@ -1,5 +1,3 @@
-# Cambia al tipo del movimiento recibido.
 on_hit_by:
   announce
-  set_move_type from=move
   set_type from=move

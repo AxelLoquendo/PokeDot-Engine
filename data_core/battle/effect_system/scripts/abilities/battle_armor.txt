@@ -1,3 +1,2 @@
 on_blocks_critical:
   block
-

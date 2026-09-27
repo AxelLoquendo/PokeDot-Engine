@@ -1,0 +1,3 @@
+# telekinesis
+on_use:
+  special telekinesis

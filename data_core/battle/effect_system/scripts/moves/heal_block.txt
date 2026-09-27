@@ -1,0 +1,3 @@
+# heal_block
+on_use:
+  volatile heal_block 5 target=opponent

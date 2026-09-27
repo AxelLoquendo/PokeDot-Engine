@@ -1,0 +1,4 @@
+# defog
+on_use:
+  side clear_hazards both
+  side clear_screens both

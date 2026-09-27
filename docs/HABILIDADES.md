@@ -1,5 +1,7 @@
 # Sistema de habilidades
 
+> **Guía práctica de uso (crear efectos, comandos, casos borde):** [`GUIA_SISTEMA_DE_EFECTOS.md`](GUIA_SISTEMA_DE_EFECTOS.md)
+
 Las habilidades de combate **no se programan en GDScript por nombre**.  
 Cada efecto vive en un archivo `.txt` compuesto por comandos pequeños (Lego).  
 `AbilityRuntime` solo administra eventos y consultas: arma un `EffectContext` y llama a `AbilitySystem`.

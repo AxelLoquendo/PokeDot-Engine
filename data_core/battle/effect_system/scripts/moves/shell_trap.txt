@@ -1,0 +1,3 @@
+# shell_trap
+on_use:
+  volatile shell_trap

@@ -1,2 +1,4 @@
+# Unnerve: impide bayas del rival.
 on_switch_in:
   announce
+  special unnerve

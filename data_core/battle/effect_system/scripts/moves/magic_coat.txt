@@ -1,0 +1,3 @@
+# magic_coat
+on_use:
+  volatile magic_coat

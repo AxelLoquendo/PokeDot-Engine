@@ -1,0 +1,4 @@
+# bulk_up
+on_use:
+  raise_stat ATK 1 target=user
+  raise_stat DEF 1 target=user

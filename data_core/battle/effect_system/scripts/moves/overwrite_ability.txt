@@ -1,0 +1,3 @@
+# overwrite_ability
+on_use:
+  special overwrite_ability

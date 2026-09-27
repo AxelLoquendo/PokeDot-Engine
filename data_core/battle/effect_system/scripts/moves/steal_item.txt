@@ -1,0 +1,3 @@
+# steal_item
+on_hit:
+  special steal_item

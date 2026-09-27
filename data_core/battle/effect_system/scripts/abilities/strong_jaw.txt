@@ -1,5 +1,4 @@
 on_power:
-  if move_flag biting_move
+  if move_flag bite
     multiply 1.5
   endif
-

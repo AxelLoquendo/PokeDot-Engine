@@ -1,11 +1,12 @@
 on_end_turn:
   if weather RAIN
+    announce
     heal_percent 12.5 target=user
   endif
   if weather SUN
+    announce
     damage_percent 12.5 target=user
   endif
 
 on_immunity:
   immunity heal WATER
-

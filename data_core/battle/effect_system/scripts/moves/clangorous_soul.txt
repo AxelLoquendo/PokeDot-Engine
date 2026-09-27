@@ -1,0 +1,7 @@
+# clangorous_soul
+on_use:
+  raise_stat ATK 1 target=user
+  raise_stat DEF 1 target=user
+  raise_stat SPATK 1 target=user
+  raise_stat SPDEF 1 target=user
+  raise_stat SPEED 1 target=user

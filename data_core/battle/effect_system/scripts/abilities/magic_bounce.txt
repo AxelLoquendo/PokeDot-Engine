@@ -1,3 +1,5 @@
+# Magic Bounce: bloquea y marca reflexión de movimientos de estado.
 on_blocks_status_move:
   block
-
+on_reflects_status_move:
+  block

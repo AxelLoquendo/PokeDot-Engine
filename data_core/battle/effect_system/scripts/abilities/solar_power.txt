@@ -1,5 +1,6 @@
 on_end_turn:
   if weather SUN
+    announce
     damage_percent 12.5 target=user
   endif
 
@@ -9,4 +10,3 @@ on_attack_stat:
       multiply 1.5
     endif
   endif
-

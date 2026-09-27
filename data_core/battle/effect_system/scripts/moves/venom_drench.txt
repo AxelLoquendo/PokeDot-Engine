@@ -1,0 +1,5 @@
+# venom_drench
+on_use:
+  lower_stat ATK 1 target=opponent caused_by_foe
+  lower_stat SPATK 1 target=opponent caused_by_foe
+  lower_stat SPEED 1 target=opponent caused_by_foe

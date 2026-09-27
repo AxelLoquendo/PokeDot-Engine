@@ -1,0 +1,3 @@
+# wonder_room
+on_use:
+  room wonder_room 5

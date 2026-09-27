@@ -1,5 +1,4 @@
-# +30% Sp.Atk de movimientos especiales del aliado.
 on_battery:
   if category SPECIAL
-    multiply battery 1.3
+    multiply 1.3
   endif

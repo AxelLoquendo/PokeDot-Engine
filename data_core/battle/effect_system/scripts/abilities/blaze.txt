@@ -1,7 +1,6 @@
 on_power:
-  if hp_percent <= 33.4
-    if move_type FIRE
-      multiply 1.5
+  if move_type FIRE
+    if hp_percent < 33
+      multiply power 1.5
     endif
   endif
-

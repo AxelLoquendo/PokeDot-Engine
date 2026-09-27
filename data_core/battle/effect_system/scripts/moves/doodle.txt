@@ -1,0 +1,3 @@
+# doodle
+on_use:
+  special overwrite_ability

@@ -1,0 +1,3 @@
+# fillet_away — -50% HP, +2 Atk/SpA/Spe
+on_use:
+  special fillet_away

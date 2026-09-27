@@ -1,0 +1,3 @@
+# skill_swap
+on_use:
+  special skill_swap

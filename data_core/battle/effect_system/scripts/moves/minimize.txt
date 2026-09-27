@@ -1,0 +1,3 @@
+# minimize
+on_use:
+  volatile minimize

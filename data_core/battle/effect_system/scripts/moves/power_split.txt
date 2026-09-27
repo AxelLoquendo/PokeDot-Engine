@@ -1,0 +1,3 @@
+# power_split
+on_use:
+  special power_split

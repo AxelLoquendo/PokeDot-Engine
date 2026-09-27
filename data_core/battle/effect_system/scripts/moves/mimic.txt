@@ -1,0 +1,3 @@
+# mimic
+on_use:
+  special mimic

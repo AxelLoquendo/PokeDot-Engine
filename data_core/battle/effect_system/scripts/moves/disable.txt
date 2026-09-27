@@ -1,0 +1,3 @@
+# disable
+on_use:
+  volatile disable target=opponent

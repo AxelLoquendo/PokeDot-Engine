@@ -1,0 +1,3 @@
+# celebrate
+on_use:
+  message "{user} está celebrando!"

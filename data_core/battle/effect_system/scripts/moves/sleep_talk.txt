@@ -1,0 +1,3 @@
+# sleep_talk
+on_use:
+  special sleep_talk

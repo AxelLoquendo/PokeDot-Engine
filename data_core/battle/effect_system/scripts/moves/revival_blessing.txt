@@ -1,0 +1,3 @@
+# revival_blessing
+on_use:
+  special revival_blessing

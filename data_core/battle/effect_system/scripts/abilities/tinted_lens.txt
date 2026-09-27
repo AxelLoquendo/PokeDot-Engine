@@ -1,7 +1,4 @@
 on_attacker_damage:
   if effectiveness < 1
-    if effectiveness > 0
-      multiply 2.0
-    endif
+    multiply 2.0
   endif
-

@@ -1,0 +1,3 @@
+# nature_power
+on_use:
+  special nature_power

@@ -1,5 +1,4 @@
-# Baja Sp.Atk de los demás.
 on_ruin_stat:
-  if stat SP_ATTACK
-    multiply ruin 0.75
+  if stat SP_ATK
+    multiply 0.75
   endif

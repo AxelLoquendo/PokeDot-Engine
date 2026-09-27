@@ -220,3 +220,60 @@ on_stat_drop:
   announce
   raise_stat ATK 2 target=user
 ```
+
+
+---
+
+## Notas de uso (ampliadas)
+
+### `multiply`
+
+```text
+multiply 1.5
+multiply speed 2.0
+multiply power 1.5
+multiply damage_taken 0.5
+```
+
+El canal es opcional. Si omites el canal, se multiplica `ctx.multiplier`.
+
+### `announce`
+
+```text
+announce
+announce target=current
+announce target=attacker
+```
+
+No anuncia battlers debilitados (guard en el comando).
+
+### `for_each`
+
+```text
+for_each opponents
+  lower_stat ATK 1 target=current caused_by_foe
+end_for
+```
+
+Solo itera rivales conscientes. Dentro del bucle, `current` es el elemento.
+
+### `change_form`
+
+```text
+change_form base
+change_form zen
+change_form Hero
+```
+
+El id de forma es **StringName** (como en `PokemonInstance.form_id`).
+
+### Specials
+
+```text
+special trace_ability
+special download_boost
+special pickpocket
+special tick_truant
+```
+
+Ver lista en `effect_bootstrap.gd`. Detalle de diseño en `docs/GUIA_SISTEMA_DE_EFECTOS.md`.

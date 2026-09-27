@@ -1,0 +1,3 @@
+# torment
+on_use:
+  volatile torment target=opponent

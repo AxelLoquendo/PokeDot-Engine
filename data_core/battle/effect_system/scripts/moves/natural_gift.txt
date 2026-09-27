@@ -1,0 +1,3 @@
+# natural_gift
+on_use:
+  special natural_gift

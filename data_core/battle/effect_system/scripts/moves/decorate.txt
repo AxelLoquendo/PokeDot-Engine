@@ -1,0 +1,4 @@
+# decorate
+on_use:
+  raise_stat ATK 2 target=target
+  raise_stat SPATK 2 target=target

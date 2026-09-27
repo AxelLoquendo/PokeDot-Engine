@@ -1,4 +1,5 @@
-on_hit_by:
+on_hit:
   chance 30
-    status TOXIC target=attacker
+    announce
+    status TOXIC target=target
   endchance

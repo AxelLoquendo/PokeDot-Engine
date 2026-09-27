@@ -1,0 +1,3 @@
+# knock_off
+on_hit:
+  special knock_off

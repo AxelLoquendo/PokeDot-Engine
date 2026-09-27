@@ -1,0 +1,3 @@
+# spit_up — damage path + clear stockpile
+on_hit:
+  special spit_up

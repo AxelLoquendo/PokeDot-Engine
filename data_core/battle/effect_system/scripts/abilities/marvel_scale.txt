@@ -1,7 +1,11 @@
+on_marvel_scale:
+  if has_status
+    multiply 1.5
+  endif
+
 on_damage_taken:
   if has_status
     if category PHYSICAL
       multiply 0.5
     endif
   endif
-

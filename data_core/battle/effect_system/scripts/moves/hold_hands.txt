@@ -1,0 +1,3 @@
+# hold_hands
+on_use:
+  message "{user} está celebrando!"

@@ -1,0 +1,3 @@
+# confuse
+on_use:
+  confuse target=opponent

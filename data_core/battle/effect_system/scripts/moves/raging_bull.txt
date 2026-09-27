@@ -1,0 +1,3 @@
+# raging_bull
+on_hit:
+  side clear_screens opponent

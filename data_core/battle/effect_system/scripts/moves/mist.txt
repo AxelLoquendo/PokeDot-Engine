@@ -1,0 +1,3 @@
+# mist
+on_use:
+  side mist 5

@@ -1,0 +1,5 @@
+# parting_shot
+on_use:
+  lower_stat ATK 1 target=opponent caused_by_foe
+  lower_stat SPATK 1 target=opponent caused_by_foe
+  pivot

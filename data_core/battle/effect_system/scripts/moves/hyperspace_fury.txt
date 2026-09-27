@@ -1,0 +1,3 @@
+# hyperspace_fury
+on_hit:
+  lower_stat DEF 1 target=user

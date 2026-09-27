@@ -1,0 +1,3 @@
+# aromatic_mist
+on_use:
+  raise_stat SPDEF 1 target=target

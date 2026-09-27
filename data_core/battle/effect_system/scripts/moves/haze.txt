@@ -1,0 +1,3 @@
+# haze
+on_use:
+  special haze_reset

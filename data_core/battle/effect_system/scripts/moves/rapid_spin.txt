@@ -1,0 +1,4 @@
+# rapid_spin
+on_hit:
+  side clear_hazards
+  special clear_leech_seed

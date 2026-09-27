@@ -1,0 +1,3 @@
+# defense_down
+on_use:
+  lower_stat DEF 1 target=opponent caused_by_foe

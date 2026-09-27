@@ -1,0 +1,3 @@
+# bide
+on_use:
+  special bide

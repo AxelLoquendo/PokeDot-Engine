@@ -1,0 +1,3 @@
+# mud_sport
+on_use:
+  message "¡La potencia de ciertos movimientos bajó!"

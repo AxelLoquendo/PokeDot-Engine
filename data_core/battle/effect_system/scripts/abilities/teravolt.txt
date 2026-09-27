@@ -1,3 +1,2 @@
 on_ignores_ability:
   block
-

@@ -1,0 +1,3 @@
+# defense_curl
+on_use:
+  raise_stat DEF 1 target=user

@@ -1,3 +1,4 @@
-on_crit:
-  multiply 2.25
-
+on_attacker_damage:
+  if was_critical
+    multiply 1.5
+  endif

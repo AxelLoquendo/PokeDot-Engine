@@ -1,5 +1,9 @@
+on_evasion:
+  if weather SNOW
+    multiply evasion 1.25
+  endif
+
 on_weather_immunity:
   if weather SNOW
     block
   endif
-

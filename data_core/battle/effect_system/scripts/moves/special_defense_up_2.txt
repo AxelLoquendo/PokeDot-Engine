@@ -1,0 +1,3 @@
+# special_defense_up_2
+on_use:
+  raise_stat SPDEF 2 target=user

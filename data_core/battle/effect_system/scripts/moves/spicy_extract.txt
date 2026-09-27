@@ -1,0 +1,4 @@
+# spicy_extract
+on_use:
+  raise_stat ATK 2 target=opponent caused_by_foe
+  lower_stat DEF 2 target=opponent caused_by_foe

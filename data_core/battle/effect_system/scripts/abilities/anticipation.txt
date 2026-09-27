@@ -1,2 +1,3 @@
 on_switch_in:
-  anticipation
+  announce
+  special anticipation

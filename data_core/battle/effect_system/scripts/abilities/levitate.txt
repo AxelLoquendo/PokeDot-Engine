@@ -1,3 +1,2 @@
 on_immunity:
   immunity immune GROUND unless=damages_airborne
-

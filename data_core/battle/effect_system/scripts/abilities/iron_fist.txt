@@ -1,5 +1,4 @@
 on_power:
-  if move_flag punching_move
+  if move_flag punch
     multiply 1.2
   endif
-

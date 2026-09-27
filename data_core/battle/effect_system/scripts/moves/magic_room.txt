@@ -1,0 +1,3 @@
+# magic_room
+on_use:
+  room magic_room 5

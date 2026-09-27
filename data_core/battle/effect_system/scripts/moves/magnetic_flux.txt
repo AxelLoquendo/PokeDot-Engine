@@ -1,0 +1,3 @@
+# magnetic_flux
+on_use:
+  special magnetic_flux

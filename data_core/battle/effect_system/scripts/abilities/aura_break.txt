@@ -1,5 +1,4 @@
-# Invierte auras.
 on_aura:
   if move_type DARK FAIRY
-    multiply aura 0.75
+    multiply 0.75
   endif

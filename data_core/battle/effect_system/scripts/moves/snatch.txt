@@ -1,0 +1,3 @@
+# snatch
+on_use:
+  volatile snatch

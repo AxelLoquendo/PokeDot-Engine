@@ -1,0 +1,4 @@
+# calm_mind
+on_use:
+  raise_stat SPATK 1 target=user
+  raise_stat SPDEF 1 target=user

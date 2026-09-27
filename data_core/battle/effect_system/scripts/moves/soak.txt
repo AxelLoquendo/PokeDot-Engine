@@ -1,0 +1,3 @@
+# soak
+on_use:
+  set_type WATER target=opponent

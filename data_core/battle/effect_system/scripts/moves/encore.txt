@@ -1,0 +1,3 @@
+# encore
+on_use:
+  volatile encore 3 target=opponent

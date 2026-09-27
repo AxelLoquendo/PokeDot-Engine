@@ -1,0 +1,3 @@
+# stone_axe
+on_hit:
+  side stealth_rock opponent

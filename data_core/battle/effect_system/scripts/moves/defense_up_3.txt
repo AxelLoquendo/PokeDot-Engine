@@ -1,0 +1,3 @@
+# defense_up_3
+on_use:
+  raise_stat DEF 3 target=user

@@ -1,0 +1,5 @@
+# stockpile
+on_use:
+  volatile stockpile
+  raise_stat DEF 1 target=user
+  raise_stat SPDEF 1 target=user

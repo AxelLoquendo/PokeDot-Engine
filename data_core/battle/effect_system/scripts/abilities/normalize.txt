@@ -2,7 +2,4 @@ on_move_type:
   set_move_type NORMAL
 
 on_type_power:
-  if move_type NORMAL
-    multiply 1.2
-  endif
-
+  multiply 1.2

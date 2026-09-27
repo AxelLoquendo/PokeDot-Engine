@@ -1,0 +1,3 @@
+# miracle_eye
+on_use:
+  volatile identified target=opponent

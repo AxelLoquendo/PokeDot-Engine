@@ -1,5 +1,4 @@
 on_blocks_status:
   if weather SUN
-    block_status ALL
+    block
   endif
-

@@ -1,0 +1,3 @@
+# fling
+on_use:
+  special fling

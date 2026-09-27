@@ -1,4 +1,3 @@
-# El veneno cura en vez de dañar.
 on_poison_heal:
   block
 on_end_turn:

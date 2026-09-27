@@ -1,9 +1,7 @@
-# ×1.3 de potencia si actúa después del objetivo.
 on_analytic:
   if acted_after_target
-    multiply analytic 1.3
+    multiply 1.3
   endif
-# También vía on_power por si el damage calc unifica canales:
 on_power:
   if acted_after_target
     multiply power 1.3

@@ -1,5 +1,10 @@
+# Hustle: +50% ATK físico, -20% precisión de movimientos físicos.
 on_attack_stat:
   if category PHYSICAL
     multiply 1.5
   endif
 
+on_accuracy:
+  if category PHYSICAL
+    multiply accuracy 0.8
+  endif

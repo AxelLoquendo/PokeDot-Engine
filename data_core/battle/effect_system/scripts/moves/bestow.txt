@@ -1,0 +1,3 @@
+# bestow
+on_use:
+  special bestow

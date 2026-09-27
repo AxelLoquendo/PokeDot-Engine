@@ -1,0 +1,4 @@
+# tar_shot
+on_use:
+  lower_stat SPEED 1 target=opponent caused_by_foe
+  set_meta tar_shot 1

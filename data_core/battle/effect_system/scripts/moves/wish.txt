@@ -1,0 +1,3 @@
+# wish
+on_use:
+  volatile wish

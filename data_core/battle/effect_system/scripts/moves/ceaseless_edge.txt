@@ -1,0 +1,3 @@
+# ceaseless_edge
+on_hit:
+  side spikes opponent

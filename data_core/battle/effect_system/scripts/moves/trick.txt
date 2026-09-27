@@ -1,0 +1,3 @@
+# trick
+on_use:
+  special trick

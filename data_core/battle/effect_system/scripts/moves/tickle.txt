@@ -1,0 +1,4 @@
+# tickle
+on_use:
+  lower_stat ATK 1 target=opponent caused_by_foe
+  lower_stat DEF 1 target=opponent caused_by_foe

@@ -1,0 +1,4 @@
+# charge
+on_use:
+  volatile charged
+  raise_stat SPDEF 1 target=user

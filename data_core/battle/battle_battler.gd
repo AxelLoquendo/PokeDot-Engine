@@ -245,13 +245,24 @@ func apply_damage(amount: int) -> int:
 func get_effective_stat(stat: PokemonInstance.Stat) -> int:
 	if pokemon == null:
 		return 1
+	# Power Split / Guard Split: valor fijado para el resto del combate
+	if has_meta("split_stat_override"):
+		var ov: Dictionary = get_meta("split_stat_override")
+		if ov.has(int(stat)):
+			return maxi(1, int(ov[int(stat)]))
 	var base: int = maxi(pokemon.get_stat(stat), 1)
 	var stage: int = 0
+	# Power Trick: intercambia Atk/Def a nivel de lectura
+	var power_trick: bool = bool(get_meta("power_trick", false))
 	match stat:
 		PokemonInstance.Stat.ATTACK:
-			stage = stage_attack
+			stage = stage_defense if power_trick else stage_attack
+			if power_trick:
+				base = maxi(pokemon.get_stat(PokemonInstance.Stat.DEFENSE), 1)
 		PokemonInstance.Stat.DEFENSE:
-			stage = stage_defense
+			stage = stage_attack if power_trick else stage_defense
+			if power_trick:
+				base = maxi(pokemon.get_stat(PokemonInstance.Stat.ATTACK), 1)
 		PokemonInstance.Stat.SP_ATTACK:
 			stage = stage_sp_attack
 		PokemonInstance.Stat.SP_DEFENSE:

@@ -1,3 +1,2 @@
 on_immunity:
-  immunity spatk_up WATER
-
+  immunity boost_spatk WATER

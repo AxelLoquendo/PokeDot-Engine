@@ -1,3 +1,2 @@
-# Reduce daño a aliados.
 on_friend_guard:
-  multiply friend_guard 0.75
+  multiply 0.75

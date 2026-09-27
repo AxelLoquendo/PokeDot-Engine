@@ -1,0 +1,7 @@
+# extreme_evoboost
+on_use:
+  raise_stat ATK 2 target=user
+  raise_stat DEF 2 target=user
+  raise_stat SPATK 2 target=user
+  raise_stat SPDEF 2 target=user
+  raise_stat SPEED 2 target=user

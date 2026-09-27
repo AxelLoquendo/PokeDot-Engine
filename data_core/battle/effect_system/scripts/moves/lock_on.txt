@@ -1,0 +1,3 @@
+# lock_on
+on_use:
+  volatile lock_on target=opponent

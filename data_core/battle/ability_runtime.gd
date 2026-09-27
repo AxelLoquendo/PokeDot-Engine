@@ -1129,3 +1129,61 @@ static func _apply_form_change(
 	battle.message.emit("¡%s cambió de forma!" % battler.get_display_name())
 	await battle._wait(0.55)
 	return true
+
+
+
+## Tras debilitar a un rival (Moxie, Beast Boost, etc.).
+static func on_ko(attacker: BattleBattler, fainted: BattleBattler, battle: BattleManager) -> void:
+	if attacker == null or battle == null or attacker.is_fainted():
+		return
+	var ctx: EffectContext = EffectContext.new(attacker, fainted, null, battle)
+	ctx.target = fainted
+	await AbilitySystem.on_event("on_ko", ctx)
+
+
+## El debilitado puede reaccionar (Aftermath vía script on_faint, etc.).
+static func on_faint(fainted: BattleBattler, killer: BattleBattler, battle: BattleManager) -> void:
+	if fainted == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(fainted, killer, null, battle)
+	ctx.attacker = killer
+	ctx.target = fainted
+	await AbilitySystem.on_event("on_faint", ctx)
+
+
+## Soul-Heart / similares: alguien se debilita en el campo.
+static func on_any_faint(observer: BattleBattler, fainted: BattleBattler, battle: BattleManager) -> void:
+	if observer == null or battle == null or observer.is_fainted():
+		return
+	var ctx: EffectContext = EffectContext.new(observer, fainted, null, battle)
+	await AbilitySystem.on_event("on_any_faint", ctx)
+
+## Pressure: +1 PP gastado por el movimiento del rival.
+static func extra_pp_cost(defender: BattleBattler) -> int:
+	if defender == null:
+		return 0
+	if has(defender, AbilityId.Id.PRESSURE):
+		return 1
+	# Campo: cualquier Pressure activo en el lado defensor
+	return 0
+
+
+
+## Magic Bounce / similar: el movimiento de estado se refleja.
+static func reflects_status_move(defender: BattleBattler) -> bool:
+	if defender == null:
+		return false
+	var ctx: EffectContext = EffectContext.new(defender, null, null, null)
+	return AbilitySystem.query_bool("on_reflects_status_move", ctx)
+
+
+
+## Unnerve en el campo: el bando rival no puede comer bayas.
+static func unnerve_active(for_side_battler: BattleBattler, battle: BattleManager) -> bool:
+	if for_side_battler == null or battle == null:
+		return false
+	for foe: BattleBattler in (battle.get_opponents(for_side_battler) if battle.has_method("get_opponents") else []):
+		if foe != null and not foe.is_fainted() and has(foe, AbilityId.Id.UNNERVE):
+			return true
+	return false
+

@@ -1,0 +1,3 @@
+# ally_switch
+on_use:
+  special ally_switch

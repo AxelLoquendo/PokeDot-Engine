@@ -7,4 +7,3 @@ on_power:
       multiply 1.5
     endif
   endif
-

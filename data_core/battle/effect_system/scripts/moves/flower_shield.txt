@@ -1,0 +1,3 @@
+# flower_shield
+on_use:
+  special flower_shield

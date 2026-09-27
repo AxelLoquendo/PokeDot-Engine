@@ -1,0 +1,3 @@
+# camouflage
+on_use:
+  special camouflage

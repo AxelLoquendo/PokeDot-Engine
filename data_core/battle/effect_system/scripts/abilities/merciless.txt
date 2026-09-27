@@ -1,4 +1,3 @@
-# Golpes críticos seguros si el rival está envenenado.
 on_always_crit:
   if target_has_status POISON TOXIC
     block

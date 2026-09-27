@@ -1,3 +1,5 @@
+on_blocks_intimidate:
+  block
 on_stat_drop:
   announce
   raise_stat ATK 1 target=user

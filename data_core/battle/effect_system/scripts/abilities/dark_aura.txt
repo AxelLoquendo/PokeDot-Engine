@@ -1,5 +1,4 @@
-# Potencia movimientos Siniestro en el campo.
 on_aura:
   if move_type DARK
-    multiply aura 1.33
+    multiply 1.33
   endif

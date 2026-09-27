@@ -1,0 +1,3 @@
+# aqua_ring
+on_use:
+  volatile aqua_ring

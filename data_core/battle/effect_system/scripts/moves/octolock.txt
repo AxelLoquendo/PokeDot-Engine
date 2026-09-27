@@ -1,0 +1,3 @@
+# octolock
+on_use:
+  volatile octolock target=opponent

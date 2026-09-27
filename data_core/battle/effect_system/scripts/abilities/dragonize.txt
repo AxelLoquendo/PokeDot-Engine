@@ -2,7 +2,6 @@ on_move_type:
   set_move_type DRAGON if_type=NORMAL
 
 on_type_power:
-  if move_type NORMAL
+  if move_type DRAGON
     multiply 1.2
   endif
-
