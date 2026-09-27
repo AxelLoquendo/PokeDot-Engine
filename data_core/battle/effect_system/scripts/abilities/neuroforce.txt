@@ -1,0 +1,5 @@
+on_attacker_damage:
+  if effectiveness > 1
+    multiply 1.25
+  endif
+

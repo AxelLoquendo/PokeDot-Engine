@@ -1,0 +1,5 @@
+on_damage_taken:
+  if effectiveness > 1
+    multiply 0.75
+  endif
+

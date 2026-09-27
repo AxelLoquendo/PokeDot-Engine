@@ -1,0 +1,5 @@
+on_power:
+  if move_flag pulse_move
+    multiply 1.5
+  endif
+

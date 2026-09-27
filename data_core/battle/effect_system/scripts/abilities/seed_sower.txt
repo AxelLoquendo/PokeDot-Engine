@@ -1,0 +1,4 @@
+on_damaged:
+  announce
+  set_terrain GRASSY 5
+

@@ -1,0 +1,5 @@
+on_speed:
+  if weather SNOW
+    multiply 2.0
+  endif
+

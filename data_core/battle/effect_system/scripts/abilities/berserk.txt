@@ -1,0 +1,6 @@
+on_damaged:
+  if hp_percent <= 50
+    announce
+    raise_stat SPATK 1 target=user
+  endif
+

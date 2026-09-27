@@ -1,0 +1,7 @@
+on_damage_taken:
+  if terrain GRASSY
+    if category PHYSICAL
+      multiply 1.5
+    endif
+  endif
+

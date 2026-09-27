@@ -1,0 +1,10 @@
+on_damaged:
+  if hp_percent <= 50
+    announce
+    raise_stat ATK 1 target=user
+    raise_stat SPATK 1 target=user
+    raise_stat SPEED 1 target=user
+    lower_stat DEF 1 target=user
+    lower_stat SPDEF 1 target=user
+  endif
+

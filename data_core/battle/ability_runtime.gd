@@ -30,250 +30,80 @@ static func ability_name(battler: BattleBattler) -> String:
 static func type_immunity_reaction(defender: BattleBattler, move: MoveData) -> String:
 	if move == null or move.category == MoveStruct.DamageCategory.STATUS:
 		return ""
-
-	match get_id(defender):
-		AbilityId.Id.LEVITATE:
-			if move.type == PokemonData.Type.TYPE_GROUND and not move.damages_airborne:
-				return "immune"
-		AbilityId.Id.VOLT_ABSORB:
-			if move.type == PokemonData.Type.TYPE_ELECTRIC:
-				return "heal"
-		AbilityId.Id.WATER_ABSORB, AbilityId.Id.DRY_SKIN:
-			if move.type == PokemonData.Type.TYPE_WATER:
-				return "heal"
-		AbilityId.Id.STORM_DRAIN:
-			if move.type == PokemonData.Type.TYPE_WATER:
-				return "spatk_up"
-		AbilityId.Id.LIGHTNING_ROD:
-			if move.type == PokemonData.Type.TYPE_ELECTRIC:
-				return "spatk_up"
-		AbilityId.Id.MOTOR_DRIVE:
-			if move.type == PokemonData.Type.TYPE_ELECTRIC:
-				return "spe_up"
-		AbilityId.Id.SAP_SIPPER:
-			if move.type == PokemonData.Type.TYPE_GRASS:
-				return "atk_up"
-		AbilityId.Id.FLASH_FIRE:
-			if move.type == PokemonData.Type.TYPE_FIRE:
-				return "flash_fire"
-		AbilityId.Id.WELL_BAKED_BODY:
-			if move.type == PokemonData.Type.TYPE_FIRE:
-				return "def_up"
-		AbilityId.Id.EARTH_EATER:
-			if move.type == PokemonData.Type.TYPE_GROUND:
-				return "heal"
-		AbilityId.Id.SOUNDPROOF:
-			if move.sound_move:
-				return "immune"
-		AbilityId.Id.BULLETPROOF:
-			if move.ballistic_move:
-				return "immune"
-		AbilityId.Id.WIND_RIDER:
-			if move.wind_move:
-				return "atk_up"
-	return ""
+	var ctx: EffectContext = EffectContext.new(defender, null, move, null)
+	AbilitySystem.query("on_immunity", ctx)
+	return ctx.immunity_reaction
 
 
 static func blocks_unless_super_effective(defender: BattleBattler) -> bool:
-	return has(defender, AbilityId.Id.WONDER_GUARD)
+	var ctx: EffectContext = EffectContext.new(defender, null, null, null)
+	return AbilitySystem.query_bool("on_wonder_guard", ctx)
 
 
-## ─── Multiplicadores de daño ────────────────────────────
 static func attack_stat_multiplier(attacker: BattleBattler, category: MoveStruct.DamageCategory) -> float:
 	if attacker == null or attacker.pokemon == null:
 		return 1.0
-	var id: AbilityId.Id = get_id(attacker)
-	var hp_ratio: float = 1.0
-	if attacker.pokemon.max_hp > 0:
-		hp_ratio = float(attacker.pokemon.current_hp) / float(attacker.pokemon.max_hp)
-	if id == AbilityId.Id.DEFEATIST and hp_ratio <= 0.5:
-		return 0.5
-	if category == MoveStruct.DamageCategory.PHYSICAL:
-		match id:
-			AbilityId.Id.HUGE_POWER, AbilityId.Id.PURE_POWER:
-				return 2.0
-			AbilityId.Id.HUSTLE, AbilityId.Id.GORILLA_TACTICS:
-				return 1.5
-			AbilityId.Id.GUTS:
-				if attacker.pokemon.has_status():
-					return 1.5
-			AbilityId.Id.TOXIC_BOOST:
-				if attacker.pokemon.status == PokemonInstance.Status.POISON \
-						or attacker.pokemon.status == PokemonInstance.Status.TOXIC:
-					return 1.5
-	else:
-		match id:
-			AbilityId.Id.FLARE_BOOST:
-				if attacker.pokemon.status == PokemonInstance.Status.BURN:
-					return 1.5
-			AbilityId.Id.SOLAR_POWER:
-				return 1.0  # el sol se aplica en power_multiplier / manager
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	ctx.move_category = int(category)
+	return AbilitySystem.query_float("on_attack_stat", ctx, 1.0)
 
 
 static func power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
 	if move == null or attacker == null or attacker.pokemon == null:
 		return 1.0
-
-	var id: AbilityId.Id = get_id(attacker)
-	var mult: float = 1.0
-
-	if id == AbilityId.Id.FLASH_FIRE and attacker.flash_fire_boosted \
-			and move.type == PokemonData.Type.TYPE_FIRE:
-		mult *= 1.5
-
-	var low_hp: bool = attacker.pokemon.max_hp > 0 \
-		and float(attacker.pokemon.current_hp) / float(attacker.pokemon.max_hp) <= 1.0 / 3.0
-	if low_hp:
-		match id:
-			AbilityId.Id.BLAZE:
-				if move.type == PokemonData.Type.TYPE_FIRE:
-					mult *= 1.5
-			AbilityId.Id.TORRENT:
-				if move.type == PokemonData.Type.TYPE_WATER:
-					mult *= 1.5
-			AbilityId.Id.OVERGROW:
-				if move.type == PokemonData.Type.TYPE_GRASS:
-					mult *= 1.5
-			AbilityId.Id.SWARM:
-				if move.type == PokemonData.Type.TYPE_BUG:
-					mult *= 1.5
-
-	match id:
-		AbilityId.Id.IRON_FIST:
-			if move.punching_move:
-				mult *= 1.2
-		AbilityId.Id.STRONG_JAW:
-			if move.biting_move:
-				mult *= 1.5
-		AbilityId.Id.MEGA_LAUNCHER:
-			if move.pulse_move:
-				mult *= 1.5
-		AbilityId.Id.SHARPNESS:
-			if move.slicing_move:
-				mult *= 1.5
-		AbilityId.Id.TOUGH_CLAWS:
-			if move.makes_contact:
-				mult *= 1.3
-		AbilityId.Id.RECKLESS:
-			if move.recoil_percent > 0:
-				mult *= 1.2
-		AbilityId.Id.STEELWORKER, AbilityId.Id.STEELY_SPIRIT:
-			if move.type == PokemonData.Type.TYPE_STEEL:
-				mult *= 1.5
-		AbilityId.Id.ROCKY_PAYLOAD:
-			if move.type == PokemonData.Type.TYPE_ROCK:
-				mult *= 1.5
-		AbilityId.Id.DRAGONS_MAW:
-			if move.type == PokemonData.Type.TYPE_DRAGON:
-				mult *= 1.5
-		AbilityId.Id.TRANSISTOR:
-			if move.type == PokemonData.Type.TYPE_ELECTRIC:
-				mult *= 1.3
-		AbilityId.Id.PUNK_ROCK:
-			if move.sound_move:
-				mult *= 1.3
-		AbilityId.Id.WATER_BUBBLE:
-			if move.type == PokemonData.Type.TYPE_WATER:
-				mult *= 2.0
-		AbilityId.Id.SHEER_FORCE:
-			if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE \
-					or move.secondary_chance > 0:
-				mult *= 1.3
+	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	ctx.multiplier = 1.0
 	if attacker.charged:
-		mult *= 2.0
-	return mult
+		ctx.multiplier *= 2.0
+	AbilitySystem.query("on_power", ctx)
+	return ctx.multiplier
 
 
 static func damage_taken_multiplier(defender: BattleBattler, move: MoveData, effectiveness: float) -> float:
 	if move == null:
 		return 1.0
-	var mult: float = 1.0
-	match get_id(defender):
-		AbilityId.Id.THICK_FAT:
-			if move.type == PokemonData.Type.TYPE_FIRE or move.type == PokemonData.Type.TYPE_ICE:
-				mult *= 0.5
-		AbilityId.Id.SOLID_ROCK, AbilityId.Id.FILTER, AbilityId.Id.PRISM_ARMOR:
-			if effectiveness > 1.0:
-				mult *= 0.75
-		AbilityId.Id.MULTISCALE, AbilityId.Id.SHADOW_SHIELD:
-			if defender.pokemon != null and defender.pokemon.current_hp == defender.pokemon.max_hp:
-				mult *= 0.5
-		AbilityId.Id.HEATPROOF:
-			if move.type == PokemonData.Type.TYPE_FIRE:
-				mult *= 0.5
-		AbilityId.Id.FUR_COAT:
-			if move.category == MoveStruct.DamageCategory.PHYSICAL:
-				mult *= 0.5
-		AbilityId.Id.FLUFFY:
-			if move.makes_contact:
-				mult *= 0.5
-			if move.type == PokemonData.Type.TYPE_FIRE:
-				mult *= 2.0
-		AbilityId.Id.ICE_SCALES:
-			if move.category == MoveStruct.DamageCategory.SPECIAL:
-				mult *= 0.5
-		AbilityId.Id.WATER_BUBBLE:
-			if move.type == PokemonData.Type.TYPE_FIRE:
-				mult *= 0.5
-		AbilityId.Id.PUNK_ROCK:
-			if move.sound_move:
-				mult *= 0.5
-	return mult
+	var ctx: EffectContext = EffectContext.new(defender, null, move, null)
+	ctx.effectiveness = effectiveness
+	return AbilitySystem.query_float("on_damage_taken", ctx, 1.0)
 
 
-## ─── Sturdy ─────────────────────────────────────────────
 static func should_survive_with_sturdy(defender: BattleBattler, incoming_damage: int) -> bool:
-	if not has(defender, AbilityId.Id.STURDY):
+	if defender == null or defender.pokemon == null:
 		return false
-	if defender.pokemon == null:
+	if defender.pokemon.current_hp != defender.pokemon.max_hp:
 		return false
-	return defender.pokemon.current_hp == defender.pokemon.max_hp \
-		and incoming_damage >= defender.pokemon.current_hp
+	if incoming_damage < defender.pokemon.current_hp:
+		return false
+	var ctx: EffectContext = EffectContext.new(defender, null, null, null)
+	return AbilitySystem.query_bool("on_sturdy", ctx)
 
 
-## ─── Inmunidades a estados / confusión / retroceso ──────
 static func blocks_status(battler: BattleBattler, status: PokemonInstance.Status, weather: int = -1) -> bool:
-	var id: AbilityId.Id = get_id(battler)
 	if shields_down_blocks_status(battler):
 		return true
-	if id == AbilityId.Id.COMATOSE or id == AbilityId.Id.PURIFYING_SALT:
-		return true
-	if id == AbilityId.Id.LEAF_GUARD and weather == WeatherId.WEATHER_DROUGHT:
-		return true
-	if id == AbilityId.Id.SWEET_VEIL and status == PokemonInstance.Status.SLEEP:
-		return true
-	if id == AbilityId.Id.PASTEL_VEIL and (status == PokemonInstance.Status.POISON or status == PokemonInstance.Status.TOXIC):
-		return true
-	match status:
-		PokemonInstance.Status.SLEEP:
-			return id == AbilityId.Id.INSOMNIA or id == AbilityId.Id.VITAL_SPIRIT
-		PokemonInstance.Status.POISON, PokemonInstance.Status.TOXIC:
-			return id == AbilityId.Id.IMMUNITY or id == AbilityId.Id.PASTEL_VEIL
-		PokemonInstance.Status.BURN:
-			return id == AbilityId.Id.WATER_VEIL or id == AbilityId.Id.WATER_BUBBLE or id == AbilityId.Id.THERMAL_EXCHANGE
-		PokemonInstance.Status.PARALYSIS:
-			return id == AbilityId.Id.LIMBER
-		PokemonInstance.Status.FREEZE:
-			return id == AbilityId.Id.MAGMA_ARMOR
-	return false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.query_status = int(status)
+	return AbilitySystem.query_bool("on_blocks_status", ctx)
 
 
 static func blocks_confusion(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.OWN_TEMPO)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_confusion", ctx)
 
 
 static func blocks_flinch(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.INNER_FOCUS)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_flinch", ctx)
 
 
 static func blocks_critical(defender: BattleBattler) -> bool:
-	var id: AbilityId.Id = get_id(defender)
-	return id == AbilityId.Id.BATTLE_ARMOR or id == AbilityId.Id.SHELL_ARMOR
+	var ctx: EffectContext = EffectContext.new(defender, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_critical", ctx)
 
 
 static func blocks_recoil(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.ROCK_HEAD)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_recoil", ctx)
 
 
 static func victory_star_active(battler: BattleBattler, battle: BattleManager = null) -> bool:
@@ -344,8 +174,8 @@ static func on_contact_hit(
 	ctx2.attacker = attacker
 	ctx2.is_contact = true
 	await AbilitySystem.on_event("on_hit", ctx2)
-	# Cute Charm (género / atracción) — lógica en try_cute_charm; también puede ser .txt
 	await try_cute_charm(defender, attacker, move, battle)
+	await try_perish_body(defender, attacker, move, battle)
 
 
 static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
@@ -392,19 +222,9 @@ static func is_immune_to_weather_damage(battler: BattleBattler, weather: int) ->
 
 ## ─── Bloqueo de bajadas de stat del rival ───────────────
 static func blocks_foe_stat_drop(battler: BattleBattler, stat: PokemonInstance.Stat) -> bool:
-	var id: AbilityId.Id = get_id(battler)
-	if id == AbilityId.Id.CLEAR_BODY or id == AbilityId.Id.WHITE_SMOKE or id == AbilityId.Id.FULL_METAL_BODY:
-		return true
-	if id == AbilityId.Id.HYPER_CUTTER and stat == PokemonInstance.Stat.ATTACK:
-		return true
-	if id == AbilityId.Id.BIG_PECKS and stat == PokemonInstance.Stat.DEFENSE:
-		return true
-	if id == AbilityId.Id.FLOWER_VEIL:
-		var t1: PokemonData.Type = battler.get_battle_type_1()
-		var t2: PokemonData.Type = battler.get_battle_type_2()
-		if t1 == PokemonData.Type.TYPE_GRASS or t2 == PokemonData.Type.TYPE_GRASS:
-			return true
-	return false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.query_int = int(stat)
+	return AbilitySystem.query_bool("on_blocks_stat_drop", ctx)
 
 
 static func blocks_foe_accuracy_drop(battler: BattleBattler) -> bool:
@@ -424,30 +244,33 @@ static func adjust_own_stage_change(battler: BattleBattler, amount: int) -> int:
 
 ## ─── Multiplicadores ofensivos ──────────────────────────
 static func technician_multiplier(attacker: BattleBattler, move: MoveData) -> float:
-	if move != null and has(attacker, AbilityId.Id.TECHNICIAN) and move.power > 0 and move.power <= 60:
-		return 1.5
+	# Technician vive en on_power del .txt; este helper queda en 1.0 para no duplicar.
 	return 1.0
 
 
 static func stab_multiplier(attacker: BattleBattler) -> float:
-	return 2.0 if has(attacker, AbilityId.Id.ADAPTABILITY) else 1.5
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	ctx.multiplier = 1.5
+	AbilitySystem.query("on_stab", ctx)
+	return ctx.multiplier
 
 
 static func always_max_hits(attacker: BattleBattler) -> bool:
-	return has(attacker, AbilityId.Id.SKILL_LINK)
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	return AbilitySystem.query_bool("on_always_max_hits", ctx)
 
 
 static func attacker_damage_multiplier(attacker: BattleBattler, effectiveness: float, _is_critical: bool) -> float:
-	var mult: float = 1.0
-	if has(attacker, AbilityId.Id.TINTED_LENS) and effectiveness > 0.0 and effectiveness < 1.0:
-		mult *= 2.0
-	if has(attacker, AbilityId.Id.NEUROFORCE) and effectiveness > 1.0:
-		mult *= 1.25
-	return mult
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	ctx.effectiveness = effectiveness
+	return AbilitySystem.query_float("on_attacker_damage", ctx, 1.0)
 
 
 static func crit_damage_multiplier(attacker: BattleBattler) -> float:
-	return 2.25 if has(attacker, AbilityId.Id.SNIPER) else 1.5
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	ctx.multiplier = 1.5
+	AbilitySystem.query("on_crit", ctx)
+	return ctx.multiplier
 
 
 static func rivalry_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
@@ -461,8 +284,8 @@ static func rivalry_multiplier(attacker: BattleBattler, defender: BattleBattler)
 
 
 static func ignores_defender_ability(attacker: BattleBattler) -> bool:
-	var id: AbilityId.Id = get_id(attacker)
-	return id == AbilityId.Id.MOLD_BREAKER or id == AbilityId.Id.TERAVOLT or id == AbilityId.Id.TURBOBLAZE
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	return AbilitySystem.query_bool("on_ignores_ability", ctx)
 
 
 static func bypasses_ghost_immunity(attacker: BattleBattler, move: MoveData) -> bool:
@@ -476,7 +299,9 @@ static func bypasses_ghost_immunity(attacker: BattleBattler, move: MoveData) -> 
 
 
 static func blocks_indirect_damage(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.MAGIC_GUARD)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_indirect", ctx)
+
 
 static func _is_traceable(id: AbilityId.Id) -> bool:
 	match id:
@@ -493,26 +318,12 @@ static func _is_traceable(id: AbilityId.Id) -> bool:
 static func speed_multiplier(battler: BattleBattler, weather: int, terrain: int = -1) -> float:
 	if battler == null:
 		return 1.0
-	match get_id(battler):
-		AbilityId.Id.CHLOROPHYLL:
-			if weather == WeatherId.WEATHER_DROUGHT:
-				return 2.0
-		AbilityId.Id.SWIFT_SWIM:
-			if weather == WeatherId.WEATHER_RAIN:
-				return 2.0
-		AbilityId.Id.SAND_RUSH:
-			if weather == WeatherId.WEATHER_SANDSTORM:
-				return 2.0
-		AbilityId.Id.SLUSH_RUSH:
-			if weather == WeatherId.WEATHER_SNOW:
-				return 2.0
-		AbilityId.Id.SURGE_SURFER:
-			if terrain == BattleManager.TerrainId.TERRAIN_ELECTRIC:
-				return 2.0
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.weather = weather
+	ctx.terrain = terrain
+	return AbilitySystem.query_float("on_speed", ctx, 1.0)
 
 
-## Tras recibir daño de un movimiento (no status)
 static func on_damaged_by_move(
 	defender: BattleBattler,
 	attacker: BattleBattler,
@@ -522,115 +333,14 @@ static func on_damaged_by_move(
 ) -> void:
 	if defender == null or defender.is_fainted() or move == null or battle == null:
 		return
-
-	match get_id(defender):
-		AbilityId.Id.WEAK_ARMOR:
-			if move.category == MoveStruct.DamageCategory.PHYSICAL:
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.DEFENSE, -1)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.SPEED, 1)
-
-		AbilityId.Id.JUSTIFIED:
-			if move.type == PokemonData.Type.TYPE_DARK:
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.ATTACK, 1)
-
-		AbilityId.Id.RATTLED:
-			if move.type == PokemonData.Type.TYPE_DARK \
-					or move.type == PokemonData.Type.TYPE_BUG \
-					or move.type == PokemonData.Type.TYPE_GHOST:
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.SPEED, 1)
-
-		AbilityId.Id.STAMINA:
-			await battle.ability_announce(defender)
-			await battle.ability_change_stat(defender, PokemonInstance.Stat.DEFENSE, 1)
-
-		AbilityId.Id.ANGER_POINT:
-			if was_critical:
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.ATTACK, 12)
-
-		AbilityId.Id.STEAM_ENGINE:
-			if move.type == PokemonData.Type.TYPE_FIRE or move.type == PokemonData.Type.TYPE_WATER:
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.SPEED, 6)
-
-		AbilityId.Id.WATER_COMPACTION:
-			if move.type == PokemonData.Type.TYPE_WATER:
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.DEFENSE, 2)
-
-		AbilityId.Id.THERMAL_EXCHANGE:
-			if move.type == PokemonData.Type.TYPE_FIRE:
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(defender, PokemonInstance.Stat.ATTACK, 1)
-
-		AbilityId.Id.COTTON_DOWN:
-			if attacker != null and not attacker.is_fainted():
-				await battle.ability_announce(defender)
-				await battle.ability_change_stat(attacker, PokemonInstance.Stat.SPEED, -1, true)
-
-		AbilityId.Id.SAND_SPIT:
-			await battle.ability_announce(defender)
-			battle.set_weather(WeatherId.WEATHER_SANDSTORM, 5)
-
-		AbilityId.Id.SEED_SOWER:
-			await battle.ability_announce(defender)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_GRASSY, 5)
-
-		AbilityId.Id.BERSERK:
-			if defender.pokemon != null and defender.pokemon.max_hp > 0:
-				var ratio: float = float(defender.pokemon.current_hp) / float(defender.pokemon.max_hp)
-				if ratio <= 0.5:
-					await battle.ability_announce(defender)
-					await battle.ability_change_stat(defender, PokemonInstance.Stat.SP_ATTACK, 1)
-
-		AbilityId.Id.ANGER_SHELL:
-			if defender.pokemon != null and defender.pokemon.max_hp > 0:
-				var ratio2: float = float(defender.pokemon.current_hp) / float(defender.pokemon.max_hp)
-				if ratio2 <= 0.5:
-					await battle.ability_announce(defender)
-					await battle.ability_change_stat(defender, PokemonInstance.Stat.ATTACK, 1)
-					await battle.ability_change_stat(defender, PokemonInstance.Stat.SP_ATTACK, 1)
-					await battle.ability_change_stat(defender, PokemonInstance.Stat.SPEED, 1)
-					await battle.ability_change_stat(defender, PokemonInstance.Stat.DEFENSE, -1)
-					await battle.ability_change_stat(defender, PokemonInstance.Stat.SP_DEFENSE, -1)
-
-		AbilityId.Id.TOXIC_DEBRIS:
-			if move.category == MoveStruct.DamageCategory.PHYSICAL:
-				await battle.ability_announce(defender)
-				var foe_side: FieldSide = battle.enemy_side if defender.is_player_side else battle.player_side
-				foe_side.toxic_spikes_layers = mini(2, foe_side.toxic_spikes_layers + 1)
-				battle.message.emit("¡Se esparcieron Púas Tóxicas!")
-				await battle._wait(0.5)
-
-		AbilityId.Id.COLOR_CHANGE:
-			var mt: PokemonData.Type = effective_move_type(attacker, move)
-			if mt != PokemonData.Type.TYPE_NONE:
-				defender.set_battle_types(mt)
-				await battle.ability_announce(defender)
-				battle.message.emit("¡%s cambió de tipo!" % defender.get_display_name())
-				await battle._wait(0.5)
-
-		AbilityId.Id.ELECTROMORPHOSIS:
-			await battle.ability_announce(defender)
-			defender.charged = true
-			battle.message.emit("¡%s se cargó de electricidad!" % defender.get_display_name())
-			await battle._wait(0.5)
-
-		AbilityId.Id.WIND_POWER:
-			if move.wind_move:
-				await battle.ability_announce(defender)
-				defender.charged = true
-				battle.message.emit("¡%s se cargó de electricidad!" % defender.get_display_name())
-				await battle._wait(0.5)
-
-		AbilityId.Id.CURSED_BODY:
-			await try_cursed_body(defender, attacker, move, battle)
+	var ctx: EffectContext = EffectContext.new(defender, attacker, move, battle)
+	ctx.attacker = attacker
+	ctx.was_critical = was_critical
+	ctx.is_contact = move.makes_contact
+	await AbilitySystem.on_event("on_damaged", ctx)
+	await try_cursed_body(defender, attacker, move, battle)
 
 
-## Illusion: disfraza con el último Pokémon no debilitado del mismo equipo.
 static func _setup_illusion(battler: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or battler.pokemon == null or battle == null:
 		return
@@ -839,22 +549,8 @@ static func _apply_mimicry(battler: BattleBattler, battle: BattleManager) -> voi
 static func priority_bonus(battler: BattleBattler, move: MoveData) -> int:
 	if battler == null or move == null:
 		return 0
-	match get_id(battler):
-		AbilityId.Id.PRANKSTER:
-			if move.category == MoveStruct.DamageCategory.STATUS:
-				return 1
-		AbilityId.Id.GALE_WINGS:
-			if move.type == PokemonData.Type.TYPE_FLYING \
-					and battler.pokemon != null \
-					and battler.pokemon.current_hp == battler.pokemon.max_hp:
-				return 1
-		AbilityId.Id.TRIAGE:
-			if move.healing_move:
-				return 3
-		AbilityId.Id.MYCELIUM_MIGHT:
-			if move.category == MoveStruct.DamageCategory.STATUS:
-				return -7
-	return 0
+	var ctx: EffectContext = EffectContext.new(battler, null, move, null)
+	return AbilitySystem.query_int("on_priority", ctx, 0)
 
 
 static func blocks_priority_move(defender: BattleBattler, move: MoveData) -> bool:
@@ -862,9 +558,8 @@ static func blocks_priority_move(defender: BattleBattler, move: MoveData) -> boo
 		return false
 	if move.priority <= 0:
 		return false
-	var id: AbilityId.Id = get_id(defender)
-	return id == AbilityId.Id.DAZZLING or id == AbilityId.Id.QUEENLY_MAJESTY \
-		or id == AbilityId.Id.ARMOR_TAIL
+	var ctx: EffectContext = EffectContext.new(defender, null, move, null)
+	return AbilitySystem.query_bool("on_blocks_priority", ctx)
 
 
 static func blocks_status_move(defender: BattleBattler, move: MoveData) -> bool:
@@ -872,7 +567,8 @@ static func blocks_status_move(defender: BattleBattler, move: MoveData) -> bool:
 		return false
 	if move.category != MoveStruct.DamageCategory.STATUS:
 		return false
-	return has(defender, AbilityId.Id.GOOD_AS_GOLD) or has(defender, AbilityId.Id.MAGIC_BOUNCE)
+	var ctx: EffectContext = EffectContext.new(defender, null, move, null)
+	return AbilitySystem.query_bool("on_blocks_status_move", ctx)
 
 
 static func effective_move_type(attacker: BattleBattler, move: MoveData) -> PokemonData.Type:
@@ -881,42 +577,17 @@ static func effective_move_type(attacker: BattleBattler, move: MoveData) -> Poke
 	var t: PokemonData.Type = move.type
 	if attacker == null:
 		return t
-	match get_id(attacker):
-		AbilityId.Id.NORMALIZE:
-			return PokemonData.Type.TYPE_NORMAL
-		AbilityId.Id.PIXILATE:
-			if t == PokemonData.Type.TYPE_NORMAL:
-				return PokemonData.Type.TYPE_FAIRY
-		AbilityId.Id.REFRIGERATE:
-			if t == PokemonData.Type.TYPE_NORMAL:
-				return PokemonData.Type.TYPE_ICE
-		AbilityId.Id.AERILATE:
-			if t == PokemonData.Type.TYPE_NORMAL:
-				return PokemonData.Type.TYPE_FLYING
-		AbilityId.Id.GALVANIZE:
-			if t == PokemonData.Type.TYPE_NORMAL:
-				return PokemonData.Type.TYPE_ELECTRIC
-		AbilityId.Id.LIQUID_VOICE:
-			if move.sound_move:
-				return PokemonData.Type.TYPE_WATER
-		AbilityId.Id.DRAGONIZE:
-			if t == PokemonData.Type.TYPE_NORMAL:
-				return PokemonData.Type.TYPE_DRAGON
-		AbilityId.Id.EELEVATE:
-			if t == PokemonData.Type.TYPE_NORMAL:
-				return PokemonData.Type.TYPE_FLYING
-	return t
+	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	ctx.query_int = int(t)
+	AbilitySystem.query("on_move_type", ctx)
+	return ctx.query_int as PokemonData.Type
 
 
 static func type_change_power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
-	if move == null or move.type != PokemonData.Type.TYPE_NORMAL:
+	if move == null:
 		return 1.0
-	match get_id(attacker):
-		AbilityId.Id.PIXILATE, AbilityId.Id.REFRIGERATE, \
-		AbilityId.Id.AERILATE, AbilityId.Id.GALVANIZE, AbilityId.Id.NORMALIZE, \
-		AbilityId.Id.DRAGONIZE, AbilityId.Id.EELEVATE:
-			return 1.2
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	return AbilitySystem.query_float("on_type_power", ctx, 1.0)
 
 
 static func aura_multiplier(_attacker: BattleBattler, _defender: BattleBattler, move_type: PokemonData.Type, battle: BattleManager) -> float:

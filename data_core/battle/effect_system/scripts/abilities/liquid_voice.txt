@@ -1,0 +1,5 @@
+on_move_type:
+  if move_flag sound_move
+    set_move_type WATER
+  endif
+

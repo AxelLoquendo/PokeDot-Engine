@@ -1,0 +1,10 @@
+on_immunity:
+  immunity flash_fire FIRE
+
+on_power:
+  if flash_fire_boosted
+    if move_type FIRE
+      multiply 1.5
+    endif
+  endif
+

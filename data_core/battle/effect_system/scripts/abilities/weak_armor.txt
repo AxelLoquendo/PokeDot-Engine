@@ -1,0 +1,7 @@
+on_damaged:
+  if category PHYSICAL
+    announce
+    lower_stat DEF 1 target=user
+    raise_stat SPEED 1 target=user
+  endif
+

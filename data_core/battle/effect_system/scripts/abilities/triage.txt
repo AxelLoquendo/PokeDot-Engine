@@ -1,0 +1,5 @@
+on_priority:
+  if move_flag healing_move
+    priority 3
+  endif
+

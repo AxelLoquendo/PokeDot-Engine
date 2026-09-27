@@ -1,0 +1,7 @@
+on_attack_stat:
+  if category SPECIAL
+    if has_status BURN
+      multiply 1.5
+    endif
+  endif
+

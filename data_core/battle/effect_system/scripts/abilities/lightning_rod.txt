@@ -1,0 +1,3 @@
+on_immunity:
+  immunity spatk_up ELECTRIC
+

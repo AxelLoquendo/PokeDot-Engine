@@ -1,0 +1,5 @@
+on_damage_taken:
+  if move_type FIRE ICE
+    multiply 0.5
+  endif
+

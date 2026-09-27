@@ -31,6 +31,46 @@ static func on_event(event_name: String, ctx: EffectContext) -> void:
 	await EffectRunner.run_block(script.get_block(event_name), ctx)
 
 
+## Consulta síncrona (inmunidad, multiplicadores, flags).
+static func query(event_name: String, ctx: EffectContext) -> void:
+	if ctx == null or ctx.user == null:
+		return
+	var ability_id: AbilityId.Id = _get_ability_id(ctx.user)
+	if ability_id == AbilityId.Id.NONE:
+		return
+	var script: EffectScript = _get_script(ability_id)
+	if script == null or not script.has_block(event_name):
+		return
+	ctx.source_type = EffectContext.SourceType.ABILITY
+	ctx.source_name = str(ability_id)
+	EffectRunner.run_block_sync(script.get_block(event_name), ctx)
+
+
+static func query_float(event_name: String, ctx: EffectContext, default_value: float = 1.0) -> float:
+	ctx.multiplier = default_value
+	query(event_name, ctx)
+	return ctx.multiplier
+
+
+static func query_bool(event_name: String, ctx: EffectContext) -> bool:
+	ctx.query_bool = false
+	ctx.blocked = false
+	query(event_name, ctx)
+	return ctx.query_bool or ctx.blocked
+
+
+static func query_string(event_name: String, ctx: EffectContext) -> String:
+	ctx.immunity_reaction = ""
+	query(event_name, ctx)
+	return ctx.immunity_reaction
+
+
+static func query_int(event_name: String, ctx: EffectContext, default_value: int = 0) -> int:
+	ctx.query_int = default_value
+	query(event_name, ctx)
+	return ctx.query_int
+
+
 static func _get_script(id: AbilityId.Id) -> EffectScript:
 	if _cache.has(id):
 		return _cache[id] as EffectScript

@@ -1,0 +1,5 @@
+on_power:
+  if move_power <= 60
+    multiply 1.5
+  endif
+

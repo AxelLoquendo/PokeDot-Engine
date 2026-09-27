@@ -1,0 +1,6 @@
+on_damaged:
+  if move_type FIRE WATER
+    announce
+    raise_stat SPEED 6 target=user
+  endif
+

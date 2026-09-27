@@ -1,0 +1,5 @@
+on_power:
+  if move_type STEEL
+    multiply 1.5
+  endif
+

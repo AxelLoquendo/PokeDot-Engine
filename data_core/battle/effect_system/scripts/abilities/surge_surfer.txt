@@ -1,0 +1,5 @@
+on_speed:
+  if terrain ELECTRIC
+    multiply 2.0
+  endif
+

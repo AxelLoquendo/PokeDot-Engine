@@ -1,0 +1,3 @@
+on_crit:
+  multiply 2.25
+

@@ -1,0 +1,9 @@
+on_blocks_status:
+  block_status BURN
+
+on_damaged:
+  if move_type FIRE
+    announce
+    raise_stat ATK 1 target=user
+  endif
+

@@ -1,0 +1,3 @@
+on_immunity:
+  immunity def_up FIRE
+

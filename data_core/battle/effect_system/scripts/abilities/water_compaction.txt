@@ -1,0 +1,6 @@
+on_damaged:
+  if move_type WATER
+    announce
+    raise_stat DEF 2 target=user
+  endif
+

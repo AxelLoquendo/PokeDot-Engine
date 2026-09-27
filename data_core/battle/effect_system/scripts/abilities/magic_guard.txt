@@ -1,0 +1,3 @@
+on_blocks_indirect:
+  block
+

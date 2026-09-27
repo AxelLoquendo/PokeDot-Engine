@@ -1,0 +1,6 @@
+on_damaged:
+  if move_type DARK BUG GHOST
+    announce
+    raise_stat SPEED 1 target=user
+  endif
+

@@ -1,0 +1,12 @@
+on_power:
+  if weather SAND
+    if move_type ROCK GROUND STEEL
+      multiply 1.3
+    endif
+  endif
+
+on_weather_immunity:
+  if weather SAND
+    block
+  endif
+

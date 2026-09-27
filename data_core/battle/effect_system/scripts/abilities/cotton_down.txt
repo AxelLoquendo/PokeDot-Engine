@@ -1,0 +1,4 @@
+on_damaged:
+  announce
+  lower_stat SPEED 1 target=attacker caused_by_foe
+

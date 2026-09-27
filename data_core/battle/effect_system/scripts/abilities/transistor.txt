@@ -1,0 +1,5 @@
+on_power:
+  if move_type ELECTRIC
+    multiply 1.3
+  endif
+

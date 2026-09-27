@@ -1,0 +1,5 @@
+on_priority:
+  if category STATUS
+    priority 1
+  endif
+

@@ -1,0 +1,10 @@
+on_speed:
+  if weather SAND
+    multiply 2.0
+  endif
+
+on_weather_immunity:
+  if weather SAND
+    block
+  endif
+

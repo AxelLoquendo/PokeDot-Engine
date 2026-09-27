@@ -1,0 +1,3 @@
+on_blocks_stat_drop:
+  block
+

@@ -1,0 +1,8 @@
+on_damage_taken:
+  if move_flag makes_contact
+    multiply 0.5
+  endif
+  if move_type FIRE
+    multiply 2.0
+  endif
+

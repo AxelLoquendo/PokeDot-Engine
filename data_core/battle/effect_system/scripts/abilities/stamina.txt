@@ -1,0 +1,4 @@
+on_damaged:
+  announce
+  raise_stat DEF 1 target=user
+

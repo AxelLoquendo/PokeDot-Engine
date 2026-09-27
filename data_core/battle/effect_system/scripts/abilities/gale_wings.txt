@@ -1,0 +1,7 @@
+on_priority:
+  if move_type FLYING
+    if hp_full
+      priority 1
+    endif
+  endif
+

@@ -1,0 +1,5 @@
+on_weather_immunity:
+  if weather SAND
+    block
+  endif
+

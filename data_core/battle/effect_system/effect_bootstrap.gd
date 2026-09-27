@@ -35,6 +35,17 @@ static func register_all() -> void:
 	EffectParser.register_command("set_ability", _c_set_ability)
 	EffectParser.register_command("swap_ability", _c_swap_ability)
 	EffectParser.register_command("set_meta", _c_set_meta)
+	EffectParser.register_command("multiply", _c_multiply)
+	EffectParser.register_command("immunity", _c_immunity)
+	EffectParser.register_command("block", _c_block)
+	EffectParser.register_command("block_status", _c_block_status)
+	EffectParser.register_command("set", _c_set)
+	EffectParser.register_command("add", _c_add)
+	EffectParser.register_command("sub", _c_sub)
+	EffectParser.register_command("mul", _c_mul)
+	EffectParser.register_command("div", _c_div)
+	EffectParser.register_command("set_move_type", _c_set_move_type)
+	EffectParser.register_command("priority", _c_priority)
 
 	var specials: Array[String] = [
 		"download_boost", "trace_ability", "frisk", "anticipation", "forewarn",
@@ -99,5 +110,27 @@ static func _c_swap_ability(a: PackedStringArray) -> EffectCommand:
 	return CmdSwapAbility.new(a)
 static func _c_set_meta(a: PackedStringArray) -> EffectCommand:
 	return CmdSetMeta.new(a)
+static func _c_multiply(a: PackedStringArray) -> EffectCommand:
+	return CmdMultiply.new(a)
+static func _c_immunity(a: PackedStringArray) -> EffectCommand:
+	return CmdImmunity.new(a)
+static func _c_block(a: PackedStringArray) -> EffectCommand:
+	return CmdBlock.new(a, "block")
+static func _c_block_status(a: PackedStringArray) -> EffectCommand:
+	return CmdBlock.new(a, "block_status")
+static func _c_set(a: PackedStringArray) -> EffectCommand:
+	return CmdArith.new(a, "set")
+static func _c_add(a: PackedStringArray) -> EffectCommand:
+	return CmdArith.new(a, "add")
+static func _c_sub(a: PackedStringArray) -> EffectCommand:
+	return CmdArith.new(a, "sub")
+static func _c_mul(a: PackedStringArray) -> EffectCommand:
+	return CmdArith.new(a, "mul")
+static func _c_div(a: PackedStringArray) -> EffectCommand:
+	return CmdArith.new(a, "div")
+static func _c_set_move_type(a: PackedStringArray) -> EffectCommand:
+	return CmdSetMoveType.new(a)
+static func _c_priority(a: PackedStringArray) -> EffectCommand:
+	return CmdPriority.new(a)
 static func _c_special(sname: String, a: PackedStringArray) -> EffectCommand:
 	return CmdSpecial.new(sname, a)

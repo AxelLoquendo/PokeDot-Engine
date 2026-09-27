@@ -1,0 +1,6 @@
+on_damaged:
+  if move_type DARK
+    announce
+    raise_stat ATK 1 target=user
+  endif
+

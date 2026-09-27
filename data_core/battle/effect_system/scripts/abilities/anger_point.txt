@@ -1,0 +1,6 @@
+on_damaged:
+  if was_critical
+    announce
+    raise_stat ATK 12 target=user
+  endif
+

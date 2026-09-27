@@ -36,6 +36,19 @@ var blocked: bool = false          ## el efecto impidió algo (inmunidad, etc.)
 var modified_damage: int = -1      ## si un comando cambió el daño (-1 = sin cambio)
 var messages: Array[String] = []   ## mensajes a mostrar
 
+## Consultas (inmunidad / multiplicadores / flags)
+var multiplier: float = 1.0
+var immunity_reaction: String = ""
+var query_bool: bool = false
+var query_int: int = 0
+var query_status: int = -1
+var effectiveness: float = 1.0
+var was_critical: bool = false
+var vars: Dictionary = {}
+var weather: int = -1
+var terrain: int = -1
+var move_category: int = -1
+
 func _init(
 	p_user: BattleBattler = null,
 	p_target: BattleBattler = null,

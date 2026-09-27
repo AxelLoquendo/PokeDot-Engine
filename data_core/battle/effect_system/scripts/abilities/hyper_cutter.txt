@@ -1,0 +1,4 @@
+on_blocks_stat_drop:
+  if stat ATK
+    block
+  endif

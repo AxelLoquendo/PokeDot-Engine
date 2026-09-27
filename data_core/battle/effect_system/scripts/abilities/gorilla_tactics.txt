@@ -1,0 +1,5 @@
+on_attack_stat:
+  if category PHYSICAL
+    multiply 1.5
+  endif
+
