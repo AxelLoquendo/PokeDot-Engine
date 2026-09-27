@@ -320,10 +320,14 @@ static func should_skip_turn(battler: BattleBattler) -> bool:
 
 ## ─── Entrada en combate ─────────────────────────────────
 static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
+	var aid: AbilityId.Id = get_id(battler)
+	if AbilitySystem.has_script(aid):
+		print("[AbilityRuntime] script para ", aid, " = ", AbilitySystem.has_script(aid))
+		var ctx: EffectContext = EffectContext.new(battler, opponent, null, battle)
+		await AbilitySystem.on_event("on_switch_in", ctx)
 		return
 
-	match get_id(battler):
+	match aid:
 		AbilityId.Id.INTIMIDATE:
 			# En multi afecta a todos los rivales activos; en singles solo al opponent.
 			var foes: Array[BattleBattler] = []
@@ -592,7 +596,15 @@ static func on_contact_hit(
 	if attacker == null or attacker.is_fainted() or defender == null:
 		return
 
-	match get_id(defender):
+	var aid: AbilityId.Id = get_id(defender)
+	if AbilitySystem.has_script(aid):
+		var ctx: EffectContext = EffectContext.new(defender, attacker, move, battle)
+		ctx.attacker = attacker
+		ctx.is_contact = true
+		await AbilitySystem.on_event("on_hit_by", ctx)
+		return
+
+	match aid:
 		AbilityId.Id.STATIC:
 			if randf() < 0.3:
 				await battle.ability_announce(defender)

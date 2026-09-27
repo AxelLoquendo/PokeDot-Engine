@@ -1,0 +1,7 @@
+# STATIC
+on_hit_by:
+  if is_contact
+    chance 30
+      status PARALYSIS target=attacker
+    endchance
+  endif

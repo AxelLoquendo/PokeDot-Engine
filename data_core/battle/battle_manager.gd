@@ -92,6 +92,7 @@ func start_battle(
 	p_format: BattleFormat = BattleFormat.SINGLE,
 	p_is_wild: bool = false
 ) -> void:
+	EffectBootstrap.register_all()
 	format = p_format
 	player_party = party
 	enemy_party = enemy_trainer_party

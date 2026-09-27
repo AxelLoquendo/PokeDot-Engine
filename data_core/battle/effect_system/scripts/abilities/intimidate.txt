@@ -1,0 +1,4 @@
+# INTIMIDATE
+on_switch_in:
+	announce
+	lower_stat ATK 1 target=opponent caused_by_foe

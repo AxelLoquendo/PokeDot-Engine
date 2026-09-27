@@ -1,0 +1,7 @@
+# FLAME_BODY
+on_hit_by:
+  if is_contact
+    chance 30
+      status BURN target=attacker
+    endchance
+  endif

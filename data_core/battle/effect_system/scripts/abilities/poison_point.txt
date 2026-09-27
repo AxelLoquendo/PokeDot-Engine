@@ -1,0 +1,7 @@
+# POISON_POINT
+on_hit_by:
+  if is_contact
+    chance 30
+      status POISON target=attacker
+    endchance
+  endif
