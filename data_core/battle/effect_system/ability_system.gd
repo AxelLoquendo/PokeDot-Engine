@@ -17,6 +17,12 @@ static func has_script(id: AbilityId.Id) -> bool:
 static func on_event(event_name: String, ctx: EffectContext) -> void:
 	if ctx == null or ctx.user == null:
 		return
+	# Eventos permitidos aunque el dueño esté KO (Rough Skin / Aftermath / on_faint)
+	var allow_if_fainted: bool = event_name in [
+		"on_faint", "on_ko", "on_hit_by", "on_damaged", "on_after_ko"
+	]
+	if ctx.user.is_fainted() and not allow_if_fainted:
+		return
 
 	var ability_id: AbilityId.Id = _get_ability_id(ctx.user)
 	if ability_id == AbilityId.Id.NONE:

@@ -102,7 +102,7 @@ static func on_damaged_by_move(
 
 
 static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
+	if battler == null or battler.pokemon == null or battle == null or battler.is_fainted():
 		return
 	var opp: BattleBattler = null
 	if battle.has_method("get_opponents"):
@@ -1186,4 +1186,3 @@ static func unnerve_active(for_side_battler: BattleBattler, battle: BattleManage
 		if foe != null and not foe.is_fainted() and has(foe, AbilityId.Id.UNNERVE):
 			return true
 	return false
-

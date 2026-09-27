@@ -10,6 +10,10 @@ func _init(p_args: PackedStringArray = []) -> void:
 func execute(ctx: EffectContext) -> bool:
 	if ctx == null or ctx.battle == null:
 		return false
+	# No forzar cambio si el objetivo ya está KO o su party no tiene reservas
+	var tg: BattleBattler = ctx.target
+	if tg != null and tg.is_fainted():
+		return true
 	var who: BattleBattler = ctx.target
 	if who == null and ctx.user != null and ctx.battle.has_method("get_opponents"):
 		var opps: Array = ctx.battle.get_opponents(ctx.user)

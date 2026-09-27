@@ -10,6 +10,8 @@ func execute(ctx: EffectContext) -> bool:
 	if ctx == null or ctx.battle == null:
 		return false
 	var who: BattleBattler = ctx.target
+	if who != null and who.is_fainted():
+		return true
 	for a: String in args:
 		if a.begins_with("target="):
 			match a.substr(7).to_lower():

@@ -7,6 +7,11 @@ func _init(p_name: String = "move_special", p_args: PackedStringArray = []) -> v
 	super._init(p_name, p_args)
 
 
+
+## True si el battler puede recibir efectos (vivo en campo).
+func _alive(b: BattleBattler) -> bool:
+	return b != null and not b.is_fainted() and b.pokemon != null
+
 func execute(ctx: EffectContext) -> bool:
 	if ctx == null:
 		return true
@@ -90,7 +95,7 @@ func execute(ctx: EffectContext) -> bool:
 		"overwrite_ability":
 			await _copy_ability(ctx, false)
 		"gastro_acid":
-			if ctx.target != null:
+			if _alive(ctx.target):
 				ctx.target.ability_active = false
 				if ctx.battle:
 					ctx.battle.message.emit("¡La habilidad de %s fue neutralizada!" % ctx.target.get_display_name())
@@ -110,7 +115,7 @@ func execute(ctx: EffectContext) -> bool:
 		"camouflage":
 			await _camouflage(ctx)
 		"third_type":
-			if ctx.target != null:
+			if _alive(ctx.target):
 				ctx.target.battle_type_2 = int(PokemonData.Type.TYPE_GRASS)
 				if ctx.battle:
 					ctx.battle.message.emit("¡%s ganó el tipo Planta!" % ctx.target.get_display_name())
@@ -154,7 +159,7 @@ func execute(ctx: EffectContext) -> bool:
 		"present":
 			await _present(ctx)
 		"telekinesis":
-			if ctx.target != null:
+			if _alive(ctx.target):
 				ctx.target.magnet_rise_turns = 3
 				if ctx.battle:
 					ctx.battle.message.emit("¡%s fue elevado por telequinesis!" % ctx.target.get_display_name())
@@ -170,13 +175,13 @@ func execute(ctx: EffectContext) -> bool:
 				ctx.battle.message.emit("¡Una lluvia de iones electrificó el campo!")
 				await ctx.battle._wait(0.4)
 		"electrify":
-			if ctx.target != null:
+			if _alive(ctx.target):
 				ctx.target.set_meta("electrify", true)
 				if ctx.battle:
 					ctx.battle.message.emit("¡Los movimientos de %s serán Eléctricos!" % ctx.target.get_display_name())
 					await ctx.battle._wait(0.4)
 		"powder":
-			if ctx.target != null:
+			if _alive(ctx.target):
 				ctx.target.set_meta("powder", true)
 				if ctx.battle:
 					ctx.battle.message.emit("¡%s fue cubierto de polvo!" % ctx.target.get_display_name())
@@ -217,7 +222,8 @@ func execute(ctx: EffectContext) -> bool:
 					ctx.battle.message.emit("¡%s se liberó de las Drenadoras!" % ctx.user.get_display_name())
 					await ctx.battle._wait(0.35)
 		"smack_down":
-			if ctx.target != null:
+			if ctx.target != null and ctx.target.pokemon != null:
+				# Puede aplicarse en el golpe que debilita (quita vuelo residual)
 				ctx.target.magnet_rise_turns = 0
 				ctx.target.semi_invulnerable = false
 				if ctx.battle:
@@ -456,9 +462,7 @@ func _conversion(ctx: EffectContext, from_foe_move: bool) -> void:
 
 
 func _pain_split(ctx: EffectContext) -> void:
-	if ctx == null or ctx.user == null or ctx.target == null:
-		return
-	if ctx.user.pokemon == null or ctx.target.pokemon == null:
+	if ctx == null or not _alive(ctx.user) or not _alive(ctx.target):
 		return
 	var total: int = ctx.user.get_current_hp() + ctx.target.get_current_hp()
 	@warning_ignore("integer_division")
@@ -473,7 +477,7 @@ func _pain_split(ctx: EffectContext) -> void:
 
 
 func _psych_up(ctx: EffectContext) -> void:
-	if ctx == null or ctx.user == null or ctx.target == null:
+	if ctx == null or not _alive(ctx.user) or not _alive(ctx.target):
 		return
 	ctx.user.stage_attack = ctx.target.stage_attack
 	ctx.user.stage_defense = ctx.target.stage_defense
@@ -488,7 +492,7 @@ func _psych_up(ctx: EffectContext) -> void:
 
 
 func _stat_swap(ctx: EffectContext, fields: PackedStringArray) -> void:
-	if ctx == null or ctx.user == null or ctx.target == null:
+	if ctx == null or not _alive(ctx.user) or not _alive(ctx.target):
 		return
 	for f: String in fields:
 		match f:
@@ -539,9 +543,7 @@ func _power_trick(ctx: EffectContext) -> void:
 
 
 func _power_split(ctx: EffectContext) -> void:
-	if ctx == null or ctx.user == null or ctx.target == null:
-		return
-	if ctx.user.pokemon == null or ctx.target.pokemon == null:
+	if ctx == null or not _alive(ctx.user) or not _alive(ctx.target):
 		return
 	var ua: int = ctx.user.get_effective_stat(PokemonInstance.Stat.ATTACK)
 	var ta: int = ctx.target.get_effective_stat(PokemonInstance.Stat.ATTACK)
@@ -565,9 +567,7 @@ func _power_split(ctx: EffectContext) -> void:
 
 
 func _guard_split(ctx: EffectContext) -> void:
-	if ctx == null or ctx.user == null or ctx.target == null:
-		return
-	if ctx.user.pokemon == null or ctx.target.pokemon == null:
+	if ctx == null or not _alive(ctx.user) or not _alive(ctx.target):
 		return
 	var ud: int = ctx.user.get_effective_stat(PokemonInstance.Stat.DEFENSE)
 	var td: int = ctx.target.get_effective_stat(PokemonInstance.Stat.DEFENSE)

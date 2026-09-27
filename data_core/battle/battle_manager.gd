@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name BattleManager
 
@@ -2091,6 +2092,15 @@ func _execute_move(action: BattleAction) -> void:
 				await AbilityRuntime.try_dancer(other, move, actor, self)
 
 	if target.is_fainted():
+		# Auto-efectos del usuario (Abocajarro, Sofoco, V-create…) aunque el rival se debilite
+		if move != null and move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE \
+				and not AbilityRuntime.has(actor, AbilityId.Id.SHEER_FORCE) \
+				and not actor.is_fainted():
+			var chance_ko: int = move.secondary_chance
+			if AbilityRuntime.has(actor, AbilityId.Id.SERENE_GRACE):
+				chance_ko = mini(100, chance_ko * 2)
+			if chance_ko >= 100 or randi_range(1, 100) <= chance_ko:
+				await _apply_secondary_effect(actor, target, move, true)
 		await _trigger_ko_ability(actor, target)
 		if not target.is_player_side:
 			await _award_experience_from(target)
@@ -2479,18 +2489,49 @@ func _resolve_protect_contact(actor: BattleBattler, target: BattleBattler, move:
 		ProtectResolver.Kind.BANEFUL_BUNKER:
 			await _apply_status(actor, PokemonInstance.Status.POISON)
 
-func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: MoveData) -> void:
+func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: MoveData, self_only: bool = false) -> void:
+	if actor == null or actor.is_fainted() or move == null:
+		return
+	var target_down: bool = target == null or target.is_fainted()
+
+	# --- Efectos multi-stat del USUARIO (siempre, incluso tras KO del rival) ---
+	match move.secondary_effect:
+		MoveStruct.SecondaryEffect.MOVE_EFFECT_DEF_SPDEF_DOWN:
+			# Abocajarro: -1 Def / Def. Esp. del usuario
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, -1, false)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, -1, false)
+			return
+		MoveStruct.SecondaryEffect.MOVE_EFFECT_ATK_DEF_DOWN:
+			# Superpower: -1 Atk / Def del usuario
+			await _apply_stat_change(actor, PokemonInstance.Stat.ATTACK, -1, false)
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, -1, false)
+			return
+		MoveStruct.SecondaryEffect.MOVE_EFFECT_V_CREATE:
+			await _apply_stat_change(actor, PokemonInstance.Stat.DEFENSE, -1, false)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SP_DEFENSE, -1, false)
+			await _apply_stat_change(actor, PokemonInstance.Stat.SPEED, -1, false)
+			return
+
+	# Solo auto-efectos: subidas al usuario (p.ej. +1 Atk al golpear) tras KO
+	if self_only or target_down:
+		var se_self: Array = MoveEffectResolver.get_secondary_stat_effect(move.secondary_effect)
+		if not se_self.is_empty() and int(se_self[1]) > 0:
+			await _apply_stat_change(actor, se_self[0], se_self[1], false)
+		return
+
+	# --- Efectos sobre el objetivo vivo ---
 	if AbilityRuntime.has(target, AbilityId.Id.SHIELD_DUST):
 		return
-	# Script on_secondary del movimiento (si existe)
-	if move != null and MoveSystem.has_script(int(move.effect)):
+	if MoveSystem.has_script(int(move.effect)):
 		var sec_ok: bool = await MoveSystem.run_on_secondary(actor, target, move, self)
 		if sec_ok:
 			return
 	var stat_effect: Array = MoveEffectResolver.get_secondary_stat_effect(move.secondary_effect)
 	if not stat_effect.is_empty():
-		var receiver: BattleBattler = actor if stat_effect[1] > 0 else target
-		await _apply_stat_change(receiver, stat_effect[0], stat_effect[1], receiver == target)
+		var stages: int = int(stat_effect[1])
+		var receiver: BattleBattler = actor if stages > 0 else target
+		var by_foe: bool = receiver == target and stages < 0
+		await _apply_stat_change(receiver, stat_effect[0], stages, by_foe)
 		return
 
 	if MoveEffectResolver.is_flinch_effect(move.secondary_effect):
@@ -2518,9 +2559,12 @@ func _apply_secondary_effect(actor: BattleBattler, target: BattleBattler, move: 
 		await _apply_status(target, status_value as PokemonInstance.Status)
 
 
+
 func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move: MoveData) -> void:
+	if actor == null or actor.is_fainted() or move == null:
+		return
 	# Scripts .txt de movimientos (MoveSystem) — si existe on_use, no usa el match legacy
-	if move != null and MoveSystem.has_script(int(move.effect)):
+	if MoveSystem.has_script(int(move.effect)):
 		var handled: bool = await MoveSystem.run_on_use(actor, target, move, self)
 		if handled:
 			return
@@ -4336,22 +4380,44 @@ func _is_locked_on(actor: BattleBattler, target: BattleBattler) -> bool:
 
 
 
-## Pivot voluntario (U-turn / Parting Shot / Baton Pass / Teleport entrenador).
+## True si el bando tiene al menos un Pokémon no debilitado en el party (activo o reserva).
+func party_has_conscious(is_player_side: bool) -> bool:
+	var party: Array[PokemonInstance] = player_party if is_player_side else enemy_party
+	for mon: PokemonInstance in party:
+		if mon != null and not mon.is_fainted():
+			return true
+	return false
+
+
+## Pivot (U-turn / Parting Shot / Baton Pass / Teleport / Viraje).
+## Reglas:
+## - No pivota si el usuario está KO.
+## - No pivota si el bando rival no tiene ningún Pokémon consciente (combate terminado, p.ej. 1v1 KO final).
+## - No pivota si no hay reservas propias.
+## - Mean Look / cannot_escape bloquea (salvo Baton Pass).
+## - Jugador: abre el party menu de inmediato (sin preguntar sí/no).
 func _request_pivot_out(actor: BattleBattler, baton_pass: bool = false) -> void:
 	if actor == null or actor.is_fainted():
 		return
+	# Combate ya decidido: rival sin ningún mon consciente → no pedir cambio
+	if not party_has_conscious(not actor.is_player_side):
+		return
 	if actor.cannot_escape and not baton_pass:
-		# Mean Look bloquea pivot salvo Baton Pass (que es el propio usuario saliendo)
-		pass
+		message.emit("¡%s no puede escapar!" % actor.get_display_name())
+		await _wait(0.5)
+		return
+	if not party_has_reserve(actor.is_player_side):
+		# Sin reservas: el pivot no hace nada (el mon se queda)
+		return
+	if baton_pass:
+		actor.set_meta("baton_pass", true)
+	# Marca para la UI: cambio forzado por pivot (abrir party, no diálogo de confirmación)
+	set_meta("forced_pivot", true)
+	set_meta("forced_pivot_side_player", actor.is_player_side)
+	set_meta("forced_pivot_slot", actor.slot_index)
 	if actor.is_player_side:
-		if not party_has_reserve(true):
-			message.emit("¡No hay más Pokémon para salir!")
-			await _wait(0.6)
-			return
-		if baton_pass:
-			actor.set_meta("baton_pass", true)
-		message.emit("¿A qué Pokémon quieres sacar?")
-		await _wait(0.4)
+		# Abrir party menu directamente — la UI debe reaccionar a player_must_switch
+		# y a get_meta("forced_pivot") sin preguntar "¿quieres cambiar?".
 		player_must_switch.emit()
 	else:
 		# IA: primer reserva no debilitada
@@ -4382,6 +4448,8 @@ func _request_pivot_out(actor: BattleBattler, baton_pass: bool = false) -> void:
 		await AbilityRuntime.on_switch_in(actor, opp, self)
 		await _apply_hazards_on_switch_in(actor)
 		_emit_hp_battler(actor)
+		if has_meta("forced_pivot"):
+			remove_meta("forced_pivot")
 
 
 func _first_reserve(is_player_side: bool) -> PokemonInstance:
@@ -4697,9 +4765,10 @@ func _set_weather_from_move(move: MoveData) -> void:
 
 
 func _apply_damaging_move_effect(actor: BattleBattler, target: BattleBattler, move: MoveData, damage_dealt: int) -> void:
-	if damage_dealt <= 0 or actor.is_fainted():
+	if damage_dealt <= 0 or actor == null or actor.is_fainted() or move == null:
 		return
-	if move != null and MoveSystem.has_script(int(move.effect)):
+	# Scripts on_hit (U-turn, Rapid Spin, Fell Stinger…). El script decide si actúa con target KO.
+	if MoveSystem.has_script(int(move.effect)):
 		var hit_ok: bool = await MoveSystem.run_on_hit(actor, target, move, self, damage_dealt)
 		if hit_ok:
 			return
@@ -4760,6 +4829,8 @@ func _apply_damaging_move_effect(actor: BattleBattler, target: BattleBattler, mo
 			await _wait(0.45)
 
 func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
+	if battler == null or battler.is_fainted():
+		return
 	if caused_by_foe and stages < 0 and _side_for(battler).mist_turns > 0:
 		message.emit("¡Neblina protege a %s de la bajada de estadística!" % battler.get_display_name())
 		await _wait(0.6)
@@ -4785,6 +4856,8 @@ func _apply_stat_change(battler: BattleBattler, stat: PokemonInstance.Stat, stag
 		await AbilityRuntime.after_own_stat_drop(battler, actual, true, self)
 
 func _apply_status(battler: BattleBattler, status: PokemonInstance.Status) -> void:
+	if battler == null or battler.is_fainted() or battler.pokemon == null:
+		return
 	if AbilityRuntime.blocks_status(battler, status, weather):
 		await ability_announce(battler)
 		message.emit("¡%s no se vio afectado!" % battler.get_display_name())
@@ -4896,6 +4969,8 @@ func ability_announce(battler: BattleBattler) -> void:
 	await _wait(0.4)
 
 func ability_change_stat(battler: BattleBattler, stat: PokemonInstance.Stat, stages: int, caused_by_foe: bool = false) -> void:
+	if battler == null or battler.is_fainted():
+		return
 	if caused_by_foe and stages < 0 and AbilityRuntime.blocks_foe_stat_drop(battler, stat):
 		await ability_announce(battler)
 		message.emit("¡Las estadísticas de %s no bajaron!" % battler.get_display_name())

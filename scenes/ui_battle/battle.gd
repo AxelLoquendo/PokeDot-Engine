@@ -637,12 +637,18 @@ func _get_front_offset_px(pokemon: PokemonInstance) -> Vector2:
 
 
 func _show_message(text: String) -> void:
+	# BattleNormalText (mensajes de combate): ocultar ActionBattle para que no tape el texto
+	if action_menu != null:
+		action_menu.visible = false
+	if fight_menu != null:
+		fight_menu.visible = false
 	battle_text.visible = false
 	battle_normal_text.visible = true
 	battle_normal_text.text = text
 
 
 func _show_message_box(text: String) -> void:
+	# BattleText (p.ej. "¿Qué debe hacer X?"): convive con ActionBattle; no ocultarlo aquí
 	battle_text.visible = true
 	battle_normal_text.visible = false
 	battle_text.text = text
@@ -783,6 +789,11 @@ func _on_pkmn_pressed() -> void:
 
 
 func _on_player_must_switch() -> void:
+	# Pivot forzado (U-turn / Viraje / Baton Pass): abrir party sin preguntar
+	if battle != null and bool(battle.get_meta("forced_pivot", false)):
+		_force_switch_pending = true
+		_abrir_party_batalla(true)
+		return
 	_ask_fainted_action()
 
 
@@ -850,12 +861,19 @@ func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	_force_switch_pending = false
 	var switch_slot: int = _input_actor_slot
 	if free_switch and battle != null:
-		# Sustituir el primer slot KO
-		for i: int in range(battle.player_actives.size()):
-			var b: BattleBattler = battle.player_actives[i]
-			if b != null and (b.pokemon == null or b.is_fainted()):
-				switch_slot = i
-				break
+		if bool(battle.get_meta("forced_pivot", false)):
+			# Pivot: el slot que usó U-turn / Viraje
+			switch_slot = int(battle.get_meta("forced_pivot_slot", switch_slot))
+			battle.remove_meta("forced_pivot")
+			if battle.has_meta("forced_pivot_slot"):
+				battle.remove_meta("forced_pivot_slot")
+		else:
+			# Sustituir el primer slot KO
+			for i: int in range(battle.player_actives.size()):
+				var b: BattleBattler = battle.player_actives[i]
+				if b != null and (b.pokemon == null or b.is_fainted()):
+					switch_slot = i
+					break
 
 	await battle.player_choose_switch(mon, free_switch, switch_slot)
 

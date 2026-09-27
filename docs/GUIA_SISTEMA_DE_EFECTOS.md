@@ -21,7 +21,7 @@ y las **combinas** en un `.txt` por habilidad.
 on_switch_in:
   announce
   for_each opponents
-    lower_stat ATK 1 target=current caused_by_foe
+	lower_stat ATK 1 target=current caused_by_foe
   end_for
 ```
 
@@ -140,12 +140,12 @@ Si no pones `announce`, el efecto puede aplicar en silencio (útil en consultas)
 on_switch_in:          # ← cabecera de bloque (termina en :)
   announce             # indentación con tabs o espacios (sé consistente)
   if has_status
-    heal_percent 12.5
+	heal_percent 12.5
   endif
 
 on_speed:              # otro bloque en el mismo archivo
   if weather RAIN
-    multiply speed 2.0
+	multiply speed 2.0
   endif
 ```
 
@@ -213,12 +213,12 @@ multiply [canal] <expresión>
 ```text
 on_speed:
   if weather RAIN
-    multiply speed 2.0
+	multiply speed 2.0
   endif
 
 on_power:
   if move_type FIRE
-    multiply power 1.5
+	multiply power 1.5
   endif
 
 on_supreme_overlord:
@@ -242,7 +242,7 @@ on_blocks_intimidate:
 
 on_trap:
   if not has_ability SHADOW_TAG
-    block
+	block
   endif
 ```
 
@@ -313,11 +313,11 @@ Lista actual: ver `effect_bootstrap.gd` → array `specials`.
 
 ```text
 BattleManager (momento X)
-    → AbilityRuntime.on_*(…)
-        → EffectContext(user, target, move, battle, …)
-        → AbilitySystem.on_event("on_…", ctx)   o query_*
-            → carga scripts/abilities/<ability>.txt
-            → EffectRunner ejecuta el bloque
+	→ AbilityRuntime.on_*(…)
+		→ EffectContext(user, target, move, battle, …)
+		→ AbilitySystem.on_event("on_…", ctx)   o query_*
+			→ carga scripts/abilities/<ability>.txt
+			→ EffectRunner ejecuta el bloque
 ```
 
 - **Secuencias** (`on_event`): pueden `await` (announce, daño, mensajes).
@@ -356,7 +356,7 @@ La lógica de exclusión vive en `CmdSpecial._trace`, no en el runtime.
 ```text
 on_trap:
   if not has_ability SHADOW_TAG
-    block
+	block
   endif
 ```
 
@@ -368,17 +368,17 @@ Si el rival **también** tiene Shadow Tag, no se atrapa (regla oficial).
 on_switch_in:
   announce
   for_each opponents
-    if blocks_intimidate
-      if has_ability GUARD_DOG
-        announce target=current
-        raise_stat ATK 1 target=current
-      else
-        announce target=current
-        message "¡{current} no se intimidó!"
-      endif
-    else
-      lower_stat ATK 1 target=current caused_by_foe
-    endif
+	if blocks_intimidate
+	  if has_ability GUARD_DOG
+		announce target=current
+		raise_stat ATK 1 target=current
+	  else
+		announce target=current
+		message "¡{current} no se intimidó!"
+	  endif
+	else
+	  lower_stat ATK 1 target=current caused_by_foe
+	endif
   end_for
 ```
 
@@ -472,8 +472,8 @@ Debe reportar **316** oficiales, 0 faltantes, 0 vacíos
 ```text
 on_hit_by:
   if is_contact
-    announce
-    damage_percent 12.5 target=attacker
+	announce
+	damage_percent 12.5 target=attacker
   endif
 ```
 
@@ -482,7 +482,7 @@ on_hit_by:
 ```text
 on_speed:
   if weather RAIN
-    multiply speed 2.0
+	multiply speed 2.0
   endif
 ```
 
@@ -491,20 +491,20 @@ on_speed:
 ```text
 on_immunity:
   if move_type FIRE
-    block
+	block
   endif
 
 on_hit_by:
   if move_type FIRE
-    announce
-    set_meta flash_fire 1
+	announce
+	set_meta flash_fire 1
   endif
 
 on_power:
   if move_type FIRE
-    if has_meta flash_fire
-      multiply power 1.5
-    endif
+	if has_meta flash_fire
+	  multiply power 1.5
+	endif
   endif
 ```
 
@@ -515,7 +515,7 @@ on_power:
 ```text
 on_power:
   if power_at_most 60
-    multiply power 1.5
+	multiply power 1.5
   endif
 ```
 
