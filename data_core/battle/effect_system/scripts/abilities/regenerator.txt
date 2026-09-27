@@ -1,0 +1,2 @@
+on_switch_out:
+  heal_percent 33.4 target=user

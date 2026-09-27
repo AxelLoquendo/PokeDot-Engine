@@ -1,0 +1,5 @@
+on_end_turn:
+  if weather RAIN
+    announce
+    cure_status target=user
+  endif

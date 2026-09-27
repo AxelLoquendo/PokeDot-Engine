@@ -1,10 +1,8 @@
-# CUTE CHARM / Gran Encanto
-# Al recibir un movimiento de contacto, 30% de enamorar al atacante.
-
-on_hit_by:
-  if is_contact
-    chance 30
-      status ATTRACT
-      message "¡{attacker} se enamoró de {user}!"
-    endchance
-  endif
+# Cute Charm: por ahora sigue try_cute_charm en on_contact_hit.
+# Cuando se porte del todo, usar:
+# on_hit_by:
+#   if is_contact
+#     chance 30
+#       infatuate target=attacker
+#     endchance
+#   endif

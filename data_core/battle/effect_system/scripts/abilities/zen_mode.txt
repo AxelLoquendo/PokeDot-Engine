@@ -1,0 +1,4 @@
+on_switch_in:
+  zen_mode
+on_end_turn:
+  zen_mode

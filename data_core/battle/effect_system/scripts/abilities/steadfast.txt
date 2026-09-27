@@ -1,0 +1,3 @@
+on_flinch:
+  announce
+  raise_stat SPEED 1 target=user

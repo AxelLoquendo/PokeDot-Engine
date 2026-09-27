@@ -1,0 +1,4 @@
+on_switch_in:
+  flower_gift
+on_end_turn:
+  flower_gift

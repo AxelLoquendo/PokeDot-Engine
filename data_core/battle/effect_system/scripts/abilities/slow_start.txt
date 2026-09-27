@@ -1,0 +1,5 @@
+on_switch_in:
+  announce
+  set_meta slow_start_turns 5
+on_end_turn:
+  tick_slow_start

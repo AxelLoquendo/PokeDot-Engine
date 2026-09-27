@@ -320,271 +320,12 @@ static func should_skip_turn(battler: BattleBattler) -> bool:
 
 ## ─── Entrada en combate ─────────────────────────────────
 static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
-	var aid: AbilityId.Id = get_id(battler)
-	if AbilitySystem.has_script(aid):
-		print("[AbilityRuntime] script para ", aid, " = ", AbilitySystem.has_script(aid))
-		var ctx: EffectContext = EffectContext.new(battler, opponent, null, battle)
-		await AbilitySystem.on_event("on_switch_in", ctx)
+	if battler == null or battler.pokemon == null or battle == null:
 		return
-
-	match aid:
-		AbilityId.Id.INTIMIDATE:
-			# En multi afecta a todos los rivales activos; en singles solo al opponent.
-			var foes: Array[BattleBattler] = []
-			if battle.has_method("get_opponents") and battle.is_multi_battle():
-				foes = battle.get_opponents(battler)
-			elif opponent != null:
-				foes = [opponent]
-			var announced: bool = false
-			for foe: BattleBattler in foes:
-				if foe == null or foe.is_fainted():
-					continue
-				if _blocks_intimidate(foe):
-					if has(foe, AbilityId.Id.GUARD_DOG):
-						await battle.ability_announce(foe)
-						await battle.ability_change_stat(foe, PokemonInstance.Stat.ATTACK, 1)
-					else:
-						await battle.ability_announce(foe)
-						battle.message.emit("¡%s no se intimidó!" % foe.get_display_name())
-						await battle._wait(0.5)
-				else:
-					if not announced:
-						await battle.ability_announce(battler)
-						announced = true
-					await battle.ability_change_stat(foe, PokemonInstance.Stat.ATTACK, -1, true)
-
-		AbilityId.Id.DRIZZLE:
-			await battle.ability_announce(battler)
-			battle.set_weather(WeatherId.WEATHER_RAIN, -1)
-
-		AbilityId.Id.DROUGHT:
-			await battle.ability_announce(battler)
-			battle.set_weather(WeatherId.WEATHER_DROUGHT, -1)
-
-		AbilityId.Id.SAND_STREAM:
-			await battle.ability_announce(battler)
-			battle.set_weather(WeatherId.WEATHER_SANDSTORM, -1)
-
-		AbilityId.Id.SNOW_WARNING:
-			await battle.ability_announce(battler)
-			battle.set_weather(WeatherId.WEATHER_SNOW, -1)
-
-		AbilityId.Id.PRESSURE:
-			await battle.ability_announce(battler)
-
-		AbilityId.Id.UNNERVE:
-			await battle.ability_announce(battler)
-
-		AbilityId.Id.DOWNLOAD:
-			if opponent != null and not opponent.is_fainted():
-				await battle.ability_announce(battler)
-				var def_s: int = opponent.get_effective_stat(PokemonInstance.Stat.DEFENSE)
-				var spd_s: int = opponent.get_effective_stat(PokemonInstance.Stat.SP_DEFENSE)
-				if def_s < spd_s:
-					await battle.ability_change_stat(battler, PokemonInstance.Stat.ATTACK, 1)
-				else:
-					await battle.ability_change_stat(battler, PokemonInstance.Stat.SP_ATTACK, 1)
-
-		AbilityId.Id.INTREPID_SWORD:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.ATTACK, 1)
-
-		AbilityId.Id.DAUNTLESS_SHIELD:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.DEFENSE, 1)
-
-		AbilityId.Id.AIR_LOCK, AbilityId.Id.CLOUD_NINE:
-			await battle.ability_announce(battler)
-
-		AbilityId.Id.ELECTRIC_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_ELECTRIC, 5)
-
-		AbilityId.Id.GRASSY_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_GRASSY, 5)
-
-		AbilityId.Id.MISTY_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_MISTY, 5)
-
-		AbilityId.Id.PSYCHIC_SURGE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_PSYCHIC, 5)
-
-		AbilityId.Id.PRIMORDIAL_SEA:
-			await battle.ability_announce(battler)
-			battle.set_weather(
-				AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN, -1, true
-			)
-
-		AbilityId.Id.DESOLATE_LAND:
-			await battle.ability_announce(battler)
-			battle.set_weather(
-				AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT, -1, true
-			)
-
-		AbilityId.Id.DELTA_STREAM:
-			await battle.ability_announce(battler)
-			# Primigenio sin tipo de clima propio aún; no pisa con climas normales
-			battle.weather_primal = true
-			battle.message.emit("¡Corrientes de aire misteriosas protegen a los tipo Volador!")
-			await battle._wait(0.6)
-			battle.weather_changed.emit(battle.weather, true)
-
-		AbilityId.Id.TRACE:
-			if opponent != null and not opponent.is_fainted() and opponent.pokemon != null:
-				var opp_id: AbilityId.Id = opponent.pokemon.ability_id
-				if _is_traceable(opp_id):
-					await battle.ability_announce(battler)
-					battler.pokemon.ability_id = opp_id
-					await on_switch_in(battler, opponent, battle)
-
-		AbilityId.Id.FRISK:
-			if opponent != null and not opponent.is_fainted() and opponent.pokemon != null:
-				if opponent.pokemon.held_item != Items.ItemId.ITEM_NONE:
-					await battle.ability_announce(battler)
-					var item_name: String = "objeto"
-					var idata: ItemData = ItemDatabase.get_item(opponent.pokemon.held_item)
-					if idata != null and not idata.item_name.is_empty():
-						item_name = idata.item_name
-					battle.message.emit("%s friskó el %s de %s." % [
-						battler.get_display_name(), item_name, opponent.get_display_name()
-					])
-					await battle._wait(0.8)
-
-		AbilityId.Id.ANTICIPATION:
-			if opponent != null and opponent.pokemon != null:
-				var found: bool = false
-				var t1: PokemonData.Type = battler.pokemon.get_type_1()
-				var t2: PokemonData.Type = battler.pokemon.get_type_2()
-				for slot: PokemonMoveSlot in opponent.pokemon.moves:
-					if slot == null or slot.is_empty():
-						continue
-					var md: MoveData = MoveDatabase.get_move(slot.move_id)
-					if md == null or md.power <= 0:
-						continue
-					var eff: float = TypeChart.get_effectiveness(md.type, t1, t2)
-					if eff > 1.0:
-						found = true
-						break
-				if found:
-					await battle.ability_announce(battler)
-					battle.message.emit("¡%s se estremeció!" % battler.get_display_name())
-					await battle._wait(0.6)
-
-		AbilityId.Id.FOREWARN:
-			if opponent != null and opponent.pokemon != null:
-				var best: MoveData = null
-				var best_pow: int = -1
-				for slot: PokemonMoveSlot in opponent.pokemon.moves:
-					if slot == null or slot.is_empty():
-						continue
-					var md: MoveData = MoveDatabase.get_move(slot.move_id)
-					if md == null:
-						continue
-					var p: int = md.power
-					if p > best_pow:
-						best_pow = p
-						best = md
-				if best != null:
-					await battle.ability_announce(battler)
-					battle.message.emit("¡%s advirtió el movimiento %s!" % [
-						battler.get_display_name(), best.move_name
-					])
-					await battle._wait(0.8)
-
-		AbilityId.Id.SLOW_START:
-			await battle.ability_announce(battler)
-			battler.slow_start_turns = 5
-
-		AbilityId.Id.ILLUSION:
-			if not battler.illusion_active:
-				if prepare_illusion(battler, battle):
-					battle.battler_appearance_changed.emit(battler.is_player_side)
-
-		AbilityId.Id.IMPOSTER:
-			if opponent != null and not opponent.is_fainted():
-				await _setup_imposter(battler, opponent, battle)
-
-		AbilityId.Id.HOSPITALITY:
-			var ally_h: BattleBattler = get_ally(battler, battle)
-			if ally_h != null and not ally_h.is_fainted():
-				await try_hospitality(battler, ally_h, battle)
-
-		AbilityId.Id.CURIOUS_MEDICINE:
-			var ally_cm: BattleBattler = get_ally(battler, battle)
-			if ally_cm != null and not ally_cm.is_fainted():
-				await try_curious_medicine(battler, ally_cm, battle)
-
-		AbilityId.Id.SCREEN_CLEANER:
-			await battle.ability_announce(battler)
-			battle.player_side.clear_screens()
-			battle.enemy_side.clear_screens()
-			battle.message.emit("¡Las pantallas desaparecieron!")
-			await battle._wait(0.5)
-
-		AbilityId.Id.HADRON_ENGINE:
-			await battle.ability_announce(battler)
-			battle.set_terrain(BattleManager.TerrainId.TERRAIN_ELECTRIC, 5)
-
-		AbilityId.Id.ORICHALCUM_PULSE:
-			await battle.ability_announce(battler)
-			battle.set_weather(WeatherId.WEATHER_DROUGHT, 5)
-
-		AbilityId.Id.SUPERSWEET_SYRUP:
-			if opponent != null and not opponent.is_fainted():
-				await battle.ability_announce(battler)
-				var dropped: int = opponent.modify_evasion_stage(-1)
-				if dropped != 0:
-					battle.message.emit("¡La evasión de %s bajó!" % opponent.get_display_name())
-					await battle._wait(0.6)
-
-		AbilityId.Id.EMBODY_ASPECT_TEAL_MASK:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.SPEED, 1)
-
-		AbilityId.Id.EMBODY_ASPECT_WELLSPRING_MASK:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.SP_DEFENSE, 1)
-
-		AbilityId.Id.EMBODY_ASPECT_HEARTHFLAME_MASK:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.ATTACK, 1)
-
-		AbilityId.Id.EMBODY_ASPECT_CORNERSTONE_MASK:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.DEFENSE, 1)
-
-		AbilityId.Id.MIMICRY:
-			await _apply_mimicry(battler, battle)
-
-		AbilityId.Id.PROTOSYNTHESIS, AbilityId.Id.QUARK_DRIVE:
-			await try_booster_energy_style(battler, battle.weather, battle.terrain, battle)
-
-		AbilityId.Id.TERA_SHIFT:
-			await try_tera_shift(battler, battle)
-
-		AbilityId.Id.ZERO_TO_HERO:
-			await try_zero_to_hero(battler, battle)
-
-		AbilityId.Id.TERAFORM_ZERO:
-			await try_teraform_zero(battler, battle)
-
-		AbilityId.Id.FORECAST:
-			await try_forecast(battler, battle.weather, battle)
-
-		AbilityId.Id.FLOWER_GIFT:
-			await try_flower_gift(battler, battle.weather, battle)
-
-		AbilityId.Id.SHIELDS_DOWN:
-			await try_shields_down(battler, battle)
-
-		AbilityId.Id.ZEN_MODE:
-			await try_zen_mode(battler, battle)
+	var ctx: EffectContext = EffectContext.new(battler, opponent, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-## ─── Contacto ───────────────────────────────────────────
 static func on_contact_hit(
 	attacker: BattleBattler,
 	defender: BattleBattler,
@@ -595,208 +336,28 @@ static func on_contact_hit(
 		return
 	if attacker == null or attacker.is_fainted() or defender == null:
 		return
-
-	var aid: AbilityId.Id = get_id(defender)
-	if AbilitySystem.has_script(aid):
-		var ctx: EffectContext = EffectContext.new(defender, attacker, move, battle)
-		ctx.attacker = attacker
-		ctx.is_contact = true
-		await AbilitySystem.on_event("on_hit_by", ctx)
-		return
-
-	match aid:
-		AbilityId.Id.STATIC:
-			if randf() < 0.3:
-				await battle.ability_announce(defender)
-				await battle.ability_apply_status(attacker, PokemonInstance.Status.PARALYSIS, defender)
-
-		AbilityId.Id.POISON_POINT:
-			if randf() < 0.3:
-				await battle.ability_announce(defender)
-				await battle.ability_apply_status(attacker, PokemonInstance.Status.POISON, defender)
-
-		AbilityId.Id.FLAME_BODY:
-			if randf() < 0.3:
-				await battle.ability_announce(defender)
-				await battle.ability_apply_status(attacker, PokemonInstance.Status.BURN, defender)
-
-		AbilityId.Id.ROUGH_SKIN, AbilityId.Id.IRON_BARBS:
-			await battle.ability_announce(defender)
-			@warning_ignore("integer_division")
-			var dmg: int = maxi(1, attacker.get_max_hp() / 8)
-			await battle.ability_deal_damage(attacker, dmg, defender)
-
-		AbilityId.Id.EFFECT_SPORE:
-			if randf() < 0.3:
-				await battle.ability_announce(defender)
-				var statuses: Array[PokemonInstance.Status] = [
-					PokemonInstance.Status.SLEEP,
-					PokemonInstance.Status.POISON,
-					PokemonInstance.Status.PARALYSIS,
-				]
-				var picked: PokemonInstance.Status = statuses[randi() % statuses.size()]
-				await battle.ability_apply_status(attacker, picked, defender)
-
-		AbilityId.Id.GOOEY, AbilityId.Id.TANGLING_HAIR:
-			await battle.ability_announce(defender)
-			await battle.ability_change_stat(attacker, PokemonInstance.Stat.SPEED, -1, true)
-
-		AbilityId.Id.MUMMY, AbilityId.Id.LINGERING_AROMA:
-			var atk_id: AbilityId.Id = get_id(attacker)
-			if atk_id != AbilityId.Id.NONE and atk_id != AbilityId.Id.MUMMY \
-					and atk_id != AbilityId.Id.LINGERING_AROMA and _is_traceable(atk_id):
-				await battle.ability_announce(defender)
-				attacker.pokemon.ability_id = get_id(defender)
-				battle.message.emit("¡La habilidad de %s cambió!" % attacker.get_display_name())
-				await battle._wait(0.6)
-
-		AbilityId.Id.WANDERING_SPIRIT:
-			var atk_id2: AbilityId.Id = get_id(attacker)
-			if atk_id2 != AbilityId.Id.NONE and _is_traceable(atk_id2) \
-					and atk_id2 != AbilityId.Id.WANDERING_SPIRIT:
-				await battle.ability_announce(defender)
-				var def_id: AbilityId.Id = AbilityId.Id.WANDERING_SPIRIT
-				attacker.pokemon.ability_id = def_id
-				defender.pokemon.ability_id = atk_id2
-				battle.message.emit("¡%s intercambió su habilidad!" % defender.get_display_name())
-				await battle._wait(0.6)
-
-	match get_id(attacker):
-		AbilityId.Id.POISON_TOUCH:
-			if randf() < 0.3:
-				await battle.ability_announce(attacker)
-				await battle.ability_apply_status(defender, PokemonInstance.Status.POISON, attacker)
-		AbilityId.Id.TOXIC_CHAIN:
-			if randf() < 0.3:
-				await battle.ability_announce(attacker)
-				await battle.ability_apply_status(defender, PokemonInstance.Status.TOXIC, attacker)
-		AbilityId.Id.STENCH:
-			if randf() < 0.1 and not blocks_flinch(defender):
-				await battle.ability_announce(attacker)
-				defender.flinched = true
-				await on_flinched(defender, battle)
-
-	if not attacker.is_fainted() and has(defender, AbilityId.Id.PICKPOCKET):
-		if defender.pokemon.held_item == Items.ItemId.ITEM_NONE \
-				and attacker.pokemon.held_item != Items.ItemId.ITEM_NONE:
-			if not has(attacker, AbilityId.Id.STICKY_HOLD):
-				await battle.ability_announce(defender)
-				defender.pokemon.held_item = attacker.pokemon.held_item
-				attacker.pokemon.held_item = Items.ItemId.ITEM_NONE
-				notify_item_lost(attacker)
-				battle.message.emit("¡%s robó el objeto!" % defender.get_display_name())
-				await battle._wait(0.5)
-
-
-
-	# Cute Charm (defensor) y Perish Body
+	var ctx: EffectContext = EffectContext.new(defender, attacker, move, battle)
+	ctx.attacker = attacker
+	ctx.is_contact = true
+	await AbilitySystem.on_event("on_hit_by", ctx)
+	var ctx2: EffectContext = EffectContext.new(attacker, defender, move, battle)
+	ctx2.attacker = attacker
+	ctx2.is_contact = true
+	await AbilitySystem.on_event("on_hit", ctx2)
+	# Cute Charm (género / atracción) — lógica en try_cute_charm; también puede ser .txt
 	await try_cute_charm(defender, attacker, move, battle)
-	await try_perish_body(defender, attacker, move, battle)
 
-## ─── Fin de turno ───────────────────────────────────────
+
 static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
-	if battler == null or battler.is_fainted():
+	if battler == null or battler.pokemon == null or battle == null:
 		return
-
-	# Contador Slow Start (aunque la habilidad siga activa)
-	if battler.slow_start_turns > 0:
-		battler.slow_start_turns -= 1
-		if battler.slow_start_turns == 0 and has(battler, AbilityId.Id.SLOW_START):
-			await battle.ability_announce(battler)
-			battle.message.emit("¡%s recuperó su fuerza!" % battler.get_display_name())
-			await battle._wait(0.5)
-
-	match get_id(battler):
-		AbilityId.Id.SPEED_BOOST:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.SPEED, 1)
-
-		AbilityId.Id.SHED_SKIN:
-			if battler.pokemon.has_status() and randf() < 0.3:
-				await battle.ability_announce(battler)
-				await battle.ability_cure_status(battler)
-
-		AbilityId.Id.RAIN_DISH:
-			if weather == WeatherId.WEATHER_RAIN:
-				await battle.ability_announce(battler)
-				@warning_ignore("integer_division")
-				var heal_amt: int = maxi(1, battler.get_max_hp() / 16)
-				await battle.ability_heal(battler, heal_amt)
-
-		AbilityId.Id.ICE_BODY:
-			if weather == WeatherId.WEATHER_SNOW:
-				await battle.ability_announce(battler)
-				@warning_ignore("integer_division")
-				var heal_amt2: int = maxi(1, battler.get_max_hp() / 16)
-				await battle.ability_heal(battler, heal_amt2)
-
-		AbilityId.Id.HYDRATION:
-			if weather == WeatherId.WEATHER_RAIN and battler.pokemon.has_status():
-				await battle.ability_announce(battler)
-				await battle.ability_cure_status(battler)
-
-		AbilityId.Id.MOODY:
-			await battle.ability_announce(battler)
-			var stats: Array[PokemonInstance.Stat] = [
-				PokemonInstance.Stat.ATTACK, PokemonInstance.Stat.DEFENSE,
-				PokemonInstance.Stat.SP_ATTACK, PokemonInstance.Stat.SP_DEFENSE,
-				PokemonInstance.Stat.SPEED
-			]
-			var up: PokemonInstance.Stat = stats[randi() % stats.size()]
-			var down: PokemonInstance.Stat = stats[randi() % stats.size()]
-			while down == up:
-				down = stats[randi() % stats.size()]
-			await battle.ability_change_stat(battler, up, 2)
-			await battle.ability_change_stat(battler, down, -1)
-
-		AbilityId.Id.SOLAR_POWER:
-			if weather == WeatherId.WEATHER_DROUGHT and not blocks_indirect_damage(battler):
-				await battle.ability_announce(battler)
-				@warning_ignore("integer_division")
-				await battle.ability_deal_damage(battler, maxi(1, battler.get_max_hp() / 8), battler)
-
-		AbilityId.Id.DRY_SKIN:
-			if weather == WeatherId.WEATHER_RAIN:
-				await battle.ability_announce(battler)
-				@warning_ignore("integer_division")
-				await battle.ability_heal(battler, maxi(1, battler.get_max_hp() / 8))
-			elif weather == WeatherId.WEATHER_DROUGHT and not blocks_indirect_damage(battler):
-				await battle.ability_announce(battler)
-				@warning_ignore("integer_division")
-				await battle.ability_deal_damage(battler, maxi(1, battler.get_max_hp() / 8), battler)
-
-		AbilityId.Id.BAD_DREAMS:
-			var foe: BattleBattler = battle.enemy if battler.is_player_side else battle.player
-			if foe != null and not foe.is_fainted() and foe.pokemon != null \
-					and foe.pokemon.status == PokemonInstance.Status.SLEEP \
-					and not blocks_indirect_damage(foe):
-				await battle.ability_announce(battler)
-				@warning_ignore("integer_division")
-				await battle.ability_deal_damage(foe, maxi(1, foe.get_max_hp() / 8), battler)
-
-		AbilityId.Id.HARVEST:
-			await try_harvest(battler, weather, battle)
-
-		AbilityId.Id.CUD_CHEW:
-			await try_cud_chew(battler, battle)
-
-		AbilityId.Id.FORECAST:
-			await try_forecast(battler, weather, battle)
-
-		AbilityId.Id.FLOWER_GIFT:
-			await try_flower_gift(battler, weather, battle)
-
-		AbilityId.Id.ZEN_MODE:
-			await try_zen_mode(battler, battle)
-
-		AbilityId.Id.SHIELDS_DOWN:
-			await try_shields_down(battler, battle)
-
-		AbilityId.Id.HEALER:
-			var ally: BattleBattler = get_ally(battler, battle)
-			await try_healer(battler, ally, battle)
-
-
+	var opp: BattleBattler = null
+	if battle.has_method("get_opponents"):
+		var foes: Array = battle.get_opponents(battler)
+		if not foes.is_empty():
+			opp = foes[0] as BattleBattler
+	var ctx: EffectContext = EffectContext.new(battler, opp, null, battle)
+	await AbilitySystem.on_event("on_end_turn", ctx)
 
 
 static func is_immune_to_weather_damage(battler: BattleBattler, weather: int) -> bool:
@@ -1242,6 +803,10 @@ static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> b
 		battler.illusion_form_id = 0
 	return true
 
+static func blocks_intimidate(battler: BattleBattler) -> bool:
+	return _blocks_intimidate(battler)
+
+
 static func _blocks_intimidate(battler: BattleBattler) -> bool:
 	var id: AbilityId.Id = get_id(battler)
 	return id == AbilityId.Id.INNER_FOCUS or id == AbilityId.Id.OWN_TEMPO \
@@ -1460,43 +1025,22 @@ static func supreme_overlord_multiplier(attacker: BattleBattler, battle: BattleM
 static func on_flinched(battler: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or battle == null:
 		return
-	if has(battler, AbilityId.Id.STEADFAST):
-		await battle.ability_announce(battler)
-		await battle.ability_change_stat(battler, PokemonInstance.Stat.SPEED, 1)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_flinch", ctx)
 
 
 static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
+	if battler == null or battle == null:
 		return
-	match get_id(battler):
-		AbilityId.Id.NATURAL_CURE:
-			if battler.pokemon.has_status():
-				await battle.ability_announce(battler)
-				await battle.ability_cure_status(battler)
-		AbilityId.Id.REGENERATOR:
-			await battle.ability_announce(battler)
-			@warning_ignore("integer_division")
-			await battle.ability_heal(battler, maxi(1, battler.get_max_hp() / 3))
-	battler.clear_battle_types()
-	battler.charged = false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_switch_out", ctx)
 
-	# Zero to Hero: se "arma" al salir; la forma Hero se aplica al VOLVER al campo.
-	if has(battler, AbilityId.Id.ZERO_TO_HERO):
-		_arm_zero_to_hero(battler)
 
 static func after_own_stat_drop(battler: BattleBattler, actual: int, caused_by_foe: bool, battle: BattleManager) -> void:
 	if not caused_by_foe or actual >= 0 or battler == null or battle == null:
 		return
-	match get_id(battler):
-		AbilityId.Id.DEFIANT:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.ATTACK, 2)
-		AbilityId.Id.COMPETITIVE:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.SP_ATTACK, 2)
-		AbilityId.Id.GUARD_DOG:
-			await battle.ability_announce(battler)
-			await battle.ability_change_stat(battler, PokemonInstance.Stat.ATTACK, 1)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_stat_drop", ctx)
 
 
 static func sand_force_active(battler: BattleBattler, move: MoveData, weather: int) -> float:

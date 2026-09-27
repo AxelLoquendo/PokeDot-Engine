@@ -1,0 +1,3 @@
+on_switch_in:
+  announce
+  lower_evasion 1 target=opponent

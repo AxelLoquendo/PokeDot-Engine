@@ -1,0 +1,5 @@
+on_hit_by:
+  if is_contact
+    announce
+    lower_stat SPEED 1 target=attacker caused_by_foe
+  endif

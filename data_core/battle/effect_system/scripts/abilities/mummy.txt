@@ -1,0 +1,5 @@
+on_hit_by:
+  if is_contact
+    announce
+    set_ability target=attacker from=user
+  endif

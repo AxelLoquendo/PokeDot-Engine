@@ -1,0 +1,5 @@
+on_end_turn:
+  chance 30
+    announce
+    cure_status target=user
+  endchance

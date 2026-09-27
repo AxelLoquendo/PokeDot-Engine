@@ -1,0 +1,5 @@
+on_hit_by:
+  if is_contact
+    announce
+    swap_ability with=attacker
+  endif

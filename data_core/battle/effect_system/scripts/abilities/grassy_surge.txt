@@ -1,0 +1,3 @@
+on_switch_in:
+  announce
+  set_terrain GRASSY 5

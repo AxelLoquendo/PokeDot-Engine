@@ -1,0 +1,4 @@
+on_hit_by:
+  if is_contact
+    pickpocket
+  endif

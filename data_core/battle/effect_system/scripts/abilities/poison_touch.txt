@@ -1,6 +1,6 @@
-on_hit_by:
+on_hit:
   if is_contact
     chance 30
-      status BURN target=attacker
+      status POISON target=target
     endchance
   endif

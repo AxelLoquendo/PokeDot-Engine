@@ -179,17 +179,17 @@ Illusion / Imposter / cambios de forma complejos pueden tener comandos `setup_il
 on_switch_in:
   announce
   for_each opponents
-    if blocks_intimidate
-      if has_ability GUARD_DOG
-        announce target=current
-        raise_stat ATK 1 target=current
-      else
-        announce target=current
-        message "¡{current} no se intimidó!"
-      endif
-    else
-      lower_stat ATK 1 target=current caused_by_foe
-    endif
+	if blocks_intimidate
+	  if has_ability GUARD_DOG
+		announce target=current
+		raise_stat ATK 1 target=current
+	  else
+		announce target=current
+		message "¡{current} no se intimidó!"
+	  endif
+	else
+	  lower_stat ATK 1 target=current caused_by_foe
+	endif
   end_for
 ```
 
@@ -198,8 +198,8 @@ on_switch_in:
 ```text
 on_hit_by:
   if is_contact
-    announce
-    damage_percent 12.5 target=attacker
+	announce
+	damage_percent 12.5 target=attacker
   endif
 ```
 

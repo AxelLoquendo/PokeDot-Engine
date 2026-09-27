@@ -1,0 +1,4 @@
+on_switch_in:
+  shields_down
+on_end_turn:
+  shields_down

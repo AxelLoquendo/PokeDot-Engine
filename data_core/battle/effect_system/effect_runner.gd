@@ -124,7 +124,7 @@ static func _eval_condition(cmd: EffectCommand, ctx: EffectContext) -> bool:
 			return ctx.battle != null and ctx.battle.is_multi_battle()
 		"blocks_intimidate":
 			var who: BattleBattler = _current_or_target(ctx)
-			return who != null and AbilityRuntime._blocks_intimidate(who)
+			return who != null and AbilityRuntime.blocks_intimidate(who)
 		"has_ability":
 			var who2: BattleBattler = _current_or_target(ctx)
 			if who2 == null:
@@ -140,6 +140,23 @@ static func _eval_condition(cmd: EffectCommand, ctx: EffectContext) -> bool:
 			var value: float = cmd.arg_float(2)
 			var current: float = ctx.user_hp_percent() * 100.0
 			return _compare(current, op, value)
+		"weather":
+			if ctx.battle == null:
+				return false
+			var want: String = cmd.arg_string(1).to_lower()
+			var w: int = ctx.battle.get_effective_weather() if ctx.battle.has_method("get_effective_weather") else ctx.battle.weather
+			match want:
+				"rain":
+					return w == AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN
+				"sun", "drought":
+					return w == AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT
+				"sand", "sandstorm":
+					return w == AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM
+				"snow", "hail":
+					return w == AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW
+				"none":
+					return w == AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+			return false
 		"has_meta":
 			var meta_key: String = cmd.arg_string(1)
 			if ctx.user == null:

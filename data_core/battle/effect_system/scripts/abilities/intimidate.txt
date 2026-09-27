@@ -1,16 +1,15 @@
-# INTIMIDATE — paridad con el match (multi + bloqueos + Guard Dog)
 on_switch_in:
   announce
   for_each opponents
-    if blocks_intimidate
-      if has_ability GUARD_DOG
-        announce target=current
-        raise_stat ATK 1 target=current
-      else
-        announce target=current
-        message "¡{current} no se intimidó!"
-      endif
-    else
-      lower_stat ATK 1 target=current caused_by_foe
-    endif
+	if blocks_intimidate
+	  if has_ability GUARD_DOG
+		announce target=current
+		raise_stat ATK 1 target=current
+	  else
+		announce target=current
+		message "¡{current} no se intimidó!"
+	  endif
+	else
+	  lower_stat ATK 1 target=current caused_by_foe
+	endif
   end_for

@@ -1,0 +1,4 @@
+on_end_turn:
+  if weather SUN
+    damage_percent 12.5 target=user
+  endif

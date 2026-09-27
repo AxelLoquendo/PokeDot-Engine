@@ -1,6 +1,6 @@
 on_hit_by:
   if is_contact
     chance 30
-      status BURN target=attacker
+      status_random SLEEP POISON PARALYSIS target=attacker
     endchance
   endif

@@ -1,0 +1,3 @@
+on_switch_in:
+  announce
+  change_form terapagos_terastal

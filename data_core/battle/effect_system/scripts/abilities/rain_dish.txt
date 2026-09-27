@@ -1,0 +1,5 @@
+on_end_turn:
+  if weather RAIN
+    announce
+    heal_percent 12.5 target=user
+  endif

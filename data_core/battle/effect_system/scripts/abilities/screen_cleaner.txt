@@ -1,0 +1,4 @@
+on_switch_in:
+  announce
+  clear_screens
+  message "¡Las pantallas desaparecieron!"

@@ -1,0 +1,6 @@
+on_hit:
+  if is_contact
+    chance 10
+      flinch target=target
+    endchance
+  endif

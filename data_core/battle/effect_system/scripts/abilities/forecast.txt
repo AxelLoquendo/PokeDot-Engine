@@ -1,0 +1,4 @@
+on_switch_in:
+  forecast
+on_end_turn:
+  forecast
