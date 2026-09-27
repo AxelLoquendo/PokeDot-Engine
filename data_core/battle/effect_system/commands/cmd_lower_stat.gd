@@ -76,5 +76,9 @@ func _resolve_target(ctx: EffectContext, mode: String) -> BattleBattler:
 					if b != null and not b.is_fainted():
 						return b
 			return ctx.target
+		"current":
+			if ctx.has_meta("foreach_current"):
+				return ctx.get_meta("foreach_current") as BattleBattler
+			return ctx.target if ctx.target != null else ctx.user
 		_:
 			return ctx.target if ctx.target != null else ctx.user

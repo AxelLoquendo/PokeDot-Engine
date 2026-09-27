@@ -1,0 +1,11 @@
+# Al salir: armar transformación
+on_switch_out:
+  set_meta zero_to_hero_transformed true
+  set_meta zero_to_hero_armed true
+
+# Al reentrar: forma Hero (form_id del .tres)
+on_switch_in:
+  if has_meta zero_to_hero_armed
+    announce
+    change_form Hero
+  endif

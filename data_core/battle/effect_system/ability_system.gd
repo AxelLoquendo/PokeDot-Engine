@@ -15,7 +15,6 @@ static func has_script(id: AbilityId.Id) -> bool:
 
 
 static func on_event(event_name: String, ctx: EffectContext) -> void:
-	print("[AbilitySystem] event=", event_name, " user=", ctx.user)
 	if ctx == null or ctx.user == null:
 		return
 

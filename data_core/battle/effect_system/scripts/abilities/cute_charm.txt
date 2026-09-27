@@ -3,8 +3,8 @@
 
 on_hit_by:
   if is_contact
-	chance 30
-	  status ATTRACT
-	  message "¡{attacker} se enamoró de {user}!"
-	endchance
+    chance 30
+      status ATTRACT
+      message "¡{attacker} se enamoró de {user}!"
+    endchance
   endif

@@ -1,5 +1,4 @@
-## Muestra un mensaje en batalla.
-## Uso: message "¡{user} intimidó a {target}!"
+## message "¡{user} ... {current}!"
 class_name CmdMessage
 extends EffectCommand
 
@@ -16,14 +15,23 @@ func execute(ctx: EffectContext) -> bool:
 	text = text.replace("{user}", _name(ctx.user))
 	text = text.replace("{target}", _name(ctx.target))
 	text = text.replace("{attacker}", _name(ctx.attacker))
+	if ctx.has_meta("foreach_current"):
+		text = text.replace("{current}", _name(ctx.get_meta("foreach_current") as BattleBattler))
+	else:
+		text = text.replace("{current}", _name(ctx.target))
 
 	ctx.add_message(text)
+	if ctx.battle != null:
+		ctx.battle.message.emit(text)
+		if ctx.battle.has_method("_wait"):
+			await ctx.battle._wait(0.5)
 	return true
 
 
 func _name(b: BattleBattler) -> String:
-	if b != null and b.pokemon != null:
-		if b.pokemon.has_method("get_display_name"):
-			return b.pokemon.get_display_name()
-		return str(b.pokemon)
+	if b != null:
+		if b.has_method("get_display_name"):
+			return b.get_display_name()
+		if b.pokemon != null:
+			return str(b.pokemon)
 	return "???"
