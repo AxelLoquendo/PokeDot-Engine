@@ -1,0 +1,6 @@
+# Carga al recibir viento.
+on_hit_by:
+  if move_flag wind_move
+    announce
+    set_meta charged 1
+  endif

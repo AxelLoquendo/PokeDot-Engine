@@ -1,0 +1,3 @@
+# Movimientos del usuario y rivales no fallan (flag bilateral).
+on_no_guard:
+  block

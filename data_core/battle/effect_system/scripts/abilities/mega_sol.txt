@@ -1,0 +1,8 @@
+# Custom del proyecto (oficial en este enum salvo CUSTOM_*).
+on_switch_in:
+  announce
+  set_weather SUN -1
+on_power:
+  if move_type FIRE
+    multiply power 1.3
+  endif

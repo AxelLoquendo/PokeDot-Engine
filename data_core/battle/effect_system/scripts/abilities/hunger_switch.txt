@@ -1,0 +1,4 @@
+# Morpeko alterna cada turno.
+on_end_turn:
+  announce
+  special hunger_switch

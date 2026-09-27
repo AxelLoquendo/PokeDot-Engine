@@ -1,0 +1,3 @@
+# Recupera la última Poké Ball fallida.
+on_end_turn:
+  special ball_fetch

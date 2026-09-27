@@ -1,0 +1,3 @@
+# Sin efecto durante el combate. Recoge miel al final del combate (overworld).
+on_end_turn:
+  # no-op

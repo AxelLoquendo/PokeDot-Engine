@@ -1,0 +1,5 @@
+# Custom/oficial del proyecto: perfora defensas.
+on_power:
+  multiply power 1.2
+on_ignores_stages:
+  block

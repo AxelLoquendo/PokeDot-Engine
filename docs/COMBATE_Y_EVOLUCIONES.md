@@ -83,3 +83,19 @@ No se consideran implementados por el simple hecho de existir como enum o
 recurso: captura, dobles, IA compleja, mecánicas Tera/Mega/Z/Dynamax, muchas
 bayas y objetos equipados, y efectos particulares de movimientos. Añade cada
 regla al resolvedor antes de usarla en contenido jugable.
+
+
+## Habilidades
+
+La lógica de cada habilidad vive en archivos `.txt` bajo
+`data_core/battle/effect_system/scripts/abilities/`.
+
+`AbilityRuntime` es solo una fachada: arma un `EffectContext` y delega en
+`AbilitySystem`. No contiene efectos por `AbilityId`.
+
+Al activarse una secuencia (entrada, fin de turno, contacto, etc.) el script
+puede llamar a `announce` para mostrar la ability bar.
+
+Guía completa: [HABILIDADES.md](HABILIDADES.md).
+Comandos: `data_core/battle/effect_system/COMANDOS.md`.
+Consultas: `data_core/battle/effect_system/CONSULTAS.md`.

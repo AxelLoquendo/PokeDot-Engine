@@ -1,0 +1,4 @@
+on_speed_tie_win:
+  chance 30
+    block
+  endchance

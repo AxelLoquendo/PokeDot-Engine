@@ -1,0 +1,3 @@
+# Baja precisión de movimientos de estado al 50%.
+on_wonder_skin:
+  block

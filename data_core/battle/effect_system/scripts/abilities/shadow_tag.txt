@@ -1,0 +1,4 @@
+on_blocks_escape:
+  if not has_ability SHADOW_TAG
+    block
+  endif

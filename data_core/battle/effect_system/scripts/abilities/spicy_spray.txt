@@ -1,0 +1,5 @@
+on_hit:
+  chance 30
+    announce
+    lower_stat ATK 1 target=target
+  endchance

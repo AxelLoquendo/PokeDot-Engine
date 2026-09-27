@@ -1,0 +1,2 @@
+on_berry_effect:
+  multiply berry_effect 2.0

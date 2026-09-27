@@ -1,0 +1,2 @@
+on_reflects_stat_drop:
+  block

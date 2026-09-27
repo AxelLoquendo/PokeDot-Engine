@@ -1,0 +1,3 @@
+on_ko:
+  announce
+  raise_stat SP_ATTACK 1 target=user

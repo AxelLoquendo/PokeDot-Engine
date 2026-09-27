@@ -1,0 +1,4 @@
+# Zygarde completa al bajar de mitad de PS.
+on_hp_half:
+  announce
+  change_form complete

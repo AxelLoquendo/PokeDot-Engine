@@ -1,0 +1,4 @@
+# Copia subidas de estadística del rival.
+on_foe_stat_up:
+  announce
+  raise_stat from_query

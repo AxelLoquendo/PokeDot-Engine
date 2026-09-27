@@ -1,8 +1,7 @@
-# Cute Charm: por ahora sigue try_cute_charm en on_contact_hit.
-# Cuando se porte del todo, usar:
-# on_hit_by:
-#   if is_contact
-#     chance 30
-#       infatuate target=attacker
-#     endchance
-#   endif
+on_hit_by:
+  if is_contact
+	chance 30
+	  announce
+	  infatuate target=attacker
+	endchance
+  endif

@@ -1,0 +1,3 @@
+# Tatsugiri se mete en Dondozo.
+on_switch_in:
+  special commander

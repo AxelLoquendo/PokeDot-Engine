@@ -1,3 +1,2 @@
 on_stab:
   multiply 2.0
-

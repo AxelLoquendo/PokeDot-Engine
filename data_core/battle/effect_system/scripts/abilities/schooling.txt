@@ -1,0 +1,5 @@
+# Wishiwashi forma banco según PS.
+on_switch_in:
+  special schooling
+on_hp_change:
+  special schooling

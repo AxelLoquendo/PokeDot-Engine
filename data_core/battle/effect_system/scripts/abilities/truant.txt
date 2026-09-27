@@ -1,0 +1,2 @@
+on_skip_turn:
+  special tick_truant

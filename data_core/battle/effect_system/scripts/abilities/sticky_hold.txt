@@ -1,3 +1,2 @@
-# Pasivo: se consulta en código de robo de objetos. Script vacío documenta la habilidad.
-on_hit_by:
-  # sticky_hold blocks item theft — handled as query in battle code
+on_blocks_item_theft:
+  block

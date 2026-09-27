@@ -4,6 +4,6 @@ on_switch_out:
 
 on_switch_in:
   if has_meta zero_to_hero_armed
-    announce
-    change_form Hero
+	announce
+	change_form Hero
   endif

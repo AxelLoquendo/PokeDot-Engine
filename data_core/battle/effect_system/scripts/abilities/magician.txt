@@ -1,0 +1,3 @@
+on_steal_item:
+  announce
+  special pickpocket

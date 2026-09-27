@@ -1,10 +1,18 @@
 extends RefCounted
 class_name AbilityRuntime
 
+## Fachada de habilidades.
+## No contiene efectos de ninguna habilidad concreta.
+## Solo arma EffectContext y delega en AbilitySystem (scripts .txt).
+## Tipado estricto en toda la API pública.
+
 const WeatherId = AbilityBattleEffect.weatherAbilityID
 
 
-## ─── Acceso básico ──────────────────────────────────────
+# ═══════════════════════════════════════════════════════════
+# Identidad (lectura de estado, no efectos)
+# ═══════════════════════════════════════════════════════════
+
 static func get_id(battler: BattleBattler) -> AbilityId.Id:
 	if battler == null or battler.pokemon == null:
 		return AbilityId.Id.NONE
@@ -26,7 +34,132 @@ static func ability_name(battler: BattleBattler) -> String:
 	return ""
 
 
-## ─── Inmunidades de tipo por habilidad ───────────────────
+static func get_ally(battler: BattleBattler, battle: BattleManager) -> BattleBattler:
+	if battler == null or battle == null or not battle.is_multi_battle():
+		return null
+	if not battle.has_method("get_allies"):
+		return null
+	var allies: Array = battle.get_allies(battler)
+	for a: Variant in allies:
+		var ally: BattleBattler = a as BattleBattler
+		if ally != null and ally != battler and not ally.is_fainted():
+			return ally
+	return null
+
+
+# ═══════════════════════════════════════════════════════════
+# Eventos de secuencia (async)
+# ═══════════════════════════════════════════════════════════
+
+static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, opponent, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
+
+
+static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_switch_out", ctx)
+
+
+static func on_contact_hit(
+	attacker: BattleBattler,
+	defender: BattleBattler,
+	move: MoveData,
+	battle: BattleManager
+) -> void:
+	if move == null or attacker == null or defender == null or battle == null:
+		return
+	if attacker.is_fainted():
+		return
+	var ctx_def: EffectContext = EffectContext.new(defender, attacker, move, battle)
+	ctx_def.attacker = attacker
+	ctx_def.is_contact = move.makes_contact
+	await AbilitySystem.on_event("on_hit_by", ctx_def)
+	var ctx_atk: EffectContext = EffectContext.new(attacker, defender, move, battle)
+	ctx_atk.attacker = attacker
+	ctx_atk.is_contact = move.makes_contact
+	await AbilitySystem.on_event("on_hit", ctx_atk)
+
+
+static func on_damaged_by_move(
+	defender: BattleBattler,
+	attacker: BattleBattler,
+	move: MoveData,
+	was_critical: bool,
+	battle: BattleManager
+) -> void:
+	if defender == null or defender.is_fainted() or move == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(defender, attacker, move, battle)
+	ctx.attacker = attacker
+	ctx.was_critical = was_critical
+	ctx.is_contact = move.makes_contact
+	await AbilitySystem.on_event("on_damaged", ctx)
+
+
+static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+	if battler == null or battler.pokemon == null or battle == null:
+		return
+	var opp: BattleBattler = null
+	if battle.has_method("get_opponents"):
+		var foes: Array = battle.get_opponents(battler)
+		if not foes.is_empty():
+			opp = foes[0] as BattleBattler
+	var ctx: EffectContext = EffectContext.new(battler, opp, null, battle)
+	ctx.weather = weather
+	ctx.terrain = battle.terrain
+	await AbilitySystem.on_event("on_end_turn", ctx)
+
+
+static func on_flinched(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_flinch", ctx)
+
+
+static func after_own_stat_drop(
+	battler: BattleBattler,
+	actual: int,
+	caused_by_foe: bool,
+	battle: BattleManager
+) -> void:
+	if not caused_by_foe or actual >= 0 or battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.query_int = actual
+	await AbilitySystem.on_event("on_stat_drop", ctx)
+
+
+static func on_berry_eaten(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null or battler.is_fainted():
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_berry_eaten", ctx)
+
+
+static func notify_berry_eaten(battler: BattleBattler, berry_id: int) -> void:
+	if battler == null:
+		return
+	battler.set_meta("last_berry_id", berry_id)
+	battler.set_meta("cud_chew_pending", true)
+
+
+static func notify_item_lost(battler: BattleBattler) -> void:
+	if battler == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	AbilitySystem.query("on_item_lost", ctx)
+
+
+# ═══════════════════════════════════════════════════════════
+# Consultas síncronas
+# ═══════════════════════════════════════════════════════════
+
 static func type_immunity_reaction(defender: BattleBattler, move: MoveData) -> String:
 	if move == null or move.category == MoveStruct.DamageCategory.STATUS:
 		return ""
@@ -79,10 +212,9 @@ static func should_survive_with_sturdy(defender: BattleBattler, incoming_damage:
 
 
 static func blocks_status(battler: BattleBattler, status: PokemonInstance.Status, weather: int = -1) -> bool:
-	if shields_down_blocks_status(battler):
-		return true
 	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
 	ctx.query_status = int(status)
+	ctx.weather = weather
 	return AbilitySystem.query_bool("on_blocks_status", ctx)
 
 
@@ -106,121 +238,11 @@ static func blocks_recoil(battler: BattleBattler) -> bool:
 	return AbilitySystem.query_bool("on_blocks_recoil", ctx)
 
 
-static func victory_star_active(battler: BattleBattler, battle: BattleManager = null) -> bool:
-	if battler == null:
-		return false
-	if has(battler, AbilityId.Id.VICTORY_STAR):
-		return true
-	# En dobles también cubre al aliado
-	if battle != null and battle.is_multi_battle():
-		var ally: BattleBattler = get_ally(battler, battle)
-		if ally != null and not ally.is_fainted() and has(ally, AbilityId.Id.VICTORY_STAR):
-			return true
-	return false
+static func blocks_indirect_damage(battler: BattleBattler) -> bool:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_indirect", ctx)
 
 
-static func prevents_escape(blocker: BattleBattler, runner: BattleBattler) -> bool:
-	if blocker == null or runner == null or blocker.is_fainted() or runner.is_fainted():
-		return false
-	if has(runner, AbilityId.Id.RUN_AWAY):
-		return false
-	var rt1: PokemonData.Type = runner.get_battle_type_1()
-	var rt2: PokemonData.Type = runner.get_battle_type_2()
-	var ghost: bool = rt1 == PokemonData.Type.TYPE_GHOST or rt2 == PokemonData.Type.TYPE_GHOST
-	if ghost:
-		return false
-	match get_id(blocker):
-		AbilityId.Id.SHADOW_TAG:
-			return not has(runner, AbilityId.Id.SHADOW_TAG)
-		AbilityId.Id.ARENA_TRAP:
-			var flying: bool = rt1 == PokemonData.Type.TYPE_FLYING or rt2 == PokemonData.Type.TYPE_FLYING
-			return not flying and not has(runner, AbilityId.Id.LEVITATE)
-		AbilityId.Id.MAGNET_PULL:
-			return rt1 == PokemonData.Type.TYPE_STEEL or rt2 == PokemonData.Type.TYPE_STEEL
-	return false
-
-
-static func should_skip_turn(battler: BattleBattler) -> bool:
-	if battler == null or not has(battler, AbilityId.Id.TRUANT):
-		return false
-	var skip: bool = battler.truant_skip_turn
-	battler.truant_skip_turn = not skip
-	return skip
-
-
-## ─── Entrada en combate ─────────────────────────────────
-static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	var ctx: EffectContext = EffectContext.new(battler, opponent, null, battle)
-	await AbilitySystem.on_event("on_switch_in", ctx)
-
-
-static func on_contact_hit(
-	attacker: BattleBattler,
-	defender: BattleBattler,
-	move: MoveData,
-	battle: BattleManager
-) -> void:
-	if move == null or not move.makes_contact:
-		return
-	if attacker == null or attacker.is_fainted() or defender == null:
-		return
-	var ctx: EffectContext = EffectContext.new(defender, attacker, move, battle)
-	ctx.attacker = attacker
-	ctx.is_contact = true
-	await AbilitySystem.on_event("on_hit_by", ctx)
-	var ctx2: EffectContext = EffectContext.new(attacker, defender, move, battle)
-	ctx2.attacker = attacker
-	ctx2.is_contact = true
-	await AbilitySystem.on_event("on_hit", ctx2)
-	await try_cute_charm(defender, attacker, move, battle)
-	await try_perish_body(defender, attacker, move, battle)
-
-
-static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	var opp: BattleBattler = null
-	if battle.has_method("get_opponents"):
-		var foes: Array = battle.get_opponents(battler)
-		if not foes.is_empty():
-			opp = foes[0] as BattleBattler
-	var ctx: EffectContext = EffectContext.new(battler, opp, null, battle)
-	await AbilitySystem.on_event("on_end_turn", ctx)
-
-
-static func is_immune_to_weather_damage(battler: BattleBattler, weather: int) -> bool:
-	if battler == null or battler.pokemon == null:
-		return true
-
-	var t1: PokemonData.Type = battler.pokemon.get_type_1()
-	var t2: PokemonData.Type = battler.pokemon.get_type_2()
-	var id: AbilityId.Id = get_id(battler)
-
-	match weather:
-		WeatherId.WEATHER_SANDSTORM:
-			if t1 == PokemonData.Type.TYPE_ROCK or t2 == PokemonData.Type.TYPE_ROCK:
-				return true
-			if t1 == PokemonData.Type.TYPE_GROUND or t2 == PokemonData.Type.TYPE_GROUND:
-				return true
-			if t1 == PokemonData.Type.TYPE_STEEL or t2 == PokemonData.Type.TYPE_STEEL:
-				return true
-			if id == AbilityId.Id.SAND_VEIL or id == AbilityId.Id.SAND_RUSH \
-					or id == AbilityId.Id.SAND_FORCE or id == AbilityId.Id.OVERCOAT:
-				return true
-			return false
-		WeatherId.WEATHER_SNOW:
-			if t1 == PokemonData.Type.TYPE_ICE or t2 == PokemonData.Type.TYPE_ICE:
-				return true
-			if id == AbilityId.Id.SNOW_CLOAK or id == AbilityId.Id.OVERCOAT:
-				return true
-			return false
-		_:
-			return true
-
-
-## ─── Bloqueo de bajadas de stat del rival ───────────────
 static func blocks_foe_stat_drop(battler: BattleBattler, stat: PokemonInstance.Stat) -> bool:
 	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
 	ctx.query_int = int(stat)
@@ -228,24 +250,23 @@ static func blocks_foe_stat_drop(battler: BattleBattler, stat: PokemonInstance.S
 
 
 static func blocks_foe_accuracy_drop(battler: BattleBattler) -> bool:
-	var id: AbilityId.Id = get_id(battler)
-	return id == AbilityId.Id.CLEAR_BODY or id == AbilityId.Id.WHITE_SMOKE \
-		or id == AbilityId.Id.FULL_METAL_BODY or id == AbilityId.Id.KEEN_EYE
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	# Accuracy no está en PokemonInstance.Stat; consulta dedicada.
+	return AbilitySystem.query_bool("on_blocks_accuracy_drop", ctx)
 
 
-static func adjust_own_stage_change(battler: BattleBattler, amount: int) -> int:
-	match get_id(battler):
-		AbilityId.Id.SIMPLE:
-			return amount * 2
-		AbilityId.Id.CONTRARY:
-			return -amount
-	return amount
+static func blocks_intimidate(battler: BattleBattler) -> bool:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_intimidate", ctx)
 
 
-## ─── Multiplicadores ofensivos ──────────────────────────
-static func technician_multiplier(attacker: BattleBattler, move: MoveData) -> float:
-	# Technician vive en on_power del .txt; este helper queda en 1.0 para no duplicar.
-	return 1.0
+static func speed_multiplier(battler: BattleBattler, weather: int, terrain: int = -1) -> float:
+	if battler == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.weather = weather
+	ctx.terrain = terrain
+	return AbilitySystem.query_float("on_speed", ctx, 1.0)
 
 
 static func stab_multiplier(attacker: BattleBattler) -> float:
@@ -273,277 +294,9 @@ static func crit_damage_multiplier(attacker: BattleBattler) -> float:
 	return ctx.multiplier
 
 
-static func rivalry_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
-	if not has(attacker, AbilityId.Id.RIVALRY):
-		return 1.0
-	var a: PokemonData.Gender = attacker.pokemon.gender
-	var d: PokemonData.Gender = defender.pokemon.gender
-	if a == PokemonData.Gender.GENDERLESS or d == PokemonData.Gender.GENDERLESS:
-		return 1.0
-	return 1.25 if a == d else 0.75
-
-
 static func ignores_defender_ability(attacker: BattleBattler) -> bool:
 	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
 	return AbilitySystem.query_bool("on_ignores_ability", ctx)
-
-
-static func bypasses_ghost_immunity(attacker: BattleBattler, move: MoveData) -> bool:
-	if move == null:
-		return false
-	if has(attacker, AbilityId.Id.MINDS_EYE):
-		return move.type == PokemonData.Type.TYPE_NORMAL or move.type == PokemonData.Type.TYPE_FIGHTING
-	if not has(attacker, AbilityId.Id.SCRAPPY):
-		return false
-	return move.type == PokemonData.Type.TYPE_NORMAL or move.type == PokemonData.Type.TYPE_FIGHTING
-
-
-static func blocks_indirect_damage(battler: BattleBattler) -> bool:
-	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
-	return AbilitySystem.query_bool("on_blocks_indirect", ctx)
-
-
-static func _is_traceable(id: AbilityId.Id) -> bool:
-	match id:
-		AbilityId.Id.NONE, AbilityId.Id.TRACE, AbilityId.Id.MULTITYPE, AbilityId.Id.ILLUSION, \
-		AbilityId.Id.IMPOSTER, AbilityId.Id.STANCE_CHANGE, AbilityId.Id.SCHOOLING, \
-		AbilityId.Id.RKS_SYSTEM, AbilityId.Id.DISGUISE, AbilityId.Id.BATTLE_BOND, \
-		AbilityId.Id.POWER_CONSTRUCT, AbilityId.Id.NEUTRALIZING_GAS, AbilityId.Id.GULP_MISSILE, \
-		AbilityId.Id.ICE_FACE, AbilityId.Id.HUNGER_SWITCH, \
-		AbilityId.Id.AS_ONE_ICE_RIDER, AbilityId.Id.AS_ONE_SHADOW_RIDER:
-			return false
-	return true
-
-## Velocidad por clima (llamar al calcular orden de turno)
-static func speed_multiplier(battler: BattleBattler, weather: int, terrain: int = -1) -> float:
-	if battler == null:
-		return 1.0
-	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
-	ctx.weather = weather
-	ctx.terrain = terrain
-	return AbilitySystem.query_float("on_speed", ctx, 1.0)
-
-
-static func on_damaged_by_move(
-	defender: BattleBattler,
-	attacker: BattleBattler,
-	move: MoveData,
-	was_critical: bool,
-	battle: BattleManager
-) -> void:
-	if defender == null or defender.is_fainted() or move == null or battle == null:
-		return
-	var ctx: EffectContext = EffectContext.new(defender, attacker, move, battle)
-	ctx.attacker = attacker
-	ctx.was_critical = was_critical
-	ctx.is_contact = move.makes_contact
-	await AbilitySystem.on_event("on_damaged", ctx)
-	await try_cursed_body(defender, attacker, move, battle)
-
-
-static func _setup_illusion(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-
-	var party: Array[PokemonInstance] = battle.player_party if battler.is_player_side else battle.enemy_party
-	var disguise: PokemonInstance = null
-
-	# El disfraz es el último miembro del party que no sea el activo y no esté KO.
-	for i: int in range(party.size() - 1, -1, -1):
-		var mon: PokemonInstance = party[i]
-		if mon == null or mon == battler.pokemon:
-			continue
-		if mon.is_fainted():
-			continue
-		disguise = mon
-		break
-
-	if disguise == null:
-		return  # sin disfraz posible: no anuncia, Illusion “falla” en silencio como en los juegos
-
-	battler.illusion_active = true
-	battler.illusion_species_id = disguise.species_id
-	battler.illusion_nickname = disguise.get_display_name()
-	battler.illusion_gender = disguise.gender
-	battler.illusion_shiny = disguise.shiny if "shiny" in disguise else false
-	battler.illusion_form_id = disguise.form_id if "form_id" in disguise else 0
-
-	# No se anuncia Illusion al entrar: el truco es que no se note.
-	battle.battler_appearance_changed.emit(battler.is_player_side)
-
-
-## Se llama al recibir daño real (HP baja).
-static func break_illusion(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or not battler.illusion_active:
-		return
-	battler.clear_illusion()
-	await battle.ability_announce(battler)
-	battle.illusion_broken.emit(battler.is_player_side)
-	battle.battler_appearance_changed.emit(battler.is_player_side)
-	battle.message.emit("¡La ilusión de %s se disipó!" % battler.get_display_name())
-	await battle._wait(0.7)
-
-
-## Imposter = Transform completo del rival (stats base del transform, mismos moves, etc.).
-static func _setup_imposter(
-	battler: BattleBattler,
-	opponent: BattleBattler,
-	battle: BattleManager
-) -> void:
-	if battler == null or opponent == null or opponent.pokemon == null:
-		return
-	if battler.is_transformed:
-		return
-
-	await battle.ability_announce(battler)
-
-	var src: PokemonInstance = opponent.pokemon
-	var dst: PokemonInstance = battler.pokemon
-
-	battler.transform_backup = {
-		"species_id": dst.species_id,
-		"form_id": dst.form_id,
-		"ability_id": dst.ability_id,
-		"moves": dst.moves.duplicate(true),
-	}
-
-	# HP / max_hp del Ditto se conservan
-	dst.species_id = src.species_id
-	dst.form_id = src.form_id
-	dst.ability_id = src.ability_id
-
-	# Copias INDEPENDIENTES de movimientos (nunca compartir refs con el rival)
-	var new_moves: Array[PokemonMoveSlot] = []
-	for slot: PokemonMoveSlot in src.moves:
-		if slot == null or slot.is_empty():
-			continue
-		var copy: PokemonMoveSlot = PokemonMoveSlot.new()
-		copy.move_id = slot.move_id
-		copy.pp_ups = 0
-		var md: MoveData = MoveDatabase.get_move(slot.move_id)
-		var base_pp: int = md.pp if md != null else 5
-		copy.current_pp = mini(5, base_pp)
-		new_moves.append(copy)
-	dst.moves = new_moves
-
-	battler.stage_attack = opponent.stage_attack
-	battler.stage_defense = opponent.stage_defense
-	battler.stage_sp_attack = opponent.stage_sp_attack
-	battler.stage_sp_defense = opponent.stage_sp_defense
-	battler.stage_speed = opponent.stage_speed
-	battler.stage_accuracy = opponent.stage_accuracy
-	battler.stage_evasion = opponent.stage_evasion
-
-	battler.is_transformed = true
-	battler.clear_illusion()
-	if dst.has_method("recalculate_stats"):
-		dst.recalculate_stats()
-
-	battle.message.emit("¡%s se transformó en %s!" % [
-		battler.get_display_name(),
-		opponent.get_display_name()
-	])
-	battle.battler_appearance_changed.emit(battler.is_player_side)
-	await battle._wait(0.9)
-
-static func revert_transform(battler: BattleBattler) -> void:
-	if battler == null or not battler.is_transformed:
-		return
-	if battler.pokemon == null or battler.transform_backup.is_empty():
-		battler.is_transformed = false
-		battler.transform_backup.clear()
-		return
-
-	var dst: PokemonInstance = battler.pokemon
-	var bak: Dictionary = battler.transform_backup
-
-	dst.species_id = bak.get("species_id", dst.species_id)
-	dst.form_id = bak.get("form_id", dst.form_id)
-	dst.ability_id = bak.get("ability_id", dst.ability_id)
-
-	var moves_bak: Variant = bak.get("moves", null)
-	if moves_bak is Array:
-		dst.moves.clear()
-		for slot: Variant in moves_bak:
-			if slot is PokemonMoveSlot:
-				dst.moves.append(slot)
-
-	battler.is_transformed = false
-	battler.transform_backup.clear()
-
-## Solo estado visual. Sin await, sin Ability Bar.
-## Llamar ANTES de mostrar sprites / nombres.
-static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> bool:
-	if battler == null or battler.pokemon == null or battle == null:
-		return false
-	if get_id(battler) != AbilityId.Id.ILLUSION:
-		return false
-
-	var party: Array[PokemonInstance] = (
-		battle.player_party if battler.is_player_side else battle.enemy_party
-	)
-	# Si el party está vacío, usar los activos del bando como referencia de equipo
-	if party.is_empty() and battle.has_method("get_side_actives"):
-		for b: BattleBattler in battle.player_actives if battler.is_player_side else battle.enemy_actives:
-			if b != null and b.pokemon != null and not party.has(b.pokemon):
-				party.append(b.pokemon)
-
-	var disguise: PokemonInstance = null
-	for i: int in range(party.size() - 1, -1, -1):
-		var mon: PokemonInstance = party[i]
-		if mon == null or mon == battler.pokemon:
-			continue
-		if mon.is_fainted():
-			continue
-		disguise = mon
-		break
-
-	if disguise == null:
-		battler.clear_illusion()
-		return false
-
-	battler.illusion_active = true
-	battler.illusion_species_id = int(disguise.species_id)
-	battler.illusion_nickname = disguise.get_display_name()
-	battler.illusion_gender = disguise.gender
-	battler.illusion_shiny = bool(disguise.shiny) if "shiny" in disguise else false
-	if "form_id" in disguise:
-		battler.illusion_form_id = disguise.form_id if typeof(disguise.form_id) == TYPE_INT else 0
-	else:
-		battler.illusion_form_id = 0
-	return true
-
-static func blocks_intimidate(battler: BattleBattler) -> bool:
-	return _blocks_intimidate(battler)
-
-
-static func _blocks_intimidate(battler: BattleBattler) -> bool:
-	var id: AbilityId.Id = get_id(battler)
-	return id == AbilityId.Id.INNER_FOCUS or id == AbilityId.Id.OWN_TEMPO \
-		or id == AbilityId.Id.OBLIVIOUS or id == AbilityId.Id.SCRAPPY \
-		or id == AbilityId.Id.GUARD_DOG
-
-
-static func _apply_mimicry(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battle == null:
-		return
-	var t: PokemonData.Type = PokemonData.Type.TYPE_NONE
-	match battle.terrain:
-		BattleManager.TerrainId.TERRAIN_ELECTRIC:
-			t = PokemonData.Type.TYPE_ELECTRIC
-		BattleManager.TerrainId.TERRAIN_GRASSY:
-			t = PokemonData.Type.TYPE_GRASS
-		BattleManager.TerrainId.TERRAIN_MISTY:
-			t = PokemonData.Type.TYPE_FAIRY
-		BattleManager.TerrainId.TERRAIN_PSYCHIC:
-			t = PokemonData.Type.TYPE_PSYCHIC
-		_:
-			battler.clear_battle_types()
-			return
-	battler.set_battle_types(t)
-	await battle.ability_announce(battler)
-	battle.message.emit("¡%s cambió de tipo por el terreno!" % battler.get_display_name())
-	await battle._wait(0.5)
 
 
 static func priority_bonus(battler: BattleBattler, move: MoveData) -> int:
@@ -554,9 +307,7 @@ static func priority_bonus(battler: BattleBattler, move: MoveData) -> int:
 
 
 static func blocks_priority_move(defender: BattleBattler, move: MoveData) -> bool:
-	if defender == null or move == null:
-		return false
-	if move.priority <= 0:
+	if defender == null or move == null or move.priority <= 0:
 		return false
 	var ctx: EffectContext = EffectContext.new(defender, null, move, null)
 	return AbilitySystem.query_bool("on_blocks_priority", ctx)
@@ -590,975 +341,769 @@ static func type_change_power_multiplier(attacker: BattleBattler, move: MoveData
 	return AbilitySystem.query_float("on_type_power", ctx, 1.0)
 
 
-static func aura_multiplier(_attacker: BattleBattler, _defender: BattleBattler, move_type: PokemonData.Type, battle: BattleManager) -> float:
-	if battle == null:
-		return 1.0
-	if move_type != PokemonData.Type.TYPE_DARK and move_type != PokemonData.Type.TYPE_FAIRY:
-		return 1.0
-	var has_dark: bool = false
-	var has_fairy: bool = false
-	var has_break: bool = false
-	for b: BattleBattler in [battle.player, battle.enemy]:
-		if b == null or b.is_fainted():
-			continue
-		match get_id(b):
-			AbilityId.Id.DARK_AURA:
-				has_dark = true
-			AbilityId.Id.FAIRY_AURA:
-				has_fairy = true
-			AbilityId.Id.AURA_BREAK:
-				has_break = true
-	if move_type == PokemonData.Type.TYPE_DARK and has_dark:
-		return 0.75 if has_break else 1.33
-	if move_type == PokemonData.Type.TYPE_FAIRY and has_fairy:
-		return 0.75 if has_break else 1.33
-	return 1.0
-
-
-static func ruin_stat_multiplier(stat_owner: BattleBattler, stat: PokemonInstance.Stat, battle: BattleManager) -> float:
-	if battle == null or stat_owner == null:
-		return 1.0
-	var mult: float = 1.0
-	for b: BattleBattler in [battle.player, battle.enemy]:
-		if b == null or b.is_fainted() or b == stat_owner:
-			continue
-		match get_id(b):
-			AbilityId.Id.TABLETS_OF_RUIN:
-				if stat == PokemonInstance.Stat.ATTACK:
-					mult *= 0.75
-			AbilityId.Id.SWORD_OF_RUIN:
-				if stat == PokemonInstance.Stat.DEFENSE:
-					mult *= 0.75
-			AbilityId.Id.VESSEL_OF_RUIN:
-				if stat == PokemonInstance.Stat.SP_ATTACK:
-					mult *= 0.75
-			AbilityId.Id.BEADS_OF_RUIN:
-				if stat == PokemonInstance.Stat.SP_DEFENSE:
-					mult *= 0.75
-	return mult
-
-
-static func try_protean(battler: BattleBattler, move: MoveData, battle: BattleManager) -> void:
-	if battler == null or move == null or battle == null:
-		return
-	var id: AbilityId.Id = get_id(battler)
-	if id != AbilityId.Id.PROTEAN and id != AbilityId.Id.LIBERO:
-		return
-	var mt: PokemonData.Type = effective_move_type(battler, move)
-	if mt == PokemonData.Type.TYPE_NONE:
-		return
-	if battler.get_battle_type_1() == mt and battler.get_battle_type_2() == PokemonData.Type.TYPE_NONE:
-		return
-	battler.set_battle_types(mt)
-	battle.message.emit("¡%s cambió al tipo del movimiento!" % battler.get_display_name())
-
-
-static func always_crits(attacker: BattleBattler, defender: BattleBattler) -> bool:
-	if not has(attacker, AbilityId.Id.MERCILESS):
-		return false
-	if defender == null or defender.pokemon == null:
-		return false
-	var st: PokemonInstance.Status = defender.pokemon.status
-	return st == PokemonInstance.Status.POISON or st == PokemonInstance.Status.TOXIC
-
-
-static func move_makes_contact(attacker: BattleBattler, move: MoveData) -> bool:
-	if move == null or not move.makes_contact:
-		return false
-	if has(attacker, AbilityId.Id.LONG_REACH):
-		return false
-	return true
-
-
-static func analytic_multiplier(attacker: BattleBattler, acted_after_target: bool) -> float:
-	if acted_after_target and has(attacker, AbilityId.Id.ANALYTIC):
-		return 1.3
-	return 1.0
-
-
-static func stakeout_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
-	if has(attacker, AbilityId.Id.STAKEOUT) and defender != null and defender.just_switched_in:
-		return 2.0
-	return 1.0
-
-
-static func supreme_overlord_multiplier(attacker: BattleBattler, battle: BattleManager) -> float:
-	if not has(attacker, AbilityId.Id.SUPREME_OVERLORD) or battle == null:
-		return 1.0
-	var party: Array[PokemonInstance] = battle.player_party if attacker.is_player_side else battle.enemy_party
-	var fainted: int = 0
-	for mon: PokemonInstance in party:
-		if mon != null and mon.is_fainted():
-			fainted += 1
-	return 1.0 + 0.1 * float(mini(fainted, 5))
-
-
-static func on_flinched(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battle == null:
-		return
-	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
-	await AbilitySystem.on_event("on_flinch", ctx)
-
-
-static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battle == null:
-		return
-	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
-	await AbilitySystem.on_event("on_switch_out", ctx)
-
-
-static func after_own_stat_drop(battler: BattleBattler, actual: int, caused_by_foe: bool, battle: BattleManager) -> void:
-	if not caused_by_foe or actual >= 0 or battler == null or battle == null:
-		return
-	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
-	await AbilitySystem.on_event("on_stat_drop", ctx)
-
-
-static func sand_force_active(battler: BattleBattler, move: MoveData, weather: int) -> float:
-	if not has(battler, AbilityId.Id.SAND_FORCE):
-		return 1.0
-	if weather != WeatherId.WEATHER_SANDSTORM or move == null:
-		return 1.0
-	if move.type == PokemonData.Type.TYPE_ROCK or move.type == PokemonData.Type.TYPE_GROUND \
-			or move.type == PokemonData.Type.TYPE_STEEL:
-		return 1.3
-	return 1.0
-
-
-static func solar_power_multiplier(battler: BattleBattler, category: MoveStruct.DamageCategory, weather: int) -> float:
-	if category != MoveStruct.DamageCategory.SPECIAL:
-		return 1.0
-	if has(battler, AbilityId.Id.SOLAR_POWER) and weather == WeatherId.WEATHER_DROUGHT:
-		return 1.5
-	return 1.0
-
-
-static func hadron_orichalcum_multiplier(battler: BattleBattler, category: MoveStruct.DamageCategory, weather: int, terrain: int) -> float:
-	if has(battler, AbilityId.Id.HADRON_ENGINE) and category == MoveStruct.DamageCategory.SPECIAL \
-			and terrain == BattleManager.TerrainId.TERRAIN_ELECTRIC:
-		return 1.3333
-	if has(battler, AbilityId.Id.ORICHALCUM_PULSE) and category == MoveStruct.DamageCategory.PHYSICAL \
-			and weather == WeatherId.WEATHER_DROUGHT:
-		return 1.3333
-	return 1.0
-
-
-static func grass_pelt_multiplier(defender: BattleBattler, move: MoveData, terrain: int) -> float:
-	if move == null or move.category != MoveStruct.DamageCategory.PHYSICAL:
-		return 1.0
-	if has(defender, AbilityId.Id.GRASS_PELT) and terrain == BattleManager.TerrainId.TERRAIN_GRASSY:
-		return 0.6667
-	return 1.0
-
-
-static func marvel_scale_multiplier(defender: BattleBattler, move: MoveData) -> float:
-	if move == null or move.category != MoveStruct.DamageCategory.PHYSICAL:
-		return 1.0
-	if has(defender, AbilityId.Id.MARVEL_SCALE) and defender.pokemon != null and defender.pokemon.has_status():
-		return 0.6667
-	return 1.0
-
-
-static func damp_blocks_explosion(blocker: BattleBattler, move: MoveData) -> bool:
-	if move == null or not move.is_explosion:
-		return false
-	return has(blocker, AbilityId.Id.DAMP)
-
-
-static func ignores_protect_contact(attacker: BattleBattler, move: MoveData) -> bool:
-	return has(attacker, AbilityId.Id.UNSEEN_FIST) and move != null and move.makes_contact
-
-
-static func corrosion_can_poison(attacker: BattleBattler) -> bool:
-	return has(attacker, AbilityId.Id.CORROSION)
-
-
-## ─── Habilidades pendientes integradas (lote funcional) ───
-
-## Early Bird: reduce a la mitad los turnos de sueño al aplicarse.
-static func apply_early_bird_sleep(battler: BattleBattler) -> void:
-	if battler == null or battler.pokemon == null:
-		return
-	if not has(battler, AbilityId.Id.EARLY_BIRD):
-		return
-	if battler.pokemon.status != PokemonInstance.Status.SLEEP:
-		return
-	# Mitad redondeando hacia abajo, mínimo 1 si aún dormía
-	battler.pokemon.status_counter = maxi(1, battler.pokemon.status_counter / 2)
-
-
-## Unburden: marcar velocidad x2 al perder el objeto en combate.
-static func notify_item_lost(battler: BattleBattler) -> void:
-	if battler == null:
-		return
-	if has(battler, AbilityId.Id.UNBURDEN):
-		battler.unburden_active = true
-
-
-## Klutz: el objeto equipado no tiene efecto.
-static func ignores_held_item(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.KLUTZ)
-
-
-## Heavy Metal / Light Metal
 static func weight_multiplier(battler: BattleBattler) -> float:
-	match get_id(battler):
-		AbilityId.Id.HEAVY_METAL:
-			return 2.0
-		AbilityId.Id.LIGHT_METAL:
-			return 0.5
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_float("on_weight", ctx, 1.0)
 
 
-## Gluttony: come bayas al 50% HP en vez de 25%.
 static func berry_hp_threshold(battler: BattleBattler) -> float:
-	if has(battler, AbilityId.Id.GLUTTONY):
-		return 0.5
-	return 0.25
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.multiplier = 0.25
+	AbilitySystem.query("on_berry_threshold", ctx)
+	return ctx.multiplier
 
 
-## Ripen: duplica efectos de bayas.
 static func berry_effect_multiplier(battler: BattleBattler) -> float:
-	return 2.0 if has(battler, AbilityId.Id.RIPEN) else 1.0
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_float("on_berry_effect", ctx, 1.0)
 
 
-## Cheek Pouch: curar 1/3 al comer una baya (llamar tras consumir baya).
-static func on_berry_eaten(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battle == null or battler.is_fainted():
-		return
-	if has(battler, AbilityId.Id.CHEEK_POUCH):
-		await battle.ability_announce(battler)
-		@warning_ignore("integer_division")
-		var heal_amt: int = maxi(1, battler.get_max_hp() / 3)
-		await battle.ability_heal(battler, heal_amt)
+static func ignores_held_item(battler: BattleBattler) -> bool:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_ignores_held_item", ctx)
 
 
-## Suction Cups / Anchor: no puede ser forzado a salir.
 static func blocks_forced_switch(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.SUCTION_CUPS)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_forced_switch", ctx)
 
 
-## Stalwart / Propeller Tail: ignora redirección de movimientos.
 static func ignores_redirection(battler: BattleBattler) -> bool:
-	var id: AbilityId.Id = get_id(battler)
-	return id == AbilityId.Id.STALWART or id == AbilityId.Id.PROPELLER_TAIL
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_ignores_redirection", ctx)
 
 
-## Aroma Veil: bloquea efectos mentales sobre el portador (y aliados en dobles).
 static func blocks_mental_effect(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.AROMA_VEIL)
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_blocks_mental", ctx)
 
 
-## Mycelium Might: movimientos de estado ignoran habilidades del rival y van últimos.
+static func reflects_stat_drop(battler: BattleBattler) -> bool:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_reflects_stat_drop", ctx)
+
+
 static func status_move_ignores_abilities(attacker: BattleBattler, move: MoveData) -> bool:
 	if move == null or move.category != MoveStruct.DamageCategory.STATUS:
 		return false
-	return has(attacker, AbilityId.Id.MYCELIUM_MIGHT)
+	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	return AbilitySystem.query_bool("on_status_ignores_abilities", ctx)
 
 
 static func mycelium_goes_last(attacker: BattleBattler, move: MoveData) -> bool:
 	return status_move_ignores_abilities(attacker, move)
 
 
-## Quick Draw: 30% de actuar primero en su prioridad (desempate).
 static func quick_draw_wins_speed_tie(battler: BattleBattler) -> bool:
-	if not has(battler, AbilityId.Id.QUICK_DRAW):
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_speed_tie_win", ctx)
+
+
+static func always_crits(attacker: BattleBattler, defender: BattleBattler) -> bool:
+	if attacker == null or defender == null:
 		return false
-	return randf() < 0.3
+	var ctx: EffectContext = EffectContext.new(attacker, defender, null, null)
+	ctx.target = defender
+	return AbilitySystem.query_bool("on_always_crit", ctx)
 
 
-## Mirror Armor: refleja bajadas de estadística del rival.
-static func reflects_stat_drop(battler: BattleBattler) -> bool:
-	return has(battler, AbilityId.Id.MIRROR_ARMOR)
-
-
-## Magician: roba el objeto del rival tras golpear con un movimiento.
-static func try_magician(
-	attacker: BattleBattler,
-	defender: BattleBattler,
-	battle: BattleManager
-) -> void:
-	if attacker == null or defender == null or battle == null:
-		return
-	if not has(attacker, AbilityId.Id.MAGICIAN):
-		return
-	if attacker.is_fainted() or defender.is_fainted():
-		return
-	if attacker.pokemon == null or defender.pokemon == null:
-		return
-	if attacker.pokemon.held_item != Items.ItemId.ITEM_NONE:
-		return
-	if defender.pokemon.held_item == Items.ItemId.ITEM_NONE:
-		return
-	if has(defender, AbilityId.Id.STICKY_HOLD):
-		return
-	await battle.ability_announce(attacker)
-	attacker.pokemon.held_item = defender.pokemon.held_item
-	defender.pokemon.held_item = Items.ItemId.ITEM_NONE
-	notify_item_lost(defender)
-	battle.message.emit("¡%s robó el objeto!" % attacker.get_display_name())
-	await battle._wait(0.5)
-
-
-## Cursed Body: 30% de "desactivar" el movimiento usado (requiere sistema Disable).
-## Mientras no exista Disable completo, se marca el slot con pp temporal 0 un turno vía flag.
-static func try_cursed_body(
-	defender: BattleBattler,
-	attacker: BattleBattler,
-	move: MoveData,
-	battle: BattleManager
-) -> void:
-	if defender == null or attacker == null or move == null or battle == null:
-		return
-	if not has(defender, AbilityId.Id.CURSED_BODY):
-		return
-	if defender.is_fainted() or attacker.is_fainted():
-		return
-	if randf() >= 0.3:
-		return
-	# Buscar el slot del movimiento y poner PP a 0 este combate si no hay disable real
-	if attacker.pokemon == null:
-		return
-	await battle.ability_announce(defender)
-	for i: int in range(attacker.pokemon.moves.size()):
-		var slot2: PokemonMoveSlot = attacker.pokemon.moves[i]
-		if slot2 == null or slot2.is_empty():
-			continue
-		var md: MoveData = MoveDatabase.get_move(slot2.move_id)
-		if md == null:
-			continue
-		if md == move or md.move_name == move.move_name:
-			slot2.current_pp = 0
-			battle.message.emit("¡El movimiento de %s fue desactivado!" % attacker.get_display_name())
-			await battle._wait(0.6)
-			return
-
-
-## Wimp Out / Emergency Exit: pedir cambio al cruzar la mitad de PS.
-static func check_wimp_or_emergency(
-	battler: BattleBattler,
-	hp_before: int,
-	battle: BattleManager
-) -> bool:
-	if battler == null or battler.pokemon == null or battle == null:
+static func move_makes_contact(attacker: BattleBattler, move: MoveData) -> bool:
+	if move == null or not move.makes_contact:
 		return false
-	var id: AbilityId.Id = get_id(battler)
-	if id != AbilityId.Id.WIMP_OUT and id != AbilityId.Id.EMERGENCY_EXIT:
+	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	if AbilitySystem.query_bool("on_removes_contact", ctx):
 		return false
-	if battler.is_fainted():
+	return true
+
+
+static func damp_blocks_explosion(blocker: BattleBattler, move: MoveData) -> bool:
+	if move == null or not move.is_explosion:
 		return false
-	var max_hp: int = battler.get_max_hp()
-	if max_hp <= 0:
+	var ctx: EffectContext = EffectContext.new(blocker, null, move, null)
+	return AbilitySystem.query_bool("on_blocks_explosion", ctx)
+
+
+static func ignores_protect_contact(attacker: BattleBattler, move: MoveData) -> bool:
+	if move == null or not move.makes_contact:
 		return false
-	var half: float = float(max_hp) / 2.0
-	if float(hp_before) > half and float(battler.pokemon.current_hp) <= half:
-		await battle.ability_announce(battler)
-		battle.message.emit("¡%s quiere retirarse!" % battler.get_display_name())
-		await battle._wait(0.6)
+	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	return AbilitySystem.query_bool("on_ignores_protect_contact", ctx)
+
+
+static func corrosion_can_poison(attacker: BattleBattler) -> bool:
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	return AbilitySystem.query_bool("on_corrosion", ctx)
+
+
+static func bypasses_ghost_immunity(attacker: BattleBattler, move: MoveData) -> bool:
+	if move == null:
+		return false
+	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	return AbilitySystem.query_bool("on_bypasses_ghost", ctx)
+
+
+static func adjust_own_stage_change(battler: BattleBattler, amount: int) -> int:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.query_int = amount
+	AbilitySystem.query("on_stage_change", ctx)
+	return ctx.query_int
+
+
+static func should_skip_turn(battler: BattleBattler) -> bool:
+	if battler == null:
+		return false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	return AbilitySystem.query_bool("on_skip_turn", ctx)
+
+
+static func is_immune_to_weather_damage(battler: BattleBattler, weather: int) -> bool:
+	if battler == null or battler.pokemon == null:
 		return true
+	var t1: PokemonData.Type = battler.pokemon.get_type_1()
+	var t2: PokemonData.Type = battler.pokemon.get_type_2()
+	match weather:
+		WeatherId.WEATHER_SANDSTORM:
+			if t1 == PokemonData.Type.TYPE_ROCK or t2 == PokemonData.Type.TYPE_ROCK:
+				return true
+			if t1 == PokemonData.Type.TYPE_GROUND or t2 == PokemonData.Type.TYPE_GROUND:
+				return true
+			if t1 == PokemonData.Type.TYPE_STEEL or t2 == PokemonData.Type.TYPE_STEEL:
+				return true
+		WeatherId.WEATHER_SNOW:
+			if t1 == PokemonData.Type.TYPE_ICE or t2 == PokemonData.Type.TYPE_ICE:
+				return true
+		_:
+			return true
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.weather = weather
+	return AbilitySystem.query_bool("on_weather_immunity", ctx)
+
+
+static func prevents_escape(blocker: BattleBattler, runner: BattleBattler) -> bool:
+	if blocker == null or runner == null or blocker.is_fainted() or runner.is_fainted():
+		return false
+	var ctx_run: EffectContext = EffectContext.new(runner, blocker, null, null)
+	if AbilitySystem.query_bool("on_always_escape", ctx_run):
+		return false
+	var rt1: PokemonData.Type = runner.get_battle_type_1()
+	var rt2: PokemonData.Type = runner.get_battle_type_2()
+	if rt1 == PokemonData.Type.TYPE_GHOST or rt2 == PokemonData.Type.TYPE_GHOST:
+		return false
+	var ctx: EffectContext = EffectContext.new(blocker, runner, null, null)
+	ctx.target = runner
+	return AbilitySystem.query_bool("on_blocks_escape", ctx)
+
+
+static func victory_star_active(battler: BattleBattler, battle: BattleManager = null) -> bool:
+	if battler == null:
+		return false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	if AbilitySystem.query_bool("on_victory_star", ctx):
+		return true
+	if battle != null and battle.is_multi_battle():
+		var ally: BattleBattler = get_ally(battler, battle)
+		if ally != null and not ally.is_fainted():
+			var ctx_a: EffectContext = EffectContext.new(ally, null, null, battle)
+			if AbilitySystem.query_bool("on_victory_star", ctx_a):
+				return true
 	return false
 
 
-## Protosynthesis / Quark Drive: sube la estadística más alta en sol / terreno eléctrico.
-static func try_booster_energy_style(
+static func rivalry_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
+	if attacker == null or defender == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(attacker, defender, null, null)
+	ctx.target = defender
+	return AbilitySystem.query_float("on_rivalry", ctx, 1.0)
+
+
+static func analytic_multiplier(attacker: BattleBattler, acted_after_target: bool) -> float:
+	if attacker == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, null)
+	ctx.acted_after_target = acted_after_target
+	return AbilitySystem.query_float("on_analytic", ctx, 1.0)
+
+
+static func stakeout_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
+	if attacker == null or defender == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(attacker, defender, null, null)
+	ctx.target = defender
+	ctx.target_just_switched = defender.just_switched_in
+	return AbilitySystem.query_float("on_stakeout", ctx, 1.0)
+
+
+static func supreme_overlord_multiplier(attacker: BattleBattler, battle: BattleManager) -> float:
+	if attacker == null or battle == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(attacker, null, null, battle)
+	var party: Array[PokemonInstance] = battle.player_party if attacker.is_player_side else battle.enemy_party
+	var fainted: int = 0
+	for mon: PokemonInstance in party:
+		if mon != null and mon.is_fainted():
+			fainted += 1
+	ctx.query_int = mini(fainted, 5)
+	return AbilitySystem.query_float("on_supreme_overlord", ctx, 1.0)
+
+
+static func sand_force_active(battler: BattleBattler, move: MoveData, weather: int) -> float:
+	if battler == null or move == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(battler, null, move, null)
+	ctx.weather = weather
+	return AbilitySystem.query_float("on_sand_force", ctx, 1.0)
+
+
+static func solar_power_multiplier(battler: BattleBattler, category: MoveStruct.DamageCategory, weather: int) -> float:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.move_category = int(category)
+	ctx.weather = weather
+	return AbilitySystem.query_float("on_solar_power", ctx, 1.0)
+
+
+static func hadron_orichalcum_multiplier(
 	battler: BattleBattler,
+	category: MoveStruct.DamageCategory,
 	weather: int,
-	terrain: int,
-	battle: BattleManager
-) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	var id: AbilityId.Id = get_id(battler)
-	var active: bool = false
-	if id == AbilityId.Id.PROTOSYNTHESIS and weather == WeatherId.WEATHER_DROUGHT:
-		active = true
-	elif id == AbilityId.Id.QUARK_DRIVE and terrain == BattleManager.TerrainId.TERRAIN_ELECTRIC:
-		active = true
-	if not active:
-		return
-	await battle.ability_announce(battler)
-	var best: PokemonInstance.Stat = PokemonInstance.Stat.ATTACK
-	var best_val: int = -1
-	for stat: PokemonInstance.Stat in [
-		PokemonInstance.Stat.ATTACK, PokemonInstance.Stat.DEFENSE,
-		PokemonInstance.Stat.SP_ATTACK, PokemonInstance.Stat.SP_DEFENSE,
-		PokemonInstance.Stat.SPEED
-	]:
-		var v: int = battler.get_effective_stat(stat)
-		if v > best_val:
-			best_val = v
-			best = stat
-	# +1 stage (aprox. del boost de 1.3x en games; stages es lo disponible)
-	await battle.ability_change_stat(battler, best, 1)
+	terrain: int
+) -> float:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	ctx.move_category = int(category)
+	ctx.weather = weather
+	ctx.terrain = terrain
+	return AbilitySystem.query_float("on_engine_pulse", ctx, 1.0)
 
 
-## Opportunist: copia subidas de estadística del rival (llamar cuando el rival sube).
-static func try_opportunist(
-	battler: BattleBattler,
-	foe: BattleBattler,
-	stat: PokemonInstance.Stat,
-	stages: int,
-	battle: BattleManager
-) -> void:
-	if stages <= 0 or battler == null or foe == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.OPPORTUNIST):
-		return
-	if battler.is_fainted():
-		return
-	await battle.ability_announce(battler)
-	await battle.ability_change_stat(battler, stat, stages)
-
-
-## Poison Puppeteer: confunde al envenenar.
-static func try_poison_puppeteer(
-	attacker: BattleBattler,
-	defender: BattleBattler,
-	battle: BattleManager
-) -> void:
-	if attacker == null or defender == null or battle == null:
-		return
-	if not has(attacker, AbilityId.Id.POISON_PUPPETEER):
-		return
-	if defender.is_fainted():
-		return
-	if defender.pokemon == null:
-		return
-	if defender.pokemon.status != PokemonInstance.Status.POISON \
-			and defender.pokemon.status != PokemonInstance.Status.TOXIC:
-		return
-	if AbilityRuntime.blocks_confusion(defender):
-		return
-	await battle.ability_announce(attacker)
-	defender.confusion_turns = randi_range(2, 5)
-	battle.message.emit("¡%s se confundió!" % defender.get_display_name())
-	await battle._wait(0.5)
-
-
-## Harvest: 50% (100% en sol) de recuperar baya consumida al final del turno.
-static func try_harvest(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.HARVEST):
-		return
-	if battler.pokemon.held_item != Items.ItemId.ITEM_NONE:
-		return
-	# Requiere que se haya guardado la última baya consumida en el battler
-	var berry_id: int = battler.last_berry_id
-	if berry_id == 0 or berry_id == Items.ItemId.ITEM_NONE:
-		return
-	var chance: float = 1.0 if weather == WeatherId.WEATHER_DROUGHT else 0.5
-	if randf() >= chance:
-		return
-	await battle.ability_announce(battler)
-	battler.pokemon.held_item = berry_id as Items.ItemId
-	battler.last_berry_id = Items.ItemId.ITEM_NONE
-	battle.message.emit("¡%s recuperó su baya!" % battler.get_display_name())
-	await battle._wait(0.5)
-
-
-## Type-change style customs (Megas ZA placeholders)
-static func custom_type_change_power(attacker: BattleBattler, move: MoveData) -> float:
+static func grass_pelt_multiplier(defender: BattleBattler, move: MoveData, terrain: int) -> float:
 	if move == null:
 		return 1.0
-	var id: AbilityId.Id = get_id(attacker)
-	# Misma idea que Aerilate/Pixilate: Normal -> tipo y x1.2
-	match id:
-		AbilityId.Id.DRAGONIZE:
-			if move.type == PokemonData.Type.TYPE_NORMAL:
-				return 1.2
-		AbilityId.Id.EELEVATE:
-			if move.type == PokemonData.Type.TYPE_NORMAL:
-				return 1.2
-		AbilityId.Id.PIERCING_DRILL:
-			# stub: más daño a tipos acero/roca si se implementa en type chart caller
-			return 1.0
-		AbilityId.Id.MEGA_SOL, AbilityId.Id.FIRE_MANE, AbilityId.Id.SPICY_SPRAY:
-			return 1.0
+	var ctx: EffectContext = EffectContext.new(defender, null, move, null)
+	ctx.terrain = terrain
+	return AbilitySystem.query_float("on_grass_pelt", ctx, 1.0)
+
+
+static func marvel_scale_multiplier(defender: BattleBattler, move: MoveData) -> float:
+	if move == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(defender, null, move, null)
+	return AbilitySystem.query_float("on_marvel_scale", ctx, 1.0)
+
+
+static func technician_multiplier(_attacker: BattleBattler, _move: MoveData) -> float:
 	return 1.0
 
 
-## Hospitality (singles no-op; en dobles curaría al aliado al entrar)
-static func try_hospitality(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or ally == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.HOSPITALITY):
-		return
-	if ally.is_fainted():
-		return
-	await battle.ability_announce(battler)
-	@warning_ignore("integer_division")
-	var heal_amt: int = maxi(1, ally.get_max_hp() / 4)
-	await battle.ability_heal(ally, heal_amt)
-
-
-## ─── Lote final de habilidades (28 restantes) ───
-## Ignora CUSTOM_314 y CUSTOM_317.
-
-## Overworld / post-combate ────────────────────────────────
-
-## Illuminate: multiplica la tasa de encuentro salvaje.
-static func wild_encounter_rate_multiplier(party: Array) -> float:
-	for mon: PokemonInstance in party:
-		if mon == null:
-			continue
-		var aid: AbilityId.Id = mon.ability_id if "ability_id" in mon else AbilityId.Id.NONE
-		if aid == AbilityId.Id.ILLUMINATE:
-			return 2.0
-	return 1.0
-
-
-## Pickup: tras el combate, chance de obtener un objeto (llamar desde overworld).
-static func try_pickup_after_battle(party: Array) -> Array:
-	var results: Array = []
-	for mon: PokemonInstance in party:
-		if mon == null or mon.is_fainted():
-			continue
-		if mon.ability_id != AbilityId.Id.PICKUP:
-			continue
-		if mon.held_item != Items.ItemId.ITEM_NONE:
-			continue
-		if randf() >= 0.1:
-			continue
-		var item: Items.ItemId = Items.ItemId.ITEM_POTION
-		mon.held_item = item
-		results.append({"pokemon": mon, "item": item})
-	return results
-
-
-## Honey Gather: similar a Pickup con miel (si existe el ítem).
-static func try_honey_gather_after_battle(party: Array) -> Array:
-	var results: Array = []
-	for mon: PokemonInstance in party:
-		if mon == null or mon.is_fainted():
-			continue
-		if mon.ability_id != AbilityId.Id.HONEY_GATHER:
-			continue
-		if mon.held_item != Items.ItemId.ITEM_NONE:
-			continue
-		if randf() >= 0.15:
-			continue
-		# Asigna Potion como placeholder si no hay miel en el catálogo de ítems
-		var item: Items.ItemId = Items.ItemId.ITEM_POTION
-		mon.held_item = item
-		results.append({"pokemon": mon, "item": item})
-	return results
-
-
-## Ball Fetch: recoge una Poké Ball fallida (llamar al fallar captura).
-static func try_ball_fetch(party: Array, ball_item: Items.ItemId) -> bool:
-	if ball_item == Items.ItemId.ITEM_NONE:
-		return false
-	for mon: PokemonInstance in party:
-		if mon == null or mon.is_fainted():
-			continue
-		if mon.ability_id != AbilityId.Id.BALL_FETCH:
-			continue
-		if mon.held_item != Items.ItemId.ITEM_NONE:
-			continue
-		mon.held_item = ball_item
-		return true
-	return false
-
-
-## Cute Charm / Attract ───────────────────────────────────
-
-static func try_cute_charm(
-	defender: BattleBattler,
-	attacker: BattleBattler,
-	move: MoveData,
+static func aura_multiplier(
+	_attacker: BattleBattler,
+	_defender: BattleBattler,
+	move_type: PokemonData.Type,
 	battle: BattleManager
-) -> void:
-	if move == null or not move.makes_contact:
-		return
-	if defender == null or attacker == null or battle == null:
-		return
-	if not has(defender, AbilityId.Id.CUTE_CHARM):
-		return
-	if defender.is_fainted() or attacker.is_fainted():
-		return
-	if attacker.pokemon == null or defender.pokemon == null:
-		return
-	if attacker.is_infatuated():
-		return
-	var ag: PokemonData.Gender = attacker.pokemon.gender
-	var dg: PokemonData.Gender = defender.pokemon.gender
-	if ag == PokemonData.Gender.GENDERLESS or dg == PokemonData.Gender.GENDERLESS:
-		return
-	if ag == dg:
-		return
-	if randf() >= 0.3:
-		return
-	await battle.ability_announce(defender)
-	attacker.infatuated_by_player_side = 1 if defender.is_player_side else 0
-	battle.message.emit("¡%s se enamoró de %s!" % [
-		attacker.get_display_name(), defender.get_display_name()
-	])
-	await battle._wait(0.6)
-
-
-## true = el enamorado se queda sin actuar este turno (50%).
-static func check_infatuation_blocks_move(battler: BattleBattler, battle: BattleManager) -> bool:
-	if battler == null or not battler.is_infatuated():
-		return false
-	var crush_side: bool = battler.infatuated_by_player_side == 1
-	var crush: BattleBattler = battle.player if crush_side else battle.enemy
-	if crush == null or crush.is_fainted():
-		battler.clear_infatuation()
-		return false
-	if randf() < 0.5:
-		battle.message.emit("¡%s está enamorado y no puede atacar!" % battler.get_display_name())
-		return true
-	return false
-
-
-## Perish Body ────────────────────────────────────────────
-
-static func try_perish_body(
-	defender: BattleBattler,
-	attacker: BattleBattler,
-	move: MoveData,
-	battle: BattleManager
-) -> void:
-	if move == null or not move.makes_contact:
-		return
-	if defender == null or attacker == null or battle == null:
-		return
-	if not has(defender, AbilityId.Id.PERISH_BODY):
-		return
-	if defender.is_fainted():
-		return
-	await battle.ability_announce(defender)
-	for b: BattleBattler in [defender, attacker]:
+) -> float:
+	if battle == null:
+		return 1.0
+	var mult: float = 1.0
+	for b: BattleBattler in _all_actives(battle):
 		if b == null or b.is_fainted():
 			continue
-		if b.perish_count < 0:
-			b.perish_count = 3
-	battle.message.emit("¡Ambos Pokémon perecerán en 3 turnos!")
-	await battle._wait(0.7)
+		var c: EffectContext = EffectContext.new(b, null, null, battle)
+		c.query_int = int(move_type)
+		c.multiplier = 1.0
+		AbilitySystem.query("on_aura", c)
+		mult *= c.multiplier
+	return mult
 
 
-static func tick_perish(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.perish_count < 0 or battler.is_fainted():
-		return
-	battler.perish_count -= 1
-	if battler.perish_count > 0:
-		battle.message.emit("¡El contador de perdición de %s bajó a %d!" % [
-			battler.get_display_name(), battler.perish_count
-		])
-		await battle._wait(0.5)
-	else:
-		battle.message.emit("¡%s sucumbió a la perdición!" % battler.get_display_name())
-		await battle._wait(0.5)
-		if battler.pokemon != null:
-			battler.apply_damage(battler.pokemon.current_hp)
-			battle._emit_hp(battler.is_player_side)
-
-
-## Cud Chew ───────────────────────────────────────────────
-
-static func notify_berry_eaten(battler: BattleBattler, berry_id: int) -> void:
-	if battler == null:
-		return
-	battler.last_berry_id = berry_id
-	if has(battler, AbilityId.Id.CUD_CHEW) and berry_id != 0 and berry_id != Items.ItemId.ITEM_NONE:
-		battler.cud_chew_berry_id = berry_id
-		battler.cud_chew_pending = true
-
-
-static func try_cud_chew(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battle == null or not battler.cud_chew_pending:
-		return
-	if not has(battler, AbilityId.Id.CUD_CHEW):
-		battler.cud_chew_pending = false
-		return
-	await battle.ability_announce(battler)
-	battle.message.emit("¡%s regurgitó y volvió a comer su baya!" % battler.get_display_name())
-	await battle._wait(0.5)
-	# Efecto genérico: curar 1/3 PS (las bayas específicas requerirían ItemUseResolver)
-	@warning_ignore("integer_division")
-	var heal_amt: int = maxi(1, battler.get_max_hp() / 3)
-	await battle.ability_heal(battler, heal_amt)
-	battler.cud_chew_pending = false
-	battler.cud_chew_berry_id = 0
-
-
-
-## Redirección en dobles: Lightning Rod / Storm Drain / Sap Sipper / Follow Me-style.
-## Devuelve el battler que debe recibir el movimiento de objetivo único, o null si no cambia.
-static func redirect_single_target(
-	actor: BattleBattler,
-	chosen: BattleBattler,
-	move: MoveData,
-	battle: BattleManager
-) -> BattleBattler:
-	if actor == null or move == null or battle == null:
-		return chosen
-	if not battle.is_multi_battle():
-		return chosen
-	# Movimientos de campo / multi-objetivo no se redirigen
-	if move.target in [
-		MoveStruct.MoveTarget.TARGET_BOTH,
-		MoveStruct.MoveTarget.TARGET_OPPONENTS_FIELD,
-		MoveStruct.MoveTarget.TARGET_FOES_AND_ALLY,
-		MoveStruct.MoveTarget.TARGET_ALL_BATTLERS,
-		MoveStruct.MoveTarget.TARGET_USER,
-		MoveStruct.MoveTarget.TARGET_ALLY,
-		MoveStruct.MoveTarget.TARGET_USER_AND_ALLY,
-		MoveStruct.MoveTarget.TARGET_USER_OR_ALLY,
-		MoveStruct.MoveTarget.TARGET_FIELD,
-	]:
-		return chosen
-	if ignores_redirection(actor):
-		return chosen
-
-	var foes: Array[BattleBattler] = battle.get_opponents(actor)
-	if foes.is_empty():
-		return chosen
-
-	# Prioridad: habilidades de atracción por tipo sobre el bando rival
-	var type_redirectors: Array[AbilityId.Id] = []
-	var want_type: int = -1
-	match move.type:
-		PokemonData.Type.TYPE_ELECTRIC:
-			type_redirectors = [AbilityId.Id.LIGHTNING_ROD, AbilityId.Id.MOTOR_DRIVE]
-			want_type = int(PokemonData.Type.TYPE_ELECTRIC)
-		PokemonData.Type.TYPE_WATER:
-			type_redirectors = [AbilityId.Id.STORM_DRAIN]
-			want_type = int(PokemonData.Type.TYPE_WATER)
-		PokemonData.Type.TYPE_GRASS:
-			type_redirectors = [AbilityId.Id.SAP_SIPPER]
-			want_type = int(PokemonData.Type.TYPE_GRASS)
-		_:
-			pass
-
-	if not type_redirectors.is_empty():
-		for f: BattleBattler in foes:
-			if f == null or f.is_fainted():
-				continue
-			var fid: AbilityId.Id = get_id(f)
-			if fid in type_redirectors:
-				return f
-
-	# Follow Me / Rage Powder se modelan con flag en el battler si la UI/movimiento lo setea
-	for f2: BattleBattler in foes:
-		if f2 == null or f2.is_fainted():
+static func ruin_stat_multiplier(stat_owner: BattleBattler, stat: PokemonInstance.Stat, battle: BattleManager) -> float:
+	if battle == null or stat_owner == null:
+		return 1.0
+	var mult: float = 1.0
+	for b: BattleBattler in _all_actives(battle):
+		if b == null or b.is_fainted() or b == stat_owner:
 			continue
-		if f2.has_meta("drawing_attention") and bool(f2.get_meta("drawing_attention")):
-			# Rage Powder no afecta a tipo Bicho / Planta / Cobertura
-			if f2.has_meta("rage_powder") and bool(f2.get_meta("rage_powder")):
-				if actor.pokemon != null:
-					var t1: PokemonData.Type = actor.pokemon.get_type_1()
-					var t2: PokemonData.Type = actor.pokemon.get_type_2()
-					if t1 == PokemonData.Type.TYPE_BUG or t2 == PokemonData.Type.TYPE_BUG \
-							or t1 == PokemonData.Type.TYPE_GRASS or t2 == PokemonData.Type.TYPE_GRASS:
-						continue
-			return f2
-
-	return chosen
-
-
-## Dobles / aliados (en individual el aliado es null → no-op) ─
-
-static func get_ally(battler: BattleBattler, battle: BattleManager) -> BattleBattler:
-	if battle == null:
-		return null
-	if battle.has_method("get_ally"):
-		return battle.get_ally(battler)
-	return null
+		var ctx: EffectContext = EffectContext.new(b, stat_owner, null, battle)
+		ctx.query_int = int(stat)
+		ctx.multiplier = 1.0
+		AbilitySystem.query("on_ruin_stat", ctx)
+		mult *= ctx.multiplier
+	return mult
 
 
 static func plus_minus_spatk_multiplier(battler: BattleBattler, ally: BattleBattler) -> float:
-	if ally == null or ally.is_fainted():
+	if battler == null or ally == null or ally.is_fainted():
 		return 1.0
-	var id: AbilityId.Id = get_id(battler)
-	var aid: AbilityId.Id = get_id(ally)
-	if id == AbilityId.Id.PLUS and (aid == AbilityId.Id.MINUS or aid == AbilityId.Id.PLUS):
-		return 1.5
-	if id == AbilityId.Id.MINUS and (aid == AbilityId.Id.PLUS or aid == AbilityId.Id.MINUS):
-		return 1.5
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(battler, ally, null, null)
+	ctx.target = ally
+	return AbilitySystem.query_float("on_plus_minus", ctx, 1.0)
 
 
 static func friend_guard_multiplier(defender: BattleBattler, ally: BattleBattler) -> float:
-	if ally == null or ally.is_fainted():
+	if defender == null or ally == null or ally.is_fainted():
 		return 1.0
-	if has(ally, AbilityId.Id.FRIEND_GUARD):
-		return 0.75
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(ally, defender, null, null)
+	return AbilitySystem.query_float("on_friend_guard", ctx, 1.0)
 
 
 static func telepathy_blocks_ally_damage(defender: BattleBattler, attacker: BattleBattler) -> bool:
 	if defender == null or attacker == null:
 		return false
-	if defender.is_player_side == attacker.is_player_side and has(defender, AbilityId.Id.TELEPATHY):
-		return true
-	return false
+	if defender.is_player_side != attacker.is_player_side:
+		return false
+	var ctx: EffectContext = EffectContext.new(defender, attacker, null, null)
+	return AbilitySystem.query_bool("on_telepathy", ctx)
 
 
 static func battery_multiplier(attacker: BattleBattler, ally: BattleBattler, move: MoveData) -> float:
-	if move == null or move.category != MoveStruct.DamageCategory.SPECIAL:
+	if attacker == null or ally == null or move == null or ally.is_fainted():
 		return 1.0
-	if ally == null or ally.is_fainted():
-		return 1.0
-	if has(ally, AbilityId.Id.BATTERY):
-		return 1.3
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(ally, attacker, move, null)
+	return AbilitySystem.query_float("on_battery", ctx, 1.0)
 
 
 static func power_spot_multiplier(attacker: BattleBattler, ally: BattleBattler) -> float:
-	if ally == null or ally.is_fainted():
+	if attacker == null or ally == null or ally.is_fainted():
 		return 1.0
-	if has(ally, AbilityId.Id.POWER_SPOT):
-		return 1.3
-	return 1.0
+	var ctx: EffectContext = EffectContext.new(ally, attacker, null, null)
+	return AbilitySystem.query_float("on_power_spot", ctx, 1.0)
+
+
+static func flower_gift_stat_multiplier(
+	battler: BattleBattler,
+	stat: PokemonInstance.Stat,
+	weather: int,
+	battle: BattleManager
+) -> float:
+	if battler == null:
+		return 1.0
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.weather = weather
+	ctx.query_int = int(stat)
+	return AbilitySystem.query_float("on_flower_gift_stat", ctx, 1.0)
+
+
+# ═══════════════════════════════════════════════════════════
+# Secuencias que el BattleManager invoca por nombre
+# ═══════════════════════════════════════════════════════════
+
+static func try_protean(battler: BattleBattler, move: MoveData, battle: BattleManager) -> void:
+	if battler == null or move == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, move, battle)
+	await AbilitySystem.on_event("on_move_use", ctx)
+
+
+static func try_magician(attacker: BattleBattler, defender: BattleBattler, battle: BattleManager) -> void:
+	if attacker == null or defender == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(attacker, defender, null, battle)
+	ctx.target = defender
+	await AbilitySystem.on_event("on_steal_item", ctx)
+
+
+static func check_wimp_or_emergency(battler: BattleBattler, hp_before: int, battle: BattleManager) -> bool:
+	if battler == null or battler.pokemon == null or battle == null or battler.is_fainted():
+		return false
+	var max_hp: int = battler.get_max_hp()
+	if max_hp <= 0:
+		return false
+	var half: float = float(max_hp) / 2.0
+	if float(hp_before) <= half or float(battler.pokemon.current_hp) > half:
+		return false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.query_bool = false
+	await AbilitySystem.on_event("on_hp_half", ctx)
+	return ctx.query_bool or ctx.blocked
+
+
+static func try_booster_energy_style(
+	battler: BattleBattler, weather: int, terrain: int, battle: BattleManager
+) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.weather = weather
+	ctx.terrain = terrain
+	await AbilitySystem.on_event("on_booster", ctx)
+
+
+static func try_opportunist(
+	battler: BattleBattler, foe: BattleBattler, stat: PokemonInstance.Stat, stages: int, battle: BattleManager
+) -> void:
+	if stages <= 0 or battler == null or foe == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, foe, null, battle)
+	ctx.query_int = int(stat)
+	ctx.stage_delta = stages
+	await AbilitySystem.on_event("on_foe_stat_up", ctx)
+
+
+static func try_cute_charm(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: BattleManager) -> void:
+	pass
+
+
+static func try_perish_body(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: BattleManager) -> void:
+	pass
+
+
+static func try_cursed_body(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: BattleManager) -> void:
+	pass
+
+
+static func tick_perish(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_perish_tick", ctx)
+
+
+static func try_cud_chew(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_cud_chew", ctx)
 
 
 static func try_healer(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or ally == null or battle == null:
 		return
-	if not has(battler, AbilityId.Id.HEALER):
-		return
-	if ally.is_fainted() or ally.pokemon == null or not ally.pokemon.has_status():
-		return
-	if randf() >= 0.3:
-		return
-	await battle.ability_announce(battler)
-	await battle.ability_cure_status(ally)
+	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
+	await AbilitySystem.on_event("on_heal_ally", ctx)
 
 
-static func try_symbiosis(
-	giver: BattleBattler,
-	ally: BattleBattler,
-	battle: BattleManager
-) -> void:
-	if giver == null or ally == null or battle == null:
+static func try_symbiosis(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or ally == null or battle == null:
 		return
-	if not has(giver, AbilityId.Id.SYMBIOSIS):
-		return
-	if giver.pokemon == null or ally.pokemon == null:
-		return
-	if giver.pokemon.held_item == Items.ItemId.ITEM_NONE:
-		return
-	if ally.pokemon.held_item != Items.ItemId.ITEM_NONE:
-		return
-	await battle.ability_announce(giver)
-	ally.pokemon.held_item = giver.pokemon.held_item
-	giver.pokemon.held_item = Items.ItemId.ITEM_NONE
-	notify_item_lost(giver)
-	battle.message.emit("¡%s pasó su objeto a %s!" % [
-		giver.get_display_name(), ally.get_display_name()
-	])
-	await battle._wait(0.5)
+	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
+	await AbilitySystem.on_event("on_symbiosis", ctx)
 
 
-static func try_receiver_or_alchemy(
-	receiver: BattleBattler,
-	fainted_ally: BattleBattler,
-	battle: BattleManager
-) -> void:
-	if receiver == null or fainted_ally == null or battle == null:
+static func try_receiver_or_alchemy(battler: BattleBattler, fainted: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or fainted == null or battle == null:
 		return
-	var id: AbilityId.Id = get_id(receiver)
-	if id != AbilityId.Id.RECEIVER and id != AbilityId.Id.POWER_OF_ALCHEMY:
-		return
-	if fainted_ally.pokemon == null or receiver.pokemon == null:
-		return
-	var new_id: AbilityId.Id = fainted_ally.pokemon.ability_id
-	if not _is_traceable(new_id):
-		return
-	await battle.ability_announce(receiver)
-	receiver.pokemon.ability_id = new_id
-	battle.message.emit("¡%s recibió la habilidad de %s!" % [
-		receiver.get_display_name(), fainted_ally.get_display_name()
-	])
-	await battle._wait(0.6)
+	var ctx: EffectContext = EffectContext.new(battler, fainted, null, battle)
+	await AbilitySystem.on_event("on_ally_faint", ctx)
 
 
 static func try_curious_medicine(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or ally == null or battle == null:
+	if battler == null or battle == null:
 		return
-	if not has(battler, AbilityId.Id.CURIOUS_MEDICINE):
-		return
-	if ally.is_fainted():
-		return
-	await battle.ability_announce(battler)
-	ally._reset_stages()
-	battle.message.emit("¡Las estadísticas de %s se reiniciaron!" % ally.get_display_name())
-	await battle._wait(0.5)
+	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
 static func try_costar(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or ally == null or battle == null:
 		return
-	if not has(battler, AbilityId.Id.COSTAR):
-		return
-	if ally.is_fainted():
-		return
-	await battle.ability_announce(battler)
-	battler.stage_attack = ally.stage_attack
-	battler.stage_defense = ally.stage_defense
-	battler.stage_sp_attack = ally.stage_sp_attack
-	battler.stage_sp_defense = ally.stage_sp_defense
-	battler.stage_speed = ally.stage_speed
-	battler.stage_accuracy = ally.stage_accuracy
-	battler.stage_evasion = ally.stage_evasion
-	battle.message.emit("¡%s copió los cambios de estadística de %s!" % [
-		battler.get_display_name(), ally.get_display_name()
-	])
-	await battle._wait(0.6)
+	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-## Commander (Tatsugiri + Dondozo): en 1v1 no aplica; stub documentado.
 static func try_commander(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or ally == null or battle == null:
 		return
-	if not has(battler, AbilityId.Id.COMMANDER):
-		return
-	# Requiere especies específicas y formato dobles; se deja el gancho.
-	await battle.ability_announce(battler)
-	await battle.ability_change_stat(ally, PokemonInstance.Stat.ATTACK, 2)
-	await battle.ability_change_stat(ally, PokemonInstance.Stat.DEFENSE, 2)
-	await battle.ability_change_stat(ally, PokemonInstance.Stat.SP_ATTACK, 2)
-	await battle.ability_change_stat(ally, PokemonInstance.Stat.SP_DEFENSE, 2)
-	await battle.ability_change_stat(ally, PokemonInstance.Stat.SPEED, 2)
+	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-## Dancer: copia un movimiento de baile usado en el campo.
-static func try_dancer(
-	battler: BattleBattler,
-	move: MoveData,
-	user: BattleBattler,
-	battle: BattleManager
-) -> void:
+static func try_dancer(battler: BattleBattler, move: MoveData, original: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or move == null or battle == null:
 		return
-	if not move.dance_move:
+	var ctx: EffectContext = EffectContext.new(battler, original, move, battle)
+	await AbilitySystem.on_event("on_dance", ctx)
+
+
+static func redirect_single_target(
+	actor: BattleBattler, target: BattleBattler, move: MoveData, battle: BattleManager
+) -> BattleBattler:
+	if actor == null or move == null or battle == null:
+		return target
+	for b: BattleBattler in _all_actives(battle):
+		if b == null or b.is_fainted() or b.is_player_side == actor.is_player_side:
+			continue
+		var ctx: EffectContext = EffectContext.new(b, actor, move, battle)
+		ctx.redirect_target = null
+		AbilitySystem.query("on_redirect", ctx)
+		if ctx.redirect_target != null:
+			return ctx.redirect_target as BattleBattler
+	return target
+
+
+static func apply_early_bird_sleep(battler: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null:
 		return
-	if not has(battler, AbilityId.Id.DANCER):
+	var ctx: EffectContext = EffectContext.new(battler, null, null, null)
+	AbilitySystem.query("on_sleep_applied", ctx)
+
+
+static func check_infatuation_blocks_move(battler: BattleBattler, battle: BattleManager) -> bool:
+	if battler == null or battle == null:
+		return false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	return AbilitySystem.query_bool("on_infatuation_block", ctx)
+
+
+static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> bool:
+	if battler == null or battle == null:
+		return false
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.query_bool = false
+	AbilitySystem.query("on_prepare_illusion", ctx)
+	return ctx.query_bool or battler.illusion_active
+
+
+static func break_illusion(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or not battler.illusion_active or battle == null:
 		return
-	if user == battler:
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_break_illusion", ctx)
+
+
+static func revert_transform(battler: BattleBattler) -> void:
+	if battler == null or not battler.is_transformed:
 		return
-	if battler.is_fainted():
+	if battler.pokemon == null or battler.transform_backup.is_empty():
+		battler.is_transformed = false
+		battler.transform_backup.clear()
+		return
+	var dst: PokemonInstance = battler.pokemon
+	var bak: Dictionary = battler.transform_backup
+	dst.species_id = bak.get("species_id", dst.species_id)
+	dst.form_id = bak.get("form_id", dst.form_id)
+	dst.ability_id = bak.get("ability_id", dst.ability_id)
+	var moves_bak: Variant = bak.get("moves", null)
+	if moves_bak is Array:
+		dst.moves.clear()
+		for slot: Variant in moves_bak:
+			if slot is PokemonMoveSlot:
+				dst.moves.append(slot as PokemonMoveSlot)
+	battler.is_transformed = false
+	battler.transform_backup.clear()
+
+
+static func try_forecast(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.weather = weather
+	await AbilitySystem.on_event("on_weather", ctx)
+
+
+static func try_flower_gift(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.weather = weather
+	await AbilitySystem.on_event("on_weather", ctx)
+
+
+static func try_zen_mode(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_hp_change", ctx)
+
+
+static func try_shields_down(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_hp_change", ctx)
+
+
+static func shields_down_blocks_status(battler: BattleBattler) -> bool:
+	return blocks_status(battler, PokemonInstance.Status.NONE)
+
+
+static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_switch_out", ctx)
+
+
+static func try_tera_shift(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
+
+
+static func try_teraform_zero(battler: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
+
+
+static func revert_battle_forms(battler: BattleBattler) -> void:
+	if battler == null:
+		return
+	if battler.has_method("clear_battle_types"):
+		battler.clear_battle_types()
+
+
+static func _all_actives(battle: BattleManager) -> Array[BattleBattler]:
+	var out: Array[BattleBattler] = []
+	if battle == null:
+		return out
+	if battle.has_method("get_all_actives"):
+		for b: Variant in battle.get_all_actives():
+			var bb: BattleBattler = b as BattleBattler
+			if bb != null:
+				out.append(bb)
+		return out
+	if "player" in battle and battle.player != null:
+		out.append(battle.player as BattleBattler)
+	if "enemy" in battle and battle.enemy != null:
+		out.append(battle.enemy as BattleBattler)
+	return out
+
+
+# ═══════════════════════════════════════════════════════════
+# API requerida por BattleManager / overworld / session
+# ═══════════════════════════════════════════════════════════
+
+static func _setup_imposter(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or opponent == null or opponent.pokemon == null or battle == null:
+		return
+	if battler.is_transformed:
 		return
 	await battle.ability_announce(battler)
-	battle.message.emit("¡%s copió el baile!" % battler.get_display_name())
-	await battle._wait(0.5)
-	# Ejecución simplificada: si es movimiento de stats, reutiliza el effect resolver vía señal
-	# En 1v1 el objetivo del baile suele ser uno mismo o el rival según el move.
-	var target: BattleBattler = battler
-	if move.category != MoveStruct.DamageCategory.STATUS:
-		target = battle.enemy if battler.is_player_side else battle.player
-	# Solo anuncia; la re-ejecución completa del move requiere Action extra.
-	# Marcamos un flag para que el manager pueda re-lanzar si lo desea.
-	battler.set_meta("dancer_copy_move", move)
+	var src: PokemonInstance = opponent.pokemon
+	var dst: PokemonInstance = battler.pokemon
+	battler.transform_backup = {
+		"species_id": dst.species_id,
+		"form_id": dst.form_id,
+		"ability_id": dst.ability_id,
+		"moves": dst.moves.duplicate(true),
+	}
+	dst.species_id = src.species_id
+	dst.form_id = src.form_id
+	dst.ability_id = src.ability_id
+	var new_moves: Array[PokemonMoveSlot] = []
+	for slot: PokemonMoveSlot in src.moves:
+		if slot == null or slot.is_empty():
+			continue
+		var copy: PokemonMoveSlot = PokemonMoveSlot.new()
+		copy.move_id = slot.move_id
+		copy.pp_ups = 0
+		var md: MoveData = MoveDatabase.get_move(slot.move_id)
+		var base_pp: int = md.pp if md != null else 5
+		copy.current_pp = mini(5, base_pp)
+		new_moves.append(copy)
+	dst.moves = new_moves
+	battler.stage_attack = opponent.stage_attack
+	battler.stage_defense = opponent.stage_defense
+	battler.stage_sp_attack = opponent.stage_sp_attack
+	battler.stage_sp_defense = opponent.stage_sp_defense
+	battler.stage_speed = opponent.stage_speed
+	battler.stage_accuracy = opponent.stage_accuracy
+	battler.stage_evasion = opponent.stage_evasion
+	battler.is_transformed = true
+	battler.clear_illusion()
+	if dst.has_method("recalculate_stats"):
+		dst.recalculate_stats()
+	battle.message.emit("¡%s se transformó en %s!" % [
+		battler.get_display_name(), opponent.get_display_name()
+	])
+	battle.battler_appearance_changed.emit(battler.is_player_side)
+	await battle._wait(0.9)
 
 
+static func try_poison_puppeteer(attacker: BattleBattler, defender: BattleBattler, battle: BattleManager) -> void:
+	if attacker == null or defender == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(attacker, defender, null, battle)
+	ctx.target = defender
+	await AbilitySystem.on_event("on_poison_applied", ctx)
 
-## Formas ─────────────────────────────────────────────────
-## Los form_id coinciden con los de los .tres de especie.
 
-## Cambia forma: siempre Ability Bar → set_form → stats → apariencia.
+static func wild_encounter_rate_multiplier(party: Array) -> float:
+	var mult: float = 1.0
+	for mon: Variant in party:
+		var inst: PokemonInstance = mon as PokemonInstance
+		if inst == null or inst.is_fainted():
+			continue
+		# Illuminate / Arena Trap etc. vía script on_encounter_rate
+		# Sin battler de combate: consulta por ID de habilidad conocida en script path
+		var id: AbilityId.Id = inst.ability_id
+		if id == AbilityId.Id.ILLUMINATE:
+			mult *= 2.0
+		elif id == AbilityId.Id.ARENA_TRAP or id == AbilityId.Id.NO_GUARD:
+			mult *= 2.0
+		elif id == AbilityId.Id.SAND_VEIL or id == AbilityId.Id.SNOW_CLOAK:
+			mult *= 1.0  # clima se aplica fuera
+		elif id == AbilityId.Id.QUICK_FEET or id == AbilityId.Id.STENCH:
+			mult *= 0.5
+	return mult
+
+
+static func try_pickup_after_battle(party: Array) -> Array:
+	var results: Array = []
+	for mon: Variant in party:
+		var inst: PokemonInstance = mon as PokemonInstance
+		if inst == null or inst.is_fainted():
+			continue
+		if inst.ability_id != AbilityId.Id.PICKUP:
+			continue
+		if inst.held_item != Items.ItemId.ITEM_NONE:
+			continue
+		if randf() >= 0.10:
+			continue
+		var item: Items.ItemId = Items.ItemId.ITEM_POTION
+		inst.held_item = item
+		results.append({"pokemon": inst, "item": item})
+	return results
+
+
+static func try_honey_gather_after_battle(party: Array) -> Array:
+	var results: Array = []
+	for mon: Variant in party:
+		var inst: PokemonInstance = mon as PokemonInstance
+		if inst == null or inst.is_fainted():
+			continue
+		if inst.ability_id != AbilityId.Id.HONEY_GATHER:
+			continue
+		if inst.held_item != Items.ItemId.ITEM_NONE:
+			continue
+		if randf() >= 0.15:
+			continue
+		var item: Items.ItemId = Items.ItemId.ITEM_POTION
+		inst.held_item = item
+		results.append({"pokemon": inst, "item": item})
+	return results
+
+
+static func try_ball_fetch(party: Array, ball_item: Items.ItemId = Items.ItemId.ITEM_NONE) -> bool:
+	if ball_item == Items.ItemId.ITEM_NONE:
+		return false
+	for mon: Variant in party:
+		var inst: PokemonInstance = mon as PokemonInstance
+		if inst == null or inst.is_fainted():
+			continue
+		if inst.ability_id != AbilityId.Id.BALL_FETCH:
+			continue
+		if inst.held_item != Items.ItemId.ITEM_NONE:
+			continue
+		inst.held_item = ball_item
+		return true
+	return false
+
+
+static func try_hospitality(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+	if battler == null or ally == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
+	await AbilitySystem.on_event("on_switch_in", ctx)
+
+
+static func try_harvest(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+	if battler == null or battle == null:
+		return
+	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
+	ctx.weather = weather
+	await AbilitySystem.on_event("on_end_turn", ctx)
+
 static func _apply_form_change(
 	battler: BattleBattler,
 	battle: BattleManager,
@@ -1584,205 +1129,3 @@ static func _apply_form_change(
 	battle.message.emit("¡%s cambió de forma!" % battler.get_display_name())
 	await battle._wait(0.55)
 	return true
-
-
-static func try_forecast(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.FORECAST):
-		return
-	var form: StringName = &"base"
-	match weather:
-		WeatherId.WEATHER_RAIN:
-			form = &"castform_rainy"
-		WeatherId.WEATHER_DROUGHT:
-			form = &"castform_sunny"
-		WeatherId.WEATHER_SNOW:
-			form = &"castform_snowy"
-	await _apply_form_change(battler, battle, form)
-
-
-static func try_flower_gift(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.FLOWER_GIFT):
-		return
-	var form: StringName = &"cherrim_sunshine" if weather == WeatherId.WEATHER_DROUGHT else &"base"
-	await _apply_form_change(battler, battle, form)
-
-
-static func flower_gift_stat_multiplier(
-	battler: BattleBattler,
-	stat: PokemonInstance.Stat,
-	weather: int,
-	battle: BattleManager = null
-) -> float:
-	if weather != WeatherId.WEATHER_DROUGHT:
-		return 1.0
-	var active: bool = has(battler, AbilityId.Id.FLOWER_GIFT)
-	if not active and battle != null and battle.is_multi_battle():
-		var ally: BattleBattler = get_ally(battler, battle)
-		if ally != null and not ally.is_fainted() and has(ally, AbilityId.Id.FLOWER_GIFT):
-			active = true
-	if not active:
-		return 1.0
-	if stat == PokemonInstance.Stat.ATTACK or stat == PokemonInstance.Stat.SP_DEFENSE:
-		return 1.5
-	return 1.0
-
-
-static func try_zen_mode(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.ZEN_MODE):
-		return
-	var half: float = float(battler.get_max_hp()) / 2.0
-	var want_zen: bool = float(battler.pokemon.current_hp) <= half
-	var current: StringName = battler.pokemon.form_id
-	var form: StringName = &"base"
-	# Galar Zen ↔ Galar Standard
-	if current == &"darmanitan_galar_standard" or current == &"darmanitan_galar_zen":
-		form = &"darmanitan_galar_zen" if want_zen else &"darmanitan_galar_standard"
-	else:
-		form = &"darmanitan_zen" if want_zen else &"base"
-	await _apply_form_change(battler, battle, form)
-
-
-static func try_shields_down(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.SHIELDS_DOWN):
-		return
-	var half: float = float(battler.get_max_hp()) / 2.0
-	var want_core: bool = float(battler.pokemon.current_hp) <= half
-	var current: String = str(battler.pokemon.form_id)
-	var form: StringName = &"base"
-	if want_core:
-		if "meteor" in current:
-			form = StringName(current.replace("meteor", "core"))
-		elif "core" in current:
-			form = battler.pokemon.form_id
-		else:
-			# Especie base = meteor rojo
-			form = &"minior_core_red"
-	else:
-		# Volver a meteor: core_red → base; otros core_X → meteor_X
-		if current == "minior_core_red":
-			form = &"base"
-		elif "core" in current:
-			var meteor_id: String = current.replace("core", "meteor")
-			# No existe minior_meteor_red en el catálogo
-			if meteor_id == "minior_meteor_red":
-				form = &"base"
-			else:
-				form = StringName(meteor_id)
-		elif "meteor" in current or current == "base" or current == "":
-			form = battler.pokemon.form_id if current != "" else &"base"
-		else:
-			form = &"base"
-	await _apply_form_change(battler, battle, form)
-
-
-static func shields_down_blocks_status(battler: BattleBattler) -> bool:
-	if not has(battler, AbilityId.Id.SHIELDS_DOWN):
-		return false
-	if battler.pokemon == null:
-		return false
-	var fid: String = str(battler.pokemon.form_id)
-	# Forma meteor (o base = meteor rojo) bloquea estados
-	return "meteor" in fid or fid == "base" or fid == ""
-
-
-## Marca a Palafin para transformarse la próxima vez que entre al campo.
-static func _arm_zero_to_hero(battler: BattleBattler) -> void:
-	if battler == null or battler.pokemon == null:
-		return
-	if str(battler.pokemon.form_id) == "Hero":
-		battler.zero_to_hero_transformed = true
-		battler.pokemon.set_meta("zero_to_hero_armed", true)
-		return
-	battler.zero_to_hero_transformed = true
-	battler.pokemon.set_meta("zero_to_hero_armed", true)
-
-
-## Aplica forma Hero al reentrar (tras haberse ido al menos una vez).
-static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.ZERO_TO_HERO):
-		return
-	var armed: bool = battler.zero_to_hero_transformed \
-		or bool(battler.pokemon.get_meta("zero_to_hero_armed", false))
-	if not armed:
-		return
-	if str(battler.pokemon.form_id) == "Hero":
-		battler.zero_to_hero_transformed = true
-		return
-	if await _apply_form_change(battler, battle, &"Hero"):
-		battler.zero_to_hero_transformed = true
-		battler.pokemon.set_meta("zero_to_hero_armed", true)
-
-
-## Restaura formas temporales de combate (Zero to Hero, Forecast, Zen, etc.).
-static func revert_battle_forms(battler: BattleBattler) -> void:
-	if battler == null or battler.pokemon == null:
-		return
-	var fid: String = str(battler.pokemon.form_id)
-	var needs_base: bool = false
-	# Formas que solo existen durante el combate / se revierten al terminar
-	if fid in ["Hero", "castform_sunny", "castform_rainy", "castform_snowy",
-			"cherrim_sunshine", "darmanitan_zen", "darmanitan_zen_galar",
-			"minior_core", "minior_core_red", "minior_core_orange", "minior_core_yellow",
-			"minior_core_green", "minior_core_blue", "minior_core_indigo", "minior_core_violet",
-			"terapagos_terastal"]:
-		needs_base = true
-	# Minior core genérico / meteor
-	if fid.begins_with("minior_core"):
-		needs_base = true
-	if needs_base:
-		if battler.pokemon.has_method("set_form"):
-			battler.pokemon.set_form(&"base")
-		else:
-			battler.pokemon.form_id = &"base"
-		if battler.pokemon.has_method("recalculate_stats"):
-			battler.pokemon.recalculate_stats()
-	battler.zero_to_hero_transformed = false
-	if battler.pokemon.has_meta("zero_to_hero_armed"):
-		battler.pokemon.remove_meta("zero_to_hero_armed")
-
-
-static func try_tera_shift(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battler.pokemon == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.TERA_SHIFT):
-		return
-	if str(battler.pokemon.form_id) == "terapagos_terastal":
-		return
-	var changed: bool = await _apply_form_change(battler, battle, &"terapagos_terastal")
-	# set_form aplica ability de la forma; refuerzo si el .tres no tenía override
-	if changed and battler.pokemon != null:
-		if battler.pokemon.ability_id == AbilityId.Id.TERA_SHIFT \
-				or battler.pokemon.ability_id == AbilityId.Id.NONE:
-			battler.pokemon.ability_id = AbilityId.Id.TERA_SHELL
-
-
-static func try_teraform_zero(battler: BattleBattler, battle: BattleManager) -> void:
-	if battler == null or battle == null:
-		return
-	if not has(battler, AbilityId.Id.TERAFORM_ZERO):
-		return
-	await battle.ability_announce(battler)
-	var cleared: bool = false
-	if battle.weather != WeatherId.WEATHER_NONE:
-		battle.weather = WeatherId.WEATHER_NONE
-		battle.weather_turns = 0
-		cleared = true
-	if battle.terrain != BattleManager.TerrainId.TERRAIN_NONE:
-		battle.terrain = BattleManager.TerrainId.TERRAIN_NONE
-		battle.terrain_turns = 0
-		cleared = true
-	if cleared:
-		battle.message.emit("¡%s neutralizó el clima y el terreno!" % battler.get_display_name())
-		if battle.has_signal("weather_changed"):
-			battle.weather_changed.emit(battle.weather, false)
-		await battle._wait(0.6)

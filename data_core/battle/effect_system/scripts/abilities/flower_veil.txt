@@ -1,0 +1,3 @@
+# Protege a aliados Planta de bajadas y estados.
+on_flower_veil:
+  block

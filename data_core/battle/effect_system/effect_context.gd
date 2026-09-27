@@ -32,9 +32,9 @@ enum SourceType { ABILITY, MOVE, ITEM, OTHER }
 var source_type: SourceType = SourceType.OTHER
 
 ## Resultados / flags que los comandos pueden escribir
-var blocked: bool = false          ## el efecto impidió algo (inmunidad, etc.)
-var modified_damage: int = -1      ## si un comando cambió el daño (-1 = sin cambio)
-var messages: Array[String] = []   ## mensajes a mostrar
+var blocked: bool = false
+var modified_damage: int = -1
+var messages: Array[String] = []
 
 ## Consultas (inmunidad / multiplicadores / flags)
 var multiplier: float = 1.0
@@ -48,6 +48,13 @@ var vars: Dictionary = {}
 var weather: int = -1
 var terrain: int = -1
 var move_category: int = -1
+
+## Flags de consulta ampliados (tipados)
+var acted_after_target: bool = false
+var target_just_switched: bool = false
+var stage_delta: int = 0
+var redirect_target: BattleBattler = null
+
 
 func _init(
 	p_user: BattleBattler = null,
@@ -68,7 +75,6 @@ func add_message(text: String) -> void:
 		messages.append(text)
 
 
-## Atajos útiles
 func user_hp_percent() -> float:
 	if user == null or user.pokemon == null or user.pokemon.max_hp <= 0:
 		return 0.0

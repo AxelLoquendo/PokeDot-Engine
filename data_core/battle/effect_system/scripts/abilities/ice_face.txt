@@ -1,0 +1,19 @@
+# Eiscue: el hielo absorbe un físico; se restaura con nieve.
+on_damaged:
+  if category PHYSICAL
+    if has_meta ice_face
+      announce
+      set_meta ice_face 0
+      change_form noice
+    endif
+  endif
+on_weather:
+  if weather SNOW
+    if not has_meta ice_face
+      announce
+      set_meta ice_face 1
+      change_form ice
+    endif
+  endif
+on_switch_in:
+  set_meta ice_face 1

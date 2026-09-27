@@ -1,0 +1,6 @@
+# Al recibir daño físico, pone púas tóxicas.
+on_damaged:
+  if category PHYSICAL
+    announce
+    special toxic_spikes
+  endif

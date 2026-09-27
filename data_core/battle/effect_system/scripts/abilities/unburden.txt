@@ -1,0 +1,7 @@
+on_item_lost:
+  # Marca unburden_active vía set_meta
+  set_meta unburden_active 1
+on_speed:
+  if has_meta unburden_active
+    multiply speed 2.0
+  endif

@@ -1,0 +1,9 @@
+# Absorbe un golpe (mimikyu).
+on_damaged:
+  if has_meta disguise_intact
+    announce
+    set_meta disguise_intact 0
+    # el daño se anula vía flag en el calc
+  endif
+on_switch_in:
+  set_meta disguise_intact 1

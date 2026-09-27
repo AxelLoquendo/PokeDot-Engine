@@ -84,6 +84,20 @@ static func _eval_from(cmd: EffectCommand, ctx: EffectContext, start: int) -> bo
 			return _has_meta(ctx, cmd.arg_string(start + 1))
 		"stat":
 			return _stat_matches(ctx.query_int, cmd.arg_string(start + 1).to_lower())
+		"acted_after_target":
+			return ctx.acted_after_target
+		"target_just_switched":
+			return ctx.target_just_switched
+		"target_has_status":
+			if ctx.target == null or ctx.target.pokemon == null:
+				return false
+			if start + 1 >= cmd.args.size():
+				return ctx.target.pokemon.has_status()
+			return _status_matches(int(ctx.target.pokemon.status), cmd.args, start + 1)
+		"same_side":
+			if ctx.user == null or ctx.target == null:
+				return false
+			return ctx.user.is_player_side == ctx.target.is_player_side
 		_:
 			push_warning("EffectConditions: condición desconocida '%s'" % cond)
 			return false

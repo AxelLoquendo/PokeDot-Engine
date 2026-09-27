@@ -1,0 +1,9 @@
+# ×2 de potencia contra un rival que acaba de entrar.
+on_stakeout:
+  if target_just_switched
+    multiply stakeout 2.0
+  endif
+on_power:
+  if target_just_switched
+    multiply power 2.0
+  endif

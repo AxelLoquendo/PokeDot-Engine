@@ -1,0 +1,4 @@
+on_ruin_stat:
+  if stat DEFENSE
+    multiply ruin 0.75
+  endif

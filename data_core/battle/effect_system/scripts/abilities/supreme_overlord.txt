@@ -1,0 +1,3 @@
+on_supreme_overlord:
+  # factor = 1 + 0.1 * debiles (query_int)
+  set multiplier 1 + query_int * 0.1

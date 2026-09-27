@@ -1,0 +1,4 @@
+# +1 Sp.Atk cuando alguien se debilita.
+on_any_faint:
+  announce
+  raise_stat SP_ATTACK 1 target=user

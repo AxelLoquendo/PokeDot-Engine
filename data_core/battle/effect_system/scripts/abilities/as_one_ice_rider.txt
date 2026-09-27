@@ -1,0 +1,7 @@
+# Unnerve + Chilling Neigh.
+on_switch_in:
+  announce
+  special unnerve
+on_ko:
+  announce
+  raise_stat ATK 1 target=user

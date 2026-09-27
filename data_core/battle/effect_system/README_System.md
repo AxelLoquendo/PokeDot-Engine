@@ -22,9 +22,9 @@ effect_system/
 │   ├── cmd_message.gd
 │   └── ...
 └── scripts/
-    ├── abilities/         # intimidate.txt, static.txt, ...
-    ├── moves/             # EFFECT_ABSORB.txt, ...
-    └── items/             # leftovers.txt, ...
+	├── abilities/         # intimidate.txt, static.txt, ...
+	├── moves/             # EFFECT_ABSORB.txt, ...
+	└── items/             # leftovers.txt, ...
 ```
 
 ## Eventos que emite el BattleManager
@@ -61,14 +61,20 @@ ctx.damage = damage_dealt
 AbilitySystem.on_event("on_hit_by", ctx)
 ```
 
-## Migración
+## Estado
 
-1. Crear el `.txt` de la habilidad.
-2. El AbilitySystem lo usa automáticamente si existe el archivo.
-3. Cuando todas las habilidades de un `match` estén migradas, se borra ese `match` de `ability_runtime.gd`.
-4. Al final, `ability_runtime.gd` solo contiene helpers genéricos (inmunidades de tipo, multiplicadores, etc.) o desaparece.
+`AbilityRuntime` es una **fachada pura**: no implementa efectos por `AbilityId`.
+Toda la lógica de habilidad vive en `scripts/abilities/*.txt`.
+
+Documentación de usuario: `docs/HABILIDADES.md`.
 
 ## Principio
 
 > El código define las **piezas posibles**.  
 > Los datos definen **cómo se combinan**.
+
+
+## Cobertura
+
+316 habilidades oficiales con `.txt` (se excluyen `CUSTOM_314` y `CUSTOM_317`).
+Ver `docs/HABILIDADES.md`.

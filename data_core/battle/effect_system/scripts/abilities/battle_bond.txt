@@ -1,0 +1,4 @@
+# Forma Ash-Greninja al debilitar.
+on_ko:
+  announce
+  change_form battle_bond

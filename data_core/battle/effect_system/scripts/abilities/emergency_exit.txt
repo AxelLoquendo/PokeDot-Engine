@@ -1,0 +1,4 @@
+on_hp_half:
+  announce
+  message "¡{user} quiere retirarse!"
+  block

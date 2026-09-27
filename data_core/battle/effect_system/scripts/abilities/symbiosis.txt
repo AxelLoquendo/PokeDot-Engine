@@ -1,0 +1,4 @@
+# Pasa el objeto al aliado cuando este lo pierde.
+on_symbiosis:
+  announce
+  special symbiosis

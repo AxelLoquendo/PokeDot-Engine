@@ -1,0 +1,4 @@
+# Copia stages del aliado al entrar.
+on_switch_in:
+  announce
+  special costar

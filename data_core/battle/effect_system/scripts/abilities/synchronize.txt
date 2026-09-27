@@ -1,0 +1,4 @@
+# Copia el estado al rival que lo causó.
+on_status:
+  announce
+  status copy target=attacker

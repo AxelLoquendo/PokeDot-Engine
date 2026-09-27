@@ -1,0 +1,4 @@
+# Copia la habilidad del aliado debilitado.
+on_ally_faint:
+  announce
+  set_ability from=target

@@ -1,0 +1,3 @@
+# Los movimientos de contacto dejan de serlo.
+on_removes_contact:
+  block

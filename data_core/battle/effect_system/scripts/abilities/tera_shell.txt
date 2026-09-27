@@ -1,0 +1,5 @@
+# Con PS llenos, todos los golpes son poco eficaces.
+on_tera_shell:
+  if hp_full
+    block
+  endif

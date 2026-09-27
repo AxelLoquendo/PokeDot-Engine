@@ -1,0 +1,6 @@
+on_blocks_escape:
+  if not target_type FLYING
+    if not has_ability LEVITATE
+      block
+    endif
+  endif

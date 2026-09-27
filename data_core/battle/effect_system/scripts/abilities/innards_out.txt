@@ -1,0 +1,4 @@
+# Al debilitarse, inflige PS restantes como daño.
+on_faint:
+  announce
+  special innards_out

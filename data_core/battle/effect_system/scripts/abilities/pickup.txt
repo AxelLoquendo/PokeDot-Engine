@@ -1,0 +1,3 @@
+# Tras el combate / fin de turno puede recoger objeto (overworld-ish).
+on_end_turn:
+  special pickup

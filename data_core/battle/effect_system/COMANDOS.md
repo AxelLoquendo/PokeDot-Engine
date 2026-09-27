@@ -14,7 +14,8 @@ Las llamadas reales que más usa el runtime:
 
 | API BattleManager | Usos aprox. | Comando |
 |-------------------|-------------|---------|
-| `ability_announce` | 103 | `announce` |
+| `ability_announce` | 103 | `multiply` | `multiply 1.5` / `multiply power 1.5` / `multiply speed 2.0` | Multiplica `ctx.multiplier` (consultas). Canal opcional. |
+| `announce` |
 | `ability_change_stat` | 41 | `lower_stat` / `raise_stat` |
 | `message.emit` + `_wait` | 29+ | `message` |
 | `ability_heal` | 7 | `heal` / `heal_percent` |
@@ -57,6 +58,7 @@ Las llamadas reales que más usa el runtime:
 
 | Comando | Sintaxis | API |
 |---------|----------|-----|
+| `multiply` | `multiply 1.5` / `multiply power 1.5` / `multiply speed 2.0` | Multiplica `ctx.multiplier` (consultas). Canal opcional. |
 | `announce` | `announce` / `announce target=current` | `ability_announce` |
 | `message` | `message "texto {user} {target}"` | `message.emit` + wait opcional |
 | `wait` | `wait 0.5` | `_wait` |
@@ -179,17 +181,17 @@ Illusion / Imposter / cambios de forma complejos pueden tener comandos `setup_il
 on_switch_in:
   announce
   for_each opponents
-    if blocks_intimidate
-      if has_ability GUARD_DOG
-        announce target=current
-        raise_stat ATK 1 target=current
-      else
-        announce target=current
-        message "¡{current} no se intimidó!"
-      endif
-    else
-      lower_stat ATK 1 target=current caused_by_foe
-    endif
+	if blocks_intimidate
+	  if has_ability GUARD_DOG
+		announce target=current
+		raise_stat ATK 1 target=current
+	  else
+		announce target=current
+		message "¡{current} no se intimidó!"
+	  endif
+	else
+	  lower_stat ATK 1 target=current caused_by_foe
+	endif
   end_for
 ```
 
@@ -198,8 +200,8 @@ on_switch_in:
 ```text
 on_hit_by:
   if is_contact
-    announce
-    damage_percent 12.5 target=attacker
+	announce
+	damage_percent 12.5 target=attacker
   endif
 ```
 

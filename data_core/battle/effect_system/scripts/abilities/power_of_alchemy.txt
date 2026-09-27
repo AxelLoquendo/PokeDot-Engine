@@ -1,0 +1,3 @@
+on_ally_faint:
+  announce
+  set_ability from=target

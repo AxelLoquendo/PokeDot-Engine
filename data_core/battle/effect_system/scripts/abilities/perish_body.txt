@@ -1,0 +1,6 @@
+# Al contacto, ambos reciben Perish Song.
+on_hit_by:
+  if is_contact
+    announce
+    special perish_body
+  endif

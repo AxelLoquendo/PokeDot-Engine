@@ -1,0 +1,2 @@
+on_weight:
+  multiply weight 0.5

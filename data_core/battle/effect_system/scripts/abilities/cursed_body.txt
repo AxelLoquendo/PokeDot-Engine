@@ -1,0 +1,5 @@
+on_hit_by:
+  chance 30
+    announce
+    message "¡El movimiento fue desactivado!"
+  endchance

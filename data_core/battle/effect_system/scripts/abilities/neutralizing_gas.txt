@@ -1,0 +1,6 @@
+# Anula habilidades en el campo al entrar.
+on_switch_in:
+  announce
+  special neutralizing_gas
+on_switch_out:
+  special neutralizing_gas_end

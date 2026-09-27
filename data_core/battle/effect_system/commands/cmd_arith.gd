@@ -2,10 +2,9 @@
 ## Uso:
 ##   set x 10
 ##   add x 5
-##   sub x 2
-##   mul x 1.5
-##   div x 2
-##   set dmg damage * 0.125
+##   mul x 2
+##   set query_int query_int * 2
+##   set multiplier 1.5
 class_name CmdArith
 extends EffectCommand
 
@@ -26,18 +25,42 @@ func execute(ctx: EffectContext) -> bool:
 	if expr.is_empty():
 		expr = "0"
 	var value: float = EffectExpr.eval(expr, ctx)
-	var current: float = float(ctx.vars.get(var_name, 0.0))
+	var current: float = _read(ctx, var_name)
 	match command_name:
 		"set":
-			ctx.vars[var_name] = value
+			_write(ctx, var_name, value)
 		"add":
-			ctx.vars[var_name] = current + value
+			_write(ctx, var_name, current + value)
 		"sub":
-			ctx.vars[var_name] = current - value
+			_write(ctx, var_name, current - value)
 		"mul":
-			ctx.vars[var_name] = current * value
+			_write(ctx, var_name, current * value)
 		"div":
-			ctx.vars[var_name] = current / value if value != 0.0 else 0.0
+			_write(ctx, var_name, current / value if value != 0.0 else 0.0)
 		_:
-			ctx.vars[var_name] = value
+			_write(ctx, var_name, value)
 	return true
+
+
+func _read(ctx: EffectContext, name: String) -> float:
+	match name:
+		"query_int":
+			return float(ctx.query_int)
+		"multiplier":
+			return ctx.multiplier
+		"damage":
+			return float(ctx.damage)
+		_:
+			return float(ctx.vars.get(name, 0.0))
+
+
+func _write(ctx: EffectContext, name: String, value: float) -> void:
+	match name:
+		"query_int":
+			ctx.query_int = int(round(value))
+		"multiplier":
+			ctx.multiplier = value
+		"damage":
+			ctx.damage = int(round(value))
+		_:
+			ctx.vars[name] = value

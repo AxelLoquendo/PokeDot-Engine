@@ -1,0 +1,3 @@
+# Aumenta la precisión de los movimientos.
+on_accuracy:
+  multiply accuracy 1.3

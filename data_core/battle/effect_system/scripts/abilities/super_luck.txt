@@ -1,0 +1,3 @@
+# +1 etapa de crítico.
+on_crit_stage:
+  priority 1

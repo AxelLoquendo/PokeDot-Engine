@@ -1,0 +1,2 @@
+on_stage_change:
+  mul query_int 2

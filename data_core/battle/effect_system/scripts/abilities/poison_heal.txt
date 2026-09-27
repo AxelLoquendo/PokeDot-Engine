@@ -1,0 +1,8 @@
+# El veneno cura en vez de dañar.
+on_poison_heal:
+  block
+on_end_turn:
+  if has_status POISON TOXIC
+    announce
+    heal_percent 12.5
+  endif

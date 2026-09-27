@@ -1,0 +1,3 @@
+# Ignora stages del rival al atacar/defender.
+on_ignores_stages:
+  block

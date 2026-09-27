@@ -1,0 +1,4 @@
+# Copia movimientos de baile.
+on_dance:
+  announce
+  special dancer

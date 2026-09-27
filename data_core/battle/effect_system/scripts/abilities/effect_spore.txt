@@ -1,6 +1,7 @@
 on_hit_by:
   if is_contact
     chance 30
+      announce
       status_random SLEEP POISON PARALYSIS target=attacker
     endchance
   endif

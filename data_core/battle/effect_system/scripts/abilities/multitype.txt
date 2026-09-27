@@ -1,0 +1,3 @@
+# Tipo según plate (Arceus). Forma gestionada por held item.
+on_switch_in:
+  special multitype

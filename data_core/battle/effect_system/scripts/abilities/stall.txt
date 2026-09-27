@@ -1,0 +1,3 @@
+# Actúa último en su prioridad.
+on_stall:
+  block

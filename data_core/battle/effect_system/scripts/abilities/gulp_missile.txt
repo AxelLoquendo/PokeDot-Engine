@@ -1,0 +1,7 @@
+# Cramorant traga y escupe al ser golpeado.
+on_move_use:
+  if move_type WATER
+    special gulp_missile_catch
+  endif
+on_hit_by:
+  special gulp_missile_spit

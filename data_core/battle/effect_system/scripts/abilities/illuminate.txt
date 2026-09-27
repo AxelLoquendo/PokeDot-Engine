@@ -1,0 +1,8 @@
+# En combate: no baja precisión (y evita bajadas de accuracy).
+on_blocks_stat_drop:
+  if stat ACCURACY
+    block
+  endif
+
+on_blocks_accuracy_drop:
+  block

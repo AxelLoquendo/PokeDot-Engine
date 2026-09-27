@@ -101,6 +101,8 @@ static func _resolve_ident(name: String, ctx: EffectContext) -> float:
 	if ctx.vars.has(key):
 		return float(ctx.vars[key])
 	match key:
+		"query_int":
+			return float(ctx.query_int)
 		"multiplier":
 			return ctx.multiplier
 		"damage":

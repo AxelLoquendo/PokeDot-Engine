@@ -1,0 +1,3 @@
+# +30% potencia de movimientos del aliado.
+on_power_spot:
+  multiply power_spot 1.3

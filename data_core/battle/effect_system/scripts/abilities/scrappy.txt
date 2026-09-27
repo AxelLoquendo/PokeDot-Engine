@@ -1,0 +1,6 @@
+on_bypasses_ghost:
+  if move_type NORMAL FIGHTING
+    block
+  endif
+on_blocks_intimidate:
+  block

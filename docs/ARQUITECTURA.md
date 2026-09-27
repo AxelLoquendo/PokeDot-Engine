@@ -48,3 +48,8 @@ Evento/encuentro → `BattleSession.preparar_*()` → overlay `battle.tscn` → 
 - Los datos variables pertenecen a instancias y no a recursos compartidos.
 - Las UIs solicitan acciones a los sistemas; no deben calcular daño, consumir objetos ni modificar flags directamente.
 - Las rutas `res://` son contenido del proyecto; `user://` se reserva para partidas locales y datos de usuario.
+
+
+## Habilidades
+
+Ver [HABILIDADES.md](HABILIDADES.md).

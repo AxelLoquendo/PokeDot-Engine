@@ -1,0 +1,4 @@
+# +1 Atk al debilitar un rival.
+on_ko:
+  announce
+  raise_stat ATK 1 target=user

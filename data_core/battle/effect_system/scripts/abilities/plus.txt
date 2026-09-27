@@ -1,0 +1,8 @@
+# +50% Sp.Atk si el aliado tiene Minus o Plus.
+on_plus_minus:
+  if has_ability MINUS
+    multiply plus_minus 1.5
+  endif
+  if has_ability PLUS
+    multiply plus_minus 1.5
+  endif

@@ -1,0 +1,4 @@
+# Carga al recibir daño.
+on_damaged:
+  announce
+  set_meta charged 1

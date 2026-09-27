@@ -1,0 +1,6 @@
+on_switch_in:
+  announce
+  special unnerve
+on_ko:
+  announce
+  raise_stat SP_ATTACK 1 target=user

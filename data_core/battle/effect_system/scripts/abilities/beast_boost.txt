@@ -1,0 +1,4 @@
+# +1 a la estadística más alta al debilitar.
+on_ko:
+  announce
+  special beast_boost

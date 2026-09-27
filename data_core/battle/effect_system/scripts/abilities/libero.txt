@@ -1,0 +1,3 @@
+on_move_use:
+  announce
+  set_type from=move

@@ -1,0 +1,2 @@
+on_berry_threshold:
+  multiply berry_threshold 2.0

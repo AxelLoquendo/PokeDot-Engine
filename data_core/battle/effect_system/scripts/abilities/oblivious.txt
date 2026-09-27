@@ -1,0 +1,4 @@
+on_blocks_mental:
+  block
+on_blocks_intimidate:
+  block

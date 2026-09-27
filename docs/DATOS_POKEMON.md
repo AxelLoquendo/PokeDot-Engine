@@ -40,7 +40,15 @@ La instancia recibe experiencia de su nivel, naturaleza, género, IVs, habilidad
 
 Un `MoveData` necesita ID, nombre, descripción, tipo, categoría, objetivo, PP, precisión, potencia y efecto. `effect` es el comportamiento principal; `secondary_effect` y `secondary_chance` son el comportamiento adicional. `PokemonMoveSlot` mantiene los PP actuales.
 
-`AbilityData` es el catálogo. La lógica común de batalla está en `AbilityRuntime`; `AbilityEffect` es el punto de extensión para habilidades personalizadas.
+`AbilityData` es el catálogo (nombre, generación, rating de AI).
+
+La lógica de batalla de cada habilidad está en
+`data_core/battle/effect_system/scripts/abilities/<id>.txt`.
+`AbilityRuntime` solo administra eventos y consultas; no implementa efectos
+por ID. Ver [HABILIDADES.md](HABILIDADES.md).
+
+`AbilityEffect` (recurso) queda como extensión opcional legada; el camino
+recomendado para contenido nuevo es el `.txt`.
 
 ## Ítems
 

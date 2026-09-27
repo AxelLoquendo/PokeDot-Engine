@@ -1,0 +1,4 @@
+on_blocks_escape:
+  if target_type STEEL
+    block
+  endif

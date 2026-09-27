@@ -1,0 +1,2 @@
+on_blocks_forced_switch:
+  block

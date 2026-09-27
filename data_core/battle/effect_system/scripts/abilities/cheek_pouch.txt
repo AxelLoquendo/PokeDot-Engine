@@ -1,0 +1,3 @@
+on_berry_eaten:
+  announce
+  heal_percent 33.3

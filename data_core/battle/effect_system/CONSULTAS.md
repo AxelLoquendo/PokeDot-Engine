@@ -44,14 +44,25 @@ Reacciones: `immune`, `heal`, `spatk_up`, `spe_up`, `atk_up`, `def_up`, `flash_f
 ```text
 on_power:
   if move_flag punching_move
-    multiply 1.2
+	multiply power 1.2
   endif
   if hp_percent <= 33.4
-    if move_type FIRE
-      multiply 1.5
-    endif
+	if move_type FIRE
+	  multiply power 1.5
+	endif
+  endif
+
+on_speed:
+  if weather SUN
+	multiply speed 2.0
   endif
 ```
+
+Sintaxis:
+
+- `multiply <expresión>` — multiplica el canal del evento (`ctx.multiplier`).
+- `multiply <canal> <expresión>` — igual, con canal explícito (`power`, `speed`,
+  `damage_taken`, `attack_stat`, `stab`, `crit`, `weight`, …).
 
 `multiply` acepta **expresión**: `1.5`, `3 / 4`, `(2 + 1) * 0.5`, `hp_percent / 100`.
 
@@ -81,7 +92,7 @@ on_blocks_critical:
 
 on_blocks_stat_drop:
   if stat ATK
-    block
+	block
   endif
 ```
 
@@ -99,21 +110,21 @@ on_immunity:
 # iron_fist.txt
 on_power:
   if move_flag punching_move
-    multiply 1.2
+	multiply 1.2
   endif
 
 # guts.txt
 on_attack_stat:
   if category PHYSICAL
-    if has_status
-      multiply 1.5
-    endif
+	if has_status
+	  multiply 1.5
+	endif
   endif
 
 # thick_fat.txt
 on_damage_taken:
   if move_type FIRE ICE
-    multiply 0.5
+	multiply 0.5
   endif
 ```
 

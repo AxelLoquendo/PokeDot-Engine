@@ -1,0 +1,4 @@
+# Envenenar también confunde (Pecharunt).
+on_poison_applied:
+  announce
+  special confuse_target

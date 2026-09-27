@@ -1,0 +1,5 @@
+# +evasión si está confundido.
+on_evasion:
+  if has_status CONFUSION
+    multiply evasion 2.0
+  endif

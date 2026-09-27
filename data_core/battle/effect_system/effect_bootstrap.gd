@@ -45,6 +45,7 @@ static func register_all() -> void:
 	EffectParser.register_command("mul", _c_mul)
 	EffectParser.register_command("div", _c_div)
 	EffectParser.register_command("set_move_type", _c_set_move_type)
+	EffectParser.register_command("set_type", _c_set_type)
 	EffectParser.register_command("priority", _c_priority)
 
 	var specials: Array[String] = [
@@ -53,6 +54,11 @@ static func register_all() -> void:
 		"teraform_zero", "forecast", "flower_gift", "zen_mode", "shields_down",
 		"moody", "bad_dreams", "harvest", "healer", "cud_chew", "pickpocket",
 		"tick_slow_start", "status_random", "flinch", "lower_evasion",
+		"pickup", "multitype", "symbiosis", "innards_out", "dancer", "beast_boost",
+		"rks_system", "ball_fetch", "gulp_missile_catch", "gulp_missile_spit",
+		"perish_body", "neutralizing_gas", "neutralizing_gas_end", "hunger_switch",
+		"unnerve", "commander", "costar", "toxic_spikes", "confuse_target",
+		"schooling", "liquid_ooze", "tick_truant",
 	]
 	for s: String in specials:
 		EffectParser.register_command(s, _c_special.bind(s))
@@ -130,6 +136,8 @@ static func _c_div(a: PackedStringArray) -> EffectCommand:
 	return CmdArith.new(a, "div")
 static func _c_set_move_type(a: PackedStringArray) -> EffectCommand:
 	return CmdSetMoveType.new(a)
+static func _c_set_type(a: PackedStringArray) -> EffectCommand:
+	return CmdSetType.new(a)
 static func _c_priority(a: PackedStringArray) -> EffectCommand:
 	return CmdPriority.new(a)
 static func _c_special(sname: String, a: PackedStringArray) -> EffectCommand:
