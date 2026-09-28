@@ -284,12 +284,9 @@ func _curious_medicine(b: BattleBattler, battle: BattleManager) -> void:
 func _delta_stream(battle: BattleManager) -> void:
 	if battle == null:
 		return
-	if "weather_primal" in battle:
-		battle.weather_primal = true
+	battle.set_weather(AbilityBattleEffect.weatherAbilityID.WEATHER_STRONG_WINDS, -1, true)
 	battle.message.emit("¡Corrientes de aire misteriosas protegen a los tipo Volador!")
 	await battle._wait(0.6)
-	if battle.has_signal("weather_changed"):
-		battle.weather_changed.emit(battle.weather, true)
 
 
 func _mimicry(b: BattleBattler, battle: BattleManager) -> void:
@@ -723,15 +720,3 @@ func _schooling(b: BattleBattler, battle: BattleManager) -> void:
 	await battle._wait(0.5)
 
 ## ─── Specials de movimientos ─────────────────────────────
-
-
-
-
-
-
-
-
-
-
-
-

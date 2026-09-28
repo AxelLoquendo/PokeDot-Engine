@@ -32,18 +32,17 @@ func execute(ctx: EffectContext) -> bool:
 	# Prefer AbilityBattleEffect enum values via battle if available
 	var weather_id: int = int(WEATHER_MAP.get(key, 0))
 	# Map to project constants when possible
-	if "WeatherId" in AbilityBattleEffect or true:
-		match key:
-			"rain":
-				weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN
-			"sun", "drought":
-				weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT
-			"sand", "sandstorm":
-				weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM
-			"snow", "hail":
-				weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW
-			"none":
-				weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+	match key:
+		"rain":
+			weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN
+		"sun", "drought":
+			weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT
+		"sand", "sandstorm":
+			weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_SANDSTORM
+		"snow", "hail":
+			weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW
+		"none":
+			weather_id = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
 	if primal:
 		ctx.battle.set_weather(weather_id, turns, true)
 	else:

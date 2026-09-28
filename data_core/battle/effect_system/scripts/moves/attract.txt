@@ -1,3 +1,5 @@
 # attract
 on_use:
-  infatuate target=opponent
+  if same_gender
+	infatuate target=opponent
+  endif

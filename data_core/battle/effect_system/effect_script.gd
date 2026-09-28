@@ -26,6 +26,5 @@ func run(event_name: String, ctx: EffectContext) -> bool:
 	var cmds: Array = get_block(event_name)
 	if cmds.is_empty():
 		return false
-
-	EffectRunner.run_block(cmds, ctx)
+	await EffectRunner.run_block(cmds, ctx)
 	return true

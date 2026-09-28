@@ -3,6 +3,25 @@ extends RefCounted
 
 static var _registered: bool = false
 
+# Constante de clase centralizada para los movimientos especiales
+const MOVE_SPECIAL_NAMES: Array[String] = [
+	"weather_from_move", "rest", "haze_reset", "resolve_protect", "belly_drum",
+	"court_change", "clear_terrain", "knock_off", "steal_item", "topsy_turvy",
+	"self_ko", "apply_move_status", "accuracy_stage", "evasion_stage", "transform",
+	"mimic", "sketch", "metronome", "mirror_move", "copycat", "sleep_talk",
+	"nature_power", "conversion", "conversion_2", "pain_split", "psych_up",
+	"heart_swap", "power_swap", "guard_swap", "speed_swap", "power_trick",
+	"power_split", "guard_split", "role_play", "skill_swap", "entrainment",
+	"overwrite_ability", "gastro_acid", "trick", "bestow", "recycle", "spite",
+	"heal_bell", "reflect_type", "camouflage", "third_type", "curse", "swallow",
+	"spit_up", "strength_sap", "acupressure", "flower_shield", "rototiller",
+	"gear_up", "magnetic_flux", "ally_switch", "healing_wish", "revival_blessing",
+	"psycho_shift", "instruct", "future_sight", "bide", "present", "telekinesis",
+	"fairy_lock", "ion_deluge", "electrify", "powder", "after_you", "quash",
+	"teatime", "corrosive_gas", "stuff_cheeks", "fling", "natural_gift", "snore",
+	"fell_stinger", "clear_leech_seed", "smack_down", "tidy_up", "fillet_away",
+]
+
 
 static func register_all() -> void:
 	if _registered:
@@ -69,24 +88,8 @@ static func register_all() -> void:
 	for s: String in specials:
 		EffectParser.register_command(s, _c_special.bind(s))
 
-	var move_specials: Array[String] = [
-		"weather_from_move", "rest", "haze_reset", "resolve_protect", "belly_drum",
-		"court_change", "clear_terrain", "knock_off", "steal_item", "topsy_turvy",
-		"self_ko", "apply_move_status", "accuracy_stage", "evasion_stage", "transform",
-		"mimic", "sketch", "metronome", "mirror_move", "copycat", "sleep_talk",
-		"nature_power", "conversion", "conversion_2", "pain_split", "psych_up",
-		"heart_swap", "power_swap", "guard_swap", "speed_swap", "power_trick",
-		"power_split", "guard_split", "role_play", "skill_swap", "entrainment",
-		"overwrite_ability", "gastro_acid", "trick", "bestow", "recycle", "spite",
-		"heal_bell", "reflect_type", "camouflage", "third_type", "curse", "swallow",
-		"spit_up", "strength_sap", "acupressure", "flower_shield", "rototiller",
-		"gear_up", "magnetic_flux", "ally_switch", "healing_wish", "revival_blessing",
-		"psycho_shift", "instruct", "future_sight", "bide", "present", "telekinesis",
-		"fairy_lock", "ion_deluge", "electrify", "powder", "after_you", "quash",
-		"teatime", "corrosive_gas", "stuff_cheeks", "fling", "natural_gift", "snore",
-		"fell_stinger", "clear_leech_seed", "smack_down", "tidy_up", "fillet_away",
-	]
-	for ms: String in move_specials:
+	# Modificado: Ahora itera directamente sobre la constante global de clase
+	for ms: String in MOVE_SPECIAL_NAMES:
 		EffectParser.register_command(ms, _c_move_special.bind(ms))
 	EffectParser.register_command("special", _c_special_router)
 
@@ -207,23 +210,6 @@ static func _c_special_router(a: PackedStringArray) -> EffectCommand:
 	return CmdSpecial.new(sname, rest)
 
 
+# Modificado: Ahora limpia el array redundante y evalúa contra la constante
 static func _is_move_special(sname: String) -> bool:
-	var move_names: PackedStringArray = [
-		"weather_from_move", "rest", "haze_reset", "resolve_protect", "belly_drum",
-		"court_change", "clear_terrain", "knock_off", "steal_item", "topsy_turvy",
-		"self_ko", "apply_move_status", "accuracy_stage", "evasion_stage", "transform",
-		"mimic", "sketch", "metronome", "mirror_move", "copycat", "sleep_talk",
-		"nature_power", "conversion", "conversion_2", "pain_split", "psych_up",
-		"heart_swap", "power_swap", "guard_swap", "speed_swap", "power_trick",
-		"power_split", "guard_split", "role_play", "skill_swap", "entrainment",
-		"overwrite_ability", "gastro_acid", "trick", "bestow", "recycle", "spite",
-		"heal_bell", "reflect_type", "camouflage", "third_type", "curse", "swallow",
-		"spit_up", "strength_sap", "acupressure", "flower_shield", "rototiller",
-		"gear_up", "magnetic_flux", "ally_switch", "healing_wish", "revival_blessing",
-		"psycho_shift", "instruct", "future_sight", "bide", "present", "telekinesis",
-		"fairy_lock", "ion_deluge", "electrify", "powder", "after_you", "quash",
-		"teatime", "corrosive_gas", "stuff_cheeks", "fling", "natural_gift", "snore",
-		"fell_stinger", "clear_leech_seed", "smack_down", "tidy_up", "fillet_away",
-	]
-	return sname in move_names
-
+	return sname in MOVE_SPECIAL_NAMES

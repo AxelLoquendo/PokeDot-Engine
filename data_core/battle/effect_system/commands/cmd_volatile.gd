@@ -334,9 +334,8 @@ func _resolve_target(ctx: EffectContext) -> BattleBattler:
 			return null
 		"attacker":
 			return ctx.attacker if ctx.attacker else ctx.user
-		_, "user", "":
+		_:
 			return ctx.user
-	return ctx.user
 
 
 func _fail(ctx: EffectContext) -> void:

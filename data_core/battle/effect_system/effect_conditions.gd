@@ -216,6 +216,8 @@ static func _weather_matches(ctx: EffectContext, want: String) -> bool:
 			return w == AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW
 		"none":
 			return w == AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+		"strong_winds":
+			return w == AbilityBattleEffect.weatherAbilityID.WEATHER_STRONG_WINDS
 	return false
 
 

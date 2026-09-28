@@ -209,7 +209,7 @@ func execute(ctx: EffectContext) -> bool:
 		"fling":
 			await _fling(ctx)
 		"natural_gift":
-			await _fling(ctx)
+			await _natural_gift(ctx)
 		"snore":
 			await _snore(ctx)
 		"fell_stinger":
@@ -245,11 +245,13 @@ func _rest(ctx: EffectContext) -> void:
 	if ctx == null or ctx.user == null or ctx.user.pokemon == null:
 		return
 	var b: BattleBattler = ctx.user
-	if b.pokemon.current_hp >= b.get_max_hp() or b.pokemon.has_status():
+	if b.pokemon.current_hp >= b.get_max_hp():
 		if ctx.battle:
 			ctx.battle.message.emit("¡No surtirá efecto!")
 			await ctx.battle._wait(0.5)
 		return
+	if b.pokemon.has_status():
+		b.pokemon.cure_status()
 	b.pokemon.current_hp = b.get_max_hp()
 	b.pokemon.status = PokemonInstance.Status.SLEEP
 	b.pokemon.status_counter = 2
@@ -1032,7 +1034,7 @@ func _present(ctx: EffectContext) -> void:
 	var roll: int = randi_range(1, 100)
 	if roll <= 40:
 		if ctx.target.heal_block_turns <= 0:
-			ctx.target.pokemon.apply_heal(80)
+			ctx.target.pokemon.apply_heal(maxi(1, int(ctx.target.get_max_hp() / 4)))
 			ctx.battle.hp_changed.emit(ctx.target.is_player_side, ctx.target.get_current_hp(), ctx.target.get_max_hp())
 			ctx.battle.message.emit("¡%s recuperó PS!" % ctx.target.get_display_name())
 	else:
@@ -1046,7 +1048,7 @@ func _present(ctx: EffectContext) -> void:
 func _stuff_cheeks(ctx: EffectContext) -> void:
 	if ctx == null or ctx.user == null or ctx.user.pokemon == null:
 		return
-	if ctx.user.pokemon.held_item == Items.ItemId.ITEM_NONE:
+	if ctx.user.pokemon.held_item == Items.ItemId.ITEM_NONE or not _is_berry(int(ctx.user.pokemon.held_item)):
 		if ctx.battle:
 			ctx.battle.message.emit("¡No surtirá efecto!")
 			await ctx.battle._wait(0.4)
@@ -1070,6 +1072,15 @@ func _fling(ctx: EffectContext) -> void:
 		ctx.battle.message.emit("¡%s lanzó su objeto!" % ctx.user.get_display_name())
 		await ctx.battle._wait(0.4)
 
+func _natural_gift(ctx: EffectContext) -> void:
+	if ctx == null or ctx.user == null or ctx.user.pokemon == null:
+		return
+	if not _is_berry(int(ctx.user.pokemon.held_item)):
+		if ctx.battle:
+			ctx.battle.message.emit("¡Pero falló!")
+			await ctx.battle._wait(0.4)
+		return
+	await _fling(ctx)
 
 func _snore(ctx: EffectContext) -> void:
 	if ctx == null or ctx.user == null or ctx.user.pokemon == null:
@@ -1082,3 +1093,9 @@ func _snore(ctx: EffectContext) -> void:
 		if ctx.battle:
 			ctx.battle.message.emit("¡No surtirá efecto!")
 			await ctx.battle._wait(0.4)
+
+func _is_berry(item_id: int) -> bool:
+	for k: String in Items.ItemId.keys():
+		if int(Items.ItemId[k]) == item_id:
+			return k.ends_with("_BERRY") or k == "ITEM_BERRY_JUICE"
+	return false

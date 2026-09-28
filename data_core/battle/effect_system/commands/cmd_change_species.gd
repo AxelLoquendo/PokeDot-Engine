@@ -71,12 +71,6 @@ func _parse_species(arg: String) -> int:
 	var key: String = arg.to_upper()
 	if not key.begins_with("SPECIES_"):
 		key = "SPECIES_" + key
-	var keys: Array = Species.SpeciesID.keys()
-	for i: int in range(keys.size()):
-		if str(keys[i]) == key:
-			return i
-	# Algunos enums no son 0..n contiguos: buscar por valor del nombre
-	for k: Variant in keys:
-		if str(k) == key:
-			return int(Species.SpeciesID[str(k)])
+	if Species.SpeciesID.has(key):
+		return int(Species.SpeciesID[key])
 	return 0

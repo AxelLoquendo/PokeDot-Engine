@@ -1,7 +1,9 @@
 on_hit_by:
   if is_contact
-    chance 30
-      announce
-      infatuate target=attacker
-    endchance
+	if same_gender
+	  chance 30
+		announce
+		infatuate target=attacker
+	  endchance
+	endif
   endif
