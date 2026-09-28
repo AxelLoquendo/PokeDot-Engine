@@ -1246,7 +1246,7 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 		battler.protect_kind = ProtectResolver.Kind.NONE
 		battler.endure_active = false
 		battler.destiny_bond_active = false  # Destiny Bond solo dura el turno
-		battler.just_switched_in = false
+		# just_switched_in se limpia al FINAL del turno (Fake Out / Stakeout / First Impression)
 		battler.set_meta("acted_this_turn", false)
 		battler.beak_blast_armed = false
 		# shell trap se mantiene hasta activarse o fin de turno
@@ -1260,14 +1260,30 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 	for action: BattleAction in actions:
 		if action == null or action.actor == null or action.actor.is_fainted():
 			continue
+		# Si el objetivo principal del movimiento ya no está consciente, re-apuntar o saltar
 		if action.kind == BattleAction.Kind.MOVE:
+			if action.target != null and action.target.is_fainted():
+				var alts: Array[BattleBattler] = get_opponents(action.actor)
+				var retarget: BattleBattler = null
+				for a: BattleBattler in alts:
+					if a != null and not a.is_fainted():
+						retarget = a
+						break
+				if retarget == null:
+					continue
+				action.target = retarget
 			await _execute_move(action)
 		elif action.kind == BattleAction.Kind.SWITCH:
 			await _execute_switch_action(action)
-		# Solo cortar si un bando quedó sin Pokémon conscientes en campo Y sin reservas se maneja después
+		# Tras cada acción: reemplazos forzados (estilo pokeemerald post-faint)
+		await _resolve_mid_turn_faints()
 		if not side_has_conscious(true) or not side_has_conscious(false):
-			# seguir resolviendo acciones del otro bando si aún hay
-			pass
+			if not party_has_reserve(true) or not party_has_reserve(false):
+				# Sin reservas en algún bando: el cierre de combate se hace al salir del loop
+				if not side_has_conscious(true) and not party_has_reserve(true):
+					break
+				if not side_has_conscious(false) and not party_has_reserve(false):
+					break
 
 	if side_has_conscious(true) and side_has_conscious(false):
 		await _process_end_of_turn()
@@ -1299,6 +1315,58 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 
 	_pending_player_actions.clear()
 	turn_ended.emit()
+
+
+
+## Tras un KO a mitad de turno: sustituye enemigos caídos y pide cambio al jugador.
+## Inspirado en el flujo post-faint de pokeemerald (no se sigue atacando un slot vacío).
+func _resolve_mid_turn_faints() -> void:
+	# EXP + auto-switch enemigo
+	for i: int in range(enemy_actives.size()):
+		var eb: BattleBattler = enemy_actives[i]
+		if eb == null or eb.pokemon == null:
+			continue
+		if not eb.is_fainted():
+			continue
+		await _award_experience_from(eb)
+		if not is_trainer_battle:
+			continue
+		if not party_has_reserve(false):
+			continue
+		var reserve: PokemonInstance = _first_reserve(false)
+		if reserve == null:
+			continue
+		message.emit("¡%s regresó!" % eb.get_display_name())
+		await _wait(0.4)
+		await AbilityRuntime.on_switch_out(eb, self)
+		AbilityRuntime.revert_transform(eb)
+		eb.setup(reserve, false, eb.slot_index)
+		AbilityRuntime.prepare_illusion(eb, self)
+		_sync_primary_refs()
+		message.emit("¡Adelante, %s!" % eb.get_display_name())
+		pokemon_entered_field.emit(false)
+		battler_appearance_changed.emit(false)
+		await _wait(0.5)
+		var opp: BattleBattler = player
+		var opps: Array[BattleBattler] = get_opponents(eb)
+		if not opps.is_empty():
+			opp = opps[0]
+		await AbilityRuntime.on_switch_in(eb, opp, self)
+		await _apply_hazards_on_switch_in(eb)
+		_emit_hp_battler(eb)
+
+	# Jugador: si hay slot KO con reservas, forzar party (la UI usa free_switch)
+	var need_player: bool = false
+	for pb: BattleBattler in player_actives:
+		if pb != null and (pb.pokemon == null or pb.is_fainted()) and party_has_reserve(true):
+			need_player = true
+			break
+	if need_player:
+		set_meta("forced_pivot", true)
+		set_meta("forced_pivot_side_player", true)
+		player_must_switch.emit()
+		# La UI debe llamar player_choose_switch(..., free_switch=true) antes del siguiente input de turno.
+		# No bloqueamos aquí para no colgar el await sin señal de "switch done".
 
 
 func _execute_switch_action(action: BattleAction) -> void:
@@ -1513,11 +1581,15 @@ func _process_end_of_turn() -> void:
 			message.emit("¡El Zona Extraña se disipó!")
 			await _wait(0.5)
 	if gravity_turns > 0:
+		# Mantener flag mientras el campo esté activo
 		for _gb: BattleBattler in get_all_actives():
 			if _gb != null:
 				_gb.set_meta("gravity_active", true)
 		gravity_turns -= 1
 		if gravity_turns == 0:
+			for _gb2: BattleBattler in get_all_actives():
+				if _gb2 != null and _gb2.has_meta("gravity_active"):
+					_gb2.remove_meta("gravity_active")
 			message.emit("¡La gravedad volvió a la normalidad!")
 			await _wait(0.5)
 	if weather_turns > 0:
@@ -1532,6 +1604,11 @@ func _process_end_of_turn() -> void:
 			terrain = TerrainId.TERRAIN_NONE
 			message.emit("¡El terreno volvió a la normalidad!")
 			await _wait(0.6)
+
+	# Fin de turno: el "primer turno en campo" ya se consumió (estilo pokeemerald isFirstTurn).
+	for battler: BattleBattler in get_all_actives():
+		if battler != null:
+			battler.just_switched_in = false
 
 func _apply_weather_damage() -> void:
 	var eff_weather: int = get_effective_weather()
@@ -1878,6 +1955,9 @@ func _execute_move(action: BattleAction) -> void:
 	var total_dealt: int = 0
 	var last_result: DamageCalculator.HitResult = null
 	var hits_landed: int = 0
+	# Acumular pasivas de TODOS los hits (Tera Shell solo aplica al 1º si deja de estar a PS llenos)
+	var noted_attacker: Array[AbilityId.Id] = []
+	var noted_defender: Array[AbilityId.Id] = []
 
 	for i: int in hit_count:
 		if target.is_fainted() or actor.is_fainted():
@@ -1887,7 +1967,7 @@ func _execute_move(action: BattleAction) -> void:
 		if AbilityRuntime.has(actor, AbilityId.Id.INFILTRATOR):
 			screens = false
 		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(
-			actor, target, move, weather, screens
+			actor, target, move, get_effective_weather(), screens, is_multi_battle()
 		)
 		if result.damage > 0:
 			var ctx_mult: float = 1.0
@@ -1932,6 +2012,12 @@ func _execute_move(action: BattleAction) -> void:
 			if ctx_mult != 1.0:
 				result.damage = maxi(1, int(round(float(result.damage) * ctx_mult)))
 		last_result = result
+		for _ab_a: AbilityId.Id in result.activated_attacker:
+			if not noted_attacker.has(_ab_a):
+				noted_attacker.append(_ab_a)
+		for _ab_d: AbilityId.Id in result.activated_defender:
+			if not noted_defender.has(_ab_d):
+				noted_defender.append(_ab_d)
 
 		if result.ability_immunity != "":
 			if i == 0:
@@ -2040,7 +2126,7 @@ func _execute_move(action: BattleAction) -> void:
 			and not target.is_fainted() and not actor.is_fainted() and hits_landed > 0:
 		await ability_announce(actor)
 		var bond: DamageCalculator.HitResult = DamageCalculator.compute_hit(
-			actor, target, move, weather, false
+			actor, target, move, get_effective_weather(), false, is_multi_battle()
 		)
 		if bond.damage > 0:
 			bond.damage = maxi(1, int(round(float(bond.damage) * 0.25)))
@@ -2048,9 +2134,16 @@ func _execute_move(action: BattleAction) -> void:
 			total_dealt += bond_dealt
 			hits_landed += 1
 			_emit_hp(target.is_player_side)
-			if bond_dealt > 0 and not target.is_fainted():
-				await AbilityRuntime.on_damaged_by_move(target, actor, move, bond.critical, self)
+			if bond_dealt > 0:
+				if not target.is_fainted():
+					await AbilityRuntime.on_damaged_by_move(target, actor, move, bond.critical, self)
+				# Contacto del segundo golpe (Static, Rough Skin, etc.)
+				if AbilityRuntime.move_makes_contact(actor, move) and not actor.is_fainted():
+					await AbilityRuntime.on_contact_hit(actor, target, move, self)
 
+	if last_result != null:
+		last_result.activated_attacker = noted_attacker
+		last_result.activated_defender = noted_defender
 	await _announce_passive_abilities(actor, target, last_result)
 
 	if hits_landed > 1:
@@ -2064,10 +2157,7 @@ func _execute_move(action: BattleAction) -> void:
 		message.emit("No es muy efectivo...")
 		await _wait(0.6)
 
-	# Anunciar pasivas del defensor que modificaron el golpe (Tera Shell, etc.)
-	if last_result.activated_defender.has(AbilityId.Id.TERA_SHELL):
-		await ability_announce(target)
-		await _wait(0.35)
+	# Pasivas (Tera Shell, Unaware, etc.) ya se anunciaron en _announce_passive_abilities.
 
 	message.emit("Hizo %d PS de daño." % total_dealt)
 	await _wait(0.7)
@@ -2243,7 +2333,7 @@ func _execute_special_or_standard_damage(
 			await _wait(0.7)
 			return
 		# Tipo inmunidad básica vía compute_hit type check: si effectiveness 0, fallar
-		var probe: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, weather, false)
+		var probe: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, get_effective_weather(), false, is_multi_battle())
 		if probe.effectiveness <= 0.0 or not probe.ability_immunity.is_empty():
 			await _handle_ability_immunity(target, move, probe)
 			return
@@ -2292,7 +2382,7 @@ func _execute_special_or_standard_damage(
 		if AbilityRuntime.has(actor, AbilityId.Id.INFILTRATOR):
 			screens = false
 		var result: DamageCalculator.HitResult = DamageCalculator.compute_hit(
-			actor, target, move, weather, screens
+			actor, target, move, get_effective_weather(), screens, is_multi_battle()
 		)
 		last_result = result
 		if result.effectiveness <= 0.0 or not result.ability_immunity.is_empty():
@@ -4022,7 +4112,7 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 				await _wait(0.6)
 				return
 			# Daño diferido aproximado
-			var fs_probe: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, weather, false)
+			var fs_probe: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, get_effective_weather(), false, is_multi_battle())
 			target.future_sight_damage = maxi(1, fs_probe.damage)
 			target.future_sight_turns = 2
 			target.future_sight_from_player = actor.is_player_side
@@ -4909,13 +4999,21 @@ func _apply_hazards_on_switch_in(battler: BattleBattler) -> void:
 	if battler.pokemon == null or battler.is_fainted():
 		return
 	var side: FieldSide = _side_for(battler)
-	var is_flying: bool = battler.pokemon.get_type_1() == PokemonData.Type.TYPE_FLYING \
-		or battler.pokemon.get_type_2() == PokemonData.Type.TYPE_FLYING
-	var is_grounded: bool = not is_flying and not AbilityRuntime.has(battler, AbilityId.Id.LEVITATE)
+	# Tipos de batalla (después de Transform / type change)
+	var t1: PokemonData.Type = battler.get_battle_type_1()
+	var t2: PokemonData.Type = battler.get_battle_type_2()
+	var is_flying: bool = t1 == PokemonData.Type.TYPE_FLYING or t2 == PokemonData.Type.TYPE_FLYING
+	# Gravity fuerza a aterrizar; Magnet Rise / Telekinesis elevan
+	var airborne: bool = is_flying or AbilityRuntime.has(battler, AbilityId.Id.LEVITATE)
+	if gravity_turns > 0 or bool(battler.get_meta("gravity_active", false)):
+		airborne = false
+	if battler.magnet_rise_turns > 0:
+		airborne = true
+	var is_grounded: bool = not airborne
 
-	if side.stealth_rock:
+	if side.stealth_rock and not AbilityRuntime.blocks_indirect_damage(battler):
 		var eff: float = TypeChart.get_effectiveness(
-			PokemonData.Type.TYPE_ROCK, battler.pokemon.get_type_1(), battler.pokemon.get_type_2()
+			PokemonData.Type.TYPE_ROCK, t1, t2
 		)
 		var dmg: int = maxi(1, int(float(battler.get_max_hp()) * 0.125 * eff))
 		var taken: int = battler.apply_damage(dmg)
@@ -4931,7 +5029,7 @@ func _apply_hazards_on_switch_in(battler: BattleBattler) -> void:
 		message.emit("¡%s quedó atrapado en la Red Viscosa!" % battler.get_display_name())
 		await _apply_stat_change(battler, PokemonInstance.Stat.SPEED, -1, true)
 
-	if side.spikes_layers > 0 and is_grounded:
+	if side.spikes_layers > 0 and is_grounded and not AbilityRuntime.blocks_indirect_damage(battler):
 		var fraction: float = [0.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0][side.spikes_layers]
 		var dmg2: int = maxi(1, int(float(battler.get_max_hp()) * fraction))
 		var taken2: int = battler.apply_damage(dmg2)
@@ -4944,10 +5042,8 @@ func _apply_hazards_on_switch_in(battler: BattleBattler) -> void:
 			return
 
 	if side.toxic_spikes_layers > 0 and is_grounded:
-		var is_poison: bool = battler.pokemon.get_type_1() == PokemonData.Type.TYPE_POISON \
-			or battler.pokemon.get_type_2() == PokemonData.Type.TYPE_POISON
-		var is_steel: bool = battler.pokemon.get_type_1() == PokemonData.Type.TYPE_STEEL \
-			or battler.pokemon.get_type_2() == PokemonData.Type.TYPE_STEEL
+		var is_poison: bool = t1 == PokemonData.Type.TYPE_POISON or t2 == PokemonData.Type.TYPE_POISON
+		var is_steel: bool = t1 == PokemonData.Type.TYPE_STEEL or t2 == PokemonData.Type.TYPE_STEEL
 		if is_poison:
 			side.toxic_spikes_layers = 0
 			message.emit("¡%s absorbió las Púas Tóxicas!" % battler.get_display_name())
@@ -5136,13 +5232,18 @@ func _announce_passive_abilities(
 ) -> void:
 	if result == null:
 		return
-	# Una vez por habilidad y por movimiento (no por cada multi-hit).
+	# Una sola Ability Bar por bando y por movimiento.
+	# (Speed Boost y similares se anuncian en su evento on_end_turn, no aquí.)
+	var announced_actor: bool = false
+	var announced_target: bool = false
 	for ab_id: AbilityId.Id in result.activated_attacker:
-		if AbilityRuntime.get_id(actor) == ab_id:
+		if not announced_actor and actor != null and AbilityRuntime.get_id(actor) == ab_id:
 			await ability_announce(actor)
+			announced_actor = true
 	for ab_id: AbilityId.Id in result.activated_defender:
-		if AbilityRuntime.get_id(target) == ab_id:
+		if not announced_target and target != null and AbilityRuntime.get_id(target) == ab_id:
 			await ability_announce(target)
+			announced_target = true
 
 func _cleanup_battle_pokemon() -> void:
 	# Todos los activos del campo

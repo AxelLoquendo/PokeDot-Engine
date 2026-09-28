@@ -88,7 +88,8 @@ static func compute_hit(
 	defender: BattleBattler,
 	move: MoveData,
 	weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE,
-	screen_active: bool = false
+	screen_active: bool = false,
+	is_doubles: bool = false
 ) -> HitResult:
 	var result: HitResult = HitResult.new()
 	if move == null or attacker == null or defender == null:
@@ -166,10 +167,7 @@ static func compute_hit(
 		_note_atk(result, AbilityRuntime.get_id(attacker))
 	base *= pow_mult
 
-	var tech: float = AbilityRuntime.technician_multiplier(attacker, move)
-	if tech != 1.0:
-		_note_atk(result, AbilityId.Id.TECHNICIAN)
-	base *= tech
+	# Technician: via AbilitySystem on_power (technician.txt), no duplicar aquí.
 
 	match weather:
 		AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
@@ -217,6 +215,14 @@ static func compute_hit(
 		# A PS llenos todo golpe que conecte es poco eficaz (×0.5), incluso si era muy eficaz
 		eff = 0.5
 		_note_def(result, AbilityId.Id.TERA_SHELL)
+
+	# Delta Stream / Strong Winds (pokeemerald): SE vs tipo Volador se neutraliza.
+	if weather == AbilityBattleEffect.weatherAbilityID.WEATHER_STRONG_WINDS and eff > 1.0:
+		var d1: PokemonData.Type = defender.get_battle_type_1()
+		var d2: PokemonData.Type = defender.get_battle_type_2()
+		var has_flying: bool = (d1 == PokemonData.Type.TYPE_FLYING or d2 == PokemonData.Type.TYPE_FLYING)
+		if has_flying and TypeChart.get_multiplier(move_type, PokemonData.Type.TYPE_FLYING) > 1.0:
+			eff *= 0.5
 
 	result.effectiveness = eff
 	if eff <= 0.0:
@@ -266,17 +272,16 @@ static func compute_hit(
 	var damage: int = int(floor(base * stab * eff * crit_mult * random))
 
 	if screen_active and not result.critical:
-		damage = int(round(float(damage) * 0.5))
+		# Singles ×0.5; doubles/multi ×2/3 (como pokeemerald)
+		var screen_mult: float = (2.0 / 3.0) if is_doubles else 0.5
+		damage = int(round(float(damage) * screen_mult))
 
 	var tinted: float = AbilityRuntime.attacker_damage_multiplier(attacker, eff, result.critical)
 	if tinted != 1.0:
 		_note_atk(result, AbilityId.Id.TINTED_LENS)
 	damage = int(round(float(damage) * tinted))
 
-	var riv: float = AbilityRuntime.rivalry_multiplier(attacker, defender)
-	if riv != 1.0:
-		_note_atk(result, AbilityId.Id.RIVALRY)
-	damage = int(round(float(damage) * riv))
+	# Rivalry: via on_power (rivalry.txt) en power_multiplier — no duplicar.
 
 	var stake: float = AbilityRuntime.stakeout_multiplier(attacker, defender)
 	if stake != 1.0:
@@ -321,7 +326,8 @@ static func calculate(
 	defender: BattleBattler,
 	move: MoveData,
 	weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE,
-	screen_active: bool = false
+	screen_active: bool = false,
+	is_doubles: bool = false
 ) -> HitResult:
 	var result: HitResult = HitResult.new()
 	if move == null or attacker == null or defender == null:
@@ -337,4 +343,4 @@ static func calculate(
 		result.hit = false
 		return result
 
-	return compute_hit(attacker, defender, move, weather, screen_active)
+	return compute_hit(attacker, defender, move, weather, screen_active, is_doubles)

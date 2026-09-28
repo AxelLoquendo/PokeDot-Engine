@@ -43,10 +43,15 @@ static func check_can_act(battler: BattleBattler) -> ActionCheck:
 
 	if check.can_act and battler.is_confused():
 		battler.confusion_turns -= 1
-		if randf() < 1.0 / 3.0:
+		# pokeemerald: si el contador llega a 0, se libera sin autolesión este turno
+		if battler.confusion_turns <= 0:
+			check.message = "¡%s ya no está confundido!" % battler.get_display_name()
+		elif randf() < 1.0 / 3.0:
 			check.can_act = false
 			check.is_confusion_hit = true
 			check.message = "%s está confundido... ¡y se hizo daño a sí mismo!" % battler.get_display_name()
+		else:
+			check.message = "%s está confundido." % battler.get_display_name()
 
 	return check
 

@@ -513,12 +513,12 @@ static func victory_star_active(battler: BattleBattler, battle: BattleManager = 
 	return false
 
 
+## Compat: el multiplicador real de Rivalry está en on_power (rivalry.txt) vía power_multiplier.
+## Esta API queda en 1.0 para no aplicar dos veces en DamageCalculator.
 static func rivalry_multiplier(attacker: BattleBattler, defender: BattleBattler) -> float:
 	if attacker == null or defender == null:
 		return 1.0
-	var ctx: EffectContext = EffectContext.new(attacker, defender, null, null)
-	ctx.target = defender
-	return AbilitySystem.query_float("on_rivalry", ctx, 1.0)
+	return 1.0
 
 
 static func analytic_multiplier(attacker: BattleBattler, acted_after_target: bool) -> float:
@@ -594,6 +594,8 @@ static func marvel_scale_multiplier(defender: BattleBattler, move: MoveData) -> 
 	return AbilitySystem.query_float("on_marvel_scale", ctx, 1.0)
 
 
+## Deprecated: Technician vive en scripts/abilities/technician.txt (on_power).
+## Se mantiene por compat; siempre 1.0 para no duplicar con power_multiplier.
 static func technician_multiplier(_attacker: BattleBattler, _move: MoveData) -> float:
 	return 1.0
 
