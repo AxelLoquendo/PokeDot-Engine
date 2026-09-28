@@ -160,7 +160,7 @@ static func compute_hit(
 
 	var base: float = ((2.0 * float(level) / 5.0 + 2.0) * float(power) * float(atk) / float(def)) / 50.0 + 2.0
 
-	var pow_mult: float = AbilityRuntime.power_multiplier(attacker, move)
+	var pow_mult: float = AbilityRuntime.power_multiplier(attacker, move, defender)
 	pow_mult *= HoldItemRuntime.attacker_power_multiplier(attacker, move, 1.0)
 	if pow_mult != 1.0:
 		_note_atk(result, AbilityRuntime.get_id(attacker))

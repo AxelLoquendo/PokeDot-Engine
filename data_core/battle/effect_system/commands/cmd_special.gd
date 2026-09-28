@@ -529,15 +529,17 @@ func _tick_truant(b: BattleBattler, ctx: EffectContext) -> void:
 
 func _status_random(ctx: EffectContext) -> void:
 	var statuses: Array[String] = []
+	var target_mode: String = "attacker"
 	for i: int in range(args.size()):
 		var a: String = args[i].to_lower()
 		if a.begins_with("target="):
+			target_mode = a.substr(7)
 			continue
 		statuses.append(a)
 	if statuses.is_empty():
 		return
 	var pick: String = statuses[randi() % statuses.size()]
-	var sub_args: PackedStringArray = PackedStringArray([pick, "target=attacker"])
+	var sub_args: PackedStringArray = PackedStringArray([pick, "target=%s" % target_mode])
 	var sub: CmdStatus = CmdStatus.new(sub_args)
 	await sub.execute(ctx)
 
@@ -682,11 +684,13 @@ func _costar(b: BattleBattler, battle: BattleManager) -> void:
 func _toxic_spikes(b: BattleBattler, battle: BattleManager) -> void:
 	if battle == null or b == null:
 		return
-	var side: Variant = battle.enemy_side if b.is_player_side else battle.player_side
-	if side != null and side is Object and side.has("toxic_spikes"):
-		side["toxic_spikes"] = mini(int(side.get("toxic_spikes", 0)) + 1, 2)
-	elif side != null and "toxic_spikes" in side:
-		side.toxic_spikes = mini(int(side.toxic_spikes) + 1, 2)
+	# Hazards van al lado RIVAL del portador.
+	var side: FieldSide = battle.enemy_side if b.is_player_side else battle.player_side
+	if side == null:
+		return
+	if side.toxic_spikes_layers >= 2:
+		return
+	side.toxic_spikes_layers += 1
 	await battle.ability_announce(b)
 	battle.message.emit("¡Se esparcieron púas tóxicas!")
 	await battle._wait(0.5)

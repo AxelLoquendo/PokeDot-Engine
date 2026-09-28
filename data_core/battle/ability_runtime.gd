@@ -181,10 +181,14 @@ static func attack_stat_multiplier(attacker: BattleBattler, category: MoveStruct
 	return AbilitySystem.query_float("on_attack_stat", ctx, 1.0)
 
 
-static func power_multiplier(attacker: BattleBattler, move: MoveData) -> float:
+static func power_multiplier(
+	attacker: BattleBattler,
+	move: MoveData,
+	defender: BattleBattler = null
+) -> float:
 	if move == null or attacker == null or attacker.pokemon == null:
 		return 1.0
-	var ctx: EffectContext = EffectContext.new(attacker, null, move, null)
+	var ctx: EffectContext = EffectContext.new(attacker, defender, move, null)
 	ctx.multiplier = 1.0
 	if attacker.charged:
 		ctx.multiplier *= 2.0

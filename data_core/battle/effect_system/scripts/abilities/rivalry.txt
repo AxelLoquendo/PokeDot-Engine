@@ -1,7 +1,7 @@
 on_power:
   if same_gender
-    multiply 1.25
-  else
-    multiply 0.75
+    multiply power 1.25
   endif
-
+  if opposite_gender
+    multiply power 0.75
+  endif

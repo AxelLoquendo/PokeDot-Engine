@@ -1,5 +1,5 @@
-# attract
+# attract — solo géneros opuestos (oficial)
 on_use:
-  if same_gender
+  if opposite_gender
 	infatuate target=opponent
   endif

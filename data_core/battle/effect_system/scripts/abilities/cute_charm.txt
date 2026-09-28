@@ -1,6 +1,6 @@
 on_hit_by:
   if is_contact
-	if same_gender
+	if opposite_gender
 	  chance 30
 		announce
 		infatuate target=attacker

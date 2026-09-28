@@ -77,6 +77,8 @@ static func _eval_from(cmd: EffectCommand, ctx: EffectContext, start: int) -> bo
 			return _battler_has_type(ctx.target, cmd.arg_string(start + 1).to_lower())
 		"same_gender":
 			return _same_gender(ctx)
+		"opposite_gender":
+			return _opposite_gender(ctx)
 		"blocks_intimidate":
 			var who: BattleBattler = ctx.target if ctx.target != null else ctx.user
 			return who != null and AbilityRuntime.blocks_intimidate(who)
@@ -276,6 +278,17 @@ static func _same_gender(ctx: EffectContext) -> bool:
 	if a == PokemonData.Gender.GENDERLESS or d == PokemonData.Gender.GENDERLESS:
 		return false
 	return a == d
+
+
+## Attract / Cute Charm: ambos con género y distintos.
+static func _opposite_gender(ctx: EffectContext) -> bool:
+	if ctx.user == null or ctx.target == null or ctx.user.pokemon == null or ctx.target.pokemon == null:
+		return false
+	var a: PokemonData.Gender = ctx.user.pokemon.gender
+	var d: PokemonData.Gender = ctx.target.pokemon.gender
+	if a == PokemonData.Gender.GENDERLESS or d == PokemonData.Gender.GENDERLESS:
+		return false
+	return a != d
 
 
 static func _stat_matches(stat_id: int, name: String) -> bool:

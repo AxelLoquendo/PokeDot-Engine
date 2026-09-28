@@ -36,14 +36,9 @@ func execute(ctx: EffectContext) -> bool:
 		if a == "opponent" or a == "foe" or a == "rival":
 			for_opponent = true
 
-	var battler: BattleBattler = ctx.user
-	if for_opponent and ctx.target != null:
-		battler = ctx.target
-	elif for_opponent and ctx.user != null:
-		# lado opuesto al user
-		pass
-
-	var side: FieldSide = _side_for(ctx, battler, for_opponent)
+	# Siempre anclar al user; for_opponent hace el único flip en _side_for.
+	# NO reasignar a ctx.target (doble inversión → hazards en el lado propio).
+	var side: FieldSide = _side_for(ctx, ctx.user, for_opponent)
 	if side == null:
 		return false
 

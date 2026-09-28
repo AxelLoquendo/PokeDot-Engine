@@ -1,6 +1,6 @@
-# Al recibir daño físico, pone púas tóxicas.
+# Al recibir daño físico, pone púas tóxicas en el lado rival.
 on_damaged:
   if category PHYSICAL
     announce
-    special toxic_spikes
+    side toxic_spikes opponent
   endif
