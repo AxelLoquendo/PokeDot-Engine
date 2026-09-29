@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name BattleSetup
 ## Construye el campo al inicio del combate: actives, format, sides.
@@ -60,7 +61,8 @@ static func build_field(
 		var b: BattleBattler = BattleBattler.new()
 		if mon != null:
 			b.setup(mon, true, i)
-			AbilityRuntime.prepare_illusion(b, battle)
+			if battle is BattleManager:
+				AbilityRuntime.prepare_illusion(b, battle)
 		player_actives.append(b)
 
 	var e_pool: Array = []
@@ -77,7 +79,8 @@ static func build_field(
 		var eb: BattleBattler = BattleBattler.new()
 		if emon != null:
 			eb.setup(emon, false, j)
-			AbilityRuntime.prepare_illusion(eb, battle)
+			if battle is BattleManager:
+				AbilityRuntime.prepare_illusion(eb, battle)
 		enemy_actives.append(eb)
 
 	_set_prop(battle, "player_actives", player_actives)

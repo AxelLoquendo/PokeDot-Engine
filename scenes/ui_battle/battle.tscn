@@ -609,7 +609,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_ln23b")
 
 [node name="BattleTriggers" type="Node2D" parent="." unique_id=432208107]
-visible = false
 
 [node name="Ability_Bar_Player" type="Sprite2D" parent="BattleTriggers" unique_id=1670984146]
 z_index = 40

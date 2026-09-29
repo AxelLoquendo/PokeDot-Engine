@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name BattleMain
 ## Orquestador del combate. Posee BattleState y delega en módulos de fase.
@@ -130,8 +131,6 @@ var battle_turn_count: int:
 var trick_room_turns: int:
 	get:
 		return state.trick_room_turns
-	set(value):
-		state.trick_room_turns = value
 	set(v):
 		state.trick_room_turns = v
 
@@ -170,6 +169,10 @@ func start_battle(
 	)
 	# Sincronizar refs públicas
 	state.sync_primary_refs()
+	# Illusion necesita el orquestador (señales + parties), no el BattleState
+	for battler: BattleBattler in state.get_all_actives():
+		if battler != null:
+			AbilityRuntime.prepare_illusion(battler, self)
 
 
 func start_battle_intro() -> void:

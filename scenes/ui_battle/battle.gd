@@ -376,5 +376,3 @@ func on_party_mon_selected(mon: PokemonInstance, slot: int = -1) -> void:
 	if battle != null and battle.is_running and not battle.state.awaiting_player_switch:
 		_refresh_all_appearances()
 		_begin_player_command_phase()
-
-

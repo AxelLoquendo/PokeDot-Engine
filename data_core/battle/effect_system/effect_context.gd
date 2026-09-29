@@ -1,3 +1,4 @@
+
 ## Contexto que se pasa a cada comando de efecto.
 ## Contiene todo lo que un efecto puede necesitar sin acoplarse al BattleManager.
 class_name EffectContext
@@ -22,7 +23,7 @@ var damage: int = 0
 var is_contact: bool = false
 
 ## Referencia al combate (solo lectura de estado)
-var battle: BattleManager = null
+var battle: Object = null
 
 ## Fuente del efecto (para mensajes y debugging)
 var source_name: String = ""
@@ -60,7 +61,7 @@ func _init(
 	p_user: BattleBattler = null,
 	p_target: BattleBattler = null,
 	p_move: MoveData = null,
-	p_battle: BattleManager = null
+	p_battle: Object = null
 ) -> void:
 	user = p_user
 	target = p_target

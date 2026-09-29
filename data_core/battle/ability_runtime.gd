@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name AbilityRuntime
 
@@ -34,7 +35,7 @@ static func ability_name(battler: BattleBattler) -> String:
 	return ""
 
 
-static func get_ally(battler: BattleBattler, battle: BattleManager) -> BattleBattler:
+static func get_ally(battler: BattleBattler, battle: Object) -> BattleBattler:
 	if battler == null or battle == null or not battle.is_multi_battle():
 		return null
 	if not battle.has_method("get_allies"):
@@ -66,14 +67,14 @@ static func get_ai_rating(battler: BattleBattler) -> int:
 	return data.ai_rating
 
 
-static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
+static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: Object) -> void:
 	if battler == null or battler.pokemon == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, opponent, null, battle)
 	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-static func on_switch_out(battler: BattleBattler, battle: BattleManager) -> void:
+static func on_switch_out(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -84,7 +85,7 @@ static func on_contact_hit(
 	attacker: BattleBattler,
 	defender: BattleBattler,
 	move: MoveData,
-	battle: BattleManager
+	battle: Object
 ) -> void:
 	if move == null or attacker == null or defender == null or battle == null:
 		return
@@ -105,7 +106,7 @@ static func on_damaged_by_move(
 	attacker: BattleBattler,
 	move: MoveData,
 	was_critical: bool,
-	battle: BattleManager
+	battle: Object
 ) -> void:
 	if defender == null or defender.is_fainted() or move == null or battle == null:
 		return
@@ -116,7 +117,7 @@ static func on_damaged_by_move(
 	await AbilitySystem.on_event("on_damaged", ctx)
 
 
-static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+static func end_of_turn(battler: BattleBattler, weather: int, battle: Object) -> void:
 	if battler == null or battler.pokemon == null or battle == null or battler.is_fainted():
 		return
 	var opp: BattleBattler = null
@@ -130,7 +131,7 @@ static func end_of_turn(battler: BattleBattler, weather: int, battle: BattleMana
 	await AbilitySystem.on_event("on_end_turn", ctx)
 
 
-static func on_flinched(battler: BattleBattler, battle: BattleManager) -> void:
+static func on_flinched(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -141,7 +142,7 @@ static func after_own_stat_drop(
 	battler: BattleBattler,
 	actual: int,
 	caused_by_foe: bool,
-	battle: BattleManager
+	battle: Object
 ) -> void:
 	if not caused_by_foe or actual >= 0 or battler == null or battle == null:
 		return
@@ -150,7 +151,7 @@ static func after_own_stat_drop(
 	await AbilitySystem.on_event("on_stat_drop", ctx)
 
 
-static func on_berry_eaten(battler: BattleBattler, battle: BattleManager) -> void:
+static func on_berry_eaten(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null or battler.is_fainted():
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -513,7 +514,7 @@ static func prevents_escape(blocker: BattleBattler, runner: BattleBattler) -> bo
 	return AbilitySystem.query_bool("on_blocks_escape", ctx)
 
 
-static func victory_star_active(battler: BattleBattler, battle: BattleManager = null) -> bool:
+static func victory_star_active(battler: BattleBattler, battle: Object = null) -> bool:
 	if battler == null:
 		return false
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -553,7 +554,7 @@ static func stakeout_multiplier(attacker: BattleBattler, defender: BattleBattler
 	return AbilitySystem.query_float("on_stakeout", ctx, 1.0)
 
 
-static func supreme_overlord_multiplier(attacker: BattleBattler, battle: BattleManager) -> float:
+static func supreme_overlord_multiplier(attacker: BattleBattler, battle: Object) -> float:
 	if attacker == null or battle == null:
 		return 1.0
 	var ctx: EffectContext = EffectContext.new(attacker, null, null, battle)
@@ -619,7 +620,7 @@ static func aura_multiplier(
 	_attacker: BattleBattler,
 	_defender: BattleBattler,
 	move_type: PokemonData.Type,
-	battle: BattleManager
+	battle: Object
 ) -> float:
 	if battle == null:
 		return 1.0
@@ -635,7 +636,7 @@ static func aura_multiplier(
 	return mult
 
 
-static func ruin_stat_multiplier(stat_owner: BattleBattler, stat: PokemonInstance.Stat, battle: BattleManager) -> float:
+static func ruin_stat_multiplier(stat_owner: BattleBattler, stat: PokemonInstance.Stat, battle: Object) -> float:
 	if battle == null or stat_owner == null:
 		return 1.0
 	var mult: float = 1.0
@@ -692,7 +693,7 @@ static func flower_gift_stat_multiplier(
 	battler: BattleBattler,
 	stat: PokemonInstance.Stat,
 	weather: int,
-	battle: BattleManager
+	battle: Object
 ) -> float:
 	if battler == null:
 		return 1.0
@@ -706,14 +707,14 @@ static func flower_gift_stat_multiplier(
 # Secuencias que el BattleManager invoca por nombre
 # ═══════════════════════════════════════════════════════════
 
-static func try_protean(battler: BattleBattler, move: MoveData, battle: BattleManager) -> void:
+static func try_protean(battler: BattleBattler, move: MoveData, battle: Object) -> void:
 	if battler == null or move == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, move, battle)
 	await AbilitySystem.on_event("on_move_use", ctx)
 
 
-static func try_magician(attacker: BattleBattler, defender: BattleBattler, battle: BattleManager) -> void:
+static func try_magician(attacker: BattleBattler, defender: BattleBattler, battle: Object) -> void:
 	if attacker == null or defender == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(attacker, defender, null, battle)
@@ -721,7 +722,7 @@ static func try_magician(attacker: BattleBattler, defender: BattleBattler, battl
 	await AbilitySystem.on_event("on_steal_item", ctx)
 
 
-static func check_wimp_or_emergency(battler: BattleBattler, hp_before: int, battle: BattleManager) -> bool:
+static func check_wimp_or_emergency(battler: BattleBattler, hp_before: int, battle: Object) -> bool:
 	if battler == null or battler.pokemon == null or battle == null or battler.is_fainted():
 		return false
 	var max_hp: int = battler.get_max_hp()
@@ -737,7 +738,7 @@ static func check_wimp_or_emergency(battler: BattleBattler, hp_before: int, batt
 
 
 static func try_booster_energy_style(
-	battler: BattleBattler, weather: int, terrain: int, battle: BattleManager
+	battler: BattleBattler, weather: int, terrain: int, battle: Object
 ) -> void:
 	if battler == null or battle == null:
 		return
@@ -748,7 +749,7 @@ static func try_booster_energy_style(
 
 
 static func try_opportunist(
-	battler: BattleBattler, foe: BattleBattler, stat: PokemonInstance.Stat, stages: int, battle: BattleManager
+	battler: BattleBattler, foe: BattleBattler, stat: PokemonInstance.Stat, stages: int, battle: Object
 ) -> void:
 	if stages <= 0 or battler == null or foe == null or battle == null:
 		return
@@ -758,75 +759,75 @@ static func try_opportunist(
 	await AbilitySystem.on_event("on_foe_stat_up", ctx)
 
 
-static func try_cute_charm(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: BattleManager) -> void:
+static func try_cute_charm(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: Object) -> void:
 	pass
 
 
-static func try_perish_body(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: BattleManager) -> void:
+static func try_perish_body(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: Object) -> void:
 	pass
 
 
-static func try_cursed_body(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: BattleManager) -> void:
+static func try_cursed_body(_d: BattleBattler, _a: BattleBattler, _m: MoveData, _b: Object) -> void:
 	pass
 
 
-static func tick_perish(battler: BattleBattler, battle: BattleManager) -> void:
+static func tick_perish(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
 	await AbilitySystem.on_event("on_perish_tick", ctx)
 
 
-static func try_cud_chew(battler: BattleBattler, battle: BattleManager) -> void:
+static func try_cud_chew(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
 	await AbilitySystem.on_event("on_cud_chew", ctx)
 
 
-static func try_healer(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+static func try_healer(battler: BattleBattler, ally: BattleBattler, battle: Object) -> void:
 	if battler == null or ally == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
 	await AbilitySystem.on_event("on_heal_ally", ctx)
 
 
-static func try_symbiosis(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+static func try_symbiosis(battler: BattleBattler, ally: BattleBattler, battle: Object) -> void:
 	if battler == null or ally == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
 	await AbilitySystem.on_event("on_symbiosis", ctx)
 
 
-static func try_receiver_or_alchemy(battler: BattleBattler, fainted: BattleBattler, battle: BattleManager) -> void:
+static func try_receiver_or_alchemy(battler: BattleBattler, fainted: BattleBattler, battle: Object) -> void:
 	if battler == null or fainted == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, fainted, null, battle)
 	await AbilitySystem.on_event("on_ally_faint", ctx)
 
 
-static func try_curious_medicine(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+static func try_curious_medicine(battler: BattleBattler, ally: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
 	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-static func try_costar(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+static func try_costar(battler: BattleBattler, ally: BattleBattler, battle: Object) -> void:
 	if battler == null or ally == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
 	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-static func try_commander(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+static func try_commander(battler: BattleBattler, ally: BattleBattler, battle: Object) -> void:
 	if battler == null or ally == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
 	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-static func try_dancer(battler: BattleBattler, move: MoveData, original: BattleBattler, battle: BattleManager) -> void:
+static func try_dancer(battler: BattleBattler, move: MoveData, original: BattleBattler, battle: Object) -> void:
 	if battler == null or move == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, original, move, battle)
@@ -834,7 +835,7 @@ static func try_dancer(battler: BattleBattler, move: MoveData, original: BattleB
 
 
 static func redirect_single_target(
-	actor: BattleBattler, target: BattleBattler, move: MoveData, battle: BattleManager
+	actor: BattleBattler, target: BattleBattler, move: MoveData, battle: Object
 ) -> BattleBattler:
 	if actor == null or move == null or battle == null:
 		return target
@@ -866,7 +867,7 @@ static func apply_early_bird_sleep(battler: BattleBattler) -> void:
 	AbilitySystem.query("on_sleep_applied", ctx)
 
 
-static func check_infatuation_blocks_move(battler: BattleBattler, battle: BattleManager) -> bool:
+static func check_infatuation_blocks_move(battler: BattleBattler, battle: Object) -> bool:
 	if battler == null or battle == null:
 		return false
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -874,7 +875,7 @@ static func check_infatuation_blocks_move(battler: BattleBattler, battle: Battle
 
 
 ## Activa Illusion en silencio (sin Ability Bar). Disfraz = último del party no KO.
-static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> bool:
+static func prepare_illusion(battler: BattleBattler, battle: Object) -> bool:
 	if battler == null or battler.pokemon == null or battle == null:
 		return false
 	if get_id(battler) != AbilityId.Id.ILLUSION:
@@ -913,7 +914,7 @@ static func prepare_illusion(battler: BattleBattler, battle: BattleManager) -> b
 
 
 ## Solo al recibir daño real: anuncia, limpia disfraz y avisa a la UI.
-static func break_illusion(battler: BattleBattler, battle: BattleManager) -> void:
+static func break_illusion(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or not battler.illusion_active or battle == null:
 		return
 	battler.clear_illusion()
@@ -925,7 +926,7 @@ static func break_illusion(battler: BattleBattler, battle: BattleManager) -> voi
 	await battle._wait(0.7)
 
 
-static func _setup_imposter(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
+static func _setup_imposter(battler: BattleBattler, opponent: BattleBattler, battle: Object) -> void:
 	## Imposter (habilidad): anuncia y transforma al entrar.
 	await apply_transform(battler, opponent, battle, true)
 
@@ -935,7 +936,7 @@ static func _setup_imposter(battler: BattleBattler, opponent: BattleBattler, bat
 static func apply_transform(
 	battler: BattleBattler,
 	opponent: BattleBattler,
-	battle: BattleManager,
+	battle: Object,
 	announce_ability: bool = false
 ) -> void:
 	if battler == null or opponent == null or opponent.pokemon == null or battle == null:
@@ -1078,7 +1079,7 @@ static func revert_transform(battler: BattleBattler) -> void:
 	# Reset stages al salir (salvo baton pass — el BM decide)
 
 
-static func try_forecast(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+static func try_forecast(battler: BattleBattler, weather: int, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -1086,7 +1087,7 @@ static func try_forecast(battler: BattleBattler, weather: int, battle: BattleMan
 	await AbilitySystem.on_event("on_weather", ctx)
 
 
-static func try_flower_gift(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+static func try_flower_gift(battler: BattleBattler, weather: int, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -1094,14 +1095,14 @@ static func try_flower_gift(battler: BattleBattler, weather: int, battle: Battle
 	await AbilitySystem.on_event("on_weather", ctx)
 
 
-static func try_zen_mode(battler: BattleBattler, battle: BattleManager) -> void:
+static func try_zen_mode(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
 	await AbilitySystem.on_event("on_hp_change", ctx)
 
 
-static func try_shields_down(battler: BattleBattler, battle: BattleManager) -> void:
+static func try_shields_down(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -1112,21 +1113,21 @@ static func shields_down_blocks_status(battler: BattleBattler) -> bool:
 	return blocks_status(battler, PokemonInstance.Status.NONE)
 
 
-static func try_zero_to_hero(battler: BattleBattler, battle: BattleManager) -> void:
+static func try_zero_to_hero(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
 	await AbilitySystem.on_event("on_switch_out", ctx)
 
 
-static func try_tera_shift(battler: BattleBattler, battle: BattleManager) -> void:
+static func try_tera_shift(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
 	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-static func try_teraform_zero(battler: BattleBattler, battle: BattleManager) -> void:
+static func try_teraform_zero(battler: BattleBattler, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -1140,7 +1141,7 @@ static func revert_battle_forms(battler: BattleBattler) -> void:
 		battler.clear_battle_types()
 
 
-static func _all_actives(battle: BattleManager) -> Array[BattleBattler]:
+static func _all_actives(battle: Object) -> Array[BattleBattler]:
 	var out: Array[BattleBattler] = []
 	if battle == null:
 		return out
@@ -1162,7 +1163,7 @@ static func _all_actives(battle: BattleManager) -> Array[BattleBattler]:
 # ═══════════════════════════════════════════════════════════
 
 
-static func try_poison_puppeteer(attacker: BattleBattler, defender: BattleBattler, battle: BattleManager) -> void:
+static func try_poison_puppeteer(attacker: BattleBattler, defender: BattleBattler, battle: Object) -> void:
 	if attacker == null or defender == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(attacker, defender, null, battle)
@@ -1242,14 +1243,14 @@ static func try_ball_fetch(party: Array, ball_item: Items.ItemId = Items.ItemId.
 	return false
 
 
-static func try_hospitality(battler: BattleBattler, ally: BattleBattler, battle: BattleManager) -> void:
+static func try_hospitality(battler: BattleBattler, ally: BattleBattler, battle: Object) -> void:
 	if battler == null or ally == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, ally, null, battle)
 	await AbilitySystem.on_event("on_switch_in", ctx)
 
 
-static func try_harvest(battler: BattleBattler, weather: int, battle: BattleManager) -> void:
+static func try_harvest(battler: BattleBattler, weather: int, battle: Object) -> void:
 	if battler == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(battler, null, null, battle)
@@ -1258,7 +1259,7 @@ static func try_harvest(battler: BattleBattler, weather: int, battle: BattleMana
 
 static func _apply_form_change(
 	battler: BattleBattler,
-	battle: BattleManager,
+	battle: Object,
 	new_form_id: StringName,
 	announce: bool = true
 ) -> bool:
@@ -1285,7 +1286,7 @@ static func _apply_form_change(
 
 
 ## Tras debilitar a un rival (Moxie, Beast Boost, etc.).
-static func on_ko(attacker: BattleBattler, fainted: BattleBattler, battle: BattleManager) -> void:
+static func on_ko(attacker: BattleBattler, fainted: BattleBattler, battle: Object) -> void:
 	if attacker == null or battle == null or attacker.is_fainted():
 		return
 	var ctx: EffectContext = EffectContext.new(attacker, fainted, null, battle)
@@ -1294,7 +1295,7 @@ static func on_ko(attacker: BattleBattler, fainted: BattleBattler, battle: Battl
 
 
 ## El debilitado puede reaccionar (Aftermath vía script on_faint, etc.).
-static func on_faint(fainted: BattleBattler, killer: BattleBattler, battle: BattleManager) -> void:
+static func on_faint(fainted: BattleBattler, killer: BattleBattler, battle: Object) -> void:
 	if fainted == null or battle == null:
 		return
 	var ctx: EffectContext = EffectContext.new(fainted, killer, null, battle)
@@ -1304,7 +1305,7 @@ static func on_faint(fainted: BattleBattler, killer: BattleBattler, battle: Batt
 
 
 ## Soul-Heart / similares: alguien se debilita en el campo.
-static func on_any_faint(observer: BattleBattler, fainted: BattleBattler, battle: BattleManager) -> void:
+static func on_any_faint(observer: BattleBattler, fainted: BattleBattler, battle: Object) -> void:
 	if observer == null or battle == null or observer.is_fainted():
 		return
 	var ctx: EffectContext = EffectContext.new(observer, fainted, null, battle)
@@ -1331,7 +1332,7 @@ static func reflects_status_move(defender: BattleBattler) -> bool:
 
 
 ## Unnerve en el campo: el bando rival no puede comer bayas.
-static func unnerve_active(for_side_battler: BattleBattler, battle: BattleManager) -> bool:
+static func unnerve_active(for_side_battler: BattleBattler, battle: Object) -> bool:
 	if for_side_battler == null or battle == null:
 		return false
 	for foe: BattleBattler in (battle.get_opponents(for_side_battler) if battle.has_method("get_opponents") else []):

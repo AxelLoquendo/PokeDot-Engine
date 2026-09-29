@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name BattleSetEffect
 ## Efectos de movimientos de estado (extraído de BattleManager._apply_status_move_effect).
@@ -1263,7 +1264,7 @@ static func apply(battle: Object, actor: BattleBattler, target: BattleBattler, m
 		MoveStruct.MoveEffect.EFFECT_CAMOUFLAGE:
 			# Tipo según terreno
 			var cam_t: int = int(PokemonData.Type.TYPE_NORMAL)
-			match terrain:
+			match battle.terrain:
 				BattleManager.TerrainId.TERRAIN_ELECTRIC:
 					cam_t = int(PokemonData.Type.TYPE_ELECTRIC)
 				BattleManager.TerrainId.TERRAIN_GRASSY:
