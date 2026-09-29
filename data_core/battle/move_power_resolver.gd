@@ -87,11 +87,17 @@ static func effective_power(
 			if bool(actor.get_meta("took_damage_this_turn", false)):
 				return base * 2
 			return base
-		MoveStruct.MoveEffect.EFFECT_ROLLOUT, \
-		MoveStruct.MoveEffect.EFFECT_FURY_CUTTER, \
+		MoveStruct.MoveEffect.EFFECT_FURY_CUTTER:
+			var nf: int = int(actor.get_meta("combo_hits", 0))
+			return mini(160, maxi(base, 1) * (1 << mini(nf, 4)))
+		MoveStruct.MoveEffect.EFFECT_ROLLOUT:
+			var nr: int = int(actor.get_meta("combo_hits", 0))
+			# 30→60→120→240→480 (tope 480)
+			return mini(480, maxi(base, 1) * (1 << mini(nr, 4)))
 		MoveStruct.MoveEffect.EFFECT_ECHOED_VOICE:
-			var n: int = int(actor.get_meta("combo_hits", 0))
-			return mini(160, maxi(base, 1) * (1 << mini(n, 4)))
+			# +40 por turno consecutivo de uso (40/80/120/160/200)
+			var ne: int = int(actor.get_meta("combo_hits", 0))
+			return mini(200, maxi(base, 1) + 40 * ne)
 		MoveStruct.MoveEffect.EFFECT_SPIT_UP:
 			var sp: int = actor.stockpile_count
 			if sp <= 0:
@@ -165,25 +171,37 @@ static func _gyro_ball(actor: BattleBattler, target: BattleBattler) -> int:
 static func _weight_power(target: BattleBattler) -> int:
 	if target == null or target.pokemon == null:
 		return 20
-	var lv: int = target.pokemon.level
-	if lv < 10:
+	var species: PokemonDataStruct = target.pokemon.get_species()
+	if species == null:
 		return 20
-	if lv < 20:
+	# weight del .tres está en hectogramos → kg
+	var weight_kg: float = float(species.weight) / 10.0
+	weight_kg *= AbilityRuntime.weight_multiplier(target)
+	if weight_kg < 10.0:
+		return 20
+	if weight_kg < 25.0:
 		return 40
-	if lv < 30:
+	if weight_kg < 50.0:
 		return 60
-	if lv < 40:
+	if weight_kg < 100.0:
 		return 80
-	if lv < 50:
+	if weight_kg < 200.0:
 		return 100
 	return 120
 
 
 static func _weight_ratio_power(actor: BattleBattler, target: BattleBattler) -> int:
-	if actor == null or target == null:
+	if actor == null or target == null or actor.pokemon == null or target.pokemon == null:
 		return 40
-	var wa: float = float(maxi(actor.get_max_hp(), 1))
-	var wt: float = float(maxi(target.get_max_hp(), 1))
+	var sa: PokemonDataStruct = actor.pokemon.get_species()
+	var st: PokemonDataStruct = target.pokemon.get_species()
+	if sa == null or st == null:
+		return 40
+	var wa: float = float(sa.weight) / 10.0
+	var wt: float = float(st.weight) / 10.0
+	wa *= AbilityRuntime.weight_multiplier(actor)
+	wt *= AbilityRuntime.weight_multiplier(target)
+	wt = maxf(wt, 0.1)
 	var r: float = wa / wt
 	if r >= 5.0:
 		return 120

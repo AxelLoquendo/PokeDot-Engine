@@ -8,7 +8,7 @@ enum Kind {
 	KINGS_SHIELD,   # + baja Ataque del atacante en contacto
 	BANEFUL_BUNKER, # + envenena al atacante en contacto
 	OBSTRUCT,       # + baja mucho la Defensa del atacante en contacto
-	WIDE_GUARD,     # bloquea cualquier movimiento dañino
+	WIDE_GUARD,     # solo movimientos spread (varios objetivos)
 	QUICK_GUARD,    # bloquea solo movimientos con prioridad > 0
 	CRAFTY_SHIELD,  # bloquea solo movimientos de estado
 }
@@ -46,11 +46,29 @@ static func success_chance(protect_counter: int) -> float:
 
 
 static func blocks_move(kind: Kind, move: MoveData) -> bool:
+	if move == null:
+		return false
 	match kind:
-		Kind.BASIC, Kind.SPIKY_SHIELD, Kind.KINGS_SHIELD, Kind.BANEFUL_BUNKER, Kind.OBSTRUCT, Kind.WIDE_GUARD:
+		Kind.BASIC, Kind.SPIKY_SHIELD, Kind.KINGS_SHIELD, Kind.BANEFUL_BUNKER, Kind.OBSTRUCT:
 			return true
+		Kind.WIDE_GUARD:
+			# Solo movimientos que golpean a varios objetivos (spread)
+			return _is_spread_move(move)
 		Kind.QUICK_GUARD:
 			return move.priority > 0
 		Kind.CRAFTY_SHIELD:
 			return move.category == MoveStruct.DamageCategory.STATUS
 	return false
+
+
+static func _is_spread_move(move: MoveData) -> bool:
+	if move == null:
+		return false
+	match move.target:
+		MoveStruct.MoveTarget.TARGET_BOTH, \
+		MoveStruct.MoveTarget.TARGET_FOES_AND_ALLY, \
+		MoveStruct.MoveTarget.TARGET_ALL_BATTLERS, \
+		MoveStruct.MoveTarget.TARGET_OPPONENTS_FIELD:
+			return true
+		_:
+			return false

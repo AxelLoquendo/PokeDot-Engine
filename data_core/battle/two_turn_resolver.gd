@@ -14,7 +14,7 @@ const _CHARGE_MESSAGES: Dictionary = {
 	Moves.MoveId.MOVE_SKY_ATTACK: "tomó impulso",
 	Moves.MoveId.MOVE_METEOR_BEAM: "reunió energía estelar",
 	Moves.MoveId.MOVE_FREEZE_SHOCK: "reunió electricidad",
-	Moves.MoveId.MOVE_ICE_BURN: "se envolvió en fuego",
+	Moves.MoveId.MOVE_ICE_BURN: "se envolvió en aire helado",
 	Moves.MoveId.MOVE_GEOMANCY: "absorbió energía",
 	Moves.MoveId.MOVE_SKY_DROP: "se llevó por los aires a su objetivo",
 }

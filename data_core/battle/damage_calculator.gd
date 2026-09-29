@@ -209,7 +209,8 @@ static func compute_hit(
 		AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
 			if move.type == PokemonData.Type.TYPE_FIRE:
 				base *= 1.5
-			elif move.type == PokemonData.Type.TYPE_WATER:
+			elif move.type == PokemonData.Type.TYPE_WATER \
+					and move.effect != MoveStruct.MoveEffect.EFFECT_HYDRO_STEAM:
 				base *= 0.5
 
 	var stab: float = 1.0

@@ -59,6 +59,12 @@ static func check_can_act(battler: BattleBattler) -> ActionCheck:
 ## Golpe de confusión: físico fijo, potencia 40, contra las propias stats.
 static func self_hit_confusion(battler: BattleBattler) -> int:
 	var atk: int = battler.get_effective_stat(PokemonInstance.Stat.ATTACK)
+	# Quemadura reduce el golpe de confusión (salvo Guts)
+	if battler.pokemon != null \
+			and battler.pokemon.status == PokemonInstance.Status.BURN \
+			and not AbilityRuntime.has(battler, AbilityId.Id.GUTS):
+		@warning_ignore("integer_division")
+		atk = maxi(1, atk / 2)
 	var def: int = battler.get_effective_stat(PokemonInstance.Stat.DEFENSE)
 	var level: int = battler.pokemon.level
 	var base: float = ((2.0 * float(level) / 5.0 + 2.0) * 40.0 * float(atk) / maxf(float(def), 1.0)) / 50.0 + 2.0
