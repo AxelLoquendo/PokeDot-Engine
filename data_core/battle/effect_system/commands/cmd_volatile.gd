@@ -45,6 +45,10 @@ func execute(ctx: EffectContext) -> bool:
 
 	var who: BattleBattler = _resolve_target(ctx)
 	match kind:
+		"clear_confusion":
+			if who == null:
+				return false
+			who.confusion_turns = 0
 		"focus_energy":
 			if who == null:
 				return false

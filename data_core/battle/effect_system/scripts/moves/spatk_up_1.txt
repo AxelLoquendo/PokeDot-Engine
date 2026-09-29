@@ -1,0 +1,2 @@
+# spatk_up_1
+# Stub: ampliar on_use/on_hit según el move.

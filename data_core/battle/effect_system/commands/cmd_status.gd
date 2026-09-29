@@ -44,7 +44,9 @@ func execute(ctx: EffectContext) -> bool:
 		return true
 
 	var status: PokemonInstance.Status = STATUS_MAP[status_key] as PokemonInstance.Status
-	await ctx.battle.ability_announce(source)
+	# Solo habilidades abren Ability Bar al aplicar estado
+	if ctx.source_type == EffectContext.SourceType.ABILITY:
+		await ctx.battle.ability_announce(source)
 	await ctx.battle.ability_apply_status(who, status, source)
 	return true
 

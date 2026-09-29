@@ -1,0 +1,4 @@
+on_accuracy:
+  if has_meta micle_active
+    multiply accuracy 1.2
+  endif

@@ -1,0 +1,2 @@
+on_speed:
+  multiply speed 0.5

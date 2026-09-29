@@ -1,4 +1,5 @@
 # rapid_spin
 on_hit:
-  side clear_hazards
   special clear_leech_seed
+  side clear_hazards
+  raise_stat SPEED 1 target=user

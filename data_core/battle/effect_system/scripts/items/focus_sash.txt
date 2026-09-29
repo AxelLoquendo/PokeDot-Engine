@@ -1,0 +1,4 @@
+on_endure_ko:
+  if hp_percent >= 100
+    block
+  endif

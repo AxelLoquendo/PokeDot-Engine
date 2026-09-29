@@ -1,0 +1,3 @@
+# toxic
+on_use:
+  status TOXIC target=target

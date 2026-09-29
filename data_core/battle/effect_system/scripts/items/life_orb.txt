@@ -1,0 +1,2 @@
+on_power:
+  multiply power 1.3

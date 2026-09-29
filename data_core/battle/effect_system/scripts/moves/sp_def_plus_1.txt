@@ -1,0 +1,2 @@
+# sp_def_plus_1
+# Stub: ampliar on_use/on_hit según el move.

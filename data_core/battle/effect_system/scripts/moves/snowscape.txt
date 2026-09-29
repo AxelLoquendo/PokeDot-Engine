@@ -1,0 +1,3 @@
+# snowscape
+on_use:
+  set_weather SNOW 5

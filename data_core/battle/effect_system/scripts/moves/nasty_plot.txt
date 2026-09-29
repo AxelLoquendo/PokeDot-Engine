@@ -1,0 +1,3 @@
+# nasty_plot
+on_use:
+  raise_stat SPATK 2 target=user

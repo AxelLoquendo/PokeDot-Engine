@@ -3,5 +3,5 @@ on_move_type:
 
 on_type_power:
   if move_type FLYING
-    multiply 1.2
+	multiply 1.2
   endif

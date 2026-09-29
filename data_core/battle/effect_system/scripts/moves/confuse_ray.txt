@@ -1,0 +1,3 @@
+# confuse_ray
+on_use:
+  confuse target=target

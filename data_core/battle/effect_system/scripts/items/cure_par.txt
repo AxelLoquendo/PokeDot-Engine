@@ -1,0 +1,6 @@
+on_pinch:
+  if has_status
+    cure_status target=user
+    message "¡{user} se curó con su baya!"
+    consume_held
+  endif

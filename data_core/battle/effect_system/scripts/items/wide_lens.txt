@@ -1,0 +1,2 @@
+on_accuracy:
+  multiply accuracy 1.1

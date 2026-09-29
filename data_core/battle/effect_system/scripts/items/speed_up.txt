@@ -1,0 +1,6 @@
+on_pinch:
+  if hp_percent <= 25
+    raise_stat SPEED 1 target=user
+    message "¡La Velocidad de {user} subió!"
+    consume_held
+  endif

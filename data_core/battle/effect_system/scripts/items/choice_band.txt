@@ -1,0 +1,4 @@
+on_power:
+  if category PHYSICAL
+    multiply power 1.5
+  endif

@@ -1,0 +1,4 @@
+on_power:
+  if hold_type_match
+    multiply power 1.2
+  endif

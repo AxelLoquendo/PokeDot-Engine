@@ -1,0 +1,3 @@
+# glare
+on_use:
+  status PARALYSIS target=target

@@ -1,0 +1,3 @@
+# payback
+# Port mínimo: sin efecto colateral en script.
+# Ampliar con on_use / on_hit / on_secondary según el move real.

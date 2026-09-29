@@ -27,7 +27,12 @@ static func _note_def(result: HitResult, id: AbilityId.Id) -> void:
 	if not result.activated_defender.has(id):
 		result.activated_defender.append(id)
 
-static func check_hit(move: MoveData, attacker: BattleBattler, defender: BattleBattler) -> bool:
+static func check_hit(
+	move: MoveData,
+	attacker: BattleBattler,
+	defender: BattleBattler,
+	weather: int = AbilityBattleEffect.weatherAbilityID.WEATHER_NONE
+) -> bool:
 	if move == null:
 		return false
 	if move.always_hits:
@@ -37,8 +42,21 @@ static func check_hit(move: MoveData, attacker: BattleBattler, defender: BattleB
 	if move.accuracy <= 0:
 		return true
 
+	# Flags de clima del .tres
+	if move.always_hits_in_rain and weather == AbilityBattleEffect.weatherAbilityID.WEATHER_RAIN:
+		return true
+	if move.always_hits_in_hail_snow and weather == AbilityBattleEffect.weatherAbilityID.WEATHER_SNOW:
+		return true
+
 	var acc: int = clampi(move.accuracy, 1, 100)
-	var acc_stage: int = clampi(attacker.stage_accuracy - defender.stage_evasion, -6, 6)
+	if move.accuracy_50_in_sun and weather == AbilityBattleEffect.weatherAbilityID.WEATHER_DROUGHT:
+		acc = 50
+
+	var acc_stage: int
+	if move.ignores_target_defense_evasion_stages:
+		acc_stage = clampi(attacker.stage_accuracy, -6, 6)
+	else:
+		acc_stage = clampi(attacker.stage_accuracy - defender.stage_evasion, -6, 6)
 	var stage_mult: float = BattleBattler._stage_multiplier(acc_stage)
 	var final_acc: float = float(acc) * stage_mult
 	final_acc *= HoldItemRuntime.accuracy_multiplier(attacker, defender)
@@ -99,6 +117,10 @@ static func compute_hit(
 	result.contact = AbilityRuntime.move_makes_contact(attacker, move)
 	var move_type: PokemonData.Type = AbilityRuntime.effective_move_type(attacker, move)
 
+	# Don Natural: tipo de la baya
+	if move.effect == MoveStruct.MoveEffect.EFFECT_NATURAL_GIFT:
+		move_type = NaturalGiftResolver.resolve_type(attacker)
+
 	var ignore_defender_ability: bool = AbilityRuntime.ignores_defender_ability(attacker)
 	if ignore_defender_ability:
 		_note_atk(result, AbilityRuntime.get_id(attacker))  # Mold Breaker / Teravolt / Turboblaze
@@ -113,6 +135,15 @@ static func compute_hit(
 
 	var level: int = attacker.pokemon.level
 	var power: int = maxi(MovePowerResolver.effective_power(attacker, defender, move, weather), 1)
+
+	# Don Natural: potencia según baya
+	if move.effect == MoveStruct.MoveEffect.EFFECT_NATURAL_GIFT:
+		power = maxi(NaturalGiftResolver.resolve_power(attacker), 1)
+
+	# Persecución: x2 si el objetivo está cambiando este turno
+	if move.effect == MoveStruct.MoveEffect.EFFECT_PURSUIT \
+			and defender != null and bool(defender.get_meta("switching_this_turn", false)):
+		power *= 2
 
 	var atk: int
 	var def: int
@@ -335,11 +366,11 @@ static func calculate(
 
 	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
 		result.is_status = true
-		result.hit = check_hit(move, attacker, defender)
+		result.hit = check_hit(move, attacker, defender, weather)
 		result.damage = 0
 		return result
 
-	if not check_hit(move, attacker, defender):
+	if not check_hit(move, attacker, defender, weather):
 		result.hit = false
 		return result
 

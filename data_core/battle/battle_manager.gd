@@ -9,6 +9,8 @@ signal battle_ended(player_won: bool)
 signal turn_ended
 ## El mon activo se debilitó y hay reemplazo en el party.
 signal player_must_switch
+## La UI terminó player_choose_switch (free_switch). Desbloquea awaits mid-turn.
+signal player_switch_resolved
 signal player_evolved
 
 signal ability_announced(is_player: bool, pokemon: PokemonInstance)
@@ -23,6 +25,8 @@ signal pokemon_entered_field(is_player: bool)
 var player: BattleBattler
 var enemy: BattleBattler
 var is_running: bool = false
+var _awaiting_player_switch: bool = false
+var _player_switch_mid_turn: bool = false
 var player_party: Array[PokemonInstance] = []
 var enemy_party: Array[PokemonInstance] = []
 var player_side: FieldSide = FieldSide.new()
@@ -509,6 +513,32 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 				actor = b_ko
 				slot_index = b_ko.slot_index
 				break
+	# Cambio inmediato (1v1, o free_switch forzado)
+	# Hueco KO: nunca sustituir a un vivo si hay un slot vacío (evita el bucle U-turn + compañero KO).
+	if free_switch:
+		var pivot_alive: bool = false
+		if bool(get_meta("forced_pivot", false)):
+			var ps: int = int(get_meta("forced_pivot_slot", -1))
+			var pv: BattleBattler = _player_battler_at(ps) if ps >= 0 else null
+			pivot_alive = pv != null and pv.pokemon != null and not pv.is_fainted()
+		if not pivot_alive:
+			if has_meta("forced_replace_slot"):
+				var rs: int = int(get_meta("forced_replace_slot", -1))
+				if rs >= 0:
+					var rb: BattleBattler = _player_battler_at(rs)
+					if rb != null:
+						actor = rb
+						slot_index = rs
+			if actor == null or (actor.pokemon != null and not actor.is_fainted()):
+				for b_ko2: BattleBattler in player_actives:
+					if b_ko2 != null and (b_ko2.pokemon == null or b_ko2.is_fainted()):
+						actor = b_ko2
+						slot_index = b_ko2.slot_index
+						break
+		elif actor == null:
+			actor = _player_battler_at(int(get_meta("forced_pivot_slot", 0)))
+			if actor != null:
+				slot_index = actor.slot_index
 	if actor == null:
 		actor = player
 		slot_index = actor.slot_index if actor != null else 0
@@ -562,6 +592,21 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 	await _apply_hazards_on_switch_in(actor)
 
 	if free_switch:
+		# Desbloquear quien espera (_await_forced_player_switch / pivot)
+		if _awaiting_player_switch:
+			_awaiting_player_switch = false
+			player_switch_resolved.emit()
+		if has_meta("forced_pivot"):
+			remove_meta("forced_pivot")
+		if has_meta("forced_pivot_slot"):
+			remove_meta("forced_pivot_slot")
+		if has_meta("forced_replace_slot"):
+			remove_meta("forced_replace_slot")
+		# Mid-turn: no cerrar el turno; el pipeline de acciones continúa
+		if bool(get_meta("forced_pivot_mid_turn", false)) or _player_switch_mid_turn:
+			if has_meta("forced_pivot_mid_turn"):
+				remove_meta("forced_pivot_mid_turn")
+			return
 		turn_ended.emit()
 		return
 
@@ -1178,13 +1223,16 @@ func _enemy_choose_move_for(battler: BattleBattler) -> BattleAction:
 	if valid_indices.is_empty():
 		return null
 
+	# ai_rating del .tres (estilo pokeemerald): sesga la elección de moves
+	var ability_bias: int = int(round(float(AbilityRuntime.get_ai_rating(battler)) / 25.0))
+	ability_bias = clampi(ability_bias, -3, 4)
+
 	var weighted: Array[int] = []
 	for i: int in valid_indices:
 		var slot: PokemonMoveSlot = battler.pokemon.moves[i]
 		var move_data: MoveData = MoveDatabase.get_move(slot.move_id)
-		var weight: int = 1
+		var weight: int = 1 + ability_bias
 		if move_data and move_data.category != MoveStruct.DamageCategory.STATUS:
-			# Elegir el mejor rival para este move
 			var best_eff: float = 0.0
 			for tg: BattleBattler in targets:
 				if tg.pokemon == null:
@@ -1196,9 +1244,17 @@ func _enemy_choose_move_for(battler: BattleBattler) -> BattleAction:
 					best_eff = eff
 					primary_target = tg
 			if best_eff > 1.0:
-				weight = 3
+				weight = 3 + maxi(ability_bias, 0)
 			elif best_eff <= 0.0:
 				weight = 0
+			# Preferir más potencia bruta entre opciones efectivas
+			if best_eff > 0.0 and move_data.power >= 80:
+				weight += 1
+		else:
+			# STATUS: habilidades con rating alto (setup weather/intimid) → un poco más de setup
+			if ability_bias > 0:
+				weight += 1
+		weight = maxi(weight, 0)
 		for _n: int in weight:
 			weighted.append(i)
 
@@ -1285,6 +1341,10 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 				if not side_has_conscious(false) and not party_has_reserve(false):
 					break
 
+	for _clr: BattleBattler in get_all_actives():
+		if _clr != null and _clr.has_meta("switching_this_turn"):
+			_clr.remove_meta("switching_this_turn")
+
 	if side_has_conscious(true) and side_has_conscious(false):
 		await _process_end_of_turn()
 
@@ -1318,8 +1378,72 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 
 
 
-## Tras un KO a mitad de turno: sustituye enemigos caídos y pide cambio al jugador.
-## Inspirado en el flujo post-faint de pokeemerald (no se sigue atacando un slot vacío).
+
+## Emite player_must_switch y espera a que la UI llame player_choose_switch(..., free_switch=true).
+## mid_turn=true: no cierra el turno al completar el cambio (sigue el pipeline de acciones).
+## Pivot (U-turn): usa forced_pivot_slot de un vivo.
+## KO: rellena TODOS los huecos vacíos (forced_replace_slot), uno a uno.
+func _first_empty_player_slot() -> int:
+	for i: int in range(player_actives.size()):
+		var pb: BattleBattler = player_actives[i]
+		if pb != null and (pb.pokemon == null or pb.is_fainted()):
+			return i
+	return -1
+
+
+func _wait_player_party_choice() -> void:
+	_awaiting_player_switch = true
+	player_must_switch.emit()
+	var safety: int = 0
+	while _awaiting_player_switch and is_running and safety < 12000:
+		await _wait(0.05)
+		safety += 1
+	_awaiting_player_switch = false
+	_player_switch_mid_turn = false
+	if has_meta("forced_pivot_mid_turn"):
+		remove_meta("forced_pivot_mid_turn")
+
+
+func _await_forced_player_switch(mid_turn: bool = false) -> void:
+	if not is_running:
+		return
+	if not party_has_reserve(true):
+		return
+
+	# 1) Pivot de un Pokémon vivo (U-turn / Viraje): no redirigir al hueco del compañero KO.
+	var is_pivot: bool = bool(get_meta("forced_pivot", false))
+	var pivot_slot: int = int(get_meta("forced_pivot_slot", -1)) if is_pivot else -1
+	if pivot_slot >= 0:
+		var pv: BattleBattler = _player_battler_at(pivot_slot)
+		if pv != null and pv.pokemon != null and not pv.is_fainted():
+			_player_switch_mid_turn = mid_turn
+			set_meta("forced_pivot_mid_turn", mid_turn)
+			await _wait_player_party_choice()
+			return
+
+	# 2) Rellenar todos los slots KO / vacíos
+	while is_running and party_has_reserve(true):
+		var empty: int = _first_empty_player_slot()
+		if empty < 0:
+			break
+		if has_meta("forced_pivot"):
+			remove_meta("forced_pivot")
+		if has_meta("forced_pivot_slot"):
+			remove_meta("forced_pivot_slot")
+		set_meta("forced_replace_slot", empty)
+		_player_switch_mid_turn = mid_turn
+		set_meta("forced_pivot_mid_turn", mid_turn)
+		await _wait_player_party_choice()
+		if has_meta("forced_replace_slot"):
+			remove_meta("forced_replace_slot")
+		# Si el hueco sigue vacío (cancel / mismo bucle), no reintentar sin progreso infinito:
+		var after: int = _first_empty_player_slot()
+		if after == empty:
+			var filled: BattleBattler = _player_battler_at(empty)
+			if filled == null or filled.pokemon == null or filled.is_fainted():
+				break
+
+
 func _resolve_mid_turn_faints() -> void:
 	# EXP + auto-switch enemigo
 	for i: int in range(enemy_actives.size()):
@@ -1355,18 +1479,14 @@ func _resolve_mid_turn_faints() -> void:
 		await _apply_hazards_on_switch_in(eb)
 		_emit_hp_battler(eb)
 
-	# Jugador: si hay slot KO con reservas, forzar party (la UI usa free_switch)
+	# Jugador: KO mid-turn con reservas → party menu y esperar (estilo pokeemerald)
 	var need_player: bool = false
 	for pb: BattleBattler in player_actives:
 		if pb != null and (pb.pokemon == null or pb.is_fainted()) and party_has_reserve(true):
 			need_player = true
 			break
 	if need_player:
-		set_meta("forced_pivot", true)
-		set_meta("forced_pivot_side_player", true)
-		player_must_switch.emit()
-		# La UI debe llamar player_choose_switch(..., free_switch=true) antes del siguiente input de turno.
-		# No bloqueamos aquí para no colgar el await sin señal de "switch done".
+		await _await_forced_player_switch(true)
 
 
 func _execute_switch_action(action: BattleAction) -> void:
@@ -1398,11 +1518,14 @@ func _execute_switch_action(action: BattleAction) -> void:
 
 
 func _request_replacements_if_needed() -> void:
-	# Si un slot del jugador está KO pero hay reservas y aún hay otro activo, pedir cambio
+	# Slot KO con reservas (post-turno / dobles): esperar al party
+	var need: bool = false
 	for b: BattleBattler in player_actives:
 		if b != null and (b.pokemon == null or b.is_fainted()) and party_has_reserve(true):
-			player_must_switch.emit()
-			return
+			need = true
+			break
+	if need:
+		await _await_forced_player_switch(false)
 
 func _process_end_of_turn() -> void:
 	battle_turn_count += 1
@@ -1432,43 +1555,50 @@ func _process_end_of_turn() -> void:
 		if not battler.is_fainted() and battler.leech_seeded:
 			await _apply_leech_seed_tick(battler)
 		if not battler.is_fainted():
-			var hold_eot: Dictionary = HoldItemRuntime.end_of_turn_effect(battler)
-			if int(hold_eot.get("heal", 0)) > 0 and battler.heal_block_turns <= 0:
-				battler.pokemon.apply_heal(int(hold_eot["heal"]))
-				_emit_hp(battler.is_player_side)
-				if str(hold_eot.get("message", "")) != "":
-					message.emit(str(hold_eot["message"]))
-					await _wait(0.45)
-			if int(hold_eot.get("damage", 0)) > 0:
-				_apply_damage_to_target(battler, int(hold_eot["damage"]))
-				_emit_hp(battler.is_player_side)
-				if str(hold_eot.get("message", "")) != "":
-					message.emit(str(hold_eot["message"]))
-					await _wait(0.45)
-			if int(hold_eot.get("status", -1)) >= 0:
-				await _apply_status(battler, int(hold_eot["status"]) as PokemonInstance.Status)
-			if bool(hold_eot.get("consume", false)):
-				HoldItemRuntime.consume_held(battler)
-			# Pinch berries (Unnerve impide comer bayas)
-			var pinch: Dictionary = {}
+			# Held items: scripts on_end_turn (Leftovers, Orbs, Sitrus…)
+			var he: int = int(HoldItemRuntime.get_hold_effect(battler))
+			if ItemSystem.has_block(he, "on_end_turn"):
+				await ItemSystem.on_end_turn(battler, self)
+			else:
+				var hold_eot: Dictionary = HoldItemRuntime.end_of_turn_effect(battler)
+				if int(hold_eot.get("heal", 0)) > 0 and battler.heal_block_turns <= 0:
+					battler.pokemon.apply_heal(int(hold_eot["heal"]))
+					_emit_hp(battler.is_player_side)
+					if str(hold_eot.get("message", "")) != "":
+						message.emit(str(hold_eot["message"]))
+						await _wait(0.45)
+				if int(hold_eot.get("damage", 0)) > 0:
+					_apply_damage_to_target(battler, int(hold_eot["damage"]))
+					_emit_hp(battler.is_player_side)
+					if str(hold_eot.get("message", "")) != "":
+						message.emit(str(hold_eot["message"]))
+						await _wait(0.45)
+				if int(hold_eot.get("status", -1)) >= 0:
+					await _apply_status(battler, int(hold_eot["status"]) as PokemonInstance.Status)
+				if bool(hold_eot.get("consume", false)):
+					HoldItemRuntime.consume_held(battler)
+			# Pinch berries (Unnerve bloquea)
 			if not AbilityRuntime.unnerve_active(battler, self):
-				pinch = HoldItemRuntime.try_pinch_berry(battler)
-			if bool(pinch.get("cure_status", false)):
-				battler.pokemon.cure_status()
-				message.emit(str(pinch.get("message", "")))
-				await _wait(0.45)
-				HoldItemRuntime.consume_held(battler)
-			elif bool(pinch.get("cure_confusion", false)):
-				battler.confusion_turns = 0
-				message.emit(str(pinch.get("message", "")))
-				await _wait(0.45)
-				HoldItemRuntime.consume_held(battler)
-			elif int(pinch.get("stat", -1)) >= 0:
-				await _apply_stat_change(battler, int(pinch["stat"]) as PokemonInstance.Stat, int(pinch.get("stat_stages", 1)))
-				if str(pinch.get("message", "")) != "":
-					message.emit(str(pinch["message"]))
-					await _wait(0.4)
-				HoldItemRuntime.consume_held(battler)
+				if ItemSystem.has_block(he, "on_pinch"):
+					await ItemSystem.on_pinch(battler, self)
+				else:
+					var pinch: Dictionary = HoldItemRuntime.try_pinch_berry(battler)
+					if bool(pinch.get("cure_status", false)):
+						battler.pokemon.cure_status()
+						message.emit(str(pinch.get("message", "")))
+						await _wait(0.45)
+						HoldItemRuntime.consume_held(battler)
+					elif bool(pinch.get("cure_confusion", false)):
+						battler.confusion_turns = 0
+						message.emit(str(pinch.get("message", "")))
+						await _wait(0.45)
+						HoldItemRuntime.consume_held(battler)
+					elif int(pinch.get("stat", -1)) >= 0:
+						await _apply_stat_change(battler, int(pinch["stat"]) as PokemonInstance.Stat, int(pinch.get("stat_stages", 1)))
+						if str(pinch.get("message", "")) != "":
+							message.emit(str(pinch["message"]))
+							await _wait(0.4)
+						HoldItemRuntime.consume_held(battler)
 		if not battler.is_fainted() and battler.future_sight_turns >= 0:
 			battler.future_sight_turns -= 1
 			if battler.future_sight_turns < 0 and battler.future_sight_damage > 0:
@@ -1642,7 +1772,7 @@ func _manejar_debilitacion_jugador() -> void:
 	await _wait(1.0)
 
 	if tiene_reemplazo():
-		player_must_switch.emit()
+		await _await_forced_player_switch(false)
 		return
 
 	message.emit("Has perdido...")
@@ -1653,6 +1783,21 @@ func _manejar_debilitacion_jugador() -> void:
 
 
 func _sort_actions(actions: Array[BattleAction]) -> Array[BattleAction]:
+	# Pursuit: si el objetivo cambia este turno, actúa antes del switch (prioridad 7) y x2 daño.
+	var switching: Dictionary = {}
+	for act: BattleAction in actions:
+		if act != null and act.kind == BattleAction.Kind.SWITCH and act.actor != null:
+			switching[act.actor] = true
+			act.actor.set_meta("switching_this_turn", true)
+	for act2: BattleAction in actions:
+		if act2 == null or act2.kind != BattleAction.Kind.MOVE or act2.move == null:
+			continue
+		if act2.move.effect != MoveStruct.MoveEffect.EFFECT_PURSUIT:
+			continue
+		var tgt: BattleBattler = act2.target
+		if tgt != null and bool(switching.get(tgt, false)):
+			act2.priority = 7
+			act2.set_meta("pursuit_boost", true)
 	actions.sort_custom(func(a: BattleAction, b: BattleAction) -> bool:
 		if a.priority != b.priority:
 			return a.priority > b.priority
@@ -1903,7 +2048,14 @@ func _execute_move(action: BattleAction) -> void:
 		await _wait(0.8)
 		return
 
+	# Flag .tres: movimiento ilegal bajo gravedad
+	if move.gravity_banned and gravity_turns > 0:
+		message.emit("¡Pero falló!")
+		await _wait(0.6)
+		return
+
 	if target.protect_active and ProtectResolver.blocks_move(target.protect_kind, move) \
+			and not move.ignores_protect \
 			and not AbilityRuntime.ignores_protect_contact(actor, move):
 		message.emit("¡%s se protegió del ataque!" % target.get_display_name())
 		await _wait(0.8)
@@ -1927,7 +2079,7 @@ func _execute_move(action: BattleAction) -> void:
 
 	# Movimientos de estado:
 	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
-		var status_hits: bool = _is_locked_on(actor, target) or DamageCalculator.check_hit(move, actor, target)
+		var status_hits: bool = _is_locked_on(actor, target) or DamageCalculator.check_hit(move, actor, target, get_effective_weather())
 		if _is_locked_on(actor, target):
 			target.locked_on_by_side = -1
 		if not status_hits:
@@ -1938,7 +2090,7 @@ func _execute_move(action: BattleAction) -> void:
 		return
 
 	var locked: bool = _is_locked_on(actor, target)
-	if not (locked or DamageCalculator.check_hit(move, actor, target)):
+	if not (locked or DamageCalculator.check_hit(move, actor, target, get_effective_weather())):
 		if move.effect == MoveStruct.MoveEffect.EFFECT_RECOIL_IF_MISS:
 			await _apply_crash_damage(actor)
 		else:
@@ -2067,10 +2219,11 @@ func _execute_move(action: BattleAction) -> void:
 			# Wimp Out / Emergency Exit
 			if await AbilityRuntime.check_wimp_or_emergency(target, hp_before_hit, self):
 				if target.is_player_side:
-					player_must_switch.emit()
+					await _await_forced_player_switch(true)
 				else:
-					# IA simple: el manager ya tiene flujo de cambio enemigo si aplica
-					pass
+					# IA: pivot automático si hay reserva
+					if party_has_reserve(false):
+						await _request_pivot_out(target, false)
 
 			await AbilityRuntime.try_zen_mode(target, self)
 			await AbilityRuntime.try_shields_down(target, self)
@@ -2161,6 +2314,8 @@ func _execute_move(action: BattleAction) -> void:
 
 	message.emit("Hizo %d PS de daño." % total_dealt)
 	await _wait(0.7)
+	if move.effect == MoveStruct.MoveEffect.EFFECT_NATURAL_GIFT and total_dealt > 0:
+		NaturalGiftResolver.consume_berry(actor)
 	if actor.charged and total_dealt > 0:
 		actor.charged = false
 
@@ -2323,7 +2478,7 @@ func _execute_special_or_standard_damage(
 			or move.effect == MoveStruct.MoveEffect.EFFECT_PSYWAVE \
 			or move.effect == MoveStruct.MoveEffect.EFFECT_ENDEAVOR \
 			or move.effect == MoveStruct.MoveEffect.EFFECT_FINAL_GAMBIT:
-		if not DamageCalculator.check_hit(move, actor, target):
+		if not DamageCalculator.check_hit(move, actor, target, get_effective_weather()):
 			message.emit("¡El ataque de %s falló!" % actor.get_display_name())
 			await _wait(0.8)
 			return
@@ -2356,7 +2511,7 @@ func _execute_special_or_standard_damage(
 		return
 
 	# Flail / Return / Frustration / Absorb / Dream Eater / False Swipe: fórmula con potencia o flags
-	if not DamageCalculator.check_hit(move, actor, target):
+	if not DamageCalculator.check_hit(move, actor, target, get_effective_weather()):
 		if move.effect == MoveStruct.MoveEffect.EFFECT_RECOIL_IF_MISS:
 			await _apply_crash_damage(actor)
 		else:
@@ -3382,7 +3537,10 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			actor.wish_turns = 0
 			actor.wish_hp = actor.get_max_hp()  # se aplica al nuevo mon si UI reusa slot
 			if actor.is_player_side:
-				player_must_switch.emit()
+				await _await_forced_player_switch(true)
+			else:
+				if party_has_reserve(false):
+					await _request_pivot_out(actor, false)
 			return
 
 		MoveStruct.MoveEffect.EFFECT_WISH:
@@ -4365,11 +4523,17 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			return
 
 		MoveStruct.MoveEffect.EFFECT_NATURAL_GIFT:
-			if actor.pokemon == null or actor.pokemon.held_item == Items.ItemId.ITEM_NONE:
+			# Tipo/potencia se resuelven en el golpe; aquí solo validar baya.
+			var ng_data: ItemData = HoldItemRuntime.get_item_data(actor)
+			if ng_data == null or actor.pokemon == null:
 				message.emit("¡Pero falló!")
 				await _wait(0.6)
 				return
-			actor.pokemon.held_item = Items.ItemId.ITEM_NONE
+			if not _item_is_berry(int(actor.pokemon.held_item)):
+				message.emit("¡Pero falló!")
+				await _wait(0.6)
+				return
+			actor.set_meta("natural_gift_active", true)
 			return
 
 		MoveStruct.MoveEffect.EFFECT_ROUND:
@@ -4515,9 +4679,8 @@ func _request_pivot_out(actor: BattleBattler, baton_pass: bool = false) -> void:
 	set_meta("forced_pivot_side_player", actor.is_player_side)
 	set_meta("forced_pivot_slot", actor.slot_index)
 	if actor.is_player_side:
-		# Abrir party menu directamente — la UI debe reaccionar a player_must_switch
-		# y a get_meta("forced_pivot") sin preguntar "¿quieres cambiar?".
-		player_must_switch.emit()
+		# Pivot forzado mid-acción (U-turn / Volts Switch / Parting Shot)
+		await _await_forced_player_switch(true)
 	else:
 		# IA: primer reserva no debilitada
 		var reserve: PokemonInstance = _first_reserve(false)
@@ -4558,13 +4721,28 @@ func _first_reserve(is_player_side: bool) -> PokemonInstance:
 	for b: BattleBattler in actives:
 		if b != null and b.pokemon != null:
 			active_ids.append(b.pokemon.get_instance_id())
+	# Jugador: primer reserva (orden de party). Enemigo: prioriza ai_rating de habilidad.
+	var best: PokemonInstance = null
+	var best_score: int = -99999
 	for mon: PokemonInstance in party:
 		if mon == null or mon.is_fainted():
 			continue
 		if mon.get_instance_id() in active_ids:
 			continue
-		return mon
-	return null
+		if is_player_side:
+			return mon
+		var score: int = 0
+		if AbilityDatabase != null and mon.ability_id != AbilityId.Id.NONE:
+			if AbilityDatabase.has_ability(mon.ability_id):
+				var ad: AbilityData = AbilityDatabase.get_ability(mon.ability_id)
+				if ad != null:
+					score = ad.ai_rating
+		# Desempate leve por PS restantes
+		score += int(float(mon.current_hp) / float(maxi(mon.get_max_hp(), 1)) * 10.0)
+		if best == null or score > best_score:
+			best = mon
+			best_score = score
+	return best
 
 
 func _snapshot_baton_pass(actor: BattleBattler) -> Dictionary:
@@ -5051,6 +5229,43 @@ func _apply_hazards_on_switch_in(battler: BattleBattler) -> void:
 		elif not is_steel:
 			var status: PokemonInstance.Status = PokemonInstance.Status.TOXIC if side.toxic_spikes_layers >= 2 else PokemonInstance.Status.POISON
 			await _apply_status(battler, status)
+
+func _item_is_berry(item_id: int) -> bool:
+	if item_id <= 0:
+		return false
+	var data: ItemData = ItemDatabase.get_item(item_id as Items.ItemId)
+	if data == null:
+		return false
+	# Bayas: pocket berries o hold effects típicos de baya
+	if data.pocket == ItemConstants.Pocket.POCKET_BERRIES:
+		return true
+	var he: HoldEffects.HoldEffect = data.hold_effect
+	match he:
+		HoldEffects.HoldEffect.HOLD_EFFECT_RESTORE_HP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_RESTORE_PCT_HP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_ATTACK_UP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_DEFENSE_UP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_SPEED_UP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_SP_ATTACK_UP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_SP_DEFENSE_UP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CURE_STATUS, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CURE_PAR, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CURE_SLP, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CURE_PSN, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CURE_BRN, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CURE_FRZ, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CURE_CONFUSION, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_RESIST_BERRY, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_MICLE_BERRY, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_CUSTAP_BERRY, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_JABOCA_BERRY, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_ENIGMA_BERRY, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_KEE_BERRY, \
+		HoldEffects.HoldEffect.HOLD_EFFECT_MARANGA_BERRY:
+			return true
+		_:
+			return false
+
 
 func _wait(seconds: float) -> void:
 	var tree: SceneTree = Engine.get_main_loop() as SceneTree

@@ -1,0 +1,3 @@
+# pursuit
+# Potencia x2 y prioridad al cambiar: BattleManager + DamageCalculator.
+# Sin on_use (el daño es el golpe normal).

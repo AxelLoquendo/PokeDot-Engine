@@ -1,0 +1,3 @@
+on_end_turn:
+  damage_percent 12.5 target=user
+  message "¡{user} es herido por la Toxiestrella!"

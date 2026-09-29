@@ -1,0 +1,2 @@
+# sun
+# Stub: ampliar on_use/on_hit según el move.

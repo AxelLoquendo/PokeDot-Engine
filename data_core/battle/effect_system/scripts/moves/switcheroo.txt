@@ -1,0 +1,3 @@
+# switcheroo
+on_use:
+  special trick

@@ -1,0 +1,3 @@
+# thunder_wave
+on_use:
+  status PARALYSIS target=target

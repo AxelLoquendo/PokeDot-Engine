@@ -1,6 +1,6 @@
 # Al debilitarse por contacto, daña al atacante.
 on_faint:
   if is_contact
-    announce
-    damage_percent 25 target=attacker
+	announce
+	damage_percent 25 target=attacker
   endif

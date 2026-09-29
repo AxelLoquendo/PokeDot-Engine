@@ -1,3 +1,2 @@
 # natural_gift
-on_use:
-  special natural_gift
+# Tipo/potencia: NaturalGiftResolver. Consume baya tras el golpe en BattleManager.

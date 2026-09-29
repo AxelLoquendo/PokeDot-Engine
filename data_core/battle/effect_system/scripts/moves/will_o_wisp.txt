@@ -1,0 +1,3 @@
+# will_o_wisp
+on_use:
+  status BURN target=target

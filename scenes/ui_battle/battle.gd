@@ -789,8 +789,11 @@ func _on_pkmn_pressed() -> void:
 
 
 func _on_player_must_switch() -> void:
-	# Pivot forzado (U-turn / Viraje / Baton Pass): abrir party sin preguntar
-	if battle != null and bool(battle.get_meta("forced_pivot", false)):
+	# Pivot (U-turn) o relleno de hueco KO: party sin preguntar
+	if battle != null and (
+		bool(battle.get_meta("forced_pivot", false))
+		or battle.has_meta("forced_replace_slot")
+	):
 		_force_switch_pending = true
 		_abrir_party_batalla(true)
 		return
@@ -799,12 +802,18 @@ func _on_player_must_switch() -> void:
 
 func _ask_fainted_action() -> void:
 	current_menu = MenuState.BUSY
-	_show_message_box("¿Qué hará el entrenador?")
-	var options: Array[String] = ["Cambiar Pokémon"]
-	if not battle.is_trainer_battle:
-		options.append("Escapar")
-	var choice: int = await DialogueManager.choose(options, Vector2(468, 308))
-	if choice == 1 and not battle.is_trainer_battle:
+	# Entrenador: obligatorio sacar el siguiente (como en los juegos oficiales).
+	if battle != null and battle.is_trainer_battle:
+		_force_switch_pending = true
+		_abrir_party_batalla(true)
+		return
+	# Salvaje: Sí = siguiente Pokémon, No = huir. Caja encima del TextBox, a la derecha.
+	_show_message_box("¿Usarás el siguiente Pokémon?")
+	var options: Array[String] = []
+	options.append("Sí")
+	options.append("No")
+	var choice: int = await DialogueManager.choose(options, _fainted_choice_anchor())
+	if choice == 1:
 		_ended_by_run = true
 		battle.player_choose_run()
 		return
@@ -812,9 +821,27 @@ func _ask_fainted_action() -> void:
 	_abrir_party_batalla(true)
 
 
+## Ancla esquina inferior-derecha del multichoice: encima del TextBox, lado derecho.
+func _fainted_choice_anchor() -> Vector2:
+	var tb: Control = get_node_or_null("TextBox") as Control
+	if tb != null:
+		var r: Rect2 = tb.get_global_rect()
+		# Unos píxeles por encima del borde superior del textbox; pegado a la derecha.
+		return Vector2(r.position.x + r.size.x - 8.0, r.position.y - 4.0)
+	# Fallback 480×320: TextBox offset_top = 224
+	return Vector2(472.0, 220.0)
+
+
 func _abrir_party_batalla(forzar: bool) -> void:
 	if _party_ui != null and is_instance_valid(_party_ui):
-		return
+		if forzar:
+			var old_party: PartyMenu = _party_ui
+			_party_ui = null
+			if old_party.party_closed.is_connected(_on_party_closed):
+				old_party.party_closed.disconnect(_on_party_closed)
+			old_party.queue_free()
+		else:
+			return
 
 	current_menu = MenuState.BUSY
 	action_menu.visible = false
@@ -845,11 +872,17 @@ func _abrir_party_batalla(forzar: bool) -> void:
 	if battle != null:
 		var slot_p: int = _input_actor_slot
 		if forzar:
-			for i2: int in range(battle.player_actives.size()):
-				var bk: BattleBattler = battle.player_actives[i2]
-				if bk != null and (bk.pokemon == null or bk.is_fainted()):
-					slot_p = i2
-					break
+			if battle.has_meta("forced_replace_slot"):
+				slot_p = int(battle.get_meta("forced_replace_slot", slot_p))
+			elif bool(battle.get_meta("forced_pivot", false)):
+				slot_p = int(battle.get_meta("forced_pivot_slot", slot_p))
+			else:
+				for i2: int in range(battle.player_actives.size()):
+					var bk: BattleBattler = battle.player_actives[i2]
+					if bk != null and (bk.pokemon == null or bk.is_fainted()):
+						slot_p = i2
+						break
+			_input_actor_slot = slot_p
 		var ba: BattleBattler = battle.player_actives[slot_p] if slot_p < battle.player_actives.size() else null
 		if ba != null and ba.pokemon != null:
 			active_for_party = ba.pokemon
@@ -861,8 +894,12 @@ func _on_party_pokemon_selected(mon: PokemonInstance) -> void:
 	_force_switch_pending = false
 	var switch_slot: int = _input_actor_slot
 	if free_switch and battle != null:
-		if bool(battle.get_meta("forced_pivot", false)):
-			# Pivot: el slot que usó U-turn / Viraje
+		if battle.has_meta("forced_replace_slot"):
+			# Hueco KO: NUNCA el slot del U-turn
+			switch_slot = int(battle.get_meta("forced_replace_slot", switch_slot))
+			battle.remove_meta("forced_replace_slot")
+		elif bool(battle.get_meta("forced_pivot", false)):
+			# Pivot: el slot que usó U-turn / Viraje (debe estar vivo)
 			switch_slot = int(battle.get_meta("forced_pivot_slot", switch_slot))
 			battle.remove_meta("forced_pivot")
 			if battle.has_meta("forced_pivot_slot"):

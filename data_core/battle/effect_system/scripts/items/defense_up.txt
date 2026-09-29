@@ -1,0 +1,6 @@
+on_pinch:
+  if hp_percent <= 25
+    raise_stat DEF 1 target=user
+    message "¡La Defensa de {user} subió!"
+    consume_held
+  endif

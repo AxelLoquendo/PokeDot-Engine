@@ -1,0 +1,2 @@
+on_contact_hit_by:
+  damage_percent 16.67 target=attacker

@@ -1,0 +1,3 @@
+# stun_spore
+on_use:
+  status PARALYSIS target=target

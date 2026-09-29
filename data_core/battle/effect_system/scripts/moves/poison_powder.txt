@@ -1,0 +1,3 @@
+# poison_powder
+on_use:
+  status POISON target=target

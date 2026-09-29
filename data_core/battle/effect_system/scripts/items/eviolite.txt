@@ -1,0 +1,2 @@
+on_damage_taken:
+  multiply damage_taken 0.5

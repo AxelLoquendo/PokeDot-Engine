@@ -1,0 +1,3 @@
+# agility
+on_use:
+  raise_stat SPEED 2 target=user

@@ -1,0 +1,7 @@
+on_pinch:
+  if is_confused
+    volatile clear_confusion target=user
+    message "¡{user} se libró de la confusión!"
+    consume_held
+  endif
+

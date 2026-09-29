@@ -1,0 +1,2 @@
+on_crit_stage:
+  set query_int 1

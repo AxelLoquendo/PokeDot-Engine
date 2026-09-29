@@ -1,0 +1,3 @@
+# aromatherapy
+on_use:
+  special heal_bell

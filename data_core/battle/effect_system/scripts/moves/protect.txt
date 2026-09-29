@@ -1,3 +1,3 @@
 # protect
 on_use:
-  special resolve_protect
+  volatile protect

@@ -1,0 +1,4 @@
+on_power:
+  if category SPECIAL
+    multiply power 1.5
+  endif

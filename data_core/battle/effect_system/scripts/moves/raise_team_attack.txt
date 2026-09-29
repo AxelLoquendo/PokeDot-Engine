@@ -1,0 +1,2 @@
+# raise_team_attack
+# Stub: ampliar on_use/on_hit según el move.

@@ -1,3 +1,3 @@
 # dark_void
 on_use:
-  status SLEEP target=opponent
+  status SLEEP target=target

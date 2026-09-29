@@ -1,0 +1,3 @@
+# rain_dance
+on_use:
+  set_weather RAIN 5

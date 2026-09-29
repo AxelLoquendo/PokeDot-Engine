@@ -1,3 +1,23 @@
 # synthesis
 on_use:
-  heal_percent 50 target=user
+  if weather sun
+    heal_percent 66.67 target=user
+  else
+    if weather rain
+      heal_percent 25 target=user
+    else
+      if weather sand
+        heal_percent 25 target=user
+      else
+        if weather snow
+          heal_percent 25 target=user
+        else
+          if weather hail
+            heal_percent 25 target=user
+          else
+            heal_percent 50 target=user
+          endif
+        endif
+      endif
+    endif
+  endif

@@ -1,0 +1,3 @@
+# detect
+on_use:
+  volatile protect

@@ -1,0 +1,3 @@
+on_after_damage:
+  # heal = damage * param/100 se aplica en HoldItemRuntime con el valor de daño
+  set query_bool true

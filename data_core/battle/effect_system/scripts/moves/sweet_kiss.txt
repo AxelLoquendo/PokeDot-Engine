@@ -1,0 +1,3 @@
+# sweet_kiss
+on_use:
+  confuse target=target

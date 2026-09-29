@@ -54,6 +54,7 @@ static func register_all() -> void:
 	EffectParser.register_command("set_ability", _c_set_ability)
 	EffectParser.register_command("swap_ability", _c_swap_ability)
 	EffectParser.register_command("set_meta", _c_set_meta)
+	EffectParser.register_command("consume_held", _c_consume_held)
 	EffectParser.register_command("multiply", _c_multiply)
 	EffectParser.register_command("immunity", _c_immunity)
 	EffectParser.register_command("block", _c_block)
@@ -145,6 +146,10 @@ static func _c_set_ability(a: PackedStringArray) -> EffectCommand:
 	return CmdSetAbility.new(a)
 static func _c_swap_ability(a: PackedStringArray) -> EffectCommand:
 	return CmdSwapAbility.new(a)
+static func _c_consume_held(args: PackedStringArray) -> EffectCommand:
+	return CmdConsumeHeld.new(args)
+
+
 static func _c_set_meta(a: PackedStringArray) -> EffectCommand:
 	return CmdSetMeta.new(a)
 static func _c_multiply(a: PackedStringArray) -> EffectCommand:

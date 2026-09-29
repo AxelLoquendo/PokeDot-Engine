@@ -1,0 +1,3 @@
+# sandstorm
+on_use:
+  set_weather SAND 5

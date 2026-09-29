@@ -1,0 +1,4 @@
+on_damage_taken:
+  if category PHYSICAL
+    multiply damage_taken 0.5
+  endif

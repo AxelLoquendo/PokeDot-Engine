@@ -1,4 +1,4 @@
 # flatter
 on_use:
-  raise_stat SPATK 1 target=opponent caused_by_foe
-  confuse target=opponent
+  raise_stat SPATK 1 target=opponent
+  confuse target=target

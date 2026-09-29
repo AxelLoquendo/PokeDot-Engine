@@ -1,0 +1,4 @@
+on_endure_ko:
+  chance 10
+    block
+  endchance

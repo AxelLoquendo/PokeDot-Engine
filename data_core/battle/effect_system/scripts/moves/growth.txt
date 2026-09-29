@@ -1,9 +1,4 @@
-# growth — +1 Atk/SpA; +2 under sun
+# growth
 on_use:
-  if weather sun
-    raise_stat ATK 2 target=user
-    raise_stat SPATK 2 target=user
-  else
-    raise_stat ATK 1 target=user
-    raise_stat SPATK 1 target=user
-  endif
+  raise_stat ATK 1 target=user
+  raise_stat SPATK 1 target=user

@@ -84,6 +84,13 @@ static func _eval_from(cmd: EffectCommand, ctx: EffectContext, start: int) -> bo
 			return who != null and AbilityRuntime.blocks_intimidate(who)
 		"has_meta":
 			return _has_meta(ctx, cmd.arg_string(start + 1))
+		"hold_type_match":
+			return _hold_type_match(ctx)
+		"target_acted":
+			return ctx.target != null and bool(ctx.target.get_meta("acted_this_turn", false))
+		"is_confused":
+			return ctx.user != null and ctx.user.is_confused()
+
 		"stat":
 			return _stat_matches(ctx.query_int, cmd.arg_string(start + 1).to_lower())
 		"acted_after_target":
@@ -180,6 +187,34 @@ static func _move_flag_matches(ctx: EffectContext, flag: String) -> bool:
 		"secondary":
 			return m.secondary_chance > 0 \
 				or m.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE
+		"powder", "powder_move":
+			return m.powder_move
+		"bullet", "ballistic_move":
+			return m.ballistic_move
+		"always_hits":
+			return m.always_hits
+		"ignores_protect":
+			return m.ignores_protect
+		"ignores_substitute":
+			return m.ignores_substitute
+		"always_critical":
+			return m.always_critical
+		"sound_move":
+			return m.sound_move
+		"gravity_banned":
+			return m.gravity_banned
+		"thaws_user":
+			return m.thaws_user
+		"drain":
+			return m.drain_percent > 0
+		"multi_hit", "is_multi_hit":
+			return m.is_multi_hit
+		"explosion", "is_explosion":
+			return m.is_explosion
+		"magic_coat", "magic_coat_affected":
+			return m.magic_coat_affected
+		"snatch", "snatch_affected":
+			return m.snatch_affected
 	return false
 
 
@@ -316,6 +351,22 @@ static func _has_meta(ctx: EffectContext, meta_key: String) -> bool:
 	if meta_key == "zero_to_hero_transformed":
 		return ctx.user.zero_to_hero_transformed
 	return false
+
+
+## Plates / Type Power / Gems: hold_effect_param == tipo del movimiento.
+static func _hold_type_match(ctx: EffectContext) -> bool:
+	if ctx.user == null or ctx.move == null:
+		return false
+	var data: ItemData = HoldItemRuntime.get_item_data(ctx.user)
+	if data == null:
+		return false
+	var he: HoldEffects.HoldEffect = data.hold_effect
+	if he != HoldEffects.HoldEffect.HOLD_EFFECT_TYPE_POWER \
+			and he != HoldEffects.HoldEffect.HOLD_EFFECT_PLATE \
+			and he != HoldEffects.HoldEffect.HOLD_EFFECT_GEMS \
+			and he != HoldEffects.HoldEffect.HOLD_EFFECT_DRIVE:
+		return false
+	return int(data.hold_effect_param) == int(ctx.move.type)
 
 
 static func _compare(a: float, op: String, b: float) -> bool:

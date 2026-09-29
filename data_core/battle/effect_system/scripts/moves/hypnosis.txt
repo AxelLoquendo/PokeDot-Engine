@@ -1,0 +1,3 @@
+# hypnosis
+on_use:
+  status SLEEP target=target

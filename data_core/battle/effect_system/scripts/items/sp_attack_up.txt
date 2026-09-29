@@ -1,0 +1,6 @@
+on_pinch:
+  if hp_percent <= 25
+    raise_stat SPATK 1 target=user
+    message "¡El At. Esp. de {user} subió!"
+    consume_held
+  endif

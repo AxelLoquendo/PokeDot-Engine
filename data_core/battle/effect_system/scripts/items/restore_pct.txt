@@ -1,0 +1,6 @@
+on_end_turn:
+  if hp_percent <= 50
+    heal_percent 25 target=user
+    message "¡{user} recuperó PS con su baya!"
+    consume_held
+  endif

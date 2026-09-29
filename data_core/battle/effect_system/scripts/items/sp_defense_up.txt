@@ -1,0 +1,6 @@
+on_pinch:
+  if hp_percent <= 25
+    raise_stat SPDEF 1 target=user
+    message "¡La Def. Esp. de {user} subió!"
+    consume_held
+  endif

@@ -1,0 +1,3 @@
+# poison_gas
+on_use:
+  status POISON target=target

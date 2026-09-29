@@ -51,6 +51,21 @@ static func get_ally(battler: BattleBattler, battle: BattleManager) -> BattleBat
 # Eventos de secuencia (async)
 # ═══════════════════════════════════════════════════════════
 
+## Rating de IA del .tres AbilityData (−100…100). 0 si no hay datos.
+static func get_ai_rating(battler: BattleBattler) -> int:
+	if battler == null:
+		return 0
+	var id: AbilityId.Id = get_id(battler)
+	if id == AbilityId.Id.NONE or id == AbilityId.Id.COUNT:
+		return 0
+	if AbilityDatabase == null or not AbilityDatabase.has_ability(id):
+		return 0
+	var data: AbilityData = AbilityDatabase.get_ability(id)
+	if data == null:
+		return 0
+	return data.ai_rating
+
+
 static func on_switch_in(battler: BattleBattler, opponent: BattleBattler, battle: BattleManager) -> void:
 	if battler == null or battler.pokemon == null or battle == null:
 		return

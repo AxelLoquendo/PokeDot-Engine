@@ -1,0 +1,4 @@
+# power_based_on_target_hp
+# Efecto de fórmula / resolución de motor (MovePowerResolver, FixedDamageResolver,
+# TwoTurnResolver o match en BattleManager). Sin bloque on_use/on_hit:
+# MoveSystem.has_script lo verá pero no interceptará (sin bloques ejecutables).

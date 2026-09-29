@@ -1,0 +1,3 @@
+# scary_face
+on_use:
+  lower_stat SPEED 2 target=opponent caused_by_foe

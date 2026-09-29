@@ -1,0 +1,3 @@
+# hail
+on_use:
+  set_weather HAIL 5

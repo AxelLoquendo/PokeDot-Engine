@@ -1,0 +1,4 @@
+on_power:
+  if effectiveness > 1.0
+    multiply power 1.2
+  endif

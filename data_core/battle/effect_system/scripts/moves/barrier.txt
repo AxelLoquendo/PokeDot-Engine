@@ -1,0 +1,3 @@
+# barrier
+on_use:
+  raise_stat DEF 2 target=user
