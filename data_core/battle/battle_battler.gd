@@ -148,7 +148,8 @@ func clear_illusion() -> void:
 	illusion_shiny = false
 	illusion_form_id = 0
 
-func _reset_stages() -> void:
+## Solo las 7 etapas de estadística (Neblina). NO tocar volátiles ni Wish/Bide/etc.
+func reset_stat_stages() -> void:
 	stage_attack = 0
 	stage_defense = 0
 	stage_sp_attack = 0
@@ -156,6 +157,10 @@ func _reset_stages() -> void:
 	stage_speed = 0
 	stage_accuracy = 0
 	stage_evasion = 0
+
+
+func _reset_stages() -> void:
+	reset_stat_stages()
 	confusion_turns = 0
 	flinched = false
 	ability_active = true

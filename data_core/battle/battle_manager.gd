@@ -1313,8 +1313,11 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 		if battler.has_meta("helping_hand"):
 			battler.remove_meta("helping_hand")
 
-	for action: BattleAction in actions:
+	var i: int = 0
+	while i < actions.size():
+		var action: BattleAction = actions[i]
 		if action == null or action.actor == null or action.actor.is_fainted():
+			i += 1
 			continue
 		# Si el objetivo principal del movimiento ya no está consciente, re-apuntar o saltar
 		if action.kind == BattleAction.Kind.MOVE:
@@ -1326,20 +1329,40 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 						retarget = a
 						break
 				if retarget == null:
+					i += 1
 					continue
 				action.target = retarget
 			await _execute_move(action)
 		elif action.kind == BattleAction.Kind.SWITCH:
 			await _execute_switch_action(action)
+
+		# After You / Quash: reordena acciones pendientes del turno
+		var j: int = i + 1
+		while j < actions.size():
+			var other: BattleAction = actions[j]
+			if other == null or other.actor == null or not other.actor.has_meta("quash_priority"):
+				j += 1
+				continue
+			var qp: int = int(other.actor.get_meta("quash_priority"))
+			other.actor.remove_meta("quash_priority")
+			actions.remove_at(j)
+			if qp >= 99:
+				# After You: actúa justo después de la acción actual
+				actions.insert(i + 1, other)
+			else:
+				# Quash: al final del turno
+				actions.append(other)
+			break
+
 		# Tras cada acción: reemplazos forzados (estilo pokeemerald post-faint)
 		await _resolve_mid_turn_faints()
 		if not side_has_conscious(true) or not side_has_conscious(false):
 			if not party_has_reserve(true) or not party_has_reserve(false):
-				# Sin reservas en algún bando: el cierre de combate se hace al salir del loop
 				if not side_has_conscious(true) and not party_has_reserve(true):
 					break
 				if not side_has_conscious(false) and not party_has_reserve(false):
 					break
+		i += 1
 
 	for _clr: BattleBattler in get_all_actives():
 		if _clr != null and _clr.has_meta("switching_this_turn"):
@@ -2884,8 +2907,11 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			return
 
 		MoveStruct.MoveEffect.EFFECT_HAZE:
-			player._reset_stages()
-			enemy._reset_stages()
+			# Legacy: MoveSystem/haze.txt suele interceptar antes. Solo stats.
+			if player != null:
+				player.reset_stat_stages()
+			if enemy != null:
+				enemy.reset_stat_stages()
 			message.emit("¡Se eliminaron todos los cambios de estadísticas!")
 			await _wait(0.7)
 			return
@@ -5203,10 +5229,6 @@ func _apply_hazards_on_switch_in(battler: BattleBattler) -> void:
 			await _wait(0.8)
 			return
 
-	if side.sticky_web and is_grounded:
-		message.emit("¡%s quedó atrapado en la Red Viscosa!" % battler.get_display_name())
-		await _apply_stat_change(battler, PokemonInstance.Stat.SPEED, -1, true)
-
 	if side.spikes_layers > 0 and is_grounded and not AbilityRuntime.blocks_indirect_damage(battler):
 		var fraction: float = [0.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0][side.spikes_layers]
 		var dmg2: int = maxi(1, int(float(battler.get_max_hp()) * fraction))
@@ -5229,6 +5251,11 @@ func _apply_hazards_on_switch_in(battler: BattleBattler) -> void:
 		elif not is_steel:
 			var status: PokemonInstance.Status = PokemonInstance.Status.TOXIC if side.toxic_spikes_layers >= 2 else PokemonInstance.Status.POISON
 			await _apply_status(battler, status)
+
+	# Sticky Web último (orden oficial: Rocks → Spikes → Toxic Spikes → Web)
+	if side.sticky_web and is_grounded:
+		message.emit("¡%s quedó atrapado en la Red Viscosa!" % battler.get_display_name())
+		await _apply_stat_change(battler, PokemonInstance.Stat.SPEED, -1, true)
 
 func _item_is_berry(item_id: int) -> bool:
 	if item_id <= 0:

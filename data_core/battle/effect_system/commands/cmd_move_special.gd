@@ -265,8 +265,8 @@ func _haze_reset(ctx: EffectContext) -> void:
 	if ctx == null or ctx.battle == null:
 		return
 	for b: BattleBattler in ctx.battle.get_all_actives():
-		if b != null and b.has_method("_reset_stages"):
-			b._reset_stages()
+		if b != null:
+			b.reset_stat_stages()
 	ctx.battle.message.emit("¡Se eliminaron todos los cambios de estadísticas!")
 	await ctx.battle._wait(0.5)
 
