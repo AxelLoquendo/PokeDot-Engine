@@ -1,0 +1,794 @@
+[gd_scene format=3 uid="uid://oed22tktwavc"]
+
+[ext_resource type="Texture2D" uid="uid://cbyih53kmnlcl" path="res://graphics/battle_ground/BG_LongGrass.png" id="1_k6qbx"]
+[ext_resource type="Texture2D" uid="uid://b7lftbn5vfcss" path="res://graphics/pokemon/back/MEGA_DRAGALGE.png" id="2_jujd4"]
+[ext_resource type="Texture2D" uid="uid://dnmd3xk7383pl" path="res://graphics/pokemon/back/CHARIZARD_GMAX.png" id="3_bxvew"]
+[ext_resource type="Texture2D" uid="uid://cs6sqfvgfdnk7" path="res://graphics/pokemon/front/TERAPAGOS_STELLAR.png" id="4_kp2cf"]
+[ext_resource type="Texture2D" uid="uid://bn20bhhr7wx20" path="res://graphics/pokemon/front/MEGA_ZYGARDE.png" id="5_gl38t"]
+[ext_resource type="FontFile" uid="uid://dr5ew077ugnws" path="res://pokemon-emerald-pro.ttf" id="6_jgu86"]
+[ext_resource type="Texture2D" uid="uid://c32c4cujica21" path="res://graphics/battle_interface/fight.png" id="7_mos2q"]
+[ext_resource type="Texture2D" uid="uid://bwyevulw2cvp4" path="res://graphics/battle_interface/fight_focus.png" id="8_eqijo"]
+[ext_resource type="Texture2D" uid="uid://b4vii3402655x" path="res://graphics/battle_interface/bag.png" id="9_rdbc3"]
+[ext_resource type="Texture2D" uid="uid://cyuvmrmwgpog8" path="res://graphics/battle_interface/bag_focus.png" id="10_tv7t3"]
+[ext_resource type="Texture2D" uid="uid://db424c1qusthy" path="res://graphics/battle_interface/pokemon.png" id="11_epc5h"]
+[ext_resource type="Texture2D" uid="uid://b42mql7j55yo5" path="res://graphics/battle_interface/pokemon_focus.png" id="12_mkwb1"]
+[ext_resource type="Texture2D" uid="uid://c8c0604oi6fct" path="res://graphics/battle_interface/run.png" id="13_yxyqi"]
+[ext_resource type="Texture2D" uid="uid://x0svlm56d2qb" path="res://graphics/battle_interface/run_focus.png" id="14_k0vkv"]
+[ext_resource type="Texture2D" uid="uid://ibsgrtw1i3qp" path="res://graphics/battle_interface/overlay_fight.png" id="15_u45pc"]
+[ext_resource type="Texture2D" uid="uid://cbfgd0b15rwau" path="res://graphics/battle_interface/cursor_fight/normal.png" id="16_u6pey"]
+[ext_resource type="Texture2D" uid="uid://buxgjq1qfw6yt" path="res://graphics/battle_interface/cursor_fight/normal_focus.png" id="17_n6n8v"]
+[ext_resource type="Script" uid="uid://dt8nafi5j03p5" path="res://scenes/ui_party_menu/compressed.gd" id="18_yfhb1"]
+[ext_resource type="Texture2D" uid="uid://dkvhmmhmu56n" path="res://graphics/types/normal.png" id="19_eyljj"]
+[ext_resource type="Texture2D" uid="uid://2uqbwv3kcqy3" path="res://game/graphics_eb/battle_interface/healthbox_singles_player.png" id="20_sa5ya"]
+[ext_resource type="Texture2D" uid="uid://c5lt6p4qelcmk" path="res://graphics/status/sleep.png" id="21_5dgm5"]
+[ext_resource type="Texture2D" uid="uid://csw0nagy2g81b" path="res://graphics/types/Tera/normal.png" id="22_ttmom"]
+[ext_resource type="Texture2D" uid="uid://bt18beno7g8rx" path="res://graphics/battle_interface/enemy_hp_box.png" id="23_aitxh"]
+[ext_resource type="Texture2D" uid="uid://d2fctsf11ue1w" path="res://graphics/ui_party_menu/icon_mega.png" id="24_f4pe2"]
+[ext_resource type="Texture2D" uid="uid://bcsyl1tg00rft" path="res://graphics/battle_interface/ability_bar.png" id="25_l346q"]
+[ext_resource type="Texture2D" uid="uid://2k0c1od1d808" path="res://graphics/pokemon/icons/CHARIZARD_GMAX.png" id="26_84sva"]
+[ext_resource type="Texture2D" uid="uid://r2a8tmhkiaq6" path="res://graphics/pokemon/icons/TERAPAGOS_STELLAR.png" id="27_l156a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i7i34"]
+font = ExtResource("6_jgu86")
+font_size = 32
+font_color = Color(0.972549, 0.972549, 0.972549, 1)
+shadow_size = 0
+shadow_color = Color(0.40784314, 0.34509805, 0.4392157, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwvbv"]
+font = ExtResource("6_jgu86")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ihri"]
+font = ExtResource("6_jgu86")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xtop"]
+font = ExtResource("6_jgu86")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t65gw"]
+font = ExtResource("6_jgu86")
+font_size = 32
+font_color = Color(0.3137255, 0.3137255, 0.34509805, 1)
+shadow_size = 0
+shadow_color = Color(0.627451, 0.627451, 0.65882355, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cfmi7"]
+font = ExtResource("6_jgu86")
+font_size = 32
+font_color = Color(0.2166214, 0.2166214, 0.21662131, 1)
+shadow_size = 0
+shadow_color = Color(0.61420316, 0.6142027, 0.6142028, 1)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7226g"]
+font = ExtResource("6_jgu86")
+font_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+shadow_size = 0
+shadow_color = Color(0.87058824, 0.8392157, 0.70980394, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhoec"]
+font = ExtResource("6_jgu86")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ok824"]
+line_spacing = 0.0
+font = ExtResource("6_jgu86")
+font_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+shadow_size = 0
+shadow_color = Color(0.87058824, 0.8392157, 0.70980394, 1)
+shadow_offset = Vector2(0, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_804mi"]
+font = ExtResource("6_jgu86")
+font_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+shadow_size = 0
+shadow_color = Color(0.87058824, 0.8392157, 0.70980394, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x3ds7"]
+font = ExtResource("6_jgu86")
+font_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+shadow_size = 0
+shadow_color = Color(0.87058824, 0.8392157, 0.70980394, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bk7db"]
+font = ExtResource("6_jgu86")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ctd3i"]
+font = ExtResource("6_jgu86")
+font_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0vws5"]
+font = ExtResource("6_jgu86")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+shadow_size = 0
+shadow_color = Color(0.26666668, 0.26666668, 0.26666668, 0.7176471)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="Animation" id="Animation_y8am3"]
+resource_name = "Entrada_Enemy"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleTriggers/Ability_Bar_Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(640, 88), Vector2(352, 88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleTriggers/Ability_Bar_Enemy:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wylot"]
+resource_name = "Entrada_Player"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleTriggers/Ability_Bar_Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(-128, 152), Vector2(128, 152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleTriggers/Ability_Bar_Player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w7ur2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleTriggers/Ability_Bar_Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleTriggers/Ability_Bar_Player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BattleTriggers/Ability_Bar_Enemy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(352, 88)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BattleTriggers/Ability_Bar_Enemy:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_noix1"]
+resource_name = "Salida_Enemy"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleTriggers/Ability_Bar_Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(352, 88), Vector2(640, 88)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleTriggers/Ability_Bar_Enemy:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jvsnx"]
+resource_name = "Salida_Player"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleTriggers/Ability_Bar_Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(128, 152), Vector2(-128, 152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleTriggers/Ability_Bar_Player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1touw"]
+_data = {
+&"Entrada_Enemy": SubResource("Animation_y8am3"),
+&"Entrada_Player": SubResource("Animation_wylot"),
+&"RESET": SubResource("Animation_w7ur2"),
+&"Salida_Enemy": SubResource("Animation_noix1"),
+&"Salida_Player": SubResource("Animation_jvsnx")
+}
+
+[node name="Battle_Double" type="Node2D" unique_id=684666793]
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1371238023]
+z_index = -1
+position = Vector2(512, 112)
+scale = Vector2(2, 2)
+texture = ExtResource("1_k6qbx")
+
+[node name="BattleMonSprites" type="Node2D" parent="." unique_id=2128945875]
+
+[node name="Pkmn_First_Player" type="Sprite2D" parent="BattleMonSprites" unique_id=445483822]
+position = Vector2(84, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("2_jujd4")
+
+[node name="Cry_Mon_Player" type="AudioStreamPlayer" parent="BattleMonSprites/Pkmn_First_Player" unique_id=255394112]
+
+[node name="Pkmn_Second_Player" type="Sprite2D" parent="BattleMonSprites" unique_id=1862591991]
+position = Vector2(180, 160)
+scale = Vector2(2, 2)
+texture = ExtResource("3_bxvew")
+
+[node name="Cry_Mon_Player" type="AudioStreamPlayer" parent="BattleMonSprites/Pkmn_Second_Player" unique_id=703776849]
+
+[node name="Pkmn_First_Enemy" type="Sprite2D" parent="BattleMonSprites" unique_id=157065124]
+position = Vector2(316, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("4_kp2cf")
+
+[node name="Cry_Mon_Enemy" type="AudioStreamPlayer" parent="BattleMonSprites/Pkmn_First_Enemy" unique_id=2085309159]
+
+[node name="Pkmn_Second_Enemy" type="Sprite2D" parent="BattleMonSprites" unique_id=654574102]
+position = Vector2(408, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("5_gl38t")
+
+[node name="Cry_Mon_Enemy" type="AudioStreamPlayer" parent="BattleMonSprites/Pkmn_Second_Enemy" unique_id=1474353923]
+
+[node name="BattleBox" type="Node2D" parent="." unique_id=1730484195]
+
+[node name="TextBox" type="ColorRect" parent="BattleBox" unique_id=1513262828]
+z_index = 40
+offset_top = 224.0
+offset_right = 480.0
+offset_bottom = 320.0
+color = Color(0.16078432, 0.19215687, 0.19215687, 1)
+
+[node name="BattleText" type="Label" parent="BattleBox/TextBox" unique_id=1210259726]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 225.0
+offset_bottom = 83.0
+text = "¿Qué debe hacer [NAME_PKMN]?."
+label_settings = SubResource("LabelSettings_i7i34")
+autowrap_mode = 2
+
+[node name="BattleNormalText" type="Label" parent="BattleBox/TextBox" unique_id=1603369614]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 448.0
+offset_bottom = 83.0
+text = "A aparecido un weedle salvaje"
+label_settings = SubResource("LabelSettings_i7i34")
+autowrap_mode = 2
+
+[node name="ActionBattle" type="Control" parent="BattleBox" unique_id=357857894]
+z_index = 40
+layout_mode = 3
+anchors_preset = 0
+offset_right = 116.0
+offset_bottom = 28.0
+
+[node name="GridContainer" type="GridContainer" parent="BattleBox/ActionBattle" unique_id=1656734978]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 216.0
+offset_right = 356.5
+offset_bottom = 264.0
+scale = Vector2(2, 2)
+theme_override_constants/h_separation = -4
+theme_override_constants/v_separation = -8
+columns = 2
+
+[node name="Fight" type="TextureButton" parent="BattleBox/ActionBattle/GridContainer" unique_id=646766830]
+layout_mode = 2
+texture_normal = ExtResource("7_mos2q")
+texture_focused = ExtResource("8_eqijo")
+
+[node name="Bag" type="TextureButton" parent="BattleBox/ActionBattle/GridContainer" unique_id=394091488]
+layout_mode = 2
+texture_normal = ExtResource("9_rdbc3")
+texture_focused = ExtResource("10_tv7t3")
+
+[node name="Pkmn" type="TextureButton" parent="BattleBox/ActionBattle/GridContainer" unique_id=65185408]
+layout_mode = 2
+texture_normal = ExtResource("11_epc5h")
+texture_focused = ExtResource("12_mkwb1")
+
+[node name="Run" type="TextureButton" parent="BattleBox/ActionBattle/GridContainer" unique_id=139225433]
+layout_mode = 2
+texture_normal = ExtResource("13_yxyqi")
+texture_focused = ExtResource("14_k0vkv")
+
+[node name="Overlay_Fight" type="Sprite2D" parent="BattleBox" unique_id=1678895704]
+visible = false
+z_index = 40
+position = Vector2(240, 272)
+texture = ExtResource("15_u45pc")
+
+[node name="Moves" type="Control" parent="BattleBox/Overlay_Fight" unique_id=1481604383]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -240.0
+offset_top = -42.0
+offset_right = 108.0
+offset_bottom = 46.0
+
+[node name="GridContainer" type="GridContainer" parent="BattleBox/Overlay_Fight/Moves" unique_id=1124820245]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 354.0
+offset_bottom = 94.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Move" type="TextureButton" parent="BattleBox/Overlay_Fight/Moves/GridContainer" unique_id=1516370850]
+layout_mode = 2
+texture_normal = ExtResource("16_u6pey")
+texture_focused = ExtResource("17_n6n8v")
+
+[node name="Move_Name" type="Label" parent="BattleBox/Overlay_Fight/Moves/GridContainer/Move" unique_id=622997778]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_pwvbv")
+horizontal_alignment = 1
+script = ExtResource("18_yfhb1")
+ancho_maximo = 52.0
+
+[node name="Move2" type="TextureButton" parent="BattleBox/Overlay_Fight/Moves/GridContainer" unique_id=1094999619]
+layout_mode = 2
+texture_normal = ExtResource("16_u6pey")
+texture_focused = ExtResource("17_n6n8v")
+
+[node name="Move_Name" type="Label" parent="BattleBox/Overlay_Fight/Moves/GridContainer/Move2" unique_id=603322247]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_3ihri")
+horizontal_alignment = 1
+script = ExtResource("18_yfhb1")
+ancho_maximo = 52.0
+
+[node name="Move3" type="TextureButton" parent="BattleBox/Overlay_Fight/Moves/GridContainer" unique_id=768331163]
+layout_mode = 2
+texture_normal = ExtResource("16_u6pey")
+texture_focused = ExtResource("17_n6n8v")
+
+[node name="Move_Name" type="Label" parent="BattleBox/Overlay_Fight/Moves/GridContainer/Move3" unique_id=1911999931]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_8xtop")
+horizontal_alignment = 1
+script = ExtResource("18_yfhb1")
+ancho_maximo = 52.0
+
+[node name="Move4" type="TextureButton" parent="BattleBox/Overlay_Fight/Moves/GridContainer" unique_id=192947261]
+layout_mode = 2
+texture_normal = ExtResource("16_u6pey")
+texture_focused = ExtResource("17_n6n8v")
+
+[node name="Move_Name" type="Label" parent="BattleBox/Overlay_Fight/Moves/GridContainer/Move4" unique_id=1146129954]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 154.0
+offset_bottom = 36.0
+text = "Cuchillada"
+label_settings = SubResource("LabelSettings_t65gw")
+horizontal_alignment = 1
+script = ExtResource("18_yfhb1")
+ancho_maximo = 52.0
+
+[node name="PP" type="Label" parent="BattleBox/Overlay_Fight" unique_id=1094832402]
+texture_filter = 1
+offset_left = 132.0
+offset_top = 5.0
+offset_right = 162.0
+offset_bottom = 33.0
+text = "PP:"
+label_settings = SubResource("LabelSettings_cfmi7")
+
+[node name="Number_PP" type="Label" parent="BattleBox/Overlay_Fight/PP" unique_id=1873687360]
+texture_filter = 1
+layout_mode = 0
+offset_left = 30.0
+offset_right = 60.0
+offset_bottom = 28.0
+text = "10"
+label_settings = SubResource("LabelSettings_cfmi7")
+
+[node name="Type" type="Sprite2D" parent="BattleBox/Overlay_Fight" unique_id=652472146]
+position = Vector2(176, -11)
+texture = ExtResource("19_eyljj")
+
+[node name="BattleHPBox" type="Node2D" parent="." unique_id=1062967123]
+
+[node name="Player_First_HPBox" type="Sprite2D" parent="BattleHPBox" unique_id=935735563]
+position = Vector2(368, 158)
+scale = Vector2(2, 2)
+texture = ExtResource("20_sa5ya")
+
+[node name="NamePkmnPlayer" type="Label" parent="BattleHPBox/Player_First_HPBox" unique_id=1219397562]
+offset_left = -34.5
+offset_top = -18.5
+offset_right = 27.0
+offset_bottom = -4.5
+text = "Hydrapple"
+label_settings = SubResource("LabelSettings_7226g")
+script = ExtResource("18_yfhb1")
+
+[node name="HpBar" type="ColorRect" parent="BattleHPBox/Player_First_HPBox" unique_id=400360891]
+offset_top = -1.0
+offset_right = 48.0
+offset_bottom = 1.0
+color = Color(0.4509804, 1, 0.6784314, 1)
+
+[node name="ExpBar" type="ColorRect" parent="BattleHPBox/Player_First_HPBox" unique_id=431995718]
+offset_left = -16.0
+offset_top = 15.0
+offset_right = 48.0
+offset_bottom = 17.0
+color = Color(0.12941177, 0.54901963, 0.9411765, 1)
+
+[node name="Genero" type="Label" parent="BattleHPBox/Player_First_HPBox" unique_id=494430435]
+offset_left = 48.5
+offset_right = 54.5
+offset_bottom = 14.0
+text = "♂"
+label_settings = SubResource("LabelSettings_hhoec")
+
+[node name="HP" type="Label" parent="BattleHPBox/Player_First_HPBox" unique_id=452424857]
+offset_left = 16.5
+offset_right = 46.5
+offset_bottom = 14.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_ok824")
+horizontal_alignment = 2
+
+[node name="Level" type="Label" parent="BattleHPBox/Player_First_HPBox" unique_id=152323647]
+texture_filter = 1
+offset_left = 18.5
+offset_top = -17.0
+offset_right = 50.5
+offset_bottom = -3.0
+text = "lv. 100"
+label_settings = SubResource("LabelSettings_804mi")
+
+[node name="Status" type="Sprite2D" parent="BattleHPBox/Player_First_HPBox" unique_id=2009543054]
+visible = false
+position = Vector2(-39, 12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_5dgm5")
+
+[node name="Indicador" type="Sprite2D" parent="BattleHPBox/Player_First_HPBox" unique_id=592751136]
+visible = false
+position = Vector2(-58, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_ttmom")
+
+[node name="Player_Second_HPBox" type="Sprite2D" parent="BattleHPBox" unique_id=1870122561]
+position = Vector2(368, 158)
+scale = Vector2(2, 2)
+texture = ExtResource("20_sa5ya")
+
+[node name="NamePkmnPlayer" type="Label" parent="BattleHPBox/Player_Second_HPBox" unique_id=1227673260]
+offset_left = -34.5
+offset_top = -18.5
+offset_right = 27.0
+offset_bottom = -4.5
+text = "Hydrapple"
+label_settings = SubResource("LabelSettings_7226g")
+script = ExtResource("18_yfhb1")
+
+[node name="HpBar" type="ColorRect" parent="BattleHPBox/Player_Second_HPBox" unique_id=797241342]
+offset_top = -1.0
+offset_right = 48.0
+offset_bottom = 1.0
+color = Color(0.4509804, 1, 0.6784314, 1)
+
+[node name="ExpBar" type="ColorRect" parent="BattleHPBox/Player_Second_HPBox" unique_id=420216381]
+offset_left = -16.0
+offset_top = 15.0
+offset_right = 48.0
+offset_bottom = 17.0
+color = Color(0.12941177, 0.54901963, 0.9411765, 1)
+
+[node name="Genero" type="Label" parent="BattleHPBox/Player_Second_HPBox" unique_id=423632509]
+offset_left = 48.5
+offset_right = 54.5
+offset_bottom = 14.0
+text = "♂"
+label_settings = SubResource("LabelSettings_hhoec")
+
+[node name="HP" type="Label" parent="BattleHPBox/Player_Second_HPBox" unique_id=166074348]
+offset_left = 16.5
+offset_right = 46.5
+offset_bottom = 14.0
+text = "00/00"
+label_settings = SubResource("LabelSettings_ok824")
+horizontal_alignment = 2
+
+[node name="Level" type="Label" parent="BattleHPBox/Player_Second_HPBox" unique_id=1713370040]
+texture_filter = 1
+offset_left = 18.5
+offset_top = -17.0
+offset_right = 50.5
+offset_bottom = -3.0
+text = "lv. 100"
+label_settings = SubResource("LabelSettings_804mi")
+
+[node name="Status" type="Sprite2D" parent="BattleHPBox/Player_Second_HPBox" unique_id=1333000444]
+visible = false
+position = Vector2(-39, 12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_5dgm5")
+
+[node name="Indicador" type="Sprite2D" parent="BattleHPBox/Player_Second_HPBox" unique_id=2062384026]
+visible = false
+position = Vector2(-58, 9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_ttmom")
+
+[node name="Enemy_First_HPBox" type="Sprite2D" parent="BattleHPBox" unique_id=297262500]
+position = Vector2(144, 34)
+scale = Vector2(2, 2)
+texture = ExtResource("23_aitxh")
+
+[node name="NamePkmnEnemy" type="Label" parent="BattleHPBox/Enemy_First_HPBox" unique_id=1117572019]
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 10.0
+offset_bottom = -1.5
+text = "Hydrapple"
+label_settings = SubResource("LabelSettings_x3ds7")
+script = ExtResource("18_yfhb1")
+
+[node name="HpBar" type="ColorRect" parent="BattleHPBox/Enemy_First_HPBox" unique_id=944257865]
+offset_left = -18.0
+offset_top = 1.0
+offset_right = 30.0
+offset_bottom = 4.0
+color = Color(0.18431373, 0.92941177, 0.28627452, 1)
+
+[node name="Genero" type="Label" parent="BattleHPBox/Enemy_First_HPBox" unique_id=733020938]
+offset_left = -55.5
+offset_top = -15.0
+offset_right = -49.5
+offset_bottom = -1.0
+text = "♂"
+label_settings = SubResource("LabelSettings_bk7db")
+
+[node name="Level" type="Label" parent="BattleHPBox/Enemy_First_HPBox" unique_id=2067312901]
+texture_filter = 1
+offset_left = 20.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = -1.0
+text = "100"
+label_settings = SubResource("LabelSettings_ctd3i")
+
+[node name="Status" type="Sprite2D" parent="BattleHPBox/Enemy_First_HPBox" unique_id=1278288853]
+visible = false
+position = Vector2(-43.5, 6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_5dgm5")
+
+[node name="Indicador" type="Sprite2D" parent="BattleHPBox/Enemy_First_HPBox" unique_id=1251059025]
+visible = false
+position = Vector2(42, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_f4pe2")
+
+[node name="Enemy_Second_HPBox" type="Sprite2D" parent="BattleHPBox" unique_id=142641269]
+position = Vector2(144, 34)
+scale = Vector2(2, 2)
+texture = ExtResource("23_aitxh")
+
+[node name="NamePkmnEnemy" type="Label" parent="BattleHPBox/Enemy_Second_HPBox" unique_id=514276212]
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 10.0
+offset_bottom = -1.5
+text = "Hydrapple"
+label_settings = SubResource("LabelSettings_x3ds7")
+script = ExtResource("18_yfhb1")
+
+[node name="HpBar" type="ColorRect" parent="BattleHPBox/Enemy_Second_HPBox" unique_id=927619948]
+offset_left = -18.0
+offset_top = 1.0
+offset_right = 30.0
+offset_bottom = 4.0
+color = Color(0.18431373, 0.92941177, 0.28627452, 1)
+
+[node name="Genero" type="Label" parent="BattleHPBox/Enemy_Second_HPBox" unique_id=1154264214]
+offset_left = -55.5
+offset_top = -15.0
+offset_right = -49.5
+offset_bottom = -1.0
+text = "♂"
+label_settings = SubResource("LabelSettings_bk7db")
+
+[node name="Level" type="Label" parent="BattleHPBox/Enemy_Second_HPBox" unique_id=2088611522]
+texture_filter = 1
+offset_left = 20.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = -1.0
+text = "100"
+label_settings = SubResource("LabelSettings_ctd3i")
+
+[node name="Status" type="Sprite2D" parent="BattleHPBox/Enemy_Second_HPBox" unique_id=621245328]
+visible = false
+position = Vector2(-43.5, 6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_5dgm5")
+
+[node name="Indicador" type="Sprite2D" parent="BattleHPBox/Enemy_Second_HPBox" unique_id=1879768274]
+visible = false
+position = Vector2(42, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_f4pe2")
+
+[node name="BattleTriggers" type="Node2D" parent="." unique_id=1931226264]
+
+[node name="Ability_Bar_Player" type="Sprite2D" parent="BattleTriggers" unique_id=1975445857]
+z_index = 40
+position = Vector2(128, 152)
+texture = ExtResource("25_l346q")
+vframes = 2
+
+[node name="Ability_Name" type="Label" parent="BattleTriggers/Ability_Bar_Player" unique_id=1208085014]
+offset_left = -62.0
+offset_top = -33.0
+offset_right = 100.0
+offset_bottom = 31.0
+text = "[NAME_ABILITY]
+de [NAME_PKMN]"
+label_settings = SubResource("LabelSettings_0vws5")
+
+[node name="Icon_Mon" type="Sprite2D" parent="BattleTriggers/Ability_Bar_Player" unique_id=364345232]
+position = Vector2(-96, 0)
+texture = ExtResource("26_84sva")
+hframes = 2
+
+[node name="Ability_Bar_Enemy" type="Sprite2D" parent="BattleTriggers" unique_id=1457864952]
+z_index = 40
+position = Vector2(352, 88)
+texture = ExtResource("25_l346q")
+vframes = 2
+frame = 1
+
+[node name="Ability_Name" type="Label" parent="BattleTriggers/Ability_Bar_Enemy" unique_id=1558020760]
+offset_left = -98.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+text = "[NAME_ABILITY]
+de [NAME_PKMN]"
+label_settings = SubResource("LabelSettings_0vws5")
+
+[node name="Icon_Mon" type="Sprite2D" parent="BattleTriggers/Ability_Bar_Enemy" unique_id=1013973349]
+position = Vector2(96, 0)
+texture = ExtResource("27_l156a")
+hframes = 2
+
+[node name="Animated_Ability_Bar" type="AnimationPlayer" parent="BattleTriggers" unique_id=271037761]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_1touw")

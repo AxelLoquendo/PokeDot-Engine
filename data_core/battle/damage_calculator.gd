@@ -57,7 +57,7 @@ static func check_hit(
 		acc_stage = clampi(attacker.stage_accuracy, -6, 6)
 	else:
 		acc_stage = clampi(attacker.stage_accuracy - defender.stage_evasion, -6, 6)
-	var stage_mult: float = BattleBattler._stage_multiplier(acc_stage)
+	var stage_mult: float = BattleBattler._accuracy_stage_multiplier(acc_stage)
 	var final_acc: float = float(acc) * stage_mult
 	final_acc *= HoldItemRuntime.accuracy_multiplier(attacker, defender)
 
@@ -74,7 +74,7 @@ static func check_hit(
 	if AbilityRuntime.has(attacker, AbilityId.Id.MINDS_EYE):
 		# ignora evasión del rival
 		var only_acc: int = clampi(attacker.stage_accuracy, -6, 6)
-		final_acc = float(acc) * BattleBattler._stage_multiplier(only_acc)
+		final_acc = float(acc) * BattleBattler._accuracy_stage_multiplier(only_acc)
 		if AbilityRuntime.has(attacker, AbilityId.Id.COMPOUND_EYES):
 			final_acc *= 1.3
 		if AbilityRuntime.victory_star_active(attacker):
@@ -214,25 +214,32 @@ static func compute_hit(
 				base *= 0.5
 
 	var stab: float = 1.0
-	var t1: PokemonData.Type = attacker.pokemon.get_type_1()
-	var t2: PokemonData.Type = attacker.pokemon.get_type_2()
+	var t1: PokemonData.Type = attacker.get_battle_type_1() if attacker.has_method("get_battle_type_1") else attacker.pokemon.get_type_1()
+	var t2: PokemonData.Type = attacker.get_battle_type_2() if attacker.has_method("get_battle_type_2") else attacker.pokemon.get_type_2()
 	if move.type == t1 or (t2 != PokemonData.Type.TYPE_NONE and move.type == t2):
 		stab = AbilityRuntime.stab_multiplier(attacker)
 		if AbilityRuntime.has(attacker, AbilityId.Id.ADAPTABILITY):
 			_note_atk(result, AbilityId.Id.ADAPTABILITY)
 
-	var eff: float = TypeChart.get_effectiveness(
-		move.type,
-		defender.pokemon.get_type_1(),
-		defender.pokemon.get_type_2()
-	)
+	var d_t1: PokemonData.Type = defender.get_battle_type_1() if defender.has_method("get_battle_type_1") else defender.pokemon.get_type_1()
+	var d_t2: PokemonData.Type = defender.get_battle_type_2() if defender.has_method("get_battle_type_2") else defender.pokemon.get_type_2()
+	var eff: float = TypeChart.get_effectiveness(move.type, d_t1, d_t2)
 
-	if eff <= 0.0 and (AbilityRuntime.bypasses_ghost_immunity(attacker, move) or defender.is_identified) \
-			and (defender.pokemon.get_type_1() == PokemonData.Type.TYPE_GHOST \
-				or defender.pokemon.get_type_2() == PokemonData.Type.TYPE_GHOST):
-		eff = 1.0
-		if AbilityRuntime.bypasses_ghost_immunity(attacker, move):
-			_note_atk(result, AbilityId.Id.SCRAPPY)
+	# Scrappy / Foresight / identified: ignorar solo inmunidad Fantasma y recalcular
+	if eff <= 0.0 and (AbilityRuntime.bypasses_ghost_immunity(attacker, move) or defender.is_identified):
+		var m1: float = TypeChart.get_multiplier(move.type, d_t1)
+		if d_t1 == PokemonData.Type.TYPE_GHOST and m1 <= 0.0:
+			m1 = 1.0
+		var m2: float = 1.0
+		if d_t2 != PokemonData.Type.TYPE_NONE and d_t2 != d_t1:
+			m2 = TypeChart.get_multiplier(move.type, d_t2)
+			if d_t2 == PokemonData.Type.TYPE_GHOST and m2 <= 0.0:
+				m2 = 1.0
+		var recalc: float = m1 * m2
+		if recalc > 0.0:
+			eff = recalc
+			if AbilityRuntime.bypasses_ghost_immunity(attacker, move):
+				_note_atk(result, AbilityId.Id.SCRAPPY)
 
 	if not ignore_defender_ability and eff > 0.0 and eff <= 1.0 \
 			and AbilityRuntime.blocks_unless_super_effective(defender):
@@ -299,6 +306,18 @@ static func compute_hit(
 		pass
 	if defender.get_meta("tar_shot", false) and move.type == PokemonData.Type.TYPE_FIRE:
 		base *= 2.0
+
+	# Movimientos de área en dobles: ×0.75
+	if is_doubles and move != null:
+		match move.target:
+			MoveStruct.MoveTarget.TARGET_BOTH, \
+			MoveStruct.MoveTarget.TARGET_FOES_AND_ALLY, \
+			MoveStruct.MoveTarget.TARGET_ALL_BATTLERS, \
+			MoveStruct.MoveTarget.TARGET_OPPONENTS_FIELD:
+				base *= 0.75
+	# Helping Hand
+	if attacker != null and bool(attacker.get_meta("helping_hand", false)):
+		base *= 1.5
 
 	var random: float = randf_range(0.85, 1.0)
 	var damage: int = int(floor(base * stab * eff * crit_mult * random))

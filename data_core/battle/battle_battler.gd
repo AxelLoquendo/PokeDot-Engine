@@ -136,6 +136,10 @@ func setup(p: PokemonInstance, player_side: bool, p_slot: int = 0) -> void:
 	is_player_side = player_side
 	slot_index = p_slot
 	_reset_stages()
+	clear_slot_metas()
+	# toxic reset on switch: contador vuelve a 1 (juegos oficiales)
+	if pokemon != null and pokemon.status == PokemonInstance.Status.TOXIC:
+		pokemon.status_counter = 1
 	clear_illusion()
 	is_transformed = false
 	transform_backup.clear()
@@ -227,6 +231,19 @@ func _reset_stages() -> void:
 	is_transformed = false
 	transform_backup.clear()
 
+
+## Metas de combate ligadas al mon, no al slot. Limpiar al cambiar de Pokémon.
+func clear_slot_metas() -> void:
+	for k: String in [
+		"power_trick", "split_stat_override", "imprison", "magic_coat", "snatch",
+		"yawn_turns", "embargo_turns", "times_hit", "combo_hits", "fainted_allies",
+		"acted_this_turn", "took_damage_this_turn", "stats_dropped_this_turn",
+		"follow_me", "helping_hand", "quash_priority", "switching_this_turn",
+		"baton_pass", "rage_powder",
+	]:
+		if has_meta(k):
+			remove_meta(k)
+
 func is_fainted() -> bool:
 	return pokemon == null or pokemon.current_hp <= 0
 
@@ -296,6 +313,14 @@ func get_effective_stat(stat: PokemonInstance.Stat) -> int:
 			value *= 2.0
 
 	return maxi(1, int(floor(value)))
+
+
+## Precisión/evasión: (3+s)/3 si s≥0, 3/(3-s) si s<0 (no la escala de stats de combate).
+static func _accuracy_stage_multiplier(stage: int) -> float:
+	var s: int = clampi(stage, -6, 6)
+	if s >= 0:
+		return float(3 + s) / 3.0
+	return 3.0 / float(3 - s)
 
 static func _stage_multiplier(stage: int) -> float:
 	stage = clampi(stage, -6, 6)

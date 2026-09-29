@@ -93,8 +93,10 @@ static func end_of_turn_damage(battler: BattleBattler) -> Dictionary:
 			result.message = "%s sufre por el veneno." % battler.get_display_name()
 		PokemonInstance.Status.TOXIC:
 			mon.status_counter += 1
+			# Tope oficial: 15/16 del PS máx
+			var toxic_n: int = mini(mon.status_counter, 15)
 			@warning_ignore("integer_division")
-			result.damage = maxi(1, (mon.max_hp * mon.status_counter) / 16)
+			result.damage = maxi(1, (mon.max_hp * toxic_n) / 16)
 			result.message = "%s sufre mucho por el veneno." % battler.get_display_name()
 		PokemonInstance.Status.BURN:
 			@warning_ignore("integer_division")

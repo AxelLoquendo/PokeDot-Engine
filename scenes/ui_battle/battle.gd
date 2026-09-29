@@ -658,12 +658,13 @@ func _on_battle_message(text: String) -> void:
 	_show_message(text)
 
 
-func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
+func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int, slot: int = 0) -> void:
 	# Durante el KO solo diferimos SUBIDAS de PS (reemplazo a barra llena).
 	# Una BAJADA es daño al mon nuevo: hay que soltar el flag o la barra del
 	# segundo KO no anima y luego se vacía de golpe.
-	var primary_key: String = ("p" if is_player else "e") + "0"
+	var primary_key: String = ("p" if is_player else "e") + str(maxi(slot, 0))
 	var prev_hp: int = player_current_hp if is_player else enemy_current_hp
+	# Slot 0 mantiene los caches legacy de singles; multi refresca boxes abajo
 	if bool(_faint_animating.get(primary_key, false)):
 		if current_hp > prev_hp:
 			_pending_hp_after_faint[primary_key] = {"hp": current_hp, "max": _max_hp}
@@ -672,19 +673,28 @@ func _on_hp_changed(is_player: bool, current_hp: int, _max_hp: int) -> void:
 			_faint_animating[primary_key] = false
 			_pending_hp_after_faint.erase(primary_key)
 
-	if is_player:
-		player_current_hp = current_hp
-	else:
-		enemy_current_hp = current_hp
-	_update_hp_bars()
+	# Solo el slot 0 actualiza caches/targets de singles; el resto anima vía multi boxes
+	if slot <= 0:
+		if is_player:
+			player_current_hp = current_hp
+		else:
+			enemy_current_hp = current_hp
+		_update_hp_bars()
 	_update_multi_hp_boxes()
 
-	# KO: objetivo a 0 (lo anima _process; sin snap brusco)
+	# KO: objetivo a 0 (lo anima _process / tracked bars)
 	if current_hp <= 0 and battle != null:
-		if is_player:
-			player_hp_bar_target = 0.0
+		if slot <= 0:
+			if is_player:
+				player_hp_bar_target = 0.0
+			else:
+				enemy_hp_bar_target = 0.0
 		else:
-			enemy_hp_bar_target = 0.0
+			var box_ko: Sprite2D = _hp_box_for_slot(is_player, slot)
+			if box_ko != null:
+				var bar_ko: ColorRect = box_ko.get_node_or_null("HpBar") as ColorRect
+				if bar_ko != null:
+					_hp_bar_anim_targets[bar_ko.get_instance_id()] = 0.0
 		var actives: Array = battle.player_actives if is_player else battle.enemy_actives
 		for i: int in range(actives.size()):
 			var b: BattleBattler = actives[i]
@@ -739,16 +749,37 @@ func _on_turn_ended() -> void:
 	_update_status_icons()
 	_refresh_all_multi_appearances()
 	_pending_move_index = -1
-	# Recarga / carga del mon que está en input (o todos en multi)
+	# Recarga / carga: en multi hay que registrar TODOS los slots auto
+	# y abrir menú del resto (antes: return tras el primero → soft-lock).
 	if battle != null and battle.is_multi_battle():
+		var need_manual: bool = false
 		for b: BattleBattler in battle.player_actives:
-			if b != null and not b.is_fainted() and (b.charging_move != null or b.must_recharge):
+			if b == null or b.is_fainted():
+				continue
+			if b.charging_move != null or b.must_recharge:
 				current_menu = MenuState.BUSY
 				action_menu.visible = false
 				fight_menu.visible = false
 				await battle.player_choose_move(0, b.slot_index, _input_target_slot)
-				return
-	elif battle.player.charging_move != null or battle.player.must_recharge:
+			else:
+				need_manual = true
+		# Turno ya resuelto (todos auto o 1v1 interno)
+		if not battle.is_running:
+			return
+		if need_manual and battle._pending_player_actions.size() > 0:
+			# Primer slot consciente que aún no auto-jugó
+			var next_s: int = _next_conscious_player_slot(0)
+			if next_s >= 0:
+				_input_actor_slot = next_s
+				_sync_player_pokemon_ref_from_slot()
+				_begin_player_command_phase()
+			return
+		if need_manual:
+			_begin_player_command_phase()
+			return
+		return
+	elif battle != null and battle.player != null \
+			and (battle.player.charging_move != null or battle.player.must_recharge):
 		current_menu = MenuState.BUSY
 		action_menu.visible = false
 		fight_menu.visible = false

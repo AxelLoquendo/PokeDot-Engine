@@ -838,8 +838,18 @@ static func redirect_single_target(
 ) -> BattleBattler:
 	if actor == null or move == null or battle == null:
 		return target
+	# Follow Me / Rage Powder (prioridad sobre habilidades de redirección)
 	for b: BattleBattler in _all_actives(battle):
-		if b == null or b.is_fainted() or b.is_player_side == actor.is_player_side:
+		if b == null or b.is_fainted() or b == actor:
+			continue
+		if not (bool(b.get_meta("follow_me", false)) or bool(b.get_meta("rage_powder", false))):
+			continue
+		# Solo si el movimiento apunta al lado de quien usó Follow Me
+		if target != null and target.is_player_side == b.is_player_side:
+			return b
+	# Habilidades (Pararrayos, Colector, etc.): también desde ataques de aliados
+	for b: BattleBattler in _all_actives(battle):
+		if b == null or b.is_fainted() or b == actor:
 			continue
 		var ctx: EffectContext = EffectContext.new(b, actor, move, battle)
 		ctx.redirect_target = null

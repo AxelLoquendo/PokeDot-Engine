@@ -1,8 +1,8 @@
 on_end_turn:
   if user_type POISON
-	heal_percent 6.25 target=user
-	message "¡{user} recuperó PS con el Lodo Negro!"
+    heal_percent 6.25 target=user
+    message "¡{user} recuperó PS con el Lodo Negro!"
   else
-	damage_percent 12.5 target=user
-	message "¡{user} es herido por el Lodo Negro!"
+    damage_percent 12.5 target=user
+    message "¡{user} es herido por el Lodo Negro!"
   endif

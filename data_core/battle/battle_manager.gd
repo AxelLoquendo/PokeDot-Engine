@@ -3,7 +3,7 @@ extends RefCounted
 class_name BattleManager
 
 signal message(text: String)
-signal hp_changed(is_player: bool, current_hp: int, max_hp: int)
+signal hp_changed(is_player: bool, current_hp: int, max_hp: int, slot: int)
 signal player_progress_changed
 signal battle_ended(player_won: bool)
 signal turn_ended
@@ -86,6 +86,8 @@ var enemy_actives: Array[BattleBattler] = []
 var _pending_player_actions: Array[BattleAction] = []
 ## Pokémon del jugador que participaron (cambio / ataque) para repartir EXP.
 var exp_participants: Array[PokemonInstance] = []
+## Intentos de huida (fórmula de escape salvaje).
+var _escape_attempts: int = 0
 var _exp_awarded_to: Dictionary = {}  # instance_id mon enemigo -> true
 
 
@@ -259,10 +261,16 @@ func resolve_move_targets(
 		MoveStruct.MoveTarget.TARGET_ALLY:
 			if ally != null:
 				out.append(ally)
-		MoveStruct.MoveTarget.TARGET_USER_AND_ALLY, MoveStruct.MoveTarget.TARGET_USER_OR_ALLY:
+		MoveStruct.MoveTarget.TARGET_USER_AND_ALLY:
 			out.append(actor)
 			if ally != null:
 				out.append(ally)
+		MoveStruct.MoveTarget.TARGET_USER_OR_ALLY:
+			# Un solo objetivo: el elegido, o el usuario por defecto
+			if chosen != null and not chosen.is_fainted() and (chosen == actor or chosen == ally):
+				out.append(chosen)
+			else:
+				out.append(actor)
 		MoveStruct.MoveTarget.TARGET_BOTH, MoveStruct.MoveTarget.TARGET_OPPONENTS_FIELD:
 			for f: BattleBattler in foes:
 				out.append(f)
@@ -361,13 +369,13 @@ func _emit_hp(is_player_side: bool) -> void:
 	var b: BattleBattler = player if is_player_side else enemy
 	if b == null or b.pokemon == null:
 		return
-	hp_changed.emit(is_player_side, b.get_current_hp(), b.get_max_hp())
+	hp_changed.emit(is_player_side, b.get_current_hp(), b.get_max_hp(), b.slot_index)
 
 
 func _emit_hp_battler(battler: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null:
 		return
-	hp_changed.emit(battler.is_player_side, battler.get_current_hp(), battler.get_max_hp())
+	hp_changed.emit(battler.is_player_side, battler.get_current_hp(), battler.get_max_hp(), battler.slot_index)
 
 
 ## Compat 1v1 y multi: en multi, actor_slot indica qué mon del jugador actúa.
@@ -547,6 +555,10 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 
 	# Cambio voluntario en multi: encolar como acción del turno (independiente por slot)
 	if not free_switch and is_multi_battle() and _player_slot_count() > 1:
+		for pend: BattleAction in _pending_player_actions:
+			if pend != null and pend.kind == BattleAction.Kind.SWITCH and pend.switch_to == nuevo:
+				message.emit("¡Ese Pokémon ya fue elegido para salir!")
+				return
 		var switch_action: BattleAction = BattleAction.make_switch(actor, nuevo)
 		mark_exp_participant(nuevo)
 		_pending_player_actions.append(switch_action)
@@ -559,7 +571,17 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 		await _try_resolve_pending_turn()
 		return
 
-	# Cambio inmediato (1v1, o free_switch forzado)
+	# 1v1 voluntario: encolar SWITCH y resolver turno completo (incluye fin de turno)
+	if not free_switch and (not is_multi_battle() or _player_slot_count() <= 1):
+		var switch_action_s: BattleAction = BattleAction.make_switch(actor, nuevo)
+		mark_exp_participant(nuevo)
+		var enemy_actions_s: Array[BattleAction] = _enemy_choose_all_moves()
+		var all_s: Array[BattleAction] = [switch_action_s]
+		all_s.append_array(enemy_actions_s)
+		await _resolve_turn_actions(all_s)
+		return
+
+	# Cambio inmediato (solo free_switch forzado KO/pivot mid-turn)
 	var saliente_nombre: String = actor.get_display_name()
 	if actor.pokemon != null and not actor.is_fainted():
 		message.emit("¡%s, vuelve!" % saliente_nombre)
@@ -588,8 +610,9 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 	var opps: Array[BattleBattler] = get_opponents(actor)
 	if not opps.is_empty():
 		opp = opps[0]
-	await AbilityRuntime.on_switch_in(actor, opp, self)
 	await _apply_hazards_on_switch_in(actor)
+	if not actor.is_fainted():
+		await AbilityRuntime.on_switch_in(actor, opp, self)
 
 	if free_switch:
 		# Desbloquear quien espera (_await_forced_player_switch / pivot)
@@ -610,21 +633,7 @@ func player_choose_switch(nuevo: PokemonInstance, free_switch: bool = false, slo
 		turn_ended.emit()
 		return
 
-	# 1v1: el rival actúa tras el cambio
-	var enemy_actions: Array[BattleAction] = _enemy_choose_all_moves()
-	for ea: BattleAction in enemy_actions:
-		if ea != null:
-			await _execute_move(ea)
-			if not is_running:
-				return
-
-	if not side_has_conscious(false):
-		await _handle_enemy_faint()
-		return
-	if not side_has_conscious(true):
-		await _manejar_debilitacion_jugador()
-		return
-
+	# Voluntario 1v1 ya no llega aquí (se resolvió arriba).
 	turn_ended.emit()
 
 
@@ -639,14 +648,31 @@ func player_choose_run() -> void:
 		message.emit("¡No puedes escapar!")
 		await _wait(0.8)
 		return
-	if AbilityRuntime.prevents_escape(enemy, player):
-		message.emit("¡No puedes escapar!")
+	# Shadow Tag / Arena Trap / Magnet Pull etc. (cualquier rival activo)
+	for foe: BattleBattler in enemy_actives:
+		if foe != null and not foe.is_fainted() and AbilityRuntime.prevents_escape(foe, player):
+			message.emit("¡No puedes escapar!")
+			await _wait(0.8)
+			return
+	# Fórmula de huida (estilo clásico): (vel_A * 128 / vel_B + 30 * intentos) mod 256
+	var spd_a: int = player.get_effective_stat(PokemonInstance.Stat.SPEED) if player != null else 1
+	var spd_b: int = 1
+	if enemy != null and not enemy.is_fainted():
+		spd_b = maxi(1, enemy.get_effective_stat(PokemonInstance.Stat.SPEED))
+	_escape_attempts += 1
+	var odds: int = int(spd_a * 128 / spd_b) + 30 * _escape_attempts
+	odds = odds % 256
+	if randi_range(0, 255) < odds:
+		message.emit("¡Escapaste con éxito!")
+		_cleanup_battle_pokemon()
+		is_running = false
+		battle_ended.emit(true)
+	else:
+		message.emit("¡No pudiste escapar!")
 		await _wait(0.8)
-		return
-	message.emit("¡Escapaste con éxito!")
-	_cleanup_battle_pokemon()
-	is_running = false
-	battle_ended.emit(true)
+		# El rival actúa: turno de solo enemigo
+		var enemy_actions: Array[BattleAction] = _enemy_choose_all_moves()
+		await _resolve_turn_actions(enemy_actions)
 
 
 ## Usa un objeto de la mochila durante el combate. La UI decide qué objeto y
@@ -905,8 +931,9 @@ func _handle_enemy_faint() -> void:
 		pokemon_entered_field.emit(false)
 		await _wait(0.8)
 
-		await AbilityRuntime.on_switch_in(enemy, player, self)
 		await _apply_hazards_on_switch_in(enemy)
+		if not enemy.is_fainted():
+			await AbilityRuntime.on_switch_in(enemy, player, self)
 		turn_ended.emit()
 		return
 
@@ -1023,6 +1050,8 @@ func _award_experience_from(fainted_enemy: BattleBattler) -> void:
 	for mon2: PokemonInstance in recipients:
 		message.emit("¡%s ganó %d puntos de experiencia!" % [mon2.get_display_name(), each])
 		await _wait(0.55)
+		if mon2.has_method("gain_evs_from_yield"):
+			mon2.gain_evs_from_yield(species)
 		var result: Dictionary = mon2.gain_exp(each)
 		# Actualizar UI si es el activo
 		if player != null and player.pokemon == mon2:
@@ -1319,6 +1348,11 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 		if action == null or action.actor == null or action.actor.is_fainted():
 			i += 1
 			continue
+		# El slot se rellenó con otro mon: no ejecutar el move del debilitado
+		if action.kind == BattleAction.Kind.MOVE and action.actor_pokemon != null \
+				and action.actor.pokemon != action.actor_pokemon:
+			i += 1
+			continue
 		# Si el objetivo principal del movimiento ya no está consciente, re-apuntar o saltar
 		if action.kind == BattleAction.Kind.MOVE:
 			if action.target != null and action.target.is_fainted():
@@ -1488,6 +1522,7 @@ func _resolve_mid_turn_faints() -> void:
 		await AbilityRuntime.on_switch_out(eb, self)
 		AbilityRuntime.revert_transform(eb)
 		eb.setup(reserve, false, eb.slot_index)
+		_reset_exp_participants_for_opponent()
 		AbilityRuntime.prepare_illusion(eb, self)
 		_sync_primary_refs()
 		message.emit("¡Adelante, %s!" % eb.get_display_name())
@@ -1498,8 +1533,9 @@ func _resolve_mid_turn_faints() -> void:
 		var opps: Array[BattleBattler] = get_opponents(eb)
 		if not opps.is_empty():
 			opp = opps[0]
-		await AbilityRuntime.on_switch_in(eb, opp, self)
 		await _apply_hazards_on_switch_in(eb)
+		if not eb.is_fainted():
+			await AbilityRuntime.on_switch_in(eb, opp, self)
 		_emit_hp_battler(eb)
 
 	# Jugador: KO mid-turn con reservas → party menu y esperar (estilo pokeemerald)
@@ -1526,6 +1562,7 @@ func _execute_switch_action(action: BattleAction) -> void:
 	action.actor.setup(action.switch_to, side_player, slot)
 	mark_exp_participant(action.switch_to)
 	AbilityRuntime.prepare_illusion(action.actor, self)
+	await _apply_slot_entry_heals(action.actor)
 	_sync_primary_refs()
 	message.emit("¡Adelante, %s!" % action.actor.get_display_name())
 	pokemon_entered_field.emit(side_player)
@@ -1535,8 +1572,9 @@ func _execute_switch_action(action: BattleAction) -> void:
 	var opps: Array[BattleBattler] = get_opponents(action.actor)
 	if not opps.is_empty():
 		opp = opps[0]
-	await AbilityRuntime.on_switch_in(action.actor, opp, self)
 	await _apply_hazards_on_switch_in(action.actor)
+	if not action.actor.is_fainted():
+		await AbilityRuntime.on_switch_in(action.actor, opp, self)
 	_emit_hp_battler(action.actor)
 
 
@@ -1552,6 +1590,7 @@ func _request_replacements_if_needed() -> void:
 
 func _process_end_of_turn() -> void:
 	battle_turn_count += 1
+	await _process_position_timed_effects()
 	if get_effective_weather() != AbilityBattleEffect.weatherAbilityID.WEATHER_NONE:
 		await _apply_weather_damage()
 
@@ -1806,62 +1845,43 @@ func _manejar_debilitacion_jugador() -> void:
 
 
 func _sort_actions(actions: Array[BattleAction]) -> Array[BattleAction]:
-	# Pursuit: si el objetivo cambia este turno, actúa antes del switch (prioridad 7) y x2 daño.
-	var switching: Dictionary = {}
-	for act: BattleAction in actions:
-		if act != null and act.kind == BattleAction.Kind.SWITCH and act.actor != null:
-			switching[act.actor] = true
-			act.actor.set_meta("switching_this_turn", true)
-	for act2: BattleAction in actions:
-		if act2 == null or act2.kind != BattleAction.Kind.MOVE or act2.move == null:
+	# Clave fija por acción (prioridad, velocidad, sorteo único)
+	var keyed: Array = []
+	for a: BattleAction in actions:
+		if a == null:
 			continue
-		if act2.move.effect != MoveStruct.MoveEffect.EFFECT_PURSUIT:
-			continue
-		var tgt: BattleBattler = act2.target
-		if tgt != null and bool(switching.get(tgt, false)):
-			act2.priority = 7
-			act2.set_meta("pursuit_boost", true)
-	actions.sort_custom(func(a: BattleAction, b: BattleAction) -> bool:
-		if a.priority != b.priority:
-			return a.priority > b.priority
-		var sa: float = float(a.actor.get_effective_stat(PokemonInstance.Stat.SPEED)) \
-			* AbilityRuntime.speed_multiplier(a.actor, weather, terrain) \
-			* HoldItemRuntime.speed_multiplier(a.actor)
-		var sb: float = float(b.actor.get_effective_stat(PokemonInstance.Stat.SPEED)) \
-			* AbilityRuntime.speed_multiplier(b.actor, weather, terrain) \
-			* HoldItemRuntime.speed_multiplier(b.actor)
-		if _side_for(a.actor).tailwind_turns > 0:
-			sa *= 2.0
-		if _side_for(b.actor).tailwind_turns > 0:
-			sb *= 2.0
-		if sa != sb:
-			# Trick Room: el más lento actúa primero
-			if trick_room_turns > 0:
-				return sa < sb
-			return sa > sb
-		var stall_a: bool = AbilityRuntime.has(a.actor, AbilityId.Id.STALL)
-		var stall_b: bool = AbilityRuntime.has(b.actor, AbilityId.Id.STALL)
-		if stall_a != stall_b:
-			return not stall_a
-		# Quick Draw: 30% gana el desempate de velocidad
-		var qd_a: bool = AbilityRuntime.quick_draw_wins_speed_tie(a.actor)
-		var qd_b: bool = AbilityRuntime.quick_draw_wins_speed_tie(b.actor)
-		if qd_a != qd_b:
-			return qd_a
-		return randf() < 0.5
+		var pri: int = a.priority
+		var spd: int = 0
+		if a.actor != null and not a.actor.is_fainted():
+			spd = a.actor.get_effective_stat(PokemonInstance.Stat.SPEED)
+			if int(get_meta("trick_room_turns", 0)) > 0:
+				spd = -spd
+		var tie: int = randi()
+		keyed.append({"a": a, "pri": pri, "spd": spd, "tie": tie})
+	keyed.sort_custom(func(x: Dictionary, y: Dictionary) -> bool:
+		if int(x["pri"]) != int(y["pri"]):
+			return int(x["pri"]) > int(y["pri"])
+		if int(x["spd"]) != int(y["spd"]):
+			return int(x["spd"]) > int(y["spd"])
+		return int(x["tie"]) > int(y["tie"])
 	)
-	return actions
+	var out: Array[BattleAction] = []
+	for k: Dictionary in keyed:
+		out.append(k["a"] as BattleAction)
+	return out
+
 
 
 func _execute_move(action: BattleAction) -> void:
 	if action == null or action.actor == null:
 		return
-	if AbilityRuntime.should_skip_turn(action.actor):
+	var spread_cont: bool = action.has_meta("_skip_pp") and bool(action.get_meta("_skip_pp"))
+	if not spread_cont and AbilityRuntime.should_skip_turn(action.actor):
 		await ability_announce(action.actor)
 		message.emit("¡%s holgazanea!" % action.actor.get_display_name())
 		await _wait(0.8)
 		return
-	if AbilityRuntime.check_infatuation_blocks_move(action.actor, self):
+	if not spread_cont and AbilityRuntime.check_infatuation_blocks_move(action.actor, self):
 		await _wait(0.8)
 		return
 	var actor: BattleBattler = action.actor
@@ -1903,7 +1923,15 @@ func _execute_move(action: BattleAction) -> void:
 		await _wait(0.6)
 		return
 
-	AbilityRuntime.try_protean(actor, move, self)
+	if not spread_cont:
+		AbilityRuntime.try_protean(actor, move, self)
+	# Descongelar usuario (thaws_user o movimiento de Fuego)
+	if move != null and actor != null and actor.pokemon != null \
+			and actor.pokemon.status == PokemonInstance.Status.FREEZE:
+		if move.thaws_user or move.type == PokemonData.Type.TYPE_FIRE:
+			actor.pokemon.cure_status()
+			message.emit("¡%s se descongeló!" % actor.get_display_name())
+			await _wait(0.45)
 
 	if target != null and AbilityRuntime.damp_blocks_explosion(target, move):
 		await ability_announce(target)
@@ -1962,22 +1990,25 @@ func _execute_move(action: BattleAction) -> void:
 			if slot_pp != null:
 				slot_pp.current_pp = maxi(0, slot_pp.current_pp - extra_pp)
 
-	var check: StatusConditions.ActionCheck = StatusConditions.check_can_act(actor)
-	actor.flinched = false
-	if not check.message.is_empty():
-		message.emit(check.message)
-		await _wait(0.8)
-	if not check.can_act:
-		if check.is_confusion_hit:
-			var self_damage: int = StatusConditions.self_hit_confusion(actor)
-			var dealt_self: int = actor.apply_damage(self_damage)
-			_emit_hp(actor.is_player_side)
-			message.emit("Hizo %d PS de daño." % dealt_self)
-			await _wait(0.7)
-			if actor.is_fainted():
-				message.emit("¡%s se debilitó!" % actor.get_display_name())
-				await _wait(0.8)
-		return
+	if not spread_cont:
+		var check: StatusConditions.ActionCheck = StatusConditions.check_can_act(actor)
+		actor.flinched = false
+		if not check.message.is_empty():
+			message.emit(check.message)
+			await _wait(0.8)
+		if not check.can_act:
+			if check.is_confusion_hit:
+				var self_damage: int = StatusConditions.self_hit_confusion(actor)
+				var dealt_self: int = actor.apply_damage(self_damage)
+				_emit_hp(actor.is_player_side)
+				message.emit("Hizo %d PS de daño." % dealt_self)
+				await _wait(0.7)
+				if actor.is_fainted():
+					message.emit("¡%s se debilitó!" % actor.get_display_name())
+					await _wait(0.8)
+			return
+	else:
+		actor.flinched = false
 
 	if not is_charge_release and TwoTurnResolver.is_charge_move(move) \
 			and not TwoTurnResolver.skips_charge_in_weather(move, weather):
@@ -1990,8 +2021,9 @@ func _execute_move(action: BattleAction) -> void:
 			actor.semi_invulnerable = true
 		return
 
-	message.emit("%s usó %s!" % [actor.get_display_name(), move.move_name])
-	await _wait(0.9)
+	if not spread_cont:
+		message.emit("%s usó %s!" % [actor.get_display_name(), move.move_name])
+		await _wait(0.9)
 	if move.effect == MoveStruct.MoveEffect.EFFECT_SNORE:
 		if actor.pokemon == null or actor.pokemon.status != PokemonInstance.Status.SLEEP:
 			message.emit("¡No surtirá efecto!")
@@ -2077,13 +2109,24 @@ func _execute_move(action: BattleAction) -> void:
 		await _wait(0.6)
 		return
 
-	if target.protect_active and ProtectResolver.blocks_move(target.protect_kind, move) \
-			and not move.ignores_protect \
-			and not AbilityRuntime.ignores_protect_contact(actor, move):
-		message.emit("¡%s se protegió del ataque!" % target.get_display_name())
-		await _wait(0.8)
-		await _resolve_protect_contact(actor, target, move)
-		return
+	if not move.ignores_protect and not AbilityRuntime.ignores_protect_contact(actor, move):
+		var tside: FieldSide = _side_for(target)
+		var blocked_side: bool = false
+		if tside.wide_guard_turns > 0 and ProtectResolver.blocks_move(ProtectResolver.Kind.WIDE_GUARD, move):
+			blocked_side = true
+		elif tside.quick_guard_turns > 0 and ProtectResolver.blocks_move(ProtectResolver.Kind.QUICK_GUARD, move):
+			blocked_side = true
+		elif tside.crafty_shield_turns > 0 and ProtectResolver.blocks_move(ProtectResolver.Kind.CRAFTY_SHIELD, move):
+			blocked_side = true
+		if blocked_side:
+			message.emit("¡%s se protegió del ataque!" % target.get_display_name())
+			await _wait(0.8)
+			return
+		if target.protect_active and ProtectResolver.blocks_move(target.protect_kind, move):
+			message.emit("¡%s se protegió del ataque!" % target.get_display_name())
+			await _wait(0.8)
+			await _resolve_protect_contact(actor, target, move)
+			return
 
 	if move.effect == MoveStruct.MoveEffect.EFFECT_GEOMANCY and is_charge_release:
 		await _apply_stat_change(actor, PokemonInstance.Stat.SP_ATTACK, 2)
@@ -2302,7 +2345,9 @@ func _execute_move(action: BattleAction) -> void:
 			and not target.is_fainted() and not actor.is_fainted() and hits_landed > 0:
 		await ability_announce(actor)
 		var bond: DamageCalculator.HitResult = DamageCalculator.compute_hit(
-			actor, target, move, get_effective_weather(), false, is_multi_battle()
+			actor, target, move, get_effective_weather(),
+			_side_for(target).has_screen(move.category == MoveStruct.DamageCategory.PHYSICAL) and not AbilityRuntime.has(actor, AbilityId.Id.INFILTRATOR),
+			is_multi_battle()
 		)
 		if bond.damage > 0:
 			bond.damage = maxi(1, int(round(float(bond.damage) * 0.25)))
@@ -2574,6 +2619,7 @@ func _execute_special_or_standard_damage(
 			continue
 		dealt = target.apply_damage(dealt)
 		total_dealt += dealt
+		await _try_thaw_on_fire_hit(target, move)
 		hits_landed += 1
 		_emit_hp(target.is_player_side)
 		if result.critical:
@@ -2625,8 +2671,12 @@ func _execute_special_or_standard_damage(
 		await _wait(0.8)
 	await _apply_damaging_move_effect(actor, target, move, total_dealt)
 	if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE \
-			and move.secondary_chance > 0 and not target.is_fainted() and hits_landed > 0:
-		if randi_range(1, 100) <= move.secondary_chance:
+			and move.secondary_chance > 0 and not target.is_fainted() and hits_landed > 0 \
+			and not AbilityRuntime.has(actor, AbilityId.Id.SHEER_FORCE):
+		var chance_alt: int = move.secondary_chance
+		if AbilityRuntime.has(actor, AbilityId.Id.SERENE_GRACE):
+			chance_alt = mini(100, chance_alt * 2)
+		if chance_alt >= 100 or randi_range(1, 100) <= chance_alt:
 			await _apply_secondary_effect(actor, target, move)
 
 
@@ -2739,9 +2789,21 @@ func _resolve_protect_move(actor: BattleBattler, move: MoveData) -> void:
 		actor.endure_active = true
 		message.emit("¡%s se preparó para resistir el golpe!" % actor.get_display_name())
 	else:
-		actor.protect_active = true
-		actor.protect_kind = ProtectResolver.kind_for(move)
-		message.emit("¡%s se protegió!" % actor.get_display_name())
+		var pk: ProtectResolver.Kind = ProtectResolver.kind_for(move)
+		# Wide/Quick/Crafty: protegen al LADO un turno
+		if pk == ProtectResolver.Kind.WIDE_GUARD:
+			_side_for(actor).wide_guard_turns = 1
+			message.emit("¡%s protegió a su equipo con Vastaguardia!" % actor.get_display_name())
+		elif pk == ProtectResolver.Kind.QUICK_GUARD:
+			_side_for(actor).quick_guard_turns = 1
+			message.emit("¡%s protegió a su equipo con Anticipo!" % actor.get_display_name())
+		elif pk == ProtectResolver.Kind.CRAFTY_SHIELD:
+			_side_for(actor).crafty_shield_turns = 1
+			message.emit("¡%s protegió a su equipo con Truco Defensa!" % actor.get_display_name())
+		else:
+			actor.protect_active = true
+			actor.protect_kind = pk
+			message.emit("¡%s se protegió!" % actor.get_display_name())
 	await _wait(0.8)
 
 
@@ -3560,8 +3622,11 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 			message.emit("¡%s se sacrificó por el equipo!" % actor.get_display_name())
 			await _wait(0.7)
 			# El entrante recibirá curación vía wish_turns en el slot
-			actor.wish_turns = 0
-			actor.wish_hp = actor.get_max_hp()  # se aplica al nuevo mon si UI reusa slot
+			var side_hw: FieldSide = _side_for(actor)
+			var lunar: bool = move.effect == MoveStruct.MoveEffect.EFFECT_LUNAR_DANCE
+			side_hw.queue_healing_wish(actor.slot_index, lunar)
+			actor.wish_turns = -1
+			actor.wish_hp = 0
 			if actor.is_player_side:
 				await _await_forced_player_switch(true)
 			else:
@@ -3571,8 +3636,10 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 
 		MoveStruct.MoveEffect.EFFECT_WISH:
 			@warning_ignore("integer_division")
-			actor.wish_hp = maxi(1, int(actor.get_max_hp() / 2))
-			actor.wish_turns = 1  # se cumple al final del próximo turno
+			var side_w: FieldSide = _side_for(actor)
+			side_w.set_wish(actor.slot_index, 1, maxi(1, int(actor.get_max_hp() / 2)))
+			actor.wish_turns = -1
+			actor.wish_hp = 0
 			message.emit("¡%s pidió un deseo!" % actor.get_display_name())
 			await _wait(0.7)
 			return
@@ -4297,9 +4364,10 @@ func _apply_status_move_effect(actor: BattleBattler, target: BattleBattler, move
 				return
 			# Daño diferido aproximado
 			var fs_probe: DamageCalculator.HitResult = DamageCalculator.compute_hit(actor, target, move, get_effective_weather(), false, is_multi_battle())
-			target.future_sight_damage = maxi(1, fs_probe.damage)
-			target.future_sight_turns = 2
-			target.future_sight_from_player = actor.is_player_side
+			var side_fs: FieldSide = _side_for(target)
+			side_fs.set_future_sight(target.slot_index, 2, maxi(1, fs_probe.damage), actor.is_player_side)
+			target.future_sight_damage = 0
+			target.future_sight_turns = -1
 			message.emit("¡%s previó un ataque!" % actor.get_display_name())
 			await _wait(0.7)
 			return
@@ -4844,8 +4912,9 @@ func _force_switch_out(target: BattleBattler) -> void:
 	var opps: Array[BattleBattler] = get_opponents(target)
 	if not opps.is_empty():
 		opp = opps[0]
-	await AbilityRuntime.on_switch_in(target, opp, self)
 	await _apply_hazards_on_switch_in(target)
+	if not target.is_fainted():
+		await AbilityRuntime.on_switch_in(target, opp, self)
 	_emit_hp_battler(target)
 
 
@@ -5530,3 +5599,97 @@ func _revert_party_mon_forms(mon: PokemonInstance) -> void:
 			mon.form_id = &"base"
 		if mon.has_method("recalculate_stats"):
 			mon.recalculate_stats()
+
+
+func _try_thaw_on_fire_hit(target: BattleBattler, move: MoveData) -> void:
+	if target == null or move == null or target.pokemon == null:
+		return
+	if move.type != PokemonData.Type.TYPE_FIRE:
+		return
+	if target.pokemon.status != PokemonInstance.Status.FREEZE:
+		return
+	target.pokemon.cure_status()
+	message.emit("¡%s se descongeló!" % target.get_display_name())
+	await _wait(0.35)
+
+## Healing Wish / Lunar Dance pendientes por slot (FieldSide).
+func _apply_slot_entry_heals(battler: BattleBattler) -> void:
+	if battler == null or battler.pokemon == null:
+		return
+	var side: FieldSide = _side_for(battler)
+	var slot: int = clampi(battler.slot_index, 0, 1)
+	if side.healing_wish_pending.size() > slot and side.healing_wish_pending[slot]:
+		side.healing_wish_pending[slot] = false
+		battler.pokemon.current_hp = battler.pokemon.max_hp
+		battler.pokemon.cure_status()
+		_emit_hp_battler(battler)
+		message.emit("¡El deseo sanador se cumplió para %s!" % battler.get_display_name())
+		await _wait(0.55)
+	if side.lunar_dance_pending.size() > slot and side.lunar_dance_pending[slot]:
+		side.lunar_dance_pending[slot] = false
+		battler.pokemon.current_hp = battler.pokemon.max_hp
+		battler.pokemon.cure_status()
+		# Restaurar PP de todos los moves
+		if battler.pokemon.moves != null:
+			for ms: Variant in battler.pokemon.moves:
+				if ms != null and ms.has_method("restore_pp"):
+					ms.restore_pp()
+				elif ms != null and "pp" in ms and "max_pp" in ms:
+					ms.pp = ms.max_pp
+		_emit_hp_battler(battler)
+		message.emit("¡La danza lunar se cumplió para %s!" % battler.get_display_name())
+		await _wait(0.55)
+
+
+
+## Wish / Future Sight almacenados en FieldSide (sobreviven al cambio de mon).
+func _process_position_timed_effects() -> void:
+	for side_player: bool in [true, false]:
+		var side: FieldSide = player_side if side_player else enemy_side
+		var actives: Array[BattleBattler] = player_actives if side_player else enemy_actives
+		for slot: int in range(mini(2, actives.size())):
+			var b: BattleBattler = actives[slot] if slot < actives.size() else null
+			# Future Sight
+			if side.future_sight.size() > slot and not side.future_sight[slot].is_empty():
+				var fs: Dictionary = side.future_sight[slot]
+				var turns: int = int(fs.get("turns", -1)) - 1
+				if turns < 0:
+					var dmg: int = int(fs.get("damage", 0))
+					side.future_sight[slot] = {}
+					if b != null and not b.is_fainted() and dmg > 0:
+						message.emit("¡¡%s fue alcanzado por un ataque del pasado!!" % b.get_display_name())
+						await _wait(0.5)
+						_apply_damage_to_target(b, dmg)
+						_emit_hp_battler(b)
+						await _wait(0.55)
+						if b.is_fainted():
+							message.emit("¡%s se debilitó!" % b.get_display_name())
+							await _wait(0.7)
+				else:
+					fs["turns"] = turns
+					side.future_sight[slot] = fs
+			# Wish
+			if side.wish.size() > slot and not side.wish[slot].is_empty():
+				var w: Dictionary = side.wish[slot]
+				var wt: int = int(w.get("turns", -1)) - 1
+				if wt < 0:
+					var hp: int = int(w.get("hp", 0))
+					side.wish[slot] = {}
+					if b != null and not b.is_fainted() and hp > 0 and b.heal_block_turns <= 0:
+						b.pokemon.apply_heal(hp)
+						_emit_hp_battler(b)
+						message.emit("¡El deseo de %s se cumplió!" % b.get_display_name())
+						await _wait(0.55)
+				else:
+					w["turns"] = wt
+					side.wish[slot] = w
+
+
+
+
+## Al salir un rival nuevo, solo cuentan participantes de ese enfrentamiento.
+func _reset_exp_participants_for_opponent() -> void:
+	exp_participants.clear()
+	for pb: BattleBattler in player_actives:
+		if pb != null and pb.pokemon != null and not pb.is_fainted():
+			mark_exp_participant(pb.pokemon)

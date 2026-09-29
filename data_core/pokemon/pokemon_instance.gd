@@ -569,6 +569,39 @@ static func _roll_wild_ability(data: PokemonDataStruct, personality: int) -> Abi
 # INTERNOS
 # ============================================================
 
+
+## Añade EVs por yield de especie derrotada. Tope 252 por stat y 510 total.
+func gain_evs_from_yield(species: PokemonDataStruct) -> void:
+	if species == null:
+		return
+	_ensure_iv_ev_size()
+	var yields: Array[int] = [
+		int(species.evYield_HP) if "evYield_HP" in species else 0,
+		int(species.evYield_Attack) if "evYield_Attack" in species else 0,
+		int(species.evYield_Defense) if "evYield_Defense" in species else 0,
+		int(species.evYield_Speed) if "evYield_Speed" in species else 0,
+		int(species.evYield_SpAttack) if "evYield_SpAttack" in species else 0,
+		int(species.evYield_SpDefense) if "evYield_SpDefense" in species else 0,
+	]
+	var total: int = 0
+	for v: int in evs:
+		total += v
+	for i: int in range(mini(6, yields.size())):
+		if total >= 510:
+			break
+		var add: int = yields[i]
+		if add <= 0:
+			continue
+		var room_stat: int = 252 - evs[i]
+		var room_total: int = 510 - total
+		var gain: int = mini(add, mini(room_stat, room_total))
+		if gain <= 0:
+			continue
+		evs[i] += gain
+		total += gain
+	recalculate_stats()
+
+
 func _ensure_iv_ev_size() -> void:
 	while ivs.size() < STAT_COUNT:
 		ivs.append(0)

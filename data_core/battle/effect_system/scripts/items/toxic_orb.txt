@@ -1,5 +1,5 @@
 on_end_turn:
   if not has_status
-	status TOXIC target=user
-	message "¡{user} fue gravemente envenenado por la Toxi Orbe!"
+    status TOXIC target=user
+    message "¡{user} fue gravemente envenenado por la Toxi Orbe!"
   endif

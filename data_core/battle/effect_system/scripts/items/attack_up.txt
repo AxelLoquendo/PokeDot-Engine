@@ -1,6 +1,6 @@
 on_pinch:
   if hp_percent <= 25
-	raise_stat ATK 1 target=user
-	message "¡El Ataque de {user} subió!"
-	consume_held
+    raise_stat ATK 1 target=user
+    message "¡El Ataque de {user} subió!"
+    consume_held
   endif

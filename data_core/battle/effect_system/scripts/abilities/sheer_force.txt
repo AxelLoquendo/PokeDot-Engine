@@ -1,3 +1,5 @@
+# Sheer Force: +30% potencia si el movimiento tiene efecto secundario.
+# Los secundarios se suprimen en battle_manager (SHEER_FORCE check).
 on_power:
   if move_flag secondary
     multiply 1.3
