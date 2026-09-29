@@ -496,7 +496,7 @@ texture = ExtResource("12_w78s2")
 [node name="BattleHPBox" type="Node2D" parent="." unique_id=2003408782]
 
 [node name="PlayerHPBox" type="Sprite2D" parent="BattleHPBox" unique_id=191641169]
-position = Vector2(368, 158)
+position = Vector2(368, 183)
 scale = Vector2(2, 2)
 texture = ExtResource("21_w7ur2")
 

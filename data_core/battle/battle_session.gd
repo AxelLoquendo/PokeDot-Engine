@@ -1,5 +1,6 @@
 extends Node
 ## Puente overworld ↔ batalla. No destruye el mapa.
+## Elige escena 1v1 o dobles según battle_format (commit 9e8ce44).
 
 signal battle_finished(result: int)
 
@@ -10,22 +11,6 @@ enum BattleResult {
 	CAUGHT,
 }
 
-
-
-var is_active: bool = false
-var is_wild: bool = true
-var player_pokemon: PokemonInstance = null
-var enemy_pokemon: PokemonInstance = null
-var enemy_party: Array[PokemonInstance] = []
-var player_controller: CharacterController = null
-
-var _battle_layer: CanvasLayer = null
-const BATTLE_SCENE: PackedScene = preload("res://scenes/ui_battle/battle.tscn")
-
-var battle_background: BattleBackground.Background = BattleBackground.Background.BG_LONG_GRASS
-
-## Tipo de combate: determina qué música suena.
-## El escenario visual sigue viniendo del mapa (MapAttributes.battle_scene).
 enum BattleType {
 	WILD,
 	ROAMING,
@@ -38,6 +23,9 @@ enum BattleType {
 	RAID_TERA,
 	RAID_ULTRA,
 }
+
+const BATTLE_SCENE_SINGLE: PackedScene = preload("res://scenes/ui_battle/battle.tscn")
+const BATTLE_SCENE_DOUBLE: PackedScene = preload("res://scenes/ui_battle/battle_double.tscn")
 
 const BATTLE_MUSIC_BY_TYPE: Dictionary = {
 	BattleType.WILD: SFXGame.BattleMusicID.BGM_BATTLE_WILD,
@@ -52,20 +40,27 @@ const BATTLE_MUSIC_BY_TYPE: Dictionary = {
 	BattleType.RAID_ULTRA: SFXGame.BattleMusicID.BGM_RAID_ULTRA_BATTLE_1,
 }
 
+var is_active: bool = false
+var is_wild: bool = true
+var player_pokemon: PokemonInstance = null
+var enemy_pokemon: PokemonInstance = null
+var enemy_party: Array[PokemonInstance] = []
+var player_controller: CharacterController = null
+var player_leads: Array[PokemonInstance] = []
+
+var _battle_layer: CanvasLayer = null
+
+var battle_background: BattleBackground.Background = BattleBackground.Background.BG_LONG_GRASS
 var battle_type: BattleType = BattleType.WILD
 var battle_music: SFXGame.BattleMusicID = SFXGame.BattleMusicID.BGM_BATTLE_WILD
 
-## Formato de campo (1v1 por defecto).
-var battle_format: int = 0  # BattleManager.BattleFormat.SINGLE
-var player_leads: Array[PokemonInstance] = []
+## 0 SINGLE, 1 ONE_V_TWO, 2 TWO_V_ONE, 3 DOUBLE (BattleState.BattleFormat)
+var battle_format: int = 0
 
-## Vacíos en combates salvajes.
 var trainer_name: String = ""
 var trainer_money: int = 0
 
 
-
-## probabilidad_doble: 0.0–1.0. Si > 0 y hay 2º salvaje, puede ser 1v2 o 2v2.
 func preparar_salvaje(
 	jugador: CharacterController,
 	lead: PokemonInstance,
@@ -77,56 +72,58 @@ func preparar_salvaje(
 	player_controller = jugador
 	player_pokemon = lead
 	enemy_pokemon = salvaje
-	# Arrays tipados: construir y append (no literales sueltos)
 	var leads: Array[PokemonInstance] = []
 	if lead != null:
 		leads.append(lead)
 	player_leads = leads
-
-	var foes: Array[PokemonInstance] = []
+	enemy_party.clear()
 	if salvaje != null:
-		foes.append(salvaje)
+		enemy_party.append(salvaje)
 	if salvaje_2 != null:
-		foes.append(salvaje_2)
-	enemy_party = foes
-
-	battle_format = formato
+		enemy_party.append(salvaje_2)
 	is_wild = true
-	trainer_name = ""
-	trainer_money = 0
-	_configurar_combate(jugador, BattleType.ROAMING if es_roaming else BattleType.WILD)
-
-
-## 1v2 / 2v1 / 2v2: leads del jugador y rivales (hasta 2 por bando según formato).
-## format: 0 SINGLE, 1 ONE_V_TWO, 2 TWO_V_ONE, 3 DOUBLE
-func preparar_multi(
-	jugador: CharacterController,
-	leads_jugador: Array[PokemonInstance],
-	leads_rival: Array[PokemonInstance],
-	party_rival: Array[PokemonInstance] = [],
-	format: int = 3,
-	tipo: BattleType = BattleType.TRAINER,
-	salvaje: bool = false
-) -> void:
-	player_controller = jugador
-	player_leads = leads_jugador
-	player_pokemon = leads_jugador[0] if not leads_jugador.is_empty() else null
-	enemy_party = party_rival if not party_rival.is_empty() else leads_rival
-	enemy_pokemon = leads_rival[0] if not leads_rival.is_empty() else null
-	battle_format = format
-	is_wild = salvaje
+	battle_format = formato
+	var tipo: BattleType = BattleType.ROAMING if es_roaming else BattleType.WILD
 	_configurar_combate(jugador, tipo)
 
-func preparar_entrenador(jugador: CharacterController, lead: PokemonInstance, party_rival: Array[PokemonInstance], tipo: BattleType = BattleType.TRAINER) -> void:
+
+func preparar_multi(
+	jugador: CharacterController,
+	leads: Array[PokemonInstance],
+	enemy_leads: Array[PokemonInstance],
+	full_enemy_party: Array[PokemonInstance],
+	formato: int,
+	tipo: BattleType = BattleType.TRAINER
+) -> void:
+	player_controller = jugador
+	player_leads = leads.duplicate()
+	player_pokemon = leads[0] if not leads.is_empty() else null
+	enemy_pokemon = enemy_leads[0] if not enemy_leads.is_empty() else null
+	enemy_party = full_enemy_party.duplicate()
+	is_wild = (tipo == BattleType.WILD or tipo == BattleType.ROAMING)
+	battle_format = formato
+	_configurar_combate(jugador, tipo)
+
+
+func preparar_entrenador(
+	jugador: CharacterController,
+	lead: PokemonInstance,
+	party_rival: Array[PokemonInstance],
+	tipo: BattleType = BattleType.TRAINER
+) -> void:
 	player_controller = jugador
 	player_pokemon = lead
+	var leads: Array[PokemonInstance] = []
+	if lead != null:
+		leads.append(lead)
+	player_leads = leads
 	enemy_party = party_rival
 	enemy_pokemon = party_rival[0] if not party_rival.is_empty() else null
 	is_wild = false
+	battle_format = 0
 	_configurar_combate(jugador, tipo)
 
 
-## Doble con un solo Pokémon en pie del jugador = 1 contra 2.
 func preparar_desde_entrenador(jugador: CharacterController, trainer: TrainerData) -> bool:
 	var datos: CharacterPlayer = jugador.character_data as CharacterPlayer if jugador else null
 	if datos == null:
@@ -144,7 +141,15 @@ func preparar_desde_entrenador(jugador: CharacterController, trainer: TrainerDat
 	var tipo: BattleType = trainer.battle_type as BattleType
 	if trainer.double_battle and rivales.size() >= 2:
 		var formato: int = 3 if disponibles.size() >= 2 else 1  # DOUBLE / ONE_V_TWO
-		preparar_multi(jugador, disponibles.slice(0, 2 if formato == 3 else 1), rivales.slice(0, 2), rivales, formato, tipo)
+		var n_player: int = 2 if formato == 3 else 1
+		preparar_multi(
+			jugador,
+			disponibles.slice(0, n_player),
+			rivales.slice(0, 2),
+			rivales,
+			formato,
+			tipo
+		)
 	else:
 		battle_format = 0
 		preparar_entrenador(jugador, disponibles[0], rivales, tipo)
@@ -152,38 +157,42 @@ func preparar_desde_entrenador(jugador: CharacterController, trainer: TrainerDat
 	trainer_money = trainer.money
 	return true
 
-func _obtener_escenario(jugador: CharacterController) -> BattleBackground.Background:
-	if jugador == null:
-		return BattleBackground.Background.BG_LONG_GRASS
-	var mapa: MapAttributes = jugador.mapa_raiz as MapAttributes
-	if mapa == null:
-		return BattleBackground.Background.BG_LONG_GRASS
-	return mapa.battle_scene
 
 func _configurar_combate(jugador: CharacterController, tipo: BattleType) -> void:
 	battle_type = tipo
 	battle_music = BATTLE_MUSIC_BY_TYPE.get(tipo, SFXGame.BattleMusicID.BGM_BATTLE_WILD)
-
 	var mapa: MapAttributes = jugador.mapa_raiz as MapAttributes if jugador else null
 	battle_background = mapa.battle_scene if mapa != null else BattleBackground.Background.BG_LONG_GRASS
-
-	# Registrar especies rivales como "vistas" en la Pokédex del jugador.
 	_registrar_vistos(jugador)
 
 
-## Marca como vistas las especies del equipo rival (salvaje o entrenador).
 func _registrar_vistos(jugador: CharacterController) -> void:
 	if jugador == null:
 		return
 	var data: CharacterPlayer = jugador.character_data as CharacterPlayer
 	if data == null:
 		return
-	var dex: PokedexData = data.ensure_pokedex()
+	var dex: PokedexData = null
+	if data.has_method("ensure_pokedex"):
+		dex = data.ensure_pokedex()
+	else:
+		dex = data.pokedex
+	if dex == null:
+		return
 	for mon: PokemonInstance in enemy_party:
 		if mon != null:
 			dex.set_seen(int(mon.species_id))
 	if enemy_pokemon != null:
 		dex.set_seen(int(enemy_pokemon.species_id))
+
+
+func is_multi_format() -> bool:
+	return battle_format != 0
+
+
+func scene_for_format() -> PackedScene:
+	return BATTLE_SCENE_DOUBLE if is_multi_format() else BATTLE_SCENE_SINGLE
+
 
 func iniciar_como_overlay(parent: Node) -> void:
 	if is_active:
@@ -204,7 +213,7 @@ func iniciar_como_overlay(parent: Node) -> void:
 	_battle_layer.layer = 100
 	parent.add_child(_battle_layer)
 
-	var batalla: Node = BATTLE_SCENE.instantiate()
+	var batalla: Node = scene_for_format().instantiate()
 	_battle_layer.add_child(batalla)
 
 
@@ -215,7 +224,6 @@ func finalizar(result: int) -> void:
 
 	is_active = false
 
-	# Pickup / Honey Gather al terminar el combate (si hubo victoria o captura)
 	if result == BattleResult.WIN or result == BattleResult.CAUGHT:
 		if player_controller != null and is_instance_valid(player_controller):
 			var data: CharacterPlayer = player_controller.character_data as CharacterPlayer
@@ -234,11 +242,14 @@ func finalizar(result: int) -> void:
 	player_pokemon = null
 	enemy_pokemon = null
 	enemy_party = []
+	player_leads = []
 	player_controller = null
 	trainer_name = ""
 	trainer_money = 0
+	battle_format = 0
 
 	battle_finished.emit(result)
+
 
 func tiene_datos() -> bool:
 	return player_pokemon != null and enemy_pokemon != null
