@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name BattleMoveResolution
 ## Pipeline de un movimiento (extraído de BattleManager._execute_move).
@@ -25,20 +26,44 @@ static func execute_move(battle: Object, action: BattleAction) -> void:
 		return
 
 	var spread_cont: bool = action.has_meta("_skip_pp") and bool(action.get_meta("_skip_pp"))
-	if not spread_cont and AbilityRuntime.should_skip_turn(action.actor):
-		if battle.has_method("ability_announce"):
-			await battle.ability_announce(action.actor)
-		_msg(battle, "¡%s holgazanea!" % action.actor.get_display_name())
-		await _wait(battle, 0.8)
-		return
-
-	if not spread_cont and AbilityRuntime.check_infatuation_blocks_move(action.actor, battle):
-		await _wait(battle, 0.8)
-		return
-
 	var actor: BattleBattler = action.actor
 	var target: BattleBattler = action.target
 	var move: MoveData = action.move
+
+	# Recarga (Hyper Beam, etc.): pierde el turno
+	if not spread_cont and actor.must_recharge:
+		actor.must_recharge = false
+		_msg(battle, "¡%s debe recargarse!" % actor.get_display_name())
+		await _wait(battle, 0.8)
+		return
+
+	# Sueño / paralisis / congelación / flinch / confusión
+	if not spread_cont:
+		var can_act: StatusConditions.ActionCheck = StatusConditions.check_can_act(actor)
+		if can_act.message != "":
+			_msg(battle, can_act.message)
+			await _wait(battle, 0.55)
+		if not can_act.can_act:
+			if can_act.is_confusion_hit:
+				var self_dmg: int = StatusConditions.self_hit_confusion(actor)
+				actor.apply_damage(self_dmg)
+				_emit_hp(battle, actor)
+				await _wait(battle, 0.55)
+				if actor.is_fainted():
+					await BattleFaint.on_fainted(battle, actor, actor)
+			return
+
+	if not spread_cont and AbilityRuntime.should_skip_turn(actor):
+		if battle.has_method("ability_announce"):
+			await battle.ability_announce(actor)
+		_msg(battle, "¡%s holgazanea!" % actor.get_display_name())
+		await _wait(battle, 0.8)
+		return
+
+	if not spread_cont and AbilityRuntime.check_infatuation_blocks_move(actor, battle):
+		await _wait(battle, 0.8)
+		return
+
 	if move == null:
 		return
 
@@ -106,14 +131,6 @@ static func execute_move(battle: Object, action: BattleAction) -> void:
 	if await _blocked_by_protect(battle, actor, target, move):
 		return
 
-	if FixedDamageResolver.is_special_damage_effect(move.effect) \
-			or move.effect == MoveStruct.MoveEffect.EFFECT_FALSE_SWIPE \
-			or move.effect == MoveStruct.MoveEffect.EFFECT_DREAM_EATER \
-			or move.effect == MoveStruct.MoveEffect.EFFECT_ABSORB:
-		await BattleDamage.execute_special_or_standard(battle, actor, target, move, action)
-		await _execute_multi_rest(battle, action, actor, move)
-		return
-
 	if move.category == MoveStruct.DamageCategory.STATUS or move.power <= 0:
 		var locked: bool = _is_locked_on(actor, target)
 		var weather: int = _effective_weather(battle)
@@ -128,7 +145,8 @@ static func execute_move(battle: Object, action: BattleAction) -> void:
 		await _execute_multi_rest(battle, action, actor, move)
 		return
 
-	await _execute_damage_path(battle, actor, target, move, action, false)
+	# Daño (fórmula estándar, multi-hit, fijo, absorb, etc.): un solo pipeline.
+	await BattleDamage.execute_special_or_standard(battle, actor, target, move, action)
 	await _execute_multi_rest(battle, action, actor, move)
 
 
@@ -138,97 +156,12 @@ static func _execute_damage_path(
 	target: BattleBattler,
 	move: MoveData,
 	action: BattleAction,
-	special: bool
+	_special: bool = false
 ) -> void:
-	var weather: int = _effective_weather(battle)
-	var locked: bool = _is_locked_on(actor, target)
-	if locked:
-		target.locked_on_by_side = -1
+	## Compat: todo el daño pasa por BattleDamage (HitResult tipado, pantallas, multi-hit).
+	## Evita doble tirada de precisión y el antiguo path Dictionary/Variant.
+	await BattleDamage.execute_special_or_standard(battle, actor, target, move, action)
 
-	if not locked and not DamageCalculator.check_hit(move, actor, target, weather):
-		_msg(battle, "¡El ataque de %s falló!" % actor.get_display_name())
-		await _wait(battle, 0.8)
-		if move.effect == MoveStruct.MoveEffect.EFFECT_RECOIL_IF_MISS:
-			await _apply_crash(battle, actor)
-		return
-
-	if special:
-		await BattleDamage.execute_special_or_standard(battle, actor, target, move, action)
-		return
-		var fixed: int = 0
-		fixed = int(FixedDamageResolver.compute_fixed(actor, target, move))
-		if fixed > 0:
-			var taken_f: int = target.apply_damage(fixed)
-			_emit_hp(battle, target)
-			_msg(battle, "¡%s perdió PS!" % target.get_display_name())
-			await _wait(battle, 0.55)
-			if target.is_fainted():
-				await BattleFaint.on_fainted(battle, target, actor)
-		return
-
-	var result: Variant = DamageCalculator.calculate(actor, target, move, weather, false, _is_multi(battle))
-	if result == null:
-		return
-
-	var ability_imm: String = ""
-	if result is Dictionary:
-		ability_imm = str(result.get("ability_immunity", ""))
-	elif "ability_immunity" in result:
-		ability_imm = str(result.ability_immunity)
-	if ability_imm != "":
-		_msg(battle, "¡No afecta a %s!" % target.get_display_name())
-		await _wait(battle, 0.6)
-		return
-
-	var damage: int = 0
-	if result is Dictionary:
-		damage = int(result.get("damage", 0))
-	elif "damage" in result:
-		damage = int(result.damage)
-
-	if damage <= 0:
-		_msg(battle, "¡No afecta a %s!" % target.get_display_name())
-		await _wait(battle, 0.6)
-		return
-
-	var taken: int = target.apply_damage(damage)
-	target.set_meta("took_damage_this_turn", true)
-	_emit_hp(battle, target)
-
-	var is_crit: bool = false
-	if result is Dictionary:
-		is_crit = bool(result.get("critical", result.get("is_critical", false)))
-	elif "is_critical" in result:
-		is_crit = bool(result.is_critical)
-	elif "critical" in result:
-		is_crit = bool(result.critical)
-	if is_crit:
-		_msg(battle, "¡Un golpe crítico!")
-		await _wait(battle, 0.4)
-
-	_msg(battle, "¡%s perdió PS!" % target.get_display_name())
-	await _wait(battle, 0.5)
-
-	if move.drain_percent > 0:
-		await _apply_drain(battle, actor, taken, move.drain_percent)
-	if move.recoil_percent > 0:
-		await _apply_recoil(battle, actor, taken, move.recoil_percent)
-
-	# on_hit: scripts primero; si no hay script, match legacy del manager
-	await BattleMoveEffects.try_on_hit(battle, actor, target, move, taken)
-
-	if target.is_fainted():
-		await BattleFaint.on_fainted(battle, target, actor)
-		return
-
-	if move.secondary_effect != MoveStruct.SecondaryEffect.MOVE_EFFECT_NONE \
-			and not AbilityRuntime.has(actor, AbilityId.Id.SHEER_FORCE):
-		var chance: int = move.secondary_chance
-		if AbilityRuntime.has(actor, AbilityId.Id.SERENE_GRACE):
-			chance = mini(100, chance * 2)
-		if randi_range(1, 100) <= chance:
-			if not await BattleMoveEffects.try_on_secondary(battle, actor, target, move):
-				await BattleStatChange.apply_secondary(battle, actor, target, move)
 
 
 static func _execute_multi_rest(

@@ -1,3 +1,4 @@
+
 extends Node
 class_name BattleManager
 ## Shim de compatibilidad: misma superficie pública que el monolito.
@@ -57,6 +58,9 @@ func _wire_signals() -> void:
 	_core.weather_changed.connect(
 		func(w: int, p: bool) -> void: weather_changed.emit(w, p)
 	)
+	_core.player_evolved.connect(func() -> void: player_evolved.emit())
+	_core.ability_bar_finished.connect(func() -> void: ability_bar_finished.emit())
+	_core.illusion_broken.connect(func(side: bool) -> void: illusion_broken.emit(side))
 
 
 var player: BattleBattler:

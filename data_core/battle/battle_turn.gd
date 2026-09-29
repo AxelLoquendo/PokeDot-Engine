@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name BattleTurn
 ## Resolución de un turno completo: ordenar acciones → ejecutar → KO mid-turn → fin de turno.
@@ -7,6 +8,7 @@ class_name BattleTurn
 static func resolve_actions(battle: Object, actions: Array[BattleAction]) -> void:
 	actions = sort_actions(battle, actions)
 	_reset_turn_flags(battle)
+	_mark_planned_actions(actions)
 
 	var i: int = 0
 	while i < actions.size():
@@ -96,6 +98,19 @@ static func resolve_mid_turn_faints(battle: Object) -> void:
 
 # ─── internos ───────────────────────────────────────────────────────
 
+
+static func _mark_planned_actions(actions: Array[BattleAction]) -> void:
+	## Antes de ejecutar: marca quién eligió status (Sucker Punch / etc.).
+	for a: BattleAction in actions:
+		if a == null or a.actor == null:
+			continue
+		if a.actor.has_meta("chose_status_move"):
+			a.actor.remove_meta("chose_status_move")
+		if a.kind == BattleAction.Kind.MOVE and a.move != null:
+			if a.move.category == MoveStruct.DamageCategory.STATUS or a.move.power <= 0:
+				a.actor.set_meta("chose_status_move", true)
+
+
 static func _reset_turn_flags(battle: Object) -> void:
 	for battler: BattleBattler in _all_actives(battle):
 		if battler == null:
@@ -108,7 +123,10 @@ static func _reset_turn_flags(battle: Object) -> void:
 		battler.endure_active = false
 		battler.destiny_bond_active = false
 		battler.set_meta("acted_this_turn", false)
+		if battler.has_meta("chose_status_move"):
+			battler.remove_meta("chose_status_move")
 		battler.beak_blast_armed = false
+		battler.flinched = false
 		battler.set_meta("took_damage_this_turn", false)
 		battler.set_meta("stats_dropped_this_turn", false)
 		if battler.has_meta("follow_me"):

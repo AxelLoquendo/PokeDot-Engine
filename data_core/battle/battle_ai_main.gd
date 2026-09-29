@@ -7,10 +7,15 @@ static func choose_move_for(battle: Object, battler: BattleBattler) -> BattleAct
 	if battler == null or battler.pokemon == null or battler.is_fainted():
 		return null
 
-	# Recharge / charge
+	# Recharge: el pipeline de execute_move muestra el mensaje y limpia el flag.
 	if battler.must_recharge:
-		battler.must_recharge = false
-		return null
+		var recharge_action: BattleAction = BattleAction.new()
+		recharge_action.kind = BattleAction.Kind.MOVE
+		recharge_action.actor = battler
+		recharge_action.actor_pokemon = battler.pokemon
+		recharge_action.move = null
+		recharge_action.priority = 0
+		return recharge_action
 	if battler.charging_move != null:
 		var release: BattleAction = BattleAction.make_move(
 			battler, _best_target(battle, battler), battler.charging_move, -1
@@ -19,8 +24,11 @@ static func choose_move_for(battle: Object, battler: BattleBattler) -> BattleAct
 
 	var moves: Array[Dictionary] = _scored_moves(battle, battler)
 	if moves.is_empty():
-		# Struggle
-		return null
+		# Struggle: sin PP en ningún movimiento
+		var struggle: MoveData = MoveDatabase.get_move(Moves.MoveId.MOVE_STRUGGLE)
+		if struggle == null:
+			return null
+		return BattleAction.make_move(battler, _best_target(battle, battler), struggle, -1)
 
 	moves.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return float(a["score"]) > float(b["score"])

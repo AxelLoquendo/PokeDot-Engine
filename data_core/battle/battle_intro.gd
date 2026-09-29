@@ -1,3 +1,4 @@
+
 extends RefCounted
 class_name BattleIntro
 ## Secuencia de entrada al combate (dex, mensajes, switch-in abilities).
@@ -51,16 +52,28 @@ static func run(battle: Object) -> void:
 		await BattleSwitchIn.on_enter(battle, pb2)
 
 
-static func _register_encounter_dex(battle: Object) -> void:
-	# Marca seen en pokedex si el jugador tiene CharacterPlayer accesible
-	var controller: Variant = battle.get("player_controller") if battle.get("player_controller") != null else null
-	# BattleSession path
-	if BattleSession.player_controller != null:
-		var pdata: CharacterPlayer = BattleSession.player_controller.character_data as CharacterPlayer
-		if pdata != null and pdata.pokedex != null:
-			for b: BattleBattler in _actives(battle, false):
-				if b != null and b.pokemon != null:
-					pdata.pokedex.register_seen(int(b.pokemon.species_id))
+static func _register_encounter_dex(_battle: Object) -> void:
+	## Marca seen en la Pokédex del jugador.
+	## PokedexData expone set_seen / set_owned (no register_seen).
+	if BattleSession.player_controller == null:
+		return
+	var pdata: CharacterPlayer = (
+		BattleSession.player_controller.character_data as CharacterPlayer
+	)
+	if pdata == null:
+		return
+
+	var dex: PokedexData = null
+	if pdata.has_method("ensure_pokedex"):
+		dex = pdata.ensure_pokedex()
+	else:
+		dex = pdata.pokedex
+	if dex == null:
+		return
+
+	for b: BattleBattler in _actives(_battle, false):
+		if b != null and b.pokemon != null:
+			dex.set_seen(int(b.pokemon.species_id))
 
 
 static func _actives(battle: Object, is_player: bool) -> Array[BattleBattler]:

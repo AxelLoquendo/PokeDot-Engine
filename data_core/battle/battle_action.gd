@@ -29,7 +29,10 @@ static func make_move(
 	action.target = p_target
 	action.move = p_move
 	action.move_slot_index = slot_index
-	action.priority = p_move.priority if p_move else 0
+	var base_pri: int = p_move.priority if p_move else 0
+	if p_actor != null and p_move != null:
+		base_pri += AbilityRuntime.priority_bonus(p_actor, p_move)
+	action.priority = base_pri
 	return action
 
 

@@ -1,4 +1,5 @@
 
+
 extends RefCounted
 class_name BattleMain
 ## Orquestador del combate. Posee BattleState y delega en módulos de fase.
@@ -334,10 +335,11 @@ func _resolve_turn_actions(actions: Array[BattleAction]) -> void:
 
 
 func _check_battle_end() -> void:
-	if not side_has_conscious(true):
+	## Alineado con BattleTurn: solo termina si no hay activos NI reservas.
+	if not side_has_conscious(true) and not party_has_reserve(true):
 		state.is_running = false
 		battle_ended.emit(false)
-	elif not side_has_conscious(false):
+	elif not side_has_conscious(false) and not party_has_reserve(false):
 		state.is_running = false
 		battle_ended.emit(true)
 
@@ -378,7 +380,22 @@ func ability_apply_status(
 ) -> void:
 	if battler == null or battler.pokemon == null:
 		return
+	if status == PokemonInstance.Status.NONE:
+		if battler.pokemon.has_method("cure_status"):
+			battler.pokemon.cure_status()
+		else:
+			battler.pokemon.status = PokemonInstance.Status.NONE
+		return
+	# No sobrescribir un estado primario ya presente
+	if battler.pokemon.status != PokemonInstance.Status.NONE 			and battler.pokemon.status != status:
+		return
 	battler.pokemon.status = status
+	if status == PokemonInstance.Status.SLEEP and battler.pokemon.status_counter <= 0:
+		battler.pokemon.status_counter = randi_range(1, 3)
+	elif status == PokemonInstance.Status.TOXIC:
+		battler.pokemon.status_counter = 0
+		if "toxic_counter" in battler:
+			battler.toxic_counter = 0
 
 
 func ability_deal_damage(battler: BattleBattler, amount: int, _cause: BattleBattler) -> void:
