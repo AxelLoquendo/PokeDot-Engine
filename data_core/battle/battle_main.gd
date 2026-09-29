@@ -360,6 +360,22 @@ func ability_announce(battler: BattleBattler) -> void:
 	if battler == null or battler.pokemon == null:
 		return
 	ability_announced.emit(battler.is_player_side, battler.pokemon)
+	# La UI reproduce la barra y emite ability_bar_finished.
+	# Timeout de respaldo para no colgar el combate si la UI no responde.
+	var done: Array[bool] = [false]
+	var on_done: Callable = func() -> void:
+		done[0] = true
+	if not ability_bar_finished.is_connected(on_done):
+		ability_bar_finished.connect(on_done, CONNECT_ONE_SHOT)
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	if tree != null:
+		var timeout: float = 2.2
+		while not done[0] and timeout > 0.0:
+			await tree.process_frame
+			var delta: float = 0.016
+			if tree.root != null:
+				delta = tree.root.get_process_delta_time()
+			timeout -= delta
 
 
 func ability_change_stat(
